@@ -158,12 +158,12 @@ AITL = "MONDO:0004977"; ILD = "MONDO:0002771"; BREAST = "MONDO:0004989"
 
 
 def test_a_cancer_nobody_named_is_offered_and_is_not_the_patients_cancer(judged):
-    read = judged({"ild": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8, others=[(ILD, "interstitial lung disease", ["pulmonary"], 0.7)], judged=("pulmonary",))})
-    how, organs, link = read("ild")
+    read = judged({"xild": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8, others=[(ILD, "interstitial lung disease", ["pulmonary"], 0.7)], judged=("pulmonary",))})
+    how, organs, link = read("xild")
     assert not how.startswith("cancer;") and organs == {"pulmonary"} and link["mondo"] is None and link["judged"] == ["pulmonary"]
-    assert not RC.patient_cancers(RC.resolve(["ild"])[3])
-    (text, readings), = RC.ambiguous_conditions(["ild"])
-    assert text == "ild" and {o["mondo"] for o in readings} == {AITL, ILD} and RC.reading_default(readings) == ILD
+    assert not RC.patient_cancers(RC.resolve(["xild"])[3])
+    (text, readings), = RC.ambiguous_conditions(["xild"])
+    assert text == "xild" and {o["mondo"] for o in readings} == {AITL, ILD} and RC.reading_default(readings) == ILD
 
 
 def test_a_close_plain_candidate_is_read_in_place_of_an_unnamed_cancer(judged):
@@ -204,10 +204,10 @@ def test_a_short_synonym_does_not_name_a_cancer(judged, monkeypatch):
 
 
 def test_an_alias_and_a_pick_set_the_cancer(judged, monkeypatch):
-    read = judged({"lung cancer": row(ILD, "interstitial lung disease", ["pulmonary"], 0.8), "ild": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8)})
+    read = judged({"lung cancer": row(ILD, "interstitial lung disease", ["pulmonary"], 0.8), "xild": row(AITL, "angioimmunoblastic T-cell lymphoma", ["haematologic"], 0.8)})
     assert read("lung cancer")[0].startswith("cancer;") and RC.ambiguous_conditions(["lung cancer"]) == []
-    monkeypatch.setitem(RC.CHOICE, "ild", AITL)
-    assert RC.resolve(["ild"])[3][0][1].startswith("cancer;")
+    monkeypatch.setitem(RC.CHOICE, "xild", AITL)
+    assert RC.resolve(["xild"])[3][0][1].startswith("cancer;")
 
 
 def test_a_low_probability_reads_with_a_mark_and_a_lower_one_stays_rejected(judged):
@@ -231,3 +231,8 @@ def test_the_mark_reaches_both_screens(judged):
     read("TB")
     report = RC.analyze_conditions(["TB"])[0]
     assert webapp._report(RC, report, {})["check"] == "Low confidence, check this"
+
+
+def test_ild_reaches_its_registry_condition_before_any_read(judged):
+    judged({})
+    assert RC.resolve(["ild"])[2] == {"interstitial_lung_disease"} and RC.ambiguous_conditions(["ild"]) == []
