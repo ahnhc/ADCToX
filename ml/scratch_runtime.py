@@ -4,17 +4,18 @@
         organs=["pulmonary", "infectious_immune"], via="record", valid=0.999, ok=True, sim=1.0)]
 
 Model folder (in the model bundle, 'ScratchJudge/'): a BERT-base encoder trained from random weights on public medical text,
-with organ, validity and name-vector outputs; index.npz (name vectors); concepts.json (organs per concept).
+with organ, validity and name-vector outputs; index.npz (name vectors); index_ko.npz (Korean MONDO names, only when present); concepts.json (organs per concept).
 Rule, the same as ml/scratch_judge.judge with the evidence table and the MONDO-first margin:
 - validity below the threshold: not read as a disease, no organs
 - the nearest name at or above theta links its concept (a MONDO name within `mondo_first` of a better non-MONDO name wins)
 - organs: the concept's own organs (via "label", or "record" when they come from reading its MONDO entry), else the organ
   output on the typed text itself (via "name")
 """
-import json, os, threading
+import json, os, re, threading, unicodedata
 import numpy as np
 
 _M = {}
+_HANGUL = re.compile("[가-힣]")
 _LOCK = threading.Lock()
 
 
@@ -71,8 +72,11 @@ def load(path=None):
             bb.eval(); [h.eval() for h in heads.values()]
             Z = np.load(os.path.join(path, "index.npz")); ids = [str(x) for x in Z["ids"]]
             C = json.load(open(os.path.join(path, "concepts.json"), encoding="utf-8"))
+            ko = os.path.join(path, "index_ko.npz")                      # Korean MONDO names, searched for Hangul input; bundles before 0.9 have none
+            Zk = np.load(ko) if os.path.exists(ko) else None
             _M[path] = dict(j=j, tk=tk, bb=bb, heads=heads, E=Z["E"].astype(np.float32), ids=ids,
-                            mondo=np.array([i.startswith("MONDO:") for i in ids]), C=C, torch=torch)
+                            mondo=np.array([i.startswith("MONDO:") for i in ids]), C=C, torch=torch,
+                            Ek=Zk["E"].astype(np.float32) if Zk is not None else None, idk=[str(x) for x in Zk["ids"]] if Zk is not None else [])
         return _M[path]
 
 
@@ -88,6 +92,9 @@ def _outputs(M, texts, bs=64):
     return np.concatenate(zo), np.concatenate(zv), np.concatenate(va)
 
 
+def _hangul(M, text): return M["Ek"] is not None and bool(_HANGUL.search(unicodedata.normalize("NFC", str(text))))
+
+
 def judge(texts, path=None):
     """-> one dict per text: concept (or None), name, organs, via ("label", "record", "name" or None), valid, ok, sim, and p: the
     calibrated organ output on the text itself, {axis: probability} for all 13 (what the screens show as the organ probabilities)."""
@@ -96,12 +103,18 @@ def judge(texts, path=None):
     M = load(path); j = M["j"]; AX = j["axes"]
     zo, zv, va = _outputs(M, texts); S = va @ M["E"].T; jj = S.argmax(1); s = S.max(1)
     Sm = np.where(M["mondo"][None], S, -9); jm = Sm.argmax(1); sm = Sm.max(1)
+    cid = [M["ids"][i] for i in jj]; mid = [M["ids"][i] for i in jm]; s, sm = s.copy(), sm.copy()
+    for k, t in enumerate(texts):
+        if _hangul(M, t):                                                # a Korean name of the same concept counts as its English name
+            Sk = va[k] @ M["Ek"].T; i = int(Sk.argmax())
+            if Sk[i] > s[k]: cid[k], s[k] = M["idk"][i], Sk[i]
+            if Sk[i] > sm[k]: mid[k], sm[k] = M["idk"][i], Sk[i]
     po = 1 / (1 + np.exp(-zo / np.array(j["temp"]))); pv = 1 / (1 + np.exp(-zv)); rows = []
     for k in range(len(texts)):
         ok = bool(pv[k] >= j["vthr"]); p = {a: float(x) for a, x in zip(AX, po[k])}
         if not ok: rows.append(dict(concept=None, name="", organs=[], via=None, valid=float(pv[k]), ok=False, sim=float(s[k]), p=p)); continue
-        c, sim = (M["ids"][jj[k]], float(s[k])) if s[k] >= j["theta"] else (None, float(s[k]))
-        if sm[k] >= j["theta"] and sm[k] >= s[k] - j["mondo_first"]: c, sim = M["ids"][jm[k]], float(sm[k])
+        c, sim = (cid[k], float(s[k])) if s[k] >= j["theta"] else (None, float(s[k]))
+        if sm[k] >= j["theta"] and sm[k] >= s[k] - j["mondo_first"]: c, sim = mid[k], float(sm[k])
         name, organs, via = M["C"].get(c, ["", [], ""]) if c else ("", [], "")
         if not organs: organs, via = [AX[a] for a in np.where(po[k] >= np.array(j["thr"]))[0]], "name"
         rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim, p=p))
@@ -114,10 +127,11 @@ def nearest(text, k=5, path=None):
     M = load(path); j = M["j"]
     _, zv, va = _outputs(M, [text])
     if 1 / (1 + np.exp(-zv[0])) < j["vthr"]: return []
-    S = va[0] @ M["E"].T; out, seen = [], set()
+    ids, S = M["ids"], va[0] @ M["E"].T; out, seen = [], set()
+    if _hangul(M, text): ids, S = ids + M["idk"], np.concatenate([S, va[0] @ M["Ek"].T])
     for i in np.argsort(-S):
         if S[i] < j["theta"] or len(out) == k: break
-        c = M["ids"][i]
+        c = ids[i]
         if c in seen: continue
         seen.add(c); name = M["C"].get(c, [""])[0]
         if name: out.append((c, name, float(S[i])))

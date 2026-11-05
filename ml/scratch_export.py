@@ -5,6 +5,8 @@
     -> config.json, tokenizer.json, tokenizer_config.json   the encoder's architecture and tokenizer (BERT-base, trained here)
        weights.safetensors                                    encoder and output layers, fp16
        index.npz                                              name vectors (fp16) and the concept id of each name
+       index_ko.npz                                           Korean MONDO names (data/curated/korean/mondo_ko.jsonl) encoded by the exported weights, fp16;
+                                                              ml/scratch_runtime.py searches it only for Hangul input. Optional: a bundle without it works
        concepts.json                                          id -> [name, organs, "label" | "record"]: the v5.1 organ label, or
                                                               for a MONDO concept without one the evidence reader's organs
        judge.json                                             thresholds, the MONDO-first margin, provenance
@@ -50,6 +52,20 @@ def export(judge, evidence, out):
           f"({sum(v[2] == 'label' for v in concepts.values()):,} labelled, {sum(v[2] == 'record' for v in concepts.values()):,} from the record)")
 
 
+def export_ko(out, names=None):
+    """index_ko.npz in the exported folder: one Korean name per MONDO concept, encoded by the exported weights (the app's own runtime,
+    so the vectors are what it would compute). Concepts the folder does not know are left out."""
+    import unicodedata, scratch_runtime as SR
+    names = names or os.path.join(P.REPO, "data/curated/korean/mondo_ko.jsonl")
+    concepts = json.load(open(os.path.join(out, "concepts.json"), encoding="utf-8")); rows = []
+    for line in open(names, encoding="utf-8"):
+        r = json.loads(line) if line.strip() else {}
+        if r.get("ko") and r["id"].startswith("MONDO:") and r["id"] in concepts: rows.append((r["id"], unicodedata.normalize("NFC", r["ko"]).strip()))
+    SR._M.clear(); M = SR.load(out); _, _, E = SR._outputs(M, [n for _, n in rows], bs=256); SR._M.clear()
+    np.savez(os.path.join(out, "index_ko.npz"), E=E.astype(np.float16), ids=np.array([c for c, _ in rows]))
+    print(f"-> {out}/index_ko.npz: {len(rows):,} Korean names")
+
+
 def check(judge, evidence, out):
     """the exported folder against the research code on the gold dev queries (organs, concept, validity)."""
     import eval_a4 as E4, eval_linking as EL, scratch_judge as SJ, scratch_runtime as SR
@@ -64,7 +80,9 @@ def check(judge, evidence, out):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("--judge", required=True); ap.add_argument("--evidence", required=True); ap.add_argument("--out", required=True)
-    ap.add_argument("--check-only", action="store_true"); a = ap.parse_args()
-    if not a.check_only: export(a.judge, a.evidence, a.out)
+    ap = argparse.ArgumentParser(); ap.add_argument("--judge"); ap.add_argument("--evidence"); ap.add_argument("--out", required=True)
+    ap.add_argument("--check-only", action="store_true"); ap.add_argument("--ko-only", action="store_true", help="only (re)build index_ko.npz in --out"); a = ap.parse_args()
+    if a.ko_only: export_ko(a.out); sys.exit()
+    if not (a.judge and a.evidence): ap.error("--judge and --evidence are required without --ko-only")
+    if not a.check_only: export(a.judge, a.evidence, a.out); export_ko(a.out)
     check(a.judge, a.evidence, a.out)
