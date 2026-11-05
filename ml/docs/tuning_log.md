@@ -1590,3 +1590,85 @@
 - 내부 dev: epochs_best 4, val_organ_loss 0.1623, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8805929526160552, '0.55': 0.8807714714058432, '0.6': 0.8811890585767882, '0.65': 0.8819355581551684, '0.7': 0.8809527689937198, '0.75': 0.8736939795017022, '0.8': 0.8597651992631291, '0.85': 0.8431094806583549, '0.9': 0.8224979596939124, '0.95': 0.7985956267156891, '1.0': 0.7264663282645913}, real_accepted 0.9895416196881925, minutes 114.7
 - 벤치마크 scratch (dev): en 0.697, ko 0.6, concept_en 0.487, invalid_accept 0.0, symptom_top3 None
 
+
+### rfa7 — x2ts recipe, ADCTOX_RELEASE_DEV_GOLD=1, arm A
+
+- 시작 2026-11-06 02:16, 커밋 `4b6497d` (커밋 안 된 변경 1개), seed 7
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 289,121, train 262,916, val 26,205, junk_copies 4, dropped_eval_text_gold 153, dropped_eval_text_other 410, pairs 531,112
+- 출처별 학습 항목: umls 102,370, mondo_names 47,357, mondo_ko 27,676, kotypo 23,741, kcd 17,631, ko2 9,797, junk 8,440, gen_sym 7,213, ko3 5,429, profiles_sym 3,813, gen_ko 2,876, train_queries 2,355, profiles 2,169, external 2,049
+- x2s7 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s7 → x2s7
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 4, val_organ_loss 0.1666, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8766370593556143, '0.55': 0.876746782451893, '0.6': 0.877820622319428, '0.65': 0.878959942227345, '0.7': 0.8770411374707348, '0.75': 0.8697141779803842, '0.8': 0.8584131911567835, '0.85': 0.8430598563534346, '0.9': 0.8202152733320474, '0.95': 0.7930219575748836, '1.0': 0.721660964956283}, real_accepted 0.989315016218279, minutes 102.1
+- 벤치마크 scratch (dev): en 0.757, ko 0.711, concept_en 0.53, invalid_accept 0.0, symptom_top3 None
+
+### rfa8 — x2ts recipe, ADCTOX_RELEASE_DEV_GOLD=1, arm A
+
+- 시작 2026-11-06 02:16, 커밋 `4b6497d` (커밋 안 된 변경 1개), seed 8
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 289,051, train 262,700, val 26,351, junk_copies 4, dropped_eval_text_gold 153, dropped_eval_text_other 409, pairs 530,179
+- 출처별 학습 항목: umls 102,021, mondo_names 47,178, mondo_ko 27,696, kotypo 23,737, kcd 17,561, ko2 9,901, junk 8,440, gen_sym 7,380, ko3 5,408, profiles_sym 3,905, gen_ko 2,846, train_queries 2,349, profiles 2,208, external 2,070
+- x2s8 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s8 → x2s8
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 4, val_organ_loss 0.1525, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.883593376081606, '0.55': 0.8836624247974427, '0.6': 0.8844584698770035, '0.65': 0.8861597078488945, '0.7': 0.8851804355307418, '0.75': 0.8783825271124731, '0.8': 0.8691147475467017, '0.85': 0.8562742060810015, '0.9': 0.8352741319787511, '0.95': 0.8124342213892295, '1.0': 0.7453182543796097}, real_accepted 0.9918788660771887, minutes 95.6
+- 벤치마크 scratch (dev): en 0.75, ko 0.696, concept_en 0.496, invalid_accept 0.0, symptom_top3 None
+
+### rfb7 — x2ts recipe, ADCTOX_RELEASE_DEV_GOLD=1, arm B
+
+- 시작 2026-11-06 02:16, 커밋 `4b6497d` (커밋 안 된 변경 1개), seed 7
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 289,121, train 262,916, val 26,205, junk_copies 4, dropped_eval_text_gold 153, dropped_eval_text_other 410, pairs 531,112
+- 출처별 학습 항목: umls 102,370, mondo_names 47,357, mondo_ko 27,676, kotypo 23,741, kcd 17,631, ko2 9,797, junk 8,440, gen_sym 7,213, ko3 5,429, profiles_sym 3,813, gen_ko 2,876, train_queries 2,355, profiles 2,169, external 2,049
+- x2s7 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s7 → x2s7; distill /data/hyeongchanahn/adctox/work/distill/teacher_v51_big.npz → None
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 1, val_organ_loss 0.185, valid_threshold 0.995, theta 0.7, theta_val_f1 {'0.5': 0.8644893803240219, '0.55': 0.8646272931184117, '0.6': 0.8649036173471301, '0.65': 0.8656951297752351, '0.7': 0.8661583927849438, '0.75': 0.8593550989357062, '0.8': 0.8451354630964598, '0.85': 0.826219893714067, '0.9': 0.8006360615195436, '0.95': 0.7706928338861203, '1.0': 0.691318749162341}, real_accepted 0.9829803472619729, minutes 92.0
+- 벤치마크 scratch (dev): en 0.759, ko 0.647, concept_en 0.513, invalid_accept 0.0, symptom_top3 None
+
+### rfb8 — x2ts recipe, ADCTOX_RELEASE_DEV_GOLD=1, arm B
+
+- 시작 2026-11-06 03:53, 커밋 `4b6497d` (커밋 안 된 변경 6개), seed 8
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 289,051, train 262,700, val 26,351, junk_copies 4, dropped_eval_text_gold 153, dropped_eval_text_other 409, pairs 530,179
+- 출처별 학습 항목: umls 102,021, mondo_names 47,178, mondo_ko 27,696, kotypo 23,737, kcd 17,561, ko2 9,901, junk 8,440, gen_sym 7,380, ko3 5,408, profiles_sym 3,905, gen_ko 2,846, train_queries 2,349, profiles 2,208, external 2,070
+- x2s8 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s8 → x2s8; distill /data/hyeongchanahn/adctox/work/distill/teacher_v51_big.npz → None
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 1, val_organ_loss 0.1699, valid_threshold 0.995, theta 0.7, theta_val_f1 {'0.5': 0.8718614029168161, '0.55': 0.8718874637889621, '0.6': 0.8719271540509556, '0.65': 0.8733563187826244, '0.7': 0.873699047978408, '0.75': 0.8693735237179621, '0.8': 0.8579499470823062, '0.85': 0.8428075889464814, '0.9': 0.8204562957865883, '0.95': 0.7937054572080467, '1.0': 0.7182166540110704}, real_accepted 0.9903608971196539, minutes 62.1
+- 벤치마크 scratch (dev): en 0.759, ko 0.665, concept_en 0.509, invalid_accept 0.0, symptom_top3 None
+
+### rfa9 — x2ts recipe, ADCTOX_RELEASE_DEV_GOLD=1, arm A
+
+- 시작 2026-11-06 03:56, 커밋 `4b6497d` (커밋 안 된 변경 9개), seed 9
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 289,071, train 262,522, val 26,549, junk_copies 4, dropped_eval_text_gold 153, dropped_eval_text_other 409, pairs 530,690
+- 출처별 학습 항목: umls 101,986, mondo_names 47,379, mondo_ko 27,718, kotypo 23,796, kcd 17,581, ko2 9,876, junk 8,440, gen_sym 7,221, ko3 5,360, profiles_sym 3,812, gen_ko 2,829, train_queries 2,340, profiles 2,151, external 2,033
+- x2s9 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s9 → x2s9
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 4, val_organ_loss 0.1655, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.864013943885986, '0.55': 0.8641256540881431, '0.6': 0.8648249973374444, '0.65': 0.866896899651143, '0.7': 0.8664885914017297, '0.75': 0.8612236509114001, '0.8': 0.8486469268222467, '0.85': 0.8314647464229543, '0.9': 0.8101205180275601, '0.95': 0.7877780357031471, '1.0': 0.7119720161524122}, real_accepted 0.9850841839617311, minutes 67.3
+- 벤치마크 scratch (dev): en 0.732, ko 0.68, concept_en 0.474, invalid_accept 0.067, symptom_top3 None
+
+### rfb9 — x2ts recipe, ADCTOX_RELEASE_DEV_GOLD=1, arm B
+
+- 시작 2026-11-06 04:03, 커밋 `4b6497d` (커밋 안 된 변경 12개), seed 9
+- 데이터: organ_labels 53,479, train_queries 36,209, profiles 790, gen_ko 4,849, gen_sym 7,890, gen_junk 2,344, mondo_ko 23,258, gen_ko2 11,261, gen_kotypo 26,423, gen_ko3 6,160, umls 307,932
+- 학습 항목: total 289,071, train 262,522, val 26,549, junk_copies 4, dropped_eval_text_gold 153, dropped_eval_text_other 409, pairs 530,690
+- 출처별 학습 항목: umls 101,986, mondo_names 47,379, mondo_ko 27,718, kotypo 23,796, kcd 17,581, ko2 9,876, junk 8,440, gen_sym 7,221, ko3 5,360, profiles_sym 3,812, gen_ko 2,829, train_queries 2,340, profiles 2,151, external 2,033
+- x2s9 대비 바뀐 것: add_pairs None → entypo,lrabr; compare_to x2p24s9 → x2s9; distill /data/hyeongchanahn/adctox/work/distill/teacher_v51_big.npz → None
+- 학습 전 검사: {"sym_language_mismatch": 0, "eval_text_leak": {}, "eval_text_conflict": {"valid": 120}, "eval_text_conflict_examples": [], "valid_conflicts": 1}
+- 내부 dev: epochs_best 1, val_organ_loss 0.1782, valid_threshold 0.995, theta 0.65, theta_val_f1 {'0.5': 0.8702785006327912, '0.55': 0.8703557947428033, '0.6': 0.8704321080326948, '0.65': 0.8709232085107288, '0.7': 0.870628251404388, '0.75': 0.8657143264717395, '0.8': 0.8524939076232769, '0.85': 0.8326597707103731, '0.9': 0.8060414563519601, '0.95': 0.7777292088560814, '1.0': 0.701388497548371}, real_accepted 0.986779163056989, minutes 58.4
+- 벤치마크 scratch (dev): en 0.755, ko 0.632, concept_en 0.526, invalid_accept 0.0, symptom_top3 None
+
+### Refit 판정 (rfa, rfb): 두 arm 모두 FAIL, 배포 안 함
+
+`ml/score_refit.py`, dev 분할만, 같은 seed의 x2te와 비교. 미리 정한 기준: abbrev+typo+lay gold_v0 평균 +0.03 이상, 거부 15/137에서 7 이하, known dev 하락 0.01 이하면 PASS. 평균 상승이 +0.01 미만이면 FAIL.
+
+| | gold_v0 | abbrev+typo+lay | 거부 /137 | Boxed 놓침 /277 | known_en | known_ko |
+|---|---|---|---|---|---|---|
+| x2te 기준선 평균 | 0.754 | 0.698 | 14.3 | 57.3 | 0.813 | 0.856 |
+| A (증류 있음, Gemma) 평균 | 0.746 | 0.697 | 17.7 | 57.3 | 0.794 | 0.849 |
+| B (증류 없음, Gemma 없음) 평균 | 0.758 | 0.706 | 10.0 | 46.7 | 0.793 | 0.820 |
+
+- A는 상승 -0.001, B는 상승 +0.008. 둘 다 FAIL.
+- 이 비교는 B에 유리하다. dev gold 105개념 중 76개를 학습에 풀었으므로 dev는 더 이상 완전한 미공개 평가가 아니다. 풀린 개념은 ev2 대신 v5.1 근거를 읽는 차이도 있다.
+- B와 x2te는 Gemma 유무와 gold 공개 여부가 함께 다르다. 이 실험으로 둘을 나눌 수 없다.
+- 가중치는 서버 `work/refit/cache/scratch_judge_rf{a,b}{7,8,9}`.
+
