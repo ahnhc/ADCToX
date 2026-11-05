@@ -12,11 +12,17 @@
 
   // ------------------------------------------------------------------ the server: one small object (the mock has the same methods)
   async function call(method, url, body) {
-    const res = await fetch(url, {
-      method, cache: 'no-store',
-      headers: body === undefined ? {} : { 'Content-Type': 'application/json' },
-      body: body === undefined ? undefined : JSON.stringify(body),
-    });
+    let res;
+    try {
+      res = await fetch(url, {
+        method, cache: 'no-store',
+        headers: body === undefined ? {} : { 'Content-Type': 'application/json' },
+        body: body === undefined ? undefined : JSON.stringify(body),
+      });
+    } catch (e) {                         // no answer at all ("Failed to fetch"): the adctox process that served this page has ended
+      const err = new Error('ADCTOX stopped (its terminal window was closed, or Ctrl-C). Run adctox again; it opens a new page.');
+      err.status = 0; throw err;
+    }
     let data = null;
     try { data = await res.json(); } catch (e) { /* not JSON */ }
     if (!res.ok) {                        // the server's error line as it sent it, and the whole answer with it

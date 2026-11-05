@@ -274,7 +274,7 @@ def ambiguous_conditions(conditions):
     """[(typed text, readings)] for free text whose readings point at different organs and that the user has not settled."""
     free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
     if not free: return []
-    _, links, _ = _free_info(free)
+    links = _free_info(free)
     return [(c, lk["readings"]) for c, lk in zip(free, links) if lk.get("ambiguous") and lk.get("gate") is not False]   # not a disease name: nothing to choose
 
 

@@ -153,6 +153,27 @@ def test_the_analysis_runs_in_a_job_and_reports_what_the_analysis_screen_shows(s
     assert call(server, "GET", "/api/analyze/nosuchjob")[0] == 404
 
 
+def test_typed_conditions_finish_the_analysis_job_and_ambiguous_ones_are_offered(server, monkeypatch):
+    """0.6.13: ambiguous_conditions read _free_info as the old 3-tuple, so one typed condition failed the job ("not enough values
+    to unpack") and three were misread"""
+    clear = lambda: (RC._ANALYSES.clear(), RC._FREE.clear())
+    readings = [dict(mondo="MONDO:1", name="a", organs=["hepatic"]), dict(mondo="MONDO:2", name="b", organs=["ocular"])]
+    links = {"치매": dict(mondo="MONDO:0001627", name="dementia", sim=1.0, judge=True, gate=True, axes=["neurologic"], readings=[], ambiguous=False),
+             "glaucoma ms": dict(mondo=None, name="", sim=0.9, judge=True, gate=True, axes=[], readings=readings, ambiguous=True),
+             "asdfgh": dict(mondo=None, name="", sim=0.0, judge=True, gate=False, axes=[], readings=[], ambiguous=False)}
+    monkeypatch.setattr(RC, "_free_info", lambda free, progress=None: [dict(links[c]) for c in free])
+    assert RC.ambiguous_conditions(["cirrhosis", *links]) == [("glaucoma ms", readings)]
+    for conds in (["치매"], ["cirrhosis", *links]):
+        clear()
+        try:
+            status, d = call(server, "POST", "/api/analyze", {"conditions": conds})
+            assert status == 200
+            job = finished(server, d["job"])
+        finally: clear()
+        assert job["state"] == "done" and job["error"] is None, job
+        assert [a["text"] for a in job["ambiguous"]] == (["glaucoma ms"] if len(conds) > 1 else [])
+
+
 def test_a_second_analysis_waits_its_turn(server, monkeypatch):
     gate, calls = threading.Event(), []
     def slow(conds, progress=None):

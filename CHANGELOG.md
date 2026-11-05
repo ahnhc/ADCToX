@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **Fixed (0.6.11 and 0.6.12): a typed condition failed the organ analysis** with "ValueError: not enough values to unpack" in the browser and the terminal; `ambiguous_conditions` still read the organ judge's links in their pre-0.6.11 form. Registry conditions alone were not affected. A test now runs typed and ambiguous conditions through the analysis job.
+- When the page gets no answer at all (the adctox process ended), it says so and how to start it again, instead of the browser's "Failed to fetch".
+
 ## 0.6.12: the browser is the default, `adctox-cli` for the terminal (Ubuntu, macOS and Windows)
 
 - **`adctox` with no argument opens the browser screens** (as `adctox --web` and `adctox-web` did); the Windows `ADCTOX.bat` and its shortcuts do too. **`adctox-cli` (`adctox --cli`) opens the terminal screens**, and on Windows `ADCTOX-cli.bat` and `adctox-cli.cmd`; Windows Terminal is used for `--cli` only. `adctox --plain` stays in the terminal. `adctox-web` and `adctox --web` still work.
