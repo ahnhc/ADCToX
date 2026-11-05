@@ -12,10 +12,11 @@ Values a lab report prints that no ADC label uses (lipids, uric acid, ferritin, 
 import re
 from fractions import Fraction
 
-# key, label, unit, group; ULN defaults are common adult reference upper limits, overridable with uln_<key>
+# key, label, unit, group; ULN defaults are common adult reference upper limits; uln_bilirubin, uln_ast, uln_alt are the lab's own
 FIELDS = [("age", "Age", "years", "Basic"), ("sex", "Sex", "M/F", "Basic"), ("weight", "Weight", "kg", "Basic"),
           ("creatinine", "Creatinine", "mg/dL", "Kidney"), ("egfr", "eGFR", "mL/min/1.73m²", "Kidney"),
           ("bilirubin", "Bilirubin", "mg/dL", "Liver"), ("ast", "AST", "U/L", "Liver"), ("alt", "ALT", "U/L", "Liver"),
+          ("uln_bilirubin", "Bilirubin ULN", "mg/dL", "Liver"), ("uln_ast", "AST ULN", "U/L", "Liver"), ("uln_alt", "ALT ULN", "U/L", "Liver"),
           ("albumin", "Albumin", "g/dL", "Liver"), ("ggt", "GGT", "U/L", "Liver"), ("child_pugh", "Child-Pugh", "A/B/C", "Liver"),
           ("hb", "Hb", "g/dL", "Blood"), ("platelet", "Platelet", "x10³/µL", "Blood"), ("anc", "ANC", "x10³/µL", "Blood"),
           ("hba1c", "HbA1c (NGSP)", "%", "Glucose"), ("glucose", "Glucose (fasting)", "mg/dL", "Glucose"),
@@ -24,7 +25,8 @@ FIELDS = [("age", "Age", "years", "Basic"), ("sex", "Sex", "M/F", "Basic"), ("we
           ("lvef", "LVEF", "%", "Cardio"), ("ugt1a1", "UGT1A1*28 homozygous", "y/n", "Genotype")]
 RANGE = {"age": (1, 120), "weight": (1, 400), "creatinine": (0.05, 30), "egfr": (1, 200), "bilirubin": (0.01, 50), "ast": (1, 10000),
          "alt": (1, 10000), "albumin": (0.5, 7), "ggt": (1, 10000), "hb": (1, 25), "platelet": (1, 2000), "anc": (0.01, 100),
-         "hba1c": (2, 25), "glucose": (10, 2000), "amylase": (1, 10000), "lipase": (1, 10000), "tsh": (0.001, 500), "lvef": (5, 90)}
+         "hba1c": (2, 25), "glucose": (10, 2000), "amylase": (1, 10000), "lipase": (1, 10000), "tsh": (0.001, 500), "lvef": (5, 90),
+         "uln_bilirubin": (0.1, 10), "uln_ast": (1, 500), "uln_alt": (1, 500)}
 ULN = {"bilirubin": 1.2, "ast": 40.0, "alt": 40.0, "ggt": 60.0, "amylase": 100.0, "lipase": 60.0}
 
 # (key, test, organ, why) -- CTCAE v5.0 grade >= 2 unless stated
@@ -86,9 +88,20 @@ def shown(key, v):
     return f"{round(v, d):g}"
 
 
-def derive(raw, uln=None):
+def uln_of(raw):
+    """the ULN each x ULN value is read against: the lab's own where entered, else the default."""
+    return {**ULN, **{k: raw[f"uln_{k}"] for k in ULN if raw.get(f"uln_{k}") is not None}}
+
+
+def uln_text(key, raw):
+    """' (ULN 1)' to follow a shown x ULN value (key as the label rules name it); '' without a lab-report value behind it."""
+    k = {"bili": "bilirubin", "ast": "ast", "alt": "alt"}.get(key)
+    return f" (ULN {uln_of(raw)[k]:g})" if k and raw and raw.get(k) is not None else ""
+
+
+def derive(raw):
     """raw {key: value} -> (restriction inputs for ml/restrictions.Patient, [(organ, why)], [note lines])."""
-    u = {**ULN, **(uln or {})}; lab, flags, notes = {}, [], []
+    u = uln_of(raw); lab, flags, notes = {}, [], []
     if all(raw.get(k) is not None for k in ("age", "weight", "creatinine", "sex")) and raw["creatinine"] > 0 and raw["age"] < 140:
         lab["crcl"] = cockcroft_gault(raw["age"], raw["weight"], raw["creatinine"], raw["sex"])
         notes.append(f"CLcr {shown('crcl', lab['crcl'])} mL/min (Cockcroft-Gault)")
@@ -102,5 +115,5 @@ def derive(raw, uln=None):
         if raw.get(k) is not None: lab[dst] = raw[k]
     for k, test, organ, why in FLAGS:
         if raw.get(k) is not None and test(raw[k], u.get(k)): flags.append((organ, why))
-    if any(raw.get(k) is not None for k in ULN): notes.append("ULN used: " + ", ".join(f"{k} {u[k]:g}" for k in ULN if raw.get(k) is not None))
+    if any(raw.get(k) is not None for k in ULN): notes.append("ULN used: " + ", ".join(f"{k} {u[k]:g} ({'default' if raw.get('uln_' + k) is None else 'entered'})" for k in ULN if raw.get(k) is not None))
     return lab, flags, notes

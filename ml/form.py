@@ -402,11 +402,11 @@ class Form:
                 try:
                     if v.strip(): parsed[key] = LB.parse(key, v)
                 except ValueError: pass
-            hit, ruled = {}, set()                                      # entered and checked against labs.FLAGS: ✓ under the rule, → organ over it
+            u = LB.uln_of(parsed); hit, ruled = {}, set()               # entered and checked against labs.FLAGS: ✓ under the rule, → organ over it
             for key, test, organ, _ in LB.FLAGS:
                 if key not in parsed: continue
                 ruled.add(key)
-                if test(parsed[key], LB.ULN.get(key)) and GLYPH[organ] not in hit.setdefault(key, []): hit[key].append(GLYPH[organ])
+                if test(parsed[key], u.get(key)) and GLYPH[organ] not in hit.setdefault(key, []): hit[key].append(GLYPH[organ])
             mark = {key: "\033[33;1m→ " + ", ".join(hit[key]) + "\033[0m" if hit.get(key) else "\033[32;1m✓\033[0m" for key in ruled}
             y0 = self.frame("검사 수치", "")
             h, w = self.scr.getmaxyx(); area = max(3, h - y0 - 2); top = max(0, min(at - area // 2, len(rows) - area))
@@ -416,13 +416,13 @@ class Form:
                 elif x[0] == "done": self.row(y0 + r, f" {'→' if on else ' '} [ 완료 ]", on, row)
                 else:
                     k, label, unit, _ = fields[x[1]]; v = vals[k]
-                    uln = f"{unit:<6}   ULN {LB.ULN[k]:g}" if k in LB.ULN else unit       # the reference upper limit the x ULN uses
+                    uln = f"{unit:<6}   ULN {u[k]:g}" if k in u else f"{unit:<6}   default {u[k[4:]]:g}" if k[4:] in u and k.startswith("uln_") else unit       # the reference upper limit the x ULN uses
                     self.row(y0 + r, f" {'→' if on else ' '} {label:<{lw}}  {v + ('_' if on else ''):<10} {uln:<15} {mark.get(k, '')}", on, row)
             try: info = "   ".join(n for n in LB.derive(parsed)[2] if n.startswith("CLcr"))
             except Exception: info = ""
             ck = fields[rows[at][1]][0] if rows[at][0] == "field" else None
             if ck in LB.ULN and ck in parsed:                               # the value being entered, as the label rules read it
-                info = (f"{fields[rows[at][1]][1]} {LB.shown('bili', float(LB._xuln(parsed[ck], LB.ULN[ck])))}×ULN   " + info).rstrip()
+                info = (f"{fields[rows[at][1]][1]} {LB.shown('bili', float(LB._xuln(parsed[ck], u[ck])))}×ULN   " + info).rstrip()
             self.S.put(h - 1, 1, _clip(note or info, max(10, w - 30)), self.S.dim); note = ""     # left of the PgUp / PgDn hint
             self.scr.refresh(); k = self.key()
             if isinstance(k, tuple):                                       # a click moves to the field (or finishes on 완료)

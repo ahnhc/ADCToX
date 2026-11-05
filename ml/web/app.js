@@ -708,7 +708,7 @@
       const k = f.key === 'bilirubin' ? 'bili' : f.key;
       if (k !== 'crcl' && f.uln !== null && f.uln !== undefined && sh[k] !== undefined && sh[k] !== null) out.push(`${f.label} ${sh[k]}×ULN`);
     }
-    for (const n of L.notes || []) if (String(n).startsWith('CLcr')) out.push(String(n));
+    for (const n of L.notes || []) if (/^(CLcr|ULN used)/.test(String(n))) out.push(String(n));
     return out;
   }
   function stage2() {
@@ -730,8 +730,10 @@
       const err = h('div', { class: 'err', id: id + '-err', hidden: true });
       const flag = h('span', { class: 'flag', hidden: true });
       const ok = h('span', { class: 'ok', hidden: true, text: '✓', 'aria-label': 'OK', title: f.rule ? `Flag: ${f.rule}` : null });   // checked against labs.FLAGS and not met
-      const anchor = f.uln !== null && f.uln !== undefined ? `ULN ${f.uln}` : '';      // the reference the x ULN uses; the range is in the error line
-      const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null, flag, ok);
+      const base = f.key.startsWith('uln_') ? FIELDS.find((x) => x.key === f.key.slice(4)) : null;
+      const anchor = f.uln !== null && f.uln !== undefined ? `ULN ${f.uln}` : base ? `default ${base.uln}` : '';      // the reference the x ULN uses; the range is in the error line
+      const anc = f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null;
+      const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, anc, flag, ok);
       let control;
       if (f.kind === 'number') {
         control = h('input', { class: 'num', id, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', placeholder: ' ', 'aria-describedby': id + '-err', value: S.raw[f.key] || '' });
@@ -773,14 +775,15 @@
         order.push({ key: f.key, focus: () => (btns.find((b) => b.tabIndex === 0) || btns[0]).focus() });
       }
       const row = h('div', { class: 'lab' }, h('label', { for: f.kind === 'number' ? id : null, text: f.label, id: id + '-l' }), control, unit, err);
-      rows[f.key] = { row, err, flag, ok, control, f };
+      rows[f.key] = { row, err, flag, ok, control, f, anc };
       return row;
     }
     function refresh() {
       const r = S.labs || {};
       const errs = r.errors || {}, flags = r.flags || [];
       for (const k in rows) {
-        const { err, flag, ok, control, f } = rows[k];
+        const { err, flag, ok, control, f, anc } = rows[k];
+        if (anc && r.uln && r.uln[k] !== undefined) anc.textContent = `ULN ${r.uln[k]}`;
         const msg = errs[k] && touched.has(k) && String(S.raw[k] || '').trim() ? String(errs[k]) : '';      // form._lab_error, as sent
         err.hidden = !msg; err.textContent = msg;
         if (control.classList) control.classList.toggle('bad', !!msg);
@@ -1085,7 +1088,7 @@
     if (!m) return h('li', null, h('span', { class: 'kn', text }));
     const [, name, val, organ] = m;
     let g = null;
-    const uln = /^([\d.]+)×ULN$/.exec(val), cl = /^CLcr/.test(name) && /([\d.]+)/.exec(val);
+    const uln = /^([\d.]+)×ULN\b/.exec(val), cl = /^CLcr/.test(name) && /([\d.]+)/.exec(val);
     if (uln) { const x = +uln[1]; g = gauge(x / 3, [1 / 3, 1.5 / 3], x > 1 ? (x > 3 ? 'red' : 'amber') : 'ok'); }
     else if (cl) { const x = +cl[1]; g = gauge(x / 120, [.25, .5, .75], x < 30 ? 'red' : x < 60 ? 'amber' : 'ok'); }
     return h('li', null, h('span', { class: 'kn', text: name }), h('span', { class: 'kv2' + (organ ? ' t-amber' : ''), text: val }),

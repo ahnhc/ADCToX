@@ -119,3 +119,57 @@ def test_only_thousands_grouping_is_stripped(key, text, value):
     if value is None:
         with pytest.raises(ValueError): LB.parse(key, text)
     else: assert LB.parse(key, text) == value
+
+
+
+def test_the_lab_uln_replaces_the_default_for_the_rules_and_the_flags():
+    import labs as LB
+    assert LB.derive({"bilirubin": 1.7})[0]["bili"] == pytest.approx(1.7 / 1.2)
+    lab, flags, notes = LB.derive({"bilirubin": 1.7, "uln_bilirubin": 1.0, "ast": 130, "uln_ast": 30, "alt": 50, "uln_alt": 25})
+    assert lab["bili"] == 1.7 and lab["ast"] == pytest.approx(130 / 30) and lab["alt"] == 2
+    assert ("hepatic", "bilirubin > 1.5 x ULN (CTCAE G2)") in flags and ("hepatic", "AST > 3 x ULN (CTCAE G2)") in flags
+    assert "ULN used: bilirubin 1 (entered), ast 30 (entered), alt 25 (entered)" in notes
+    assert "ULN used: bilirubin 1.2 (default), ast 40 (default)" in LB.derive({"bilirubin": 1.7, "ast": 20})[2]
+
+
+def test_mirvetuximab_at_bilirubin_1_7_depends_on_the_lab_uln():
+    assert row_of(RC.recommend([], None, {"bilirubin": 1.7})[0], "mirvetuximab-soravtansine")["restriction"].startswith("No adjustment")
+    assert row_of(RC.recommend([], None, {"bilirubin": 1.7, "uln_bilirubin": 1.0})[0], "mirvetuximab-soravtansine")["restriction"].startswith("Avoid")
+
+
+@pytest.mark.parametrize("key", ["uln_bilirubin", "uln_ast", "uln_alt"])
+@pytest.mark.parametrize("text", ["0", "-1", "abc", "1,2"])
+def test_a_uln_that_is_not_a_positive_number_is_refused(key, text):
+    import labs as LB
+    with pytest.raises(ValueError): LB.parse(key, text)
+    fields = {f[0]: f for f in LB.FIELDS}
+    assert fields[key][1].endswith(" ULN") and fields[key][3] == "Liver"
+
+
+def test_the_uln_used_is_shown_beside_the_x_uln_value():
+    raw = {"bilirubin": 1.7, "uln_bilirubin": 1.0, "ast": 50}
+    rows, _, notes, _ = RC.recommend([], None, raw)
+    values = __import__("labs").derive(raw)[0]
+    text = "\n".join(RC._result_context(rows, notes, 120, values, raw=raw))
+    assert "Bilirubin 1.7×ULN (ULN 1)" in text and "AST 1.25×ULN (ULN 40)" in text
+    gauges = RC._value_gauges(["Bilirubin 1.7×ULN (ULN 1)", "ALT 0.5×ULN (ULN 40)"])
+    assert all("━" in line for line in gauges)
+    assert "1 mg/dL" not in text                                              # the ULN is on the value's line, not listed again
+
+
+def test_the_terminal_lab_screen_takes_a_uln_and_reads_the_value_with_it(monkeypatch):
+    import term, tui, types
+    console = term._Shim()
+    monkeypatch.setattr(tui, "curses", console); monkeypatch.setattr(form, "curses", console); monkeypatch.setattr(term, "USE_SHIM", True)
+    monkeypatch.setattr(term._Screen, "_size", lambda self: (30, 100))
+    screen = term._Screen(console); frames = []
+    screen.refresh = lambda: frames.append("\n".join("".join(ch for ch, _ in line) for line in screen.buf))
+    F = form.Form(screen, types.SimpleNamespace(_reg={}, CHOICE={}, AXES=list(tui.GLYPH), condition_name=lambda c: c, _indications=lambda: {}))
+    F.step = 1; F.done = []
+    import labs as LB
+    keys = [k[0] for k in LB.FIELDS]
+    moves = lambda key: [console.KEY_DOWN] * keys.index(key)
+    it = iter(moves("bilirubin") + list("1.7") + [console.KEY_DOWN] * (keys.index("uln_bilirubin") - keys.index("bilirubin")) + list("1") + [console.KEY_UP] * (keys.index("uln_bilirubin") - keys.index("bilirubin")) + [console.KEY_NPAGE])
+    screen.get_wch = lambda: next(it)
+    assert F.labs({}) == {"bilirubin": 1.7, "uln_bilirubin": 1.0}
+    assert any("Bilirubin 1.7×ULN" in f and "ULN 1 " in f for f in frames) and any("default 1.2" in f for f in frames)

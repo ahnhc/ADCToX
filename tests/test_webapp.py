@@ -516,3 +516,27 @@ def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monke
         c = http.client.HTTPConnection("127.0.0.1", server.server_address[1]); c.request("GET", "/static/f.woff2"); r = c.getresponse()
         assert (r.status, r.getheader("Content-Type"), r.read()) == (200, "font/woff2", b"wOF2\x00\x01\xff")
     finally: server.shutdown(); server.server_close(); thread.join(5)
+
+
+
+def test_labs_take_the_lab_uln_and_answer_with_it(server):
+    d = call(server, "POST", "/api/labs", {"raw": {"bilirubin": "1.7", "uln_bilirubin": "1.0", "ast": 130, "uln_ast": 30, "alt": 80}})[1]
+    assert d["raw"]["uln_bilirubin"] == 1.0 and d["errors"] == {}
+    assert d["derived"]["bili_xuln"] == 1.7 and d["derived"]["shown"]["bili"] == "1.7" and d["derived"]["shown"]["ast"] == "4.33" and d["derived"]["shown"]["alt"] == "2"
+    assert {k: d["uln"][k] for k in ("bilirubin", "ast", "alt", "ggt")} == {"bilirubin": 1.0, "ast": 30, "alt": 40.0, "ggt": 60.0}
+    assert {f["key"] for f in d["flags"]} == {"bilirubin", "ast"}
+    assert "ULN used: bilirubin 1 (entered), ast 30 (entered), alt 40 (default)" in d["notes"]
+    d = call(server, "POST", "/api/labs", {"raw": {"uln_bilirubin": "0", "uln_ast": "-2", "uln_alt": "x"}})[1]
+    assert d["errors"] == {"uln_bilirubin": "Bilirubin ULN: enter 0.1–10 mg/dL", "uln_ast": "AST ULN: enter 1–500 U/L", "uln_alt": "ALT ULN: enter a number"} and d["raw"] == {}
+    f = {x["key"]: x for x in call(server, "GET", "/api/app")[1]["labs"]["fields"]}
+    assert f["uln_bilirubin"] == dict(key="uln_bilirubin", label="Bilirubin ULN", unit="mg/dL", group="Liver", kind="number", range=[0.1, 10], uln=None, rule=None)
+
+
+def test_recommend_reads_the_lab_uln_and_shows_it_beside_the_value(server):
+    status, d = call(server, "POST", "/api/recommend", {"conditions": ["cirrhosis"], "raw": {"bilirubin": "1.7", "uln_bilirubin": "1.0"}})
+    assert status == 200
+    row = next(r for r in d["rows"] if r["adc"] == "mirvetuximab-soravtansine")
+    assert row["restriction"].startswith("Avoid") and "Bilirubin 1.7×ULN (ULN 1)" in d["patient"]["values"]
+    assert any("Bilirubin 1.7×ULN (ULN 1)" in (x["patient"] or "") for x in row["detail"]["reasons"])
+    status, d = call(server, "POST", "/api/recommend", {"conditions": ["cirrhosis"], "raw": {"bilirubin": "1.7", "uln_bilirubin": "0"}})
+    assert status == 400 and d["error"] == "Bilirubin ULN: enter 0.1–10 mg/dL"

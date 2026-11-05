@@ -166,11 +166,11 @@ def _key_values(RC, row, notes, values, raw):
     for k in ordered:
         label, unit = RC.VALUE_LABELS[k]; v = values[k]
         text = ("yes" if v else "no") if isinstance(v, bool) else (LB.shown(k, v) if isinstance(v, (int, float)) else str(v))
-        out.append(f"CLcr ≈ {text} mL/min (eGFR)" if k == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes) else f"{label} {text}{unit}")
+        out.append(f"CLcr ≈ {text} mL/min (eGFR)" if k == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes) else f"{label} {text}{unit}" + LB.uln_text(k, raw))
     return out + RC._raw_values(raw, values)
 
 
-def _patient_side(RC, row, domain, code, sure, values, conds):
+def _patient_side(RC, row, domain, code, sure, values, conds, raw=None):
     """what of this patient meets the label rule behind one restriction row: the entered conditions it names and the values it
     reads ('Heart failure', 'Bilirubin 1.67×ULN'); a value the rule needs but nobody entered reads 'LVEF not entered'"""
     import labs as LB
@@ -182,7 +182,7 @@ def _patient_side(RC, row, domain, code, sure, values, conds):
         if k not in RC.VALUE_LABELS: continue
         label, unit = RC.VALUE_LABELS[k]; v = values.get(k)
         if v is None: out.append(f"{label} not entered"); continue
-        out.append(f"{label} " + (("yes" if v else "no") if isinstance(v, bool) else (LB.shown(k, v) if isinstance(v, (int, float)) else str(v))) + unit)
+        out.append(f"{label} " + (("yes" if v else "no") if isinstance(v, bool) else (LB.shown(k, v) if isinstance(v, (int, float)) else str(v))) + unit + LB.uln_text(k, raw))
     return ", ".join(out)
 
 
@@ -203,7 +203,7 @@ def _detail(RC, row, checks_, notes, values, raw, conds=()):
         payload = dict(line=RC.payload_line(mech), rows=rows, note=" ".join(keep) or None)
     return dict(indication=ind["indication"] if ind else None,
                 reasons=[dict(organ=RC.ORGAN_SHORT[RC.RS.DOMAIN_AXIS[o]] if o in RC.RS.DOMAIN_AXIS else o.capitalize(), domain=o, status=st, basis=b, code=c, sure=sure,
-                              patient=_patient_side(RC, row, o, c, sure, values, conds)) for o, st, b, c, sure in evidence],
+                              patient=_patient_side(RC, row, o, c, sure, values, conds, raw)) for o, st, b, c, sure in evidence],
                 warnings=[dict(organ=a, mark=mark, text=RC.warning_names(row["organs"][a].get("headings", [])))
                           for mark, organs in (("!!", row.get("boxed", [])), ("!", row.get("warn", []))) for a in organs],
                 other_warnings=[dict(organ=c["organ"], mark=c["mark"], text=RC.warning_names(row["organs"][c["organ"]].get("headings", [])))
@@ -347,14 +347,14 @@ class App:
         field), CLcr, and the organs abnormal values mark"""
         import labs as LB
         raw, errors = _parse_raw(body.get("raw"))
-        lab, _, notes = LB.derive(raw)
-        flags = [dict(key=k, organ=organ, why=why) for k, test, organ, why in LB.FLAGS if raw.get(k) is not None and test(raw[k], LB.ULN.get(k))]
+        lab, _, notes = LB.derive(raw); uln = LB.uln_of(raw)
+        flags = [dict(key=k, organ=organ, why=why) for k, test, organ, why in LB.FLAGS if raw.get(k) is not None and test(raw[k], uln.get(k))]
         source = None if "crcl" not in lab else "eGFR" if any(n.startswith("CLcr ≈ eGFR") for n in notes) else "Cockcroft-Gault"
         short = lambda k: "bili" if k == "bilirubin" else k                       # bili / ast / alt: the names the label rules read
-        derived = dict(crcl=lab.get("crcl"), crcl_source=source, **{f"{short(k)}_xuln": float(LB._xuln(raw[k], u)) if k in raw else None for k, u in LB.ULN.items()},
+        derived = dict(crcl=lab.get("crcl"), crcl_source=source, **{f"{short(k)}_xuln": float(LB._xuln(raw[k], u)) if k in raw else None for k, u in uln.items()},
                        shown=dict({"crcl": LB.shown("crcl", lab["crcl"])} if "crcl" in lab else {},
-                                  **{short(k): LB.shown("bili", float(LB._xuln(raw[k], u))) for k, u in LB.ULN.items() if k in raw}))     # form.Form.labs: Bilirubin 1.67×ULN
-        return dict(raw=raw, errors=errors, flags=flags, derived=derived, notes=notes)
+                                  **{short(k): LB.shown("bili", float(LB._xuln(raw[k], u))) for k, u in uln.items() if k in raw}))     # form.Form.labs: Bilirubin 1.67×ULN
+        return dict(raw=raw, errors=errors, flags=flags, derived=derived, notes=notes, uln=uln)
 
     def analyze(self, body):
         """queue an analysis; it runs when the ones before it have finished"""

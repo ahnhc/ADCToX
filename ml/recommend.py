@@ -867,7 +867,8 @@ DOMAIN_VALUES = {"renal": ("crcl", "esrd"), "hepatic": ("bili", "ast", "alt", "c
 
 # lab-report values already shown through a restriction input (CLcr, x ULN, ...), so not listed again
 _SHOWN_AS = {"bilirubin": "bili", "ast": "ast", "alt": "alt", "platelet": "platelets", "anc": "anc", "hba1c": "hba1c", "lvef": "lvef",
-             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "age": "crcl", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl"}
+             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "age": "crcl", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl",
+             "uln_bilirubin": "bili", "uln_ast": "ast", "uln_alt": "alt"}
 
 
 def _raw_values(raw, values):
@@ -878,7 +879,7 @@ def _raw_values(raw, values):
         v = (raw or {}).get(k)
         if v is None or values.get(_SHOWN_AS.get(k, "")) is not None: continue
         text = ("yes" if v else "no") if isinstance(v, bool) else f"{v:g}" if isinstance(v, (int, float)) else str(v)
-        organs = [o for key, test, o, _ in LB.FLAGS if key == k and isinstance(v, (int, float)) and test(v, LB.ULN.get(k))]
+        organs = [o for key, test, o, _ in LB.FLAGS if key == k and isinstance(v, (int, float)) and test(v, LB.uln_of(raw).get(k))]
         out.append((bool(organs), f"{label} {text} {unit}" + (" → " + ", ".join(ORGAN_SHORT[o] for o in dict.fromkeys(organs)) if organs else "")))
     return [t for _, t in sorted(out, key=lambda x: not x[0])]           # the ones that marked an organ first
 
@@ -893,7 +894,7 @@ def _value_gauges(items, cells=10):
     wn = max((len(n) for n, _, _ in parsed), default=0); wv = max((len(v) for _, v, _ in parsed), default=0); out = []
     for name, val, organ in parsed:
         g = ""
-        uln = re.match(r"^([\d.]+)×ULN$", val); cl = name.startswith("CLcr") and re.search(r"([\d.]+)", val)
+        uln = re.match(r"^([\d.]+)×ULN\b", val); cl = name.startswith("CLcr") and re.search(r"([\d.]+)", val)
         if uln: x = float(uln.group(1)); f, ticks, tone = x / 3, (1 / 3, .5), "31" if x > 3 else "33" if x > 1 else "90;1"
         elif cl: x = float(cl.group(1)); f, ticks, tone = x / 120, (.25, .5, .75), "31" if x < 30 else "33" if x < 60 else "90;1"
         if uln or cl:
@@ -919,7 +920,7 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False, 
         text = ("yes" if value else "no") if isinstance(value, bool) else (LB.shown(key, value) if isinstance(value, (int, float)) else str(value))
         if key == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes):
             inputs.append(f"CLcr ≈ {text} mL/min (eGFR)")
-        else: inputs.append(f"{label} {text}{unit}")
+        else: inputs.append(f"{label} {text}{unit}" + LB.uln_text(key, raw))
     inputs += _raw_values(raw, values)
     if graphic: inputs = _value_gauges(inputs)
     organ_levels = {}
