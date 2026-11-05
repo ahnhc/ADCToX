@@ -572,7 +572,7 @@ class Form:
                 h, w = self.scr.getmaxyx()
                 if step: self.S.put(y, 2, step + "." * (1 + int((time.monotonic() - started) * 2.5) % 3))
                 y += 2
-                names = ", ".join(self.RC.condition_name(c) if c in self.RC._reg else c for c in conditions if c not in self.RC.CONTEXT)
+                names = ", ".join(self.RC.condition_name(c) if c in self.RC._reg else c for c in conditions if not self.RC._context(c))
                 for ln in _wrap(names, w - 5, "  ")[:2]: self.S.put(y, 2, ln, self.S.dim); y += 1
                 self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
                 self.scr.refresh()

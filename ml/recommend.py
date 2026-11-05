@@ -47,6 +47,7 @@ MATCH_COS = 0.60            # portable build, last resort: borrow the organs of 
 LINK_THETA = 0.75           # = mondo_index.THETA: a MONDO match this close is 'understood' even when the concept has no organ axis
 GATE_MONDO = True           # also require the validity gate for a MONDO link (chosen on the gold dev split, ml/docs/archive/model_review_2026-10-12.md)
 CONTEXT = {"concomitant_bleomycin": "Concomitant bleomycin (co-medication, no organ)"}     # inputs that are not diseases but a label rule names
+CONTEXT_ALIAS = {"bleomycin": "concomitant_bleomycin", "concomitant bleomycin": "concomitant_bleomycin", "블레오마이신": "concomitant_bleomycin", "블레오마이신 병용": "concomitant_bleomycin"}
 EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "Cardiovascular", "pulmonary": "Pulmonary", "renal": "Renal",
       "gastrointestinal": "GI", "neurologic": "Neurologic", "ocular": "Ocular", "dermatologic": "Dermatologic", "metabolic_endocrine": "Metabolic",
       "musculoskeletal": "Musculoskeletal", "infectious_immune": "Immune", "otologic": "Otologic"}
@@ -72,6 +73,12 @@ class _Loading:
         import time
         if self.on:
             self.stop.set(); self.th.join(); sys.stderr.write(f"\r\033[K  ✓ {self.done} ({time.time() - self.t0:.1f}s)\n"); sys.stderr.flush()
+
+
+def _context(text):
+    """the CONTEXT key a typed text stands for, or None"""
+    t = " ".join(text.lower().split())
+    return t if t in CONTEXT else CONTEXT_ALIAS.get(t)
 
 
 def own_vec(cid):
@@ -147,8 +154,8 @@ def english(texts):
 def analyze_conditions(conditions, progress=None):
     """-> one report per condition for the input review: how it was read (registry, the judge's concept, its AI judgment, a
     chosen reading, the patient's cancer, or not understood), its organs and the judge's organ probabilities."""
-    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
-    picked = [c for c in conditions if c not in free and c not in CONTEXT]
+    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and not _context(c)]
+    picked = [c for c in conditions if c not in free and not _context(c)]
     if not free and not picked: return []
     links = _free_info(free, progress) if free else []
     _, _, _, notes, pc = resolve(conditions)
@@ -200,11 +207,11 @@ def _registry_p(labels, progress=None):
 def resolve(conditions):
     """-> (s over AXES, own-organ set, registry ids present, [(input, how it was read)], [(input, its organs, its value)])"""
     ws, notes, ids, own_axes, pc = [np.zeros(len(AXES))], [], set(), set(), []
-    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
+    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and not _context(c)]
     if free: links = _free_info(free)
     fi = 0
     for c in conditions:
-        if c in CONTEXT: ids.add(c); notes.append((c, CONTEXT[c])); continue
+        if _context(c): ids.add(_context(c)); notes.append((c, CONTEXT[_context(c)])); continue
         cid = c if c in _reg else _by_label.get(c.lower())
         if not cid: lk = links[fi]; fi += 1
         mondo = _reg[cid].get("mondo_id") if cid else CHOICE.get(c) if c in CHOICE else cancer_alias(c) or (lk.get("mondo") if lk.get("gate") is not False and (lk.get("judge") or lk.get("sim", 0) >= LINK_THETA) else None)
@@ -272,7 +279,7 @@ def _chosen_via(condition):
 
 def ambiguous_conditions(conditions):
     """[(typed text, readings)] for free text whose readings point at different organs and that the user has not settled."""
-    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
+    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and not _context(c)]
     if not free: return []
     links = _free_info(free)
     return [(c, lk["readings"]) for c, lk in zip(free, links) if lk.get("ambiguous") and lk.get("gate") is not False]   # not a disease name: nothing to choose
@@ -963,7 +970,7 @@ def patient_lines(notes):
     def names(c, how):
         cid = c if c in _reg else _by_label.get(c.lower())
         if cid: return _reg[cid]["label"], KO.get(cid, "")
-        if c in CONTEXT: return CONTEXT[c], ""
+        if _context(c): return CONTEXT[_context(c)], ""
         if c == "Lab": return how, None
         if c.startswith("Lab: "): return c[5:], "(" + EN[how.rsplit(": ", 1)[-1]] + ")"
         m = re.search(r"(?:MONDO|registry) '([^']+)'", how)

@@ -123,6 +123,8 @@ class Index:
             org = r["organ_axes"].split(";")
             s = ("reg", i, r["label"], RC.KO.get(i, ""), org)
             for k in filter(None, [r["label"], RC.KO.get(i, ""), i.replace("_", " ")]): self._add(k, 3, s)
+        for k, i in RC.CONTEXT_ALIAS.items():               # no registry row: the label reads back through recommend._context
+            label = RC.CONTEXT[i].split(" (")[0]; self._add(k, 3, ("text", label, label, "", None))
         self.by_id = {}
         for p in profiles():
             s = ("mondo", p["id"], p["name"][:1].upper() + p["name"][1:], (p.get("ko") or [""])[0], None)
