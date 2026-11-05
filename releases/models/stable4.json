@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "model_version": "0.8",
+  "runtime_api": 1,
+  "architecture": "scratch-judge-v1",
+  "axes": [
+    "haematologic",
+    "hepatic",
+    "cardiovascular",
+    "pulmonary",
+    "renal",
+    "gastrointestinal",
+    "neurologic",
+    "ocular",
+    "dermatologic",
+    "metabolic_endocrine",
+    "musculoskeletal",
+    "infectious_immune",
+    "otologic"
+  ],
+  "files": [
+    {
+      "path": "ScratchJudge/concepts.json",
+      "size": 4041382,
+      "sha256": "0f58d6f0a082c364d91895778009a5160b20c4245355155ab4c854f2897ecfe1",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-concepts.json"
+    },
+    {
+      "path": "ScratchJudge/config.json",
+      "size": 676,
+      "sha256": "c8f712a2662b3872ac17fdde0ec1f4bd1ab950343a142f3bd22793417d56fcb0",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-config.json"
+    },
+    {
+      "path": "ScratchJudge/index.npz",
+      "size": 88248854,
+      "sha256": "108b0c481fb2035af699c12a41a44b3175a9f7b0b5cae6820d0143617bef80dd",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-index.npz"
+    },
+    {
+      "path": "ScratchJudge/judge.json",
+      "size": 1043,
+      "sha256": "26e85e5d3024415d3bf745eaff0379881607f5fef9dca93fab96e0f854fc5413",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-judge.json"
+    },
+    {
+      "path": "ScratchJudge/tokenizer.json",
+      "size": 2149823,
+      "sha256": "942150cafd458275b190a8c6860094e4b04eca8842a7364266b81843c745b9e2",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-tokenizer.json"
+    },
+    {
+      "path": "ScratchJudge/tokenizer_config.json",
+      "size": 249,
+      "sha256": "6dc720dd382f90cc514b18bbda9b1c8e083b0cba606bf3ab5129d98bc9389d3b",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-tokenizer_config.json"
+    },
+    {
+      "path": "ScratchJudge/weights.safetensors",
+      "size": 221673260,
+      "sha256": "3467f342692c7a648ddd1ca99445d9e24da0b659cfed9e7321186ebe65b79600",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.7/ScratchJudge-weights.safetensors"
+    },
+    {
+      "path": "mondo_index.npz",
+      "size": 3313230,
+      "sha256": "78f92d656e7d1c142ad7216a1c0c1063c90e94966ff7caaa94500487c61db6cf",
+      "url": "https://github.com/ahnhc/ADCToX/releases/download/models-0.8/mondo_index.npz"
+    }
+  ]
+}

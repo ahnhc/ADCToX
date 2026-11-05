@@ -308,7 +308,7 @@ def test_a_judge_only_bundle_installs_and_older_apps_keep_their_manifests(server
     assert not any(f["path"].startswith(("BioLORD-2023/", "SapBERT/")) for f in manifest["files"])
     updates.install(manifest, tmp_path, allow_local=True)
     assert (selected_bundle(tmp_path) / "ScratchJudge" / "weights.safetensors").read_bytes() == b"head-1"
-    assert adc_version.MODEL_MANIFEST_URL.endswith("/releases/models/stable3.json")
+    assert adc_version.MODEL_MANIFEST_URL.endswith("/releases/models/stable4.json")
     releases = Path(__file__).resolve().parents[1] / "releases/models/"
     for old in ("stable.json", "stable2.json"):                                       # apps 0.4.x and older reject ScratchJudge/
         assert not any(f["path"].startswith("ScratchJudge/") for f in json.loads((releases / old).read_text())["files"])

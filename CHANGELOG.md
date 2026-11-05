@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased: the organ judge alone reads typed text, and a 305 MB model bundle
+## 0.6.11: the organ judge alone reads typed text, and a 305 MB model bundle (models 0.8)
 
 - **A typed disease names a registry condition through the organ judge's MONDO or HPO concept**, not by BioLORD name similarity. The organs are always the judge's; the registry condition adds its severity and its label restriction rules. `conf/registry_concepts.json` (built by `ml/registry_concepts.py` from the MONDO and HPO `is_a` hierarchy) lists 1,533 concepts for 34 registry conditions; prior exposures, procedures and measurements are picked from the list.
 - Gold dev (304 queries per language): organ F1 unchanged (English 0.7595, Korean 0.6748). Registry conditions are now found for chronic hepatitis B, Child-Pugh B cirrhosis, congestive heart failure, cardiorenal syndrome, Crohn disease and Korean COPD names that the name match missed; the ADC order changes for 4 English and 6 Korean queries, all cirrhosis or heart failure.

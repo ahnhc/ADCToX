@@ -1,7 +1,7 @@
 # ADCTOX for Windows (64-bit Windows 10/11), one line in PowerShell:
 #   irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 # No admin rights. Installs into %LOCALAPPDATA%\adctox\app, adds Start menu and desktop shortcuts and an `adctox` command,
-# and downloads the models (about 1 GB) into %LOCALAPPDATA%\adctox\models. Running it again updates the app.
+# and downloads the models (about 300 MB) into %LOCALAPPDATA%\adctox\models. Running it again updates the app.
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -38,7 +38,7 @@ foreach ($dir in @([Environment]::GetFolderPath('Programs'), [Environment]::GetF
     $lnk.TargetPath = Join-Path $App 'ADCTOX.bat'; $lnk.WorkingDirectory = $App; $lnk.Save()
 }
 if ($env:ADCTOX_SKIP_MODELS -ne '1') {
-    Write-Host 'Downloading the models (about 1 GB, once) ...'
+    Write-Host 'Downloading the models (about 300 MB, once) ...'
     & (Join-Path $App 'python\python.exe') -I (Join-Path $App 'launcher.py') --update-models
     if ($LASTEXITCODE -ne 0) { Write-Warning 'The model download did not finish; it is retried on the first start.' }
 }
