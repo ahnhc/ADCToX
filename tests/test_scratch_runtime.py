@@ -42,6 +42,13 @@ def test_rows_follow_the_rule(folder):
     if b["concept"] == "HP:2": assert b["via"] == "name"                     # no organs of its own: the organ output on the text
 
 
+def test_rows_carry_the_nearest_concepts_the_linked_one_first(folder):
+    import scratch_runtime as SR
+    a, b = SR.judge(["tuberculosis", "glaucoma"], folder)
+    assert a["candidates"][0] == dict(concept="MONDO:1", name="tuberculosis", organs=["pulmonary", "infectious_immune"], via="record", sim=a["sim"])
+    assert len({c["concept"] for c in a["candidates"]}) == len(a["candidates"]) and b["candidates"][0]["concept"] == b["concept"]
+
+
 def test_rows_enter_the_app_as_mondo_links_or_ai_judgments():
     import recommend as RC
     lk = RC._scratch_link(dict(concept="MONDO:1", name="tuberculosis", organs=["pulmonary"], via="record", valid=0.99, ok=True, sim=0.97))

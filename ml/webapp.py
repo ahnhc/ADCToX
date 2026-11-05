@@ -111,7 +111,7 @@ def _report(RC, r, ko):
     return dict(condition=r["condition"], shown=shown, source=r["source"], name=r["name"], read_as=read, how=how, mondo=r.get("mondo"),
                 organs=list(r["organs"]), p=r.get("p"), likely=_likely(RC.AXES, r["organs"], r.get("p")) if r["organs"] else [], no_organs=empty,
                 readings=[dict(mondo=o["mondo"], name=o["name"], organs=list(o.get("organs") or [])) for o in r.get("readings") or []],
-                ambiguous=bool(r.get("ambiguous")), tag=tag, judge_via=r.get("judge_via"), fallback=bool(r.get("fallback")), cancers=r.get("cancers"))
+                ambiguous=bool(r.get("ambiguous")), tag=tag, check=RC.DOUBT.get(r.get("doubt")), judge_via=r.get("judge_via"), fallback=bool(r.get("fallback")), cancers=r.get("cancers"))
 
 
 def _preview(RC, row):

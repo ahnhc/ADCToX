@@ -135,8 +135,8 @@ def extract(path, names):
 
 def runtime_modules():
     """mondo_index for the full build (names, organs and Korean KCD names of the bundle's index): server functions, local file locations."""
-    mi = extract(R / "ml/mondo_index.py", ["close", "_load", "concept", "_ko_norm", "korean"])
-    mi = RT_HEAD + 'C = _BASE + os.sep\n_ENC = {}; _IDX = None; _IDX_E = None; import re; HANGUL = re.compile("[가-힣]")\n\n' + mi
+    mi = extract(R / "ml/mondo_index.py", ["close", "_load", "concept", "abbreviations", "_ko_norm", "korean"])
+    mi = RT_HEAD + 'C = _BASE + os.sep\n_ENC = {}; _IDX = None; _IDX_E = None; import re; HANGUL = re.compile("[가-힣]"); ABBREV = re.compile(r"^[A-Za-z][A-Za-z0-9]{1,5}$")\n\n' + mi
     src = (R / "ml/mondo_index.py").read_text()
     assert "_IDX = None" in src and 'C + "mondo_index.npz"' in mi       # constants above match the server
     used = set(re.findall(r"\bMI\.(\w+)", "".join((R / "ml" / f).read_text() for f in ("recommend.py", "suggest.py"))))

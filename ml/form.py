@@ -622,6 +622,7 @@ class Form:
                        "\033[90m" + ("none of 13" if r["source"].startswith("MONDO") else "-") + "\033[0m")
                 tag = ""
                 if r.get("ambiguous") and r["condition"] not in RC.CHOICE: tag = f"   \033[33m{len(r['readings'])} meanings: pick on the next screen\033[0m"
+                if r.get("doubt"): tag += f"   \033[33m{RC.DOUBT[r['doubt']]}\033[0m"
                 if read.lower() in (r["condition"].lower(), shown(r).lower()): read = ""
                 rows.append((shown(r), org, (f"{read}  " if read else "") + f"\033[90m{how}\033[0m" + tag))
             ow = min(max([_w(re.sub(r"\x1b\[[\d;]*m", "", o)) for _, o, _ in rows] + [6]), 52)

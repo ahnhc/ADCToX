@@ -966,7 +966,7 @@
         table.append(h('div', { class: 'rv-row' + (cascade && !still() ? ' in' : ''), role: 'row', style: `--i:${i}` },
           h('span', { class: 'inp', role: 'cell', text: shownName(r) }),
           cell,
-          h('span', { class: 'read', role: 'cell' }, r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: r.how || '' }), tag ? h('span', { class: 'mean', text: tag }) : null)));
+          h('span', { class: 'read', role: 'cell' }, r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: r.how || '' }), tag ? h('span', { class: 'mean', text: tag }) : null, r.check ? h('span', { class: 'mean', text: r.check }) : null)));
       });
       box.append(table);
       if ((A.ambiguous || []).length) box.append(meanings());

@@ -103,3 +103,49 @@ def test_a_list_keeps_a_subtype_without_a_general_concept_last():
     import suggest as SG
     numbered = next(k for k, v in ST.general_map().items() if v[1] is None)
     assert [s[1] for s in SG._subtypes_rule("abc", _rows(numbered, "MONDO:1"), lambda g: None)] == ["MONDO:1", numbered]
+
+
+SCD = row("MONDO:0007374", "Schnyder corneal dystrophy", ["ocular"], 1.0, others=[("MONDO:0011382", "sickle cell disease", ["haematologic"], 0.7), ("MONDO:2", "other", ["ocular"], 0.69)])
+
+
+def test_a_short_input_whose_candidates_disagree_gets_the_choice_screen(judged, monkeypatch):
+    monkeypatch.setattr(RC, "_abbreviations", lambda text: [])
+    read = judged({"SCD": SCD})
+    _, _, link = read("SCD")
+    assert link["ambiguous"] and [o["mondo"] for o in link["readings"]] == ["MONDO:0007374", "MONDO:0011382", "MONDO:2"]
+    assert RC.ambiguous_conditions(["SCD"]) == [("SCD", link["readings"])]
+    assert link["readings"][1] == dict(mondo="MONDO:0011382", name="sickle cell disease", organs=["haematologic"], why="similar name")
+
+
+def test_a_short_input_is_also_offered_what_it_abbreviates_and_a_name_once(judged, monkeypatch):
+    monkeypatch.setattr(RC, "_abbreviations", lambda text: [dict(concept="MONDO:7", name="sickle cell disease", organs=["haematologic"], why="abbreviation")])
+    read = judged({"SCD": row("MONDO:1", "a", ["ocular"], 1.0, others=[("HP:2", "A", [], 0.9)])})
+    link = read("SCD")[2]
+    assert [(o["mondo"], o["why"]) for o in link["readings"]] == [("MONDO:1", "closest name"), ("MONDO:7", "abbreviation")] and link["ambiguous"]
+
+
+def test_a_longer_input_is_a_choice_only_for_tied_candidates_with_other_organs(judged, monkeypatch):
+    monkeypatch.setattr(RC, "_abbreviations", lambda text: [])
+    read = judged({"long name far": row("MONDO:1", "a", ["ocular"], 0.95, others=[("MONDO:2", "b", ["renal"], 0.90)]),
+                   "long name tied": row("MONDO:1", "a", ["ocular"], 0.95, others=[("MONDO:2", "b", ["renal"], 0.94)]),
+                   "long name same": row("MONDO:1", "a", ["ocular"], 0.95, others=[("MONDO:2", "b", ["ocular"], 0.94)]),
+                   "abc": row("MONDO:1", "a", ["ocular"], 0.95, others=[("MONDO:2", "b", ["ocular"], 0.80), ("MONDO:3", "c", [], 0.70)])})
+    assert not read("long name far")[2]["ambiguous"] and read("long name tied")[2]["ambiguous"]
+    assert not read("long name same")[2]["ambiguous"] and not read("abc")[2]["ambiguous"]      # no organs is no disagreement
+
+
+def test_a_korean_name_is_not_a_short_input(judged):
+    read = judged({"당뇨병": row("MONDO:1", "a", ["ocular"], 0.95, others=[("MONDO:2", "b", ["renal"], 0.80)])})
+    assert not read("당뇨병")[2]["ambiguous"]
+
+
+def test_a_weak_match_asks_to_confirm_the_read_in_the_review(judged):
+    read = judged({"weak": row("MONDO:1", "a", ["ocular"], 0.79), "strong": row("MONDO:1", "a", ["ocular"], 0.80)})
+    assert read("weak")[2]["doubt"] == "confirm" and read("strong")[2]["doubt"] is None
+    assert RC.analyze_conditions(["weak"])[0]["doubt"] == "confirm"
+
+
+def test_subtypes_of_one_disease_are_one_reading(judged):
+    read = judged({"HC": row(HCM3, "hypertrophic cardiomyopathy 3", ["neurologic"], 0.9, others=[("MONDO:0008647", "hypertrophic cardiomyopathy 1", ["renal"], 0.89)])})
+    link = read("HC")[2]
+    assert [o["mondo"] for o in link["readings"]] == [HCM] and not link["ambiguous"]

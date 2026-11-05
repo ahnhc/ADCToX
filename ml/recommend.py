@@ -140,7 +140,8 @@ def _free_info(free, progress=None):
     return _FREE[key]
 
 
-TIE = 0.02                      # candidates this close to the first are also readings of the text (mondo_index.TIE)
+TIE, CONFIRM, SHORT = 0.02, 0.8, 4    # candidates this close to the first are also readings of the text; a weaker match asks to confirm the read; letters in a short input (mondo_index.TIE)
+DOUBT = {"confirm": "Confirm this read"}
 
 
 _GENERAL_ORGANS = {}
@@ -180,17 +181,46 @@ def _candidates(r, typed):
     return out
 
 
+def _readings(rows, typed):
+    """-> (readings, whether the user chooses): a short input with candidates on different organs, or tied candidates on different
+    organs. A concept without organs does not disagree with anything. Korean names are not short: 3 or 4 letters are a whole word."""
+    rows = [x for x in rows if x["concept"].startswith(("MONDO:", "HP:")) and not x.get("numbered")]
+    if not rows: return [], False
+    short = not re.search("[가-힣]", typed) and sum(ch.isalpha() for ch in typed) <= SHORT
+    pool = rows if short else [x for x in rows if x["sim"] >= rows[0]["sim"] - TIE]
+    if short: pool = pool[:1] + _abbreviations(typed) + pool[1:]
+    named, seen = [], set()
+    for x in pool:
+        if x["name"].lower() not in seen: seen.add(x["name"].lower()); named.append(x)
+    readings = [dict(mondo=x["concept"], name=x["name"], organs=list(x["organs"]), why=x.get("why") or ("closest name" if x is rows[0] else "similar name")) for x in named[:6]]
+    return readings, len({frozenset(x["organs"]) for x in named if x["organs"]}) >= 2
+
+
+def _abbreviations(text):
+    """what a short input may stand for (NLM LRABR in the name index: 'SCD' is sickle cell disease, which no name resembles)."""
+    import subtypes as ST
+    try:
+        import mondo_index as MI
+        if MI._IDX is None: MI._IDX = MI._load()
+        return [dict(concept=t, name=n, organs=o, why="abbreviation") for t in MI.abbreviations(text) if not ST.is_subtype(t) for n, o in [MI.concept(t)] if n]
+    except Exception:
+        return []
+
+
 def _scratch_link(r, typed=""):
     """one row of scratch_runtime.judge in the linker's format: a MONDO concept gives its organs (from its label, its MONDO record
     or, without either, the organ output on the text); any other result is an AI judgment of the text. `judge_via` says which.
     typed: the text as entered, which decides whether a numbered subtype stands."""
-    if r["ok"] and r["concept"]:
-        first = _candidates(r, typed)[0]
+    rows = _candidates(r, typed) if r["ok"] and r["concept"] else []
+    if rows:
+        first = rows[0]
         if first["concept"] != r["concept"]:
             r = dict(r, concept=first["concept"], name=first["name"], organs=first["organs"] or list(r.get("judged") or []), via=first["via"] if first["organs"] else "name")
-    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, judge_via=r["via"], judge=True, p=r.get("p"),
+    lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, doubt=None, judge_via=r["via"], judge=True, p=r.get("p"),
               concept=r["concept"], concept_name=r["name"])
     if not r["ok"]: return lk
+    lk["readings"], lk["ambiguous"] = _readings(rows, typed)
+    if r["concept"] and r["sim"] < CONFIRM: lk["doubt"] = "confirm"
     if r["concept"] and r["concept"].startswith("MONDO:"): lk.update(mondo=r["concept"], name=r["name"], axes=list(r["organs"]))
     elif r["organs"]: lk.update(judged=list(r["organs"]), sim=0.0, judge_via="name")
     return lk
@@ -228,13 +258,13 @@ def analyze_conditions(conditions, progress=None):
         name = ("" if source == "AI judgment" else link["concept_name"] if concept else link["name"] if source.startswith("MONDO") else re.search(r"chosen reading (?:MONDO|HPO) '(.*?)'", how).group(1) if source == "Chosen" else
                 _reg[link["registry"][0]]["label"] if source != "Unmapped" else "")
         report = dict(condition=c, source=source, name=name, mondo=link.get("concept") if concept else link.get("mondo") if source.startswith("MONDO") else None, organs=[] if source == "Unmapped" else organs.get(c, []),
-                      readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")), fallback=link.get("fallback"),
+                      readings=link.get("readings", []), ambiguous=bool(link.get("ambiguous")), doubt=None if c in CHOICE else link.get("doubt"), fallback=link.get("fallback"),
                       judge_via=link.get("judge_via") if source.startswith("MONDO") or source == "AI judgment" or concept else _chosen_via(c) if source == "Chosen" else None,
                       p=link.get("p"))
         _ANALYSES[c] = report; reports.append(report)
     for c, (name, cancers) in patient_cancers(notes).items():     # the patient's cancer: no organs, the ADCs approved for it come first
         _ANALYSES[c].update(source="Cancer", name=name, mondo=re.search(r"\((MONDO:\d+)\)$", dict(notes)[c]).group(1), organs=[], p=None,
-                            cancers=cancers, ambiguous=False, readings=[], judge_via=None, fallback=None)
+                            cancers=cancers, ambiguous=False, doubt=None, readings=[], judge_via=None, fallback=None)
     if progress: progress("done")
     return sorted(reports, key=lambda r: conditions.index(r["condition"]))
 

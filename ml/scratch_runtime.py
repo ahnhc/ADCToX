@@ -103,13 +103,12 @@ def _outputs(M, texts, bs=64):
 NEAR, CANDIDATES = 64, 8        # strings looked at, concepts kept
 
 
-def _candidates(M, sims, near, first):
-    best = {}
+def _candidates(M, sims, near, first, first_sim):
+    best = {first: first_sim} if first else {}
     for i in near[np.argsort(-sims[near])]:
         if sims[i] < M["j"]["theta"]: break
         best.setdefault(M["ids"][i], float(sims[i]))
-    order = ([first] if first in best else []) + [c for c in best if c != first]
-    return [dict(concept=c, name=M["C"].get(c, ["", [], ""])[0], organs=list(M["C"].get(c, ["", [], ""])[1]), via=M["C"].get(c, ["", [], ""])[2], sim=best[c]) for c in order[:CANDIDATES]]
+    return [dict(concept=c, name=M["C"].get(c, ["", [], ""])[0], organs=list(M["C"].get(c, ["", [], ""])[1]), via=M["C"].get(c, ["", [], ""])[2], sim=best[c]) for c in list(best)[:CANDIDATES]]
 
 
 def judge(texts, path=None):
@@ -131,7 +130,7 @@ def judge(texts, path=None):
         name, organs, via = M["C"].get(c, ["", [], ""]) if c else ("", [], "")
         judged = [AX[a] for a in np.where(po[k] >= np.array(j["thr"]))[0]]
         if not organs: organs, via = judged, "name"
-        rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim, p=p, judged=judged, candidates=_candidates(M, S[k], near[k], c)))
+        rows.append(dict(concept=c, name=name, organs=list(organs), via=via, valid=float(pv[k]), ok=True, sim=sim, p=p, judged=judged, candidates=_candidates(M, S[k], near[k], c, sim)))
     return rows
 
 
