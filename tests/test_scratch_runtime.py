@@ -50,3 +50,23 @@ def test_rows_enter_the_app_as_mondo_links_or_ai_judgments():
     assert lk["axes"] == [] and lk["judged"] == ["ocular"] and lk["sim"] == 0.0
     lk = RC._scratch_link(dict(concept=None, name="", organs=[], via=None, valid=0.1, ok=False, sim=0.2))
     assert lk["gate"] is False and not lk["axes"] and not lk.get("judged")
+
+
+def _korean_folder(folder):
+    """adds index_ko.npz: the vector of the typed Korean text '결핵' stored as the Korean name of MONDO:3."""
+    import scratch_runtime as SR
+    SR._M.clear(); M = SR.load(folder); _, _, va = SR._outputs(M, ["결핵"]); SR._M.clear()
+    np.savez(Path(folder) / "index_ko.npz", E=va.astype(np.float16), ids=np.array(["MONDO:3"]))
+
+
+def test_without_index_ko_nothing_changes_and_with_it_only_hangul_input_does(folder):
+    import scratch_runtime as SR
+    texts = ["tuberculosis", "glaucoma", "xyz", "결핵"]
+    SR._M.clear(); before = SR.judge(texts, folder); near_before = SR.nearest("결핵", 5, folder)
+    assert SR.load(folder)["Ek"] is None                                   # a 0.6.13 bundle: no file, the search is the English index alone
+    _korean_folder(folder); SR._M.clear(); after = SR.judge(texts, folder)
+    assert after[:3] == before[:3]                                         # no Hangul: not one value differs with the file present
+    assert after[3]["ok"] and after[3]["concept"] == "MONDO:3" and after[3]["organs"] == ["renal"] and after[3]["via"] == "label"
+    assert "MONDO:3" in [c for c, _, _ in SR.nearest("결핵", 5, folder)]
+    (Path(folder) / "index_ko.npz").unlink(); SR._M.clear()
+    assert SR.judge(texts, folder) == before and SR.nearest("결핵", 5, folder) == near_before

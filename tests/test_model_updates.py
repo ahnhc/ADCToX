@@ -363,6 +363,20 @@ def test_a_judge_only_bundle_installs_and_older_apps_keep_their_manifests(server
     assert {"BioLORD-2023/model.safetensors", "SapBERT/model.safetensors", "vuln_biolord.pt"} <= paths   # apps 0.5 to 0.6.10 require the encoders
 
 
+def test_a_korean_index_is_one_extra_file_and_an_older_manifest_stays_valid(server, tmp_path):
+    base, bodies, requests = server
+    old = make_manifest(server)
+    updates.validate_manifest(old, allow_local=True)                      # a bundle without ScratchJudge/index_ko.npz (0.6.13) is valid
+    updates.install(old, tmp_path, allow_local=True)
+    new = copy.deepcopy(old); new["model_version"] = "0.1"; body = b"korean names"; bodies["/0.1/ScratchJudge/index_ko.npz"] = body
+    new["files"].append({"path": "ScratchJudge/index_ko.npz", "url": base + "/0.1/ScratchJudge/index_ko.npz", "size": len(body), "sha256": hashlib.sha256(body).hexdigest()})
+    updates.validate_manifest(new, allow_local=True)                      # the validator that apps already ship accepts the extra file
+    assert updates.plan(new, tmp_path)["download"] == ["ScratchJudge/index_ko.npz"]
+    requests.clear(); result = updates.install(new, tmp_path, allow_local=True)
+    assert result["downloaded"] == ["ScratchJudge/index_ko.npz"] and requests == ["/0.1/ScratchJudge/index_ko.npz"]
+    assert (selected_bundle(tmp_path) / "ScratchJudge/index_ko.npz").read_bytes() == body
+
+
 def test_package_version_is_the_app_version():
     """pyproject.toml and ml/adc_version.py name one version (0.5.2 shipped with the package at 0.4.3)."""
     import re, adc_version
