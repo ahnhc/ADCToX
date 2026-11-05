@@ -290,10 +290,10 @@ def install(manifest, home=None, progress=None, allow_local=False, cancelled=Non
                 marker = {"bundle_id": identity, "directory": destination.name, "model_version": manifest["model_version"], "manifest": manifest}
                 (staged / "bundle.json").write_text(json.dumps(marker, ensure_ascii=False, indent=2) + "\n")
                 os.replace(staged, destination)
-                if previous and previous["bundle_id"] != identity:
-                    (root / "previous.json").write_text(json.dumps(previous) + "\n")
                 check_cancelled()
                 _switch(root, destination)
+                if previous and previous["bundle_id"] != identity:
+                    (root / "previous.json").write_text(json.dumps(previous) + "\n")
             return {"model_version": manifest["model_version"], "downloaded": downloaded, "reused": reused, "bundle_id": identity, "up_to_date": False}
     except (OSError, ValueError) as error:
         raise UpdateError(f"Model update failed. Existing models remain selected: {error}") from error

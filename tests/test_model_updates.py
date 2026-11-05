@@ -321,6 +321,21 @@ def test_app_update_failures_are_one_line_update_errors(server, tmp_path, monkey
     assert len(capsys.readouterr().err.strip().splitlines()) == 1
 
 
+def test_a_cancelled_update_keeps_the_rollback_target(server, tmp_path):
+    first = updates.install(make_manifest(server), tmp_path, allow_local=True)
+    updates.install(make_manifest(server, "0.1", b"head-2"), tmp_path, allow_local=True)
+    assert json.loads((tmp_path / "previous.json").read_text())["bundle_id"] == first["bundle_id"]
+    third = make_manifest(server, "0.2", b"head-3")
+    checks = []
+    def cancel_at_the_last_check():
+        checks.append(1)
+        return len(checks) > len(third["files"])                                  # every file passes; the check just before the switch fails
+    with pytest.raises(updates.UpdateError, match="cancelled"):
+        updates.install(third, tmp_path, allow_local=True, cancelled=cancel_at_the_last_check)
+    assert json.loads((tmp_path / "previous.json").read_text())["bundle_id"] == first["bundle_id"]
+    assert updates.rollback(tmp_path, allow_local=True) == "0.0"
+
+
 def test_gemma_judge_folder_installs_and_the_old_manifest_stays_for_old_apps(server, tmp_path):
     import adc_version
     manifest = make_manifest(server, "0.5"); base, bodies, _ = server
