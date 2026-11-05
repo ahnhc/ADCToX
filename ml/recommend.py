@@ -224,7 +224,8 @@ def resolve(conditions):
             rejected = lk.get("gate") is False; picked = CHOICE.get(c, "-")
             chosen = _chosen(picked) if c in CHOICE and picked else None
             if chosen:
-                own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in chosen[1]]
+                near = _by_concept.get(picked); own = np.zeros(len(AXES)); ids.update([near] if near else [])
+                [own.__setitem__(AXES.index(a), float(_reg[near]["severity"]) if near else MONDO_SEVERITY) for a in chosen[1]]
                 how = f"free text; chosen reading {'HPO' if picked.startswith('HP:') else 'MONDO'} '{chosen[0]}' -> organs: {', '.join(chosen[1]) or 'none'}"
             elif c in CHOICE and picked is None: own, how = np.zeros(len(AXES)), "free text; not understood (no organ); reading left open by the user"
             elif lk.get("judge") and (lk["axes"] or lk.get("judged")) and not rejected and lk.get("concept") in _by_concept:
