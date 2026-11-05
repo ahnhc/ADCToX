@@ -166,11 +166,11 @@ def _key_values(RC, row, notes, values, raw):
     for k in ordered:
         label, unit = RC.VALUE_LABELS[k]; v = values[k]
         text = ("yes" if v else "no") if isinstance(v, bool) else (LB.shown(k, v) if isinstance(v, (int, float)) else str(v))
-        out.append(f"CLcr ≈ {text} mL/min (eGFR)" if k == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes) else f"{label} {text}{unit}")
+        out.append(f"CLcr ≈ {text} mL/min (eGFR)" if k == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes) else f"{label} {text}{unit}" + LB.uln_text(k, raw))
     return out + RC._raw_values(raw, values)
 
 
-def _patient_side(RC, row, domain, code, sure, values, conds):
+def _patient_side(RC, row, domain, code, sure, values, conds, raw=None):
     """what of this patient meets the label rule behind one restriction row: the entered conditions it names and the values it
     reads ('Heart failure', 'Bilirubin 1.67×ULN'); a value the rule needs but nobody entered reads 'LVEF not entered'"""
     import labs as LB
@@ -182,7 +182,7 @@ def _patient_side(RC, row, domain, code, sure, values, conds):
         if k not in RC.VALUE_LABELS: continue
         label, unit = RC.VALUE_LABELS[k]; v = values.get(k)
         if v is None: out.append(f"{label} not entered"); continue
-        out.append(f"{label} " + (("yes" if v else "no") if isinstance(v, bool) else (LB.shown(k, v) if isinstance(v, (int, float)) else str(v))) + unit)
+        out.append(f"{label} " + (("yes" if v else "no") if isinstance(v, bool) else (LB.shown(k, v) if isinstance(v, (int, float)) else str(v))) + unit + LB.uln_text(k, raw))
     return ", ".join(out)
 
 
@@ -203,7 +203,7 @@ def _detail(RC, row, checks_, notes, values, raw, conds=()):
         payload = dict(line=RC.payload_line(mech), rows=rows, note=" ".join(keep) or None)
     return dict(indication=ind["indication"] if ind else None,
                 reasons=[dict(organ=RC.ORGAN_SHORT[RC.RS.DOMAIN_AXIS[o]] if o in RC.RS.DOMAIN_AXIS else o.capitalize(), domain=o, status=st, basis=b, code=c, sure=sure,
-                              patient=_patient_side(RC, row, o, c, sure, values, conds)) for o, st, b, c, sure in evidence],
+                              patient=_patient_side(RC, row, o, c, sure, values, conds, raw)) for o, st, b, c, sure in evidence],
                 warnings=[dict(organ=a, mark=mark, text=RC.warning_names(row["organs"][a].get("headings", [])))
                           for mark, organs in (("!!", row.get("boxed", [])), ("!", row.get("warn", []))) for a in organs],
                 other_warnings=[dict(organ=c["organ"], mark=c["mark"], text=RC.warning_names(row["organs"][c["organ"]].get("headings", [])))
@@ -244,7 +244,7 @@ class App:
         """registry ids in registry order, then typed texts in the order given: the order form.run hands to recommend"""
         conds = body.get("conditions")
         if not isinstance(conds, list) or not all(isinstance(c, str) for c in conds): raise _Error(400, "conditions: a list of registry ids and typed texts is expected")
-        texts = list(dict.fromkeys(" ".join(c.split()) for c in conds if c.strip()))
+        texts = list(dict.fromkeys(" ".join(self.RC.nfc(c).split()) for c in conds if c.strip()))
         if not texts: raise _Error(400, "Add at least one condition")
         return [i for i in self.RC._reg if i in texts] + [c for c in texts if c not in self.RC._reg]
 
@@ -252,7 +252,7 @@ class App:
         choice = body.get("choice") or {}
         if not isinstance(choice, dict) or not all(v is None or (isinstance(v, str) and re.fullmatch(r"(MONDO|HP):\d+", v)) for v in choice.values()):
             raise _Error(400, "choice: {typed text: MONDO or HP id, or null} is expected")
-        return {c: v for c, v in choice.items() if c in conds}
+        return {c: v for c, v in ((self.RC.nfc(k), x) for k, x in choice.items()) if c in conds}
 
     # ------------------------------------------------------------------ GET
     def app(self):
@@ -279,7 +279,7 @@ class App:
         """form.Form.conditions' lists: names (a cancer alias first), the words that are each a name, AI names on request, and
         diseases from symptoms when the text reads as a sentence. A disease is listed once, and not when it is already picked."""
         import suggest as SG
-        RC = self.RC; text = q.strip(); have = set()
+        RC = self.RC; text = RC.nfc(q).strip(); have = set()
         def names_of(s):                                       # the English name, and no Korean second line (the page is English)
             a, b = s[2], (s[3] if s[3] and s[3] != s[2] else "")
             if HANGUL.search(a) and b and not HANGUL.search(b): a, b = b, a
@@ -347,14 +347,14 @@ class App:
         field), CLcr, and the organs abnormal values mark"""
         import labs as LB
         raw, errors = _parse_raw(body.get("raw"))
-        lab, _, notes = LB.derive(raw)
-        flags = [dict(key=k, organ=organ, why=why) for k, test, organ, why in LB.FLAGS if raw.get(k) is not None and test(raw[k], LB.ULN.get(k))]
+        lab, _, notes = LB.derive(raw); uln = LB.uln_of(raw)
+        flags = [dict(key=k, organ=organ, why=why) for k, test, organ, why in LB.FLAGS if raw.get(k) is not None and test(raw[k], uln.get(k))]
         source = None if "crcl" not in lab else "eGFR" if any(n.startswith("CLcr ≈ eGFR") for n in notes) else "Cockcroft-Gault"
         short = lambda k: "bili" if k == "bilirubin" else k                       # bili / ast / alt: the names the label rules read
-        derived = dict(crcl=lab.get("crcl"), crcl_source=source, **{f"{short(k)}_xuln": float(LB._xuln(raw[k], u)) if k in raw else None for k, u in LB.ULN.items()},
+        derived = dict(crcl=lab.get("crcl"), crcl_source=source, **{f"{short(k)}_xuln": float(LB._xuln(raw[k], u)) if k in raw else None for k, u in uln.items()},
                        shown=dict({"crcl": LB.shown("crcl", lab["crcl"])} if "crcl" in lab else {},
-                                  **{short(k): LB.shown("bili", float(LB._xuln(raw[k], u))) for k, u in LB.ULN.items() if k in raw}))     # form.Form.labs: Bilirubin 1.67×ULN
-        return dict(raw=raw, errors=errors, flags=flags, derived=derived, notes=notes)
+                                  **{short(k): LB.shown("bili", float(LB._xuln(raw[k], u))) for k, u in uln.items() if k in raw}))     # form.Form.labs: Bilirubin 1.67×ULN
+        return dict(raw=raw, errors=errors, flags=flags, derived=derived, notes=notes, uln=uln)
 
     def analyze(self, body):
         """queue an analysis; it runs when the ones before it have finished"""
@@ -424,6 +424,7 @@ class App:
         if errors: raise _Error(400, next(iter(errors.values())), errors=errors)
         first = body.get("first")
         if first is not None and not isinstance(first, str): raise _Error(400, "first: a condition or null is expected")
+        first = first and self.RC.nfc(first)
         with self.state(choice) as RC:
             pc = RC.patient_conditions(conds, raw)
             picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")] if len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2 else []

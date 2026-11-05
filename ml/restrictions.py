@@ -92,28 +92,33 @@ def _domains(p, rules):
     return on
 
 
-def _grid(p, domain):
+def _points(rules, *keys):
+    """one value in each interval this domain's thresholds cut the input into, so no rule falls between two grid points."""
+    ts = sorted({r["when"][k] for r in rules for k in keys if k in r["when"]})
+    return [ts[0] / 2] + [(a + b) / 2 for a, b in zip(ts, ts[1:])] + [ts[-1] * 2] if ts else [1]
+
+
+def _grid(p, domain, rules):
     """plausible patient states for the values this domain reads; a given value is a single point."""
     if domain == "renal":
         if p.esrd: return [dict(crcl=10, esrd=True)]
         if p.crcl is not None:                     # below 15 without a dialysis answer it may or may not be ESRD: both states
             return [dict(crcl=p.crcl, esrd=False)] if p.crcl >= 15 or p.esrd is False else [dict(crcl=p.crcl, esrd=True), dict(crcl=p.crcl, esrd=False)]
-        return [dict(crcl=10, esrd=True), dict(crcl=10, esrd=False), dict(crcl=20, esrd=False), dict(crcl=45, esrd=False),
-                dict(crcl=55, esrd=False), dict(crcl=75, esrd=False), dict(crcl=100, esrd=False)]
+        return [dict(crcl=10, esrd=True)] + [dict(crcl=c, esrd=False) for c in _points(rules, "crcl_lt", "crcl_ge")]
     if domain == "hepatic":
-        bs = [p.bili] if p.bili is not None else [0.8, 1.2, 2.0, 4.0]
-        as_ = [p.ast] if p.ast is not None else [0.8, 2.0, 2.8, 4.0]
-        ls = [p.alt] if p.alt is not None else [0.8, 2.0, 2.8, 4.0]
+        bs = [p.bili] if p.bili is not None else _points(rules, "bili_gt", "bili_le")
+        as_ = [p.ast] if p.ast is not None else _points(rules, "ast_gt", "ast_le")
+        ls = [p.alt] if p.alt is not None else _points(rules, "alt_gt", "alt_le")
         cs = [p.child_pugh] if p.child_pugh else ["A", "B", "C"]
         return [dict(bili=b, ast=a, alt=l, child_pugh=c) for b in bs for a in as_ for l in ls for c in cs]
     if domain == "blood":
-        ps = [p.platelets] if p.platelets is not None else [40, 60, 90, 150]
-        ns = [p.anc] if p.anc is not None else [0.8, 1.2, 2.0]
+        ps = [p.platelets] if p.platelets is not None else _points(rules, "platelets_lt")
+        ns = [p.anc] if p.anc is not None else _points(rules, "anc_lt")
         return [dict(platelets=a, anc=b) for a in ps for b in ns]
     if domain == "metabolic":
-        return [dict(hba1c=v) for v in ([p.hba1c] if p.hba1c is not None else [6.0, 9.0])]
+        return [dict(hba1c=v) for v in ([p.hba1c] if p.hba1c is not None else _points(rules, "hba1c_ge"))]
     if domain == "cardiac":
-        return [dict(lvef=v) for v in ([p.lvef] if p.lvef is not None else [35, 45, 55])]
+        return [dict(lvef=v) for v in ([p.lvef] if p.lvef is not None else _points(rules, "lvef_lt", "lvef_ge"))]
     return [dict()]
 
 
@@ -163,7 +168,7 @@ def judge(p, adcs, rules=None):
     for adc in adcs:
         rs = [r for r in rules if r["adc"] == adc]; on = _domains(p, rs); known, possible, silent, missing = [], [], [], set()
         for dom in sorted(on):
-            drs = [r for r in rs if r["domain"] == dom]; states = _grid(p, dom); hit_sets = []
+            drs = [r for r in rs if r["domain"] == dom]; states = _grid(p, dom, drs); hit_sets = []
             for st in states:
                 res = [(r, _holds(r["when"], st, p)) for r in drs]
                 hit_sets.append([r for r, h in res if h is not False])        # None = a value this state leaves open: may hold

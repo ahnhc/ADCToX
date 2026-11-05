@@ -32,5 +32,5 @@ def test_known_cases():
     assert "MONDO:0000705" not in C                              # C. difficile colitis is not IBD (MONDO files every colitis under it)
     assert "MONDO:0005388" not in C                              # primary biliary cholangitis is not cirrhosis
     assert C["HP:0001394"] == "cirrhosis" and C["MONDO:0005366"] == "hepatitis_b_chronic"
-    assert C["MONDO:0004375"] == "ckd_stage_4_5" and C["MONDO:0005300"] == "ckd_stage_3"
-    assert not any(v in ("dialysis", "reduced_lvef", "prior_anthracycline", "prior_hsct") for v in C.values())
+    assert C["MONDO:0004375"] == "dialysis" and C["HP:0003774"] == "ckd_stage_4_5" and C["MONDO:0005300"] == "ckd_stage_3"
+    assert not any(v in ("reduced_lvef", "prior_anthracycline", "prior_hsct") for v in C.values())

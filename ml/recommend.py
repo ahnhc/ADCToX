@@ -30,7 +30,7 @@ only non-circular test it did not improve matching (+0.033 [-0.018, +0.087], ml/
 This orders label evidence for one patient. It is not a probability of an adverse event and has not been validated against
 patient outcomes (ml/docs/validation_plan.md).
 """
-import csv, json, os, re, sys, warnings
+import csv, json, os, re, sys, unicodedata, warnings
 for _k, _v in (("HF_HUB_DISABLE_PROGRESS_BARS", "1"), ("TRANSFORMERS_VERBOSITY", "error"), ("TQDM_DISABLE", "1"), ("HF_HUB_VERBOSITY", "error")):
     os.environ.setdefault(_k, _v)     # model loading bars and hub warnings are noise in a clinical table
 import numpy as np
@@ -47,12 +47,14 @@ MATCH_COS = 0.60            # portable build, last resort: borrow the organs of 
 LINK_THETA = 0.75           # = mondo_index.THETA: a MONDO match this close is 'understood' even when the concept has no organ axis
 GATE_MONDO = True           # also require the validity gate for a MONDO link (chosen on the gold dev split, ml/docs/archive/model_review_2026-10-12.md)
 CONTEXT = {"concomitant_bleomycin": "Concomitant bleomycin (co-medication, no organ)"}     # inputs that are not diseases but a label rule names
+CONTEXT_ALIAS = {"bleomycin": "concomitant_bleomycin", "concomitant bleomycin": "concomitant_bleomycin", "블레오마이신": "concomitant_bleomycin", "블레오마이신 병용": "concomitant_bleomycin"}
 EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "Cardiovascular", "pulmonary": "Pulmonary", "renal": "Renal",
       "gastrointestinal": "GI", "neurologic": "Neurologic", "ocular": "Ocular", "dermatologic": "Dermatologic", "metabolic_endocrine": "Metabolic",
       "musculoskeletal": "Musculoskeletal", "infectious_immune": "Immune", "otologic": "Otologic"}
 
 _reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding="utf-8"))}
 _by_label = {r["label"].lower(): r["id"] for r in _reg.values()}
+_by_label.update(dict.fromkeys(("esrd", "eskd", "hemodialysis", "haemodialysis", "peritoneal dialysis", "투석", "혈액투석", "복막투석"), "dialysis"))    # the judge may link these to no ESRD or dialysis concept
 _by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]   # ml/registry_concepts.py
 
 
@@ -72,6 +74,17 @@ class _Loading:
         import time
         if self.on:
             self.stop.set(); self.th.join(); sys.stderr.write(f"\r\033[K  ✓ {self.done} ({time.time() - self.t0:.1f}s)\n"); sys.stderr.flush()
+
+
+def nfc(text):
+    """composed Hangul: a macOS paste is decomposed, and no name or [가-힣] search would match it"""
+    return unicodedata.normalize("NFC", text)
+
+
+def _context(text):
+    """the CONTEXT key a typed text stands for, or None"""
+    t = " ".join(text.lower().split())
+    return t if t in CONTEXT else CONTEXT_ALIAS.get(t)
 
 
 def own_vec(cid):
@@ -139,6 +152,7 @@ def _scratch_link(r):
 
 def english(texts):
     """typed texts with Korean disease names replaced by their English KCD name (index v3+); other texts unchanged."""
+    texts = [nfc(t) for t in texts]
     if not any(re.search("[가-힣]", t) for t in texts): return list(texts)
     import mondo_index as MI
     return [(MI.korean(t) if hasattr(MI, "korean") else None) or t for t in texts]
@@ -147,8 +161,8 @@ def english(texts):
 def analyze_conditions(conditions, progress=None):
     """-> one report per condition for the input review: how it was read (registry, the judge's concept, its AI judgment, a
     chosen reading, the patient's cancer, or not understood), its organs and the judge's organ probabilities."""
-    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
-    picked = [c for c in conditions if c not in free and c not in CONTEXT]
+    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and not _context(c)]
+    picked = [c for c in conditions if c not in free and not _context(c)]
     if not free and not picked: return []
     links = _free_info(free, progress) if free else []
     _, _, _, notes, pc = resolve(conditions)
@@ -200,11 +214,11 @@ def _registry_p(labels, progress=None):
 def resolve(conditions):
     """-> (s over AXES, own-organ set, registry ids present, [(input, how it was read)], [(input, its organs, its value)])"""
     ws, notes, ids, own_axes, pc = [np.zeros(len(AXES))], [], set(), set(), []
-    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
+    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and not _context(c)]
     if free: links = _free_info(free)
     fi = 0
     for c in conditions:
-        if c in CONTEXT: ids.add(c); notes.append((c, CONTEXT[c])); continue
+        if _context(c): ids.add(_context(c)); notes.append((c, CONTEXT[_context(c)])); continue
         cid = c if c in _reg else _by_label.get(c.lower())
         if not cid: lk = links[fi]; fi += 1
         mondo = _reg[cid].get("mondo_id") if cid else CHOICE.get(c) if c in CHOICE else cancer_alias(c) or (lk.get("mondo") if lk.get("gate") is not False and (lk.get("judge") or lk.get("sim", 0) >= LINK_THETA) else None)
@@ -217,7 +231,8 @@ def resolve(conditions):
             rejected = lk.get("gate") is False; picked = CHOICE.get(c, "-")
             chosen = _chosen(picked) if c in CHOICE and picked else None
             if chosen:
-                own = np.zeros(len(AXES)); [own.__setitem__(AXES.index(a), MONDO_SEVERITY) for a in chosen[1]]
+                near = _by_concept.get(picked); own = np.zeros(len(AXES)); ids.update([near] if near else [])
+                [own.__setitem__(AXES.index(a), float(_reg[near]["severity"]) if near else MONDO_SEVERITY) for a in chosen[1]]
                 how = f"free text; chosen reading {'HPO' if picked.startswith('HP:') else 'MONDO'} '{chosen[0]}' -> organs: {', '.join(chosen[1]) or 'none'}"
             elif c in CHOICE and picked is None: own, how = np.zeros(len(AXES)), "free text; not understood (no organ); reading left open by the user"
             elif lk.get("judge") and (lk["axes"] or lk.get("judged")) and not rejected and lk.get("concept") in _by_concept:
@@ -272,7 +287,7 @@ def _chosen_via(condition):
 
 def ambiguous_conditions(conditions):
     """[(typed text, readings)] for free text whose readings point at different organs and that the user has not settled."""
-    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and c not in CONTEXT]
+    free = [c for c in conditions if c not in _reg and c.lower() not in _by_label and not _context(c)]
     if not free: return []
     links = _free_info(free)
     return [(c, lk["readings"]) for c, lk in zip(free, links) if lk.get("ambiguous") and lk.get("gate") is not False]   # not a disease name: nothing to choose
@@ -460,6 +475,7 @@ def reason_rows(r):
     for d in sorted(set(doms) | set(silent)):
         kn, po = doms.get(d, ([], []))
         top = max([RS.TIER[c] for c, _ in kn] + [-1]); po = [x for x in po if RS.TIER[x[0]] > top]
+        if d in silent and not silent[d] and all(RS.TIER[c] < RS.TIER["no_statement"] for c, _ in po): po = []     # as summary(): the unstated state outranks what is below it
         if kn:
             c, rr = max(kn, key=lambda x: RS.TIER[x[0]]); out.append((d, RS.TABLE[c], _when(rr["when"]) or "-", c, True))
         elif d in silent and silent[d]: out.append((d, "No data", "label says nothing for this patient", "no_statement", True))
@@ -771,7 +787,7 @@ def _cancer_map():
 
 def cancer_alias(text):
     """the MONDO cancer a typed name stands for when the disease linker misreads it (폐암 -> pneumoconiosis), else None"""
-    return _cancer_map().get("aliases", {}).get("".join(text.split()).replace("-", "").lower())
+    return _cancer_map().get("aliases", {}).get("".join(nfc(text).split()).replace("-", "").lower())
 
 
 def is_cancer(mondo):
@@ -858,7 +874,8 @@ DOMAIN_VALUES = {"renal": ("crcl", "esrd"), "hepatic": ("bili", "ast", "alt", "c
 
 # lab-report values already shown through a restriction input (CLcr, x ULN, ...), so not listed again
 _SHOWN_AS = {"bilirubin": "bili", "ast": "ast", "alt": "alt", "platelet": "platelets", "anc": "anc", "hba1c": "hba1c", "lvef": "lvef",
-             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "age": "crcl", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl"}
+             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "age": "crcl", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl",
+             "uln_bilirubin": "bili", "uln_ast": "ast", "uln_alt": "alt"}
 
 
 def _raw_values(raw, values):
@@ -869,7 +886,7 @@ def _raw_values(raw, values):
         v = (raw or {}).get(k)
         if v is None or values.get(_SHOWN_AS.get(k, "")) is not None: continue
         text = ("yes" if v else "no") if isinstance(v, bool) else f"{v:g}" if isinstance(v, (int, float)) else str(v)
-        organs = [o for key, test, o, _ in LB.FLAGS if key == k and isinstance(v, (int, float)) and test(v, LB.ULN.get(k))]
+        organs = [o for key, test, o, _ in LB.FLAGS if key == k and isinstance(v, (int, float)) and test(v, LB.uln_of(raw).get(k))]
         out.append((bool(organs), f"{label} {text} {unit}" + (" → " + ", ".join(ORGAN_SHORT[o] for o in dict.fromkeys(organs)) if organs else "")))
     return [t for _, t in sorted(out, key=lambda x: not x[0])]           # the ones that marked an organ first
 
@@ -884,7 +901,7 @@ def _value_gauges(items, cells=10):
     wn = max((len(n) for n, _, _ in parsed), default=0); wv = max((len(v) for _, v, _ in parsed), default=0); out = []
     for name, val, organ in parsed:
         g = ""
-        uln = re.match(r"^([\d.]+)×ULN$", val); cl = name.startswith("CLcr") and re.search(r"([\d.]+)", val)
+        uln = re.match(r"^([\d.]+)×ULN\b", val); cl = name.startswith("CLcr") and re.search(r"([\d.]+)", val)
         if uln: x = float(uln.group(1)); f, ticks, tone = x / 3, (1 / 3, .5), "31" if x > 3 else "33" if x > 1 else "90;1"
         elif cl: x = float(cl.group(1)); f, ticks, tone = x / 120, (.25, .5, .75), "31" if x < 30 else "33" if x < 60 else "90;1"
         if uln or cl:
@@ -910,7 +927,7 @@ def _result_context(rows, notes, width, values=None, selected=0, graphic=False, 
         text = ("yes" if value else "no") if isinstance(value, bool) else (LB.shown(key, value) if isinstance(value, (int, float)) else str(value))
         if key == "crcl" and any(a == "Lab" and "CLcr ≈ eGFR" in b for a, b in notes):
             inputs.append(f"CLcr ≈ {text} mL/min (eGFR)")
-        else: inputs.append(f"{label} {text}{unit}")
+        else: inputs.append(f"{label} {text}{unit}" + LB.uln_text(key, raw))
     inputs += _raw_values(raw, values)
     if graphic: inputs = _value_gauges(inputs)
     organ_levels = {}
@@ -963,7 +980,7 @@ def patient_lines(notes):
     def names(c, how):
         cid = c if c in _reg else _by_label.get(c.lower())
         if cid: return _reg[cid]["label"], KO.get(cid, "")
-        if c in CONTEXT: return CONTEXT[c], ""
+        if _context(c): return CONTEXT[_context(c)], ""
         if c == "Lab": return how, None
         if c.startswith("Lab: "): return c[5:], "(" + EN[how.rsplit(": ", 1)[-1]] + ")"
         m = re.search(r"(?:MONDO|registry) '([^']+)'", how)
@@ -1097,7 +1114,7 @@ def wizard(back=False):
             for k, i in enumerate(ids, 1): print(f"  {k:>2}) {i:<28} {_reg[i]['label']}")
             continue
         if not text.strip(): return None
-        split = [" ".join(x.split()) for x in text.split(",") if x.strip()]
+        split = [" ".join(nfc(x).split()) for x in text.split(",") if x.strip()]
     conds = [ids[int(x) - 1] if x.isdigit() and 1 <= int(x) <= len(ids) else x for x in split]
     raw = {}
     try: has = input("검사 수치가 있나요? (y = 있음, Enter = 없음) > ").strip().lower() == "y"

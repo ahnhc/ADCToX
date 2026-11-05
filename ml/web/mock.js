@@ -69,6 +69,9 @@ window.ADCTOX_MOCK = (function () {
           {"key": "bilirubin", "label": "Bilirubin", "unit": "mg/dL", "group": "Liver", "kind": "number", "range": [0.01, 50], "uln": 1.2},
           {"key": "ast", "label": "AST", "unit": "U/L", "group": "Liver", "kind": "number", "range": [1, 10000], "uln": 40.0},
           {"key": "alt", "label": "ALT", "unit": "U/L", "group": "Liver", "kind": "number", "range": [1, 10000], "uln": 40.0},
+          {"key": "uln_bilirubin", "label": "Bilirubin ULN", "unit": "mg/dL", "group": "Liver", "kind": "number", "range": [0.1, 10], "uln": null},
+          {"key": "uln_ast", "label": "AST ULN", "unit": "U/L", "group": "Liver", "kind": "number", "range": [1, 500], "uln": null},
+          {"key": "uln_alt", "label": "ALT ULN", "unit": "U/L", "group": "Liver", "kind": "number", "range": [1, 500], "uln": null},
           {"key": "albumin", "label": "Albumin", "unit": "g/dL", "group": "Liver", "kind": "number", "range": [0.5, 7], "uln": null},
           {"key": "ggt", "label": "GGT", "unit": "U/L", "group": "Liver", "kind": "number", "range": [1, 10000], "uln": 60.0},
           {"key": "child_pugh", "label": "Child-Pugh", "unit": "A/B/C", "group": "Liver", "kind": "child_pugh", "range": null, "uln": null},
@@ -278,7 +281,7 @@ window.ADCTOX_MOCK = (function () {
     if (key === 'sex') { const s = t.toUpperCase().slice(0, 1); if (s === 'M' || s === 'F') return s; if (s === '남') return 'M'; if (s === '여') return 'F'; throw new Error('M or F'); }
     if (key === 'child_pugh') { if (['A', 'B', 'C'].includes(t.toUpperCase())) return t.toUpperCase(); throw new Error('A, B or C'); }
     if (key === 'ugt1a1') { const c = t.toLowerCase().slice(0, 1); if (c === 'y' || c === 'n') return c === 'y'; throw new Error('y or n'); }
-    const v = Number(t.replace(/,/g, ''));
+    const v = Number(/^\d{1,3}(,\d{3})+$/.test(t) ? t.replace(/,/g, '') : t);
     if (!Number.isFinite(v)) throw new Error('숫자를 입력하세요');
     const r = FIELD[key] && FIELD[key].range;
     if (r && !(r[0] <= v && v <= r[1])) throw new Error(`${g(r[0])}–${g(r[1])}`);
@@ -295,8 +298,8 @@ window.ADCTOX_MOCK = (function () {
   APP.labs.fields.forEach((f) => { if (f.uln !== null && f.uln !== undefined) ULN[f.key] = f.uln; });
   const TESTS = {
     hb: (v) => v < 10, platelet: (v) => v < 75, anc: (v) => v < 1.5, hba1c: (v) => v >= 6.5, glucose: (v) => v >= 126, albumin: (v) => v < 3.0,
-    ggt: (v) => v / ULN.ggt > 2.5, bilirubin: (v) => v / ULN.bilirubin > 1.5, ast: (v) => v / ULN.ast > 3, alt: (v) => v / ULN.alt > 3,
-    amylase: (v) => v / ULN.amylase > 1.5, lipase: (v) => v / ULN.lipase > 1.5, tsh: (v) => v > 10 || v < 0.1,
+    ggt: (v, u) => v / u.ggt > 2.5, bilirubin: (v, u) => v / u.bilirubin > 1.5, ast: (v, u) => v / u.ast > 3, alt: (v, u) => v / u.alt > 3,
+    amylase: (v, u) => v / u.amylase > 1.5, lipase: (v, u) => v / u.lipase > 1.5, tsh: (v) => v > 10 || v < 0.1,
   };
   function labs(rawIn) {
     const raw = {}, errors = {};
@@ -304,7 +307,9 @@ window.ADCTOX_MOCK = (function () {
       if (!FIELD[k]) return Promise.reject(Object.assign(new Error(`unknown lab field: ${k}`), { status: 400, data: { error: `unknown lab field: ${k}` } }));
       try { const v = parse(k, t); if (v !== null) raw[k] = v; } catch (e) { errors[k] = labError(FIELD[k], e.message); }
     }
-    const flags = FLAG_WHY.filter((f) => typeof raw[f.key] === 'number' && TESTS[f.key] && TESTS[f.key](raw[f.key])).map((f) => ({ key: f.key, organ: f.organ, why: f.why }));
+    const uln = Object.assign({}, ULN);
+    for (const k in ULN) if (raw['uln_' + k] !== undefined) uln[k] = raw['uln_' + k];
+    const flags = FLAG_WHY.filter((f) => typeof raw[f.key] === 'number' && TESTS[f.key] && TESTS[f.key](raw[f.key], uln)).map((f) => ({ key: f.key, organ: f.organ, why: f.why }));
     const short = (k) => (k === 'bilirubin' ? 'bili' : k);
     const derived = { crcl: null, crcl_source: null, shown: {} }, notes = [];
     if (['age', 'weight', 'creatinine', 'sex'].every((k) => raw[k] !== undefined) && raw.creatinine > 0 && raw.age < 140) {
@@ -317,12 +322,12 @@ window.ADCTOX_MOCK = (function () {
     } else if (raw.creatinine !== undefined) notes.push('Creatinine needs age, sex and weight for CLcr (or enter eGFR)');
     if (derived.crcl !== null) derived.shown.crcl = shown('crcl', derived.crcl);
     for (const k in ULN) {
-      derived[short(k) + '_xuln'] = raw[k] !== undefined ? raw[k] / ULN[k] : null;
-      if (raw[k] !== undefined) derived.shown[short(k)] = shown('bili', raw[k] / ULN[k]);
+      derived[short(k) + '_xuln'] = raw[k] !== undefined ? raw[k] / uln[k] : null;
+      if (raw[k] !== undefined) derived.shown[short(k)] = shown('bili', raw[k] / uln[k]);
     }
     const used = Object.keys(ULN).filter((k) => raw[k] !== undefined);
-    if (used.length) notes.push('ULN used: ' + used.map((k) => `${k} ${g(ULN[k])}`).join(', '));
-    return ok({ raw, errors, flags, derived, notes });
+    if (used.length) notes.push('ULN used: ' + used.map((k) => `${k} ${g(uln[k])} (${raw['uln_' + k] !== undefined ? 'entered' : 'default'})`).join(', '));
+    return ok({ raw, errors, flags, derived, notes, uln });
   }
 
   // ------------------------------------------------------------------ /api/analyze: about 4 s, '질환 확인 중' then '장기 분석 중', one at a time

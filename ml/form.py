@@ -4,7 +4,7 @@ Steps: conditions (organ-grouped list; 'Other' at the bottom opens a typing line
 place, units as on a lab report) -> [the organ review] -> [priority between conditions].
 Returns (conditions, raw lab values) and sets recommend.PRIORITY, or None if the user quits.
 """
-import os, re
+import os, re, unicodedata
 from term import curses
 from tui import _Screen, _cw, _clip, _wrap, _enter, GLYPH, strip, UI_VERSION, logo, logo_width
 
@@ -77,8 +77,8 @@ def _lab_error(field, error):
 
 
 def split_free(text):
-    """'copd ,   asthma,heart  stop' -> ['copd', 'asthma', 'heart stop']"""
-    return [" ".join(x.split()) for x in text.split(",") if x.strip()]
+    """'copd ,   asthma,heart  stop' -> ['copd', 'asthma', 'heart stop']; a picked name keeps its comma as '\\,' (form._split)"""
+    return [" ".join(x.replace("\\,", ",").split()) for x in re.split(r"(?<!\\),", unicodedata.normalize("NFC", text)) if x.strip()]
 
 
 class _ProcessUsage:
@@ -380,9 +380,8 @@ class Form:
 
     def _split(self, sel):
         picked = {x[1] for x in sel if x[0] == "reg"}
-        free = [x[2] for x in sel if x[0] != "reg"]
         choice = {x[2]: x[1] for x in sel if x[0] == "mondo"}
-        return picked, ", ".join(free), choice
+        return picked, ", ".join(x[2].replace(",", "\\,") if x[0] == "mondo" else x[2] for x in sel if x[0] != "reg"), choice
 
     def labs(self, raw):
         import labs as LB
@@ -402,11 +401,11 @@ class Form:
                 try:
                     if v.strip(): parsed[key] = LB.parse(key, v)
                 except ValueError: pass
-            hit, ruled = {}, set()                                      # entered and checked against labs.FLAGS: ✓ under the rule, → organ over it
+            u = LB.uln_of(parsed); hit, ruled = {}, set()               # entered and checked against labs.FLAGS: ✓ under the rule, → organ over it
             for key, test, organ, _ in LB.FLAGS:
                 if key not in parsed: continue
                 ruled.add(key)
-                if test(parsed[key], LB.ULN.get(key)) and GLYPH[organ] not in hit.setdefault(key, []): hit[key].append(GLYPH[organ])
+                if test(parsed[key], u.get(key)) and GLYPH[organ] not in hit.setdefault(key, []): hit[key].append(GLYPH[organ])
             mark = {key: "\033[33;1m→ " + ", ".join(hit[key]) + "\033[0m" if hit.get(key) else "\033[32;1m✓\033[0m" for key in ruled}
             y0 = self.frame("검사 수치", "")
             h, w = self.scr.getmaxyx(); area = max(3, h - y0 - 2); top = max(0, min(at - area // 2, len(rows) - area))
@@ -416,13 +415,13 @@ class Form:
                 elif x[0] == "done": self.row(y0 + r, f" {'→' if on else ' '} [ 완료 ]", on, row)
                 else:
                     k, label, unit, _ = fields[x[1]]; v = vals[k]
-                    uln = f"{unit:<6}   ULN {LB.ULN[k]:g}" if k in LB.ULN else unit       # the reference upper limit the x ULN uses
+                    uln = f"{unit:<6}   ULN {u[k]:g}" if k in u else f"{unit:<6}   default {u[k[4:]]:g}" if k[4:] in u and k.startswith("uln_") else unit       # the reference upper limit the x ULN uses
                     self.row(y0 + r, f" {'→' if on else ' '} {label:<{lw}}  {v + ('_' if on else ''):<10} {uln:<15} {mark.get(k, '')}", on, row)
             try: info = "   ".join(n for n in LB.derive(parsed)[2] if n.startswith("CLcr"))
             except Exception: info = ""
             ck = fields[rows[at][1]][0] if rows[at][0] == "field" else None
             if ck in LB.ULN and ck in parsed:                               # the value being entered, as the label rules read it
-                info = (f"{fields[rows[at][1]][1]} {LB.shown('bili', float(LB._xuln(parsed[ck], LB.ULN[ck])))}×ULN   " + info).rstrip()
+                info = (f"{fields[rows[at][1]][1]} {LB.shown('bili', float(LB._xuln(parsed[ck], u[ck])))}×ULN   " + info).rstrip()
             self.S.put(h - 1, 1, _clip(note or info, max(10, w - 30)), self.S.dim); note = ""     # left of the PgUp / PgDn hint
             self.scr.refresh(); k = self.key()
             if isinstance(k, tuple):                                       # a click moves to the field (or finishes on 완료)
@@ -572,7 +571,7 @@ class Form:
                 h, w = self.scr.getmaxyx()
                 if step: self.S.put(y, 2, step + "." * (1 + int((time.monotonic() - started) * 2.5) % 3))
                 y += 2
-                names = ", ".join(self.RC.condition_name(c) if c in self.RC._reg else c for c in conditions if c not in self.RC.CONTEXT)
+                names = ", ".join(self.RC.condition_name(c) if c in self.RC._reg else c for c in conditions if not self.RC._context(c))
                 for ln in _wrap(names, w - 5, "  ")[:2]: self.S.put(y, 2, ln, self.S.dim); y += 1
                 self.S.put(h - 2, 2, "AI process   " + self.usage.line(), self.S.dim)
                 self.scr.refresh()
@@ -723,10 +722,10 @@ def run(RC, back=False):
                 step = 3; st["miss"] = bool(miss)
             elif step == 3:                                       # priority between conditions on different organs: one screen, the default order shown
                 pc = RC.patient_conditions(conds, st["raw"]); RC.PRIORITY = {}; RC.FIRST = None
-                has_priority = len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2
+                picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")]          # diseases; lab findings keep the automatic order
+                has_priority = bool(picks) and len(pc) >= 2 and len({frozenset(o) for _, o, _ in pc}) >= 2
                 if has_priority:
                     d = RC.default_levels(pc); names = [c for c, _, _ in pc]
-                    picks = [(c, o) for c, o, _ in pc if not c.startswith("Lab: ")]      # diseases; lab findings keep the automatic order
                     k = F.first([kn(c) for c, _ in picks], [o for _, o in picks], [c for c, _ in picks].index(worry[0]) + 1 if worry[0] in dict(picks) else 0)
                     if k == BACK: step = 2 if conds else 1; continue
                     worry[0] = picks[k - 1][0] if k else None              # the chosen one first; the others keep the severity order
