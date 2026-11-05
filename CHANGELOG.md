@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- **Fixed, label reading:** a condition picked from several readings counts like the same concept typed (T-DXd's cardiac rule and the QT and VOD monitor rules fired only when typed). Typed bleomycin reaches brentuximab's contraindication. Typed ESRD or dialysis counts as ESRD, and the condition reads "End-stage renal disease or dialysis". Unentered platelets no longer hide belantamab's Avoid: the states tried for a missing value now come from each ADC's own rule thresholds. Enfortumab's and belantamab's renal detail says what their summary says.
+- **New:** the lab's own ULN for bilirubin, AST and ALT, in the browser and the terminal; the value it was read against shows beside ×ULN. Bilirubin 1.7 with ULN 1.0 is 1.7×ULN, not the 1.42×ULN the default gives.
+- **Fixed, input:** a decimal comma is an error instead of ten times the value (`0,8` read as 8). A picked MONDO name with a comma stays one condition in the terminal. A cancer with two lab flags no longer crashes the terminal's priority step. A decomposed Hangul paste (macOS) reads like the typed name.
+- **Fixed, updates and install:** a blob that failed `--verify-models` is downloaded again instead of re-adopted by its size. `previous.json` is written only after the switch, so a cancelled update keeps the rollback. An asset 404, a dropped connection or a malformed manifest is one line, not a traceback. `install.ps1` stops cleanly while ADCTOX is running and restores the old folder on failure; its launchers survive a non-ASCII account name. `install.sh` runs Python isolated, and an interrupted copy can't pass as a finished release. On Windows a second process no longer binds a port in use.
+- **Page:** the guide keeps Tab inside it, ignores PageUp and PageDown and returns focus to `?`. The `/api/v1` page gets its light-theme source colours back, says when loading fails, and has AA contrast and a phone layout.
+- **Tests and CI:** a clean clone runs green and leaves its files alone; CI runs all of `tests/`, fails on a text `open()` without an encoding, and pins actions by commit.
+
 ## 0.6.13: typed conditions analyse again, and a message when adctox has stopped (Ubuntu, macOS and Windows)
 
 - **Fixed (0.6.11 and 0.6.12): a typed condition failed the organ analysis** with "ValueError: not enough values to unpack" in the browser and the terminal; `ambiguous_conditions` still read the organ judge's links in their pre-0.6.11 form. Registry conditions alone were not affected. A test now runs typed and ambiguous conditions through the analysis job.

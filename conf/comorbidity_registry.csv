@@ -7,7 +7,7 @@ hepatic_vod_history,Prior hepatic veno-occlusive disease,hepatic,1.0,Explicit VO
 nafld,Non-alcoholic fatty liver disease,hepatic,0.4,Not generally excluded,MONDO:0013209,K76.0,
 ckd_stage_3,Chronic kidney disease stage 3,renal,0.7,CrCl < 30-60 floors common,MONDO:0005300,N18.3,"mondo_id verified against mondo.obo as ""chronic kidney disease"""
 ckd_stage_4_5,Chronic kidney disease stage 4-5,renal,1.0,CrCl < 30 excluded,MONDO:0005300,N18.4,"mondo_id verified against mondo.obo as ""chronic kidney disease"""
-dialysis,On dialysis,renal,1.0,Routinely excluded,MONDO:0005240,Z99.2,
+dialysis,End-stage renal disease or dialysis,renal,1.0,Routinely excluded,MONDO:0005240,Z99.2,
 heart_failure,Heart failure,cardiovascular,1.0,LVEF < 50% excluded,MONDO:0005252,I50,
 reduced_lvef,Reduced ejection fraction (LVEF < 50%),cardiovascular,1.0,LVEF floor is the single most common cardiac criterion,MONDO:0005009,I50.2,
 prior_anthracycline,Prior anthracycline exposure,cardiovascular,0.6,Cumulative-dose limits in protocols,MONDO:0000001,Z92.3,Exposure history rather than a disease

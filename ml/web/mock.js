@@ -24,7 +24,7 @@ window.ADCTOX_MOCK = (function () {
         {"id": "nafld", "label": "Non-alcoholic fatty liver disease", "name": "Non-alcoholic fatty liver disease", "ko": "비알코올성 지방간", "mondo": "MONDO:0013209", "organs": ["hepatic"]},
         {"id": "ckd_stage_3", "label": "Chronic kidney disease stage 3", "name": "Chronic kidney disease stage 3", "ko": "만성 콩팥병 3기", "mondo": "MONDO:0005300", "organs": ["renal"]},
         {"id": "ckd_stage_4_5", "label": "Chronic kidney disease stage 4-5", "name": "Chronic kidney disease stage 4-5", "ko": "만성 콩팥병 4–5기", "mondo": "MONDO:0005300", "organs": ["renal"]},
-        {"id": "dialysis", "label": "On dialysis", "name": "On dialysis", "ko": "투석 중", "mondo": "MONDO:0005240", "organs": ["renal"]},
+        {"id": "dialysis", "label": "End-stage renal disease or dialysis", "name": "End-stage renal disease or dialysis", "ko": "말기 신부전 또는 투석", "mondo": "MONDO:0005240", "organs": ["renal"]},
         {"id": "heart_failure", "label": "Heart failure", "name": "Heart failure", "ko": "심부전", "mondo": "MONDO:0005252", "organs": ["cardiovascular"]},
         {"id": "reduced_lvef", "label": "Reduced ejection fraction (LVEF < 50%)", "name": "Reduced ejection fraction", "ko": "좌심실 박출률 저하", "mondo": "MONDO:0005009", "organs": ["cardiovascular"]},
         {"id": "prior_anthracycline", "label": "Prior anthracycline exposure", "name": "Prior anthracycline exposure", "ko": "안트라사이클린 치료 경험", "mondo": "MONDO:0000001", "organs": ["cardiovascular"]},

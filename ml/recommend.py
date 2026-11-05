@@ -54,7 +54,7 @@ EN = {"haematologic": "Haematologic", "hepatic": "Hepatic", "cardiovascular": "C
 
 _reg = {r["id"]: r for r in csv.DictReader(open(R + "conf/comorbidity_registry.csv", encoding="utf-8"))}
 _by_label = {r["label"].lower(): r["id"] for r in _reg.values()}
-_by_label.update(dict.fromkeys(("esrd", "eskd", "hemodialysis", "haemodialysis", "peritoneal dialysis", "투석", "혈액투석", "복막투석"), "dialysis"))    # the judge may link these to no ESRD or dialysis concept
+_by_label.update(dict.fromkeys(("on dialysis", "dialysis", "esrd", "eskd", "hemodialysis", "haemodialysis", "peritoneal dialysis", "투석", "혈액투석", "복막투석"), "dialysis"))    # the judge may link these to no ESRD or dialysis concept
 _by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]   # ml/registry_concepts.py
 
 
@@ -1052,7 +1052,7 @@ ORGAN_KO = {"haematologic": "혈액", "hepatic": "간", "cardiovascular": "심�
             "infectious_immune": "감염/면역", "otologic": "귀"}
 KO = {"chronic_liver_disease": "만성 간질환", "cirrhosis": "간경변", "hepatitis_b_chronic": "만성 B형 간염", "hepatitis_c_chronic": "만성 C형 간염",
       "hepatic_vod_history": "간정맥폐쇄병 병력", "nafld": "비알코올성 지방간", "ckd_stage_3": "만성 콩팥병 3기", "ckd_stage_4_5": "만성 콩팥병 4–5기",
-      "dialysis": "투석 중", "heart_failure": "심부전", "reduced_lvef": "좌심실 박출률 저하", "prior_anthracycline": "안트라사이클린 치료 경험",
+      "dialysis": "말기 신부전 또는 투석", "heart_failure": "심부전", "reduced_lvef": "좌심실 박출률 저하", "prior_anthracycline": "안트라사이클린 치료 경험",
       "coronary_artery_disease": "관상동맥질환", "qt_prolongation": "QT 연장", "interstitial_lung_disease": "간질성 폐질환", "pulmonary_fibrosis": "폐섬유증",
       "copd": "만성 폐쇄성 폐질환", "prior_chest_radiation": "흉부 방사선 치료 경험", "peripheral_neuropathy": "말초신경병증",
       "diabetic_neuropathy": "당뇨병성 말초신경병증", "multiple_sclerosis": "다발성 경화증", "keratopathy_history": "각막병증 병력", "dry_eye": "안구건조증",
