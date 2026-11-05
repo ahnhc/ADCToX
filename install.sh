@@ -91,7 +91,9 @@ if [[ "${ADCTOX_SKIP_MODELS:-0}" != 1 ]]; then
   ADC_MODEL_HOME="$task_prefix/models" "$task_env/bin/python" -I "$task_tmp/app/adc_recommender_full.py" --update-models
 fi
 task_release="$task_prefix/apps/$task_version-${task_fields[2]:0:12}"
-if [[ ! -d "$task_release" ]]; then mv "$task_tmp/app" "$task_release"; fi
+if [[ ! -d "$task_release" ]]; then   # /tmp may be another file system, where mv copies: a half-copied folder must not look like a finished release
+  rm -rf "$task_prefix/apps/.release-new"; mv "$task_tmp/app" "$task_prefix/apps/.release-new"; mv "$task_prefix/apps/.release-new" "$task_release"
+fi
 "$task_env/bin/python" -I - "$task_prefix" "$task_release" "$task_bin" <<'PY'
 import os,pathlib,shlex,sys
 prefix,release,bindir=map(pathlib.Path,sys.argv[1:]);link=prefix/'.app-next'
