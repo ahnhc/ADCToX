@@ -1,0 +1,249 @@
+{"id": "chronic_liver_disease:0", "query": "chronic hepatic insufficiency", "condition": "chronic_liver_disease", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "chronic_liver_disease:1", "query": "long-term liver problems", "condition": "chronic_liver_disease", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "chronic_liver_disease:2", "query": "만성 간질환", "condition": "chronic_liver_disease", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "chronic_liver_disease:3", "query": "chronic livr disease", "condition": "chronic_liver_disease", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "chronic_liver_disease:4", "query": "chronic liver disease", "condition": "chronic_liver_disease", "form": "long", "split": "tune", "author": "llm"}
+{"id": "chronic_liver_disease:5", "query": "chronic liver failure", "condition": "chronic_liver_disease", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "cirrhosis:0", "query": "cirrhosis", "condition": "cirrhosis", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "cirrhosis:1", "query": "scarred liver", "condition": "cirrhosis", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "cirrhosis:2", "query": "간경변증", "condition": "cirrhosis", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "cirrhosis:3", "query": "cirhosis", "condition": "cirrhosis", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "cirrhosis:4", "query": "liver cirrhosis", "condition": "cirrhosis", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "cirrhosis:5", "query": "cirrhosis child pugh B", "condition": "cirrhosis", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "cirrhosis:6", "query": "decompensated cirrhosis", "condition": "cirrhosis", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "hepatitis_b_chronic:0", "query": "HBV", "condition": "hepatitis_b_chronic", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "hepatitis_b_chronic:1", "query": "hep B carrier", "condition": "hepatitis_b_chronic", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "hepatitis_b_chronic:2", "query": "만성 B형 간염", "condition": "hepatitis_b_chronic", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "hepatitis_b_chronic:3", "query": "chronic hepatits B", "condition": "hepatitis_b_chronic", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "hepatitis_b_chronic:4", "query": "chronic hepatitis B virus infection", "condition": "hepatitis_b_chronic", "form": "long", "split": "tune", "author": "llm"}
+{"id": "hepatitis_b_chronic:5", "query": "HBsAg positive", "condition": "hepatitis_b_chronic", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "hepatitis_c_chronic:0", "query": "HCV", "condition": "hepatitis_c_chronic", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "hepatitis_c_chronic:1", "query": "hep C", "condition": "hepatitis_c_chronic", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "hepatitis_c_chronic:2", "query": "C형 간염", "condition": "hepatitis_c_chronic", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "hepatitis_c_chronic:3", "query": "chronic hepatits C", "condition": "hepatitis_c_chronic", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "hepatitis_c_chronic:4", "query": "chronic hepatitis C virus infection", "condition": "hepatitis_c_chronic", "form": "long", "split": "tune", "author": "llm"}
+{"id": "hepatic_vod_history:0", "query": "hepatic VOD", "condition": "hepatic_vod_history", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "hepatic_vod_history:1", "query": "sinusoidal obstruction syndrome", "condition": "hepatic_vod_history", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "hepatic_vod_history:2", "query": "간정맥폐쇄질환", "condition": "hepatic_vod_history", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "hepatic_vod_history:3", "query": "veno-occlusve disease of the liver", "condition": "hepatic_vod_history", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "hepatic_vod_history:4", "query": "prior hepatic veno-occlusive disease", "condition": "hepatic_vod_history", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "nafld:0", "query": "NAFLD", "condition": "nafld", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "nafld:1", "query": "fatty liver", "condition": "nafld", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "nafld:2", "query": "지방간", "condition": "nafld", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "nafld:3", "query": "non alchoholic fatty liver disease", "condition": "nafld", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "nafld:4", "query": "non-alcoholic fatty liver disease", "condition": "nafld", "form": "long", "split": "tune", "author": "llm"}
+{"id": "nafld:5", "query": "NASH", "condition": "nafld", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "nafld:6", "query": "MASLD", "condition": "nafld", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "ckd_stage_3:0", "query": "CKD3", "condition": "ckd_stage_3", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "ckd_stage_3:1", "query": "stage 3 kidney disease", "condition": "ckd_stage_3", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "ckd_stage_3:2", "query": "만성 신장병 3기", "condition": "ckd_stage_3", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "ckd_stage_3:3", "query": "chronic kidney diseas stage 3", "condition": "ckd_stage_3", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "ckd_stage_3:4", "query": "chronic kidney disease stage 3b", "condition": "ckd_stage_3", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "ckd_stage_3:5", "query": "CKD stage 3a", "condition": "ckd_stage_3", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "ckd_stage_4_5:0", "query": "CKD 4", "condition": "ckd_stage_4_5", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "ckd_stage_4_5:1", "query": "late stage kidney disease", "condition": "ckd_stage_4_5", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "ckd_stage_4_5:2", "query": "만성 신장병 4기", "condition": "ckd_stage_4_5", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "ckd_stage_4_5:3", "query": "chronic kidney desease stage 4", "condition": "ckd_stage_4_5", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "ckd_stage_4_5:4", "query": "chronic kidney disease stage 4", "condition": "ckd_stage_4_5", "form": "long", "split": "tune", "author": "llm"}
+{"id": "ckd_stage_4_5:5", "query": "CKD stage 5", "condition": "ckd_stage_4_5", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "dialysis:0", "query": "ESRD", "condition": "dialysis", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "dialysis:1", "query": "kidney failure on dialysis", "condition": "dialysis", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "dialysis:2", "query": "투석 중", "condition": "dialysis", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "dialysis:3", "query": "hemodyalysis", "condition": "dialysis", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "dialysis:4", "query": "end-stage renal disease", "condition": "dialysis", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "dialysis:5", "query": "on hemodialysis", "condition": "dialysis", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "dialysis:6", "query": "말기 신부전", "condition": "dialysis", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "heart_failure:0", "query": "CHF", "condition": "heart_failure", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "heart_failure:1", "query": "weak heart", "condition": "heart_failure", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "heart_failure:2", "query": "심부전", "condition": "heart_failure", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "heart_failure:3", "query": "hart failure", "condition": "heart_failure", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "heart_failure:4", "query": "congestive heart failure", "condition": "heart_failure", "form": "long", "split": "tune", "author": "llm"}
+{"id": "heart_failure:5", "query": "HFrEF", "condition": "heart_failure", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "reduced_lvef:0", "query": "LVEF 35%", "condition": "reduced_lvef", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "reduced_lvef:1", "query": "weak pumping function of the heart", "condition": "reduced_lvef", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "reduced_lvef:2", "query": "좌심실 박출률 저하", "condition": "reduced_lvef", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "reduced_lvef:3", "query": "reduced ejection fractoin", "condition": "reduced_lvef", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "reduced_lvef:4", "query": "reduced left ventricular ejection fraction", "condition": "reduced_lvef", "form": "long", "split": "tune", "author": "llm"}
+{"id": "reduced_lvef:5", "query": "low EF", "condition": "reduced_lvef", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "prior_anthracycline:0", "query": "prior doxorubicin", "condition": "prior_anthracycline", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "prior_anthracycline:1", "query": "previous adriamycin chemo", "condition": "prior_anthracycline", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "prior_anthracycline:2", "query": "안트라사이클린 치료 경험", "condition": "prior_anthracycline", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "prior_anthracycline:3", "query": "prior anthracyclin", "condition": "prior_anthracycline", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "prior_anthracycline:4", "query": "prior anthracycline exposure", "condition": "prior_anthracycline", "form": "long", "split": "tune", "author": "llm"}
+{"id": "prior_anthracycline:5", "query": "prior epirubicin", "condition": "prior_anthracycline", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "coronary_artery_disease:0", "query": "coronary heart disease", "condition": "coronary_artery_disease", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "coronary_artery_disease:1", "query": "blocked heart arteries", "condition": "coronary_artery_disease", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "coronary_artery_disease:2", "query": "관상동맥질환", "condition": "coronary_artery_disease", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "coronary_artery_disease:3", "query": "coronary artry disease", "condition": "coronary_artery_disease", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "coronary_artery_disease:4", "query": "coronary artery disease", "condition": "coronary_artery_disease", "form": "long", "split": "tune", "author": "llm"}
+{"id": "coronary_artery_disease:5", "query": "ischemic heart disease", "condition": "coronary_artery_disease", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "qt_prolongation:0", "query": "QTc prolongation", "condition": "qt_prolongation", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "qt_prolongation:1", "query": "heart rhythm with a long QT interval", "condition": "qt_prolongation", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "qt_prolongation:2", "query": "QT 연장", "condition": "qt_prolongation", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "qt_prolongation:3", "query": "QT prolongaton", "condition": "qt_prolongation", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "qt_prolongation:4", "query": "prolongation of the QT interval", "condition": "qt_prolongation", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "qt_prolongation:5", "query": "long QT", "condition": "qt_prolongation", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "interstitial_lung_disease:0", "query": "ILD", "condition": "interstitial_lung_disease", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "interstitial_lung_disease:1", "query": "interstitial lung problems", "condition": "interstitial_lung_disease", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "interstitial_lung_disease:2", "query": "간질성 폐질환", "condition": "interstitial_lung_disease", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "interstitial_lung_disease:3", "query": "interstitial lung disese", "condition": "interstitial_lung_disease", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "interstitial_lung_disease:4", "query": "interstitial lung disease", "condition": "interstitial_lung_disease", "form": "long", "split": "tune", "author": "llm"}
+{"id": "interstitial_lung_disease:5", "query": "ILD history", "condition": "interstitial_lung_disease", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "pulmonary_fibrosis:0", "query": "IPF", "condition": "pulmonary_fibrosis", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "pulmonary_fibrosis:1", "query": "scarred lungs", "condition": "pulmonary_fibrosis", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "pulmonary_fibrosis:2", "query": "폐섬유화증", "condition": "pulmonary_fibrosis", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "pulmonary_fibrosis:3", "query": "pulmonary fibrosus", "condition": "pulmonary_fibrosis", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "pulmonary_fibrosis:4", "query": "idiopathic pulmonary fibrosis", "condition": "pulmonary_fibrosis", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "copd:0", "query": "COPD", "condition": "copd", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "copd:1", "query": "smoker's lung", "condition": "copd", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "copd:2", "query": "만성폐쇄성폐질환", "condition": "copd", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "copd:3", "query": "chronic obstructive pulmonry disease", "condition": "copd", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "copd:4", "query": "chronic obstructive pulmonary disease", "condition": "copd", "form": "long", "split": "tune", "author": "llm"}
+{"id": "copd:5", "query": "emphysema", "condition": "copd", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "prior_chest_radiation:0", "query": "prior chest RT", "condition": "prior_chest_radiation", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "prior_chest_radiation:1", "query": "radiation to the chest before", "condition": "prior_chest_radiation", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "prior_chest_radiation:2", "query": "흉부 방사선 치료 경험", "condition": "prior_chest_radiation", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "prior_chest_radiation:3", "query": "prior thoracic radiotheraphy", "condition": "prior_chest_radiation", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "prior_chest_radiation:4", "query": "prior thoracic radiotherapy", "condition": "prior_chest_radiation", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "prior_chest_radiation:5", "query": "previous mediastinal irradiation", "condition": "prior_chest_radiation", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "peripheral_neuropathy:0", "query": "CIPN", "condition": "peripheral_neuropathy", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "peripheral_neuropathy:1", "query": "numb tingly feet", "condition": "peripheral_neuropathy", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "peripheral_neuropathy:2", "query": "말초신경병증", "condition": "peripheral_neuropathy", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "peripheral_neuropathy:3", "query": "peripheral neuropthy", "condition": "peripheral_neuropathy", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "peripheral_neuropathy:4", "query": "peripheral neuropathy", "condition": "peripheral_neuropathy", "form": "long", "split": "tune", "author": "llm"}
+{"id": "peripheral_neuropathy:5", "query": "neuropathy", "condition": "peripheral_neuropathy", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "diabetic_neuropathy:0", "query": "DPN", "condition": "diabetic_neuropathy", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "diabetic_neuropathy:1", "query": "nerve damage from diabetes", "condition": "diabetic_neuropathy", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "diabetic_neuropathy:2", "query": "당뇨병성 신경병증", "condition": "diabetic_neuropathy", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "diabetic_neuropathy:3", "query": "diabetic neuropthy", "condition": "diabetic_neuropathy", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "diabetic_neuropathy:4", "query": "diabetic peripheral neuropathy", "condition": "diabetic_neuropathy", "form": "long", "split": "tune", "author": "llm"}
+{"id": "multiple_sclerosis:0", "query": "RRMS", "condition": "multiple_sclerosis", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "multiple_sclerosis:1", "query": "myelin attacked by the immune system", "condition": "multiple_sclerosis", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "multiple_sclerosis:2", "query": "다발성 경화증", "condition": "multiple_sclerosis", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "multiple_sclerosis:3", "query": "multiple sclerosus", "condition": "multiple_sclerosis", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "multiple_sclerosis:4", "query": "multiple sclerosis", "condition": "multiple_sclerosis", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "multiple_sclerosis:5", "query": "disseminated sclerosis", "condition": "multiple_sclerosis", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "keratopathy_history:0", "query": "keratopathy", "condition": "keratopathy_history", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "keratopathy_history:1", "query": "damaged cornea from a previous drug", "condition": "keratopathy_history", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "keratopathy_history:2", "query": "각막병증", "condition": "keratopathy_history", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "keratopathy_history:3", "query": "keratopthy", "condition": "keratopathy_history", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "keratopathy_history:4", "query": "prior keratopathy", "condition": "keratopathy_history", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "keratopathy_history:5", "query": "corneal epithelial damage history", "condition": "keratopathy_history", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "dry_eye:0", "query": "keratoconjunctivitis sicca", "condition": "dry_eye", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "dry_eye:1", "query": "dry eyes", "condition": "dry_eye", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "dry_eye:2", "query": "안구건조증", "condition": "dry_eye", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "dry_eye:3", "query": "dry eey disease", "condition": "dry_eye", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "dry_eye:4", "query": "dry eye disease", "condition": "dry_eye", "form": "long", "split": "tune", "author": "llm"}
+{"id": "glaucoma:0", "query": "POAG", "condition": "glaucoma", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "glaucoma:1", "query": "optic nerve damage from eye pressure", "condition": "glaucoma", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "glaucoma:2", "query": "녹내장", "condition": "glaucoma", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "glaucoma:3", "query": "glaucomma", "condition": "glaucoma", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "glaucoma:4", "query": "primary open angle glaucoma", "condition": "glaucoma", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "prior_corneal_surgery:0", "query": "prior corneal transplant", "condition": "prior_corneal_surgery", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "prior_corneal_surgery:1", "query": "had a cornea transplant", "condition": "prior_corneal_surgery", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "prior_corneal_surgery:2", "query": "각막이식 수술", "condition": "prior_corneal_surgery", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "prior_corneal_surgery:3", "query": "prior corneal surgury", "condition": "prior_corneal_surgery", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "prior_corneal_surgery:4", "query": "prior corneal surgery", "condition": "prior_corneal_surgery", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "prior_corneal_surgery:5", "query": "prior LASIK", "condition": "prior_corneal_surgery", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "thrombocytopenia:0", "query": "low platelets", "condition": "thrombocytopenia", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "thrombocytopenia:1", "query": "platelet count is low", "condition": "thrombocytopenia", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "thrombocytopenia:2", "query": "혈소판감소증", "condition": "thrombocytopenia", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "thrombocytopenia:3", "query": "thrombocytopnia", "condition": "thrombocytopenia", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "thrombocytopenia:4", "query": "thrombocytopenia", "condition": "thrombocytopenia", "form": "long", "split": "tune", "author": "llm"}
+{"id": "thrombocytopenia:5", "query": "low platelet count", "condition": "thrombocytopenia", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "itp:0", "query": "ITP", "condition": "itp", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "itp:1", "query": "immune platelet disorder", "condition": "itp", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "itp:2", "query": "면역성 혈소판감소증", "condition": "itp", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "itp:3", "query": "immune thrombocytopnia", "condition": "itp", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "itp:4", "query": "immune thrombocytopenic purpura", "condition": "itp", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "neutropenia_chronic:0", "query": "low ANC long term", "condition": "neutropenia_chronic", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "neutropenia_chronic:1", "query": "low neutrophil count that never recovers", "condition": "neutropenia_chronic", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "neutropenia_chronic:2", "query": "만성 호중구감소증", "condition": "neutropenia_chronic", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "neutropenia_chronic:3", "query": "chronic neutropnia", "condition": "neutropenia_chronic", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "neutropenia_chronic:4", "query": "chronic neutropenia", "condition": "neutropenia_chronic", "form": "long", "split": "tune", "author": "llm"}
+{"id": "anaemia_chronic:0", "query": "anemia of chronic disease", "condition": "anaemia_chronic", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "anaemia_chronic:1", "query": "always anemic", "condition": "anaemia_chronic", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "anaemia_chronic:2", "query": "만성 빈혈", "condition": "anaemia_chronic", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "anaemia_chronic:3", "query": "chronic anemai", "condition": "anaemia_chronic", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "anaemia_chronic:4", "query": "chronic anaemia", "condition": "anaemia_chronic", "form": "long", "split": "tune", "author": "llm"}
+{"id": "mds:0", "query": "MDS", "condition": "mds", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "mds:1", "query": "pre-leukemia bone marrow disorder", "condition": "mds", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "mds:2", "query": "골수형성이상증후군", "condition": "mds", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "mds:3", "query": "myelodysplastic sydrome", "condition": "mds", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "mds:4", "query": "myelodysplastic syndrome", "condition": "mds", "form": "long", "split": "tune", "author": "llm"}
+{"id": "prior_hsct:0", "query": "prior HSCT", "condition": "prior_hsct", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "prior_hsct:1", "query": "prior bone marrow transplant", "condition": "prior_hsct", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "prior_hsct:2", "query": "조혈모세포 이식 경험", "condition": "prior_hsct", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "prior_hsct:3", "query": "prior stem cell transpant", "condition": "prior_hsct", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "prior_hsct:4", "query": "prior hematopoietic stem cell transplant", "condition": "prior_hsct", "form": "long", "split": "tune", "author": "llm"}
+{"id": "prior_hsct:5", "query": "prior BMT", "condition": "prior_hsct", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "inflammatory_bowel_disease:0", "query": "IBD", "condition": "inflammatory_bowel_disease", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "inflammatory_bowel_disease:1", "query": "inflamed bowel disease", "condition": "inflammatory_bowel_disease", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "inflammatory_bowel_disease:2", "query": "염증성 장질환", "condition": "inflammatory_bowel_disease", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "inflammatory_bowel_disease:3", "query": "inflamatory bowel disease", "condition": "inflammatory_bowel_disease", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "inflammatory_bowel_disease:4", "query": "inflammatory bowel disease", "condition": "inflammatory_bowel_disease", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "inflammatory_bowel_disease:5", "query": "Crohn's disease", "condition": "inflammatory_bowel_disease", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "inflammatory_bowel_disease:6", "query": "ulcerative colitis", "condition": "inflammatory_bowel_disease", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "inflammatory_bowel_disease:7", "query": "궤양성 대장염", "condition": "inflammatory_bowel_disease", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "prior_bowel_resection:0", "query": "prior colectomy", "condition": "prior_bowel_resection", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "prior_bowel_resection:1", "query": "had part of the intestine removed", "condition": "prior_bowel_resection", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "prior_bowel_resection:2", "query": "장절제술 과거력", "condition": "prior_bowel_resection", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "prior_bowel_resection:3", "query": "prior bowl resection", "condition": "prior_bowel_resection", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "prior_bowel_resection:4", "query": "prior bowel resection", "condition": "prior_bowel_resection", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "chronic_pancreatitis:0", "query": "chronic calcific pancreatitis", "condition": "chronic_pancreatitis", "form": "synonym", "split": "holdout", "author": "llm"}
+{"id": "chronic_pancreatitis:1", "query": "long-standing pancreas inflammation", "condition": "chronic_pancreatitis", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "chronic_pancreatitis:2", "query": "만성 췌장염", "condition": "chronic_pancreatitis", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "chronic_pancreatitis:3", "query": "chronic pancretitis", "condition": "chronic_pancreatitis", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "chronic_pancreatitis:4", "query": "chronic pancreatitis", "condition": "chronic_pancreatitis", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "severe_psoriasis:0", "query": "PsO", "condition": "severe_psoriasis", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "severe_psoriasis:1", "query": "bad psoriasis", "condition": "severe_psoriasis", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "severe_psoriasis:2", "query": "건선", "condition": "severe_psoriasis", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "severe_psoriasis:3", "query": "psoriasus", "condition": "severe_psoriasis", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "severe_psoriasis:4", "query": "severe plaque psoriasis", "condition": "severe_psoriasis", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "prior_sjs_ten:0", "query": "SJS", "condition": "prior_sjs_ten", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "prior_sjs_ten:1", "query": "SJS/TEN", "condition": "prior_sjs_ten", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "prior_sjs_ten:2", "query": "스티븐스-존슨 증후군", "condition": "prior_sjs_ten", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "prior_sjs_ten:3", "query": "Stevens Johnsen syndrome", "condition": "prior_sjs_ten", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "prior_sjs_ten:4", "query": "prior Stevens-Johnson syndrome", "condition": "prior_sjs_ten", "form": "long", "split": "tune", "author": "llm"}
+{"id": "prior_sjs_ten:5", "query": "TEN", "condition": "prior_sjs_ten", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "prior_sjs_ten:6", "query": "severe skin peeling reaction to a drug", "condition": "prior_sjs_ten", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "prior_sjs_ten:7", "query": "toxic epidermal necrolysis", "condition": "prior_sjs_ten", "form": "long", "split": "tune", "author": "llm"}
+{"id": "type_2_diabetes:0", "query": "T2DM", "condition": "type_2_diabetes", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "type_2_diabetes:1", "query": "adult-onset diabetes", "condition": "type_2_diabetes", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "type_2_diabetes:2", "query": "제2형 당뇨병", "condition": "type_2_diabetes", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "type_2_diabetes:3", "query": "type 2 diabetis", "condition": "type_2_diabetes", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "type_2_diabetes:4", "query": "type 2 diabetes mellitus", "condition": "type_2_diabetes", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "type_2_diabetes:5", "query": "DM2", "condition": "type_2_diabetes", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "type_2_diabetes:6", "query": "당뇨병", "condition": "type_2_diabetes", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "hypothyroidism:0", "query": "hypothyroid", "condition": "hypothyroidism", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "hypothyroidism:1", "query": "underactive thyroid", "condition": "hypothyroidism", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "hypothyroidism:2", "query": "갑상선기능저하증", "condition": "hypothyroidism", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "hypothyroidism:3", "query": "hypothyroidsm", "condition": "hypothyroidism", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "hypothyroidism:4", "query": "hypothyroidism", "condition": "hypothyroidism", "form": "long", "split": "tune", "author": "llm"}
+{"id": "hiv_controlled:0", "query": "HIV", "condition": "hiv_controlled", "form": "abbrev", "split": "holdout", "author": "llm"}
+{"id": "hiv_controlled:1", "query": "HIV positive on antiretrovirals", "condition": "hiv_controlled", "form": "lay", "split": "holdout", "author": "llm"}
+{"id": "hiv_controlled:2", "query": "HIV 감염", "condition": "hiv_controlled", "form": "korean", "split": "holdout", "author": "llm"}
+{"id": "hiv_controlled:3", "query": "HIV infecton", "condition": "hiv_controlled", "form": "typo", "split": "holdout", "author": "llm"}
+{"id": "hiv_controlled:4", "query": "HIV infection on antiretroviral therapy", "condition": "hiv_controlled", "form": "long", "split": "holdout", "author": "llm"}
+{"id": "active_autoimmune:0", "query": "SLE", "condition": "active_autoimmune", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "active_autoimmune:1", "query": "lupus", "condition": "active_autoimmune", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "active_autoimmune:2", "query": "류마티스 관절염", "condition": "active_autoimmune", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "active_autoimmune:3", "query": "systemic lupus erythematosis", "condition": "active_autoimmune", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "active_autoimmune:4", "query": "active autoimmune disease", "condition": "active_autoimmune", "form": "long", "split": "tune", "author": "llm"}
+{"id": "active_autoimmune:5", "query": "rheumatoid arthritis", "condition": "active_autoimmune", "form": "long", "split": "tune", "author": "llm"}
+{"id": "hearing_loss:0", "query": "SNHL", "condition": "hearing_loss", "form": "abbrev", "split": "tune", "author": "llm"}
+{"id": "hearing_loss:1", "query": "hard of hearing", "condition": "hearing_loss", "form": "lay", "split": "tune", "author": "llm"}
+{"id": "hearing_loss:2", "query": "난청", "condition": "hearing_loss", "form": "korean", "split": "tune", "author": "llm"}
+{"id": "hearing_loss:3", "query": "hearin loss", "condition": "hearing_loss", "form": "typo", "split": "tune", "author": "llm"}
+{"id": "hearing_loss:4", "query": "sensorineural hearing loss", "condition": "hearing_loss", "form": "long", "split": "tune", "author": "llm"}
+{"id": "hearing_loss:5", "query": "deafness", "condition": "hearing_loss", "form": "synonym", "split": "tune", "author": "llm"}
+{"id": "ambiguous:0", "query": "MS", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:1", "query": "CAD", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:2", "query": "PE", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:3", "query": "RA", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:4", "query": "UC", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:5", "query": "LC", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:6", "query": "CLD", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:7", "query": "DED", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:8", "query": "HD", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}
+{"id": "ambiguous:9", "query": "TCP", "condition": null, "form": "ambiguous", "split": "none", "author": "llm"}

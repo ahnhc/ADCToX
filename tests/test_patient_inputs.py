@@ -51,15 +51,15 @@ def _typed(monkeypatch, concept, name, organs):
     ("MONDO:0019514", "hepatic veno-occlusive disease", ["hepatic"], "hepatic_vod_history", "gemtuzumab-ozogamicin", "hepatic", "monitor"),
 ])
 def test_a_picked_reading_counts_like_the_same_concept_typed(monkeypatch, concept, name, organs, registry, adc, domain, category):
-    _picked(monkeypatch, "CHF", concept, name, organs)
-    s, _, ids, _, pc = RC.resolve(["CHF"])
+    _picked(monkeypatch, "pump trouble", concept, name, organs)
+    s, _, ids, _, pc = RC.resolve(["pump trouble"])
     assert ids == {registry}
-    verdict = row_of(RC.recommend(["CHF"])[0], adc)["verdict"]
+    verdict = row_of(RC.recommend(["pump trouble"])[0], adc)["verdict"]
     assert any(c == category and r["domain"] == domain and registry in r["when"].get("condition", []) for c, r in verdict.known)
     picked = s.tolist(), pc
-    monkeypatch.delitem(RC.CHOICE, "CHF")
+    monkeypatch.delitem(RC.CHOICE, "pump trouble")
     _typed(monkeypatch, concept, name, organs)
-    s, _, ids, _, pc = RC.resolve(["CHF"])
+    s, _, ids, _, pc = RC.resolve(["pump trouble"])
     assert ids == {registry} and (s.tolist(), pc) == picked
 
 

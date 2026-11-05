@@ -153,6 +153,7 @@ def main():
     data = dict(evidence=E, rules=yaml.safe_load(open(R / "conf/label_restrictions.yaml", encoding="utf-8"))["rules"],
                 registry=list(csv.DictReader(open(R / "conf/comorbidity_registry.csv", encoding="utf-8"))),
                 registry_concepts=json.load(open(R / "conf/registry_concepts.json", encoding="utf-8"))["concepts"],
+                registry_aliases=yaml.safe_load(open(R / "conf/registry_aliases.yaml", encoding="utf-8"))["aliases"],
                 checks=yaml.safe_load(open(R / "conf/patient_checks.yaml", encoding="utf-8"))["checks"], mondo={} if FULL else mondo_terms(),
                 profiles=__import__("suggest").read_profiles(R / "data/curated/disease_profiles"), nonhuman=sorted(__import__("suggest").nonhuman_ids(OBO)),
                 mondo_ko={t: [k, en] + list(alt) for t, (k, alt, en) in __import__("suggest").read_mondo_ko(R / "data/curated/korean/mondo_ko.jsonl").items()},
@@ -177,6 +178,8 @@ def main():
              '_reg = {r["id"]: r for r in _portable_data()["registry"]}', "recommend")
     rc = sub(rc, '_by_concept = json.load(open(R + "conf/registry_concepts.json", encoding="utf-8"))["concepts"]',
              '_by_concept = _portable_data()["registry_concepts"]', "recommend")
+    rc = sub(rc, '_ALIASES = __import__("yaml").safe_load(open(R + "conf/registry_aliases.yaml", encoding="utf-8"))["aliases"]',
+             '_ALIASES = _portable_data()["registry_aliases"]', "recommend")
     if not FULL:
         rc = sub(rc, 'HAS_LEARNED = True ', 'HAS_LEARNED = False', "recommend")
         i = rc.index("def _free_info("); j = rc.index("\ndef ", i + 10)
