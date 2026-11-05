@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "app_version": "0.6.12",
-  "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.6.12/ADCTOX-windows.zip",
-  "size": 223305491,
-  "sha256": "733c2cb233db295daa6d77a036a50eaa90e867ea89cdb4081dd475700254721a",
+  "app_version": "0.6.13",
+  "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.6.13/ADCTOX-windows.zip",
+  "size": 223311332,
+  "sha256": "c3aa085ca27127ad37d53c0bdb97f4dfa2a802c3bb02f2d9775930cd8a08047d",
   "python": "3.12.10 embeddable",
   "torch_version": "2.11.0",
   "wheels": [
@@ -42,7 +42,7 @@
     "setuptools-81.0.0-py3-none-any.whl",
     "shellingham-1.5.4-py2.py3-none-any.whl",
     "sympy-1.14.0-py3-none-any.whl",
-    "threadpoolctl-3.7.0-py3-none-any.whl",
+    "threadpoolctl-3.8.0-py3-none-any.whl",
     "tokenizers-0.23.3-cp310-abi3-win_amd64.whl",
     "torch-2.11.0-cp312-cp312-win_amd64.whl",
     "tqdm-4.70.1-py3-none-any.whl",
