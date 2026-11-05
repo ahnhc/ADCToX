@@ -174,7 +174,7 @@ Copy-Item launcher.py, ADCTOX.bat, ADCTOX-web.bat, ADCTOX-cli.bat, README.txt AD
 Write-Host "5/5 Check and zip"
 & ADCTOX\python\python.exe -I ADCTOX\launcher.py --version
 if ($LASTEXITCODE -ne 0) {{ throw "the packaged app does not start" }}
-& ADCTOX\python\python.exe -c "import torch, transformers; print('torch', torch.__version__)"
+& ADCTOX\python\python.exe -c "import torch, transformers, sentence_transformers; print('torch', torch.__version__)"
 if ($LASTEXITCODE -ne 0) {{ throw "packages do not import (install the Microsoft Visual C++ Redistributable x64 and run again)" }}
 Remove-Item python-embed.zip, get-pip.py
 if (Test-Path ADCTOX-windows.zip) {{ Remove-Item ADCTOX-windows.zip }}
@@ -190,7 +190,7 @@ KIT_README = r"""ADCTOX {version} Windows 빌드 키트
 2. build.bat를 더블클릭합니다. 5단계로 진행되며 수 분 걸립니다.
    1/5 python.org의 Python 3.12.10 embeddable (SHA256 확인)
    2/5 pip
-   3/5 PyTorch {torch} CPU와 앱 패키지(transformers 등)
+   3/5 PyTorch {torch} CPU와 앱 패키지(transformers, sentence-transformers 등)
    4/5 앱 파일 배치
    5/5 실행 확인과 ADCTOX-windows.zip 생성
 3. 끝나면 ADCTOX\ADCTOX.bat로 실행합니다. 첫 실행 때 모델(약 1 GB)을 받습니다.
