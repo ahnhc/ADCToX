@@ -49,6 +49,17 @@ def test_rows_carry_the_nearest_concepts_the_linked_one_first(folder):
     assert len({c["concept"] for c in a["candidates"]}) == len(a["candidates"]) and b["candidates"][0]["concept"] == b["concept"]
 
 
+def test_under_the_threshold_a_row_is_read_with_low_set_down_to_the_lower_bound(folder):
+    import scratch_runtime as SR, os
+    a = SR.judge(["tuberculosis"], folder)[0]
+    assert a["ok"] and not a["low"]
+    j = json.load(open(os.path.join(folder, "judge.json"), encoding="utf-8")); j["vthr"] = 1.5
+    json.dump(j, open(os.path.join(folder, "judge.json"), "w", encoding="utf-8")); SR._M.clear()
+    a = SR.judge(["tuberculosis"], folder)[0]
+    assert a["ok"] and a["low"] and a["concept"] == "MONDO:1"
+    SR._M.clear()
+
+
 def test_rows_enter_the_app_as_mondo_links_or_ai_judgments():
     import recommend as RC
     lk = RC._scratch_link(dict(concept="MONDO:1", name="tuberculosis", organs=["pulmonary"], via="record", valid=0.99, ok=True, sim=0.97))

@@ -141,7 +141,7 @@ def _free_info(free, progress=None):
 
 
 TIE, CONFIRM, SHORT = 0.02, 0.8, 4    # candidates this close to the first are also readings of the text; a weaker match asks to confirm the read; letters in a short input (mondo_index.TIE)
-DOUBT = {"confirm": "Confirm this read"}
+DOUBT = {"confirm": "Confirm this read", "low": "Low confidence, check this"}
 
 
 _GENERAL_ORGANS = {}
@@ -181,13 +181,14 @@ def _candidates(r, typed):
     return out
 
 
-def _readings(rows, typed):
-    """-> (readings, whether the user chooses): a short input with candidates on different organs, or tied candidates on different
-    organs. A concept without organs does not disagree with anything. Korean names are not short: 3 or 4 letters are a whole word."""
+def _readings(rows, typed, low=False):
+    """-> (readings, whether the user chooses): a short input or a low-confidence read with candidates on different organs, or tied
+    candidates on different organs. A concept without organs does not disagree with anything. Korean names are not short: 3 or 4
+    letters are a whole word."""
     rows = [x for x in rows if x["concept"].startswith(("MONDO:", "HP:")) and not x.get("numbered")]
     if not rows: return [], False
     short = not re.search("[가-힣]", typed) and sum(ch.isalpha() for ch in typed) <= SHORT
-    pool = rows if short else [x for x in rows if x["sim"] >= rows[0]["sim"] - TIE]
+    pool = rows if short or low else [x for x in rows if x["sim"] >= rows[0]["sim"] - TIE]
     if short: pool = pool[:1] + _abbreviations(typed) + pool[1:]
     named, seen = [], set()
     for x in pool:
@@ -245,12 +246,13 @@ def _scratch_link(r, typed="", read=None):
     lk = dict(mondo=None, name="", sim=r["sim"], axes=[], valid=r["valid"], gate=r["ok"], readings=[], ambiguous=False, doubt=None, judge_via=r["via"], judge=True, p=r.get("p"),
               concept=r["concept"], concept_name=r["name"])
     if not r["ok"]: return lk
-    lk["readings"], lk["ambiguous"] = _readings(rows, typed)
+    lk["readings"], lk["ambiguous"] = _readings(rows, typed, r.get("low"))
     if is_cancer(r["concept"]): lk["ambiguous"] = False                                # named: nothing to ask
     if unnamed:
         lk["ambiguous"] = True
         if CANCER_WORD.search(" ".join(texts)): lk["readings"][0]["says_cancer"] = True
-    if r["concept"] and r["sim"] < CONFIRM: lk["doubt"] = "confirm"
+    if r.get("low"): lk["doubt"] = "low"
+    elif r["concept"] and r["sim"] < CONFIRM: lk["doubt"] = "confirm"
     if r["concept"] and r["concept"].startswith("MONDO:"): lk.update(mondo=r["concept"], name=r["name"], axes=list(r["organs"]))
     elif r["organs"]: lk.update(judged=list(r["organs"]), sim=0.0, judge_via="name")
     return lk

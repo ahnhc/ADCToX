@@ -202,3 +202,26 @@ def test_an_alias_and_a_pick_set_the_cancer(judged, monkeypatch):
     assert read("lung cancer")[0].startswith("cancer;") and RC.ambiguous_conditions(["lung cancer"]) == []
     monkeypatch.setitem(RC.CHOICE, "ild", AITL)
     assert RC.resolve(["ild"])[3][0][1].startswith("cancer;")
+
+
+def test_a_low_probability_reads_with_a_mark_and_a_lower_one_stays_rejected(judged):
+    read = judged({"TB": dict(row("MONDO:0018076", "tuberculosis", ["pulmonary"], valid=0.95), low=True),
+                   "xqz": dict(concept=None, name="", organs=[], via=None, valid=0.5, ok=False, low=False, sim=0.2, p={}, judged=[], candidates=[])})
+    how, organs, link = read("TB")
+    assert organs == {"pulmonary"} and link["gate"] and link["doubt"] == "low" and "not understood" not in how
+    assert RC.analyze_conditions(["TB"])[0]["doubt"] == "low" and RC.DOUBT["low"] == "Low confidence, check this"
+    how, organs, link = read("xqz")
+    assert organs == set() and "not understood" in how and link["doubt"] is None
+
+
+def test_a_low_read_whose_candidates_disagree_gets_the_choice_screen(judged):
+    read = judged({"bad blood": dict(row("MONDO:1", "a", ["ocular"], 0.9, valid=0.95, others=[("MONDO:2", "b", ["renal"], 0.7)]), low=True)})
+    assert read("bad blood")[2]["ambiguous"]
+
+
+def test_the_mark_reaches_both_screens(judged):
+    import webapp
+    read = judged({"TB": dict(row("MONDO:0018076", "tuberculosis", ["pulmonary"], valid=0.95), low=True)})
+    read("TB")
+    report = RC.analyze_conditions(["TB"])[0]
+    assert webapp._report(RC, report, {})["check"] == "Low confidence, check this"
