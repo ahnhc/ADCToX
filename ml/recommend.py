@@ -1128,10 +1128,10 @@ HELP = """ADCTOX {version}
 연구용 도구입니다. 독성 발생 확률이 아니며 처방 결정을 대신하지 않습니다.
 
 사용
-  adctox                         입력 화면으로 시작 (질환 → 검사 수치 → AI 장기 분석 → 우선순위 → 결과)
-  adctox --plain                 전체 화면 없이 질문에 답하는 방식으로 입력
-  adctox --web                   같은 다섯 단계를 브라우저에서 (이 컴퓨터 안에서만 실행. ADCTOX_NO_BROWSER=1이면 주소만 표시, ADCTOX_PORT=8765면 그 포트)
-  adctox-web                     adctox --web과 같음
+  adctox                         브라우저에서 시작 (질환 → 검사 수치 → AI 장기 분석 → 우선순위 → 결과). 이 컴퓨터 안에서만 실행.
+                                 ADCTOX_NO_BROWSER=1이면 주소만 표시, ADCTOX_PORT=8765면 그 포트
+  adctox-cli                     같은 다섯 단계를 터미널 화면에서 (adctox --cli와 같음)
+  adctox --plain                 터미널에서 전체 화면 없이 질문에 답하는 방식으로 입력
   질환과 검사 수치는 입력 화면에서만 넣습니다. 명령줄 인자로는 받지 않습니다.
 
 입력 화면 키
@@ -1168,8 +1168,8 @@ def main():
     from adc_version import APP_VERSION
     arguments = sys.argv[1:]
     import adc_updates
-    if adc_updates.app_layout():                      # an app updated in place: adctox-web appears beside adctox at its first start, --version included
-        try: adc_updates.ensure_web_launcher()
+    if adc_updates.app_layout():                      # an app updated in place: adctox-web and adctox-cli appear beside adctox at its first start, --version included
+        try: adc_updates.ensure_launchers()
         except OSError: pass
     if arguments == ["--version"]:
         print(APP_VERSION); return
@@ -1184,24 +1184,24 @@ def main():
         print(HELP.format(version=APP_VERSION, n=len(_evidence()[0]))); return
     cap_threads()
     import term
-    if "--no-wt" in sys.argv: sys.argv.remove("--no-wt")
-    else: term.into_windows_terminal()                 # double-clicked on Windows: reopen in Windows Terminal when there is one
+    if "--no-wt" in sys.argv: sys.argv.remove("--no-wt"); arguments = sys.argv[1:]
+    elif arguments == ["--cli"]: term.into_windows_terminal()   # on Windows: reopen the terminal screens in Windows Terminal when there is one
     term.windows_console()                              # UTF-8 and ANSI colours in a Windows console
     if arguments == ["--self-test"]:                    # installed-app check (CI): one fixed example patient, the printed table
         conds = list(SELF_TEST)
         if HAS_LEARNED: analyze_conditions(conds)
         rows, s, notes, ck = recommend(conds); render(rows, s, notes, ck); return
-    if arguments == ["--web"]:                         # 0.6.3: the same steps in the browser, served on this computer only (ml/webapp.py)
+    if arguments in ([], ["--web"]):                   # 0.6.12: the browser is the default (ml/webapp.py, served on this computer only); --cli for the terminal
         import webapp
         preload(); webapp.serve(sys.modules[__name__]); return
     if "--web" in arguments:                           # --web takes no other argument
         print("adctox: --web는 단독으로 씁니다 (adctox --web).", file=sys.stderr); sys.exit(2)
-    other = [a for a in arguments if a != "--plain"]
+    other = [a for a in arguments if a not in ("--cli", "--plain")]
     if other:                                          # 0.5.3: conditions and lab values are entered on the screens only
-        print(f"adctox: 알 수 없는 인자입니다: {' '.join(other)}\n질환과 검사 수치는 입력 화면에서 넣습니다. adctox 만 실행하세요 (옵션: adctox --help).", file=sys.stderr)
+        print(f"adctox: 알 수 없는 인자입니다: {' '.join(other)}\n질환과 검사 수치는 입력 화면에서 넣습니다. 브라우저는 adctox, 터미널은 adctox-cli (옵션: adctox --help).", file=sys.stderr)
         sys.exit(2)
     if not sys.stdin.isatty():
-        print("adctox: 입력 화면이 필요합니다. 터미널에서 실행하세요 (설치 확인은 adctox --self-test).", file=sys.stderr); sys.exit(2)
+        print("adctox-cli: 입력 화면이 필요합니다. 터미널에서 실행하세요 (브라우저는 adctox, 설치 확인은 adctox --self-test).", file=sys.stderr); sys.exit(2)
     if _tui_ok():                                      # the terminal session: five steps and the result screen
         import form
         preload()

@@ -8,10 +8,11 @@ Built on Linux from the same app archive the Ubuntu release uses, so app and mod
                           releases/requirements-cpu.txt with their dependencies, as binary wheels only
   ADCTOX/apps/<release>/  the three files of adctox-ubuntu.tar.gz (adctox --update-app adds newer releases here)
   ADCTOX/app.txt          which release starts
-  ADCTOX/launcher.py      starts that release; on the first start it downloads the models (about 1 GB) into
+  ADCTOX/launcher.py      starts that release; on the first start it downloads the models (about 300 MB) into
                           %LOCALAPPDATA%\\adctox\\models with the model updater
   ADCTOX/ADCTOX.bat       double-click entry point
-  ADCTOX/ADCTOX-web.bat   the same five steps in the browser (ADCTOX.bat --web)
+  ADCTOX/ADCTOX-cli.bat   the same five steps in the terminal (ADCTOX.bat --cli); ADCTOX.bat opens the browser
+  ADCTOX/ADCTOX-web.bat   ADCTOX.bat --web, the same as ADCTOX.bat (kept for 0.6.11 and older shortcuts)
 Outputs dist/releases/windows/ADCTOX-windows.zip and windows.json (size, SHA256, release URL).
 Downloads are cached in ADCTOX_WIN_CACHE (default /data/hyeongchanahn/adctox/raw/win_build on the lab server, else ~/.cache/adctox-win).
 """
@@ -31,7 +32,8 @@ BAT = ('@echo off\r\n'
        'title ADCTOX\r\n'
        '"%~dp0python\\python.exe" -I "%~dp0launcher.py" %*\r\n'
        'if errorlevel 1 pause\r\n')
-WEB_BAT = '@echo off\r\ncall "%~dp0ADCTOX.bat" --web %*\r\n'      # ADCTOX-web.bat: the same five steps in the browser
+WEB_BAT = '@echo off\r\ncall "%~dp0ADCTOX.bat" --web %*\r\n'      # ADCTOX-web.bat: the browser, as ADCTOX.bat
+CLI_BAT = '@echo off\r\ncall "%~dp0ADCTOX.bat" --cli %*\r\n'      # ADCTOX-cli.bat: the same five steps in the terminal
 LAUNCHER = '''"""Starts the ADCTOX release named in app.txt with this folder's Python; downloads the models on the first start."""
 import os, runpy, subprocess, sys
 from pathlib import Path
@@ -55,8 +57,8 @@ def main():
         return 1
     app = HERE / "apps" / (HERE / "app.txt").read_text().strip() / "adc_recommender_full.py"
     home = Path(os.environ.get("ADC_MODEL_HOME") or Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" / "Local"))) / "adctox" / "models")
-    if not (home / "current.txt").exists() and sys.argv[1:] in ([], ["--web"]):     # the app's own start, in a console or the browser
-        print("ADCTOX: first start. Downloading the models (about 1 GB, once) ...", flush=True)
+    if not (home / "current.txt").exists() and sys.argv[1:] in ([], ["--web"], ["--cli"]):     # the app's own start, in the browser or the terminal
+        print("ADCTOX: first start. Downloading the models (about 300 MB, once) ...", flush=True)
         if subprocess.call([sys.executable, "-I", str(app), "--update-models"]):
             print("The model download did not finish. Check the internet connection and start ADCTOX again.")
             return 1
@@ -71,10 +73,9 @@ if __name__ == "__main__":
 README = """ADCTOX {version} (Windows)
 
 실행
-  압축을 푼 ADCTOX 폴더의 ADCTOX.bat를 더블클릭합니다.
-  처음 실행할 때 모델 파일(약 1 GB)을 한 번 내려받습니다. 저장 위치: %LOCALAPPDATA%\\adctox\\models
-  Windows Terminal이 있으면 그 창에서 열립니다.
-  ADCTOX-web.bat를 더블클릭하면 같은 다섯 단계가 브라우저에서 열립니다 (이 컴퓨터 안에서만).
+  압축을 푼 ADCTOX 폴더의 ADCTOX.bat를 더블클릭하면 브라우저에서 열립니다 (이 컴퓨터 안에서만).
+  처음 실행할 때 모델 파일(약 300 MB)을 한 번 내려받습니다. 저장 위치: %LOCALAPPDATA%\\adctox\\models
+  ADCTOX-cli.bat를 더블클릭하면 같은 다섯 단계가 터미널 화면에서 열립니다. Windows Terminal이 있으면 그 창에서 열립니다.
 
 업데이트
   모델: 질환 선택 화면에서 U
@@ -163,7 +164,7 @@ Write-Host "4/5 App files"
 New-Item -ItemType Directory "ADCTOX\apps\$Release" | Out-Null
 Copy-Item app\* "ADCTOX\apps\$Release\"
 Set-Content ADCTOX\app.txt $Release -Encoding ascii
-Copy-Item launcher.py, ADCTOX.bat, ADCTOX-web.bat, README.txt ADCTOX\
+Copy-Item launcher.py, ADCTOX.bat, ADCTOX-web.bat, ADCTOX-cli.bat, README.txt ADCTOX\
 
 Write-Host "5/5 Check and zip"
 & ADCTOX\python\python.exe -I ADCTOX\launcher.py --version
@@ -197,7 +198,7 @@ https://aka.ms/vs/17/release/vc_redist.x64.exe
 파일
   build.bat, build_windows.ps1  빌드
   app\                          앱 파일(Ubuntu 릴리스와 같은 3개 파일)
-  launcher.py, ADCTOX.bat, ADCTOX-web.bat, README.txt  패키지에 들어갈 실행 파일과 안내
+  launcher.py, ADCTOX.bat, ADCTOX-web.bat, ADCTOX-cli.bat, README.txt  패키지에 들어갈 실행 파일과 안내
 """
 
 
@@ -208,7 +209,7 @@ def kit(a, manifest, archive):
     release = f"{APP_VERSION}-{manifest['sha256'][:12]}"
     (out / "build_windows.ps1").write_text(BUILD_PS1.format(embed_sha=EMBED[1], release=release, torch=manifest["torch_version"]).replace("\n", "\r\n"), encoding="utf-8-sig")
     (out / "build.bat").write_bytes(BUILD_BAT.encode())
-    (out / "launcher.py").write_text(LAUNCHER); (out / "ADCTOX.bat").write_bytes(BAT.encode()); (out / "ADCTOX-web.bat").write_bytes(WEB_BAT.encode())
+    (out / "launcher.py").write_text(LAUNCHER); (out / "ADCTOX.bat").write_bytes(BAT.encode()); (out / "ADCTOX-web.bat").write_bytes(WEB_BAT.encode()); (out / "ADCTOX-cli.bat").write_bytes(CLI_BAT.encode())
     (out / "README.txt").write_text(README.format(version=APP_VERSION).replace("\n", "\r\n"), encoding="utf-8-sig")
     (out / "BUILD_README.txt").write_text(KIT_README.format(version=APP_VERSION, torch=manifest["torch_version"]).replace("\n", "\r\n"), encoding="utf-8-sig")
     z = out.parent / "ADCTOX-windows-build-kit.zip"
@@ -244,7 +245,7 @@ def main():
                         "--python-version", "3.12", "--implementation", "cp", "-d", str(CACHE / "msvc"), "msvc-runtime==14.44.35112"], check=True)
         for w in (CACHE / "msvc").glob("msvc_runtime-14.44.35112-*.whl"): unpack_wheel(w, site, prefix=stage / "python"); found.append(w)
     (stage / "app.txt").write_text(release.name + "\n"); (stage / "launcher.py").write_text(LAUNCHER)
-    (stage / "ADCTOX.bat").write_bytes(BAT.encode()); (stage / "ADCTOX-web.bat").write_bytes(WEB_BAT.encode()); (stage / "README.txt").write_text(README.format(version=APP_VERSION).replace("\n", "\r\n"), encoding="utf-8-sig")
+    (stage / "ADCTOX.bat").write_bytes(BAT.encode()); (stage / "ADCTOX-web.bat").write_bytes(WEB_BAT.encode()); (stage / "ADCTOX-cli.bat").write_bytes(CLI_BAT.encode()); (stage / "README.txt").write_text(README.format(version=APP_VERSION).replace("\n", "\r\n"), encoding="utf-8-sig")
     out = a.out / "ADCTOX-windows.zip"
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as z:
         for p in sorted(stage.rglob("*")):

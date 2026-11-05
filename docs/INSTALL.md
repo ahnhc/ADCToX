@@ -14,7 +14,7 @@
 - Windows 설치기가 하는 일:
   - 공식 embeddable Python이 든 패키지를 받아 SHA256을 확인한다.
   - `%LOCALAPPDATA%\adctox\app`에 푼다.
-  - 시작 메뉴와 바탕화면 바로가기, `adctox`와 `adctox-web` 명령(사용자 PATH)을 만든다.
+  - 시작 메뉴와 바탕화면 바로가기, `adctox`, `adctox-cli`, `adctox-web` 명령(사용자 PATH)을 만든다.
   - 모델을 받는다.
 - 다시 실행하면 앱을 새 버전으로 바꾼다.
 
@@ -32,23 +32,24 @@ sudo apt install python3-venv
 
 | 명령 | 화면 |
 |---|---|
-| `adctox-web` (`adctox --web`과 같음) | 기본 브라우저에 다섯 화면을 연다. 이 컴퓨터 안에서만(127.0.0.1) 열린다 |
-| `adctox` | 같은 다섯 화면을 터미널에서 연다 |
+| `adctox` | 기본 브라우저에 다섯 화면을 연다. 이 컴퓨터 안에서만(127.0.0.1) 열린다 (`adctox-web`, `adctox --web`도 같다) |
+| `adctox-cli` (`adctox --cli`와 같음) | 같은 다섯 화면을 터미널에서 연다 |
 
-Windows에서는 바로가기, `adctox-web` 명령, 또는 zip의 `ADCTOX-web.bat`으로 브라우저 화면을 연다.
+Windows에서는 바로가기, `adctox` 명령, 또는 zip의 `ADCTOX.bat`이 브라우저 화면을 연다. 터미널 화면은 `adctox-cli` 명령이나 `ADCTOX-cli.bat`으로 연다.
 
 화면이 없는 서버에서는 포트를 정해 켜고(`ADCTOX_PORT`, 기본은 빈 포트를 고른다) 내 컴퓨터에서 SSH 터널로 연다.
 
 ```bash
-ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox-web          # 서버에서
+ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox              # 서버에서
 ssh -L 8765:127.0.0.1:8765 <사용자>@<서버>               # 내 컴퓨터에서, 그다음 http://localhost:8765
 ```
 
 ## 설치 위치
 
 ```text
-~/.local/bin/adctox
-~/.local/bin/adctox-web            브라우저 화면 (adctox --web)
+~/.local/bin/adctox                브라우저 화면
+~/.local/bin/adctox-cli            터미널 화면 (adctox --cli)
+~/.local/bin/adctox-web            브라우저 화면 (adctox --web, 0.6.11 이전 설치와 같은 이름)
 ~/.local/share/adctox/
     current -> apps/<app-version>-<checksum>/
     apps/                         앱 코드
@@ -93,7 +94,7 @@ adctox --rollback-models
 
 ## Windows
 
-설치 위치는 `%LOCALAPPDATA%\adctox\app`(앱과 Python), `%LOCALAPPDATA%\adctox\models`(모델), `%LOCALAPPDATA%\adctox\bin\adctox.cmd`와 `adctox-web.cmd`(명령)이다. 설치기 없이 쓰려면 Release의 `ADCTOX-windows.zip`을 아무 곳에 풀고 `ADCTOX.bat`(터미널) 또는 `ADCTOX-web.bat`(브라우저)을 실행해도 된다. 이때 모델은 첫 실행 때 받는다. PC에 Microsoft Visual C++ 재배포 패키지(x64)가 없으면 프로그램이 공식 설치 링크를 알려 준다.
+설치 위치는 `%LOCALAPPDATA%\adctox\app`(앱과 Python), `%LOCALAPPDATA%\adctox\models`(모델), `%LOCALAPPDATA%\adctox\bin\adctox.cmd`, `adctox-cli.cmd`, `adctox-web.cmd`(명령)이다. 설치기 없이 쓰려면 Release의 `ADCTOX-windows.zip`을 아무 곳에 풀고 `ADCTOX.bat`(브라우저) 또는 `ADCTOX-cli.bat`(터미널)을 실행해도 된다. 이때 모델은 첫 실행 때 받는다. PC에 Microsoft Visual C++ 재배포 패키지(x64)가 없으면 프로그램이 공식 설치 링크를 알려 준다.
 
 삭제: `%LOCALAPPDATA%\adctox` 폴더와 바로가기를 지우고, 사용자 PATH에서 `%LOCALAPPDATA%\adctox\bin`을 뺀다.
 
@@ -106,7 +107,7 @@ adctox --rollback-models
 기본 경로로 설치했다면 다음 파일과 디렉터리를 삭제한다. 사용자 지정 경로를 썼으면 그 경로를 사용한다.
 
 ```bash
-rm "$HOME/.local/bin/adctox" "$HOME/.local/bin/adctox-web"
+rm "$HOME/.local/bin/adctox" "$HOME/.local/bin/adctox-cli" "$HOME/.local/bin/adctox-web"
 rm -r "$HOME/.local/share/adctox"          # 앱, 모델, uv로 받은 Python 모두
 ```
 

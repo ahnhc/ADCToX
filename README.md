@@ -94,7 +94,7 @@ ADC(antibody-drug conjugate)는 항체에 강한 세포독성 payload를 붙인 
 
 **검사 수치.** bilirubin, AST, ALT는 ULN 배수로, 크레아티닌은 Cockcroft–Gault CLcr로 바꿔 라벨의 간, 신장 기능 기준과 맞춥니다. 입력하지 않은 값에 따라 판정이 달라지면 `?`로 표시하고, 필요한 값을 알려 줍니다.
 
-**브라우저 화면.** `adctox-web`(`adctox --web`과 같음)은 같은 다섯 화면을 기본 브라우저에서 엽니다. 이 컴퓨터 안에서만 열리고 서버에는 아무것도 남지 않습니다. 인체 지도가 환자의 장기와 고른 ADC의 경고(boxed warning은 분홍 고리, warning은 청록 고리)를 비추고, ADC 상세는 넓은 화면에서는 세 번째 열로, 좁은 화면에서는 서랍으로 열립니다. 결과 화면은 Ctrl-P로 A4에 인쇄됩니다. 화면은 영어이고(한글 입력도 읽습니다), 처음 쓰는 사람을 위해 단계마다 팁 카드, 점선 제목의 설명, 위쪽 `?` 가이드가 있습니다.
+**브라우저 화면.** `adctox`는 다섯 화면을 기본 브라우저에서 엽니다. 이 컴퓨터 안에서만 열리고 서버에는 아무것도 남지 않습니다. 인체 지도가 환자의 장기와 고른 ADC의 경고(boxed warning은 분홍 고리, warning은 청록 고리)를 비추고, ADC 상세는 넓은 화면에서는 세 번째 열로, 좁은 화면에서는 서랍으로 열립니다. 결과 화면은 Ctrl-P로 A4에 인쇄됩니다. 화면은 영어이고(한글 입력도 읽습니다), 처음 쓰는 사람을 위해 단계마다 팁 카드, 점선 제목의 설명, 위쪽 `?` 가이드가 있습니다.
 
 <p align="center">
   <img src="docs/images/web_result.png" alt="브라우저 화면: 결과와 ADC 상세, 인체 지도" width="820">
@@ -116,11 +116,11 @@ curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
 irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 ```
 
-설치가 끝나면 `adctox-web`(브라우저) 또는 `adctox`(터미널)를 실행합니다. 처음 설치할 때 추론 환경과 모델 파일(약 1.4 GiB)을 받습니다. 설치 경로, GPU, 삭제 방법은 [설치 안내](docs/INSTALL.md)에 있습니다.
+설치가 끝나면 `adctox`(브라우저) 또는 `adctox-cli`(터미널)를 실행합니다. 처음 설치할 때 추론 환경과 모델 파일(약 305 MB)을 받습니다. 설치 경로, GPU, 삭제 방법은 [설치 안내](docs/INSTALL.md)에 있습니다.
 
 ## 사용법
 
-`adctox-web`(또는 `adctox --web`)을 실행하면 기본 브라우저에 화면이 열립니다. 이 컴퓨터 안에서만 열리고(127.0.0.1) 서버에는 아무것도 남지 않습니다. 터미널에서 쓰려면 `adctox`를 실행합니다. 두 화면 모두 `질환   검사 수치   AI 장기 분석   우선순위   결과`의 다섯 화면을 **PgUp / PgDn**으로 오갑니다.
+`adctox`를 실행하면 기본 브라우저에 화면이 열립니다. 이 컴퓨터 안에서만 열리고(127.0.0.1) 서버에는 아무것도 남지 않습니다. 터미널에서 쓰려면 `adctox-cli`를 실행합니다. 두 화면 모두 `질환   검사 수치   AI 장기 분석   우선순위   결과`의 다섯 화면을 **PgUp / PgDn**으로 오갑니다.
 
 | 화면 | 하는 일 |
 |---|---|
@@ -133,7 +133,7 @@ irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 화면이 없는 서버에서 쓸 때는 서버에서 포트를 정해 켜고, 내 컴퓨터에서 SSH 터널로 엽니다.
 
 ```bash
-ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox-web          # 서버에서
+ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox              # 서버에서
 ssh -L 8765:127.0.0.1:8765 <사용자>@<서버>               # 내 컴퓨터에서, 그다음 http://localhost:8765
 ```
 

@@ -45,9 +45,9 @@ def _vt_input(on, restore=None):
 
 def into_windows_terminal():
     """started by double-click in the old console (conhost) on Windows: reopen in Windows Terminal if it is installed,
-    and end this process. Not when Windows Terminal already runs us (WT_SESSION), with command-line arguments, or --no-wt."""
+    and end this process. Only for adctox --cli (main calls it then), not when Windows Terminal already runs us (WT_SESSION) or --no-wt."""
     import shutil, subprocess
-    if os.name != "nt" or os.environ.get("WT_SESSION") or len(sys.argv) > 1 or not sys.stdin.isatty(): return
+    if os.name != "nt" or os.environ.get("WT_SESSION") or sys.argv[1:] != ["--cli"] or not sys.stdin.isatty(): return
     wt = shutil.which("wt")
     if not wt: return
     me = [sys.executable] if getattr(sys, "frozen", False) else [sys.executable, os.path.abspath(sys.argv[0])]
@@ -55,7 +55,7 @@ def into_windows_terminal():
     # parent's environment reuses that folder, so it would lose its files when this process ends. Reset tells the child
     # to unpack its own copy.
     env = {k: v for k, v in os.environ.items() if not k.startswith(("_PYI", "_MEI"))}; env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
-    try: subprocess.Popen([wt, "--size", "120,42", "new-tab", "--title", "ADC Recommender", "--", *me], close_fds=True, env=env)
+    try: subprocess.Popen([wt, "--size", "120,42", "new-tab", "--title", "ADC Recommender", "--", *me, "--cli"], close_fds=True, env=env)
     except OSError: return
     sys.exit(0)
 

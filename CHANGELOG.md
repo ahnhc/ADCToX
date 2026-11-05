@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased: the browser is the default, `adctox-cli` for the terminal
+
+- **`adctox` with no argument opens the browser screens** (as `adctox --web` and `adctox-web` did); the Windows `ADCTOX.bat` and its shortcuts do too. **`adctox-cli` (`adctox --cli`) opens the terminal screens**, and on Windows `ADCTOX-cli.bat` and `adctox-cli.cmd`; Windows Terminal is used for `--cli` only. `adctox --plain` stays in the terminal. `adctox-web` and `adctox --web` still work.
+- install.sh and install.ps1 write `adctox-cli`; an installed app updated with `--update-app` writes it beside `adctox` at its first start.
+
 ## 0.6.11: the organ judge alone reads typed text, and a 305 MB model bundle (models 0.8)
 
 - **A typed disease names a registry condition through the organ judge's MONDO or HPO concept**, not by BioLORD name similarity. The organs are always the judge's; the registry condition adds its severity and its label restriction rules. `conf/registry_concepts.json` (built by `ml/registry_concepts.py` from the MONDO and HPO `is_a` hierarchy) lists 1,533 concepts for 34 registry conditions; prior exposures, procedures and measurements are picked from the list.

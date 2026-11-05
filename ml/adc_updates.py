@@ -413,25 +413,31 @@ def update_app(manifest=None, program=None, allow_local=False, torch_version=Non
     else:
         temporary = prefix / ".app-next"; temporary.unlink(missing_ok=True)
         temporary.symlink_to(release.relative_to(prefix), target_is_directory=True); os.replace(temporary, prefix / "current")
-    try: ensure_web_launcher()
+    try: ensure_launchers()
     except OSError: pass
     return f"App {manifest['app_version']} installed; it starts next time you open ADCTOX."
 
 
-def ensure_web_launcher():
-    """adctox-web beside the adctox launcher: install.sh and install.ps1 write both, an app updated in place (--update-app) gets
-    it here on its next start. Never overwrites an existing one. -> the path, or None when there is no adctox launcher of ours."""
+def ensure_launchers():
+    """adctox-web and adctox-cli beside the adctox launcher: install.sh and install.ps1 write all three, an app updated in place
+    (--update-app) gets them here on its next start. Never overwrites an existing one. -> their paths (None for one not written)."""
+    return [ensure_side_launcher(name, flag) for name, flag in (("adctox-web", "--web"), ("adctox-cli", "--cli"))]
+
+
+def ensure_side_launcher(name, flag):
+    """name (adctox-web or adctox-cli) beside the adctox launcher: the same command with flag. -> the path, or None when there is
+    no adctox launcher of ours."""
     import shutil
     found = shutil.which("adctox.cmd" if pointer_mode() else "adctox")
     if not found: return None
-    launcher = Path(found); web = launcher.with_name("adctox-web.cmd" if pointer_mode() else "adctox-web")
-    if web.exists(): return web
+    launcher = Path(found); side = launcher.with_name(name + ".cmd" if pointer_mode() else name)
+    if side.exists(): return side
     text = launcher.read_text(encoding="utf-8", errors="replace")
-    new = text.replace(" %*", " --web %*", 1) if pointer_mode() else text.replace(' "$@"', ' --web "$@"', 1)
+    new = text.replace(" %*", f" {flag} %*", 1) if pointer_mode() else text.replace(' "$@"', f' {flag} "$@"', 1)
     if new == text or not ("adc_recommender_full.py" in text or "ADCTOX.bat" in text): return None
-    temporary = web.with_name("." + web.name + "-next"); temporary.write_text(new, encoding="utf-8")
-    temporary.chmod(launcher.stat().st_mode & 0o7777); os.replace(temporary, web)
-    return web
+    temporary = side.with_name("." + side.name + "-next"); temporary.write_text(new, encoding="utf-8")
+    temporary.chmod(launcher.stat().st_mode & 0o7777); os.replace(temporary, side)
+    return side
 
 
 def app_cli(action):

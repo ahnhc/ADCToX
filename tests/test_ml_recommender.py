@@ -196,7 +196,8 @@ def test_command_line_takes_no_conditions(tmp_path):
     run = lambda *a: subprocess.run([sys.executable, "-I", str(ROOT / "ml/recommend.py"), *a], capture_output=True, text=True, env=env, cwd=ROOT, stdin=subprocess.DEVNULL)
     for args in (["cirrhosis"], ["--lab", "hb=8"], ["--plain", "--lab", "hb=8"], ["--crcl", "-10", "--child-pugh", "Z"], ["--list"]):
         r = run(*args); assert r.returncode == 2 and "입력 화면" in r.stderr and "ADC" not in r.stdout, args
-    r = run("--plain"); assert r.returncode == 2 and "Lung" not in r.stdout                  # no terminal: no made-up patient
+    for args in (["--plain"], ["--cli"]):                                                   # no terminal: no made-up patient
+        r = run(*args); assert r.returncode == 2 and "Lung" not in r.stdout and "adctox-cli" in r.stderr, args
     out = tmp_path / "adc_recommender.py"                                                   # the self-test without language models
     subprocess.run([sys.executable, "-I", str(ROOT / "ml/build_portable.py"), str(out)], check=True, capture_output=True)
     r = subprocess.run([sys.executable, "-I", str(out), "--self-test"], capture_output=True, text=True, env=env, cwd=tmp_path, stdin=subprocess.DEVNULL)
@@ -398,6 +399,6 @@ def test_help_explains_the_program_and_lists_every_command(arg, monkeypatch, cap
     monkeypatch.setattr(sys, "argv", ["adctox", arg])
     RC.main(); out = capsys.readouterr().out
     assert "ADC" in out and "연구용" in out and "Backspace" in out and "Ctrl+U" not in out
-    for c in ("--update-app", "--check-app", "--update-models", "--check-models", "--model-version", "--rollback-models", "--verify-models", "--version", "--self-test", "--plain"):
+    for c in ("--update-app", "--check-app", "--update-models", "--check-models", "--model-version", "--rollback-models", "--verify-models", "--version", "--self-test", "--plain", "adctox-cli"):
         assert c in out
     assert "--lab" not in out and "--list" not in out                                      # 0.5.3: no conditions or lab values on the command line

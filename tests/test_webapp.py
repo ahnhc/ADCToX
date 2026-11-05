@@ -439,33 +439,48 @@ def test_the_one_file_build_serves_the_page_from_memory(tmp_path):
     assert run.returncode == 0, run.stderr[-1500:]
 
 
-def test_help_names_the_web_flag(monkeypatch, capsys):
+def test_help_names_the_browser_default_and_adctox_cli(monkeypatch, capsys):
     monkeypatch.setattr(sys, "argv", ["adctox", "--help"])
     RC.main(); out = capsys.readouterr().out
-    assert "adctox --web" in out and "ADCTOX_NO_BROWSER=1" in out
+    assert "adctox-cli" in out and "adctox --cli" in out and "ADCTOX_NO_BROWSER=1" in out
 
 
-def test_web_flag_starts_the_server_without_a_terminal(monkeypatch, capsys):
+@pytest.mark.parametrize("args", [[], ["--web"]])
+def test_adctox_starts_the_browser_by_default(args, monkeypatch, capsys):
+    """0.6.12: adctox with no argument (and adctox --web, adctox-web) serves the browser steps, without a terminal."""
     served = []
-    monkeypatch.setattr(sys, "argv", ["adctox", "--web"]); monkeypatch.setattr(RC, "cap_threads", lambda: None)
+    monkeypatch.setattr(sys, "argv", ["adctox", *args]); monkeypatch.setattr(RC, "cap_threads", lambda: None)
     monkeypatch.setattr(RC, "preload", lambda: served.append("preload")); monkeypatch.setattr(webapp, "serve", lambda rc: served.append(rc))
     RC.main()
     assert served == ["preload", RC]
 
 
-def test_adctox_web_launcher_is_written_beside_adctox(tmp_path, monkeypatch):
+def test_cli_flag_opens_the_terminal_screens(monkeypatch):
+    import form
+    ran = []
+    monkeypatch.setattr(sys, "argv", ["adctox", "--cli"]); monkeypatch.setattr(RC, "cap_threads", lambda: None)
+    monkeypatch.setattr(sys.stdin, "isatty", lambda: True); monkeypatch.setattr(RC, "_tui_ok", lambda: True)
+    monkeypatch.setattr(RC, "preload", lambda: None); monkeypatch.setattr(form, "run", lambda rc: ran.append(rc))
+    monkeypatch.setattr(webapp, "serve", lambda rc: ran.append("web"))
+    with pytest.raises(SystemExit) as e: RC.main()
+    assert e.value.code == 0 and ran == [RC]
+
+
+def test_adctox_web_and_cli_launchers_are_written_beside_adctox(tmp_path, monkeypatch):
     import shutil, adc_updates as AU
     launcher = tmp_path / "adctox"; launcher.write_text('#!/usr/bin/env bash\nset -e\nexec /x/python -I /x/current/adc_recommender_full.py "$@"\n'); launcher.chmod(0o755)
     monkeypatch.setattr(AU, "pointer_mode", lambda: False); monkeypatch.setattr(shutil, "which", lambda name: str(launcher) if name == "adctox" else None)
-    web = AU.ensure_web_launcher()
+    web, cli = AU.ensure_launchers()
     assert web == tmp_path / "adctox-web" and web.read_text().endswith('adc_recommender_full.py --web "$@"\n') and web.stat().st_mode & 0o111
-    web.write_text("mine"); assert AU.ensure_web_launcher() == web and web.read_text() == "mine"        # never overwritten
+    assert cli == tmp_path / "adctox-cli" and cli.read_text().endswith('adc_recommender_full.py --cli "$@"\n') and cli.stat().st_mode & 0o111
+    web.write_text("mine"); assert AU.ensure_launchers()[0] == web and web.read_text() == "mine"        # never overwritten
     cmd = tmp_path / "adctox.cmd"; cmd.write_text('@echo off\r\ncall "C:\\ADCTOX\\ADCTOX.bat" %*')
     monkeypatch.setattr(AU, "pointer_mode", lambda: True); monkeypatch.setattr(shutil, "which", lambda name: str(cmd) if name == "adctox.cmd" else None)
-    assert AU.ensure_web_launcher() == tmp_path / "adctox-web.cmd" and (tmp_path / "adctox-web.cmd").read_text().endswith('ADCTOX.bat" --web %*')
+    assert AU.ensure_launchers() == [tmp_path / "adctox-web.cmd", tmp_path / "adctox-cli.cmd"]
+    assert (tmp_path / "adctox-web.cmd").read_text().endswith('ADCTOX.bat" --web %*') and (tmp_path / "adctox-cli.cmd").read_text().endswith('ADCTOX.bat" --cli %*')
     other = tmp_path / "bin"; other.mkdir(); (other / "adctox").write_text("#!/bin/sh\necho not ours \"$@\"\n")
     monkeypatch.setattr(AU, "pointer_mode", lambda: False); monkeypatch.setattr(shutil, "which", lambda name: str(other / "adctox"))
-    assert AU.ensure_web_launcher() is None and not (other / "adctox-web").exists()
+    assert AU.ensure_launchers() == [None, None] and not (other / "adctox-web").exists() and not (other / "adctox-cli").exists()
 
 
 def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monkeypatch):

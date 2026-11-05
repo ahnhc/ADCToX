@@ -29,6 +29,7 @@ jobs:
           adctox --version
           adctox --self-test | tee out.txt
           grep -q ADC out.txt
+          test -x "$HOME/.local/bin/adctox-cli" && grep -q -- '--cli "\$@"' "$HOME/.local/bin/adctox-cli"
 
   windows:
     if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'v')
@@ -45,6 +46,7 @@ jobs:
           & "$app\python\python.exe" -I "$app\launcher.py" --self-test | Tee-Object out.txt
           if (-not (Select-String -Path out.txt -Pattern "ADC" -Quiet)) { throw "no recommendation table" }
           if (-not (Test-Path (Join-Path $env:LOCALAPPDATA 'adctox\bin\adctox.cmd'))) { throw "adctox command missing" }
+          if (-not (Test-Path (Join-Path $env:LOCALAPPDATA 'adctox\bin\adctox-cli.cmd'))) { throw "adctox-cli command missing" }
       - name: Open the browser page
         shell: pwsh
         run: |
