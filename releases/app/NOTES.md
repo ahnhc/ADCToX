@@ -1,11 +1,10 @@
-ADCTOX 0.6.12: `adctox`는 브라우저 화면을 열고, 터미널 화면은 `adctox-cli`로 연다. Ubuntu, macOS, Windows 모두 0.6.12다.
+ADCTOX 0.6.13: 직접 입력한 질환으로 장기 분석이 다시 된다. Ubuntu, macOS, Windows 모두 0.6.13이다.
 
-- **`adctox`는 브라우저에서 시작한다.** `adctox-web`, `adctox --web`도 그대로 쓸 수 있다.
-- **`adctox-cli`(`adctox --cli`)는 같은 다섯 화면을 터미널에서 연다.** `adctox --plain`은 그대로 터미널에서 질문에 답하는 방식이다.
-- Windows: `ADCTOX.bat`와 바로가기는 브라우저를 연다. 터미널은 `ADCTOX-cli.bat` 또는 `adctox-cli` 명령으로 연다(Windows Terminal이 있으면 그 창).
-- 분석과 모델은 0.6.11과 같다(모델 0.8).
+- **0.6.11과 0.6.12에서 목록에 없는 질환을 직접 입력하면 장기 분석이 "ValueError: not enough values to unpack" 오류로 끝나던 문제를 고쳤다.** 브라우저와 터미널 모두 해당한다. 목록에서 고른 질환만 넣었을 때는 영향이 없었다.
+- adctox가 꺼져 페이지가 응답을 받지 못하면, 브라우저의 "Failed to fetch" 대신 꺼졌다는 것과 다시 켜는 방법을 보여 준다.
+- 모델은 0.6.11, 0.6.12와 같다(모델 0.8).
 
-이미 설치했다면 앱만 올린다. `adctox-cli`는 올린 뒤 처음 실행할 때 `adctox` 옆에 생긴다.
+이미 설치했다면 앱만 올린다.
 
 ```bash
 adctox --update-app
