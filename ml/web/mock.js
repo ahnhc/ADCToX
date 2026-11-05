@@ -278,7 +278,7 @@ window.ADCTOX_MOCK = (function () {
     if (key === 'sex') { const s = t.toUpperCase().slice(0, 1); if (s === 'M' || s === 'F') return s; if (s === '남') return 'M'; if (s === '여') return 'F'; throw new Error('M or F'); }
     if (key === 'child_pugh') { if (['A', 'B', 'C'].includes(t.toUpperCase())) return t.toUpperCase(); throw new Error('A, B or C'); }
     if (key === 'ugt1a1') { const c = t.toLowerCase().slice(0, 1); if (c === 'y' || c === 'n') return c === 'y'; throw new Error('y or n'); }
-    const v = Number(t.replace(/,/g, ''));
+    const v = Number(/^\d{1,3}(,\d{3})+$/.test(t) ? t.replace(/,/g, '') : t);
     if (!Number.isFinite(v)) throw new Error('숫자를 입력하세요');
     const r = FIELD[key] && FIELD[key].range;
     if (r && !(r[0] <= v && v <= r[1])) throw new Error(`${g(r[0])}–${g(r[1])}`);

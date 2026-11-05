@@ -9,6 +9,7 @@ Two uses, kept apart:
      new weight is introduced. These flags never trigger condition-based label rules (they are not registry conditions).
 Values a lab report prints that no ADC label uses (lipids, uric acid, ferritin, T3, free T4) are not asked for.
 """
+import re
 from fractions import Fraction
 
 # key, label, unit, group; ULN defaults are common adult reference upper limits, overridable with uln_<key>
@@ -56,7 +57,7 @@ def parse(key, text):
     if key == "ugt1a1":
         if t.lower()[:1] in ("y", "n"): return t.lower()[:1] == "y"
         raise ValueError("y or n")
-    try: v = float(t.replace(",", ""))
+    try: v = float(t.replace(",", "") if re.fullmatch(r"\d{1,3}(,\d{3})+", t) else t)       # 0,8 is a decimal comma, not 8
     except ValueError: raise ValueError("숫자를 입력하세요") from None
     lo, hi = RANGE.get(key, (float("-inf"), float("inf")))
     if not lo <= v <= hi: raise ValueError(f"{lo:g}–{hi:g}")

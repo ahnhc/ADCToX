@@ -104,3 +104,18 @@ def test_the_esrd_and_dialysis_concepts_stand_for_dialysis_linked_or_picked(monk
 def test_ckd_stage_5_is_not_read_as_dialysis(monkeypatch):
     _typed(monkeypatch, "HP:0003774", "Stage 5 chronic kidney disease", ["renal"])
     assert RC.resolve(["stage 5"])[2] == {"ckd_stage_4_5"}
+
+
+
+@pytest.mark.parametrize("key, text", [("anc", "0,8"), ("creatinine", "1,2"), ("platelet", "12,34"), ("platelet", "1234,5"), ("platelet", ",123"), ("ast", "1,23,456")])
+def test_a_decimal_comma_is_rejected_not_read_as_a_larger_number(key, text):
+    import labs as LB
+    with pytest.raises(ValueError, match="숫자를 입력하세요"): LB.parse(key, text)
+
+
+@pytest.mark.parametrize("key, text, value", [("platelet", "1,234", 1234.0), ("ast", "2,500", 2500.0), ("ast", "12,5", None), ("glucose", "1,000", 1000.0)])
+def test_only_thousands_grouping_is_stripped(key, text, value):
+    import labs as LB
+    if value is None:
+        with pytest.raises(ValueError): LB.parse(key, text)
+    else: assert LB.parse(key, text) == value
