@@ -25,6 +25,8 @@ from adc_version import APP_VERSION, REPOSITORY
 CACHE = Path(os.environ.get("ADCTOX_WIN_CACHE") or ("/data/hyeongchanahn/adctox/raw/win_build" if Path("/data/hyeongchanahn").is_dir() else Path.home() / ".cache/adctox-win"))
 EMBED = ("https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip", "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3")
 
+GET_PIP = ("https://raw.githubusercontent.com/pypa/get-pip/c7135ee10cd1b1fcb8fbf63d5d0004885cba7aa4/public/get-pip.py", "356e0d0de21cdc348c3394084d90939b85e4246c4d14c76aee6ca4f46646ea98")   # a commit, so the bytes cannot change under the hash
+
 PTH = "python312.zip\r\n.\r\nLib\\site-packages\r\nimport site\r\n"
 BAT = ('@echo off\r\n'
        'chcp 65001 >nul\r\n'
@@ -137,6 +139,8 @@ $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
 $Embed = "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip"
 $EmbedSha = "{embed_sha}"
+$GetPip = "{get_pip}"
+$GetPipSha = "{get_pip_sha}"
 $Release = "{release}"
 $Torch = "{torch}"
 
@@ -150,7 +154,8 @@ Expand-Archive python-embed.zip -DestinationPath ADCTOX\python
 Set-Content ADCTOX\python\python312._pth "python312.zip`r`n.`r`nLib\site-packages`r`nimport site" -Encoding ascii -NoNewline
 
 Write-Host "2/5 pip"
-Invoke-WebRequest https://bootstrap.pypa.io/get-pip.py -OutFile get-pip.py -UseBasicParsing
+Invoke-WebRequest $GetPip -OutFile get-pip.py -UseBasicParsing
+if ((Get-FileHash get-pip.py -Algorithm SHA256).Hash.ToLower() -ne $GetPipSha) {{ throw "get-pip.py checksum mismatch" }}
 & ADCTOX\python\python.exe get-pip.py --no-warn-script-location --quiet
 if ($LASTEXITCODE -ne 0) {{ throw "pip setup failed" }}
 
@@ -207,7 +212,7 @@ def kit(a, manifest, archive):
     out = a.out.parent / "windows-build-kit"; shutil.rmtree(out, ignore_errors=True); (out / "app").mkdir(parents=True)
     with tarfile.open(archive) as t: t.extractall(out / "app", filter="data")
     release = f"{APP_VERSION}-{manifest['sha256'][:12]}"
-    (out / "build_windows.ps1").write_text(BUILD_PS1.format(embed_sha=EMBED[1], release=release, torch=manifest["torch_version"]).replace("\n", "\r\n"), encoding="utf-8-sig")
+    (out / "build_windows.ps1").write_text(BUILD_PS1.format(embed_sha=EMBED[1], get_pip=GET_PIP[0], get_pip_sha=GET_PIP[1], release=release, torch=manifest["torch_version"]).replace("\n", "\r\n"), encoding="utf-8-sig")
     (out / "build.bat").write_bytes(BUILD_BAT.encode())
     (out / "launcher.py").write_text(LAUNCHER); (out / "ADCTOX.bat").write_bytes(BAT.encode()); (out / "ADCTOX-web.bat").write_bytes(WEB_BAT.encode()); (out / "ADCTOX-cli.bat").write_bytes(CLI_BAT.encode())
     (out / "README.txt").write_text(README.format(version=APP_VERSION).replace("\n", "\r\n"), encoding="utf-8-sig")
