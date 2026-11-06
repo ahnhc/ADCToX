@@ -428,7 +428,8 @@ def test_malformed_requests_get_a_one_line_answer(server, capsys):
 
 
 def test_ctrl_c_during_an_analysis_lets_it_finish_and_exits_cleanly(tmp_path):
-    code = ("import sys, time; sys.path.insert(0, sys.argv[1]); import recommend as RC, webapp, suggest as SG\n"
+    code = ("import signal, sys, time; sys.path.insert(0, sys.argv[1]); import recommend as RC, webapp, suggest as SG\n"
+            "signal.signal(signal.SIGINT, signal.default_int_handler)\n"  # a run started with nohup ... & hands its children an ignored SIGINT
             "SG.Index.load_mondo = lambda self: None\n"
             "def slow(conds, progress=None): progress('judging'); time.sleep(1.5); print('analysis finished', flush=True); return []\n"
             "RC.analyze_conditions = slow\n"
