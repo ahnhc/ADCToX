@@ -186,7 +186,7 @@ kbd {
   padding: 7px 0; border-top: 1px solid var(--line);
 }
 .group .h2 + .lab { border-top: 0; }
-.lab label { font-size: 14px; color: var(--ink); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lab label { font-size: 14px; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
 .lab .num {
   width: 100%; height: 32px; padding: 0 10px; text-align: right; border-radius: 8px; border: 1px solid var(--line);
   background: var(--well); font-size: 14.5px; transition: border-color 140ms ease;
