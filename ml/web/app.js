@@ -178,7 +178,7 @@
         h('div', { class: 'g-foot' }, h('button', { type: 'button', class: 'link', text: 'Show the step tips again', onclick: () => { seen = {}; keepSeen(); closeGuide(); stepCard(S.step); } }),
           h('button', { type: 'button', class: 'ok', text: 'Close', onclick: closeGuide }))));
     document.body.append(guide);
-    guide.querySelector('.ok').focus();
+    guide.querySelector('.ok').focus({ preventScroll: true });     // the guide opens at its title, not at this button
   }
   const helpBtn = () => h('button', { type: 'button', class: 'help', 'aria-label': 'How it works', title: 'How it works', text: '?', onclick: openGuide });
 
