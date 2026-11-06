@@ -1177,7 +1177,12 @@
       const wait = setTimeout(() => { if (alive && !box.firstChild) box.append(h('div', { class: 'run' }, h('div', { class: 'track', role: 'progressbar', 'aria-label': 'Results' }, h('span')))); }, 250);
       const lab = (S.labs && S.labs.raw) || {};
       API.recommend({ conditions: condList(), raw: lab, choice: allChoice(), first: S.first })
-        .then((data) => { clearTimeout(wait); if (!alive) return; S.result = { sig, data }; save(); draw(data, true); })
+        .then((data) => {
+          clearTimeout(wait); if (!alive) return;
+          const was = S.result && (S.result.data.rows || [])[S.sel];      // the new ranking keeps the ADC selected, not the row number
+          if (was) S.sel = Math.max(0, (data.rows || []).findIndex((r) => r.adc === was.adc));
+          S.result = { sig, data }; save(); draw(data, true);
+        })
         .catch((e) => { clearTimeout(wait); if (!alive) return; clear(box); box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'Results' }), h('p', { class: 'msg', text: e.message }))); });
     }
     function draw(res, fresh) {
