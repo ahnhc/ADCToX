@@ -470,6 +470,7 @@
   async function next() {
     if (busy) return;
     if (S.step === 0) {
+      if (typedText()) { stageNote('Not added yet. Press Enter to add it, or Esc to clear it'); return; }
       if (!S.conds.length) { stageNote('Add at least one condition'); return; }
       go(1);
     } else if (S.step === 1) {
@@ -486,7 +487,7 @@
     if (S.step === 4) go(hasPriority() ? 3 : 2);
     else if (S.step > 0) go(S.step - 1);
   }
-  let stageNote = () => {};
+  let stageNote = () => {}, typedText = () => '';
 
   // ================================================================== step 1: 질환
   function stage1() {
@@ -500,6 +501,7 @@
     const note = h('div', { class: 'note', role: 'status' });
     const status = h('div', { class: 'note busy', 'aria-live': 'polite' });       // the TUI's status line: a search still running, or failed
     stageNote = (t) => { note.textContent = t; };
+    typedText = () => input.value.trim();
     const SYM_BUSY = 'Finding conditions that match ...';
     // suggest: a text of 4 or more characters and 2 or more words that is not a list of names reads as a sentence (symptom search, no AI names)
     const sentence = (q, parts) => q.length >= 4 && q.split(/\s+/).length >= 2 && !(parts && parts.length);
@@ -696,7 +698,7 @@
     const preset = MOCK && Q.get('q') && !stage1.preset ? Q.get('q') : '';
     if (preset) { stage1.preset = true; input.value = preset; st.q = preset; search(); }
     setTimeout(() => { if (S.step === 0) input.focus({ preventScroll: true }); }, 0);
-    cleanup = () => { quiet(); stageNote = () => {}; };
+    cleanup = () => { quiet(); stageNote = () => {}; typedText = () => ''; };
     return node;
   }
 
