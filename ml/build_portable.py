@@ -260,7 +260,7 @@ if __name__ == "__main__":
     if FULL:
         text = text.replace("{HEAD}", '"""ADC label-based recommender, full version: the server program with its organ judge.', 1)
         text = text.replace("{FREE}", "Free text goes through the organ judge (x2te) to MONDO (GPU if available, else CPU); needs the model bundle.", 1)
-        text = text.replace("{DATA}", "\nThe model bundle holds the organ judge, trained from random weights on public medical text, and a MONDO name index.", 1)
+        text = text.replace("{DATA}", "\nThe model bundle holds the organ judge, trained from random weights (no pretrained model), and a MONDO name index.", 1)
         text = text.replace("{TORCH}", "\n    import torch, transformers", 1)
     else:
         text = text.replace("{HEAD}", '"""ADC label-based recommender: one file, runs anywhere with Python >= 3.10 and numpy.', 1)

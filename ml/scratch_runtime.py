@@ -3,7 +3,7 @@
     import scratch_runtime as SR; SR.judge(["tuberculosis"]) -> [dict(concept="MONDO:0018076", name="tuberculosis",
         organs=["pulmonary", "infectious_immune"], via="record", valid=0.999, ok=True, sim=1.0)]
 
-Model folder (in the model bundle, 'ScratchJudge/'): a BERT-base encoder trained from random weights on public medical text,
+Model folder (in the model bundle, 'ScratchJudge/'): a BERT-base encoder trained from random weights,
 with organ, validity and name-vector outputs; index.npz (name vectors); index_ko.npz (Korean MONDO names, only when present); concepts.json (organs per concept).
 Rule, the same as ml/scratch_judge.judge with the evidence table and the MONDO-first margin:
 - validity below LOW_VALID: not read as a disease, no organs; from there up to the threshold: read, with `low` set
