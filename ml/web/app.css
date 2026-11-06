@@ -507,6 +507,7 @@ kbd {
   .ctx { grid-template-columns: 1fr; padding: 12px 0; }
   .ctx > div + div { border-left: 0; border-top: 1px solid var(--line); margin-top: 12px; padding-top: 12px; }
   .ctx > div { padding: 0 16px; }
+  .ctx .kvs { grid-template-columns: max-content minmax(0, 1fr) 56px max-content; column-gap: 10px; }
   .lab { grid-template-columns: minmax(0, 1fr) 92px 92px; column-gap: 10px; }
   .group { padding: 12px 14px 6px; }
   .rv-head { display: none; }
