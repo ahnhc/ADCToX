@@ -1,6 +1,6 @@
 # 처음부터 만드는 판정 모델 (X 단계)
 
-2026-10-18 시작. **이 문서의 x2te가 앱 0.5.0, 모델 0.7부터 앱의 판정 모델이다(`ScratchJudge/`).** Gemma 같은 사전학습 모델 없이, 무작위 초기값에서 우리가 고른 공개 자료(MONDO, HPO, UMLS, PubMed)만으로 학습하는 판정 모델이다.
+2026-10-18 시작. **이 문서의 x2te가 앱 0.5.0, 모델 0.7부터 앱의 판정 모델이다(`ScratchJudge/`).** 사전학습 가중치 없이 무작위 초기값에서, 우리가 고른 자료(MONDO, HPO, UMLS, PubMed)와 GPT가 만든 v5.1 장기 라벨로 학습하고, 튜닝한 Gemma의 장기 확률을 증류 목표로 쓰는 판정 모델이다. UMLS는 이용 허가를 받은 자료다.
 - 진행 순서: X0(UMLS 없음) → X1(UMLS 추가) → XP2(PubMed 사전학습) → X2(BERT-base 사전학습과 Gemma 증류) → X3(BERT-large).
 - 전체 흐름은 [overview.md](overview.md)에 있다.
 - 이름 읽는 법:
