@@ -645,9 +645,23 @@
       if (it.kind === 'raw') return addChip({ kind: 'text', value: it.text, label: it.text });
       return addChip(chipOf(it.s));
     }
-    function pick() {
+    async function addEach(words) {       // each item as if typed and entered by itself: an abbreviation gets its name, not the judge's guess
+      busy = true;
+      try {
+        const said = [];
+        for (const w of words) {
+          let r = null;
+          try { r = await API.suggest(w, pickedList()); } catch (e) { r = null; }
+          const added = addedAs(w, r);
+          said.push(added ? `Already added: ${added}` : addItem((r ? build(w, r) : [{ kind: 'raw', text: w }]).find((x) => x.kind !== 'head')));
+        }
+        return said.join('   ');
+      } finally { busy = false; }
+    }
+    async function pick() {
       const it = st.items[st.cur];
       if (!it) return;
+      if (it.kind === 'split') { reset(); input.focus(); note.textContent = await addEach(it.words); renderChips(); return; }
       note.textContent = addItem(it); reset(); input.focus();
     }
     async function enter(q) {             // Enter before the list for q has come: its best row once it comes, even if typing went on
@@ -656,7 +670,7 @@
       if (S.step !== 0 || !input.isConnected) return;
       const it = (r ? build(q, r) : [{ kind: 'raw', text: q }]).find((x) => x.kind !== 'head');
       const added = addedAs(q, r);
-      note.textContent = added ? `Already added: ${added}` : addItem(it);
+      note.textContent = added ? `Already added: ${added}` : it.kind === 'split' ? await addEach(it.words) : addItem(it);
       if (st.q.trim() === q) reset();
       else { renderChips(); clearTimeout(st.timer); st.timer = setTimeout(search, 0); }     // the text typed since keeps its own list
     }
