@@ -690,7 +690,7 @@
         else if (st.added) { note.textContent = `Already added: ${st.added}`; reset(); }
         else { note.textContent = addChip({ kind: 'text', value: q, label: q }); reset(); }      // no row chosen: the text as typed
       } else if (e.key === 'Escape') {
-        if (st.q) { e.preventDefault(); reset(); }
+        if (st.q) { e.preventDefault(); reset(); note.textContent = ''; }
       } else if (e.key === 'Backspace' && !input.value) {
         if (!S.conds.length) return;
         e.preventDefault();
