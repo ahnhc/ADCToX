@@ -540,11 +540,15 @@
     }
     const itemKey = (x) => x.kind + ':' + (x.s ? x.s.id || x.s.mondo || x.s.text : x.words ? x.words.join(',') : x.text);
     const selectable = (i) => st.items[i] && st.items[i].kind !== 'head';
+    function forget(c) {                  // a removed condition takes its chosen reading and its place in the priority along
+      delete S.meanings[c.label];
+      if (S.first === c.label || S.first === c.value) S.first = null;
+    }
     function renderChips() {
       clear(chips);
       S.conds.forEach((c, i) => {
         const x = h('button', { class: 'x', type: 'button', 'aria-label': `Remove ${c.label}`, text: '×' });
-        x.addEventListener('click', () => { S.conds.splice(i, 1); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; renderChips(); input.focus(); });
+        x.addEventListener('click', () => { forget(S.conds.splice(i, 1)[0]); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; renderChips(); input.focus(); });
         chips.append(h('li', { class: 'chip' + (i === st.fresh && !still() ? ' fresh' : '') + (st.armed && i === S.conds.length - 1 ? ' armed' : '') }, h('span', { class: 'lbl', text: c.label }), x));
       });
       st.fresh = -1;
@@ -678,7 +682,7 @@
       } else if (e.key === 'Backspace' && !input.value) {
         if (!S.conds.length) return;
         e.preventDefault();
-        if (st.armed) { const c = S.conds.pop(); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; }
+        if (st.armed) { const c = S.conds.pop(); forget(c); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; }
         else { st.armed = true; note.textContent = `Press again to remove: ${S.conds[S.conds.length - 1].label}`; }
         renderChips();
       }
