@@ -24,7 +24,7 @@ Linux에서 `venv`가 없다는 메시지가 나오면 다음 패키지를 설�
 sudo apt install python3-venv
 ```
 
-설치기는 sudo를 사용하지 않는다. 기본 CPU PyTorch와 추론 의존성, 약 305 MB의 모델 파일(모델 0.8: 처음부터 만든 판정 모델과 MONDO 이름 색인)을 설치한다. upstream 이용 조건은 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md)를 참고한다.
+설치기는 sudo를 사용하지 않는다. 기본 CPU PyTorch와 추론 의존성, 약 317 MB의 모델 파일(모델 0.9: 처음부터 만든 판정 모델, 한국어 이름 색인, MONDO 이름 색인)을 설치한다. upstream 이용 조건은 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md)를 참고한다.
 
 설치 후 분석은 로컬에서 실행하며 입력한 질환이나 검사값을 업데이트 서버로 전송하지 않는다. 인터넷 연결은 설치 및 사용자가 요청한 업데이트에 사용한다. 마지막 입력은 `~/.config/adctox/last_input.json`에 저장될 수 있다.
 

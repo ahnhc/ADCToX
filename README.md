@@ -80,7 +80,7 @@ ADC(antibody-drug conjugate)는 항체에 강한 세포독성 payload를 붙인 
  약어, 증상 문장)                        기록 읽기 판정)       라벨 제한, payload 기전)
 ```
 
-**질환 입력.** 한국어, 영어, 약어, 증상 문장으로 찾습니다. MONDO 사람 질환 23,258개에 한국어 이름이 있습니다. 증상 문장은 질환 프로필의 증상 문구와 글자 단위로 맞춰 찾습니다.
+**질환 입력.** 한국어, 영어, 약어, 증상 문장으로 찾습니다. MONDO 사람 질환 23,258개에 한국어 이름이 있습니다. 모델 0.9와 0.6.13보다 새 앱에서는 한글 입력을 이 한국어 이름의 벡터로도 찾습니다. 증상 문장은 질환 프로필의 증상 문구와 글자 단위로 맞춰 찾습니다.
 
 <p align="center">
   <img src="docs/images/search.svg" alt="질환 검색 화면" width="820">
@@ -124,7 +124,7 @@ curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
 irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 ```
 
-설치가 끝나면 `adctox`(브라우저) 또는 `adctox-cli`(터미널)를 실행합니다. 처음 설치할 때 추론 환경과 모델 파일(약 305 MB)을 받습니다. 설치 경로, GPU, 삭제 방법은 [설치 안내](docs/INSTALL.md)에 있습니다.
+설치가 끝나면 `adctox`(브라우저) 또는 `adctox-cli`(터미널)를 실행합니다. 처음 설치할 때 추론 환경과 모델 파일(약 317 MB)을 받습니다. 설치 경로, GPU, 삭제 방법은 [설치 안내](docs/INSTALL.md)에 있습니다.
 
 ## 사용법
 
