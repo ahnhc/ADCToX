@@ -63,7 +63,7 @@ def test_only_changed_head_is_downloaded_and_rollback_restores_it(server, tmp_pa
     server[2].clear()
     result = updates.install(second, tmp_path, allow_local=True)
     assert result["downloaded"] == ["ScratchJudge/weights.safetensors"]
-    assert len(result["reused"]) == 5
+    assert len(result["reused"]) == 7
     assert server[2] == ["/0.1/ScratchJudge/weights.safetensors"]
     assert (selected_bundle(tmp_path) / "ScratchJudge/weights.safetensors").read_bytes() == b"head-2"
     assert updates.rollback(tmp_path, allow_local=True) == "0.0"
