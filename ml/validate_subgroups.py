@@ -26,7 +26,7 @@ Steps, all fixed before the numbers were seen:
 """
 import json, math, re, sys
 import numpy as np, yaml
-sys.path[:0] = ["/home/hyeongchanahn/CONI/adctox/ml", "/home/hyeongchanahn/CONI/adctox/src"]
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 
 R = "/home/hyeongchanahn/CONI/adctox/"
 LABS = ("crcl", "bili", "ast", "alt", "lvef", "child_pugh", "ugt1a1_28_homozygous")

@@ -40,7 +40,8 @@ def server():
 def make_manifest(server, version="0.0", weight=b"head-1"):
     base, bodies, _ = server
     content = {"ScratchJudge/weights.safetensors": weight, "mondo_index.npz": b"index", "ScratchJudge/judge.json": b"judge",
-               "ScratchJudge/config.json": b"config", "ScratchJudge/index.npz": b"names", "ScratchJudge/concepts.json": b"concepts"}
+               "ScratchJudge/config.json": b"config", "ScratchJudge/index.npz": b"names", "ScratchJudge/concepts.json": b"concepts",
+               "ScratchJudge/tokenizer.json": b"tokenizer", "ScratchJudge/tokenizer_config.json": b"tokenizer config"}
     files = []
     for path, body in content.items():
         urlpath = "/" + version + "/" + path
@@ -49,15 +50,20 @@ def make_manifest(server, version="0.0", weight=b"head-1"):
     return {"schema_version": 1, "model_version": version, "runtime_api": 1, "architecture": "scratch-judge-v1", "axes": updates.AXES, "files": files}
 
 
+def test_a_manifest_missing_a_file_the_judge_needs_is_refused(server):
+    m = make_manifest(server); m["files"] = [f for f in m["files"] if f["path"] != "ScratchJudge/concepts.json"]
+    with pytest.raises(updates.UpdateError, match="incomplete"): updates.validate_manifest(m, allow_local=True)
+
+
 def test_only_changed_head_is_downloaded_and_rollback_restores_it(server, tmp_path):
     first = make_manifest(server)
     result = updates.install(first, tmp_path, allow_local=True)
-    assert len(result["downloaded"]) == 6
+    assert len(result["downloaded"]) == 8
     second = make_manifest(server, "0.1", b"head-2")
     server[2].clear()
     result = updates.install(second, tmp_path, allow_local=True)
     assert result["downloaded"] == ["ScratchJudge/weights.safetensors"]
-    assert len(result["reused"]) == 5
+    assert len(result["reused"]) == 7
     assert server[2] == ["/0.1/ScratchJudge/weights.safetensors"]
     assert (selected_bundle(tmp_path) / "ScratchJudge/weights.safetensors").read_bytes() == b"head-2"
     assert updates.rollback(tmp_path, allow_local=True) == "0.0"

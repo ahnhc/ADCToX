@@ -3,6 +3,7 @@
 (function () {
   'use strict';
 
+  try { sessionStorage.removeItem('adctoxReload'); } catch (e) { /* no storage: index.html does not retry */ }
   const Q = new URLSearchParams(location.search);
   // the mock and its parameters (motion, step, adc, q) only for the page opened as a file; over http they are ignored
   const MOCK = location.protocol === 'file:' && Q.get('mock') === '1' && window.ADCTOX_MOCK ? window.ADCTOX_MOCK : null;
@@ -13,12 +14,17 @@
   // ------------------------------------------------------------------ the server: one small object (the mock has the same methods)
   async function call(method, url, body) {
     let res;
+    const send = () => fetch(url, {
+      method, cache: 'no-store',
+      headers: body === undefined ? {} : { 'Content-Type': 'application/json' },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
     try {
-      res = await fetch(url, {
-        method, cache: 'no-store',
-        headers: body === undefined ? {} : { 'Content-Type': 'application/json' },
-        body: body === undefined ? undefined : JSON.stringify(body),
-      });
+      try { res = await send(); } catch (e) {     // one lost connection is not the end (a loopback filter can reset one); starting an analysis twice would be
+        if (url === '/api/analyze') throw e;
+        await new Promise((go) => setTimeout(go, 200));
+        try { res = await send(); } catch (e2) { await new Promise((go) => setTimeout(go, 500)); res = await send(); }
+      }
     } catch (e) {                         // no answer at all ("Failed to fetch"): the adctox process that served this page has ended
       const err = new Error('ADCTOX stopped (its terminal window was closed, or Ctrl-C). Run adctox again; it opens a new page.');
       err.status = 0; throw err;
@@ -178,7 +184,7 @@
         h('div', { class: 'g-foot' }, h('button', { type: 'button', class: 'link', text: 'Show the step tips again', onclick: () => { seen = {}; keepSeen(); closeGuide(); stepCard(S.step); } }),
           h('button', { type: 'button', class: 'ok', text: 'Close', onclick: closeGuide }))));
     document.body.append(guide);
-    guide.querySelector('.ok').focus();
+    guide.querySelector('.ok').focus({ preventScroll: true });     // the guide opens at its title, not at this button
   }
   const helpBtn = () => h('button', { type: 'button', class: 'help', 'aria-label': 'How it works', title: 'How it works', text: '?', onclick: openGuide });
 
@@ -470,6 +476,7 @@
   async function next() {
     if (busy) return;
     if (S.step === 0) {
+      if (typedText()) { stageNote('Not added yet. Press Enter to add it, or Esc to clear it'); return; }
       if (!S.conds.length) { stageNote('Add at least one condition'); return; }
       go(1);
     } else if (S.step === 1) {
@@ -486,7 +493,7 @@
     if (S.step === 4) go(hasPriority() ? 3 : 2);
     else if (S.step > 0) go(S.step - 1);
   }
-  let stageNote = () => {};
+  let stageNote = () => {}, typedText = () => '';
 
   // ================================================================== step 1: 질환
   function stage1() {
@@ -500,9 +507,10 @@
     const note = h('div', { class: 'note', role: 'status' });
     const status = h('div', { class: 'note busy', 'aria-live': 'polite' });       // the TUI's status line: a search still running, or failed
     stageNote = (t) => { note.textContent = t; };
+    typedText = () => input.value.trim();
     const SYM_BUSY = 'Finding conditions that match ...';
-    // suggest: a text of 4 or more characters and 2 or more words that is not a list of names reads as a sentence (symptom search, no AI names)
-    const sentence = (q, parts) => q.length >= 4 && q.split(/\s+/).length >= 2 && !(parts && parts.length);
+    // suggest: a text of 4 or more characters and 2 or more words that is not a list of names or a numbered name (MODY 3) reads as a sentence (symptom search, no AI names)
+    const sentence = (q, parts) => q.length >= 4 && q.split(/\s+/).length >= 2 && !(parts && parts.length) && !/\s\d+$/.test(q);
 
     const chipKeys = () => {
       const k = new Set();
@@ -538,13 +546,23 @@
       out.push({ kind: 'raw', text: q });
       return out;
     }
+    // the condition this text already is: its name, or the best name the server left out as picked (Enter must not take the next best)
+    const addedAs = (q, r) => {
+      if (r && (r.parts || []).length) return null;
+      const c = S.conds.find((x) => x.label.toLowerCase() === q.toLowerCase());
+      return c ? c.label : (r && r.already) || null;
+    };
     const itemKey = (x) => x.kind + ':' + (x.s ? x.s.id || x.s.mondo || x.s.text : x.words ? x.words.join(',') : x.text);
     const selectable = (i) => st.items[i] && st.items[i].kind !== 'head';
+    function forget(c) {                  // a removed condition takes its chosen reading and its place in the priority along
+      delete S.meanings[c.label];
+      if (S.first === c.label || S.first === c.value) S.first = null;
+    }
     function renderChips() {
       clear(chips);
       S.conds.forEach((c, i) => {
         const x = h('button', { class: 'x', type: 'button', 'aria-label': `Remove ${c.label}`, text: '×' });
-        x.addEventListener('click', () => { S.conds.splice(i, 1); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; renderChips(); input.focus(); });
+        x.addEventListener('click', () => { forget(S.conds.splice(i, 1)[0]); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; renderChips(); input.focus(); });
         chips.append(h('li', { class: 'chip' + (i === st.fresh && !still() ? ' fresh' : '') + (st.armed && i === S.conds.length - 1 ? ' armed' : '') }, h('span', { class: 'lbl', text: c.label }), x));
       });
       st.fresh = -1;
@@ -572,7 +590,6 @@
             it.kind === 'ai' ? h('span', { class: 'tag', text: 'AI' }) : null);
         }
         const li = h('li', { class: 'opt', role: 'option', id: 'sg-' + i, 'aria-selected': on ? 'true' : 'false' }, left);
-        li.addEventListener('mousedown', (e) => e.preventDefault());
         li.addEventListener('mousemove', () => { if (st.cur !== i) { st.cur = i; st.moved = true; mark(); } });
         li.addEventListener('click', () => { st.cur = i; pick(); });
         list.append(li);
@@ -601,12 +618,13 @@
       let r;
       const pending = API.suggest(q, pickedList());
       st.pending = { q, p: pending };
-      try { r = await pending; } catch (e) { r = { q, names: [], parts: [], ai: [], symptoms: [], symptoms_error: null }; }
+      let lost = '';                      // no answer: the row below still adds the text, and the line says why there are no names
+      try { r = await pending; } catch (e) { lost = e.message; r = { q, names: [], parts: [], ai: [], symptoms: [], symptoms_error: null }; }
       if (seq !== st.seq) return;
       clearTimeout(st.busyTimer);
-      status.textContent = r.symptoms_error ? 'Symptom search failed: ' + r.symptoms_error : '';
-      st.items = build(q, r); st.listQ = q;
-      st.cur = st.items.findIndex((x, i) => selectable(i)); st.moved = false;
+      status.textContent = lost || (r.symptoms_error ? 'Symptom search failed: ' + r.symptoms_error : '');
+      st.items = build(q, r); st.listQ = q; st.added = addedAs(q, r);
+      st.cur = st.added ? -1 : st.items.findIndex((x, i) => selectable(i)); st.moved = false;
       renderList();
       // the AI names: a second request about 500 ms after the last key, when the models are installed and the text is not a sentence
       if (APP.has_learned && q.length >= 2 && !sentence(q, r.parts)) {
@@ -617,26 +635,40 @@
       if (seq !== st.seq) return;
       const aseq = ++st.aiSeq;
       st.busyTimer = setTimeout(() => { if (aseq === st.aiSeq) status.textContent = 'Finding AI suggestions ...'; }, 250);
-      let r = null;
-      try { r = await API.suggest(q, pickedList(), true); } catch (e) { r = null; }
+      let r = null, lost = '';
+      try { r = await API.suggest(q, pickedList(), true); } catch (e) { r = null; lost = e.message; }
       if (aseq !== st.aiSeq) return;      // a newer key or search: this answer is stale
-      clearTimeout(st.busyTimer); status.textContent = '';
+      clearTimeout(st.busyTimer); status.textContent = lost;
       if (!r || r.q !== q || st.q.trim() !== q || seq !== st.seq || !(r.ai || []).length) return;
       const was = st.moved ? st.items[st.cur] : null;      // a cursor the user moved stays on its row; else it is on the best row again
       st.items = build(q, r);
       const k = was ? st.items.findIndex((x) => itemKey(x) === itemKey(was)) : -1;
-      st.cur = k >= 0 ? k : st.items.findIndex((x, i) => selectable(i));
+      st.cur = k >= 0 ? k : st.added ? -1 : st.items.findIndex((x, i) => selectable(i));
       renderList();
     }
-    function reset() { input.value = ''; st.q = ''; quiet(); st.items = []; st.cur = -1; st.listQ = ''; renderList(); renderChips(); }
+    function reset() { input.value = ''; st.q = ''; st.added = null; quiet(); st.items = []; st.cur = -1; st.listQ = ''; renderList(); renderChips(); }
     function addItem(it) {
       if (it.kind === 'split') return it.words.map((w) => addChip({ kind: 'text', value: w, label: w })).join('   ');
       if (it.kind === 'raw') return addChip({ kind: 'text', value: it.text, label: it.text });
       return addChip(chipOf(it.s));
     }
-    function pick() {
+    async function addEach(words) {       // each item as if typed and entered by itself: an abbreviation gets its name, not the judge's guess
+      busy = true;
+      try {
+        const said = [];
+        for (const w of words) {
+          let r = null;
+          try { r = await API.suggest(w, pickedList()); } catch (e) { r = null; }
+          const added = addedAs(w, r);
+          said.push(added ? `Already added: ${added}` : addItem((r ? build(w, r) : [{ kind: 'raw', text: w }]).find((x) => x.kind !== 'head')));
+        }
+        return said.join('   ');
+      } finally { busy = false; }
+    }
+    async function pick() {
       const it = st.items[st.cur];
       if (!it) return;
+      if (it.kind === 'split') { reset(); input.focus(); note.textContent = await addEach(it.words); renderChips(); return; }
       note.textContent = addItem(it); reset(); input.focus();
     }
     async function enter(q) {             // Enter before the list for q has come: its best row once it comes, even if typing went on
@@ -644,10 +676,14 @@
       try { r = await (st.pending && st.pending.q === q ? st.pending.p : API.suggest(q, pickedList())); } catch (e) { r = null; }
       if (S.step !== 0 || !input.isConnected) return;
       const it = (r ? build(q, r) : [{ kind: 'raw', text: q }]).find((x) => x.kind !== 'head');
-      note.textContent = addItem(it);
+      const added = addedAs(q, r);
+      note.textContent = added ? `Already added: ${added}` : it.kind === 'split' ? await addEach(it.words) : addItem(it);
       if (st.q.trim() === q) reset();
       else { renderChips(); clearTimeout(st.timer); st.timer = setTimeout(search, 0); }     // the text typed since keeps its own list
     }
+    list.addEventListener('mousedown', (e) => e.preventDefault());     // a click on the list keeps the field's focus
+    input.addEventListener('blur', () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); });
+    input.addEventListener('focus', renderList);
     input.addEventListener('input', () => {
       st.q = input.value; note.textContent = ''; st.lastKey = performance.now();
       if (st.armed) { st.armed = false; renderChips(); }
@@ -672,13 +708,14 @@
         if (!q) { note.textContent = S.conds.length ? 'PgDn for the next step' : 'Condition, symptom or cancer'; return; }
         if (st.listQ !== q) enter(q);       // the list for q has not come yet
         else if (st.cur >= 0 && selectable(st.cur)) pick();
+        else if (st.added) { note.textContent = `Already added: ${st.added}`; reset(); }
         else { note.textContent = addChip({ kind: 'text', value: q, label: q }); reset(); }      // no row chosen: the text as typed
       } else if (e.key === 'Escape') {
-        if (st.q) { e.preventDefault(); reset(); }
+        if (st.q) { e.preventDefault(); reset(); note.textContent = ''; }
       } else if (e.key === 'Backspace' && !input.value) {
         if (!S.conds.length) return;
         e.preventDefault();
-        if (st.armed) { const c = S.conds.pop(); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; }
+        if (st.armed) { const c = S.conds.pop(); forget(c); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; }
         else { st.armed = true; note.textContent = `Press again to remove: ${S.conds[S.conds.length - 1].label}`; }
         renderChips();
       }
@@ -690,7 +727,7 @@
     const preset = MOCK && Q.get('q') && !stage1.preset ? Q.get('q') : '';
     if (preset) { stage1.preset = true; input.value = preset; st.q = preset; search(); }
     setTimeout(() => { if (S.step === 0) input.focus({ preventScroll: true }); }, 0);
-    cleanup = () => { quiet(); stageNote = () => {}; };
+    cleanup = () => { quiet(); stageNote = () => {}; typedText = () => ''; };
     return node;
   }
 
@@ -720,13 +757,13 @@
   }
   function derivedLine() {                 // form.Form.labs' line: x ULN of the fields that have one, then the CLcr lines, as the server wrote them
     const L = S.labs || {}, sh = (L.derived && L.derived.shown) || {};
-    const out = [];
+    const notes = (L.notes || []).map(String);
+    const out = notes.filter((n) => /^(CLcr|Creatinine needs)/.test(n));     // first: the bar has room for only some of the line
     for (const f of FIELDS) {
       const k = f.key === 'bilirubin' ? 'bili' : f.key;
       if (k !== 'crcl' && f.uln !== null && f.uln !== undefined && sh[k] !== undefined && sh[k] !== null) out.push(`${f.label} ${sh[k]}×ULN`);
     }
-    for (const n of L.notes || []) if (/^(CLcr|ULN used)/.test(String(n))) out.push(String(n));
-    return out;
+    return out.concat(notes.filter((n) => /^ULN used/.test(n)));
   }
   function stage2() {
     const order = [];                       // focusable controls, in field order
@@ -816,6 +853,7 @@
       for (const x of flags) if (String(S.raw[x.key] || '').trim()) lit[x.organ] = 'l2';
       body.update({ lit });
       const parts = derivedLine();
+      barLeft.title = labsErr ? '' : parts.join('\n');     // the whole line, when it does not fit
       setBar({
         left: labsErr ? h('span', { class: 'err-line', text: labsErr }) : parts.map((t) => h('span', { class: 'info', text: t })),
         keys: [kbd('↑↓', 'move'), kbd('PgUp', 'back')],
@@ -827,7 +865,7 @@
     refresh();
     labsNow();
     setTimeout(() => { const first = order.find((o) => !String(S.raw[o.key] || '').trim()) || order[0]; if (first && S.step === 1) first.focus({ preventScroll: true }); }, 0);
-    cleanup = () => { labUI = null; };
+    cleanup = () => { labUI = null; barLeft.title = ''; };
     return node;
   }
 
@@ -961,17 +999,27 @@
           h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Read as' })))));
       reps.forEach((r, i) => {
         const cell = h('span', { role: 'cell' }, organCell(r));
-        (cells[r.condition] = cells[r.condition] || []).push({ cell, r });
-        const tag = ambText.has(r.condition) && r.tag ? String(r.tag).split(':')[0] : '';    // '2 meanings' (they are picked below)
+        const read = h('span', { class: 'read', role: 'cell' }, readParts(r, ambText));
+        (cells[r.condition] = cells[r.condition] || []).push({ cell, r, read });
         table.append(h('div', { class: 'rv-row' + (cascade && !still() ? ' in' : ''), role: 'row', style: `--i:${i}` },
-          h('span', { class: 'inp', role: 'cell', text: shownName(r) }),
+          h('span', { class: 'inp', role: 'cell', text: shownName(r), title: shownName(r) }),
           cell,
-          h('span', { class: 'read', role: 'cell' }, r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: r.how || '' }), tag ? h('span', { class: 'mean', text: tag }) : null, r.check ? h('span', { class: 'mean', text: r.check }) : null)));
+          read));
       });
       box.append(table);
       if ((A.ambiguous || []).length) box.append(meanings());
       setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', act: next } });
       lightAnalysis(cascade);
+    }
+    function readParts(r, ambText) {      // what the analysis read, until another reading of the input is picked below
+      const tag = ambText.has(r.condition) && r.tag ? String(r.tag).split(':')[0] : '';    // '2 meanings' (they are picked below)
+      const mean = tag ? h('span', { class: 'mean', text: tag }) : null;
+      const g = (S.analysis.ambiguous || []).find((a) => a.text === r.condition), rd = readingOf(r);
+      const applied = g && (g.default !== undefined ? g.default : (g.readings[0] || { mondo: null }).mondo);
+      if (g && rd !== undefined && S.meanings[r.condition] !== applied) {
+        return rd ? [h('span', { class: 'rd', text: rd.name || rd.mondo }), h('span', { class: 'how', text: 'Chosen' }), mean] : [h('span', { class: 'how', text: 'Not sure' }), mean];
+      }
+      return [r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: r.how || '' }), mean, r.check ? h('span', { class: 'mean', text: r.check }) : null];
     }
     function organCell(r) {               // form.likely: the judge's three most probable organs (and a used one outside them), as the server wrote them
       const used = organsOf(r);
@@ -996,7 +1044,10 @@
         const qid = 'mq-' + g.text.replace(/\W/g, '_');
         const changed = (id) => {
           S.meanings[g.text] = id; save();
-          for (const { cell, r } of cells[g.text] || []) { clear(cell); cell.append(organCell(r)); }
+          for (const { cell, r, read } of cells[g.text] || []) {
+            clear(cell); cell.append(organCell(r));
+            clear(read); add(read, readParts(r, new Set(S.analysis.ambiguous.map((a) => a.text))));
+          }
           lightAnalysis(false); renderCrumbs();
         };
         wrap.append(h('div', { class: 'mgroup' }, h('p', { class: 'q', text: g.text, id: qid }),
@@ -1133,7 +1184,12 @@
       const wait = setTimeout(() => { if (alive && !box.firstChild) box.append(h('div', { class: 'run' }, h('div', { class: 'track', role: 'progressbar', 'aria-label': 'Results' }, h('span')))); }, 250);
       const lab = (S.labs && S.labs.raw) || {};
       API.recommend({ conditions: condList(), raw: lab, choice: allChoice(), first: S.first })
-        .then((data) => { clearTimeout(wait); if (!alive) return; S.result = { sig, data }; save(); draw(data, true); })
+        .then((data) => {
+          clearTimeout(wait); if (!alive) return;
+          const was = S.result && (S.result.data.rows || [])[S.sel];      // the new ranking keeps the ADC selected, not the row number
+          if (was) S.sel = Math.max(0, (data.rows || []).findIndex((r) => r.adc === was.adc));
+          S.result = { sig, data }; save(); draw(data, true);
+        })
         .catch((e) => { clearTimeout(wait); if (!alive) return; clear(box); box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'Results' }), h('p', { class: 'msg', text: e.message }))); });
     }
     function draw(res, fresh) {
@@ -1290,7 +1346,9 @@
     const evOf = {};
     for (const o of (t && t.organs) || []) if ((o.events || []).length) evOf[o.organ] = o.events;
     const per100 = (a, n) => 100 * a / n;
+    let drawn = 0;
     function dots(e) {
+      drawn++;
       const r = per100(e.a, e.n), sv = e.serious ? r : per100(e.sa || 0, e.n), c = e.comp ? per100(e.comp[0], e.comp[1]) : null;
       const same = c !== null && r >= 1 && c >= r * 0.6;
       const n = Math.round(r / 5), ns = Math.min(n, Math.round(sv / 5));
@@ -1313,7 +1371,7 @@
     const rows = ws.map((w) => wrow(w.organ, w.mark.trim(), w.text));
     for (const o in evOf) if (!done.has(o)) rows.push(wrow(o, '', 'No label warning'));       // a patient organ the label is silent on
     drawerBody.append(section("Warnings on the patient's organs", rows.length ? h('div', { class: 'wl' }, rows) : h('p', { class: 'line dim', text: 'None' }),
-      t ? h('p', { class: 'src', text: `One dot: 5 patients in 100, in ${t.trial}` }) : null));
+      t && drawn ? h('p', { class: 'src', text: `One dot: 5 patients in 100, in ${t.trial}` }) : null));
     if (wo.length) drawerBody.append(section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
       h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }), h('span', { text: w.text.replace(/;\s*/g, ', ') })]))));
     if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m })))));

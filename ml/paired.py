@@ -1,6 +1,6 @@
 """Paired, family-bootstrapped comparison of two lab runs: model organ-rho of A minus B on the same held-out priors."""
 import sys, pickle
-sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 import lab
 C = "/data/hyeongchanahn/adctox/ml_cache/"
 def paired(a, b, regime, key="model"):

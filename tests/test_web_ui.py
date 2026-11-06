@@ -452,3 +452,12 @@ def test_a_failed_boot_says_so_instead_of_loading_forever() -> None:
         capture_output=True, text=True, timeout=60,
     )
     assert result.returncode == 0, result.stderr[-600:]
+
+
+ADCTOX_CSS = Path(__file__).resolve().parents[1] / "ml" / "web" / "app.css"
+
+
+def test_lab_groups_go_to_one_column_when_the_step_is_narrow() -> None:
+    """Between 900 and 1280 px two columns leave a lab name 29 px: the container rule must come after the two-column one."""
+    css = ADCTOX_CSS.read_text(encoding="utf-8")
+    assert css.index(".groups { columns: 2;") < css.index("@container (max-width: 760px) { .groups { columns: 1; } }")

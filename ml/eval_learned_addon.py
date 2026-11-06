@@ -11,7 +11,7 @@ the 95% interval of the paired difference excludes 0 in the positive direction. 
 Writes ml/results/learned_addon.json.
 """
 import json, csv, sys
-sys.path[:0] = ['/home/hyeongchanahn/CONI/adctox/ml', '/home/hyeongchanahn/CONI/adctox/src']
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 import numpy as np, pandas as pd
 import matcher2 as M2
 from matcher import AXES, auroc, R

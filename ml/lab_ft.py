@@ -16,7 +16,7 @@ import numpy as np, pandas as pd, torch, torch.nn as nn
 from scipy.stats import spearmanr
 from transformers import AutoTokenizer, AutoModel
 from peft import LoraConfig, get_peft_model
-sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 import lab
 warnings.filterwarnings("ignore")
 MODEL = {"biolord": "FremyCompany/BioLORD-2023", "sapbert": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext"}

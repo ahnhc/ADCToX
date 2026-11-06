@@ -77,6 +77,17 @@ def test_app_lists_the_axes_the_registry_and_the_lab_fields(server):
     assert d["steps"] == ["Conditions", "Labs", "Organs", "Priority", "Results"] and "first_text" not in d
 
 
+def test_a_pasted_note_is_cut_before_the_symptom_search(server, monkeypatch):
+    import suggest as SG
+    seen = []
+    monkeypatch.setattr(SG, "symptoms", lambda RC_, text, limit=8: seen.append(text) or [])
+    note = "Patient has breast cancer with diabetes and hypertension. " * 100
+    d = call(server, "GET", "/api/suggest?q=" + quote(note))[1]
+    assert d["symptoms"] == [] and len(seen) == 1 and 300 < len(seen[0]) <= webapp.SENTENCE_MAX and note.startswith(seen[0])
+    call(server, "GET", "/api/suggest?q=" + quote("shortness of breath and leg swelling"))
+    assert seen[-1] == "shortness of breath and leg swelling"          # a sentence of ordinary length is read whole
+
+
 def test_suggestions_are_the_first_screens_names_and_symptom_diseases(server, monkeypatch):
     import suggest as SG
     status, d = call(server, "GET", "/api/suggest?q=cirr")
@@ -87,6 +98,7 @@ def test_suggestions_are_the_first_screens_names_and_symptom_diseases(server, mo
     assert cirr == dict(text="Cirrhosis", sub="", id="cirrhosis", mondo=RC._reg["cirrhosis"]["mondo_id"], ko="간경변", organs=["hepatic"],
                         kind="registry", cancer=False, why=None, pick=dict(condition="cirrhosis", choice=None))
     assert "cirrhosis" not in [x["id"] for x in call(server, "GET", "/api/suggest?q=cirr&picked=cirrhosis")[1]["names"]]    # picked: not offered again
+    assert call(server, "GET", "/api/suggest?q=cirrhosis&picked=cirrhosis")[1]["already"] == "Cirrhosis" and d["already"] is None  # and said, so Enter does not take the next name
     ko = call(server, "GET", "/api/suggest?q=" + quote("간경"))[1]["names"]
     assert ko[0]["text"] == "Cirrhosis" and ko[0]["sub"] == "" and ko[0]["ko"] == "간경변"                                  # Korean typed: the page still shows English
     monkeypatch.setattr(RC, "HAS_LEARNED", False)                                                                        # n-grams only: no model
@@ -517,6 +529,53 @@ def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monke
         assert (r.status, r.getheader("Content-Type"), r.read()) == (200, "font/woff2", b"wOF2\x00\x01\xff")
     finally: server.shutdown(); server.server_close(); thread.join(5)
 
+
+
+def test_a_large_response_is_compressed_for_a_browser_and_plain_for_others(server):
+    import gzip, http.client
+    def get(**headers):
+        c = http.client.HTTPConnection("127.0.0.1", server.server_port, timeout=30); c.request("GET", "/app.js", headers=headers); r = c.getresponse()
+        return r.getheader("Content-Encoding"), r.read()
+    enc, plain = get()
+    assert enc is None and plain
+    enc, packed = get(**{"Accept-Encoding": "gzip, deflate"})
+    assert enc == "gzip" and gzip.decompress(packed) == plain and len(packed) < len(plain) / 2
+
+
+def test_a_comma_list_splits_only_when_every_item_finds_a_name(server):
+    assert call(server, "GET", "/api/suggest?q=" + quote("fever, xqzzyq"))[1]["parts"] == []
+    assert call(server, "GET", "/api/suggest?q=" + quote("cirrhosis, type 2 diabetes"))[1]["parts"] == ["cirrhosis", "type 2 diabetes"]
+
+
+def test_a_number_after_something_that_is_not_a_name_stays_a_sentence(server):
+    import suggest as SG
+    assert not SG.numbered_name(RC, "pain for 3") and not SG.numbered_name(RC, "mody")
+    assert SG.numbered_name(RC, "heart failure 2")
+
+
+def test_a_numbered_name_is_not_read_as_a_sentence(server, monkeypatch):
+    import suggest as SG
+    monkeypatch.setattr(SG, "symptoms", lambda RC_, text: pytest.fail("symptom search for a numbered name"))
+    assert call(server, "GET", "/api/suggest?q=" + quote("MODY 3"))[1]["symptoms"] == []
+
+
+def test_a_typed_name_row_says_so_in_english(server, monkeypatch):
+    import suggest as SG
+    monkeypatch.setattr(SG, "symptoms", lambda RC_, text: [(("reg", "cirrhosis", "Cirrhosis", "", ["hepatic"]), "입력한 이름")])
+    assert call(server, "GET", "/api/suggest?q=" + quote("cirrhosis and more"))[1]["symptoms"][0]["why"] == "typed name"
+
+
+def test_a_comma_list_is_offered_item_by_item_unless_it_is_one_name(server):
+    assert call(server, "GET", "/api/suggest?q=" + quote("cirrhosis, type 2 diabetes"))[1]["parts"] == ["cirrhosis", "type 2 diabetes"]
+    suggest.index(RC).rows.append(("hypertension, pregnancy-induced", "", "", 0, ("mondo", "MONDO:X", "Hypertension, pregnancy-induced", "", [])))
+    try:
+        d = call(server, "GET", "/api/suggest?q=" + quote("Hypertension, pregnancy-induced"))[1]
+        assert d["parts"] == [] and d["names"][0]["text"] == "Hypertension, pregnancy-induced"     # a name with a comma stays one name
+    finally: suggest.index(RC).rows.pop()
+
+
+def test_a_choice_value_is_shown_without_the_choices():
+    assert RC._raw_values({"sex": "F", "weight": 55.0}, {}) == ["Sex F", "Weight 55 kg"]
 
 
 def test_labs_take_the_lab_uln_and_answer_with_it(server):

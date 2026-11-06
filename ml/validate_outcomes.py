@@ -22,7 +22,7 @@ known answer to show that it detects a real association and does not invent one.
 """
 import csv, json, sys
 import numpy as np
-sys.path[:0] = ["/home/hyeongchanahn/CONI/adctox/ml", "/home/hyeongchanahn/CONI/adctox/src"]
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 from matcher import auroc
 
 LABS = ("crcl", "bili", "ast", "alt", "lvef")

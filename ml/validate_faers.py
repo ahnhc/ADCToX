@@ -21,7 +21,7 @@ Writes ml/results/faers_validation.json and caches raw API answers in ml_cache/f
 """
 import json, os, sys, time, urllib.parse, urllib.request
 import numpy as np
-sys.path[:0] = ["/home/hyeongchanahn/CONI/adctox/ml", "/home/hyeongchanahn/CONI/adctox/src"]
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 import drug_evidence as DE
 from matcher import auroc
 from adctox.taxonomy import Taxonomy

@@ -6,7 +6,7 @@ same Read as and how texts, the same numbers. Nothing is kept on the server; the
 recommend's per-process state (CHOICE, PRIORITY, FIRST) is set from each request under one lock and put back after it.
 Analyses run one at a time in one worker thread, in the order they were asked for (a later one waits as "queued").
 """
-import base64, json, os, queue, re, secrets, sys, threading, time, traceback
+import base64, gzip, json, os, queue, re, secrets, sys, threading, time, traceback
 from contextlib import contextmanager
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -27,6 +27,8 @@ SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Registry"
 STATUS = {0: "None", 1: "Monitor", 2: "No data", 3: "Avoid", 4: "Avoid"}       # recommend._result_list: the four display groups
 JOBS = 8                    # analyses kept for the page to fetch; a finished one goes once fetched, or after KEEP seconds
 KEEP = 300
+GZIP_FROM = 32768               # one large response stalls at about 64 KB through a loopback filter (AdGuard on Windows), and the page never loads
+SENTENCE_MAX = 400             # characters of a described case the symptom search reads: it costs about 6 ms a character, a pasted note took minutes
 
 
 def web_files(folder):
@@ -301,22 +303,24 @@ class App:
             mondo = (RC._reg[val].get("mondo_id") or None) if kind == "reg" else val if kind == "mondo" else None
             return dict(text=main, sub=sub, id=val if kind == "reg" else None, mondo=mondo, ko=next((x for x in (label, detail) if x and HANGUL.search(x)), None),
                         organs=list(org or []), kind="symptom" if why is not None else "registry" if kind == "reg" else "hpo" if str(val).startswith("HP:") else "mondo" if kind == "mondo" else "kcd",
-                        cancer=RC.is_cancer(mondo), why=why,
+                        cancer=RC.is_cancer(mondo), why="typed name" if why == "입력한 이름" else why,      # suggest's tag is for the Korean screens
                         pick=dict(condition=val if kind == "reg" else main if kind == "mondo" else label, choice=val if kind == "mondo" else None))
         for p in picked:
             have.update(keys(("reg", p, RC.condition_name(p), "") if p in RC._reg else ("mondo", p, "", "") if re.match(r"(MONDO|HP):", p) else ("text", p, p, "")))
-        out = dict(q=q, names=[], parts=SG.parts(RC, q) if text else [], ai=[], symptoms=[], symptoms_error=None)
+        head = text if len(text) <= SENTENCE_MAX else text[:SENTENCE_MAX].rsplit(None, 1)[0]      # a pasted note: its first words are searched
+        out = dict(q=q, names=[], parts=SG.parts(RC, q if head == text else head) if text else [], ai=[], symptoms=[], symptoms_error=None, already=None)
         if not text: return out
         alias = RC.cancer_alias(text)                          # a cancer name the search reads badly (HER2 양성 유방암: 양성 = benign)
-        found = ([("mondo", alias, RC._cancer_map()["terms"][alias][0], text, [])] if alias else []) + SG.names(RC, q)
+        found = ([("mondo", alias, RC._cancer_map()["terms"][alias][0], text, [])] if alias else []) + SG.names(RC, q if head == text else head)
+        if found and keys(found[0]) & have: out["already"] = item(found[0])["text"]      # the text's best name is picked: Enter must not take the next best
         out["names"] = [item(s) for s in found if fresh(s)]
-        sentence = len(text) >= 4 and len(text.split()) >= 2 and not SG.parts(RC, text)
+        sentence = len(text) >= 4 and len(text.split()) >= 2 and not SG.parts(RC, head) and not SG.numbered_name(RC, head)
         if ai and RC.HAS_LEARNED and len(text) >= 2 and not sentence:
-            try: res = SG.semantic(RC, text)
+            try: res = SG.semantic(RC, head)
             except Exception: res = []
             out["ai"] = [item(s) for s in res if fresh(s)]
         if sentence:
-            try: res = SG.symptoms(RC, text)
+            try: res = SG.symptoms(RC, head)
             except Exception as e: res = []; out["symptoms_error"] = f"{type(e).__name__}: {str(e)[:80]}"
             out["symptoms"] = [item(s, why) for s, why in res if fresh(s)]
         return out
@@ -481,6 +485,8 @@ def _handler(app):
         def send(self, status, data, ctype=JSON, headers=()):
             if isinstance(data, str): data = data.encode("utf-8")
             try:
+                if len(data) > GZIP_FROM and "gzip" in self.headers.get("Accept-Encoding", ""):
+                    data = gzip.compress(data, 6); headers = [*headers, ("Content-Encoding", "gzip")]
                 self.send_response(status); self.send_header("Content-Type", ctype); self.send_header("Content-Length", str(len(data)))
                 self.send_header("Cache-Control", "no-store"); self.send_header("X-Content-Type-Options", "nosniff")
                 for k, v in headers: self.send_header(k, v)

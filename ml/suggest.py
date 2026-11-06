@@ -206,7 +206,7 @@ def index(RC):
 def _score(q, qn, qc, row):
     key, ns, ch, pr, _ = row
     if qc:
-        return 55 if ch.startswith(qc) else 30 if qc in ch else 0
+        return 75 if ch == qc else 55 if ch.startswith(qc) else 30 if qc in ch else 0     # exact: ㄱㅎㅇ is 고혈압 before 고환의위축
     if key == q or (qn and ns == qn): return 100
     if key.startswith(q) or (qn and ns.startswith(qn)): return 80 - min(15, (len(key) - len(q)) // 3)
     if " " + q in " " + key: return 62 - min(10, len(key) // 10)
@@ -244,9 +244,10 @@ def _correct(I, q):
 def names(RC, text, limit=8):
     """spelling suggestions for the text being typed; the last comma-separated part counts when there are several.
     The same concept, or a Korean KCD name whose English name is already listed, is shown once."""
-    q = norm(text.split(",")[-1])
+    I = index(RC); q = norm(text)
+    if q not in _keys(I): q = norm(text.split(",")[-1])              # unless the whole text is a name ('Cirrhosis, familial')
     if not q: return []
-    I = index(RC); out = _ranked(I, q)
+    out = _ranked(I, q)
     if len(out) < 3 and len(q) >= 4 and q.isascii():                  # a typo
         c = _correct(I, q)
         if c != q: out += [s for s in _ranked(I, c) if all((x[0], x[1]) != (s[0], s[1]) for x in out)]
@@ -286,16 +287,29 @@ def _subtypes_rule(q, rows, row_of):
     return out
 
 
+def _keys(I):
+    if getattr(I, "_keys_n", -1) != len(I.rows): I._keys, I._keys_n = {r[0] for r in I.rows}, len(I.rows)    # rebuilt once the MONDO names arrive
+    return I._keys
+
+
 def parts(RC, text):
     """words of a space-separated input that are each a known name or abbreviation by themselves ('asd adhd' -> ['asd', 'adhd']);
-    [] when the input is one name ('heart failure') or a word is unknown. The form offers to add them separately."""
+    [] when the input is one name ('heart failure') or a word is unknown. A comma-separated list gives its items when each finds a name, unless the
+    whole text is one name ('cirrhosis, familial'). The form offers to add them separately."""
+    whole = norm(text); items = [x.strip() for x in whole.split(",") if x.strip()]
     words = norm(text.split(",")[-1]).split()
-    if len(words) < 2: return []
+    if len(items) < 2 and len(words) < 2: return []
     I = index(RC)
-    if getattr(I, "_keys_n", -1) != len(I.rows): I._keys, I._keys_n = {r[0] for r in I.rows}, len(I.rows)    # rebuilt once the MONDO names arrive
-    keys = I._keys
+    keys = _keys(I)
+    if len(items) > 1: return items if whole not in keys and all(x in keys or _ranked(I, x) for x in items) else []     # 'fever, cough and rash' is a sentence
     if " ".join(words) in keys: return []
     return words if all(w in keys for w in words) else []
+
+
+def numbered_name(RC, text):
+    """one word or a known name, and a number ('MODY 3'), which the symptom search misreads; 'blood pressure 140' stays a sentence."""
+    m = re.fullmatch(r"(.+\S)\s+\d+", norm(text))
+    return bool(m) and (" " not in m[1] or m[1] in _keys(index(RC)))
 
 
 def _with_organs(RC, s):

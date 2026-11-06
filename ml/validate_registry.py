@@ -20,7 +20,7 @@ import json, os, sys, warnings
 import numpy as np, pandas as pd, torch, torch.nn as nn
 from scipy.stats import rankdata
 warnings.filterwarnings("ignore")
-sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 from embed_terms import embed
 
 C = "/data/hyeongchanahn/adctox/ml_cache/"; DEV = "cuda:0"
