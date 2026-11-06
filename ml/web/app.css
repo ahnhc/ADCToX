@@ -236,6 +236,7 @@ kbd {
 .rv-row.in { animation: row-in 380ms var(--ease) both; animation-delay: calc(var(--i, 0) * 40ms); }
 @keyframes row-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 .rv-row .inp { font-size: 14.5px; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+.rv-row .inp, .ropt .lbl, .run .who { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }   /* a long paste: its row stays a row */
 .rv-row .read { font-size: 14px; min-width: 0; overflow-wrap: anywhere; }
 .rv-row .read .how { color: var(--dim); }
 .rv-row .read .rd { margin-right: 10px; }

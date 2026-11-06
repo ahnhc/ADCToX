@@ -981,7 +981,7 @@
         const read = h('span', { class: 'read', role: 'cell' }, readParts(r, ambText));
         (cells[r.condition] = cells[r.condition] || []).push({ cell, r, read });
         table.append(h('div', { class: 'rv-row' + (cascade && !still() ? ' in' : ''), role: 'row', style: `--i:${i}` },
-          h('span', { class: 'inp', role: 'cell', text: shownName(r) }),
+          h('span', { class: 'inp', role: 'cell', text: shownName(r), title: shownName(r) }),
           cell,
           read));
       });
