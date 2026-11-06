@@ -503,8 +503,8 @@
     stageNote = (t) => { note.textContent = t; };
     typedText = () => input.value.trim();
     const SYM_BUSY = 'Finding conditions that match ...';
-    // suggest: a text of 4 or more characters and 2 or more words that is not a list of names reads as a sentence (symptom search, no AI names)
-    const sentence = (q, parts) => q.length >= 4 && q.split(/\s+/).length >= 2 && !(parts && parts.length);
+    // suggest: a text of 4 or more characters and 2 or more words that is not a list of names or a numbered name (MODY 3) reads as a sentence (symptom search, no AI names)
+    const sentence = (q, parts) => q.length >= 4 && q.split(/\s+/).length >= 2 && !(parts && parts.length) && !/\s\d+$/.test(q);
 
     const chipKeys = () => {
       const k = new Set();

@@ -531,6 +531,12 @@ def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monke
 
 
 
+def test_a_numbered_name_is_not_read_as_a_sentence(server, monkeypatch):
+    import suggest as SG
+    monkeypatch.setattr(SG, "symptoms", lambda RC_, text: pytest.fail("symptom search for a numbered name"))
+    assert call(server, "GET", "/api/suggest?q=" + quote("MODY 3"))[1]["symptoms"] == []
+
+
 def test_a_typed_name_row_says_so_in_english(server, monkeypatch):
     import suggest as SG
     monkeypatch.setattr(SG, "symptoms", lambda RC_, text: [(("reg", "cirrhosis", "Cirrhosis", "", ["hepatic"]), "입력한 이름")])

@@ -313,7 +313,7 @@ class App:
         found = ([("mondo", alias, RC._cancer_map()["terms"][alias][0], text, [])] if alias else []) + SG.names(RC, q if head == text else head)
         if found and keys(found[0]) & have: out["already"] = item(found[0])["text"]      # the text's best name is picked: Enter must not take the next best
         out["names"] = [item(s) for s in found if fresh(s)]
-        sentence = len(text) >= 4 and len(text.split()) >= 2 and not SG.parts(RC, head)
+        sentence = len(text) >= 4 and len(text.split()) >= 2 and not SG.parts(RC, head) and not SG.numbered_name(RC, head)
         if ai and RC.HAS_LEARNED and len(text) >= 2 and not sentence:
             try: res = SG.semantic(RC, head)
             except Exception: res = []
