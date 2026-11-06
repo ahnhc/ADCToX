@@ -965,17 +965,27 @@
           h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Read as' })))));
       reps.forEach((r, i) => {
         const cell = h('span', { role: 'cell' }, organCell(r));
-        (cells[r.condition] = cells[r.condition] || []).push({ cell, r });
-        const tag = ambText.has(r.condition) && r.tag ? String(r.tag).split(':')[0] : '';    // '2 meanings' (they are picked below)
+        const read = h('span', { class: 'read', role: 'cell' }, readParts(r, ambText));
+        (cells[r.condition] = cells[r.condition] || []).push({ cell, r, read });
         table.append(h('div', { class: 'rv-row' + (cascade && !still() ? ' in' : ''), role: 'row', style: `--i:${i}` },
           h('span', { class: 'inp', role: 'cell', text: shownName(r) }),
           cell,
-          h('span', { class: 'read', role: 'cell' }, r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: r.how || '' }), tag ? h('span', { class: 'mean', text: tag }) : null, r.check ? h('span', { class: 'mean', text: r.check }) : null)));
+          read));
       });
       box.append(table);
       if ((A.ambiguous || []).length) box.append(meanings());
       setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', act: next } });
       lightAnalysis(cascade);
+    }
+    function readParts(r, ambText) {      // what the analysis read, until another reading of the input is picked below
+      const tag = ambText.has(r.condition) && r.tag ? String(r.tag).split(':')[0] : '';    // '2 meanings' (they are picked below)
+      const mean = tag ? h('span', { class: 'mean', text: tag }) : null;
+      const g = (S.analysis.ambiguous || []).find((a) => a.text === r.condition), rd = readingOf(r);
+      const applied = g && (g.default !== undefined ? g.default : (g.readings[0] || { mondo: null }).mondo);
+      if (g && rd !== undefined && S.meanings[r.condition] !== applied) {
+        return rd ? [h('span', { class: 'rd', text: rd.name || rd.mondo }), h('span', { class: 'how', text: 'Chosen' }), mean] : [h('span', { class: 'how', text: 'Not sure' }), mean];
+      }
+      return [r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: r.how || '' }), mean, r.check ? h('span', { class: 'mean', text: r.check }) : null];
     }
     function organCell(r) {               // form.likely: the judge's three most probable organs (and a used one outside them), as the server wrote them
       const used = organsOf(r);
@@ -1000,7 +1010,10 @@
         const qid = 'mq-' + g.text.replace(/\W/g, '_');
         const changed = (id) => {
           S.meanings[g.text] = id; save();
-          for (const { cell, r } of cells[g.text] || []) { clear(cell); cell.append(organCell(r)); }
+          for (const { cell, r, read } of cells[g.text] || []) {
+            clear(cell); cell.append(organCell(r));
+            clear(read); add(read, readParts(r, new Set(S.analysis.ambiguous.map((a) => a.text))));
+          }
           lightAnalysis(false); renderCrumbs();
         };
         wrap.append(h('div', { class: 'mgroup' }, h('p', { class: 'q', text: g.text, id: qid }),
