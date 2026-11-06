@@ -78,7 +78,7 @@ def validate_manifest(data, allow_local=False):
         if type(item.get("size")) is not int or not 0 < item["size"] < 2 * 1024**3:
             raise UpdateError("Invalid file size.")
         _url(item.get("url", ""), allow_local)
-    required = {"mondo_index.npz", "ScratchJudge/judge.json", "ScratchJudge/weights.safetensors"}
+    required = {"mondo_index.npz"} | {"ScratchJudge/" + f for f in ("judge.json", "weights.safetensors", "config.json", "tokenizer.json", "tokenizer_config.json", "index.npz", "concepts.json")}
     if not required <= seen:
         raise UpdateError("The model bundle is incomplete.")
     return data
