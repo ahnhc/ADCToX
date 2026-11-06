@@ -307,10 +307,11 @@ class App:
         for p in picked:
             have.update(keys(("reg", p, RC.condition_name(p), "") if p in RC._reg else ("mondo", p, "", "") if re.match(r"(MONDO|HP):", p) else ("text", p, p, "")))
         head = text if len(text) <= SENTENCE_MAX else text[:SENTENCE_MAX].rsplit(None, 1)[0]      # a pasted note: its first words are searched
-        out = dict(q=q, names=[], parts=SG.parts(RC, q if head == text else head) if text else [], ai=[], symptoms=[], symptoms_error=None)
+        out = dict(q=q, names=[], parts=SG.parts(RC, q if head == text else head) if text else [], ai=[], symptoms=[], symptoms_error=None, already=None)
         if not text: return out
         alias = RC.cancer_alias(text)                          # a cancer name the search reads badly (HER2 양성 유방암: 양성 = benign)
         found = ([("mondo", alias, RC._cancer_map()["terms"][alias][0], text, [])] if alias else []) + SG.names(RC, q if head == text else head)
+        if found and keys(found[0]) & have: out["already"] = item(found[0])["text"]      # the text's best name is picked: Enter must not take the next best
         out["names"] = [item(s) for s in found if fresh(s)]
         sentence = len(text) >= 4 and len(text.split()) >= 2 and not SG.parts(RC, head)
         if ai and RC.HAS_LEARNED and len(text) >= 2 and not sentence:

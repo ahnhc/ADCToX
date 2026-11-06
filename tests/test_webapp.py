@@ -98,6 +98,7 @@ def test_suggestions_are_the_first_screens_names_and_symptom_diseases(server, mo
     assert cirr == dict(text="Cirrhosis", sub="", id="cirrhosis", mondo=RC._reg["cirrhosis"]["mondo_id"], ko="간경변", organs=["hepatic"],
                         kind="registry", cancer=False, why=None, pick=dict(condition="cirrhosis", choice=None))
     assert "cirrhosis" not in [x["id"] for x in call(server, "GET", "/api/suggest?q=cirr&picked=cirrhosis")[1]["names"]]    # picked: not offered again
+    assert call(server, "GET", "/api/suggest?q=cirrhosis&picked=cirrhosis")[1]["already"] == "Cirrhosis" and d["already"] is None  # and said, so Enter does not take the next name
     ko = call(server, "GET", "/api/suggest?q=" + quote("간경"))[1]["names"]
     assert ko[0]["text"] == "Cirrhosis" and ko[0]["sub"] == "" and ko[0]["ko"] == "간경변"                                  # Korean typed: the page still shows English
     monkeypatch.setattr(RC, "HAS_LEARNED", False)                                                                        # n-grams only: no model

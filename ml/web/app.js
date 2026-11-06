@@ -540,6 +540,12 @@
       out.push({ kind: 'raw', text: q });
       return out;
     }
+    // the condition this text already is: its name, or the best name the server left out as picked (Enter must not take the next best)
+    const addedAs = (q, r) => {
+      if (r && (r.parts || []).length) return null;
+      const c = S.conds.find((x) => x.label.toLowerCase() === q.toLowerCase());
+      return c ? c.label : (r && r.already) || null;
+    };
     const itemKey = (x) => x.kind + ':' + (x.s ? x.s.id || x.s.mondo || x.s.text : x.words ? x.words.join(',') : x.text);
     const selectable = (i) => st.items[i] && st.items[i].kind !== 'head';
     function forget(c) {                  // a removed condition takes its chosen reading and its place in the priority along
@@ -610,8 +616,8 @@
       if (seq !== st.seq) return;
       clearTimeout(st.busyTimer);
       status.textContent = r.symptoms_error ? 'Symptom search failed: ' + r.symptoms_error : '';
-      st.items = build(q, r); st.listQ = q;
-      st.cur = st.items.findIndex((x, i) => selectable(i)); st.moved = false;
+      st.items = build(q, r); st.listQ = q; st.added = addedAs(q, r);
+      st.cur = st.added ? -1 : st.items.findIndex((x, i) => selectable(i)); st.moved = false;
       renderList();
       // the AI names: a second request about 500 ms after the last key, when the models are installed and the text is not a sentence
       if (APP.has_learned && q.length >= 2 && !sentence(q, r.parts)) {
@@ -630,10 +636,10 @@
       const was = st.moved ? st.items[st.cur] : null;      // a cursor the user moved stays on its row; else it is on the best row again
       st.items = build(q, r);
       const k = was ? st.items.findIndex((x) => itemKey(x) === itemKey(was)) : -1;
-      st.cur = k >= 0 ? k : st.items.findIndex((x, i) => selectable(i));
+      st.cur = k >= 0 ? k : st.added ? -1 : st.items.findIndex((x, i) => selectable(i));
       renderList();
     }
-    function reset() { input.value = ''; st.q = ''; quiet(); st.items = []; st.cur = -1; st.listQ = ''; renderList(); renderChips(); }
+    function reset() { input.value = ''; st.q = ''; st.added = null; quiet(); st.items = []; st.cur = -1; st.listQ = ''; renderList(); renderChips(); }
     function addItem(it) {
       if (it.kind === 'split') return it.words.map((w) => addChip({ kind: 'text', value: w, label: w })).join('   ');
       if (it.kind === 'raw') return addChip({ kind: 'text', value: it.text, label: it.text });
@@ -649,7 +655,8 @@
       try { r = await (st.pending && st.pending.q === q ? st.pending.p : API.suggest(q, pickedList())); } catch (e) { r = null; }
       if (S.step !== 0 || !input.isConnected) return;
       const it = (r ? build(q, r) : [{ kind: 'raw', text: q }]).find((x) => x.kind !== 'head');
-      note.textContent = addItem(it);
+      const added = addedAs(q, r);
+      note.textContent = added ? `Already added: ${added}` : addItem(it);
       if (st.q.trim() === q) reset();
       else { renderChips(); clearTimeout(st.timer); st.timer = setTimeout(search, 0); }     // the text typed since keeps its own list
     }
@@ -680,6 +687,7 @@
         if (!q) { note.textContent = S.conds.length ? 'PgDn for the next step' : 'Condition, symptom or cancer'; return; }
         if (st.listQ !== q) enter(q);       // the list for q has not come yet
         else if (st.cur >= 0 && selectable(st.cur)) pick();
+        else if (st.added) { note.textContent = `Already added: ${st.added}`; reset(); }
         else { note.textContent = addChip({ kind: 'text', value: q, label: q }); reset(); }      // no row chosen: the text as typed
       } else if (e.key === 'Escape') {
         if (st.q) { e.preventDefault(); reset(); }
