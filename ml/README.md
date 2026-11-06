@@ -1,7 +1,7 @@
 # ml/
 
 ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환과 검사값을 받아 승인된 ADC를 라벨 근거 순서로 보여준다.
-앱(0.5.0 이상)이 쓰는 판정 모델은 모델 0.7의 x2te(`ScratchJudge/`, 처음부터 학습)이고, 문서는 [docs/scratch_model.md](docs/scratch_model.md)다. 그 전의 Gemma 판정 모델(모델 0.5, 0.6)은 [docs/gemma_judge.md](docs/gemma_judge.md)에 있다.
+앱(0.5.0 이상)이 쓰는 판정 모델은 처음부터 학습한 `ScratchJudge/`(모델 0.7과 0.8은 x2te, 모델 0.9는 rfb8)이고, 문서는 [docs/scratch_model.md](docs/scratch_model.md)다. 그 전의 Gemma 판정 모델(모델 0.5, 0.6)은 [docs/gemma_judge.md](docs/gemma_judge.md)에 있다.
 - 처음부터 만든 모델: [docs/scratch_model.md](docs/scratch_model.md)
 - 전체 흐름: [docs/overview.md](docs/overview.md)
 - Gemma, encoder 탐색: [docs/sweep_1027.md](docs/sweep_1027.md)
@@ -18,8 +18,8 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 | `term.py` | curses가 없거나 한글 폭이 틀리는 환경(Windows)에서 쓰는 ANSI 대체 구현 |
 | `suggest.py` | 입력 화면 검색. 철자 검색(한국어 초성 포함), 판정 모델의 가까운 개념 이름, 증상, 문장 → 질환 검색 |
 | `mondo_index.py` | MONDO 이름 색인. 앱은 이름, 장기, 한국어 KCD 이름만 읽는다. 연구용 SapBERT linker(THETA 0.75)도 여기 있다 |
-| `scratch_runtime.py` | 앱에서 처음부터 학습한 판정 모델(x2te, `ScratchJudge/`)을 실행한다(CPU 또는 GPU) |
-| `scratch_export.py` | x2te(`scratch_judge.py`의 모델과 기록 읽기 판정 표)를 앱용 `ScratchJudge/` 묶음으로 내보낸다 |
+| `scratch_runtime.py` | 앱에서 처음부터 학습한 판정 모델(`ScratchJudge/`)을 실행한다(CPU 또는 GPU) |
+| `scratch_export.py` | 처음부터 학습한 모델(`scratch_judge.py`의 모델과 기록 읽기 판정 표)을 앱용 `ScratchJudge/` 묶음으로 내보낸다 |
 | `evidence_judge.py` | 처음 보는 질환을 이름 대신 MONDO 기록(정의, 상위 개념, 증상)으로 판정한다. 결과는 `concepts.json`에 미리 계산된다 |
 | `gemma_runtime.py` | 양자화된 Gemma 판정 모델 실행(연구 비교 기준, `bench_judge.py`). 앱은 쓰지 않는다 |
 | `gemma_judge2.py` | Gemma 4 E2B 판정 모델 학습. 출력 4종: organ, valid, align(MONDO 연결), sym(증상 → 질환) |
@@ -53,7 +53,7 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 | `codex_batch.py` | JSON 배치 폴더를 Codex(`codex exec`)로 처리하는 범용 실행기 |
 | `scratch_judge.py` | 처음부터 만든 판정 모델(X 계열) 학습. `--backbone`으로 encoder 튜닝에도 쓴다 |
 | `scratch_pretrain.py` | 처음부터 만든 모델의 MLM 사전학습(BERT 구조, 무작위 가중치, 여러 GPU 가능) |
-| `distill_teacher.py` | 튜닝한 Gemma의 장기 확률을 증류용 teacher 파일로 저장 |
+| `distill_teacher.py` | 튜닝한 Gemma의 장기 확률을 증류용 teacher 파일로 저장 (모델 0.8까지의 학습에 썼고, 모델 0.9는 쓰지 않는다) |
 | `umls_build.py`, `fetch_umls.sh` | UMLS 2026AA에서 학습용 이름 만들기(UMLS 원본과 결과는 저장소에 넣지 않음) |
 | `fetch_pubmed.py` | 사전학습용 PubMed baseline 내려받기(저장소에 넣지 않음) |
 | `judge_data.py` | Gemma가 아닌 판정 모델(`scratch_judge.py`)의 학습 데이터. `gemma_judge2.py`와 같은 출처, 필터에 같은 질환의 이름 쌍을 더한다 |

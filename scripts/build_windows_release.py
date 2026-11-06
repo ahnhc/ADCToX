@@ -8,7 +8,7 @@ Built on Linux from the same app archive the Ubuntu release uses, so app and mod
                           releases/requirements-cpu.txt with their dependencies, as binary wheels only
   ADCTOX/apps/<release>/  the three files of adctox-ubuntu.tar.gz (adctox --update-app adds newer releases here)
   ADCTOX/app.txt          which release starts
-  ADCTOX/launcher.py      starts that release; on the first start it downloads the models (about 300 MB) into
+  ADCTOX/launcher.py      starts that release; on the first start it downloads the models (about 317 MB) into
                           %LOCALAPPDATA%\\adctox\\models with the model updater
   ADCTOX/ADCTOX.bat       double-click entry point
   ADCTOX/ADCTOX-cli.bat   the same five steps in the terminal (ADCTOX.bat --cli); ADCTOX.bat opens the browser
@@ -60,7 +60,7 @@ def main():
     app = HERE / "apps" / (HERE / "app.txt").read_text().strip() / "adc_recommender_full.py"
     home = Path(os.environ.get("ADC_MODEL_HOME") or Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" / "Local"))) / "adctox" / "models")
     if not (home / "current.txt").exists() and sys.argv[1:] in ([], ["--web"], ["--cli"]):     # the app's own start, in the browser or the terminal
-        print("ADCTOX: first start. Downloading the models (about 300 MB, once) ...", flush=True)
+        print("ADCTOX: first start. Downloading the models (about 317 MB, once) ...", flush=True)
         if subprocess.call([sys.executable, "-I", str(app), "--update-models"]):
             print("The model download did not finish. Check the internet connection and start ADCTOX again.")
             return 1
@@ -76,7 +76,7 @@ README = """ADCTOX {version} (Windows)
 
 실행
   압축을 푼 ADCTOX 폴더의 ADCTOX.bat를 더블클릭하면 브라우저에서 열립니다 (이 컴퓨터 안에서만).
-  처음 실행할 때 모델 파일(약 300 MB)을 한 번 내려받습니다. 저장 위치: %LOCALAPPDATA%\\adctox\\models
+  처음 실행할 때 모델 파일(약 317 MB)을 한 번 내려받습니다. 저장 위치: %LOCALAPPDATA%\\adctox\\models
   ADCTOX-cli.bat를 더블클릭하면 같은 다섯 단계가 터미널 화면에서 열립니다. Windows Terminal이 있으면 그 창에서 열립니다.
 
 업데이트

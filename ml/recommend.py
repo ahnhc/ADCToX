@@ -131,7 +131,7 @@ def _free_info(free, progress=None):
             import scratch_runtime as SR
             if not SR.available(): raise RuntimeError("the installed models have no organ judge; run adctox --update-models")
             if progress: progress("judging")
-            with _Loading("Loading weights / 질환 판정 모델 (x2te)", "질환 판정 모델 준비 완료", enabled=progress is None):
+            with _Loading("Loading weights / 질환 판정 모델", "질환 판정 모델 준비 완료", enabled=progress is None):
                 links = [_scratch_link(r, typed, read) for r, typed, read in zip(SR.judge(text), free, text)]
         except Exception as error:
             warnings.warn(f"organ judge unavailable: {error}")

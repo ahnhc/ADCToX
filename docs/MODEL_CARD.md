@@ -1,7 +1,7 @@
 # Model card: forward organ-toxicity model
 
 > **Legacy research model, not the one in the app.** This card describes the earlier `src/adctox` forward model (14 axes,
-> posterior fits). The app ships the from-scratch organ judge x2te (`ScratchJudge/`, models 0.7, app 0.5.0 and later,
+> posterior fits). The app ships a from-scratch organ judge (`ScratchJudge/`, from models 0.7 and app 0.5.0; models 0.9 is `rfb8`,
 > 13 organs); its card is [ml/docs/scratch_model.md](../ml/docs/scratch_model.md). Progress notes below ("fits are
 > running") are as of October 2026 and were not updated after the project moved on.
 
