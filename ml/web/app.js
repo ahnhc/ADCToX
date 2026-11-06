@@ -1290,7 +1290,9 @@
     const evOf = {};
     for (const o of (t && t.organs) || []) if ((o.events || []).length) evOf[o.organ] = o.events;
     const per100 = (a, n) => 100 * a / n;
+    let drawn = 0;
     function dots(e) {
+      drawn++;
       const r = per100(e.a, e.n), sv = e.serious ? r : per100(e.sa || 0, e.n), c = e.comp ? per100(e.comp[0], e.comp[1]) : null;
       const same = c !== null && r >= 1 && c >= r * 0.6;
       const n = Math.round(r / 5), ns = Math.min(n, Math.round(sv / 5));
@@ -1313,7 +1315,7 @@
     const rows = ws.map((w) => wrow(w.organ, w.mark.trim(), w.text));
     for (const o in evOf) if (!done.has(o)) rows.push(wrow(o, '', 'No label warning'));       // a patient organ the label is silent on
     drawerBody.append(section("Warnings on the patient's organs", rows.length ? h('div', { class: 'wl' }, rows) : h('p', { class: 'line dim', text: 'None' }),
-      t ? h('p', { class: 'src', text: `One dot: 5 patients in 100, in ${t.trial}` }) : null));
+      t && drawn ? h('p', { class: 'src', text: `One dot: 5 patients in 100, in ${t.trial}` }) : null));
     if (wo.length) drawerBody.append(section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
       h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }), h('span', { text: w.text.replace(/;\s*/g, ', ') })]))));
     if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m })))));
