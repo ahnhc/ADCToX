@@ -58,7 +58,7 @@ def test_a_manifest_missing_a_file_the_judge_needs_is_refused(server):
 def test_only_changed_head_is_downloaded_and_rollback_restores_it(server, tmp_path):
     first = make_manifest(server)
     result = updates.install(first, tmp_path, allow_local=True)
-    assert len(result["downloaded"]) == 6
+    assert len(result["downloaded"]) == 8
     second = make_manifest(server, "0.1", b"head-2")
     server[2].clear()
     result = updates.install(second, tmp_path, allow_local=True)
