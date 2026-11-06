@@ -19,8 +19,8 @@ Two evaluations, because the warning layer is circular against label warnings by
 import json, re, sys, csv, warnings
 import numpy as np, pandas as pd
 warnings.filterwarnings("ignore")
-sys.path.insert(0, "/home/hyeongchanahn/CONI/src"); sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/src")
-sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
+sys.path.insert(0, "/home/hyeongchanahn/CONI/src")
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 import matcher as M
 from matcher import AXES, DOM, auroc, C, R
 DM = "/data/hyeongchanahn/adctox/raw/dailymed/2026-10-07/"

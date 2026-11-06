@@ -26,7 +26,7 @@ The run prints the most frequent terms with their mapping so the rules can be au
 """
 import glob, json, os, re, sys
 import numpy as np, pandas as pd
-sys.path[:0] = ["/home/hyeongchanahn/CONI/adctox/ml", "/home/hyeongchanahn/CONI/adctox/src"]
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 R = "/home/hyeongchanahn/CONI/adctox/"
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular",
         "dermatologic", "metabolic_endocrine", "musculoskeletal", "infectious_immune", "otologic"]

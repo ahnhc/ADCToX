@@ -14,7 +14,7 @@ Output (cache only; contains FinnGen disease names): $C/mondo_link.pkl
 import re, sys, pickle, time, collections, warnings
 import numpy as np, pandas as pd, torch, yaml, csv
 warnings.filterwarnings("ignore")
-sys.path.insert(0, "/home/hyeongchanahn/CONI/adctox/ml")
+import pathlib; _R = pathlib.Path(__file__).resolve().parents[1]; sys.path[:0] = [str(_R / "ml"), str(_R / "src")]
 C = "/data/hyeongchanahn/adctox/ml_cache/"; OBO = "/home/hyeongchanahn/CONI/adctox/data/raw_big/mondo/2026-10-07/mondo.obo"
 THETA = 0.75
 AXES = ["haematologic", "hepatic", "cardiovascular", "pulmonary", "renal", "gastrointestinal", "neurologic", "ocular",
