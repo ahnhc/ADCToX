@@ -279,6 +279,7 @@ kbd {
 .ctx .kvs li { display: contents; }
 .ctx .kvs li.none { display: list-item; grid-column: 1 / -1; }
 .kvs .kn { color: var(--ink-2); }
+.kvs .kn:only-child { grid-column: 1 / -1; }   /* a value without a number (Child-Pugh B): a whole row, or the rows after it shift a column */
 .kvs .kv2 { text-align: right; font-variant-numeric: tabular-nums; }
 .kvs .ko { color: var(--red); font-size: 13px; }
 .gauge { position: relative; height: 6px; border-radius: 3px; background: var(--line); }
