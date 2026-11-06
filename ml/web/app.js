@@ -576,7 +576,6 @@
             it.kind === 'ai' ? h('span', { class: 'tag', text: 'AI' }) : null);
         }
         const li = h('li', { class: 'opt', role: 'option', id: 'sg-' + i, 'aria-selected': on ? 'true' : 'false' }, left);
-        li.addEventListener('mousedown', (e) => e.preventDefault());
         li.addEventListener('mousemove', () => { if (st.cur !== i) { st.cur = i; st.moved = true; mark(); } });
         li.addEventListener('click', () => { st.cur = i; pick(); });
         list.append(li);
@@ -652,6 +651,9 @@
       if (st.q.trim() === q) reset();
       else { renderChips(); clearTimeout(st.timer); st.timer = setTimeout(search, 0); }     // the text typed since keeps its own list
     }
+    list.addEventListener('mousedown', (e) => e.preventDefault());     // a click on the list keeps the field's focus
+    input.addEventListener('blur', () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); });
+    input.addEventListener('focus', renderList);
     input.addEventListener('input', () => {
       st.q = input.value; note.textContent = ''; st.lastKey = performance.now();
       if (st.armed) { st.armed = false; renderChips(); }
