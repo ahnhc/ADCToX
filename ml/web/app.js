@@ -3,6 +3,7 @@
 (function () {
   'use strict';
 
+  try { sessionStorage.removeItem('adctoxReload'); } catch (e) { /* no storage: index.html does not retry */ }
   const Q = new URLSearchParams(location.search);
   // the mock and its parameters (motion, step, adc, q) only for the page opened as a file; over http they are ignored
   const MOCK = location.protocol === 'file:' && Q.get('mock') === '1' && window.ADCTOX_MOCK ? window.ADCTOX_MOCK : null;
@@ -13,12 +14,17 @@
   // ------------------------------------------------------------------ the server: one small object (the mock has the same methods)
   async function call(method, url, body) {
     let res;
+    const send = () => fetch(url, {
+      method, cache: 'no-store',
+      headers: body === undefined ? {} : { 'Content-Type': 'application/json' },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
     try {
-      res = await fetch(url, {
-        method, cache: 'no-store',
-        headers: body === undefined ? {} : { 'Content-Type': 'application/json' },
-        body: body === undefined ? undefined : JSON.stringify(body),
-      });
+      try { res = await send(); } catch (e) {     // one lost connection is not the end (a loopback filter can reset one); starting an analysis twice would be
+        if (url === '/api/analyze') throw e;
+        await new Promise((go) => setTimeout(go, 200));
+        try { res = await send(); } catch (e2) { await new Promise((go) => setTimeout(go, 500)); res = await send(); }
+      }
     } catch (e) {                         // no answer at all ("Failed to fetch"): the adctox process that served this page has ended
       const err = new Error('ADCTOX stopped (its terminal window was closed, or Ctrl-C). Run adctox again; it opens a new page.');
       err.status = 0; throw err;

@@ -15,7 +15,13 @@
   window.ADCTOX_FILE_MOCK = mock;
   if (mock && /[?&]motion=0(&|$)/.test(q)) document.documentElement.classList.add("still");
   window.ADCTOX_BASE = base;
-  document.write('<link rel="stylesheet" href="' + base + 'app.css">');
+  window.ADCTOX_RETRY = function () {     // a page file lost on the way (a loopback filter can reset a connection): try the page again, a few times
+    var n = 0;
+    try { n = +sessionStorage.getItem("adctoxReload") || 0; sessionStorage.setItem("adctoxReload", n + 1); } catch (e) { n = 3; }
+    if (n < 3) location.reload();
+    else document.documentElement.innerHTML = "<body><p>ADCTOX could not load its page files. If a filter or antivirus inspects local traffic, exclude this program from it, then reload.</p></body>";
+  };
+  document.write('<link rel="stylesheet" href="' + base + 'app.css" onerror="ADCTOX_RETRY()">');
 })();
 </script>
 </head>
@@ -25,7 +31,7 @@
 (function () {
   var base = window.ADCTOX_BASE;
   if (window.ADCTOX_FILE_MOCK) document.write('<script src="' + base + 'mock.js"><\/script>');
-  document.write('<script src="' + base + 'app.js"><\/script>');
+  document.write('<script src="' + base + 'app.js" onerror="ADCTOX_RETRY()"><\/script>');
 })();
 </script>
 </body>
