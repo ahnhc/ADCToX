@@ -531,6 +531,13 @@ def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monke
 
 
 
+def test_a_comma_list_is_offered_item_by_item_unless_it_is_one_name(server):
+    assert call(server, "GET", "/api/suggest?q=" + quote("cirrhosis, type 2 diabetes"))[1]["parts"] == ["cirrhosis", "type 2 diabetes"]
+    suggest.index(RC).rows.append(("hypertension, pregnancy-induced", "", "", 0, ("mondo", "MONDO:X", "Hypertension, pregnancy-induced", "", [])))
+    try: assert call(server, "GET", "/api/suggest?q=" + quote("Hypertension, pregnancy-induced"))[1]["parts"] == []
+    finally: suggest.index(RC).rows.pop()
+
+
 def test_a_choice_value_is_shown_without_the_choices():
     assert RC._raw_values({"sex": "F", "weight": 55.0}, {}) == ["Sex F", "Weight 55 kg"]
 

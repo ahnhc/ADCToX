@@ -288,12 +288,15 @@ def _subtypes_rule(q, rows, row_of):
 
 def parts(RC, text):
     """words of a space-separated input that are each a known name or abbreviation by themselves ('asd adhd' -> ['asd', 'adhd']);
-    [] when the input is one name ('heart failure') or a word is unknown. The form offers to add them separately."""
+    [] when the input is one name ('heart failure') or a word is unknown. A comma-separated list gives its items, unless the
+    whole text is one name ('cirrhosis, familial'). The form offers to add them separately."""
+    whole = norm(text); items = [x.strip() for x in whole.split(",") if x.strip()]
     words = norm(text.split(",")[-1]).split()
-    if len(words) < 2: return []
+    if len(items) < 2 and len(words) < 2: return []
     I = index(RC)
     if getattr(I, "_keys_n", -1) != len(I.rows): I._keys, I._keys_n = {r[0] for r in I.rows}, len(I.rows)    # rebuilt once the MONDO names arrive
     keys = I._keys
+    if len(items) > 1: return [] if whole in keys else items
     if " ".join(words) in keys: return []
     return words if all(w in keys for w in words) else []
 
