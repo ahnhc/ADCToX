@@ -206,7 +206,7 @@ def index(RC):
 def _score(q, qn, qc, row):
     key, ns, ch, pr, _ = row
     if qc:
-        return 55 if ch.startswith(qc) else 30 if qc in ch else 0
+        return 75 if ch == qc else 55 if ch.startswith(qc) else 30 if qc in ch else 0     # exact: ㄱㅎㅇ is 고혈압 before 고환의위축
     if key == q or (qn and ns == qn): return 100
     if key.startswith(q) or (qn and ns.startswith(qn)): return 80 - min(15, (len(key) - len(q)) // 3)
     if " " + q in " " + key: return 62 - min(10, len(key) // 10)

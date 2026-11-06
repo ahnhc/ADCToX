@@ -22,6 +22,13 @@ def test_names_suggest_registry_profiles_korean_abbreviations_initials_and_typos
     assert len({(r[0], r[1]) for r in rows}) == len(rows)                  # each concept once
 
 
+def test_initials_of_the_whole_name_rank_above_a_longer_name_that_starts_with_them():
+    high_blood_pressure = ("고혈압", "고혈압", "ㄱㅎㅇ", 0.5, ("mondo", "A", "Hypertensive disorder", "고혈압"))
+    testis = ("고환의위축", "고환의위축", "ㄱㅎㅇㅇㅊ", 2.5, ("mondo", "B", "Atrophy of testis", "고환의위축"))
+    index = type("I", (), {"rows": [testis, high_blood_pressure]})
+    assert [r[2] for r in SG._ranked(index, "ㄱㅎㅇ")] == ["Hypertensive disorder", "Atrophy of testis"]
+
+
 def test_empty_input_suggests_nothing_and_the_last_comma_part_is_searched():
     assert SG.names(RC, "") == [] and SG.names(RC, "   ") == []
     assert any("cirrhosis" in l for l in labels(SG.names(RC, "asthma, 간경")))
