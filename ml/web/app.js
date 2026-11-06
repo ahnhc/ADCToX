@@ -612,10 +612,11 @@
       let r;
       const pending = API.suggest(q, pickedList());
       st.pending = { q, p: pending };
-      try { r = await pending; } catch (e) { r = { q, names: [], parts: [], ai: [], symptoms: [], symptoms_error: null }; }
+      let lost = '';                      // no answer: the row below still adds the text, and the line says why there are no names
+      try { r = await pending; } catch (e) { lost = e.message; r = { q, names: [], parts: [], ai: [], symptoms: [], symptoms_error: null }; }
       if (seq !== st.seq) return;
       clearTimeout(st.busyTimer);
-      status.textContent = r.symptoms_error ? 'Symptom search failed: ' + r.symptoms_error : '';
+      status.textContent = lost || (r.symptoms_error ? 'Symptom search failed: ' + r.symptoms_error : '');
       st.items = build(q, r); st.listQ = q; st.added = addedAs(q, r);
       st.cur = st.added ? -1 : st.items.findIndex((x, i) => selectable(i)); st.moved = false;
       renderList();
@@ -628,10 +629,10 @@
       if (seq !== st.seq) return;
       const aseq = ++st.aiSeq;
       st.busyTimer = setTimeout(() => { if (aseq === st.aiSeq) status.textContent = 'Finding AI suggestions ...'; }, 250);
-      let r = null;
-      try { r = await API.suggest(q, pickedList(), true); } catch (e) { r = null; }
+      let r = null, lost = '';
+      try { r = await API.suggest(q, pickedList(), true); } catch (e) { r = null; lost = e.message; }
       if (aseq !== st.aiSeq) return;      // a newer key or search: this answer is stale
-      clearTimeout(st.busyTimer); status.textContent = '';
+      clearTimeout(st.busyTimer); status.textContent = lost;
       if (!r || r.q !== q || st.q.trim() !== q || seq !== st.seq || !(r.ai || []).length) return;
       const was = st.moved ? st.items[st.cur] : null;      // a cursor the user moved stays on its row; else it is on the best row again
       st.items = build(q, r);
