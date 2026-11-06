@@ -77,6 +77,17 @@ def test_app_lists_the_axes_the_registry_and_the_lab_fields(server):
     assert d["steps"] == ["Conditions", "Labs", "Organs", "Priority", "Results"] and "first_text" not in d
 
 
+def test_a_pasted_note_is_cut_before_the_symptom_search(server, monkeypatch):
+    import suggest as SG
+    seen = []
+    monkeypatch.setattr(SG, "symptoms", lambda RC_, text, limit=8: seen.append(text) or [])
+    note = "Patient has breast cancer with diabetes and hypertension. " * 100
+    d = call(server, "GET", "/api/suggest?q=" + quote(note))[1]
+    assert d["symptoms"] == [] and len(seen) == 1 and 300 < len(seen[0]) <= webapp.SENTENCE_MAX and note.startswith(seen[0])
+    call(server, "GET", "/api/suggest?q=" + quote("shortness of breath and leg swelling"))
+    assert seen[-1] == "shortness of breath and leg swelling"          # a sentence of ordinary length is read whole
+
+
 def test_suggestions_are_the_first_screens_names_and_symptom_diseases(server, monkeypatch):
     import suggest as SG
     status, d = call(server, "GET", "/api/suggest?q=cirr")

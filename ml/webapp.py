@@ -27,6 +27,7 @@ SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Registry"
 STATUS = {0: "None", 1: "Monitor", 2: "No data", 3: "Avoid", 4: "Avoid"}       # recommend._result_list: the four display groups
 JOBS = 8                    # analyses kept for the page to fetch; a finished one goes once fetched, or after KEEP seconds
 KEEP = 300
+SENTENCE_MAX = 400             # characters of a described case the symptom search reads: it costs about 6 ms a character, a pasted note took minutes
 
 
 def web_files(folder):
@@ -305,18 +306,19 @@ class App:
                         pick=dict(condition=val if kind == "reg" else main if kind == "mondo" else label, choice=val if kind == "mondo" else None))
         for p in picked:
             have.update(keys(("reg", p, RC.condition_name(p), "") if p in RC._reg else ("mondo", p, "", "") if re.match(r"(MONDO|HP):", p) else ("text", p, p, "")))
-        out = dict(q=q, names=[], parts=SG.parts(RC, q) if text else [], ai=[], symptoms=[], symptoms_error=None)
+        head = text if len(text) <= SENTENCE_MAX else text[:SENTENCE_MAX].rsplit(None, 1)[0]      # a pasted note: its first words are searched
+        out = dict(q=q, names=[], parts=SG.parts(RC, q if head == text else head) if text else [], ai=[], symptoms=[], symptoms_error=None)
         if not text: return out
         alias = RC.cancer_alias(text)                          # a cancer name the search reads badly (HER2 양성 유방암: 양성 = benign)
-        found = ([("mondo", alias, RC._cancer_map()["terms"][alias][0], text, [])] if alias else []) + SG.names(RC, q)
+        found = ([("mondo", alias, RC._cancer_map()["terms"][alias][0], text, [])] if alias else []) + SG.names(RC, q if head == text else head)
         out["names"] = [item(s) for s in found if fresh(s)]
-        sentence = len(text) >= 4 and len(text.split()) >= 2 and not SG.parts(RC, text)
+        sentence = len(text) >= 4 and len(text.split()) >= 2 and not SG.parts(RC, head)
         if ai and RC.HAS_LEARNED and len(text) >= 2 and not sentence:
-            try: res = SG.semantic(RC, text)
+            try: res = SG.semantic(RC, head)
             except Exception: res = []
             out["ai"] = [item(s) for s in res if fresh(s)]
         if sentence:
-            try: res = SG.symptoms(RC, text)
+            try: res = SG.symptoms(RC, head)
             except Exception as e: res = []; out["symptoms_error"] = f"{type(e).__name__}: {str(e)[:80]}"
             out["symptoms"] = [item(s, why) for s, why in res if fresh(s)]
         return out
