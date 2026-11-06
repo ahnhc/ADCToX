@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.6.14: reading typed text, numbered disease names, the screens, and the page on a filtered PC (Ubuntu, macOS and Windows)
 
 - **Fixed, disease names with a number after them:** a numbered gene-locus subtype nobody typed reads and lists as its general concept (`CHF NYHA III` no longer reads `hypertrophic cardiomyopathy 3`, `primary biliary cholangitis 3` is `primary biliary cholangitis`). A typed number keeps its subtype (`MODY 3`). 4,495 of 4,655 subtypes have a general concept; the other 160 stay numbered and list last.
 - **Changed, reading typed text:** the choice screen opens again for short inputs and low reads whose candidates disagree on organs (`SCD`, `TB`, `MS`, `CAD`). A cancer becomes the patient's only when typed by name or picked; a read that only resembles one is offered, with the non-cancer reading selected. Inputs the judge used to reject between validity 0.9 and its threshold (`TB`, `shingles`, `migrane`) now read with a `Low confidence, check this` mark, and a weak match shows `Confirm this read`.
