@@ -736,13 +736,13 @@
   }
   function derivedLine() {                 // form.Form.labs' line: x ULN of the fields that have one, then the CLcr lines, as the server wrote them
     const L = S.labs || {}, sh = (L.derived && L.derived.shown) || {};
-    const out = [];
+    const notes = (L.notes || []).map(String);
+    const out = notes.filter((n) => /^(CLcr|Creatinine needs)/.test(n));     // first: the bar has room for only some of the line
     for (const f of FIELDS) {
       const k = f.key === 'bilirubin' ? 'bili' : f.key;
       if (k !== 'crcl' && f.uln !== null && f.uln !== undefined && sh[k] !== undefined && sh[k] !== null) out.push(`${f.label} ${sh[k]}×ULN`);
     }
-    for (const n of L.notes || []) if (/^(CLcr|ULN used)/.test(String(n))) out.push(String(n));
-    return out;
+    return out.concat(notes.filter((n) => /^ULN used/.test(n)));
   }
   function stage2() {
     const order = [];                       // focusable controls, in field order
@@ -832,6 +832,7 @@
       for (const x of flags) if (String(S.raw[x.key] || '').trim()) lit[x.organ] = 'l2';
       body.update({ lit });
       const parts = derivedLine();
+      barLeft.title = labsErr ? '' : parts.join('\n');     // the whole line, when it does not fit
       setBar({
         left: labsErr ? h('span', { class: 'err-line', text: labsErr }) : parts.map((t) => h('span', { class: 'info', text: t })),
         keys: [kbd('↑↓', 'move'), kbd('PgUp', 'back')],
@@ -843,7 +844,7 @@
     refresh();
     labsNow();
     setTimeout(() => { const first = order.find((o) => !String(S.raw[o.key] || '').trim()) || order[0]; if (first && S.step === 1) first.focus({ preventScroll: true }); }, 0);
-    cleanup = () => { labUI = null; };
+    cleanup = () => { labUI = null; barLeft.title = ''; };
     return node;
   }
 
