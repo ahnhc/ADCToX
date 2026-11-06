@@ -244,9 +244,10 @@ def _correct(I, q):
 def names(RC, text, limit=8):
     """spelling suggestions for the text being typed; the last comma-separated part counts when there are several.
     The same concept, or a Korean KCD name whose English name is already listed, is shown once."""
-    q = norm(text.split(",")[-1])
+    I = index(RC); q = norm(text)
+    if q not in _keys(I): q = norm(text.split(",")[-1])              # unless the whole text is a name ('Cirrhosis, familial')
     if not q: return []
-    I = index(RC); out = _ranked(I, q)
+    out = _ranked(I, q)
     if len(out) < 3 and len(q) >= 4 and q.isascii():                  # a typo
         c = _correct(I, q)
         if c != q: out += [s for s in _ranked(I, c) if all((x[0], x[1]) != (s[0], s[1]) for x in out)]
@@ -286,6 +287,11 @@ def _subtypes_rule(q, rows, row_of):
     return out
 
 
+def _keys(I):
+    if getattr(I, "_keys_n", -1) != len(I.rows): I._keys, I._keys_n = {r[0] for r in I.rows}, len(I.rows)    # rebuilt once the MONDO names arrive
+    return I._keys
+
+
 def parts(RC, text):
     """words of a space-separated input that are each a known name or abbreviation by themselves ('asd adhd' -> ['asd', 'adhd']);
     [] when the input is one name ('heart failure') or a word is unknown. A comma-separated list gives its items, unless the
@@ -294,8 +300,7 @@ def parts(RC, text):
     words = norm(text.split(",")[-1]).split()
     if len(items) < 2 and len(words) < 2: return []
     I = index(RC)
-    if getattr(I, "_keys_n", -1) != len(I.rows): I._keys, I._keys_n = {r[0] for r in I.rows}, len(I.rows)    # rebuilt once the MONDO names arrive
-    keys = I._keys
+    keys = _keys(I)
     if len(items) > 1: return [] if whole in keys else items
     if " ".join(words) in keys: return []
     return words if all(w in keys for w in words) else []

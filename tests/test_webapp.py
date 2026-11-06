@@ -540,7 +540,9 @@ def test_a_typed_name_row_says_so_in_english(server, monkeypatch):
 def test_a_comma_list_is_offered_item_by_item_unless_it_is_one_name(server):
     assert call(server, "GET", "/api/suggest?q=" + quote("cirrhosis, type 2 diabetes"))[1]["parts"] == ["cirrhosis", "type 2 diabetes"]
     suggest.index(RC).rows.append(("hypertension, pregnancy-induced", "", "", 0, ("mondo", "MONDO:X", "Hypertension, pregnancy-induced", "", [])))
-    try: assert call(server, "GET", "/api/suggest?q=" + quote("Hypertension, pregnancy-induced"))[1]["parts"] == []
+    try:
+        d = call(server, "GET", "/api/suggest?q=" + quote("Hypertension, pregnancy-induced"))[1]
+        assert d["parts"] == [] and d["names"][0]["text"] == "Hypertension, pregnancy-induced"     # a name with a comma stays one name
     finally: suggest.index(RC).rows.pop()
 
 
