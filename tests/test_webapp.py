@@ -531,6 +531,28 @@ def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monke
 
 
 
+def test_a_large_response_is_compressed_for_a_browser_and_plain_for_others(server):
+    import gzip, http.client
+    def get(**headers):
+        c = http.client.HTTPConnection("127.0.0.1", server.server_port, timeout=30); c.request("GET", "/app.js", headers=headers); r = c.getresponse()
+        return r.getheader("Content-Encoding"), r.read()
+    enc, plain = get()
+    assert enc is None and plain
+    enc, packed = get(**{"Accept-Encoding": "gzip, deflate"})
+    assert enc == "gzip" and gzip.decompress(packed) == plain and len(packed) < len(plain) / 2
+
+
+def test_a_comma_list_splits_only_when_every_item_finds_a_name(server):
+    assert call(server, "GET", "/api/suggest?q=" + quote("fever, xqzzyq"))[1]["parts"] == []
+    assert call(server, "GET", "/api/suggest?q=" + quote("cirrhosis, type 2 diabetes"))[1]["parts"] == ["cirrhosis", "type 2 diabetes"]
+
+
+def test_a_number_after_something_that_is_not_a_name_stays_a_sentence(server):
+    import suggest as SG
+    assert not SG.numbered_name(RC, "pain for 3") and not SG.numbered_name(RC, "mody")
+    assert SG.numbered_name(RC, "heart failure 2")
+
+
 def test_a_numbered_name_is_not_read_as_a_sentence(server, monkeypatch):
     import suggest as SG
     monkeypatch.setattr(SG, "symptoms", lambda RC_, text: pytest.fail("symptom search for a numbered name"))

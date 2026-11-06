@@ -6,7 +6,7 @@ same Read as and how texts, the same numbers. Nothing is kept on the server; the
 recommend's per-process state (CHOICE, PRIORITY, FIRST) is set from each request under one lock and put back after it.
 Analyses run one at a time in one worker thread, in the order they were asked for (a later one waits as "queued").
 """
-import base64, json, os, queue, re, secrets, sys, threading, time, traceback
+import base64, gzip, json, os, queue, re, secrets, sys, threading, time, traceback
 from contextlib import contextmanager
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -27,6 +27,7 @@ SOURCE = {"AI judgment": "AI judgment", "Registry match": "Registry", "Registry"
 STATUS = {0: "None", 1: "Monitor", 2: "No data", 3: "Avoid", 4: "Avoid"}       # recommend._result_list: the four display groups
 JOBS = 8                    # analyses kept for the page to fetch; a finished one goes once fetched, or after KEEP seconds
 KEEP = 300
+GZIP_FROM = 32768               # one large response stalls at about 64 KB through a loopback filter (AdGuard on Windows), and the page never loads
 SENTENCE_MAX = 400             # characters of a described case the symptom search reads: it costs about 6 ms a character, a pasted note took minutes
 
 
@@ -484,6 +485,8 @@ def _handler(app):
         def send(self, status, data, ctype=JSON, headers=()):
             if isinstance(data, str): data = data.encode("utf-8")
             try:
+                if len(data) > GZIP_FROM and "gzip" in self.headers.get("Accept-Encoding", ""):
+                    data = gzip.compress(data, 6); headers = [*headers, ("Content-Encoding", "gzip")]
                 self.send_response(status); self.send_header("Content-Type", ctype); self.send_header("Content-Length", str(len(data)))
                 self.send_header("Cache-Control", "no-store"); self.send_header("X-Content-Type-Options", "nosniff")
                 for k, v in headers: self.send_header(k, v)
