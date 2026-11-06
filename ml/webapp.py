@@ -302,7 +302,7 @@ class App:
             mondo = (RC._reg[val].get("mondo_id") or None) if kind == "reg" else val if kind == "mondo" else None
             return dict(text=main, sub=sub, id=val if kind == "reg" else None, mondo=mondo, ko=next((x for x in (label, detail) if x and HANGUL.search(x)), None),
                         organs=list(org or []), kind="symptom" if why is not None else "registry" if kind == "reg" else "hpo" if str(val).startswith("HP:") else "mondo" if kind == "mondo" else "kcd",
-                        cancer=RC.is_cancer(mondo), why=why,
+                        cancer=RC.is_cancer(mondo), why="typed name" if why == "입력한 이름" else why,      # suggest's tag is for the Korean screens
                         pick=dict(condition=val if kind == "reg" else main if kind == "mondo" else label, choice=val if kind == "mondo" else None))
         for p in picked:
             have.update(keys(("reg", p, RC.condition_name(p), "") if p in RC._reg else ("mondo", p, "", "") if re.match(r"(MONDO|HP):", p) else ("text", p, p, "")))

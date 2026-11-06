@@ -531,6 +531,12 @@ def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monke
 
 
 
+def test_a_typed_name_row_says_so_in_english(server, monkeypatch):
+    import suggest as SG
+    monkeypatch.setattr(SG, "symptoms", lambda RC_, text: [(("reg", "cirrhosis", "Cirrhosis", "", ["hepatic"]), "입력한 이름")])
+    assert call(server, "GET", "/api/suggest?q=" + quote("cirrhosis and more"))[1]["symptoms"][0]["why"] == "typed name"
+
+
 def test_a_comma_list_is_offered_item_by_item_unless_it_is_one_name(server):
     assert call(server, "GET", "/api/suggest?q=" + quote("cirrhosis, type 2 diabetes"))[1]["parts"] == ["cirrhosis", "type 2 diabetes"]
     suggest.index(RC).rows.append(("hypertension, pregnancy-induced", "", "", 0, ("mondo", "MONDO:X", "Hypertension, pregnancy-induced", "", [])))
