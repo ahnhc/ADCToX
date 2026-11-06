@@ -531,6 +531,10 @@ def test_binary_page_files_travel_base64_and_are_served_as_bytes(tmp_path, monke
 
 
 
+def test_a_choice_value_is_shown_without_the_choices():
+    assert RC._raw_values({"sex": "F", "weight": 55.0}, {}) == ["Sex F", "Weight 55 kg"]
+
+
 def test_labs_take_the_lab_uln_and_answer_with_it(server):
     d = call(server, "POST", "/api/labs", {"raw": {"bilirubin": "1.7", "uln_bilirubin": "1.0", "ast": 130, "uln_ast": 30, "alt": 80}})[1]
     assert d["raw"]["uln_bilirubin"] == 1.0 and d["errors"] == {}

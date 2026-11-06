@@ -996,7 +996,8 @@ def _raw_values(raw, values):
         if v is None or values.get(_SHOWN_AS.get(k, "")) is not None: continue
         text = ("yes" if v else "no") if isinstance(v, bool) else f"{v:g}" if isinstance(v, (int, float)) else str(v)
         organs = [o for key, test, o, _ in LB.FLAGS if key == k and isinstance(v, (int, float)) and test(v, LB.uln_of(raw).get(k))]
-        out.append((bool(organs), f"{label} {text} {unit}" + (" → " + ", ".join(ORGAN_SHORT[o] for o in dict.fromkeys(organs)) if organs else "")))
+        text += f" {unit}" if isinstance(v, (int, float)) and not isinstance(v, bool) else ""       # 'Sex F', not 'Sex F M/F'
+        out.append((bool(organs), f"{label} {text}" + (" → " + ", ".join(ORGAN_SHORT[o] for o in dict.fromkeys(organs)) if organs else "")))
     return [t for _, t in sorted(out, key=lambda x: not x[0])]           # the ones that marked an organ first
 
 
