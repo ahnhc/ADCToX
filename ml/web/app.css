@@ -177,8 +177,8 @@ kbd {
 
 /* ---------------------------------------------------------------- step 2: lab values */
 .s2 { max-width: 980px; margin: 0 auto; container-type: inline-size; }
-@container (max-width: 760px) { .groups { columns: 1; } }
 .groups { columns: 2; column-gap: 22px; margin-top: 24px; }
+@container (max-width: 760px) { .groups { columns: 1; } }
 .group { padding: 14px 18px 8px; break-inside: avoid; margin-bottom: 20px; }
 .group .h2 { margin-bottom: 4px; }
 .lab {
