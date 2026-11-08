@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.15: clearer evidence review and local review export
+
+- Explicit missing, entered and no-flag lab states; model associations and review order explained beside the results.
+- Cancer-match status on each ADC; direct links back to conditions and labs.
+- Trial population, arms, sample sizes and source study visible in the evidence detail.
+- Save a local text review with inputs, missing values, restrictions, warnings and trial context.
+- Shared presentation functions with regression coverage; Pretendard replaces the unlicensed display face in distributed web assets.
+- Models remain at 0.8. Existing 0.6.14 fixes are included. No clinical time saving or toxicity-prediction improvement is claimed.
+
+
 ## 0.6.14: reading typed text, numbered disease names, the screens, and the page on a filtered PC (Ubuntu, macOS and Windows)
 
 - **Fixed, disease names with a number after them:** a numbered gene-locus subtype nobody typed reads and lists as its general concept (`CHF NYHA III` no longer reads `hypertrophic cardiomyopathy 3`, `primary biliary cholangitis 3` is `primary biliary cholangitis`). A typed number keeps its subtype (`MODY 3`). 4,495 of 4,655 subtypes have a general concept; the other 160 stay numbered and list last.
