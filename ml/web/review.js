@@ -37,6 +37,14 @@
       for (const warning of detail.other_warnings || []) lines.push(`- Other organ: ${warning.organ} ${warning.mark} ${warning.text}`);
       for (const missing of detail.missing || []) lines.push(`- Missing: ${missing}`);
       if (detail.indication) lines.push(`Approved uses: ${detail.indication}`);
+      const trial = detail.trial;
+      if (trial && trial.no_results) lines.push(`No results in bundled trial snapshot: ${trial.trial}`);
+      else if (trial && trial.trial) {
+        lines.push(`Study: ${trial.trial} (${trial.nct})`, `Population: ${trial.population || 'Not specified'}`,
+          `Treatment: ${trial.regimen} (n=${trial.n})`);
+        if (trial.comparator) lines.push(`Comparator: ${trial.comparator.regimen} (n=${trial.comparator.n})`);
+        if (/^NCT\d{8}$/.test(trial.nct || '')) lines.push('https://clinicaltrials.gov/study/' + trial.nct);
+      }
     }
     lines.push('', 'Trial percentages, when shown in the app, describe study groups, not this patient.');
     return lines.join('\n');

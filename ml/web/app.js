@@ -1359,6 +1359,17 @@
     // the main trial's rate for each warning, as 20 dots (one per 5 patients in 100); pink dots the serious ones. The comparator
     // is not drawn: an event about as common on the other treatment is greyed and says so; the trial and both arms are on hover
     const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
+    if (t) {
+      drawerBody.append(section('Trial context',
+        h('p', { class: 'line', text: `${t.trial}${t.phase ? ' / Phase ' + t.phase : ''}` }),
+        h('p', { class: 'line', text: t.population || 'Population not specified' }),
+        h('p', { class: 'line', text: `${t.regimen} (n=${t.n})` }),
+        t.comparator ? h('p', { class: 'line', text: `Comparator: ${t.comparator.regimen} (n=${t.comparator.n})` }) : null,
+        h('p', { class: 'note2', text: 'Check that this trial population and treatment setting match the case being reviewed.' }),
+        /^NCT\d{8}$/.test(t.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + t.nct, target: '_blank', rel: 'noopener noreferrer', text: 'Open source study ' + t.nct }) : null));
+    } else if (d.trial && d.trial.no_results) {
+      drawerBody.append(section('Trial context', h('p', { class: 'line', text: 'No results in the bundled ClinicalTrials.gov snapshot: ' + d.trial.trial })));
+    }
     const evOf = {};
     for (const o of (t && t.organs) || []) if ((o.events || []).length) evOf[o.organ] = o.events;
     const per100 = (a, n) => 100 * a / n;
