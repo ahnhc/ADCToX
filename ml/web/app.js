@@ -1203,7 +1203,7 @@
       const rows = res.rows || [], P = res.patient || {}, levels = P.organ_levels || {};
       shownPatient = P;
       box.append(h('div', { class: 'review-header' }, h('div', null, h('h1', { class: 'title', text: 'ADC evidence review' }), h('p', { class: 'step-description', text: 'Compare label restrictions and warnings. The order does not estimate treatment benefit or individual toxicity.' })), h('button', { type: 'button', class: 'review-action', text: 'Save review', onclick: () => saveReview(res) })));
-      box.append(h('div', { class: 'review-context' }, h('span', { text: (P.cancers || []).length ? 'Cancer entered · confirm full indication in details' : 'Indication not assessed · add a cancer' }), h('button', { type: 'button', class: 'review-link', text: 'Edit conditions', onclick: () => go(0) }), h('button', { type: 'button', class: 'review-link', text: 'Complete lab values', onclick: () => go(1) })));
+      box.append(h('div', { class: 'review-context' }, h('span', { text: (P.cancers || []).length ? 'Cancer entered — confirm full indication in details' : 'Indication not assessed — add a cancer' }), h('button', { type: 'button', class: 'review-link', text: 'Edit conditions', onclick: () => go(0) }), h('button', { type: 'button', class: 'review-link', text: 'Complete lab values', onclick: () => go(1) })));
       // Key values (the selected ADC's: its restriction's values first) | Review order
       const keyList = h('ul', { class: 'kvs' });
       const keyValues = (i) => {
