@@ -1,16 +1,13 @@
-ADCTOX 0.6.14: 입력한 질환을 더 조심해서 읽고, 화면의 어긋난 곳을 고쳤다. Ubuntu, macOS, Windows 모두 0.6.14이다.
+ADCToX 0.6.15 — evidence review and local export
 
-- **질환 이름 뒤의 숫자:** 입력하지 않은 숫자가 붙어 나오던 문제를 고쳤다. `CHF NYHA III`가 `hypertrophic cardiomyopathy 3`으로 읽히지 않는다. `MODY 3`처럼 직접 입력한 숫자는 유지한다.
-- **입력 읽기:** `SCD`, `TB`, `MS`, `CAD`처럼 짧거나 후보의 장기가 갈리는 입력은 고르는 화면을 다시 연다. 암은 이름을 입력하거나 고를 때만 환자의 암이 된다. 예전에 거절하던 일부 입력(`TB`, `shingles`, `migrane`)은 `Low confidence, check this` 표시와 함께 읽는다.
-- **라벨 읽기:** 후보에서 고른 질환도 직접 입력한 것과 같이 계산한다. 입력한 bleomycin이 brentuximab의 금기에 닿고, 입력한 ESRD나 투석은 ESRD로 센다. 입력하지 않은 혈소판 수치가 belantamab의 Avoid를 가리지 않는다.
-- **검사 수치:** 빌리루빈, AST, ALT에 검사실의 ULN을 넣을 수 있다. `0,8` 같은 소수점 쉼표는 8로 읽지 않고 오류로 알린다.
-- **화면:** 이미 넣은 질환을 다시 입력하면 그렇다고 알려 준다. 쉼표로 나열한 입력을 항목별로 넣을 수 있다. 휴대폰 너비에서 넘치던 곳을 고쳤다.
-- **AdGuard 같은 loopback 필터가 있는 PC:** 페이지가 비어 있던 문제를 고쳤다.
-- **업데이트와 설치:** 검증에 실패한 파일을 다시 받고, 취소한 업데이트가 되돌리기를 지우지 않는다.
-- **한국어 이름 색인:** 모델 0.9가 있으면 한글 입력을 한국어 이름 벡터로도 찾는다. 모델 0.8에서는 전과 같다.
+- Clear lab states: missing, entered, review needed, and no flag triggered.
+- Organ model scores and review order are explained without presenting them as patient toxicity risk.
+- Cancer-match status on each ADC, with direct return to conditions and labs.
+- Trial population, treatment/comparator counts and source links alongside the warnings.
+- Save review: local text file containing inputs, missing information and evidence.
+- Shared review presentation functions and a consistent Pretendard UI.
+- Includes the input, restriction and updater fixes prepared for 0.6.14. Models remain at 0.8.
 
-이미 설치했다면 앱만 올린다.
+This research prototype has no measured clinical time-saving effect. Experimental antigravity de novo design files are not in the release.
 
-```bash
-adctox --update-app
-```
+Update an existing installation with `adctox --update-app`. Windows users may download ADCTOX-windows.zip; Linux and macOS use the repository installer or adctox-ubuntu.tar.gz.

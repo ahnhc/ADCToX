@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "app_version": "0.6.13",
-  "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.6.13/ADCTOX-windows.zip",
-  "size": 223311332,
-  "sha256": "c3aa085ca27127ad37d53c0bdb97f4dfa2a802c3bb02f2d9775930cd8a08047d",
+  "app_version": "0.6.15",
+  "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.6.15/ADCTOX-windows.zip",
+  "size": 223433113,
+  "sha256": "425022c2bac3ada79dfa2d52a04ed30554fc66e3f597226a70394f6a64c8a8cf",
   "python": "3.12.10 embeddable",
   "torch_version": "2.11.0",
   "wheels": [
     "annotated_doc-0.0.5-py3-none-any.whl",
     "anyio-4.16.0-py3-none-any.whl",
     "certifi-2026.10.23-py3-none-any.whl",
-    "click-8.5.0-py3-none-any.whl",
+    "click-8.5.1-py3-none-any.whl",
     "cloudpickle-3.1.2-py3-none-any.whl",
     "colorama-0.4.6-py2.py3-none-any.whl",
     "filelock-4.2.9-py3-none-any.whl",
@@ -33,7 +33,7 @@
     "packaging-26.3-py3-none-any.whl",
     "pygments-2.21.0-py3-none-any.whl",
     "pyyaml-6.0.3-cp312-cp312-win_amd64.whl",
-    "regex-2026.9.29-cp312-cp312-win_amd64.whl",
+    "regex-2026.11.8-cp312-cp312-win_amd64.whl",
     "rich-15.0.0-py3-none-any.whl",
     "safetensors-0.8.0-cp310-abi3-win_amd64.whl",
     "scikit_learn-1.9.1-cp312-cp312-win_amd64.whl",
@@ -47,7 +47,7 @@
     "torch-2.11.0-cp312-cp312-win_amd64.whl",
     "tqdm-4.70.1-py3-none-any.whl",
     "transformers-5.19.0-py3-none-any.whl",
-    "typer-0.27.3-py3-none-any.whl",
+    "typer-0.28.0-py3-none-any.whl",
     "typing_extensions-4.16.0-py3-none-any.whl"
   ]
 }
