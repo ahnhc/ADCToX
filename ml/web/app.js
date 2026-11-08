@@ -7,6 +7,7 @@
   const Q = new URLSearchParams(location.search);
   // the mock and its parameters (motion, step, adc, q) only for the page opened as a file; over http they are ignored
   const MOCK = location.protocol === 'file:' && Q.get('mock') === '1' && window.ADCTOX_MOCK ? window.ADCTOX_MOCK : null;
+  const REVIEW = window.ADCTOX_REVIEW;
   const ROOT = document.documentElement;
   const REDUCE = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
   const still = () => ROOT.classList.contains('still') || REDUCE.matches;
@@ -84,8 +85,8 @@
   // on the first visit (remembered in this browser), and the ? guide in the header
   const STEP_TIPS = [         // one sentence per line
     'Type the patient\'s conditions, symptoms or cancer, in English or Korean.\nPress Enter to add each one, then PgDn.',
-    'Enter only the values you have. Empty boxes are fine.\nA ✓ box is within the label\'s limits. A pink box flags an organ.',
-    'The AI maps each condition to the organs it affects.\nEach bar is its confidence. Teal marks the organs used.',
+    'Enter only the values you have. Empty boxes are fine.\nBlank values remain unknown. A flagged value needs review.',
+    'The AI maps each condition to the organs it affects.\nBars show model association scores, not patient risk. Teal marks the organs used.',
     'Pick the condition to review first. Its organs lead the Review order and the ranking.\nAuto orders the conditions by severity.',
     'ADCs ranked for this patient.\nClick a row or press Enter for the label evidence.\nHover a dotted title to see what it means.',
   ];
@@ -95,7 +96,7 @@
     'Label restriction': ['What the FDA label says about this ADC for this patient.', [['1 bar', 'Monitor: usable, check more often'], ['2 bars', 'Not studied: no data in such patients'], ['3 bars', 'Avoid: the label says not to use'], ['Dashed', 'a value not entered could raise it'], ['Patient', 'what the patient has'], ['Label', 'the label\'s rule it meets']]],
     'Patient organs': ['Label warnings on organs where the patient already has a problem.', [['!!', 'boxed warning'], ['!', 'warning'], ['+N', 'more organs (hover it)']]],
     'Other': ['Label warnings on the patient\'s other organs.', [['!!', 'boxed warning'], ['!', 'warning']]],
-    'Organs': ['The organs each condition affects, by the AI.', [['Bar', 'the model\'s confidence'], ['Teal', 'the organs used']]],
+    'Organs': ['The organs each condition affects, by the AI.', [['Bar', 'model association, not toxicity probability'], ['Teal', 'the organs used']]],
     'Read as': ['The disease concept the input was matched to.', [['Source', 'where the match came from']]],
     'Indication': ['Is this ADC approved for the patient\'s cancer?', [['✓', 'approved'], ['✕', 'not approved'], ['List', 'all approved uses']]],
     "Warnings on the patient's organs": ['The label\'s warnings on the patient\'s affected organs.', [['!!', 'boxed warning'], ['!', 'warning'], ['Dots', 'patients in the main trial, one per 5 in 100'], ['Pink dot', 'serious'], ['Grey dots', 'as common on the other treatment']]],
@@ -389,7 +390,7 @@
     document.title = 'ADCTOX';
     crumbsOl = h('ol');
     verEl = h('div', { class: 'ver', text: '' });
-    top = h('header', { class: 'top' }, h('div', { class: 'brand', 'aria-hidden': 'true' }), h('nav', { class: 'crumbs', 'aria-label': 'Steps' }, crumbsOl), h('div', { class: 'right' }, helpBtn(), verEl));
+    top = h('header', { class: 'top' }, h('div', { class: 'brand', text: 'ADCToX', 'aria-hidden': 'true' }), h('nav', { class: 'crumbs', 'aria-label': 'Steps' }, crumbsOl), h('div', { class: 'right' }, helpBtn(), verEl));
     stageBox = h('main', { class: 'stage' });
     body = buildBody();
     side = h('aside', { class: 'side', 'aria-label': 'Body map' }, body.el);
@@ -722,6 +723,8 @@
     });
     const node = h('div', { class: 's1' },
       h('div', { class: 'hero' }, h('h1', { class: 'logo', 'aria-label': 'ADCToX' }, h('span', { class: 'a', text: 'ADC' }), h('span', { class: 'b', text: 'ToX' }))),
+      h('p', { class: 'intro', text: 'Review ADC label evidence for the patient’s conditions and lab values.' }),
+      h('p', { class: 'step-description', text: 'Add a cancer to check indication matches. English and Korean inputs are supported.' }),
       chips, h('div', { class: 'field' }, h('span', { class: 'pr', 'aria-hidden': 'true', text: '›' }), input), list, note, status);
     renderChips();
     const preset = MOCK && Q.get('q') && !stage1.preset ? Q.get('q') : '';
@@ -783,14 +786,15 @@
       const id = 'lab-' + f.key;
       const err = h('div', { class: 'err', id: id + '-err', hidden: true });
       const flag = h('span', { class: 'flag', hidden: true });
+      const state = h('span', { class: 'lab-state', id: id + '-state' });
       const ok = h('span', { class: 'ok', hidden: true, text: '✓', 'aria-label': 'OK', title: f.rule ? `Flag: ${f.rule}` : null });   // checked against labs.FLAGS and not met
       const base = f.key.startsWith('uln_') ? FIELDS.find((x) => x.key === f.key.slice(4)) : null;
       const anchor = f.uln !== null && f.uln !== undefined ? `ULN ${f.uln}` : base ? `default ${base.uln}` : '';      // the reference the x ULN uses; the range is in the error line
       const anc = f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null;
-      const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, anc, flag, ok);
+      const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, anc, flag, ok, state);
       let control;
       if (f.kind === 'number') {
-        control = h('input', { class: 'num', id, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', placeholder: ' ', 'aria-describedby': id + '-err', value: S.raw[f.key] || '' });
+        control = h('input', { class: 'num', id, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', placeholder: 'Not entered', 'aria-describedby': id + '-err', value: S.raw[f.key] || '' });
         control.addEventListener('input', () => { S.raw[f.key] = control.value; touched.delete(f.key); save(); labsSoon(); refresh(); });
         control.addEventListener('blur', () => { if (control.value.trim()) touched.add(f.key); labsNow(); });
         control.addEventListener('keydown', (e) => {
@@ -829,14 +833,14 @@
         order.push({ key: f.key, focus: () => (btns.find((b) => b.tabIndex === 0) || btns[0]).focus() });
       }
       const row = h('div', { class: 'lab' }, h('label', { for: f.kind === 'number' ? id : null, text: f.label, id: id + '-l' }), control, unit, err);
-      rows[f.key] = { row, err, flag, ok, control, f, anc };
+      rows[f.key] = { row, err, flag, ok, control, f, anc, state };
       return row;
     }
     function refresh() {
       const r = S.labs || {};
       const errs = r.errors || {}, flags = r.flags || [];
       for (const k in rows) {
-        const { err, flag, ok, control, f, anc } = rows[k];
+        const { err, flag, ok, control, f, anc, state } = rows[k];
         if (anc && r.uln && r.uln[k] !== undefined) anc.textContent = `ULN ${r.uln[k]}`;
         const msg = errs[k] && touched.has(k) && String(S.raw[k] || '').trim() ? String(errs[k]) : '';      // form._lab_error, as sent
         err.hidden = !msg; err.textContent = msg;
@@ -847,6 +851,8 @@
         flag.title = fl.map((x) => x.why).join('\n');
         const entered = String(S.raw[k] || '').trim() && r.raw && r.raw[k] !== undefined && r.raw[k] !== null;
         ok.hidden = !(f.rule && entered && !msg && !errs[k] && !fl.length);
+        state.textContent = REVIEW.labState(S.raw[k], errs[k], fl.length, !ok.hidden, k.startsWith('uln_'));
+        state.classList.toggle('entered', !!entered);
         if (control.classList) { control.classList.toggle('okv', !ok.hidden); control.classList.toggle('flg', !!fl.length && !msg); }
       }
       const lit = {};
@@ -861,7 +867,7 @@
       });
     }
     labUI = refresh;
-    const node = h('div', { class: 's2' }, h('h1', { class: 'title', text: 'Labs' }), h('div', { class: 'groups' }, groups));
+    const node = h('div', { class: 's2' }, h('h1', { class: 'title', text: 'Labs' }), h('p', { class: 'step-description', text: 'Enter the available results. Blank values remain unknown. No flag triggered means only that these checks did not flag the value.' }), h('div', { class: 'groups' }, groups));
     refresh();
     labsNow();
     setTimeout(() => { const first = order.find((o) => !String(S.raw[o.key] || '').trim()) || order[0]; if (first && S.step === 1) first.focus({ preventScroll: true }); }, 0);
@@ -908,7 +914,7 @@
 
   function stage3() {
     const box = h('div');
-    const node = h('div', { class: 's3' }, h('h1', { class: 'title', text: 'Organs' }), box);
+    const node = h('div', { class: 's3' }, h('h1', { class: 'title', text: 'Organs to review' }), h('p', { class: 'step-description', text: 'Model scores describe a condition–organ association, not the probability of organ damage or an adverse reaction. Registry matches use predefined mappings.' }), box);
     const run = ++analysisRun;
     const sig = analysisSig();
     let ticker = 0, ui = null, rerun = false;
@@ -1034,7 +1040,7 @@
       return h('span', { class: 'orgcell' },
         h('span', { class: 'p3' }, lk.map((x) => [
           h('span', { class: 'o' + (x.used ? ' used' : ''), text: SHORT[x.organ] || x.organ }),
-          h('span', { class: 'bar1', title: x.text || null, 'aria-label': x.text || null }, h('b', { class: x.used ? 'used' : null, style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` }))])));
+          h('span', { class: 'bar1', title: x.text ? 'Model association score: ' + x.text + ' (not patient risk)' : null, 'aria-label': x.text ? 'Model association score: ' + x.text : null }, h('b', { class: x.used ? 'used' : null, style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` }))])));
     }
     function meanings() {
       const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: 'Which one did you mean?' }));
@@ -1123,7 +1129,7 @@
     };
     const list = radioList(opts, S.first, (id) => { S.first = id; save(); preview(id); },
       (o) => [h('span', { class: 'lbl', text: o.label }), o.organs ? strip(o.organs) : null], 's4-title', next);
-    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: 'Which condition should be reviewed first?' }), list);
+    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: 'Which condition should be reviewed first?' }), h('p', { class: 'step-description', text: 'Choose where to begin the evidence review. This changes the review order, not an estimated toxicity risk.' }), list);
     preview(S.first);
     setBar({ keys: [kbd('↑↓', 'choose'), kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', act: next } });
     setTimeout(() => { if (S.step === 3) list.focusFirst(); }, 0);
@@ -1132,7 +1138,7 @@
 
   // ================================================================== step 5: 결과
   function restriction(row) {             // recommend._result_list's state: None / Monitor / No data / Not studied / Avoid; a dashed level when a missing value could set it
-    return { text: row.status, tone: STATE_TONE[row.status] || 'dim', sure: !!row.sure, tier: Math.min(3, row.tier | 0), known: Math.min(3, row.sure ? row.tier | 0 : row.known | 0), cause: row.cause || [] };
+    return { text: row.status === 'None' ? 'No restriction found' : row.status, tone: STATE_TONE[row.status] || 'dim', sure: !!row.sure, tier: Math.min(3, row.tier | 0), known: Math.min(3, row.sure ? row.tier | 0 : row.known | 0), cause: row.cause || [] };
   }
   // the restriction's level as three rising bars (Monitor 1, Not studied 2, Avoid 3): solid up to what the entered values set,
   // dashed up to what a value not entered could set
@@ -1196,6 +1202,8 @@
       clear(box);
       const rows = res.rows || [], P = res.patient || {}, levels = P.organ_levels || {};
       shownPatient = P;
+      box.append(h('div', { class: 'review-header' }, h('div', null, h('h1', { class: 'title', text: 'ADC evidence review' }), h('p', { class: 'step-description', text: 'Compare label restrictions and warnings. The order does not estimate treatment benefit or individual toxicity.' })), h('button', { type: 'button', class: 'review-action', text: 'Save review', onclick: () => saveReview(res) })));
+      box.append(h('div', { class: 'review-context' }, h('span', { text: (P.cancers || []).length ? 'Cancer entered · confirm full indication in details' : 'Indication not assessed · add a cancer' }), h('button', { type: 'button', class: 'review-link', text: 'Edit conditions', onclick: () => go(0) }), h('button', { type: 'button', class: 'review-link', text: 'Complete lab values', onclick: () => go(1) })));
       // Key values (the selected ADC's: its restriction's values first) | Review order
       const keyList = h('ul', { class: 'kvs' });
       const keyValues = (i) => {
@@ -1205,7 +1213,7 @@
       const prio = P.organ_priority || [];
       box.append(h('div', { class: 'ctx panel' },
         h('div', null, tipped(h('h2', { class: 'h2', text: 'Key values' })), keyList),
-        h('div', null, tipped(h('h2', { class: 'h2', text: 'Review order' })),
+        h('div', null, tipped(h('h2', { class: 'h2', text: 'Review order' })), h('p', { class: 'microcopy', text: 'Where to look first, not a risk ranking' }),
           prio.length ? h('div', { class: 'tiers' }, prio.map(([l, organs], k) => [k ? h('span', { class: 'arr', 'aria-hidden': 'true', text: '→' }) : null,
             h('span', { class: 'tier' + (l > 1 ? ' l2' : '') }, organs.map((o) => h('span', { class: 'org', text: SHORT[o] || o })))])) : h('ul', null, h('li', { class: 'none', text: 'None specified' })))));
       if ((P.unmapped || []).length) box.append(h('p', { class: 'unmapped', text: 'Unmapped: ' + P.unmapped.join(', ') }));
@@ -1225,7 +1233,7 @@
         const mine = cells.slice(0, 2).filter((c) => c.o);
         const tr = h('div', { class: 'tr', role: 'row', tabindex: '-1', 'aria-selected': 'false', 'aria-rowindex': String(i + 2), 'data-i': String(i) },
           h('span', { class: 'rk' + (tie ? ' tie' : ''), role: 'gridcell', text: String(row.rank) }),
-          h('span', { class: 'nm', role: 'gridcell', text: row.name }),
+          h('span', { class: 'nm', role: 'gridcell' }, h('span', { text: row.name }), h('span', { class: 'indication-state', text: REVIEW.indicationText(row.indicated, !!(P.cancers || []).length) })),
           h('span', { class: `rs t-${rs.tone}` + (row.status === 'Avoid' && rs.sure ? ' sure' : ''), role: 'gridcell', 'aria-label': rs.text + (rs.sure ? '' : ' (depends on a value not entered)') + (rs.cause.length ? ', ' + rs.cause.join(', ') : '') },
             levelNode(rs.tier, rs.known), h('span', { text: rs.text }), rs.cause.length ? h('span', { class: 'cz', text: rs.cause.join(' ') }) : null),
           cells.map((c) => h('span', { role: 'gridcell' }, ocNode(c))),
@@ -1287,6 +1295,14 @@
     return node;
   }
   let mockAdcUsed = false, shownPatient = {};
+  function saveReview(result) {
+    const text = REVIEW.reviewText(APP, condList().map(condName), rawValues(), FIELDS, result);
+    const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
+    const link = h('a', { href: url, download: 'ADCToX-review.txt' });
+    document.body.append(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
   function restart() {
     try { sessionStorage.removeItem(KEY); } catch (e) { /* ignore */ }
     S = blank(); touched.clear();
@@ -1324,8 +1340,8 @@
     drawerBody.scrollTop = 0;
     // 1 indication for the entered cancer, 2 label restriction, 3 warnings on the patient's organs, 4 warnings on other organs
     const cancers = [...new Set((shownPatient.cancers || []).map((c) => c.name))];
-    const verdict = !cancers.length ? null
-      : row.indicated === false ? { cls: 't-red', mark: '✕', word: 'Not approved for ' } : { cls: 't-green', mark: '✓', word: 'Approved for ' };
+    const verdict = !cancers.length ? { cls: 't-dim', mark: '—', word: 'Not assessed — cancer not entered' }
+      : row.indicated === false ? { cls: 't-red', mark: '✕', word: 'Not approved for ' } : { cls: 't-green', mark: '✓', word: 'Cancer match — confirm eligibility for ' };
     drawerBody.append(section('Indication', verdict ? h('p', { class: 'indv ' + verdict.cls }, h('span', { class: 'im', text: verdict.mark }), h('span', null, h('span', { class: 'iv', text: verdict.word }), cancers.join(', '))) : null,
       d.indication ? [h('div', { class: 'sub', text: 'All approved uses' }), h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x })))] : null));
     const rs = d.reasons || [];
@@ -1371,10 +1387,10 @@
     const rows = ws.map((w) => wrow(w.organ, w.mark.trim(), w.text));
     for (const o in evOf) if (!done.has(o)) rows.push(wrow(o, '', 'No label warning'));       // a patient organ the label is silent on
     drawerBody.append(section("Warnings on the patient's organs", rows.length ? h('div', { class: 'wl' }, rows) : h('p', { class: 'line dim', text: 'None' }),
-      t && drawn ? h('p', { class: 'src', text: `One dot: 5 patients in 100, in ${t.trial}` }) : null));
+      t && drawn ? h('p', { class: 'src', text: `Study group: ${t.trial}. One dot represents 5 patients in 100; this is not an individual risk estimate. Serious refers to the registry category, not a severity grade.` }) : null));
     if (wo.length) drawerBody.append(section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
       h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }), h('span', { text: w.text.replace(/;\s*/g, ', ') })]))));
-    if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m })))));
+    if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m }))), h('button', { type: 'button', class: 'review-link', text: 'Complete lab values', onclick: () => { closeDrawer(); go(1); } })));
     if (d.payload) drawerBody.append(section('Payload and linker', d.payload.rows ? h('div', { class: 'kv3' }, d.payload.rows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : h('p', { class: 'line', text: d.payload.line }), d.payload.note ? h('p', { class: 'note2', text: d.payload.note }) : null));
     if ((d.checks || []).length) drawerBody.append(section('Pre-treatment checks', h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))));
   }

@@ -1,8 +1,5 @@
 /* Pretendard Variable, SIL Open Font License 1.1 (LICENSE-Pretendard.txt): the same face on every PC for what Anthropic Sans lacks */
 @font-face { font-family: "Pretendard Variable"; src: url("PretendardVariable.woff2") format("woff2-variations"); font-weight: 45 920; font-style: normal; font-display: swap; }
-/* Anthropic Sans Text Light (Copyright 2025 Anthropic PBC, no public licence; used in this personal, non-commercial project): the page's face.
-   One weight, so bold is synthesized; Latin, digits and symbols such as ×, →, µ, ³. ✓ and Hangul fall through to Pretendard */
-@font-face { font-family: "Anthropic Sans Text"; src: url("AnthropicSansText-Light.otf") format("opentype"); font-style: normal; font-display: swap; }
 /* ADCTOX browser UI. Light only. The palette: navy #364F6B (ink), teal #3FC1C9 (accent, Monitor, within limits),
    light grey #F5F5F5 (page), pink #FC5185 (Avoid, boxed warnings, flagged labs); Not studied stays in plain ink.
    Text uses darker steps of teal and pink so it reads on white (4.7:1). */
@@ -16,7 +13,7 @@
   --fig-top: #f1f3f6; --fig-bot: #e0e5eb; --fig-shade: rgba(54, 79, 107, .2); --fig-hl: rgba(255, 255, 255, .6);
   --fig-rim: rgba(255, 255, 255, .9); --fig-line: rgba(54, 79, 107, .18); --grid: rgba(54, 79, 107, .04); --grid-2: rgba(54, 79, 107, .07); --floor: rgba(54, 79, 107, .16);
   --shadow: 0 24px 60px rgba(54, 79, 107, .16);
-  --sans: "Anthropic Sans Text", "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", Inter, system-ui, sans-serif;
+  --sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", Inter, system-ui, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
   --top: 76px; --bar: 58px; --ease: cubic-bezier(.2, .7, .2, 1);
   color-scheme: light;
@@ -604,3 +601,26 @@ button.ok:hover, button.ok:focus-visible { background: color-mix(in srgb, var(--
 .g-foot { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); }
 @media print { .stepcard, .tipbox, .help, .guide-scrim { display: none !important; } }
 html.docked .stepcard, .docked .stepcard { right: calc(var(--dw, 480px) + 24px); }   /* beside the open evidence panel, not over it */
+
+/* Review hierarchy: patient inputs, evidence status, then drug details. */
+.intro { font-size: 20px; line-height: 1.6; text-align: center; margin: 0 0 10px; color: var(--ink-hi); }
+.step-description { font-size: 14px; line-height: 1.7; color: var(--ink-2); max-width: 70ch; margin: 8px 0 22px; }
+.s1 .step-description { text-align: center; margin: 0 auto 28px; }
+.review-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 12px; }
+.review-header .title { font-size: 28px; margin-bottom: 0; }
+.review-action { flex-shrink: 0; background: var(--ink-hi); color: white; border: 0; padding: 11px 16px; border-radius: 9px; font-weight: 600; }
+.review-context { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 14px 0; border-top: 1px solid var(--line); margin-bottom: 16px; font-size: 13px; }
+.review-link { border: 0; background: transparent; color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; padding: 5px 0; }
+.microcopy { font-size: 12px; color: var(--ink-2); margin: 6px 0 12px; }
+.indication-state { display: block; font-size: 11px; font-weight: 400; color: var(--ink-2); margin-top: 4px; }
+.lab-state { display: block; font-size: 11px; margin-top: 4px; color: var(--ink-2); }
+.lab-state.entered { color: var(--cyan); }
+.lab .unit .ok { display: none; }
+.group { border-radius: 12px; box-shadow: 0 2px 8px rgba(34,52,74,.03); }
+.dr-body .dsec + .dsec { border-top: 1px solid var(--line); padding-top: 20px; }
+@media (max-width: 600px) {
+  .review-header { flex-direction: column; }
+  .review-header .title { font-size: 24px; }
+  .review-context { align-items: flex-start; }
+  .intro { font-size: 18px; }
+}

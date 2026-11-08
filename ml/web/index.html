@@ -31,6 +31,7 @@
 (function () {
   var base = window.ADCTOX_BASE;
   if (window.ADCTOX_FILE_MOCK) document.write('<script src="' + base + 'mock.js"><\/script>');
+  document.write('<script src="' + base + 'review.js"><\/script>');
   document.write('<script src="' + base + 'app.js" onerror="ADCTOX_RETRY()"><\/script>');
 })();
 </script>

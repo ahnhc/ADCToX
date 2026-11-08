@@ -37,7 +37,7 @@ def web_files(folder):
     folder = Path(folder)
     if not folder.is_dir(): return {}
     return {p.name: base64.b64encode(p.read_bytes()).decode() if p.suffix in BINARY else p.read_text(encoding="utf-8") for p in sorted(folder.iterdir())
-            if p.is_file() and p.suffix in TYPES and not p.name.startswith((".", "mock"))}
+            if p.is_file() and p.suffix in TYPES and not p.name.startswith((".", "mock", "AnthropicSans"))}
 
 
 def _page():
