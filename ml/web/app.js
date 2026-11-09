@@ -1305,17 +1305,24 @@
       const rect = cvs.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       const w = cvs.width = (rect.width || 600) * dpr;
-      const h = cvs.height = (rect.height || 220) * dpr;
+      const h = cvs.height = (rect.height || 380) * dpr;
       const ctx = cvs.getContext('2d');
       if (!ctx) return;
 
       cancelAnimationFrame(simAnimId);
-      const padL = 48 * dpr, padR = 24 * dpr, padT = 24 * dpr, padB = 36 * dpr;
-      const plotW = w - padL - padR;
-      const plotH = h - padT - padB;
+      const padL = 52 * dpr, padR = 24 * dpr, padT = 32 * dpr, padB = 44 * dpr;
+      const maxPlotW = w - padL - padR;
+      const maxPlotH = h - padT - padB;
 
-      const toX = (val) => padL + (Math.max(0, Math.min(100, val)) / 100) * plotW;
-      const toY = (val) => padT + (1 - Math.max(0, Math.min(100, val)) / 100) * plotH;
+      // 1:1 aspect ratio square plot box (never distorted!)
+      const plotSize = Math.max(160 * dpr, Math.min(maxPlotW, maxPlotH));
+      const plotW = plotSize;
+      const plotH = plotSize;
+      const offsetX = padL + (maxPlotW - plotW) / 2;
+      const offsetY = padT + (maxPlotH - plotH) / 2;
+
+      const toX = (val) => offsetX + (Math.max(0, Math.min(100, val)) / 100) * plotW;
+      const toY = (val) => offsetY + (1 - Math.max(0, Math.min(100, val)) / 100) * plotH;
 
       const cands = evalSpace.cands;
       const pareto = evalSpace.pareto;
@@ -1327,53 +1334,73 @@
       function renderFrame(now) {
         const elapsed = now - startTime;
         const progress = duration > 0 ? Math.min(1, elapsed / duration) : 1;
-        ctx.clearRect(0, 0, w, h);
+
+        // Clean white background
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, w, h);
+
+        // Optimal quadrant subtle tint (Safety >= 60, Efficacy >= 60)
+        const qX = toX(60);
+        const qY = toY(100);
+        const qW = toX(100) - qX;
+        const qH = toY(60) - qY;
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.05)';
+        ctx.fillRect(qX, qY, qW, qH);
+
+        // Plot bounding box
+        ctx.strokeStyle = '#CBD5E1';
+        ctx.lineWidth = 1 * dpr;
+        ctx.strokeRect(offsetX, offsetY, plotW, plotH);
 
         // Numeric Grid lines & ticks
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
+        ctx.strokeStyle = '#F1F5F9';
         ctx.lineWidth = 1 * dpr;
-        ctx.font = `${9 * dpr}px monospace`;
+        ctx.font = `600 ${9 * dpr}px monospace`;
         ctx.fillStyle = '#64748B';
 
         [0, 20, 40, 60, 80, 100].forEach((v) => {
           const gx = toX(v);
           const gy = toY(v);
-          ctx.beginPath(); ctx.moveTo(gx, padT); ctx.lineTo(gx, padT + plotH); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(padL + plotW, gy); ctx.stroke();
 
+          // Grid lines inside square plot box
+          ctx.beginPath(); ctx.moveTo(gx, offsetY); ctx.lineTo(gx, offsetY + plotH); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(offsetX, gy); ctx.lineTo(offsetX + plotW, gy); ctx.stroke();
+
+          // Axis numeric ticks
           ctx.textAlign = 'center';
-          ctx.fillText(String(v), gx, padT + plotH + 14 * dpr);
+          ctx.fillText(String(v), gx, offsetY + plotH + 14 * dpr);
           ctx.textAlign = 'right';
-          ctx.fillText(String(v), padL - 6 * dpr, gy + 3 * dpr);
+          ctx.fillText(String(v), offsetX - 7 * dpr, gy + 3 * dpr);
         });
 
         // Axis Titles
-        ctx.font = `600 ${9.5 * dpr}px sans-serif`;
-        ctx.fillStyle = '#94A3B8';
+        ctx.font = `bold ${10.5 * dpr}px sans-serif`;
+        ctx.fillStyle = '#1E293B';
         ctx.textAlign = 'center';
-        ctx.fillText('Patient Organ Safety Score (0 - 100) ->', padL + plotW / 2, h - 6 * dpr);
+        ctx.fillText('Patient Organ Safety Score (0 - 100) ->', offsetX + plotW / 2, offsetY + plotH + 32 * dpr);
 
         ctx.save();
-        ctx.translate(12 * dpr, padT + plotH / 2);
+        ctx.translate(offsetX - 28 * dpr, offsetY + plotH / 2);
         ctx.rotate(-Math.PI / 2);
-        ctx.fillText('Efficacy & Selectivity (0 - 100) ->', 0, 0);
+        ctx.fillText('Antitumor Efficacy & Selectivity (0 - 100) ->', 0, 0);
         ctx.restore();
 
         // Legend at top
         ctx.textAlign = 'left';
+        ctx.font = `600 ${9.5 * dpr}px sans-serif`;
         ctx.fillStyle = '#64748B';
-        ctx.beginPath(); ctx.arc(padL + 4 * dpr, 12 * dpr, 3 * dpr, 0, Math.PI * 2); ctx.fill();
-        ctx.fillText(`Candidate Space (${cands.length})`, padL + 10 * dpr, 15 * dpr);
+        ctx.beginPath(); ctx.arc(offsetX + 4 * dpr, offsetY - 14 * dpr, 3 * dpr, 0, Math.PI * 2); ctx.fill();
+        ctx.fillText(`Candidate Space (${cands.length})`, offsetX + 11 * dpr, offsetY - 11 * dpr);
 
         ctx.strokeStyle = '#0D9488';
         ctx.lineWidth = 2 * dpr;
-        ctx.beginPath(); ctx.moveTo(padL + 120 * dpr, 12 * dpr); ctx.lineTo(padL + 135 * dpr, 12 * dpr); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(offsetX + 130 * dpr, offsetY - 14 * dpr); ctx.lineTo(offsetX + 146 * dpr, offsetY - 14 * dpr); ctx.stroke();
         ctx.fillStyle = '#0D9488';
-        ctx.fillText('Pareto Frontier', padL + 140 * dpr, 15 * dpr);
+        ctx.fillText('Pareto Frontier', offsetX + 152 * dpr, offsetY - 11 * dpr);
 
         ctx.fillStyle = '#2563EB';
-        ctx.beginPath(); ctx.arc(padL + 225 * dpr, 12 * dpr, 4 * dpr, 0, Math.PI * 2); ctx.fill();
-        ctx.fillText('Current Selection', padL + 233 * dpr, 15 * dpr);
+        ctx.beginPath(); ctx.arc(offsetX + 242 * dpr, offsetY - 14 * dpr, 4 * dpr, 0, Math.PI * 2); ctx.fill();
+        ctx.fillText('Current Selection', offsetX + 250 * dpr, offsetY - 11 * dpr);
 
         // Scanning wavefront cutoff X
         const cutoffSafety = progress * 102;
@@ -1384,13 +1411,31 @@
           if (c.safetyScore > cutoffSafety) return;
           const cx = toX(c.safetyScore);
           const cy = toY(c.efficacyScore);
-          ctx.fillStyle = c.isCompat ? 'rgba(148, 163, 184, 0.35)' : 'rgba(239, 68, 68, 0.22)';
+          ctx.fillStyle = c.isCompat ? 'rgba(100, 116, 139, 0.45)' : 'rgba(239, 68, 68, 0.3)';
           ctx.beginPath(); ctx.arc(cx, cy, 2.4 * dpr, 0, Math.PI * 2); ctx.fill();
         });
 
-        // Draw progressive Pareto curve
+        // Draw progressive Pareto curve with filled area underneath
         const visPareto = pareto.filter((p) => p.safetyScore <= cutoffSafety);
         if (visPareto.length >= 1) {
+          ctx.beginPath();
+          visPareto.forEach((p, idx) => {
+            const px = toX(p.safetyScore);
+            const py = toY(p.efficacyScore);
+            if (idx === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          });
+          const lastP = visPareto[visPareto.length - 1];
+          const firstP = visPareto[0];
+          ctx.lineTo(toX(lastP.safetyScore), offsetY + plotH);
+          ctx.lineTo(toX(firstP.safetyScore), offsetY + plotH);
+          ctx.closePath();
+          const aGrad = ctx.createLinearGradient(0, offsetY, 0, offsetY + plotH);
+          aGrad.addColorStop(0, 'rgba(13, 148, 136, 0.14)');
+          aGrad.addColorStop(1, 'rgba(13, 148, 136, 0.01)');
+          ctx.fillStyle = aGrad;
+          ctx.fill();
+
           ctx.beginPath();
           visPareto.forEach((p, idx) => {
             const px = toX(p.safetyScore);
@@ -1407,50 +1452,60 @@
             const py = toY(p.efficacyScore);
             ctx.fillStyle = '#FFFFFF';
             ctx.strokeStyle = '#0D9488';
-            ctx.lineWidth = 1.6 * dpr;
-            ctx.beginPath(); ctx.arc(px, py, 3.2 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            ctx.lineWidth = 1.8 * dpr;
+            ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
           });
         }
 
         // Scanning wavefront beam
         if (animate && progress < 0.99) {
-          const grad = ctx.createLinearGradient(scanX - 24 * dpr, 0, scanX + 2 * dpr, 0);
+          const grad = ctx.createLinearGradient(scanX - 28 * dpr, 0, scanX + 2 * dpr, 0);
           grad.addColorStop(0, 'rgba(13, 148, 136, 0)');
-          grad.addColorStop(1, 'rgba(13, 148, 136, 0.3)');
+          grad.addColorStop(1, 'rgba(13, 148, 136, 0.18)');
           ctx.fillStyle = grad;
-          ctx.fillRect(Math.max(padL, scanX - 24 * dpr), padT, 26 * dpr, plotH);
+          ctx.fillRect(Math.max(offsetX, scanX - 28 * dpr), offsetY, 30 * dpr, plotH);
 
           ctx.strokeStyle = '#0D9488';
           ctx.lineWidth = 1.8 * dpr;
-          ctx.beginPath(); ctx.moveTo(scanX, padT); ctx.lineTo(scanX, padT + plotH); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(scanX, offsetY); ctx.lineTo(scanX, offsetY + plotH); ctx.stroke();
         }
 
         // Highlight optimal best candidate once reached
         if (cutoffSafety >= best.safetyScore) {
           const bx = toX(best.safetyScore);
           const by = toY(best.efficacyScore);
-          ctx.fillStyle = 'rgba(13, 148, 136, 0.25)';
+          ctx.fillStyle = 'rgba(13, 148, 136, 0.22)';
           ctx.beginPath(); ctx.arc(bx, by, 10 * dpr, 0, Math.PI * 2); ctx.fill();
 
           ctx.fillStyle = '#0D9488';
           ctx.strokeStyle = '#FFFFFF';
-          ctx.lineWidth = 1.8 * dpr;
+          ctx.lineWidth = 2 * dpr;
           ctx.beginPath(); ctx.arc(bx, by, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
-          ctx.font = `bold ${9 * dpr}px sans-serif`;
-          ctx.fillStyle = '#34D399';
-          ctx.textAlign = bx > w - 140 * dpr ? 'right' : 'left';
-          ctx.fillText(`Optimal: ${best.spec.target.split(' ')[0]} + ${best.spec.payload.split(' ')[0]} (DAR ${best.spec.dar})`, bx + (bx > w - 140 * dpr ? -8 * dpr : 8 * dpr), by - 6 * dpr);
+          ctx.font = `bold ${9.5 * dpr}px sans-serif`;
+          ctx.fillStyle = '#065F46';
+          const alignRight = bx > offsetX + plotW - 130 * dpr;
+          ctx.textAlign = alignRight ? 'right' : 'left';
+          ctx.fillText(`Optimal: ${best.spec.target.split(' ')[0]} + ${best.spec.payload.split(' ')[0]} (DAR ${best.spec.dar})`, bx + (alignRight ? -8 * dpr : 8 * dpr), by - 6 * dpr);
         }
 
-        // Current active selection diamond
+        // Current active selection marker
         const curSim = animate && progress >= 0.98 ? best : currentSim;
         const sx = toX(curSim.safetyScore);
         const sy = toY(curSim.efficacyScore);
+        ctx.fillStyle = 'rgba(37, 99, 235, 0.2)';
+        ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
+
         ctx.fillStyle = '#2563EB';
         ctx.strokeStyle = '#FFFFFF';
-        ctx.lineWidth = 1.8 * dpr;
+        ctx.lineWidth = 2 * dpr;
         ctx.beginPath(); ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        ctx.font = `bold ${9.5 * dpr}px sans-serif`;
+        ctx.fillStyle = '#1E40AF';
+        const curAlignRight = sx > offsetX + plotW - 120 * dpr;
+        ctx.textAlign = curAlignRight ? 'right' : 'left';
+        ctx.fillText(`Current (${curSim.safetyScore}, ${curSim.efficacyScore})`, sx + (curAlignRight ? -8 * dpr : 8 * dpr), sy + 14 * dpr);
 
         if (progress < 1) {
           simAnimId = requestAnimationFrame(renderFrame);
