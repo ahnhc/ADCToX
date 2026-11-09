@@ -444,6 +444,33 @@ def ensure_side_launcher(name, flag):
     return side
 
 
+def auto_update_app(allow_local=False):
+    """At start of an installed app: when the published app version (read at most once a day) is newer, download, verify and
+    switch to it (update_app). -> True when this start switched releases and should restart; False for anything else
+    (offline, up to date, a checkout, ADCTOX_NO_AUTO_UPDATE=1, new packages needed). Never raises, so a failure never blocks the app."""
+    if os.environ.get("ADCTOX_NO_AUTO_UPDATE") or os.environ.get("ADCTOX_AUTO_UPDATED") or app_layout() is None:
+        return False
+    try:
+        c = check_app(allow_local=allow_local)
+        if not c or not c.get("newer"): return False
+        print(f"New ADCTOX {c['latest']} found (running {APP_VERSION}); updating...", flush=True)
+        message = update_app(allow_local=allow_local)
+        print(message, flush=True)
+        return not message.endswith("is up to date.")
+    except Exception as error:                      # offline, bad manifest, changed packages: keep running this release
+        print(f"Automatic app update skipped: {error}", file=__import__("sys").stderr)
+        return False
+
+
+def restart_app():
+    """Start the same command again (the launcher path goes through prefix/current, so it now runs the new release)."""
+    import subprocess, sys
+    os.environ["ADCTOX_AUTO_UPDATED"] = "1"        # never update twice in one start
+    command = [sys.executable, "-I", sys.argv[0], *sys.argv[1:]]
+    if os.name == "nt": raise SystemExit(subprocess.call(command))
+    os.execv(sys.executable, command)
+
+
 def app_cli(action):
     try:
         if action == "check":
