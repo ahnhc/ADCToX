@@ -52,7 +52,7 @@
   --mono: "Manrope", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --top: 56px;
   --bar: 38px;
-  --dw: 460px;
+  --dw: clamp(520px, 46vw, 780px);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   color-scheme: light;
 }
@@ -1486,7 +1486,7 @@ kbd {
   right: 0;
   bottom: var(--bar);
   z-index: 35;
-  width: var(--dw, 460px);
+  width: var(--dw, 600px);
   max-width: 100vw;
   background: var(--panel);
   border-left: 1px solid var(--line);
