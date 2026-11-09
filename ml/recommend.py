@@ -1271,7 +1271,7 @@ HELP = """ADCTOX {version}
 업데이트와 관리
   adctox --update-app            새 앱 설치
   adctox --check-app             새 앱이 있는지 확인
-  (설치된 앱은 시작할 때 새 버전이 있으면 알아서 받습니다. 끄려면 ADCTOX_NO_AUTO_UPDATE=1)
+  (설치된 앱은 시작할 때와 실행 중 10분마다 새 버전을 확인해 알아서 받습니다. 끄려면 ADCTOX_NO_AUTO_UPDATE=1, 서버에서 바로 재시작하려면 ADCTOX_AUTO_RESTART=1)
   adctox --update-models         바뀐 모델 파일만 받기
   adctox --check-models          모델 업데이트 확인
   adctox --model-version         설치된 모델 버전
@@ -1322,7 +1322,7 @@ def main():
         rows, s, notes, ck = recommend(conds); render(rows, s, notes, ck); return
     if arguments in ([], ["--web"]):                   # 0.6.12: the browser is the default (ml/webapp.py, served on this computer only); --cli for the terminal
         import webapp
-        preload(); webapp.serve(sys.modules[__name__]); return
+        preload(); adc_updates.watch_for_updates(); webapp.serve(sys.modules[__name__]); return
     if "--web" in arguments:                           # --web takes no other argument
         print("adctox: --web는 단독으로 씁니다 (adctox --web).", file=sys.stderr); sys.exit(2)
     other = [a for a in arguments if a not in ("--cli", "--plain")]
