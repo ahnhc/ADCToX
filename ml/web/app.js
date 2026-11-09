@@ -82,6 +82,11 @@
     return sv('svg', { width: '14', height: '14', viewBox: '0 0 14 14', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round' },
       sv('path', { d: 'M2 2L12 12M12 2L2 12' }));
   }
+  function svgSearch() {
+    return sv('svg', { width: '13', height: '13', viewBox: '0 0 16 16', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.8', 'stroke-linecap': 'round', style: 'color:var(--dim);flex-shrink:0' },
+      sv('circle', { cx: '7', cy: '7', r: '4.5' }),
+      sv('path', { d: 'M10.5 10.5L14 14' }));
+  }
   const clear = (el) => { while (el && el.firstChild) el.firstChild.remove(); return el; };
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const kbd = (k, label) => h('span', null, h('kbd', { text: k }), ({
@@ -1026,7 +1031,7 @@
       h('div', { class: 'wb-left' },
         h('div', { class: 'wb-search-row' },
           h('div', { class: 'wb-input-wrap' },
-            h('span', { class: 'dim', 'aria-hidden': 'true', text: '+' }),
+            svgSearch(),
             input),
           sugg),
         chipsWrap),
@@ -1186,7 +1191,7 @@
       content.append(h('section', { class: 'spotlight-section', 'aria-label': 'Top recommended ADCs' },
         h('div', { class: 'sec-bar' },
           h('span', { class: 'sec-kicker', text: t('primaryRec') }),
-          h('span', { class: 'dim', style: 'font-size:11.5px', text: t('primaryHint') })),
+          h('span', { class: 'dim', style: 'font-size:12px', text: t('primaryHint') })),
         spGrid));
 
       let filter = 'all';
@@ -1427,9 +1432,19 @@
 
     let isOptimizing = false;
     let autoRationale = null;
+    let optBtn = null;
 
     function renderControls() {
       clear(controls);
+      const evalSpace = evaluateAllStudioCandidates();
+      const isOptimal = (
+        S.studio.target === evalSpace.best.spec.target &&
+        S.studio.linker === evalSpace.best.spec.linker &&
+        S.studio.payload === evalSpace.best.spec.payload &&
+        Number(S.studio.dar) === Number(evalSpace.best.spec.dar) &&
+        Boolean(S.studio.fc) === Boolean(evalSpace.best.spec.fc)
+      );
+
       const headAction = h('div', { class: 'studio-head-action' },
         h('span', { class: 'sec-kicker', text: t('archTitle') }));
       controls.append(headAction);
@@ -1456,9 +1471,21 @@
         return h('div', { class: 'studio-group' }, h('span', { class: 'studio-label', text: label }), pills);
       };
 
-      const optBtn = h('button', {
-        type: 'button', class: 'btn-optimize', text: isOptimizing ? t('scanning') : t('autoOpt'),
-        onclick: () => runOptimizationSimulation(),
+      optBtn = h('button', {
+        type: 'button',
+        class: 'btn-optimize' + (isOptimal ? ' is-optimal' : ''),
+        text: isOptimizing
+          ? (S.lang === 'ko' ? '최적화 탐색 중...' : 'Optimizing...')
+          : isOptimal
+            ? (S.lang === 'ko' ? '최적화 완료 (기존 승인약물 비교)' : 'Optimized (Compare Benchmark)')
+            : t('autoOpt'),
+        onclick: () => {
+          if (isOptimal) {
+            openStudioCompareDrawer(computeStudioSimulation(), evalSpace);
+          } else {
+            runOptimizationSimulation();
+          }
+        },
       });
 
       controls.append(
@@ -1536,7 +1563,7 @@
               text: t('viewCompareBtn'),
               onclick: () => openStudioCompareDrawer(sim, evalSpace),
             })),
-          h('span', { style: 'font-size:10.5px;color:var(--dim);font-weight:600', text: isOptimal ? t('peakPareto') : t('clickAutoOpt') })),
+          h('span', { style: 'font-size:11px;color:var(--dim);font-weight:600', text: isOptimal ? t('peakPareto') : t('clickAutoOpt') })),
         h('div', { class: 'srb-steps' },
           activeRationale.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
             h('b', { text: `${title}: ${choice}` }),
@@ -1603,11 +1630,11 @@
         h('section', { class: 'studio-card panel' },
           h('h3', { text: t('simOrganTitle') }),
           organRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: fcSilenced ? t('fcLalaNote') : t('fcWtNote') })),
+          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:12px', text: fcSilenced ? t('fcLalaNote') : t('fcWtNote') })),
         h('section', { class: 'studio-card panel' },
           h('h3', { text: `${t('gtexTitle')} (${tgt.gene})` }),
           gtexRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: t('gtexNote') })));
+          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:12px', text: t('gtexNote') })));
 
       canvas.append(simWrap, hero, grid2);
 
@@ -1635,7 +1662,7 @@
               renderStudioCanvas(false);
               openStudioCompareDrawer(best, evalSpace);
             }
-          }, 700);
+          }, 1200);
         }), 0);
     }
 
@@ -1741,7 +1768,7 @@
         });
 
         // Axis Titles (clean labels with no arrow)
-        ctx.font = `bold ${10.5 * dpr}px sans-serif`;
+        ctx.font = `bold ${11 * dpr}px sans-serif`;
         ctx.fillStyle = '#1E293B';
         ctx.textAlign = 'center';
         ctx.fillText(t('paretoSafetyX'), offsetX + plotW / 2, offsetY + plotH + 32 * dpr);
@@ -1754,7 +1781,7 @@
 
         // Legend at top
         ctx.textAlign = 'left';
-        ctx.font = `600 ${9.5 * dpr}px sans-serif`;
+        ctx.font = `600 ${10 * dpr}px sans-serif`;
         ctx.fillStyle = '#64748B';
         ctx.beginPath(); ctx.arc(offsetX + 4 * dpr, offsetY - 14 * dpr, 3 * dpr, 0, Math.PI * 2); ctx.fill();
         ctx.fillText(`${t('legendCand')} (${cands.length})`, offsetX + 11 * dpr, offsetY - 11 * dpr);
@@ -1840,7 +1867,7 @@
           ctx.lineWidth = 2 * dpr;
           ctx.beginPath(); ctx.arc(bx, by, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
-          ctx.font = `bold ${9.5 * dpr}px sans-serif`;
+          ctx.font = `bold ${10 * dpr}px sans-serif`;
           ctx.fillStyle = '#065F46';
           const alignRight = bx > offsetX + plotW - 130 * dpr;
           ctx.textAlign = alignRight ? 'right' : 'left';
@@ -1859,7 +1886,7 @@
         ctx.lineWidth = 2 * dpr;
         ctx.beginPath(); ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
-        ctx.font = `bold ${9.5 * dpr}px sans-serif`;
+        ctx.font = `bold ${10 * dpr}px sans-serif`;
         ctx.fillStyle = '#1E40AF';
         const curAlignRight = sx > offsetX + plotW - 120 * dpr;
         ctx.textAlign = curAlignRight ? 'right' : 'left';
@@ -2194,12 +2221,6 @@
         ctx.stroke();
       });
 
-      // Top Construct Header Overlay (clean title, no collisions)
-      ctx.font = `bold ${10.5 * dpr}px sans-serif`;
-      ctx.fillStyle = '#F8FAFC';
-      ctx.textAlign = 'left';
-      ctx.fillText(brand ? `${brand} (${drugName})` : drugName, 12 * dpr, 18 * dpr);
-
       adcAnimId = requestAnimationFrame(render3d);
     }
 
@@ -2299,7 +2320,7 @@
     const compReg = (tr && tr.comparator && tr.comparator.regimen) || (S.lang === 'ko' ? '대조군' : 'Control');
     const compN = tr && tr.comparator && tr.comparator.n ? ` (n=${tr.comparator.n})` : '';
     const trialSummaryCard = tr ? h('div', { class: 'trial-summary-card' },
-      h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:13.5px;color:var(--ink-hi)', text: `${tr.trial}${tr.phase ? ' (Phase ' + tr.phase + ' Registration Trial)' : ''}` }),
+      h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:14px;color:var(--ink-hi)', text: `${tr.trial}${tr.phase ? ' (Phase ' + tr.phase + ' Registration Trial)' : ''}` }),
       h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: tr.population || 'Patient cohort not specified' }),
       h('p', { style: 'margin:0 0 4px;font-size:12px;font-weight:600', text: `${t('treatmentArm')}: ${tr.regimen || ''} (n=${tr.n || 0})` }),
       tr.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `${t('controlArm')}: ${compReg}${compN}` }) : null,
@@ -2590,15 +2611,15 @@
           h('th', { class: 'c-param', text: isKo ? '비교 항목' : 'Parameter' }),
           h('th', { class: 'c-denovo', text: isKo ? '신규 최적 설계 (De Novo)' : 'De Novo Design' }),
           h('th', { class: 'c-ref', text: isKo ? `기존 승인 (${refBrand || 'Benchmark'})` : `Approved (${refBrand || 'Ref'})` }),
-          h('th', { text: isKo ? '임상 개선 이점' : 'Clinical Advantage' }))),
+          h('th', { class: 'c-diff', text: isKo ? '임상 개선 이점' : 'Clinical Advantage' }))),
       h('tbody', null,
         tableRows.map(([param, denovo, refVal, diff]) => h('tr', null,
           h('td', { class: 'c-param', text: param }),
           h('td', { class: 'c-denovo', text: denovo }),
           h('td', { class: 'c-ref', text: refVal }),
-          h('td', { text: diff })))));
+          h('td', { class: 'c-diff', text: diff })))));
 
-    const secCompareTable = section(t('tabCompare'), tblEl);
+    const secCompareTable = section(isKo ? '주요 제원 및 임상 개선점 비교' : 'Specification & Clinical Advantage', tblEl);
 
     // 3. Clinical De-risking Points
     const deriskItems = (CLINICAL_DERISK_DB[tgt.id] && CLINICAL_DERISK_DB[tgt.id][isKo ? 'ko' : 'en']) || [
@@ -2685,7 +2706,7 @@
     const compReg = (tr && tr.comparator && tr.comparator.regimen) || (isKo ? '대조군' : 'Control');
     const compN = tr && tr.comparator && tr.comparator.n ? ` (n=${tr.comparator.n})` : '';
     const trialSummaryCard = tr ? h('div', { class: 'trial-summary-card' },
-      h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:13.5px;color:var(--ink-hi)', text: `${refBrand} - ${tr.trial}${tr.phase ? ' (Phase ' + tr.phase + ' Registration Trial)' : ''}` }),
+      h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:14px;color:var(--ink-hi)', text: `${refBrand} - ${tr.trial}${tr.phase ? ' (Phase ' + tr.phase + ' Registration Trial)' : ''}` }),
       h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: tr.population || 'Patient cohort not specified' }),
       h('p', { style: 'margin:0 0 4px;font-size:12px;font-weight:600', text: `${t('treatmentArm')}: ${tr.regimen || ''} (n=${tr.n || 0})` }),
       tr.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `${t('controlArm')}: ${compReg}${compN}` }) : null,
