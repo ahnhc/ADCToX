@@ -1,4 +1,4 @@
-# ADCTOX v0.7.0
+# ADCTOX v0.7.1
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](docs/INSTALL.md)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](docs/INSTALL.md)
@@ -11,13 +11,13 @@ ADCTOX links a patient's cancer, comorbidities, and laboratory values to the 13 
 
 ---
 
-## What's New in v0.7.0
+## What's New in v0.7.1
 
-1. **Instant Visual ADC Matrix (No 5-Step Wizard Wall):** Opens directly into the visual workspace. Switch seamlessly between **`1 ADC Matrix`**, **`2 Structure Studio`**, and **`3 Patient & Labs`**, or load clinical presets (`HER2+ / ILD + HF`, `DLBCL / Cirrhosis`, `TNBC / CKD3`, `Myeloma / Ocular`) with one tap.
-2. **Active-Organ-Only Horizon Strip & Spotlight Hierarchy:** Instead of cluttering every row with 13 organ cells, ADCTOX surfaces **only the patient's active vulnerable organs** (1–4 axes) as horizontal bars. Top recommended ADCs are elevated into **Cobalt & Emerald Spotlight Hero Cards**, while lower-ranked options recede into calm monochrome slate rows.
-3. **Pivotal Trial Dual-Bars (`ADC` vs `CMP`):** Side-by-side horizontal incidence bars compare the ADC treatment arm against the pivotal trial control arm with `tabular-nums` precision.
-4. **4-Part ADC Structure Studio:** Interactively combine **Target Antigen (`mAb`) × Chemical Linker × Cytotoxic Payload × DAR × Fc Engineering (`LALA-PG`)** to inspect chemical conjugation compatibility, GTEx normal tissue expression (`nTPM`), bystander diffusion, and simulated organ burden.
-5. **Android / iOS Mobile PWA & Server Hosting (`ubuntu-a1-osaka` Ready):** Ships with `Manrope` variable typography, a responsive mobile bottom-sheet drawer, installable PWA manifest (`manifest.webmanifest`), and `ADCTOX_HOST` / `ADCTOX_ALLOWED_HOSTS` support for remote server deployment.
+1. **Interactive 3D ADC Molecular Structure Visualizer:** 3D rotational canvas rendering distinct architectures for all approved ADCs with accurate DAR counts, payload classes (DXd cyan, SN-38 emerald, SG3199 rose, DM1 gold, MMAE violet, MMAF indigo, Calicheamicin crimson), cleavable/non-cleavable linkers, paratope bindings, and 360-degree interactive rotation.
+2. **Dynamic Multi-Objective Pareto Frontier Optimization:** Multi-objective simulation plot comparing Patient Organ Safety Score vs. Antitumor Efficacy & Selectivity across all candidate architectures with progressive scan wavefront, 1:1 square aspect ratio without distortion, clean high-contrast daylight background, and AI de novo optimal architecture rationales.
+3. **Bilingual Support (English / Korean Toggle):** Instantaneous `KO / EN` toggle switching all modes, tables, filter tabs, condition inputs, organ vulnerability meters, biomarker flowsheets, and evidence drawer descriptions between English and clinical Korean oncology terminology.
+4. **Mobile Responsive Layout:** 2-tier sticky header, responsive single-column grid adaptation, mobile bottom-sheet drawer (`84vh`), and touch-optimized controls on narrow phone screens (<= 480px).
+5. **Clinical Biomarker Flowsheet:** Institutional laboratory reference intervals mapping with dynamic spectrum indicators and AI organ vulnerability linkages.
 
 ---
 
@@ -44,7 +44,7 @@ The installer sets up an isolated Python runtime, downloads the `0.8` from-scrat
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.7.0 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.7.1 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the 5-step Terminal TUI
 ```
 
