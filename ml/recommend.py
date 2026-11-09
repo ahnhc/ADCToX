@@ -1271,6 +1271,7 @@ HELP = """ADCTOX {version}
 업데이트와 관리
   adctox --update-app            새 앱 설치
   adctox --check-app             새 앱이 있는지 확인
+  (설치된 앱은 시작할 때 새 버전이 있으면 알아서 받습니다. 끄려면 ADCTOX_NO_AUTO_UPDATE=1)
   adctox --update-models         바뀐 모델 파일만 받기
   adctox --check-models          모델 업데이트 확인
   adctox --model-version         설치된 모델 버전
@@ -1309,6 +1310,7 @@ def main():
         raise SystemExit(adc_updates.app_cli("update" if arguments[0] == "--update-app" else "check"))
     if arguments in (["--help"], ["-h"], ["help"]):
         print(HELP.format(version=APP_VERSION, n=len(_evidence()[0]))); return
+    if adc_updates.auto_update_app(): adc_updates.restart_app()      # 0.7.3: an installed app takes the newer published release by itself (ADCTOX_NO_AUTO_UPDATE=1 turns it off)
     cap_threads()
     import term
     if "--no-wt" in sys.argv: sys.argv.remove("--no-wt"); arguments = sys.argv[1:]
