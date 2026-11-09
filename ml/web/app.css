@@ -1037,17 +1037,21 @@ kbd {
   border-bottom: 1px solid var(--line);
 }
 .btn-optimize {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 7px;
-  padding: 8px 14px;
+  width: 100%;
+  padding: 10px 16px;
   border-radius: 8px;
   border: 1px solid var(--accent);
   background: var(--accent);
   color: #FFFFFF;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   transition: all 160ms var(--ease);
+  cursor: pointer;
+  margin-top: 6px;
 }
 .btn-optimize:hover {
   background: #1D4ED8;
@@ -1614,7 +1618,7 @@ kbd {
   background: #0F172A;
   position: relative;
   overflow: hidden;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
 }
 .adc-3d-canvas {
   width: 100%;
@@ -1623,11 +1627,39 @@ kbd {
 }
 .adc-3d-hint {
   position: absolute;
-  bottom: 8px;
-  right: 10px;
-  font-size: 10.5px;
-  color: var(--faint);
+  top: 10px;
+  right: 12px;
+  font-size: 11px;
+  color: #94A3B8;
+  background: rgba(15, 23, 42, 0.75);
+  padding: 3px 8px;
+  border-radius: 4px;
   pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.adc-3d-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--page);
+  border: 1px solid var(--line);
+}
+.adc-3d-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.adc-3d-legend-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .trial-summary-card {
@@ -1687,6 +1719,120 @@ kbd {
   font-size: 12px;
   padding: 4px 0;
   text-decoration: none;
+}
+
+/* Studio Benchmark Comparison View */
+.btn-compare-pop {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  font: 700 11.5px var(--sans);
+  cursor: pointer;
+  transition: all 140ms var(--ease);
+}
+.btn-compare-pop:hover {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.compare-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.compare-hero-col {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--page);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.compare-hero-col.denovo {
+  border-color: rgba(13, 148, 136, 0.4);
+  background: rgba(13, 148, 136, 0.05);
+}
+.ch-badge {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dim);
+}
+.compare-hero-col.denovo .ch-badge {
+  color: #0D9488;
+}
+.ch-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink-hi);
+  line-height: 1.25;
+}
+.ch-sub {
+  font-size: 11px;
+  color: var(--ink-2);
+}
+.ch-score {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0F766E;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 11.5px;
+  margin-bottom: 14px;
+}
+.compare-table th, .compare-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.compare-table th {
+  background: var(--page);
+  color: var(--dim);
+  font-weight: 700;
+  font-size: 10.5px;
+  text-transform: uppercase;
+}
+.compare-table tr:last-child td { border-bottom: 0; }
+.compare-table .c-param { font-weight: 700; color: var(--ink-hi); width: 24%; }
+.compare-table .c-denovo { color: #0F766E; font-weight: 600; width: 38%; }
+.compare-table .c-ref { color: var(--ink-2); width: 38%; }
+
+.derisk-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.derisk-item {
+  padding: 9px 11px;
+  border-radius: 6px;
+  background: var(--page);
+  border: 1px solid var(--line);
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.derisk-item b {
+  display: block;
+  font-size: 11.5px;
+  color: var(--ink-hi);
+  margin-bottom: 2px;
 }
 .review-link:hover { text-decoration: underline; }
 
