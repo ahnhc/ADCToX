@@ -221,6 +221,25 @@ kbd {
   align-items: center;
   gap: 6px;
 }
+.lang-btn {
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 7px;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  color: var(--ink-hi);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 150ms var(--ease);
+}
+.lang-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 .reset-patient-btn {
   height: 32px;
   padding: 0 10px;
@@ -1759,6 +1778,7 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
   .crumb .cb { width: 100%; justify-content: center; padding: 6px 8px; font-size: 12px; }
   .scenario-dropdown { display: none; }
   .wrap { padding: 14px 12px 28px; }
+  .spotlight-grid { grid-template-columns: 1fr; }
   .sp-metrics { grid-template-columns: 1fr; }
   .review-grid-head, .review-row {
     grid-template-columns: 28px minmax(120px, 1.4fr) minmax(88px, 0.9fr) minmax(96px, 0.9fr);
@@ -1771,6 +1791,11 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
     gap: 6px;
   }
   .bio-spectrum-wrap { grid-column: 1 / -1; }
+  .studio-pills.grid-6 { grid-template-columns: repeat(3, 1fr); }
+  .sim-chart-wrap { height: 310px; }
+  .studio-hero { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 14px; }
+  .srb-steps { grid-template-columns: 1fr; }
+  .studio-grid-2 { grid-template-columns: 1fr; }
   .bar { display: none; }
   .drawer {
     top: auto;
@@ -1785,6 +1810,26 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
     transform: translateY(100%);
   }
   .drawer.open { transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .crumbs ol { gap: 4px; }
+  .crumb .cb { padding: 5px 3px; font-size: 10.5px; }
+  .crumb .step-number { display: none; }
+  .brand { font-size: 16px; }
+  .top .right { gap: 4px; }
+  .lang-btn { height: 28px; padding: 0 6px; font-size: 11px; }
+  .spotlight-grid { grid-template-columns: 1fr; }
+  .review-filters { flex-wrap: wrap; }
+  .review-grid-head, .review-row {
+    grid-template-columns: 24px minmax(105px, 1.4fr) minmax(78px, 0.9fr) minmax(82px, 0.9fr);
+    gap: 6px;
+    padding: 0 6px;
+  }
+  .studio-pills { grid-template-columns: 1fr; }
+  .studio-pills.grid-6 { grid-template-columns: repeat(3, 1fr); }
+  .studio-hero { grid-template-columns: 1fr; }
+  .sim-chart-wrap { height: 280px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

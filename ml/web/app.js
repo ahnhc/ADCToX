@@ -274,12 +274,254 @@
     { id: 'SG3199 ( PBD Dimer )', cls: 'DNA minor-groove crosslinker', perm: true, handle: 'amine', potency: 98, organs: { haematologic: 92, hepatic: 78, pulmonary: 68, dermatologic: 62 }, popover: 'Ultra-potent DNA alkylator binding minor groove without distorting helix. Active against non-dividing cells; dose-limiting delayed myelosuppression and fluid retention.' },
   ];
 
+  // ------------------------------------------------------------------ Internationalization (i18n)
+  const ORGAN_KO = {
+    pulmonary: '폐/호흡기',
+    hepatic: '간/담도',
+    haematologic: '혈액/골수',
+    cardiovascular: '심장/심혈관',
+    renal: '신장/요로',
+    neurologic: '신경계',
+    gastrointestinal: '위장관',
+    ocular: '안구/각막',
+    dermatologic: '피부/점막',
+    metabolic_endocrine: '내분비/대사',
+    musculoskeletal: '근골격',
+    infectious_immune: '감염/면역',
+    otologic: '이비인후',
+  };
+
+  const LAB_KO = {
+    bilirubin: '총 빌리루빈',
+    creatinine: '혈청 크레아티닌',
+    ast: 'AST (간효소)',
+    alt: 'ALT (간효소)',
+    platelets: '혈소판 수치',
+    anc: '호중구 절대수치 (ANC)',
+    hb: '혈색소 (Hb)',
+    lvef: '좌심실 구혈률 (LVEF)',
+  };
+
+  const TXT = {
+    ko: {
+      modes: ['1. ADC 매트릭스', '2. 구조 스튜디오', '3. 환자 및 랩'],
+      brandTag: '임상 ADC 의사결정 및 3D 구조 스튜디오',
+      quickDemo: '데모 증례:',
+      customPatient: '개별 환자 입력',
+      newPatient: '새 환자 입력',
+      newPatientTitle: '입력된 질환을 초기화하고 새 환자 입력을 시작합니다',
+      addCondPh: '+ 암종 또는 기저질환 입력 (예: 유방암, 간질성 폐질환, 간경변, 당뇨병)...',
+      condHelp: '질환명, 증상, 암종을 한글 또는 영문으로 자유롭게 입력하세요.',
+      activeOrgans: '활성 취약 장기',
+      noActiveOrgans: '활성 취약 장기 없음',
+      footerText: 'ADCTOX 임상 ADC 의사결정 및 접합체 구조 설계 워크스페이스',
+      keys: { modes: '1-3 모드 전환', nav: '상/하 행 이동', enter: '엔터 상세 근거', help: '? 안내' },
+      secConstruct: 'ADC 약물 / 구조',
+      secFit: 'FDA 허가사항 적합도',
+      secOrgans: '환자 활성 장기 프로파일',
+      secTrial: '핵심 허가 임상시험 발생률',
+      matrixHead: 'FDA 승인 ADC 약물 치료군 순위',
+      matrixSub: '환자의 취약 장기 및 라벨 주의사항을 종합한 임상 권고',
+      rankBest: '1위 최적 적합',
+      rankCand: '후보',
+      fitStd: '표준 용량 투여',
+      fitAdj: '모니터링 / 용량 조절',
+      fitAvoid: '투여 주의 / 금기',
+      tuneStudio: '구조 스튜디오에서 튜닝 ->',
+      allGrade: '전체',
+      grade3: '3등급 이상',
+      primaryRec: '최우선 추천 약물',
+      primaryHint: '카드를 클릭하면 3D 구조 및 FDA 임상 근거를 확인합니다',
+      filterAll: '전체 승인 ADC',
+      filterMatch: '암종 일치',
+      filterRestricted: '라벨 주의/금기',
+      exportSummary: '요약 내보내기',
+      match: '일치',
+      archTitle: '접합체 구조 설계 (Architecture)',
+      autoOpt: '자동 최적화 (Auto Optimize)',
+      scanning: '스캔 중...',
+      scanSpace: '후보 공간 다목적 최적화 스캔 중...',
+      tgtTitle: '1. 표적 항원 (Target mAb)',
+      lnkTitle: '2. 화학 링커 (Chemical Linker)',
+      pldTitle: '3. 세포독성 페이로드 (Cytotoxic Payload)',
+      darTitle: '4. 약물-항체 접합비 (DAR)',
+      fcTitle: '5. Fc 엔지니어링',
+      wtFc: '야생형 IgG1',
+      silFc: 'Fc 침묵 (LALA-PG)',
+      paretoTitle: '다목적 파레토 최적 경계선 (환자 장기 안전성 vs. 항암 효능)',
+      paretoSafetyX: '환자 장기 안전성 점수 (0 - 100) ->',
+      paretoEfficacyY: '항암 효능 및 선택도 (0 - 100) ->',
+      legendCand: '후보군 공간',
+      legendPareto: '파레토 최적 경계선',
+      legendCur: '현재 선택',
+      optimalLocked: 'AI 최적 설계 조합 잠금 완료',
+      optimalCand: 'AI 추천 최적 조합:',
+      peakPareto: '파레토 최적점',
+      clickAutoOpt: '자동 최적화를 클릭하면 스캔 후 적용됩니다',
+      shCompat: '접합 반응성 호환도',
+      shCompatDirect: '직접 결합 가능',
+      shCompatSpacer: '링커 스페이서 필요',
+      shCompatDesc: '링커의 반응성 작용기와 페이로드 결합 부위의 화학적 짝맞춤입니다.',
+      shSelect: '종양 대 정상조직 선택도',
+      shSelectDesc: '정상 조직 대비 암세포의 표적 항원 발현비(log2FC)로, 높을수록 정상 장기 손상이 적습니다.',
+      shBystander: '바이스탠더 세포살상 효과',
+      shBystanderActive: '막 투과 확산 활성',
+      shBystanderAuto: '세포 국소적 살상',
+      shBystanderDesc: '암세포 내에서 방출된 페이로드가 인접한 항원 음성 암세포까지 확산 살상하는 능력입니다.',
+      shStability: '혈장 내 링커 안정도',
+      shStabilityIntact: '유지',
+      shStabilityDesc: '혈액 순환 중 페이로드가 조기 유리되지 않고 종양까지 온전하게 전달되는 비율입니다.',
+      simOrganTitle: '환자 활성 장기 예측 독성 지수',
+      gtexTitle: 'GTEx 정상 조직 발현 프로파일',
+      fcLalaNote: 'LALA-PG Fc 침묵 적용: 대식세포 FcgammaR 흡수 억제',
+      fcWtNote: '야생형 IgG1: 표준 면역 반응 및 대식세포 흡수',
+      flowTitle: '정량적 임상 바이오마커 플로우시트',
+      flowSub: '기관 기준 참고치 대비 수치 매핑 및 독성 플래그 분석',
+      refRange: '참고치',
+      notEntered: '미입력',
+      elevated: '수치 상승',
+      borderline: '경계치',
+      normal: '정상',
+      organLinkage: 'AI 장기 취약도 연계 분석',
+      riskWeight: '위험 가중치',
+      triggeredDiag: '임상 진단에 의해 활성화',
+      triggeredLab: '검사 수치 이상에 의해 활성화',
+      noActiveTriggers: '활성화된 장기 독성 요인 없음',
+      drTitle: '임상 근거 및 구조 상세',
+      tabPatient: '환자 적합도',
+      tabStudy: '허가 임상시험',
+      tabStructure: '3D 분자 구조',
+      labelRestriction: 'FDA 라벨 사용 제한',
+      noLabelRestriction: '입력된 환자 수치에 해당하는 라벨 제한 사항이 없습니다.',
+      patientWarnTitle: '환자 취약 장기 관련 경고',
+      noPatientWarn: '환자의 취약 장기와 관련된 Boxed Warning 또는 주의사항이 없습니다.',
+      preCheckTitle: '투여 전 권장 검사',
+      missingInputTitle: '미입력 검사 항목',
+      enterLabBtn: '검사 수치 입력하기',
+      rotateHint: '드래그하여 3D 구조 회전',
+      treatmentArm: '치료군',
+      controlArm: '대조군',
+      trialContext: '임상시험 상세 및 이상사례 발생률',
+      struct3dTitle: '3D 접합체 분자 구조 (대화형)',
+      appliesToAll: '모든 환자에게 적용',
+      singleArmTrial: '단일군 임상시험 (대조군 없음)',
+    },
+    en: {
+      modes: ['1. ADC Matrix', '2. Structure Studio', '3. Patient and Labs'],
+      brandTag: 'Clinical ADC Decision & Structure Studio',
+      quickDemo: 'Quick Demo:',
+      customPatient: 'Custom Patient',
+      newPatient: 'New Patient',
+      newPatientTitle: 'Clear entered conditions and start custom patient input',
+      addCondPh: '+ Enter cancer or comorbidity (e.g., breast cancer, ILD, cirrhosis)...',
+      condHelp: 'Type disease, symptom, or cancer in English or Korean.',
+      activeOrgans: 'Active Vulnerable Organs',
+      noActiveOrgans: 'No Active Vulnerable Organs',
+      footerText: 'ADCTOX Clinical Decision and Conjugate Architecture Workspace',
+      keys: { modes: '1-3 Mode', nav: 'Up/Down Navigate', enter: 'Enter Evidence', help: '? Guide' },
+      secConstruct: 'ADC Regimen / Construct',
+      secFit: 'FDA Label Fit',
+      secOrgans: 'Patient Active Organ Profile',
+      secTrial: 'Pivotal Trial Incidence',
+      matrixHead: 'Ranked FDA-Approved ADC Regimens',
+      matrixSub: 'Synthesized from FDA label warnings, active organs, and pivotal trials',
+      rankBest: '#1 Best Fit',
+      rankCand: 'Candidate',
+      fitStd: 'Standard dosing',
+      fitAdj: 'Monitor / Adjust',
+      fitAvoid: 'Avoid / Contraindicated',
+      tuneStudio: 'Tune in Structure Studio ->',
+      allGrade: 'All Gr',
+      grade3: 'Gr >=3',
+      primaryRec: 'Primary Recommendation',
+      primaryHint: 'Click card for 3D architecture and FDA trial evidence',
+      filterAll: 'All Approved ADCs',
+      filterMatch: 'Cancer Match',
+      filterRestricted: 'Label Restrictions',
+      exportSummary: 'Export Summary',
+      match: 'Match',
+      archTitle: 'Conjugate Architecture',
+      autoOpt: 'Auto Optimize',
+      scanning: 'Scanning...',
+      scanSpace: 'Scanning candidate space...',
+      tgtTitle: '1. Target Antigen (mAb)',
+      lnkTitle: '2. Chemical Linker',
+      pldTitle: '3. Cytotoxic Payload',
+      darTitle: '4. Drug-to-Antibody Ratio (DAR)',
+      fcTitle: '5. Fc Engineering',
+      wtFc: 'Wild-type IgG1',
+      silFc: 'Fc-Silenced (LALA-PG)',
+      paretoTitle: 'Multi-Objective Pareto Frontier (Patient Organ Safety vs. Antitumor Efficacy)',
+      paretoSafetyX: 'Patient Organ Safety Score (0 - 100) ->',
+      paretoEfficacyY: 'Antitumor Efficacy & Selectivity (0 - 100) ->',
+      legendCand: 'Candidate Space',
+      legendPareto: 'Pareto Frontier',
+      legendCur: 'Current Selection',
+      optimalLocked: 'AI De Novo Optimal ADC Architecture Locked',
+      optimalCand: 'AI Recommended Optimum:',
+      peakPareto: 'Pareto Frontier Peak',
+      clickAutoOpt: 'Click Auto Optimize to scan and apply',
+      shCompat: 'Conjugation Compatibility',
+      shCompatDirect: 'Direct Coupling',
+      shCompatSpacer: 'Linker Spacer Needed',
+      shCompatDesc: 'Linker reactive handle pairing with payload functional group.',
+      shSelect: 'Tumor / Normal Selectivity',
+      shSelectDesc: 'Fold-change in target expression on tumor vs. healthy normal organs.',
+      shBystander: 'Bystander Killing Effect',
+      shBystanderActive: 'Active Diffusion',
+      shBystanderAuto: 'Cell-Autonomous',
+      shBystanderDesc: 'Payload membrane permeability to kill adjacent antigen-negative tumor cells.',
+      shStability: 'Plasma Linker Stability',
+      shStabilityIntact: 'Intact',
+      shStabilityDesc: 'Resistance to premature systemic payload deconjugation in circulation.',
+      simOrganTitle: 'Simulated Patient Organ Toxicity Index',
+      gtexTitle: 'GTEx Normal Tissue Profile',
+      fcLalaNote: 'LALA-PG Fc-silencing active: FcgammaR macrophage uptake attenuated.',
+      fcWtNote: 'Wild-type IgG1: standard immune effector and macrophage uptake.',
+      flowTitle: 'Clinical Biomarker Flowsheet',
+      flowSub: 'Values mapped against institutional reference intervals',
+      refRange: 'Ref',
+      notEntered: 'Not entered',
+      elevated: 'Elevated',
+      borderline: 'Borderline',
+      normal: 'Normal',
+      organLinkage: 'AI Organ Vulnerability Linkage',
+      riskWeight: 'Risk Weight',
+      triggeredDiag: 'Triggered by clinical diagnosis',
+      triggeredLab: 'Triggered by laboratory biomarker elevation',
+      noActiveTriggers: 'No active organ toxicity triggers detected.',
+      drTitle: 'Clinical Evidence and Structure',
+      tabPatient: 'Patient & Label Fit',
+      tabStudy: 'Pivotal Trials',
+      tabStructure: 'Structure 3D',
+      labelRestriction: 'Label restriction',
+      noLabelRestriction: 'No label restriction triggered for entered values.',
+      patientWarnTitle: "Warnings on the patient's organs",
+      noPatientWarn: "No boxed or Section 5 warnings on patient's active organs.",
+      preCheckTitle: 'Pre-treatment checks',
+      missingInputTitle: 'Missing inputs',
+      enterLabBtn: 'Enter lab values',
+      rotateHint: 'Drag to rotate 3D structure',
+      treatmentArm: 'Treatment Arm',
+      controlArm: 'Comparator Arm',
+      trialContext: 'Trial context and adverse events',
+      struct3dTitle: '3D Conjugate Architecture (Interactive)',
+      appliesToAll: 'Applies to all patients',
+      singleArmTrial: 'Single-arm trial',
+    },
+  };
+  function t(k) {
+    const lang = S.lang === 'ko' ? 'ko' : 'en';
+    return (TXT[lang] && TXT[lang][k]) || (TXT.en && TXT.en[k]) || k;
+  }
+
   // ------------------------------------------------------------------ Session State
   const KEY = 'adctox.web.v070';
   function defaultState() {
     const p = PRESETS[0];
     return {
       mode: 0,
+      lang: 'ko',
       presetId: p.id,
       conds: p.conds.map((c) => Object.assign({}, c)),
       raw: Object.assign({}, p.raw),
@@ -304,6 +546,7 @@
       const d = JSON.parse(sessionStorage.getItem(KEY) || 'null');
       if (d && typeof d === 'object' && Array.isArray(d.conds) && d.conds.length) {
         S = Object.assign(defaultState(), d);
+        if (d.lang) S.lang = d.lang;
       }
     } catch (e) { S = defaultState(); }
   }
@@ -367,11 +610,19 @@
   // ------------------------------------------------------------------ Page Shell & Navigation
   let top, crumbsOl, verEl, scenarioDropdown, layout, stageBox, bar, barKeys, drawer, drawerTitle, drawerBody;
 
+  let langBtn = null;
   function frame() {
     document.title = 'ADCTOX';
     crumbsOl = h('ol');
     verEl = h('div', { class: 'ver', text: '' });
     scenarioDropdown = h('div', { class: 'scenario-dropdown' });
+    langBtn = h('button', {
+      type: 'button', class: 'lang-btn',
+      'aria-label': 'Language Toggle',
+      title: '한국어 / English 전환',
+      text: S.lang === 'ko' ? 'KO / EN' : 'EN / KO',
+      onclick: () => toggleLanguage(),
+    });
 
     const brandWrap = h('div', { class: 'brand-wrap' },
       h('div', { class: 'brand' },
@@ -384,13 +635,14 @@
       h('nav', { class: 'crumbs', 'aria-label': 'Workspace modes' }, crumbsOl),
       h('div', { class: 'right' },
         scenarioDropdown,
+        langBtn,
         h('button', { type: 'button', class: 'help', 'aria-label': 'How it works', title: 'How it works', text: '?', onclick: openGuide })));
 
     stageBox = h('main', { class: 'stage' });
     layout = h('div', { class: 'layout' }, stageBox);
     barKeys = h('div', { class: 'keys', 'aria-hidden': 'true' });
     bar = h('footer', { class: 'bar' },
-      h('span', { text: 'ADCTOX Clinical Decision and Conjugate Architecture Workspace' }),
+      h('span', { text: t('footerText') }),
       barKeys);
 
     drawerTitle = h('h2', { id: 'dr-title' });
@@ -402,9 +654,18 @@
     document.body.append(top, h('div', { class: 'shell' }, h('div', { class: 'wrap' }, layout)), bar, drawer, tipBox);
   }
 
+  function toggleLanguage() {
+    S.lang = S.lang === 'ko' ? 'en' : 'ko';
+    save();
+    renderHeaderControls();
+    renderActiveMode(false);
+  }
+
   function renderHeaderControls() {
+    if (langBtn) langBtn.textContent = S.lang === 'ko' ? 'KO / EN' : 'EN / KO';
+    if (bar && bar.firstElementChild) bar.firstElementChild.textContent = t('footerText');
     clear(crumbsOl);
-    MODES.forEach((name, i) => {
+    t('modes').forEach((name, i) => {
       const now = i === S.mode;
       const btn = h('button', {
         class: 'cb', type: 'button',
@@ -425,14 +686,14 @@
         trigger.setAttribute('aria-expanded', String(exp));
       },
     },
-    h('span', { class: 'dim', text: 'Quick Demo:' }),
-    h('strong', { class: 'scenario-current', text: S.presetId ? activePreset.title.split('/')[0].trim() : 'Custom Patient' }),
+    h('span', { class: 'dim', text: t('quickDemo') }),
+    h('strong', { class: 'scenario-current', text: S.presetId ? activePreset.title.split('/')[0].trim() : t('customPatient') }),
     sv('svg', { class: 'chevron', width: '10', height: '6', viewBox: '0 0 10 6', stroke: 'currentColor', 'stroke-width': '1.5', fill: 'none' },
       sv('path', { d: 'M1 1L5 5L9 1' })));
 
     const resetBtn = h('button', {
-      type: 'button', class: 'reset-patient-btn', text: 'New Patient',
-      title: 'Clear entered conditions and start custom patient input',
+      type: 'button', class: 'reset-patient-btn', text: t('newPatient'),
+      title: t('newPatientTitle'),
       onclick: () => resetPatient(),
     });
 
@@ -552,8 +813,8 @@
     const st = { q: '', items: [], cur: -1, timer: 0, seq: 0 };
     const input = h('input', {
       type: 'text', role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'wb-sugg',
-      'aria-autocomplete': 'list', 'aria-label': 'Condition, symptom or cancer',
-      placeholder: 'Condition, symptom or cancer', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
+      'aria-autocomplete': 'list', 'aria-label': t('addCondPh'),
+      placeholder: t('addCondPh'), autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
     });
     const sugg = h('ul', { class: 'wb-sugg', id: 'wb-sugg', role: 'listbox', 'aria-label': 'Suggestions', hidden: true });
     const chipsWrap = h('div', { class: 'wb-chips', 'aria-label': 'Active patient profile' });
@@ -704,9 +965,10 @@
       activeOrgans.forEach((item) => {
         const pct = Math.round(Math.max(15, Math.min(100, item.score * 100)));
         const isPrio = item.condKey && S.first === item.condKey;
+        const orgLabel = S.lang === 'ko' ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ);
         const btn = h('button', {
           type: 'button', class: 'organ-meter-btn' + (isPrio ? ' prio-active' : ''),
-          title: item.condKey ? 'Prioritize ' + (SHORT[item.organ] || item.organ) + ' safety in ADC ranking' : (SHORT[item.organ] || item.organ),
+          title: item.condKey ? (S.lang === 'ko' ? `${orgLabel} 안전성 우선 평가` : 'Prioritize ' + orgLabel) : orgLabel,
           onclick: async () => {
             if (!item.condKey) return;
             S.first = S.first === item.condKey ? null : item.condKey;
@@ -716,14 +978,14 @@
           },
         },
         h('div', { class: 'om-top' },
-          h('span', { class: 'om-name', text: SHORT[item.organ] || item.organ }),
-          h('span', { class: 'om-val', text: isPrio ? 'Priority 1' : `${pct}%` })),
+          h('span', { class: 'om-name', text: orgLabel }),
+          h('span', { class: 'om-val', text: isPrio ? (S.lang === 'ko' ? '우선 1위' : 'Priority 1') : `${pct}%` })),
         h('div', { class: 'om-track' },
           h('i', { class: 'om-fill', style: `width:${pct}%` })));
         organsGrid.append(btn);
       });
     } else {
-      organsGrid.append(h('span', { class: 'dim', text: 'No vulnerable organs flagged' }));
+      organsGrid.append(h('span', { class: 'dim', text: t('noActiveOrgans') }));
     }
 
     return h('section', { class: 'workspace-bar', 'aria-label': 'Patient and active organ profile' },
@@ -736,8 +998,8 @@
         chipsWrap),
       h('div', { class: 'wb-right' },
         h('div', { class: 'horizon-head' },
-          h('span', { class: 'horizon-label', text: `Patient Active Organs (${activeOrgans.length})` }),
-          h('span', { class: 'horizon-sub', text: S.first ? 'Priority Active' : 'Select organ to prioritize' })),
+          h('span', { class: 'horizon-label', text: `${t('activeOrgans')} (${activeOrgans.length})` }),
+          h('span', { class: 'horizon-sub', text: S.first ? (S.lang === 'ko' ? '우선순위 적용됨' : 'Priority Active') : (S.lang === 'ko' ? '클릭 시 해당 장기 우선 평가' : 'Select organ to prioritize') })),
         organsGrid));
   }
 
@@ -759,21 +1021,24 @@
   function statusInfo(row) {
     const detail = row.detail || {};
     const reason = (detail.reasons || []).find((r) => r.status === row.status && !!r.sure === !!row.sure) || (detail.reasons || []).find((r) => r.status === row.status);
-    if (row.status === 'None' || row.status === 'No change') return { tone: 'clear', bars: 'clear', label: 'Standard', full: 'Standard dosing' };
-    if (reason && reason.code === 'contraindicated') return { tone: 'avoid', bars: 'avoid', label: 'Contraindicated', full: 'Contraindicated' };
-    if (row.status === 'Avoid') return { tone: 'avoid', bars: 'avoid', label: row.sure ? 'Avoid' : 'Avoid (check)', full: 'Avoid use' };
-    if (row.status === 'Lower dose' || (reason && reason.code === 'reduce_dose')) return { tone: 'monitor', bars: 'monitor', label: 'Dose adjust', full: 'Dose adjustment' };
-    if (row.status === 'Monitor') return { tone: 'monitor', bars: 'monitor', label: 'Monitor', full: 'Close monitoring' };
-    return { tone: 'limited', bars: 'limited', label: 'Limited data', full: 'Not studied in cohort' };
+    const isKo = S.lang === 'ko';
+    if (row.status === 'None' || row.status === 'No change') return { tone: 'clear', bars: 'clear', label: isKo ? '표준' : 'Standard', full: isKo ? '표준 용량 투여' : 'Standard dosing' };
+    if (reason && reason.code === 'contraindicated') return { tone: 'avoid', bars: 'avoid', label: isKo ? '금기' : 'Contraindicated', full: isKo ? '투여 금기' : 'Contraindicated' };
+    if (row.status === 'Avoid') return { tone: 'avoid', bars: 'avoid', label: isKo ? (row.sure ? '투여주의' : '주의(확인)') : (row.sure ? 'Avoid' : 'Avoid (check)'), full: isKo ? '투여 주의 / 회피' : 'Avoid use' };
+    if (row.status === 'Lower dose' || (reason && reason.code === 'reduce_dose')) return { tone: 'monitor', bars: 'monitor', label: isKo ? '용량조절' : 'Dose adjust', full: isKo ? '용량 조절 권고' : 'Dose adjustment' };
+    if (row.status === 'Monitor') return { tone: 'monitor', bars: 'monitor', label: isKo ? '모니터링' : 'Monitor', full: isKo ? '밀접 모니터링' : 'Close monitoring' };
+    return { tone: 'limited', bars: 'limited', label: isKo ? '제한적' : 'Limited data', full: isKo ? '해당 코호트 연구 미비' : 'Not studied in cohort' };
   }
 
   function organStatusForRow(row, organ) {
+    const isKo = S.lang === 'ko';
+    const orgName = isKo ? (ORGAN_KO[organ] || SHORT[organ] || organ) : (SHORT[organ] || organ);
     const detail = row.detail || {};
     const allWarnings = [].concat(detail.warnings || [], detail.other_warnings || []);
     const found = allWarnings.find((w) => w.organ === organ);
-    if (!found) return { cls: 'clear', tag: 'Clear', title: 'No label warning on ' + (SHORT[organ] || organ) };
-    if (String(found.mark).trim() === '!!') return { cls: 'boxed', tag: 'Boxed', title: 'Boxed Warning: ' + found.text };
-    return { cls: 'warn', tag: 'Warn', title: 'Section 5 Warning: ' + found.text };
+    if (!found) return { cls: 'clear', tag: isKo ? '양호' : 'Clear', title: isKo ? (orgName + ' 라벨 경고 없음') : ('No label warning on ' + (SHORT[organ] || organ)) };
+    if (String(found.mark).trim() === '!!') return { cls: 'boxed', tag: isKo ? '경고' : 'Boxed', title: (isKo ? 'Boxed 경고: ' : 'Boxed Warning: ') + found.text };
+    return { cls: 'warn', tag: isKo ? '주의' : 'Warn', title: (isKo ? 'Section 5 주의: ' : 'Section 5 Warning: ') + found.text };
   }
 
   function primaryTrialEvent(row, activeOrgans) {
@@ -850,7 +1115,7 @@
         (activeOrgans.length ? activeOrgans.slice(0, 4) : [{ organ: 'hepatic' }, { organ: 'pulmonary' }, { organ: 'haematologic' }]).forEach((item) => {
           const os = organStatusForRow(row, item.organ);
           organBars.append(h('div', { class: 'sp-organ-row', title: os.title },
-            h('span', { class: 'sp-organ-name', text: SHORT[item.organ] || item.organ }),
+            h('span', { class: 'sp-organ-name', text: S.lang === 'ko' ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ) }),
             h('span', { class: 'sp-organ-track' }, h('i', { class: 'sp-organ-fill ' + os.cls })),
             h('span', { class: 'sp-organ-state ' + os.cls, text: os.tag })));
         });
@@ -871,10 +1136,10 @@
           h('span', { class: 'sp-status-badge ' + st.tone, text: st.full })),
         h('div', { class: 'sp-metrics' },
           h('div', { class: 'sp-metric-box' },
-            h('span', { class: 'sp-metric-label', text: 'Patient Active Organs' }),
+            h('span', { class: 'sp-metric-label', text: t('secOrgans') }),
             organBars),
           h('div', { class: 'sp-metric-box' },
-            h('span', { class: 'sp-metric-label', text: 'Pivotal Trial Incidence' }),
+            h('span', { class: 'sp-metric-label', text: t('secTrial') }),
             buildDualBar(trialHit))));
 
         cardEls.set(idx, card);
@@ -883,32 +1148,32 @@
 
       content.append(h('section', { class: 'spotlight-section', 'aria-label': 'Top recommended ADCs' },
         h('div', { class: 'sec-bar' },
-          h('span', { class: 'sec-kicker', text: 'Primary Recommendation' }),
-          h('span', { class: 'dim', style: 'font-size:11.5px', text: 'Click card for 3D architecture and FDA trial evidence' })),
+          h('span', { class: 'sec-kicker', text: t('primaryRec') }),
+          h('span', { class: 'dim', style: 'font-size:11.5px', text: t('primaryHint') })),
         spGrid));
 
       let filter = 'all';
       const relevant = (row) => (hasCancer ? row.indicated === true : true);
       const restricted = (row) => row.status && !['None', 'No change'].includes(row.status);
       const filters = [
-        ['all', 'All Approved ADCs', rows.length, () => true],
-        ['relevant', 'Cancer Match', rows.filter(relevant).length, relevant],
-        ['restrictions', 'Label Restrictions', rows.filter(restricted).length, restricted],
+        ['all', t('filterAll'), rows.length, () => true],
+        ['relevant', t('filterMatch'), rows.filter(relevant).length, relevant],
+        ['restrictions', t('filterRestricted'), rows.filter(restricted).length, restricted],
       ];
 
       const tabs = h('div', { class: 'review-filters', role: 'group', 'aria-label': 'Filter ADCs' });
       const toolbar = h('div', { class: 'review-toolbar' },
         tabs,
-        h('button', { type: 'button', class: 'export-button', text: 'Export Summary', onclick: () => saveReview(res) }));
+        h('button', { type: 'button', class: 'export-button', text: t('exportSummary'), onclick: () => saveReview(res) }));
       content.append(toolbar);
 
       const grid = h('div', { class: 'review-grid', role: 'grid', 'aria-label': 'ADC Cohort Matrix' },
         h('div', { class: 'review-grid-head', role: 'row' },
           h('span', { role: 'columnheader', text: '#' }),
-          h('span', { role: 'columnheader', text: 'ADC and Architecture' }),
-          tipped(h('span', { role: 'columnheader', text: 'Regimen Fit' })),
-          tipped(h('span', { role: 'columnheader', text: 'Active Organ Profile' })),
-          tipped(h('span', { role: 'columnheader', text: 'Pivotal Trial vs Control' }))));
+          h('span', { role: 'columnheader', text: t('secConstruct') }),
+          tipped(h('span', { role: 'columnheader', text: t('secFit') })),
+          tipped(h('span', { role: 'columnheader', text: t('secOrgans') })),
+          tipped(h('span', { role: 'columnheader', text: t('secTrial') }))));
 
       const trs = [];
       let visible = rows.map((_, i) => i);
@@ -923,7 +1188,7 @@
         (activeOrgans.length ? activeOrgans.slice(0, 3) : [{ organ: 'hepatic' }, { organ: 'pulmonary' }]).forEach((item) => {
           const os = organStatusForRow(row, item.organ);
           miniOrgans.append(h('div', { class: 'mini-organ-bar ' + os.cls, title: os.title },
-            h('span', { text: SHORT[item.organ] || item.organ }),
+            h('span', { text: S.lang === 'ko' ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ) }),
             h('b', null, h('i')),
             h('span', { class: 'mo-tag', text: os.cls === 'boxed' ? '!!' : os.cls === 'warn' ? '!' : 'OK' })));
         });
@@ -937,7 +1202,7 @@
         h('div', { class: 'drug-cell', role: 'gridcell' },
           h('div', { class: 'drug-name-row' },
             h('span', { class: 'drug-name', text: row.name }),
-            hasCancer && row.indicated ? h('span', { class: 'sp-match-tag', text: 'Match' }) : null),
+            hasCancer && row.indicated ? h('span', { class: 'sp-match-tag', text: t('match') }) : null),
           h('span', { class: 'drug-meta', text: pills.join('  /  ') || (row.cancers || []).join(', ') })),
         h('div', { class: 'status-cell', role: 'gridcell' },
           h('span', { class: 'reg-bars ' + st.bars, 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
@@ -1109,7 +1374,16 @@
 
     function buildAutoOptimizeRationales(bestSim) {
       const s = bestSim.spec;
-      const activeOrgs = activeOrgansWithScores().map((o) => SHORT[o.organ] || o.organ);
+      const isKo = S.lang === 'ko';
+      const activeOrgs = activeOrgansWithScores().map((o) => (isKo && ORGAN_KO[o.organ] ? ORGAN_KO[o.organ] : SHORT[o.organ] || o.organ));
+      if (isKo) {
+        return [
+          ['1. 표적 항원', s.target, `암종 진단에 특이적으로 부합하며 정상 조직 대비 높은 선택도(+${bestSim.tgt.selectivity} log2FC)를 확보합니다.`],
+          ['2. 화학 링커', s.linker, `우수한 혈장 내 안정도(${bestSim.lnk.stability}%)로 ${activeOrgs.join(', ') || '주요 취약 장기'}에서의 비특이적 독성 페이로드 유출을 방지합니다.`],
+          ['3. 세포독성 페이로드', s.payload, `링커 결합 작용기와 화학적으로 호환되며 환자의 활성 장기 독성 병목 현상을 회피합니다.`],
+          ['4. DAR 및 Fc 엔지니어링', `DAR ${s.dar} + ${s.fc ? 'Fc 침묵 (LALA-PG)' : '야생형 IgG1'}`, `환자 장기 안전성(${bestSim.safetyScore}/100)과 종양 살상 효능(${bestSim.efficacyScore}/100) 간의 최적 파레토 균형점을 제공합니다.`],
+        ];
+      }
       return [
         ['1. Target Antigen', s.target, `Matched to oncology diagnosis with tumor selectivity margin (+${bestSim.tgt.selectivity} log2FC).`],
         ['2. Chemical Linker', s.linker, `High plasma stability (${bestSim.lnk.stability}%) prevents premature payload shed on ${activeOrgs.join(', ') || 'vulnerable organs'}.`],
@@ -1121,9 +1395,9 @@
     function renderControls() {
       clear(controls);
       const headAction = h('div', { class: 'studio-head-action' },
-        h('span', { class: 'sec-kicker', text: 'Conjugate Architecture' }),
+        h('span', { class: 'sec-kicker', text: t('archTitle') }),
         h('button', {
-          type: 'button', class: 'btn-optimize', text: isOptimizing ? 'Scanning...' : 'Auto Optimize',
+          type: 'button', class: 'btn-optimize', text: isOptimizing ? t('scanning') : t('autoOpt'),
           onclick: () => runOptimizationSimulation(),
         }));
       controls.append(headAction);
@@ -1150,11 +1424,11 @@
       };
 
       controls.append(
-        makeGroup('1. Target Antigen (mAb)', STUDIO_TARGETS, S.studio.target, (v) => { S.studio.target = v; autoRationale = null; }),
-        makeGroup('2. Chemical Linker', STUDIO_LINKERS, S.studio.linker, (v) => { S.studio.linker = v; autoRationale = null; }),
-        makeGroup('3. Cytotoxic Payload', STUDIO_PAYLOADS, S.studio.payload, (v) => { S.studio.payload = v; autoRationale = null; }),
-        makeGroup('4. Drug-to-Antibody Ratio (DAR)', ['2', '3.5', '4', '6', '7.6', '8'], String(S.studio.dar), (v) => { S.studio.dar = parseFloat(v); autoRationale = null; }, true),
-        makeGroup('5. Fc Engineering', ['Wild-type IgG1', 'Fc-Silenced (LALA-PG)'], S.studio.fc ? 'Fc-Silenced (LALA-PG)' : 'Wild-type IgG1', (v) => { S.studio.fc = v.includes('LALA'); autoRationale = null; })
+        makeGroup(t('tgtTitle'), STUDIO_TARGETS, S.studio.target, (v) => { S.studio.target = v; autoRationale = null; }),
+        makeGroup(t('lnkTitle'), STUDIO_LINKERS, S.studio.linker, (v) => { S.studio.linker = v; autoRationale = null; }),
+        makeGroup(t('pldTitle'), STUDIO_PAYLOADS, S.studio.payload, (v) => { S.studio.payload = v; autoRationale = null; }),
+        makeGroup(t('darTitle'), ['2', '3.5', '4', '6', '7.6', '8'], String(S.studio.dar), (v) => { S.studio.dar = parseFloat(v); autoRationale = null; }, true),
+        makeGroup(t('fcTitle'), [t('wtFc'), t('silFc')], S.studio.fc ? t('silFc') : t('wtFc'), (v) => { S.studio.fc = v.includes('LALA') || v.includes('침묵'); autoRationale = null; })
       );
     }
 
@@ -1191,8 +1465,8 @@
       // 1. Pareto Frontier Architecture Simulator Canvas
       const simWrap = h('section', { class: 'sim-canvas-panel panel' });
       const simHead = h('div', { class: 'sim-canvas-head' },
-        h('span', { class: 'sim-canvas-title', text: 'Multi-Objective Pareto Frontier (Patient Organ Safety vs. Antitumor Efficacy)' }),
-        h('span', { class: 'sim-canvas-status', text: animateScan ? 'Scanning candidate space...' : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}` }));
+        h('span', { class: 'sim-canvas-title', text: t('paretoTitle') }),
+        h('span', { class: 'sim-canvas-status', text: animateScan ? t('scanSpace') : (S.lang === 'ko' ? `안전성 ${sim.safetyScore}점 / 항암효능 ${sim.efficacyScore}점` : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`) }));
 
       const chartWrap = h('div', { class: 'sim-chart-wrap' });
       const cvs = h('canvas', { class: 'sim-canvas' });
@@ -1211,8 +1485,8 @@
 
       const rBox = h('div', { class: 'sim-rationale-box' },
         h('div', { class: 'srb-title' },
-          h('span', { text: isOptimal ? 'AI De Novo Optimal ADC Architecture Locked' : `AI Recommended Optimum: ${evalSpace.best.spec.target} + ${evalSpace.best.spec.linker} (DAR ${evalSpace.best.spec.dar})` }),
-          h('span', { style: 'font-size:10.5px;color:var(--dim);font-weight:600', text: isOptimal ? 'Pareto Frontier Peak' : 'Click Auto Optimize to scan and apply' })),
+          h('span', { text: isOptimal ? t('optimalLocked') : `${t('optimalCand')} ${evalSpace.best.spec.target} + ${evalSpace.best.spec.payload} (DAR ${evalSpace.best.spec.dar})` }),
+          h('span', { style: 'font-size:10.5px;color:var(--dim);font-weight:600', text: isOptimal ? t('peakPareto') : t('clickAutoOpt') })),
         h('div', { class: 'srb-steps' },
           activeRationale.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
             h('b', { text: `${title}: ${choice}` }),
@@ -1222,25 +1496,25 @@
       // 2. Metrics Strip with 1-line explanations
       const hero = h('div', { class: 'studio-hero panel' },
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: 'Conjugation Compatibility' }),
-          h('span', { class: 'sh-val ' + (handleMatch ? 't-green' : 't-amber'), text: handleMatch ? 'Direct Coupling' : 'Linker Spacer Needed' }),
+          h('span', { class: 'sh-kicker', text: t('shCompat') }),
+          h('span', { class: 'sh-val ' + (handleMatch ? 't-green' : 't-amber'), text: handleMatch ? t('shCompatDirect') : t('shCompatSpacer') }),
           h('div', { class: 'sh-bar' }, h('i', { style: `width:${handleMatch ? 100 : 50}%;background:${handleMatch ? 'var(--emerald)' : 'var(--amber)'}` })),
-          h('span', { class: 'sh-desc', text: 'Linker reactive handle pairing with payload functional group.' })),
+          h('span', { class: 'sh-desc', text: t('shCompatDesc') })),
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: 'Tumor / Normal Selectivity' }),
+          h('span', { class: 'sh-kicker', text: t('shSelect') }),
           h('span', { class: 'sh-val', text: `+${tgt.selectivity.toFixed(1)} log2FC` }),
           h('div', { class: 'sh-bar' }, h('i', { style: `width:${Math.min(100, tgt.selectivity * 16)}%;background:var(--accent)` })),
-          h('span', { class: 'sh-desc', text: 'Fold-change in target expression on tumor vs. healthy normal organs.' })),
+          h('span', { class: 'sh-desc', text: t('shSelectDesc') })),
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: 'Bystander Killing Effect' }),
-          h('span', { class: 'sh-val', text: bystander ? 'Active Diffusion' : 'Cell-Autonomous' }),
+          h('span', { class: 'sh-kicker', text: t('shBystander') }),
+          h('span', { class: 'sh-val', text: bystander ? t('shBystanderActive') : t('shBystanderAuto') }),
           h('div', { class: 'sh-bar' }, h('i', { style: `width:${bystander ? 92 : 30}%;background:${bystander ? 'var(--accent)' : 'var(--dim)'}` })),
-          h('span', { class: 'sh-desc', text: 'Payload membrane permeability to kill adjacent antigen-negative tumor cells.' })),
+          h('span', { class: 'sh-desc', text: t('shBystanderDesc') })),
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: 'Plasma Linker Stability' }),
-          h('span', { class: 'sh-val', text: `${stabilityScore}% Intact` }),
+          h('span', { class: 'sh-kicker', text: t('shStability') }),
+          h('span', { class: 'sh-val', text: `${stabilityScore}% ${t('shStabilityIntact')}` }),
           h('div', { class: 'sh-bar' }, h('i', { style: `width:${stabilityScore}%;background:var(--emerald)` })),
-          h('span', { class: 'sh-desc', text: 'Resistance to premature systemic payload deconjugation in circulation.' })));
+          h('span', { class: 'sh-desc', text: t('shStabilityDesc') })));
 
       // 3. Organ & Tissue Expression Grid
       const activeOrgans = activeOrgansWithScores();
@@ -1259,7 +1533,7 @@
         const color = burden >= 75 ? 'var(--red)' : burden >= 52 ? 'var(--amber)' : 'var(--emerald)';
 
         organRows.append(h('div', { class: 'expr-row' },
-          h('span', { class: 'ex-name', text: SHORT[item.organ] || item.organ }),
+          h('span', { class: 'ex-name', text: S.lang === 'ko' ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ) }),
           h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${burden}%;background:${color}` })),
           h('span', { class: 'ex-val', style: `color:${color}`, text: `${burden} idx` })));
       });
@@ -1267,18 +1541,18 @@
       const gtexRows = h('div', { class: 'expr-list' });
       tgt.tissues.forEach((t) => {
         gtexRows.append(h('div', { class: 'expr-row' },
-          h('span', { class: 'ex-name', text: SHORT[t.organ] || t.organ }),
+          h('span', { class: 'ex-name', text: S.lang === 'ko' ? (ORGAN_KO[t.organ] || SHORT[t.organ] || t.organ) : (SHORT[t.organ] || t.organ) }),
           h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${t.tpm}%;background:var(--accent)` })),
           h('span', { class: 'ex-val', text: `${t.tpm} nTPM` })));
       });
 
       const grid2 = h('div', { class: 'studio-grid-2' },
         h('section', { class: 'studio-card panel' },
-          h('h3', { text: 'Simulated Patient Organ Toxicity Index' }),
+          h('h3', { text: t('simOrganTitle') }),
           organRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: fcSilenced ? 'LALA-PG Fc-silencing active: FcgammaR macrophage uptake attenuated.' : 'Wild-type IgG1: standard immune effector and macrophage uptake.' })),
+          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: fcSilenced ? t('fcLalaNote') : t('fcWtNote') })),
         h('section', { class: 'studio-card panel' },
-          h('h3', { text: `GTEx Normal Tissue Profile (${tgt.gene})` }),
+          h('h3', { text: `${t('gtexTitle')} (${tgt.gene})` }),
           gtexRows,
           h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: lnk.note })));
 
@@ -1377,12 +1651,12 @@
         ctx.font = `bold ${10.5 * dpr}px sans-serif`;
         ctx.fillStyle = '#1E293B';
         ctx.textAlign = 'center';
-        ctx.fillText('Patient Organ Safety Score (0 - 100) ->', offsetX + plotW / 2, offsetY + plotH + 32 * dpr);
+        ctx.fillText(t('paretoSafetyX'), offsetX + plotW / 2, offsetY + plotH + 32 * dpr);
 
         ctx.save();
         ctx.translate(offsetX - 28 * dpr, offsetY + plotH / 2);
         ctx.rotate(-Math.PI / 2);
-        ctx.fillText('Antitumor Efficacy & Selectivity (0 - 100) ->', 0, 0);
+        ctx.fillText(t('paretoEfficacyY'), 0, 0);
         ctx.restore();
 
         // Legend at top
@@ -1390,17 +1664,17 @@
         ctx.font = `600 ${9.5 * dpr}px sans-serif`;
         ctx.fillStyle = '#64748B';
         ctx.beginPath(); ctx.arc(offsetX + 4 * dpr, offsetY - 14 * dpr, 3 * dpr, 0, Math.PI * 2); ctx.fill();
-        ctx.fillText(`Candidate Space (${cands.length})`, offsetX + 11 * dpr, offsetY - 11 * dpr);
+        ctx.fillText(`${t('legendCand')} (${cands.length})`, offsetX + 11 * dpr, offsetY - 11 * dpr);
 
         ctx.strokeStyle = '#0D9488';
         ctx.lineWidth = 2 * dpr;
         ctx.beginPath(); ctx.moveTo(offsetX + 130 * dpr, offsetY - 14 * dpr); ctx.lineTo(offsetX + 146 * dpr, offsetY - 14 * dpr); ctx.stroke();
         ctx.fillStyle = '#0D9488';
-        ctx.fillText('Pareto Frontier', offsetX + 152 * dpr, offsetY - 11 * dpr);
+        ctx.fillText(t('legendPareto'), offsetX + 152 * dpr, offsetY - 11 * dpr);
 
         ctx.fillStyle = '#2563EB';
         ctx.beginPath(); ctx.arc(offsetX + 242 * dpr, offsetY - 14 * dpr, 4 * dpr, 0, Math.PI * 2); ctx.fill();
-        ctx.fillText('Current Selection', offsetX + 250 * dpr, offsetY - 11 * dpr);
+        ctx.fillText(t('legendCur'), offsetX + 250 * dpr, offsetY - 11 * dpr);
 
         // Scanning wavefront cutoff X
         const cutoffSafety = progress * 102;
@@ -1486,7 +1760,7 @@
           ctx.fillStyle = '#065F46';
           const alignRight = bx > offsetX + plotW - 130 * dpr;
           ctx.textAlign = alignRight ? 'right' : 'left';
-          ctx.fillText(`Optimal: ${best.spec.target.split(' ')[0]} + ${best.spec.payload.split(' ')[0]} (DAR ${best.spec.dar})`, bx + (alignRight ? -8 * dpr : 8 * dpr), by - 6 * dpr);
+          ctx.fillText(`${S.lang === 'ko' ? '최적설계' : 'Optimal'}: ${best.spec.target.split(' ')[0]} + ${best.spec.payload.split(' ')[0]} (DAR ${best.spec.dar})`, bx + (alignRight ? -8 * dpr : 8 * dpr), by - 6 * dpr);
         }
 
         // Current active selection marker
@@ -1505,7 +1779,7 @@
         ctx.fillStyle = '#1E40AF';
         const curAlignRight = sx > offsetX + plotW - 120 * dpr;
         ctx.textAlign = curAlignRight ? 'right' : 'left';
-        ctx.fillText(`Current (${curSim.safetyScore}, ${curSim.efficacyScore})`, sx + (curAlignRight ? -8 * dpr : 8 * dpr), sy + 14 * dpr);
+        ctx.fillText(`${S.lang === 'ko' ? '현재선택' : 'Current'} (${curSim.safetyScore}, ${curSim.efficacyScore})`, sx + (curAlignRight ? -8 * dpr : 8 * dpr), sy + 14 * dpr);
 
         if (progress < 1) {
           simAnimId = requestAnimationFrame(renderFrame);
@@ -1558,8 +1832,8 @@
 
       leftPanel.append(
         h('div', { class: 'flowsheet-head' },
-          h('h2', { class: 'flowsheet-title', text: 'Clinical Biomarker Flowsheet' }),
-          h('span', { class: 'flowsheet-sub', text: 'Values mapped against institutional reference intervals' })));
+          h('h2', { class: 'flowsheet-title', text: t('flowTitle') }),
+          h('span', { class: 'flowsheet-sub', text: t('flowSub') })));
 
       const groupEl = h('div', { class: 'lab-card-group' });
       BIO_FIELDS.forEach((bf) => {
@@ -1568,7 +1842,7 @@
         const hasVal = !isNaN(valNum);
 
         let statusClass = 'empty';
-        let statusText = 'Not entered';
+        let statusText = t('notEntered');
         let needlePos = 50;
 
         if (hasVal) {
@@ -1578,11 +1852,11 @@
           needlePos = Math.max(3, Math.min(97, ((valNum - minRange) / (maxRange - minRange)) * 100));
 
           if (valNum > bf.refHigh * 1.5 || valNum < bf.refLow * 0.7) {
-            statusClass = 'alarm'; statusText = 'Elevated';
+            statusClass = 'alarm'; statusText = t('elevated');
           } else if (valNum > bf.refHigh || valNum < bf.refLow) {
-            statusClass = 'warn'; statusText = 'Borderline';
+            statusClass = 'warn'; statusText = t('borderline');
           } else {
-            statusClass = 'normal'; statusText = 'Normal';
+            statusClass = 'normal'; statusText = t('normal');
           }
         }
 
@@ -1602,11 +1876,12 @@
 
         const normalLeft = 25;
         const normalWidth = 50;
+        const labName = S.lang === 'ko' ? (LAB_KO[bf.key] || bf.name) : bf.name;
 
         const row = h('div', { class: 'bio-row' },
           h('div', { class: 'bio-info' },
-            h('span', { class: 'bio-name', text: bf.name }),
-            h('span', { class: 'bio-ref', text: `Ref: ${bf.refLow} – ${bf.refHigh} ${bf.unit}` })),
+            h('span', { class: 'bio-name', text: labName }),
+            h('span', { class: 'bio-ref', text: `${t('refRange')}: ${bf.refLow} - ${bf.refHigh} ${bf.unit}` })),
           h('div', { class: 'bio-input-wrap' }, input),
           h('div', { class: 'bio-spectrum-wrap' },
             h('div', { class: 'bio-spectrum-track' },
@@ -1620,20 +1895,21 @@
       leftPanel.append(groupEl);
 
       // Right Linkage Panel
-      rightPanel.append(h('h3', { class: 'linkage-title', text: 'AI Organ Vulnerability Linkage' }));
+      rightPanel.append(h('h3', { class: 'linkage-title', text: t('organLinkage') }));
       const activeOrgans = activeOrgansWithScores();
       const linkageList = h('div', { class: 'linkage-list' });
 
       if (activeOrgans.length) {
         activeOrgans.forEach((ao) => {
+          const orgLabel = S.lang === 'ko' ? (ORGAN_KO[ao.organ] || SHORT[ao.organ] || ao.organ) : (SHORT[ao.organ] || ao.organ);
           linkageList.append(h('div', { class: 'linkage-card' },
             h('div', { class: 'linkage-head' },
-              h('span', { class: 'linkage-organ', text: SHORT[ao.organ] || ao.organ }),
-              h('span', { class: 'linkage-source', text: `${Math.round(ao.score * 100)}% Risk Weight` })),
-            h('span', { class: 'linkage-why', text: ao.condKey ? `Triggered by clinical diagnosis: ${condName(ao.condKey)}` : 'Triggered by laboratory biomarker elevation' })));
+              h('span', { class: 'linkage-organ', text: orgLabel }),
+              h('span', { class: 'linkage-source', text: `${Math.round(ao.score * 100)}% ${t('riskWeight')}` })),
+            h('span', { class: 'linkage-why', text: ao.condKey ? `${t('triggeredDiag')}: ${condName(ao.condKey)}` : t('triggeredLab') })));
         });
       } else {
-        linkageList.append(h('span', { class: 'dim', text: 'No active organ toxicity triggers detected.' }));
+        linkageList.append(h('span', { class: 'dim', text: t('noActiveTriggers') }));
       }
       rightPanel.append(linkageList);
     }
@@ -1910,39 +2186,39 @@
     const rs = d.reasons || [];
     const ruleText = (r) => {
       const b = String(r.basis || '').replace(/^if /, '');
-      return b === '-' ? 'Applies to all patients' : b;
+      return b === '-' ? t('appliesToAll') : b;
     };
-    const secRestriction = section('Label restriction', rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
+    const secRestriction = section(t('labelRestriction'), rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
       h('div', { class: 'rh' },
-        h('span', { class: 'k', text: SHORT[r.organ] || r.organ }),
+        h('span', { class: 'k', text: S.lang === 'ko' ? (ORGAN_KO[r.organ] || SHORT[r.organ] || r.organ) : (SHORT[r.organ] || r.organ) }),
         h('span', { class: `s t-${TONE[r.code] || 'dim'}`, text: r.status })),
       h('div', { class: 'pl' },
-        r.patient ? [h('span', { class: 'pk', text: 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
-        h('span', { class: 'pk', text: 'FDA Rule' }), h('span', { class: 'lv2', text: ruleText(r) })))))
-      : h('p', { class: 'dim', text: 'No label restriction triggered for entered values.' }));
+        r.patient ? [h('span', { class: 'pk', text: S.lang === 'ko' ? '환자 상태' : 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
+        h('span', { class: 'pk', text: S.lang === 'ko' ? 'FDA 기준' : 'FDA Rule' }), h('span', { class: 'lv2', text: ruleText(r) })))))
+      : h('p', { class: 'dim', text: t('noLabelRestriction') }));
 
     // 2. Warnings on Patient's Active Organs
     const ws = d.warnings || [];
-    const secPatientWarn = section("Warnings on the patient's organs", ws.length ? h('div', { class: 'wl' }, ws.map((w) => [
-      h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
+    const secPatientWarn = section(t('patientWarnTitle'), ws.length ? h('div', { class: 'wl' }, ws.map((w) => [
+      h('span', { class: 'k', text: S.lang === 'ko' ? (ORGAN_KO[w.organ] || SHORT[w.organ] || w.organ) : (SHORT[w.organ] || w.organ) }),
       h('span', { class: 'm ' + (w.mark.trim() === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }),
       h('span', { text: w.text.replace(/;\s*/g, ', ') }),
-    ])) : h('p', { class: 'dim', text: 'No boxed or Section 5 warnings on patient\'s active organs.' }));
+    ])) : h('p', { class: 'dim', text: t('noPatientWarn') }));
 
-    const secChecks = (d.checks || []).length ? section('Pre-treatment checks', h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))) : null;
-    const secMissing = (d.missing || []).length ? section('Missing inputs',
+    const secChecks = (d.checks || []).length ? section(t('preCheckTitle'), h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))) : null;
+    const secMissing = (d.missing || []).length ? section(t('missingInputTitle'),
       h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m }))),
-      h('button', { type: 'button', class: 'review-link', text: 'Enter lab values', onclick: () => { closeDrawer(); switchMode(2); } })) : null;
+      h('button', { type: 'button', class: 'review-link', text: t('enterLabBtn'), onclick: () => { closeDrawer(); switchMode(2); } })) : null;
 
     // 3. Pivotal Trial Study Tab
     const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
     const trialSummaryCard = t ? h('div', { class: 'trial-summary-card' },
       h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:13.5px;color:var(--ink-hi)', text: `${t.trial}${t.phase ? ' (Phase ' + t.phase + ' Registration Trial)' : ''}` }),
       h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: t.population || 'Patient cohort not specified' }),
-      h('p', { style: 'margin:0 0 4px;font-size:12px;font-weight:600', text: `Treatment Arm: ${t.regimen} (n=${t.n})` }),
-      t.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `Control Arm: ${t.comparator.regimen} (n=${t.comparator.n})` }) : null,
+      h('p', { style: 'margin:0 0 4px;font-size:12px;font-weight:600', text: `${t('treatmentArm')}: ${t.regimen} (n=${t.n})` }),
+      t.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `${t('controlArm')}: ${t.comparator.regimen} (n=${t.comparator.n})` }) : null,
       /^NCT\d{8}$/.test(t.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + t.nct, target: '_blank', rel: 'noopener noreferrer', text: `ClinicalTrials.gov ${t.nct} ↗` }) : null
-    ) : h('p', { class: 'dim', text: (d.trial && d.trial.no_results) || 'Single-arm registration study without comparator arm.' });
+    ) : h('p', { class: 'dim', text: (d.trial && d.trial.no_results) || t('singleArmTrial') });
 
     const trialEvents = [];
     for (const o of (t && t.organs) || []) {
@@ -1950,11 +2226,11 @@
         trialEvents.push(h('div', { class: 'trial-event' },
           buildDualBar({ trial: t, organ: o.organ, ev: e }),
           h('div', { class: 'event-values', style: 'margin-top:6px' },
-            h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' Treatment Arm'),
-            e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' Comparator Arm') : null)));
+            h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' ' + t('treatmentArm')),
+            e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' ' + t('controlArm')) : null)));
       }
     }
-    const secStudy = section('Trial context and adverse events', trialSummaryCard, ...trialEvents);
+    const secStudy = section(t('trialContext'), trialSummaryCard, ...trialEvents);
 
     // 4. Structure 3D Tab
     const m = MECH[row.adc];
@@ -1970,47 +2246,51 @@
     const cvs3d = h('canvas', { class: 'adc-3d-canvas' });
     const wrap3d = h('div', { class: 'adc-3d-wrap' },
       cvs3d,
-      h('span', { class: 'adc-3d-hint', text: 'Drag to rotate 3D structure' }));
+      h('span', { class: 'adc-3d-hint', text: t('rotateHint') }));
 
-    const secStructure3d = section('3D Conjugate Architecture (Interactive)',
+    const secStructure3d = section(t('struct3dTitle'),
       wrap3d,
       kvRows.length ? h('div', { class: 'kv3' }, kvRows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : null,
       h('button', {
         type: 'button', class: 'review-link', style: 'margin-top:10px',
-        text: 'Tune in Structure Studio →',
+        text: t('tuneStudio'),
         onclick: () => { closeDrawer(); switchMode(1); },
       }));
 
     const secInd = section('FDA Approved Indications',
       d.indication ? h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x }))) : null);
 
-    const tabGroups = {
-      Patient: [secRestriction, secPatientWarn, secChecks, secMissing].filter(Boolean),
-      Study: [secStudy].filter(Boolean),
-      'Structure 3D': [secStructure3d, secInd].filter(Boolean),
-    };
+    const tabDefs = [
+      { id: 'Patient', label: t('tabPatient'), secs: [secRestriction, secPatientWarn, secChecks, secMissing].filter(Boolean) },
+      { id: 'Study', label: t('tabStudy'), secs: [secStudy].filter(Boolean) },
+      { id: 'Structure', label: t('tabStructure'), secs: [secStructure3d, secInd].filter(Boolean) },
+    ];
 
     const nav = h('div', { class: 'evidence-tabs', role: 'group', 'aria-label': 'Evidence tabs' });
-    const allSecs = Object.values(tabGroups).flat();
+    const allSecs = tabDefs.flatMap((td) => td.secs);
 
-    function switchTab(name) {
-      S.drawerTab = name;
-      allSecs.forEach((s) => { s.hidden = !tabGroups[name].includes(s); });
-      [...nav.children].forEach((b) => b.setAttribute('aria-pressed', b.dataset.view === name ? 'true' : 'false'));
-      if (name === 'Structure 3D') {
+    function switchTab(id) {
+      S.drawerTab = id;
+      tabDefs.forEach((td) => {
+        const active = td.id === id;
+        td.secs.forEach((s) => { s.hidden = !active; });
+      });
+      [...nav.children].forEach((b) => b.setAttribute('aria-pressed', b.dataset.tabId === id ? 'true' : 'false'));
+      if (id === 'Structure') {
         setTimeout(() => init3dAdcCanvas(cvs3d, row), 50);
       }
     }
 
-    Object.keys(tabGroups).forEach((name) => {
+    tabDefs.forEach((td) => {
       nav.append(h('button', {
-        type: 'button', text: name, 'data-view': name,
-        onclick: () => switchTab(name),
+        type: 'button', text: td.label, 'data-tab-id': td.id,
+        onclick: () => switchTab(td.id),
       }));
     });
 
     drawerBody.append(nav, ...allSecs);
-    switchTab(S.drawerTab || 'Patient');
+    const initialTab = ['Patient', 'Study', 'Structure'].includes(S.drawerTab) ? S.drawerTab : 'Patient';
+    switchTab(initialTab);
   }
 
   function saveReview(result) {
