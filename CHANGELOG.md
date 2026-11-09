@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.2: Structure Studio comparison drawer and UI polish
+
+- **De novo vs approved ADC comparison drawer:** opens automatically after Auto Optimize or when an architecture is picked, with spec comparison, clinical de-risking notes, 3D structure toggle and the approved drug's pivotal trial.
+- **Wider side drawer:** 520-780px (was 460px) so the comparison table is readable.
+- **Auto Optimize** button moved under Fc engineering; slower 3.5s progressive animation.
+- 3D structure legend moved out of the canvas (no overlapping text); removed the "Label restrictions" filter; clearer bystander and normal-tissue wording with a traffic-light baseline.
+
 ## 0.7.1: Interactive 3D ADC Molecular Structure, Multi-Objective Pareto Optimization, Bilingual Toggle (KO/EN), and Mobile Optimization
 
 - **Interactive 3D ADC Molecular Visualizer:** 3D rotational canvas rendering distinct architectures for all approved ADCs with accurate DAR counts, payload classes (DXd cyan, SN-38 emerald, SG3199 rose, DM1 gold, MMAE violet, MMAF indigo, Calicheamicin crimson), cleavable/non-cleavable linkers, paratope bindings, and continuous 360-degree interactive rotation.
