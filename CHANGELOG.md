@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.3: Automatic app updates
+
+- An installed app checks the published release at every start (5 minute cache) and every 10 minutes while running, downloads and verifies the newer release and switches to it. `ADCTOX_NO_AUTO_UPDATE=1` turns it off; `ADCTOX_AUTO_RESTART=1` restarts a running server at once.
+- Includes the 0.7.2 interface changes (wider comparison drawer).
+
 ## 0.7.2: Structure Studio comparison drawer and UI polish
 
 - **De novo vs approved ADC comparison drawer:** opens automatically after Auto Optimize or when an architecture is picked, with spec comparison, clinical de-risking notes, 3D structure toggle and the approved drug's pivotal trial.
