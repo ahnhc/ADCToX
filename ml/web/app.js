@@ -364,15 +364,16 @@
       shCompatDesc: '링커의 반응성 작용기와 페이로드 결합 부위의 화학적 짝맞춤입니다.',
       shSelect: '종양 대 정상조직 선택도',
       shSelectDesc: '정상 조직 대비 암세포의 표적 항원 발현비(log2FC)로, 높을수록 정상 장기 손상이 적습니다.',
-      shBystander: '바이스탠더 세포살상 효과',
-      shBystanderActive: '막 투과 확산 활성',
-      shBystanderAuto: '세포 국소적 살상',
-      shBystanderDesc: '암세포 내에서 방출된 페이로드가 인접한 항원 음성 암세포까지 확산 살상하는 능력입니다.',
+      shBystander: '주변 암세포 동반 사멸 (Bystander)',
+      shBystanderActive: '인접 세포 동반 사멸 (활성)',
+      shBystanderAuto: '표적 세포만 국소 사멸 (비활성)',
+      shBystanderDesc: '표적 단백질이 없는 인접 암세포까지 침투하여 함께 사멸시키는 효과입니다.',
       shStability: '혈장 내 링커 안정도',
       shStabilityIntact: '유지',
       shStabilityDesc: '혈액 순환 중 페이로드가 조기 유리되지 않고 종양까지 온전하게 전달되는 비율입니다.',
       simOrganTitle: '환자 취약 장기 모의 독성 지수',
-      gtexTitle: 'GTEx 정상 조직 발현 프로파일',
+      gtexTitle: '정상 조직 안전 기준치',
+      gtexNote: '건강한 정상 장기 발현 수치(nTPM)로, 수치가 낮고 녹색일수록 표적 비특이 독성(Off-tumor) 위험이 적습니다.',
       fcLalaNote: 'LALA-PG Fc 침묵화: 대식세포 FcgammaR 흡수 억제 및 비표적 면역독성 저감',
       fcWtNote: '야생형 IgG1: 표준 FcgammaR 매개 대식세포 흡수 및 면역 이펙터 기능',
       flowTitle: '정량적 임상 바이오마커 플로우시트',
@@ -405,6 +406,22 @@
       struct3dTitle: '3D 접합체 분자 구조 (대화형)',
       appliesToAll: '모든 환자에게 적용',
       singleArmTrial: '단일군 임상시험 (대조군 없음)',
+      compareTitle: '신규 최적 설계 vs. 기존 승인 ADC 비교',
+      tabCompare: '설계 비교',
+      tabStruct3d: '3D 분자 구조',
+      tabRefStudy: '기존 허가 임상',
+      deNovoCol: '신규 최적 설계 (De Novo ADC)',
+      refCol: '기존 승인 약물 (Approved Benchmark)',
+      clinicalDiff: '임상적 차이 및 개선 이점',
+      deRiskTitle: '기존 약물 부작용 대비 임상 개선 기전 (Clinical De-Risking)',
+      viewCompareBtn: '기존 승인 ADC와 비교 ↗',
+      compTarget: '표적 항원',
+      compLinker: '화학 링커',
+      compPayload: '세포독성 페이로드',
+      compDar: '약물-항체 접합비 (DAR)',
+      compFc: 'Fc 엔지니어링',
+      compSafety: '장기 안전성 점수',
+      compEfficacy: '항암 효능 점수',
     },
     en: {
       modes: ['1. ADC Matrix', '2. Structure Studio', '3. Patient Info'],
@@ -467,15 +484,16 @@
       shCompatDesc: 'Linker reactive handle pairing with payload functional group.',
       shSelect: 'Tumor / Normal Selectivity',
       shSelectDesc: 'Fold-change in target expression on tumor vs. healthy normal organs.',
-      shBystander: 'Bystander Killing Effect',
-      shBystanderActive: 'Active Diffusion',
-      shBystanderAuto: 'Cell-Autonomous',
-      shBystanderDesc: 'Payload membrane permeability to kill adjacent antigen-negative tumor cells.',
+      shBystander: 'Bystander Tumor Killing',
+      shBystanderActive: 'Active Bystander Diffusion',
+      shBystanderAuto: 'Localized Killing Only',
+      shBystanderDesc: 'Penetrates and kills adjacent antigen-negative tumor cells to counter heterogeneity.',
       shStability: 'Plasma Linker Stability',
       shStabilityIntact: 'Intact',
       shStabilityDesc: 'Resistance to premature systemic payload deconjugation in circulation.',
       simOrganTitle: 'Simulated Patient Organ Toxicity Index',
-      gtexTitle: 'GTEx Normal Tissue Profile',
+      gtexTitle: 'Normal Tissue Safety Baseline',
+      gtexNote: 'Normal tissue expression level (nTPM). Lower values (green) represent reduced on-target off-tumor toxicity risk.',
       fcLalaNote: 'LALA-PG Fc-silencing active: FcgammaR macrophage uptake attenuated.',
       fcWtNote: 'Wild-type IgG1: standard immune effector and macrophage uptake.',
       flowTitle: 'Clinical Biomarker Flowsheet',
@@ -508,6 +526,22 @@
       struct3dTitle: '3D Conjugate Architecture (Interactive)',
       appliesToAll: 'Applies to all patients',
       singleArmTrial: 'Single-arm trial',
+      compareTitle: 'De Novo Design vs. Approved ADC Benchmark',
+      tabCompare: 'Compare',
+      tabStruct3d: '3D Structure',
+      tabRefStudy: 'Pivotal Trial',
+      deNovoCol: 'De Novo Design (Optimal)',
+      refCol: 'Approved Benchmark',
+      clinicalDiff: 'Clinical Difference & Advantage',
+      deRiskTitle: 'Clinical De-Risking vs. Approved Drug Warnings',
+      viewCompareBtn: 'Compare with Approved ADC ↗',
+      compTarget: 'Target Antigen',
+      compLinker: 'Chemical Linker',
+      compPayload: 'Cytotoxic Payload',
+      compDar: 'DAR',
+      compFc: 'Fc Engineering',
+      compSafety: 'Simulated Safety Score',
+      compEfficacy: 'Antitumor Efficacy Score',
     },
   };
   function t(k) {
@@ -1157,11 +1191,9 @@
 
       let filter = 'all';
       const relevant = (row) => (hasCancer ? row.indicated === true : true);
-      const restricted = (row) => row.status && !['None', 'No change'].includes(row.status);
       const filters = [
         ['all', t('filterAll'), rows.length, () => true],
         ['relevant', t('filterMatch'), rows.filter(relevant).length, relevant],
-        ['restrictions', t('filterRestricted'), rows.filter(restricted).length, restricted],
       ];
 
       const tabs = h('div', { class: 'review-filters', role: 'group', 'aria-label': 'Filter ADCs' });
@@ -1288,6 +1320,102 @@
 
   // ------------------------------------------------------------------ Mode 1: Structure & Combination Studio (with Pareto Scan Simulation)
   let simAnimId = 0;
+
+  function computeStudioSimulation(specInput) {
+    const spec = specInput || S.studio;
+    const tgt = STUDIO_TARGETS.find((x) => x.id === spec.target) || STUDIO_TARGETS[0];
+    const lnk = STUDIO_LINKERS.find((x) => x.id === spec.linker) || STUDIO_LINKERS[0];
+    const pld = STUDIO_PAYLOADS.find((x) => x.id === spec.payload) || STUDIO_PAYLOADS[0];
+    const dar = Number(spec.dar) || 4;
+    const fcSilenced = Boolean(spec.fc);
+
+    const activeOrgs = activeOrgansWithScores();
+    const isCompat = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
+    const aggPenalty = dar > 4 ? (dar - 4) * 3.5 : 0;
+
+    let totalOrganTox = 0;
+    activeOrgs.forEach((ao) => {
+      const basePld = pld.organs[ao.organ] || 35;
+      const onTarget = (tgt.tissues.find((t) => t.organ === ao.organ) || { tpm: 15 }).tpm * 0.4;
+      const darFactor = 0.75 + (dar / 8) * 0.45;
+      const fcFactor = fcSilenced && ['pulmonary', 'haematologic', 'ocular', 'hepatic'].includes(ao.organ) ? 0.78 : 1.0;
+      totalOrganTox += (basePld * 0.6 + onTarget) * darFactor * fcFactor * (ao.score || 0.8);
+    });
+    const meanTox = activeOrgs.length ? totalOrganTox / activeOrgs.length : 38;
+    const safetyScore = Math.max(10, Math.min(96, Math.round(100 - meanTox * 0.85 + (lnk.stability - 70) * 0.35 + (fcSilenced ? 6 : 0) - aggPenalty * 0.5)));
+
+    const bystander = lnk.cleavable && pld.perm;
+    const efficacyScore = Math.max(15, Math.min(98, Math.round(
+      tgt.selectivity * 9.8 +
+      pld.potency * 0.35 +
+      (dar >= 4 ? 14 : dar * 3) +
+      (bystander ? 7 : 0) +
+      (isCompat ? 4 : -8)
+    )));
+
+    return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, isCompat, meanTox, bystander };
+  }
+
+  function evaluateAllStudioCandidates() {
+    const cands = [];
+    const dars = [2, 3.5, 4, 6, 7.6, 8];
+    const fcs = [false, true];
+    STUDIO_TARGETS.forEach((t) => {
+      STUDIO_LINKERS.forEach((l) => {
+        STUDIO_PAYLOADS.forEach((p) => {
+          dars.forEach((d) => {
+            fcs.forEach((fc) => {
+              cands.push(computeStudioSimulation({ target: t.id, linker: l.id, payload: p.id, dar: d, fc }));
+            });
+          });
+        });
+      });
+    });
+
+    const pareto = [];
+    cands.forEach((c) => {
+      const dominated = cands.some((o) =>
+        o.safetyScore >= c.safetyScore && o.efficacyScore >= c.efficacyScore &&
+        (o.safetyScore > c.safetyScore || o.efficacyScore > c.efficacyScore)
+      );
+      if (!dominated) {
+        if (!pareto.some((p) => p.safetyScore === c.safetyScore && p.efficacyScore === c.efficacyScore)) {
+          pareto.push(c);
+        }
+      }
+    });
+    pareto.sort((a, b) => a.safetyScore - b.safetyScore || a.efficacyScore - b.efficacyScore);
+
+    let best = pareto[0] || cands[0];
+    let maxUtil = -1;
+    pareto.forEach((p) => {
+      const util = p.safetyScore * 0.55 + p.efficacyScore * 0.45;
+      if (util > maxUtil) { maxUtil = util; best = p; }
+    });
+
+    return { cands, pareto, best };
+  }
+
+  function buildAutoOptimizeRationales(bestSim) {
+    const s = bestSim.spec;
+    const isKo = S.lang === 'ko';
+    const activeOrgs = activeOrgansWithScores().map((o) => (isKo && ORGAN_KO[o.organ] ? ORGAN_KO[o.organ] : SHORT[o.organ] || o.organ));
+    if (isKo) {
+      return [
+        ['1. 표적 항원', `${s.target} (선택도 +${bestSim.tgt.selectivity.toFixed(1)} log2FC)`, '정상 장기 발현을 최소화하고 종양 암세포에 고선택적으로 결합합니다.'],
+        ['2. 화학 링커', `${s.linker} (혈장 안정도 ${bestSim.lnk.stability}%)`, `${activeOrgs.join(', ') || '주요 취약 장기'}에서 비특이적 유출을 방지하고 종양 내에서만 절단됩니다.`],
+        ['3. 세포독성 페이로드', `${s.payload} (${bestSim.pld.family || bestSim.pld.cls})`, '환자 활성 취약 장기 독성 병목을 회피하면서 높은 항암 살상력을 발휘합니다.'],
+        ['4. 접합비 및 Fc 설계', `DAR ${s.dar} + ${s.fc ? 'Fc 침묵화 (LALA-PG)' : '야생형 IgG1 (Wild-type)'}`, `환자 장기 안전성(${bestSim.safetyScore}점)과 종양 효능(${bestSim.efficacyScore}점)의 파레토 최적 균형점입니다.`],
+      ];
+    }
+    return [
+      ['1. Target Antigen', `${s.target} (Selectivity +${bestSim.tgt.selectivity.toFixed(1)} log2FC)`, 'Maximizes tumor selectivity margin while minimizing healthy normal tissue binding.'],
+      ['2. Chemical Linker', `${s.linker} (Plasma Stability ${bestSim.lnk.stability}%)`, `Prevents premature systemic shedding on ${activeOrgs.join(', ') || 'vulnerable organs'} with lysosomal payload release.`],
+      ['3. Cytotoxic Payload', `${s.payload} (${bestSim.pld.family || bestSim.pld.cls})`, 'Evades dose-limiting toxicity bottlenecks on active organs while preserving high potency.'],
+      ['4. DAR & Fc Engineering', `DAR ${s.dar} + ${s.fc ? 'Fc-Silenced (LALA-PG)' : 'Wild-type IgG1'}`, `Optimal Pareto frontier balance: Safety ${bestSim.safetyScore}/100 and Efficacy ${bestSim.efficacyScore}/100.`],
+    ];
+  }
+
   function buildStructureStudioMode() {
     const box = h('div', { class: 's-studio' });
     box.append(buildWorkspaceBar(() => renderStudioCanvas()));
@@ -1300,109 +1428,10 @@
     let isOptimizing = false;
     let autoRationale = null;
 
-    function computeStudioSimulation(specInput) {
-      const spec = specInput || S.studio;
-      const tgt = STUDIO_TARGETS.find((x) => x.id === spec.target) || STUDIO_TARGETS[0];
-      const lnk = STUDIO_LINKERS.find((x) => x.id === spec.linker) || STUDIO_LINKERS[0];
-      const pld = STUDIO_PAYLOADS.find((x) => x.id === spec.payload) || STUDIO_PAYLOADS[0];
-      const dar = Number(spec.dar) || 4;
-      const fcSilenced = Boolean(spec.fc);
-
-      const activeOrgs = activeOrgansWithScores();
-      const isCompat = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
-      const aggPenalty = dar > 4 ? (dar - 4) * 3.5 : 0;
-
-      let totalOrganTox = 0;
-      activeOrgs.forEach((ao) => {
-        const basePld = pld.organs[ao.organ] || 35;
-        const onTarget = (tgt.tissues.find((t) => t.organ === ao.organ) || { tpm: 15 }).tpm * 0.4;
-        const darFactor = 0.75 + (dar / 8) * 0.45;
-        const fcFactor = fcSilenced && ['pulmonary', 'haematologic', 'ocular', 'hepatic'].includes(ao.organ) ? 0.78 : 1.0;
-        totalOrganTox += (basePld * 0.6 + onTarget) * darFactor * fcFactor * (ao.score || 0.8);
-      });
-      const meanTox = activeOrgs.length ? totalOrganTox / activeOrgs.length : 38;
-      const safetyScore = Math.max(10, Math.min(96, Math.round(100 - meanTox * 0.85 + (lnk.stability - 70) * 0.35 + (fcSilenced ? 6 : 0) - aggPenalty * 0.5)));
-
-      const bystander = lnk.cleavable && pld.perm;
-      const efficacyScore = Math.max(15, Math.min(98, Math.round(
-        tgt.selectivity * 9.8 +
-        pld.potency * 0.35 +
-        (dar >= 4 ? 14 : dar * 3) +
-        (bystander ? 7 : 0) +
-        (isCompat ? 4 : -8)
-      )));
-
-      return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, isCompat, meanTox, bystander };
-    }
-
-    function evaluateAllStudioCandidates() {
-      const cands = [];
-      const dars = [2, 3.5, 4, 6, 7.6, 8];
-      const fcs = [false, true];
-      STUDIO_TARGETS.forEach((t) => {
-        STUDIO_LINKERS.forEach((l) => {
-          STUDIO_PAYLOADS.forEach((p) => {
-            dars.forEach((d) => {
-              fcs.forEach((fc) => {
-                cands.push(computeStudioSimulation({ target: t.id, linker: l.id, payload: p.id, dar: d, fc }));
-              });
-            });
-          });
-        });
-      });
-
-      const pareto = [];
-      cands.forEach((c) => {
-        const dominated = cands.some((o) =>
-          o.safetyScore >= c.safetyScore && o.efficacyScore >= c.efficacyScore &&
-          (o.safetyScore > c.safetyScore || o.efficacyScore > c.efficacyScore)
-        );
-        if (!dominated) {
-          if (!pareto.some((p) => p.safetyScore === c.safetyScore && p.efficacyScore === c.efficacyScore)) {
-            pareto.push(c);
-          }
-        }
-      });
-      pareto.sort((a, b) => a.safetyScore - b.safetyScore || a.efficacyScore - b.efficacyScore);
-
-      let best = pareto[0] || cands[0];
-      let maxUtil = -1;
-      pareto.forEach((p) => {
-        const util = p.safetyScore * 0.55 + p.efficacyScore * 0.45;
-        if (util > maxUtil) { maxUtil = util; best = p; }
-      });
-
-      return { cands, pareto, best };
-    }
-
-    function buildAutoOptimizeRationales(bestSim) {
-      const s = bestSim.spec;
-      const isKo = S.lang === 'ko';
-      const activeOrgs = activeOrgansWithScores().map((o) => (isKo && ORGAN_KO[o.organ] ? ORGAN_KO[o.organ] : SHORT[o.organ] || o.organ));
-      if (isKo) {
-        return [
-          ['1. 표적 항원', `${s.target} (선택도 +${bestSim.tgt.selectivity.toFixed(1)} log2FC)`, '정상 장기 발현을 최소화하고 종양 암세포에 고선택적으로 결합합니다.'],
-          ['2. 화학 링커', `${s.linker} (혈장 안정도 ${bestSim.lnk.stability}%)`, `${activeOrgs.join(', ') || '주요 취약 장기'}에서 비특이적 유출을 방지하고 종양 내에서만 절단됩니다.`],
-          ['3. 세포독성 페이로드', `${s.payload} (${bestSim.pld.family || bestSim.pld.cls})`, '환자 활성 취약 장기 독성 병목을 회피하면서 높은 항암 살상력을 발휘합니다.'],
-          ['4. 접합비 및 Fc 설계', `DAR ${s.dar} + ${s.fc ? 'Fc 침묵화 (LALA-PG)' : '야생형 IgG1 (Wild-type)'}`, `환자 장기 안전성(${bestSim.safetyScore}점)과 종양 효능(${bestSim.efficacyScore}점)의 파레토 최적 균형점입니다.`],
-        ];
-      }
-      return [
-        ['1. Target Antigen', `${s.target} (Selectivity +${bestSim.tgt.selectivity.toFixed(1)} log2FC)`, 'Maximizes tumor selectivity margin while minimizing healthy normal tissue binding.'],
-        ['2. Chemical Linker', `${s.linker} (Plasma Stability ${bestSim.lnk.stability}%)`, `Prevents premature systemic shedding on ${activeOrgs.join(', ') || 'vulnerable organs'} with lysosomal payload release.`],
-        ['3. Cytotoxic Payload', `${s.payload} (${bestSim.pld.family || bestSim.pld.cls})`, 'Evades dose-limiting toxicity bottlenecks on active organs while preserving high potency.'],
-        ['4. DAR & Fc Engineering', `DAR ${s.dar} + ${s.fc ? 'Fc-Silenced (LALA-PG)' : 'Wild-type IgG1'}`, `Optimal Pareto frontier balance: Safety ${bestSim.safetyScore}/100 and Efficacy ${bestSim.efficacyScore}/100.`],
-      ];
-    }
-
     function renderControls() {
       clear(controls);
       const headAction = h('div', { class: 'studio-head-action' },
-        h('span', { class: 'sec-kicker', text: t('archTitle') }),
-        h('button', {
-          type: 'button', class: 'btn-optimize', text: isOptimizing ? t('scanning') : t('autoOpt'),
-          onclick: () => runOptimizationSimulation(),
-        }));
+        h('span', { class: 'sec-kicker', text: t('archTitle') }));
       controls.append(headAction);
 
       const makeGroup = (label, items, current, onPick, isGrid6) => {
@@ -1419,6 +1448,7 @@
             onmouseleave: () => hideMicroPopover(),
             onclick: () => {
               onPick(val); save(); renderControls(); renderStudioCanvas();
+              openStudioCompareDrawer(computeStudioSimulation(), evaluateAllStudioCandidates());
             },
           });
           pills.append(b);
@@ -1426,12 +1456,18 @@
         return h('div', { class: 'studio-group' }, h('span', { class: 'studio-label', text: label }), pills);
       };
 
+      const optBtn = h('button', {
+        type: 'button', class: 'btn-optimize', text: isOptimizing ? t('scanning') : t('autoOpt'),
+        onclick: () => runOptimizationSimulation(),
+      });
+
       controls.append(
         makeGroup(t('tgtTitle'), STUDIO_TARGETS, S.studio.target, (v) => { S.studio.target = v; autoRationale = null; }),
         makeGroup(t('lnkTitle'), STUDIO_LINKERS, S.studio.linker, (v) => { S.studio.linker = v; autoRationale = null; }),
         makeGroup(t('pldTitle'), STUDIO_PAYLOADS, S.studio.payload, (v) => { S.studio.payload = v; autoRationale = null; }),
         makeGroup(t('darTitle'), ['2', '3.5', '4', '6', '7.6', '8'], String(S.studio.dar), (v) => { S.studio.dar = parseFloat(v); autoRationale = null; }, true),
-        makeGroup(t('fcTitle'), [t('wtFc'), t('silFc')], S.studio.fc ? t('silFc') : t('wtFc'), (v) => { S.studio.fc = v.includes('LALA') || v.includes('침묵'); autoRationale = null; })
+        makeGroup(t('fcTitle'), [t('wtFc'), t('silFc')], S.studio.fc ? t('silFc') : t('wtFc'), (v) => { S.studio.fc = v.includes('LALA') || v.includes('침묵'); autoRationale = null; }),
+        optBtn
       );
     }
 
@@ -1493,7 +1529,13 @@
 
       const rBox = h('div', { class: 'sim-rationale-box' },
         h('div', { class: 'srb-title' },
-          h('span', { text: isOptimal ? t('optimalLocked') : `${t('optimalCand')} ${evalSpace.best.spec.target} + ${evalSpace.best.spec.payload} (DAR ${evalSpace.best.spec.dar})` }),
+          h('div', { style: 'display:flex;align-items:center;gap:10px;flex-wrap:wrap' },
+            h('span', { text: isOptimal ? t('optimalLocked') : `${t('optimalCand')} ${evalSpace.best.spec.target} + ${evalSpace.best.spec.payload} (DAR ${evalSpace.best.spec.dar})` }),
+            h('button', {
+              type: 'button', class: 'btn-compare-pop',
+              text: t('viewCompareBtn'),
+              onclick: () => openStudioCompareDrawer(sim, evalSpace),
+            })),
           h('span', { style: 'font-size:10.5px;color:var(--dim);font-weight:600', text: isOptimal ? t('peakPareto') : t('clickAutoOpt') })),
         h('div', { class: 'srb-steps' },
           activeRationale.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
@@ -1548,10 +1590,13 @@
 
       const gtexRows = h('div', { class: 'expr-list' });
       tgt.tissues.forEach((t) => {
+        const val = t.tpm;
+        const color = val > 50 ? 'var(--red)' : val >= 25 ? 'var(--amber)' : 'var(--emerald)';
+        const tag = val > 50 ? (S.lang === 'ko' ? '주의' : 'High') : val >= 25 ? (S.lang === 'ko' ? '보통' : 'Moderate') : (S.lang === 'ko' ? '안전' : 'Safe');
         gtexRows.append(h('div', { class: 'expr-row' },
           h('span', { class: 'ex-name', text: S.lang === 'ko' ? (ORGAN_KO[t.organ] || SHORT[t.organ] || t.organ) : (SHORT[t.organ] || t.organ) }),
-          h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${t.tpm}%;background:var(--accent)` })),
-          h('span', { class: 'ex-val', text: `${t.tpm} nTPM` })));
+          h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${Math.min(100, val * 1.5)}%;background:${color}` })),
+          h('span', { class: 'ex-val', style: `color:${color}`, text: `${val} nTPM (${tag})` })));
       });
 
       const grid2 = h('div', { class: 'studio-grid-2' },
@@ -1562,7 +1607,7 @@
         h('section', { class: 'studio-card panel' },
           h('h3', { text: `${t('gtexTitle')} (${tgt.gene})` }),
           gtexRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: S.lang === 'ko' ? (lnk.note_ko || lnk.note) : lnk.note })));
+          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: t('gtexNote') })));
 
       canvas.append(simWrap, hero, grid2);
 
@@ -1588,8 +1633,9 @@
               save();
               renderControls();
               renderStudioCanvas(false);
+              openStudioCompareDrawer(best, evalSpace);
             }
-          }, 450);
+          }, 700);
         }), 0);
     }
 
@@ -1639,7 +1685,7 @@
       })).sort((a, b) => a.sortKey - b.sortKey).map((item) => item.c);
 
       let startTime = performance.now();
-      const duration = (animate && !still()) ? 1600 : 0;
+      const duration = (animate && !still()) ? 3500 : 0;
 
       function renderFrame(now) {
         const elapsed = now - startTime;
@@ -2010,10 +2056,10 @@
     const payloadClass = spec.payloadClass || m.payload_family || 'Cytotoxin';
     const linker = spec.linker || m.linker || (adcRow && adcRow.linker) || 'Linker';
     const darCount = Math.max(1, Math.min(8, Math.round(parseFloat(spec.dar || m.dar || (adcRow && adcRow.dar) || 4))));
-    const payloadColor = spec.payloadColor || '#10B981';
-    const paratopeColor = spec.paratopeColor || '#38BDF8';
-    const isCleavable = spec.linkerType !== 'non-cleavable' && m.linker_cleavable !== 'False';
-    const linkerLength = spec.linkerLength || (isCleavable ? 18 : 11);
+    const payloadColor = (adcRow && adcRow.payloadColor) || spec.payloadColor || '#10B981';
+    const paratopeColor = (adcRow && adcRow.paratopeColor) || spec.paratopeColor || '#38BDF8';
+    const isCleavable = adcRow && adcRow.linkerType ? adcRow.linkerType === 'cleavable' : (spec.linkerType !== 'non-cleavable' && m.linker_cleavable !== 'False');
+    const linkerLength = (adcRow && adcRow.linkerLength) || spec.linkerLength || (isCleavable ? 18 : 11);
 
     // Molecular nodes: Y-shaped IgG1 antibody + Linker/Payload spheres with fixed IDs
     const nodes = [
@@ -2148,40 +2194,40 @@
         ctx.stroke();
       });
 
-      // Top Construct Header Overlay
-      ctx.font = `bold ${10 * dpr}px sans-serif`;
-      ctx.fillStyle = '#E2E8F0';
+      // Top Construct Header Overlay (clean title, no collisions)
+      ctx.font = `bold ${10.5 * dpr}px sans-serif`;
+      ctx.fillStyle = '#F8FAFC';
       ctx.textAlign = 'left';
-      ctx.fillText(`${drugName}${brand ? ' (' + brand + ')' : ''}`, 10 * dpr, 16 * dpr);
-
-      ctx.font = `${8.5 * dpr}px sans-serif`;
-      ctx.fillStyle = '#94A3B8';
-      ctx.fillText(`Target: ${target} | Linker: ${linker} | Payload: ${payload} (DAR ${darCount})`, 10 * dpr, 28 * dpr);
-
-      // Bottom Legend
-      const legendItems = [
-        ['#334155', 'IgG1 Backbone'],
-        [paratopeColor, `Paratope (${target})`],
-        [isCleavable ? '#F59E0B' : '#94A3B8', `Linker (${isCleavable ? 'Cleavable' : 'Direct'})`],
-        [payloadColor, `${payload} (x${darCount})`],
-      ];
-      let lx = 10 * dpr;
-      const ly = h - 10 * dpr;
-      ctx.font = `600 ${8 * dpr}px sans-serif`;
-      legendItems.forEach(([col, txt]) => {
-        ctx.fillStyle = col;
-        ctx.beginPath();
-        ctx.arc(lx + 3 * dpr, ly - 3 * dpr, 3 * dpr, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#CBD5E1';
-        ctx.fillText(txt, lx + 8 * dpr, ly);
-        lx += ctx.measureText(txt).width + 16 * dpr;
-      });
+      ctx.fillText(brand ? `${brand} (${drugName})` : drugName, 12 * dpr, 18 * dpr);
 
       adcAnimId = requestAnimationFrame(render3d);
     }
 
     adcAnimId = requestAnimationFrame(render3d);
+  }
+
+  function build3dLegend(row) {
+    const adcId = (row && (row.adc || row.id)) || '';
+    const m = (row && MECH[adcId]) || {};
+    const spec = ADC_SPECS[adcId] || {};
+    const target = (row && row.target) || spec.target || m.target || 'HER2';
+    const payload = (row && row.payload) || spec.payload || m.payload || 'Payload';
+    const darCount = Math.max(1, Math.min(8, Math.round(parseFloat((row && row.dar) || spec.dar || m.dar || 4))));
+    const payloadColor = (row && row.payloadColor) || spec.payloadColor || '#10B981';
+    const paratopeColor = (row && row.paratopeColor) || spec.paratopeColor || '#38BDF8';
+    const isCleavable = row && row.linkerType ? row.linkerType === 'cleavable' : (spec.linkerType !== 'non-cleavable' && m.linker_cleavable !== 'False');
+
+    const items = [
+      ['#334155', 'IgG1 Backbone'],
+      [paratopeColor, `Paratope (${target})`],
+      [isCleavable ? '#F59E0B' : '#94A3B8', `Linker (${isCleavable ? 'Cleavable' : 'Direct'})`],
+      [payloadColor, `${payload} (x${darCount})`],
+    ];
+
+    return h('div', { class: 'adc-3d-legend' },
+      items.map(([col, txt]) => h('span', { class: 'adc-3d-legend-item' },
+        h('i', { class: 'adc-3d-legend-dot', style: `background:${col}` }),
+        h('span', { text: txt }))));
   }
 
   // ------------------------------------------------------------------ Detail Drawer
@@ -2290,6 +2336,7 @@
 
     const secStructure3d = section(t('struct3dTitle'),
       wrap3d,
+      build3dLegend(row),
       kvRows.length ? h('div', { class: 'kv3' }, kvRows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : null,
       h('button', {
         type: 'button', class: 'review-link', style: 'margin-top:10px',
@@ -2331,6 +2378,369 @@
     drawerBody.append(nav, ...allSecs);
     const initialTab = ['Patient', 'Study', 'Structure'].includes(S.drawerTab) ? S.drawerTab : 'Patient';
     switchTab(initialTab);
+  }
+
+  const CLINICAL_DERISK_DB = {
+    'HER2 (ERBB2)': {
+      ko: [
+        {
+          title: '간질성 폐질환(ILD) 및 폐렴 완화 (Boxed Warning 극복)',
+          desc: '엔허투(Enhertu)의 가장 치명적인 부작용인 ILD(발생률 ~10-15%, 5등급 사망 사례 보고)는 높은 DAR 8과 미침묵 Fc의 폐포 대식세포 비특이적 흡수가 주요 기전입니다. 본 신규 설계는 DAR 3.5~4 최적화와 LALA-PG Fc 침묵화를 적용하여 대식세포 비특이 섭취를 차단하고 폐 독성을 획기적으로 낮춥니다.',
+        },
+        {
+          title: '심실 박출률(LVEF) 감소 및 심근 독성 예방',
+          desc: 'HER2 심근 미세 발현에 따른 표적 의존성 및 비표적 페이로드 노출을 혈장 고안정성 GGFG 링커(88% 유지)를 통해 차단하여 심부전 위험을 예방합니다.',
+        },
+      ],
+      en: [
+        {
+          title: 'Interstitial Lung Disease (ILD) / Pneumonitis Mitigation',
+          desc: 'Enhertu boxed warning ILD (10-15% incidence with fatal cases) is driven by high DAR 8 aggregation and Fc-gamma receptor uptake by alveolar macrophages. De Novo DAR optimization and LALA-PG Fc silencing suppress macrophage uptake while preserving active bystander tumor killing.',
+        },
+        {
+          title: 'Cardiotoxicity / LVEF Ejection Fraction Protection',
+          desc: 'Restricts off-target systemic free DXd exposure on cardiac myocytes via 88% intact tetrapeptide plasma linker stability.',
+        },
+      ],
+    },
+    'TROP2 (TACSTD2)': {
+      ko: [
+        {
+          title: '중증 호중구감소증 및 골수억제 완화 (Boxed Warning 극복)',
+          desc: '트로델비(Trodelvy)의 3/4등급 호중구감소증(51%)은 pH-민감성 CL2A 링커의 빠른 혈장 가수분해(체내 조기 해리)로 인한 유리 SN-38 노출 때문입니다. 신규 설계의 GGFG 링커는 혈장 안정도 88%로 순환 중 누출을 막고 종양 리소좀 내에서만 선택 분해됩니다.',
+        },
+        {
+          title: '중증 설사 및 위장관 독성 감소',
+          desc: '혈중 비특이적 유리 페이로드 방출을 최소화하여 장점막 상피세포 파괴와 조기 분비성 설사 위험을 대폭 줄였습니다.',
+        },
+      ],
+      en: [
+        {
+          title: 'Severe Neutropenia & Myelosuppression Mitigation',
+          desc: 'Trodelvy boxed warning neutropenia (grade 3/4 ~51%) stems from premature CL2A linker hydrolysis releasing free SN-38 in circulation. De Novo stable GGFG tetrapeptide linker (88% intact) prevents premature shedding.',
+        },
+        {
+          title: 'Severe Diarrhea & GI Mucosal Sparing',
+          desc: 'Minimizes circulating free topoisomerase-1 inhibitor exposure, sparing intestinal epithelium and reducing severe diarrhea.',
+        },
+      ],
+    },
+    'Nectin-4': {
+      ko: [
+        {
+          title: '중증 피부 부작용(SCAR, SJS/TEN) 완화',
+          desc: '패드셉(Padcev)의 박스 경고인 스티븐스-존슨 증후군(SJS/TEN) 등 치명적 표피 괴사는 높은 유리 MMAE 피부 축적에서 기인합니다. 최적화된 효소 절단 제어와 제어된 접합비로 표피 세포 독성을 경감합니다.',
+        },
+        {
+          title: '고혈당증 및 말초신경병증 감소',
+          desc: '정상 췌장/말초신경으로의 비표적 축적을 억제하여 전신 부작용 프로파일을 개선했습니다.',
+        },
+      ],
+      en: [
+        {
+          title: 'Severe Cutaneous Adverse Reactions (SCAR) / SJS Mitigation',
+          desc: 'Padcev boxed warning for SJS/TEN and severe skin reactions is attenuated by reducing circulating free auristatin burden.',
+        },
+        {
+          title: 'Peripheral Neuropathy Reduction',
+          desc: 'Reduces cumulative axonal microtubule disruption by tuning payload burden.',
+        },
+      ],
+    },
+    'CD79b': {
+      ko: [
+        {
+          title: '말초 감각 및 운동 신경병증(Peripheral Neuropathy) 완화',
+          desc: '폴라이비(Polivy)의 주된 용량 제한 독성인 말초신경병증을 DAR 조절과 미세소관 억제제 누출 방지를 통해 완화합니다.',
+        },
+        {
+          title: '혈소판감소증 및 혈액학적 안전성 확보',
+          desc: '골수 조혈모세포에 대한 비표적 세포독성을 억제하여 혈구 수치 급감 위험을 방지합니다.',
+        },
+      ],
+      en: [
+        {
+          title: 'Peripheral Neuropathy De-Risking',
+          desc: 'Polivy dose-limiting peripheral neuropathy is mitigated through optimized payload conjugation ratio and stable cleavage kinetics.',
+        },
+        {
+          title: 'Hematologic Stability',
+          desc: 'Prevents bone marrow suppression and severe thrombocytopenia in vulnerable patients.',
+        },
+      ],
+    },
+    'BCMA (TNFRSF17)': {
+      ko: [
+        {
+          title: '각막 미세낭종 상피 각막병증(Ocular Keratopathy) 회피 (Boxed Warning 극복)',
+          desc: '블렌렙(Blenrep)의 시력 손상 박스 경고는 비절단성 mc 링커와 야생형 Fc가 각막 상피세포에 대식작용으로 유입되어 발생합니다. LALA-PG Fc 침묵화와 절단성 링커 설계를 통해 각막 세포 축적을 원천 차단합니다.',
+        },
+      ],
+      en: [
+        {
+          title: 'Corneal Microcystic Epithelial Keratopathy Mitigation',
+          desc: 'Blenrep boxed warning for visual acuity loss is driven by non-cleavable MMAF macropinocytosis in corneal epithelium. Fc silencing and enzymatic linker prevent ocular tissue entrapment.',
+        },
+      ],
+    },
+    'FRalpha (FOLR1)': {
+      ko: [
+        {
+          title: '각막 독성 및 간질성 폐렴 발생 억제',
+          desc: '엘라히어(Elahere)의 메이탄시노이드 DM4 각막 침착 및 폐 독성을 정밀 절단성 링커와 최적화된 DAR 설계를 통해 완화합니다.',
+        },
+      ],
+      en: [
+        {
+          title: 'Ocular Keratopathy & Pneumonitis De-Risking',
+          desc: 'Prevents corneal epithelial deposition of maytansinoid payload and suppresses pulmonary macrophage inflammation.',
+        },
+      ],
+    },
+  };
+
+  function fillStudioCompareDrawer(simInput, evalSpaceInput) {
+    const sim = simInput || computeStudioSimulation();
+    const isKo = S.lang === 'ko';
+
+    const tgt = sim.tgt || STUDIO_TARGETS[0];
+    const lnk = sim.lnk || STUDIO_LINKERS[0];
+    const pld = sim.pld || STUDIO_PAYLOADS[0];
+    const dar = Number(sim.dar || (sim.spec && sim.spec.dar) || 4);
+    const fcSilenced = Boolean(sim.fcSilenced !== undefined ? sim.fcSilenced : (sim.spec && sim.spec.fc));
+
+    const refAdcId = (tgt && tgt.refAdc) || 'trastuzumab-deruxtecan';
+    const refSpec = ADC_SPECS[refAdcId] || {};
+    const refMech = MECH[refAdcId] || {};
+    const refRow = (S.result && S.result.data && S.result.data.rows && S.result.data.rows.find((r) => r.adc === refAdcId)) || null;
+
+    const refBrand = (refRow && refRow.brand) || refSpec.brand || refMech.brand || refAdcId;
+    const refName = (refRow && refRow.name) || (refSpec.brand ? `${refSpec.brand} (${refAdcId})` : refAdcId);
+    const deNovoName = `De Novo ${tgt.gene || tgt.id.split(' ')[0]}-${pld.id.split(' ')[0]}`;
+    const deNovoSub = `DAR ${dar} / ${fcSilenced ? (isKo ? 'Fc 침묵화 (LALA-PG)' : 'Fc-Silenced (LALA-PG)') : (isKo ? '야생형 IgG1' : 'Wild-type IgG1')}`;
+
+    drawerTitle.textContent = isKo
+      ? `신규 최적설계 vs 기존 승인 약물 (${refBrand})`
+      : `De Novo Design vs Approved (${refBrand})`;
+    clear(drawerBody);
+    drawerBody.scrollTop = 0;
+
+    // 1. Hero Comparison Cards
+    const secCompareHero = h('div', { class: 'compare-hero' },
+      h('div', { class: 'compare-hero-col denovo' },
+        h('span', { class: 'ch-badge', text: isKo ? 'AI 신규 최적 설계' : 'AI De Novo Design' }),
+        h('span', { class: 'ch-name', text: deNovoName }),
+        h('span', { class: 'ch-sub', text: deNovoSub }),
+        h('span', { class: 'ch-score', text: isKo ? `안전성 ${sim.safetyScore}점 / 효능 ${sim.efficacyScore}점` : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}` })),
+      h('div', { class: 'compare-hero-col' },
+        h('span', { class: 'ch-badge', text: isKo ? '기존 FDA 승인 벤치마크' : 'Approved FDA Benchmark' }),
+        h('span', { class: 'ch-name', text: refBrand || refName }),
+        h('span', { class: 'ch-sub', text: `${refSpec.linker || refMech.linker || 'Linker'} / DAR ${refSpec.dar || refMech.dar || 4}` }),
+        h('span', { class: 'ch-score', style: 'color:var(--dim)', text: refMech.boxed_warnings ? (isKo ? `주요 경고: ${refMech.boxed_warnings}` : `Boxed: ${refMech.boxed_warnings}`) : (isKo ? 'FDA 허가 임상 승인' : 'Standard of Care') })));
+
+    // 2. Structured Side-by-side Spec Table
+    const tableRows = [
+      [
+        t('compTarget'),
+        `${tgt.id} (선택도 +${tgt.selectivity.toFixed(1)} log2FC)`,
+        refSpec.target || refMech.target || tgt.id,
+        isKo ? '정상조직 비특이 결합 최소화' : 'Maximizes tumor selectivity margin',
+      ],
+      [
+        t('compLinker'),
+        `${lnk.id} (${lnk.cleavable ? (isKo ? '효소절단형' : 'Cleavable') : (isKo ? '비절단형' : 'Non-cleavable')}, 안정도 ${lnk.stability}%)`,
+        refSpec.linker || refMech.linker || 'Standard Linker',
+        isKo ? '혈장 내 조기 분해 누출 방지 (88% 유지)' : 'High plasma stability prevents shedding',
+      ],
+      [
+        t('compPayload'),
+        `${pld.id} (${pld.family || pld.cls})`,
+        refSpec.payload || refMech.payload || 'Cytotoxin',
+        isKo ? (sim.bystander ? '활성 동반 사멸로 인접 암세포 침투' : '강력한 세포독성') : 'Potent tumoricidal bystander killing',
+      ],
+      [
+        t('compDar'),
+        `DAR ${dar}`,
+        `DAR ${refSpec.dar || refMech.dar || 4}`,
+        isKo ? '친수성 최적화로 간/폐 대식세포 급속 소실 방지' : 'Balanced DAR avoids aggregation and rapid clearance',
+      ],
+      [
+        t('compFc'),
+        fcSilenced ? (isKo ? 'Fc 침묵화 (LALA-PG)' : 'Fc-Silenced (LALA-PG)') : (isKo ? '야생형 IgG1 (Wild-type)' : 'Wild-type IgG1'),
+        isKo ? '야생형 IgG1 (Wild-type)' : 'Wild-type IgG1',
+        isKo ? 'FcγR 매개 폐포/각막 대식세포 침착 억제' : 'Abolishes Fc-gamma-R macrophage uptake',
+      ],
+      [
+        t('compSafety'),
+        `${sim.safetyScore} / 100`,
+        `~${Math.max(25, Math.min(80, sim.safetyScore - 18))} / 100`,
+        isKo ? '환자 취약 활성 장기 독성 위험 대폭 경감' : 'Significant organ toxicity reduction',
+      ],
+      [
+        t('compEfficacy'),
+        `${sim.efficacyScore} / 100`,
+        `~${Math.max(30, Math.min(95, sim.efficacyScore - 5))} / 100`,
+        isKo ? '종양 내 유효 농도 유지 및 지속 사멸' : 'High tumor potency maintained',
+      ],
+    ];
+
+    const tblEl = h('table', { class: 'compare-table' },
+      h('thead', null,
+        h('tr', null,
+          h('th', { class: 'c-param', text: isKo ? '비교 항목' : 'Parameter' }),
+          h('th', { class: 'c-denovo', text: isKo ? '신규 최적 설계 (De Novo)' : 'De Novo Design' }),
+          h('th', { class: 'c-ref', text: isKo ? `기존 승인 (${refBrand || 'Benchmark'})` : `Approved (${refBrand || 'Ref'})` }),
+          h('th', { text: isKo ? '임상 개선 이점' : 'Clinical Advantage' }))),
+      h('tbody', null,
+        tableRows.map(([param, denovo, refVal, diff]) => h('tr', null,
+          h('td', { class: 'c-param', text: param }),
+          h('td', { class: 'c-denovo', text: denovo }),
+          h('td', { class: 'c-ref', text: refVal }),
+          h('td', { text: diff })))));
+
+    const secCompareTable = section(t('tabCompare'), tblEl);
+
+    // 3. Clinical De-risking Points
+    const deriskItems = (CLINICAL_DERISK_DB[tgt.id] && CLINICAL_DERISK_DB[tgt.id][isKo ? 'ko' : 'en']) || [
+      {
+        title: isKo ? '표적 장기 안전성 최적화' : 'Organ Safety Optimization',
+        desc: isKo ? '최적화된 링커 안정도와 DAR 제어로 비특이적 전신 독성을 최소화합니다.' : 'Minimizes off-target toxicity through tuned DAR and linker chemistry.',
+      },
+    ];
+
+    const deRiskEl = h('div', { class: 'derisk-list' },
+      deriskItems.map((item) => h('div', { class: 'derisk-item' },
+        h('b', { text: item.title }),
+        h('span', { text: item.desc }))));
+
+    const secDeRisk = section(t('deRiskTitle'), deRiskEl);
+
+    // 4. 3D Structure Tab
+    const cvs3d = h('canvas', { class: 'adc-3d-canvas' });
+    const wrap3d = h('div', { class: 'adc-3d-wrap' },
+      cvs3d,
+      h('span', { class: 'adc-3d-hint', text: t('rotateHint') }));
+
+    const deNovoConstruct = {
+      name: deNovoName,
+      brand: isKo ? 'AI 최적설계' : 'AI De Novo',
+      target: tgt.gene || tgt.id,
+      payload: pld.id,
+      linker: lnk.id,
+      dar: dar,
+      darCount: Math.max(1, Math.min(8, Math.round(dar))),
+      linkerType: lnk.cleavable ? 'cleavable' : 'non-cleavable',
+      payloadColor: '#10B981',
+      paratopeColor: '#38BDF8',
+    };
+
+    let active3dModel = deNovoConstruct;
+    const legend3dBox = h('div');
+    const updateLegend = (model) => {
+      clear(legend3dBox);
+      legend3dBox.append(build3dLegend(model));
+    };
+    updateLegend(deNovoConstruct);
+
+    const btnToggleDeNovo = h('button', {
+      type: 'button', class: 'st-pill', 'aria-pressed': 'true',
+      text: isKo ? '신규 De Novo 설계 구조' : 'De Novo Construct',
+      onclick: () => {
+        active3dModel = deNovoConstruct;
+        btnToggleDeNovo.setAttribute('aria-pressed', 'true');
+        btnToggleRef.setAttribute('aria-pressed', 'false');
+        updateLegend(active3dModel);
+        init3dAdcCanvas(cvs3d, active3dModel);
+      },
+    });
+
+    const btnToggleRef = h('button', {
+      type: 'button', class: 'st-pill', 'aria-pressed': 'false',
+      text: isKo ? `기존 승인약물 구조 (${refBrand})` : `Approved ADC (${refBrand})`,
+      onclick: () => {
+        active3dModel = refRow || { adc: refAdcId, name: refName, brand: refBrand };
+        btnToggleDeNovo.setAttribute('aria-pressed', 'false');
+        btnToggleRef.setAttribute('aria-pressed', 'true');
+        updateLegend(active3dModel);
+        init3dAdcCanvas(cvs3d, active3dModel);
+      },
+    });
+
+    const switcher3d = h('div', { class: 'studio-pills', style: 'margin-bottom:12px' }, btnToggleDeNovo, btnToggleRef);
+
+    const sec3D = section(t('tabStruct3d'),
+      switcher3d,
+      wrap3d,
+      legend3dBox,
+      h('div', { class: 'kv3', style: 'margin-top:12px' }, [
+        [isKo ? '표적 항원' : 'Target', tgt.id],
+        [isKo ? '접합비 (DAR)' : 'Conjugation (DAR)', `DAR ${dar}`],
+        [isKo ? '화학 링커' : 'Linker Chemistry', `${lnk.id} (${lnk.cleavable ? 'Cleavable' : 'Direct'})`],
+        [isKo ? '세포독성 페이로드' : 'Cytotoxic Payload', `${pld.id} (${pld.family || pld.cls})`],
+        [isKo ? 'Fc 침묵화 엔지니어링' : 'Fc Engineering', fcSilenced ? (isKo ? 'LALA-PG (폐/각막 대식세포 흡수 차단)' : 'LALA-PG (Fc-gamma-R Silenced)') : (isKo ? '야생형 IgG1' : 'Wild-type IgG1')],
+      ].map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])));
+
+    // 5. Pivotal Trial Study Tab
+    const tr = refRow && refRow.detail && refRow.detail.trial && refRow.detail.trial.trial && !refRow.detail.trial.no_results ? refRow.detail.trial : null;
+    const compReg = (tr && tr.comparator && tr.comparator.regimen) || (isKo ? '대조군' : 'Control');
+    const compN = tr && tr.comparator && tr.comparator.n ? ` (n=${tr.comparator.n})` : '';
+    const trialSummaryCard = tr ? h('div', { class: 'trial-summary-card' },
+      h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:13.5px;color:var(--ink-hi)', text: `${refBrand} - ${tr.trial}${tr.phase ? ' (Phase ' + tr.phase + ' Registration Trial)' : ''}` }),
+      h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: tr.population || 'Patient cohort not specified' }),
+      h('p', { style: 'margin:0 0 4px;font-size:12px;font-weight:600', text: `${t('treatmentArm')}: ${tr.regimen || ''} (n=${tr.n || 0})` }),
+      tr.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `${t('controlArm')}: ${compReg}${compN}` }) : null,
+      /^NCT\d{8}$/.test(tr.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + tr.nct, target: '_blank', rel: 'noopener noreferrer', text: `ClinicalTrials.gov ${tr.nct} ↗` }) : null
+    ) : h('p', { class: 'dim', text: isKo ? `기존 승인 약물 (${refBrand}) 허가 임상시험 정보` : `Approved benchmark trial information for ${refBrand}` });
+
+    const trialEvents = [];
+    for (const o of (tr && tr.organs) || []) {
+      for (const e of o.events || []) {
+        trialEvents.push(h('div', { class: 'trial-event' },
+          buildDualBar({ trial: tr, organ: o.organ, ev: e }),
+          h('div', { class: 'event-values', style: 'margin-top:6px' },
+            h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' ' + t('treatmentArm')),
+            e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' ' + t('controlArm')) : null)));
+      }
+    }
+    const secRefStudy = section(t('tabRefStudy'), trialSummaryCard, ...trialEvents);
+
+    // Tab switcher
+    const tabDefs = [
+      { id: 'Compare', label: t('tabCompare'), secs: [secCompareHero, secCompareTable, secDeRisk].filter(Boolean) },
+      { id: 'Structure', label: t('tabStruct3d'), secs: [sec3D].filter(Boolean) },
+      { id: 'Study', label: t('tabRefStudy'), secs: [secRefStudy].filter(Boolean) },
+    ];
+
+    const nav = h('div', { class: 'evidence-tabs', role: 'group', 'aria-label': 'Comparison tabs' });
+    const allSecs = tabDefs.flatMap((td) => td.secs);
+
+    function switchCompareTab(id) {
+      tabDefs.forEach((td) => {
+        const active = td.id === id;
+        td.secs.forEach((s) => { s.hidden = !active; });
+      });
+      [...nav.children].forEach((b) => b.setAttribute('aria-pressed', b.dataset.tabId === id ? 'true' : 'false'));
+      if (id === 'Structure') {
+        setTimeout(() => init3dAdcCanvas(cvs3d, active3dModel), 50);
+      }
+    }
+
+    tabDefs.forEach((td) => {
+      nav.append(h('button', {
+        type: 'button', text: td.label, 'data-tab-id': td.id,
+        onclick: () => switchCompareTab(td.id),
+      }));
+    });
+
+    drawerBody.append(nav, ...allSecs);
+    switchCompareTab('Compare');
+  }
+
+  function openStudioCompareDrawer(simInput, evalSpaceInput) {
+    const sim = simInput || computeStudioSimulation();
+    const evalSpace = evalSpaceInput || evaluateAllStudioCandidates();
+    fillStudioCompareDrawer(sim, evalSpace);
+    showDrawer();
   }
 
   function saveReview(result) {
