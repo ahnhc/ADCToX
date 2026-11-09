@@ -1,5 +1,5 @@
 /* ADCTOX v0.7.0 Architectural Daylight WebApp
-   Option A: Active-Organ Horizon Strip + Top ADC Spotlight Hero Cards + Dual-Bar Trial Incidence + Structure Studio.
+   Active-Organ Matrix + 3D Structure Studio + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
   'use strict';
@@ -71,6 +71,17 @@
     }
     return el;
   }
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  function sv(tag, attrs, ...kids) {
+    const el = document.createElementNS(SVGNS, tag);
+    for (const k in attrs || {}) el.setAttribute(k, attrs[k]);
+    for (const kid of kids.flat()) if (kid) el.append(kid);
+    return el;
+  }
+  function svgClose() {
+    return sv('svg', { width: '14', height: '14', viewBox: '0 0 14 14', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round' },
+      sv('path', { d: 'M2 2L12 12M12 2L2 12' }));
+  }
   const clear = (el) => { while (el && el.firstChild) el.firstChild.remove(); return el; };
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const kbd = (k, label) => h('span', null, h('kbd', { text: k }), ({
@@ -80,7 +91,7 @@
 
   // ------------------------------------------------------------------ Tooltips & Guide
   const TIPS = {
-    'Regimen Fit': ['FDA label dosing & eligibility rules for this patient profile.', [
+    'Regimen Fit': ['FDA label dosing and eligibility rules for this patient profile.', [
       ['1 bar', 'Standard dosing: no label restriction triggered'],
       ['2 bars', 'Monitor or Dose Adjust: check organ lab thresholds'],
       ['3 bars', 'Avoid or Contraindicated: label advises against use'],
@@ -90,7 +101,7 @@
       ['Amber bar', 'Section 5 Warning on this organ'],
       ['Crimson bar', 'Boxed Warning on this organ'],
     ]],
-    'Pivotal Trial vs Control': ['Study-group adverse event incidence in the pivotal trial.', [
+    'Pivotal Trial vs Control': ['Study-group adverse event incidence in pivotal registration trial.', [
       ['ADC', 'Treatment arm incidence (events / sample size)'],
       ['CMP', 'Comparator arm incidence (events / sample size)'],
     ]],
@@ -141,11 +152,11 @@
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
         h('div', { class: 'g-head' },
           h('h2', { id: 'g-title', text: 'ADCTOX v0.7.0 Visual Workspace' }),
-          h('button', { type: 'button', class: 'x', 'aria-label': 'Close', text: '×', onclick: closeGuide })),
+          h('button', { type: 'button', class: 'x-btn', 'aria-label': 'Close', onclick: closeGuide }, svgClose())),
         h('ol', { class: 'g-steps' },
-          h('li', null, h('b', { text: '1. ADC Matrix: ' }), 'Top recommended ADCs are highlighted in full-color Spotlight Cards. Lower-ranked drugs recede into monochrome slate rows. Only the patient\'s active organs are graphed.'),
+          h('li', null, h('b', { text: '1. ADC Matrix: ' }), 'Top recommended ADCs are highlighted in Spotlight Cards. Lower-ranked drugs recede into monochrome slate rows. Only the patient\'s active organs are graphed.'),
           h('li', null, h('b', { text: '2. Structure Studio: ' }), 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) to inspect chemical compatibility, GTEx tissue selectivity, and organ burden.'),
-          h('li', null, h('b', { text: '3. Patient & Labs: ' }), 'Search conditions in English or Korean, enter lab values (Cockcroft-Gault CLcr & ULN ratios), and inspect AI condition-organ associations.')),
+          h('li', null, h('b', { text: '3. Patient and Labs: ' }), 'Search conditions in English or Korean, inspect clinical biomarker flowsheets, and review AI condition-organ associations.')),
         h('h3', { text: 'Visual Encodings' }),
         h('div', { class: 'g-keys' },
           h('span', { class: 'sp-status-badge clear', text: 'Standard' }), 'No FDA label restriction triggered for entered profile',
@@ -160,12 +171,13 @@
   // ------------------------------------------------------------------ App Data & Clinical Presets
   let APP = null, AX = [], SHORT = {}, REG = {}, REG_I = {}, FIELDS = [], MECH = {};
   const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'ink', no_statement: 'ink', reduce_dose: 'amber', monitor: 'amber', no_adjustment: 'green' };
-  const MODES = ['ADC Matrix', 'Structure Studio', 'Patient & Labs'];
+  const MODES = ['ADC Matrix', 'Structure Studio', 'Patient and Labs'];
 
   const PRESETS = [
     {
       id: 'her2-ild',
-      label: 'HER2+ / ILD + HF',
+      title: 'HER2+ Breast / ILD and Heart Failure',
+      desc: 'Pulmonary and cardiac vulnerability with elevated baseline bilirubin and creatinine',
       conds: [
         { kind: 'mondo', value: 'MONDO:0006244', label: 'HER2 positive breast carcinoma', mondo: 'MONDO:0006244' },
         { kind: 'reg', value: 'interstitial_lung_disease', label: 'Interstitial lung disease (ILD)', mondo: 'MONDO:0015925' },
@@ -176,7 +188,8 @@
     },
     {
       id: 'dlbcl-cirr',
-      label: 'DLBCL / Cirrhosis',
+      title: 'DLBCL / Hepatic Cirrhosis',
+      desc: 'Hepatic impairment and pre-existing peripheral neuropathy requiring careful payload selection',
       conds: [
         { kind: 'mondo', value: 'MONDO:0018905', label: 'diffuse large B-cell lymphoma', mondo: 'MONDO:0018905' },
         { kind: 'reg', value: 'cirrhosis', label: 'Cirrhosis', mondo: 'MONDO:0005155' },
@@ -187,7 +200,8 @@
     },
     {
       id: 'tnbc-ckd',
-      label: 'TNBC / CKD3',
+      title: 'TNBC / Stage 3 CKD and Cytopenia',
+      desc: 'Renal clearance constraint and borderline cytopenias prior to systemic ADC initiation',
       conds: [
         { kind: 'mondo', value: 'MONDO:0005494', label: 'triple-negative breast carcinoma', mondo: 'MONDO:0005494' },
         { kind: 'reg', value: 'ckd_stage_3', label: 'Chronic kidney disease stage 3', mondo: 'MONDO:0005300' },
@@ -197,7 +211,8 @@
     },
     {
       id: 'myeloma-eye',
-      label: 'Myeloma / Ocular',
+      title: 'Multiple Myeloma / Ocular Keratopathy',
+      desc: 'Corneal epithelial vulnerability assessing ocular toxicity risk of auristatin/maytansinoid ADCs',
       conds: [
         { kind: 'mondo', value: 'MONDO:0009693', label: 'plasma cell myeloma', mondo: 'MONDO:0009693' },
         { kind: 'reg', value: 'dry_eye', label: 'Dry eye syndrome', mondo: 'MONDO:0021107' },
@@ -210,53 +225,53 @@
   // ------------------------------------------------------------------ Structure Studio Knowledge Base
   const STUDIO_TARGETS = [
     { id: 'HER2 (ERBB2)', gene: 'ERBB2', refAdc: 'trastuzumab-deruxtecan', selectivity: 4.8, tissues: [
-      { organ: 'pulmonary', name: 'Lung alveolar', tpm: 48, max: 100 },
-      { organ: 'cardiovascular', name: 'Cardiomyocyte', tpm: 36, max: 100 },
-      { organ: 'gastrointestinal', name: 'GI mucosa', tpm: 42, max: 100 },
-    ]},
+      { organ: 'pulmonary', name: 'Lung alveolar', tpm: 48 },
+      { organ: 'cardiovascular', name: 'Cardiomyocyte', tpm: 36 },
+      { organ: 'gastrointestinal', name: 'GI mucosa', tpm: 42 },
+    ], popover: 'Receptor tyrosine kinase amplified in breast/gastric cancers. Normal expression in lung alveolar cells and cardiomyocytes.' },
     { id: 'TROP2 (TACSTD2)', gene: 'TACSTD2', refAdc: 'sacituzumab-govitecan', selectivity: 4.1, tissues: [
-      { organ: 'gastrointestinal', name: 'Colonic epithelium', tpm: 68, max: 100 },
-      { organ: 'dermatologic', name: 'Stratified skin', tpm: 62, max: 100 },
-      { organ: 'pulmonary', name: 'Bronchial epithelium', tpm: 39, max: 100 },
-    ]},
+      { organ: 'gastrointestinal', name: 'Colonic epithelium', tpm: 68 },
+      { organ: 'dermatologic', name: 'Stratified skin', tpm: 62 },
+      { organ: 'pulmonary', name: 'Bronchial epithelium', tpm: 39 },
+    ], popover: 'Transmembrane glycoprotein highly expressed across epithelial carcinomas; baseline normal expression in GI mucosa and skin keratinocytes.' },
     { id: 'Nectin-4', gene: 'NECTIN4', refAdc: 'enfortumab-vedotin', selectivity: 3.7, tissues: [
-      { organ: 'dermatologic', name: 'Epidermal keratinocyte', tpm: 84, max: 100 },
-      { organ: 'metabolic_endocrine', name: 'Salivary / Sweat gland', tpm: 45, max: 100 },
-      { organ: 'ocular', name: 'Corneal epithelium', tpm: 34, max: 100 },
-    ]},
+      { organ: 'dermatologic', name: 'Epidermal keratinocyte', tpm: 84 },
+      { organ: 'metabolic_endocrine', name: 'Salivary / Sweat gland', tpm: 45 },
+      { organ: 'ocular', name: 'Corneal epithelium', tpm: 34 },
+    ], popover: 'Cell adhesion molecule enriched in urothelial carcinomas; high skin expression explains severe rash / SJS-TEN adverse events.' },
     { id: 'CD79b', gene: 'CD79B', refAdc: 'polatuzumab-vedotin', selectivity: 5.4, tissues: [
-      { organ: 'haematologic', name: 'B-lineage lymphoid', tpm: 72, max: 100 },
-      { organ: 'infectious_immune', name: 'Spleen / Lymph node', tpm: 58, max: 100 },
-      { organ: 'hepatic', name: 'Hepatic sinusoid', tpm: 12, max: 100 },
-    ]},
+      { organ: 'haematologic', name: 'B-lineage lymphoid', tpm: 72 },
+      { organ: 'infectious_immune', name: 'Spleen / Lymph node', tpm: 58 },
+      { organ: 'hepatic', name: 'Hepatic sinusoid', tpm: 12 },
+    ], popover: 'B-cell antigen receptor signaling component restricted to B-cells; exceptionally high tumor-to-normal selectivity outside lymphoid compartments.' },
     { id: 'BCMA (TNFRSF17)', gene: 'TNFRSF17', refAdc: 'belantamab-mafodotin', selectivity: 5.8, tissues: [
-      { organ: 'haematologic', name: 'Plasma cell niche', tpm: 66, max: 100 },
-      { organ: 'ocular', name: 'Corneal macropinocytosis', tpm: 49, max: 100 },
-      { organ: 'renal', name: 'Renal tubular', tpm: 14, max: 100 },
-    ]},
+      { organ: 'haematologic', name: 'Plasma cell niche', tpm: 66 },
+      { organ: 'ocular', name: 'Corneal macropinocytosis', tpm: 49 },
+      { organ: 'renal', name: 'Renal tubular', tpm: 14 },
+    ], popover: 'B-cell maturation antigen expressed on mature plasma cells; corneal toxicity occurs via off-target macropinocytosis rather than on-target binding.' },
     { id: 'FRalpha (FOLR1)', gene: 'FOLR1', refAdc: 'mirvetuximab-soravtansine', selectivity: 4.5, tissues: [
-      { organ: 'ocular', name: 'Ocular epithelium', tpm: 54, max: 100 },
-      { organ: 'pulmonary', name: 'Type II pneumocyte', tpm: 44, max: 100 },
-      { organ: 'renal', name: 'Proximal kidney tubule', tpm: 51, max: 100 },
-    ]},
+      { organ: 'ocular', name: 'Ocular epithelium', tpm: 54 },
+      { organ: 'pulmonary', name: 'Type II pneumocyte', tpm: 44 },
+      { organ: 'renal', name: 'Proximal kidney tubule', tpm: 51 },
+    ], popover: 'Folate receptor alpha overexpressed in platinum-resistant ovarian cancer; polarized apical expression in kidney tubules and corneal epithelial cells.' },
   ];
 
   const STUDIO_LINKERS = [
-    { id: 'Tetrapeptide GGFG', cleavable: true, stability: 88, handle: 'amine_hydroxyl', note: 'Cathepsin B/L-cleavable tetrapeptide; self-immolative aminomethylene releases hydroxy/amine payload' },
-    { id: 'Val-Cit PABC', cleavable: true, stability: 76, handle: 'amine', note: 'Cathepsin B-cleavable dipeptide with para-aminobenzyl carbamate spacer for secondary/primary amines' },
-    { id: 'Hydrolyzable CL2A', cleavable: true, stability: 54, handle: 'hydroxyl', note: 'pH-sensitive carbonate linker; systemic and intratumoral hydrolysis releases SN-38' },
-    { id: 'Non-cleavable mc', cleavable: false, stability: 96, handle: 'amine', note: 'Maleimidocaproyl thioether; requires complete lysosomal proteolysis to release Cys-mc-payload' },
-    { id: 'Disulfide SPDB', cleavable: true, stability: 68, handle: 'thiol', note: 'Sterically hindered disulfide cleaved by intracellular glutathione for thiol maytansinoids' },
-    { id: 'Acid Hydrazone', cleavable: true, stability: 48, handle: 'ketone', note: 'Acid-labile AcBut hydrazone hydrolyzed in endosomes/lysosomes (pH 4.5-5.0)' },
+    { id: 'Tetrapeptide GGFG', cleavable: true, stability: 88, handle: 'amine_hydroxyl', note: 'Cathepsin B/L-cleavable tetrapeptide; self-immolative aminomethylene releases hydroxy/amine payload', popover: 'Enzymatically cleaved in lysosomes by cathepsins. High plasma stability (88%) prevents premature extracellular payload shedding.' },
+    { id: 'Val-Cit PABC', cleavable: true, stability: 76, handle: 'amine', note: 'Cathepsin B-cleavable dipeptide with para-aminobenzyl carbamate spacer for secondary/primary amines', popover: 'Validated dipeptide linker. Readily cleaved inside endosomes; moderate plasma carboxylesterase cleavage in rodents.' },
+    { id: 'Hydrolyzable CL2A', cleavable: true, stability: 54, handle: 'hydroxyl', note: 'pH-sensitive carbonate linker; systemic and intratumoral hydrolysis releases SN-38', popover: 'Short PEGylated carbonate linker. pH-sensitive hydrolysis allows gradual release in acidic tumor microenvironments.' },
+    { id: 'Non-cleavable mc', cleavable: false, stability: 96, handle: 'amine', note: 'Maleimidocaproyl thioether; requires complete lysosomal proteolysis to release Cys-mc-payload', popover: 'Ultra-stable thioether bond. Payload remains attached to cysteine; lacks membrane diffusion, preventing bystander toxicity.' },
+    { id: 'Disulfide SPDB', cleavable: true, stability: 68, handle: 'thiol', note: 'Sterically hindered disulfide cleaved by intracellular glutathione for thiol maytansinoids', popover: 'Hindered disulfide linker cleaved selectively by high intracellular glutathione concentrations.' },
+    { id: 'Acid Hydrazone', cleavable: true, stability: 48, handle: 'ketone', note: 'Acid-labile AcBut hydrazone hydrolyzed in endosomes/lysosomes (pH 4.5-5.0)', popover: 'Legacy acid-labile linker. Hydrolyzed in acidic lysosomes; higher spontaneous systemic release rate.' },
   ];
 
   const STUDIO_PAYLOADS = [
-    { id: 'DXd ( Topo I )', cls: 'Topoisomerase I inhibitor', perm: true, handle: 'amine_hydroxyl', potency: 92, organs: { pulmonary: 82, haematologic: 68, gastrointestinal: 64, cardiovascular: 38 } },
-    { id: 'SN-38 ( Topo I )', cls: 'Topoisomerase I inhibitor (UGT1A1)', perm: true, handle: 'hydroxyl', potency: 78, organs: { haematologic: 86, gastrointestinal: 84, hepatic: 44 } },
-    { id: 'MMAE ( Auristatin )', cls: 'Microtubule inhibitor (Auristatin)', perm: true, handle: 'amine', potency: 90, organs: { neurologic: 84, haematologic: 76, dermatologic: 66, hepatic: 52 } },
-    { id: 'MMAF ( Auristatin )', cls: 'Charged Auristatin (low permeability)', perm: false, handle: 'amine', potency: 86, organs: { ocular: 92, haematologic: 64, renal: 28 } },
-    { id: 'DM4 / DM1 ( Maytansinoid )', cls: 'Microtubule inhibitor (Maytansinoid)', perm: true, handle: 'thiol', potency: 84, organs: { ocular: 74, hepatic: 72, neurologic: 62, haematologic: 58 } },
-    { id: 'SG3199 ( PBD Dimer )', cls: 'DNA minor-groove crosslinker', perm: true, handle: 'amine', potency: 98, organs: { haematologic: 92, hepatic: 78, pulmonary: 68, dermatologic: 62 } },
+    { id: 'DXd ( Topo I )', cls: 'Topoisomerase I inhibitor', perm: true, handle: 'amine_hydroxyl', potency: 92, organs: { pulmonary: 82, haematologic: 68, gastrointestinal: 64, cardiovascular: 38 }, popover: 'Exatecan derivative with ~10x higher potency than SN-38. High membrane permeability drives potent bystander killing of neighboring antigen-negative tumor cells.' },
+    { id: 'SN-38 ( Topo I )', cls: 'Topoisomerase I inhibitor (UGT1A1)', perm: true, handle: 'hydroxyl', potency: 78, organs: { haematologic: 86, gastrointestinal: 84, hepatic: 44 }, popover: 'Active metabolite of irinotecan. Hepatic clearance via UGT1A1 glucuronidation; neutropenia and severe diarrhea are primary toxicities.' },
+    { id: 'MMAE ( Auristatin )', cls: 'Microtubule inhibitor (Auristatin)', perm: true, handle: 'amine', potency: 90, organs: { neurologic: 84, haematologic: 76, dermatologic: 66, hepatic: 52 }, popover: 'Synthetic dolastatin 10 antimitotic. Highly lipophilic and neutral at physiologic pH; strong bystander activity with dose-limiting peripheral neuropathy.' },
+    { id: 'MMAF ( Auristatin )', cls: 'Charged Auristatin (low permeability)', perm: false, handle: 'amine', potency: 86, organs: { ocular: 92, haematologic: 64, renal: 28 }, popover: 'Carboxy-terminal phenylalanine confers negative charge, blocking passive membrane diffusion. Minimizes systemic bystander damage while accumulating in corneal epithelium.' },
+    { id: 'DM4 / DM1 ( Maytansinoid )', cls: 'Microtubule inhibitor (Maytansinoid)', perm: true, handle: 'thiol', potency: 84, organs: { ocular: 74, hepatic: 72, neurologic: 62, haematologic: 58 }, popover: 'Thiol-containing tubulin inhibitor. Metabolized primarily via hepatic CYP3A4; associated with reversible transaminase elevations and thrombocytopenia.' },
+    { id: 'SG3199 ( PBD Dimer )', cls: 'DNA minor-groove crosslinker', perm: true, handle: 'amine', potency: 98, organs: { haematologic: 92, hepatic: 78, pulmonary: 68, dermatologic: 62 }, popover: 'Ultra-potent DNA alkylator binding minor groove without distorting helix. Active against non-dividing cells; dose-limiting delayed myelosuppression and fluid retention.' },
   ];
 
   // ------------------------------------------------------------------ Session State
@@ -264,7 +279,7 @@
   function defaultState() {
     const p = PRESETS[0];
     return {
-      mode: 0, // 0: ADC Matrix, 1: Structure Studio, 2: Patient & Labs
+      mode: 0,
       presetId: p.id,
       conds: p.conds.map((c) => Object.assign({}, c)),
       raw: Object.assign({}, p.raw),
@@ -273,10 +288,10 @@
       first: null,
       analysis: null,
       result: null,
-      sel: -1,
+      sel: 0,
       reviewAdc: null,
       drawer: false,
-      labGroup: 'Basic',
+      drawerTab: 'Patient',
       studio: Object.assign({}, p.studio),
     };
   }
@@ -319,10 +334,8 @@
     return [...new Set(out)];
   }
 
-  // ------------------------------------------------------------------ Active Organ Resolution (Never 13 cells!)
   function activeOrgansWithScores() {
     const map = new Map();
-    // 1. From completed AI analysis reports
     if (S.analysis && S.analysis.state === 'done') {
       for (const r of S.analysis.reports || []) {
         if (r.source === 'Cancer') continue;
@@ -335,7 +348,6 @@
         }
       }
     }
-    // 2. From registry conditions directly (immediate before analysis job finishes)
     for (const c of S.conds) {
       if (c.kind === 'reg' && REG[c.value]) {
         for (const o of REG[c.value].organs || []) {
@@ -343,49 +355,49 @@
         }
       }
     }
-    // 3. From lab flags
     for (const fl of (S.labs && S.labs.flags) || []) {
       if (String(S.raw[fl.key] || '').trim()) {
         const prev = map.get(fl.organ);
         if (!prev) map.set(fl.organ, { organ: fl.organ, score: 0.82, condKey: null });
       }
     }
-    // Order by AXES order, cap at 5 active organs for clean visual density
     return AX.filter((a) => map.has(a)).map((a) => map.get(a));
   }
 
-  // ------------------------------------------------------------------ Page Frame
-  let top, crumbsOl, verEl, presetBar, layout, stageBox, bar, barKeys, drawer, drawerTitle, drawerBody;
+  // ------------------------------------------------------------------ Page Shell & Navigation
+  let top, crumbsOl, verEl, scenarioDropdown, layout, stageBox, bar, barKeys, drawer, drawerTitle, drawerBody;
 
   function frame() {
     document.title = 'ADCTOX';
     crumbsOl = h('ol');
     verEl = h('div', { class: 'ver', text: '' });
-    presetBar = h('div', { class: 'preset-group', role: 'group', 'aria-label': 'Clinical presets' });
+    scenarioDropdown = h('div', { class: 'scenario-dropdown' });
+
     const brandWrap = h('div', { class: 'brand-wrap' },
       h('div', { class: 'brand' },
         h('span', { class: 'brand-bars', 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
         'ADCToX'),
       verEl);
+
     top = h('header', { class: 'top' },
       brandWrap,
       h('nav', { class: 'crumbs', 'aria-label': 'Workspace modes' }, crumbsOl),
       h('div', { class: 'right' },
-        presetBar,
+        scenarioDropdown,
         h('button', { type: 'button', class: 'help', 'aria-label': 'How it works', title: 'How it works', text: '?', onclick: openGuide })));
 
     stageBox = h('main', { class: 'stage' });
     layout = h('div', { class: 'layout' }, stageBox);
     barKeys = h('div', { class: 'keys', 'aria-hidden': 'true' });
     bar = h('footer', { class: 'bar' },
-      h('span', { text: 'ADCTOX Clinical Decision & Conjugate Architecture Workspace' }),
+      h('span', { text: 'ADCTOX Clinical Decision and Conjugate Architecture Workspace' }),
       barKeys);
 
     drawerTitle = h('h2', { id: 'dr-title' });
     drawerBody = h('div', { class: 'dr-body' });
-    const x = h('button', { class: 'x', type: 'button', 'aria-label': 'Close', text: '×', onclick: () => closeDrawer() });
+    const xBtn = h('button', { class: 'x-btn', type: 'button', 'aria-label': 'Close', onclick: () => closeDrawer() }, svgClose());
     drawer = h('div', { class: 'drawer', role: 'dialog', 'aria-modal': 'false', 'aria-labelledby': 'dr-title', 'aria-hidden': 'true' },
-      h('div', { class: 'dr-head' }, drawerTitle, x), drawerBody);
+      h('div', { class: 'dr-head' }, drawerTitle, xBtn), drawerBody);
 
     document.body.append(top, h('div', { class: 'shell' }, h('div', { class: 'wrap' }, layout)), bar, drawer, tipBox);
   }
@@ -402,17 +414,44 @@
       crumbsOl.append(h('li', { class: 'crumb' + (now ? ' now' : '') }, btn));
     });
 
-    clear(presetBar);
+    clear(scenarioDropdown);
+    const activePreset = PRESETS.find((p) => p.id === S.presetId) || PRESETS[0];
+    const trigger = h('button', {
+      type: 'button', class: 'scenario-btn', 'aria-haspopup': 'true', 'aria-expanded': 'false',
+      onclick: () => {
+        const exp = menu.hidden;
+        menu.hidden = !exp;
+        trigger.setAttribute('aria-expanded', String(exp));
+      },
+    },
+    h('span', { class: 'dim', text: 'Scenario:' }),
+    h('strong', { class: 'scenario-current', text: activePreset.title.split('/')[0].trim() }),
+    sv('svg', { class: 'chevron', width: '10', height: '6', viewBox: '0 0 10 6', stroke: 'currentColor', 'stroke-width': '1.5', fill: 'none' },
+      sv('path', { d: 'M1 1L5 5L9 1' })));
+
+    const menu = h('div', { class: 'scenario-menu panel', hidden: true });
     PRESETS.forEach((p) => {
-      const b = h('button', {
-        type: 'button',
-        class: 'preset-btn' + (S.presetId === p.id ? ' active' : ''),
-        text: p.label,
-        title: 'Load clinical preset: ' + p.label,
-        onclick: () => applyPreset(p),
-      });
-      presetBar.append(b);
+      const item = h('button', {
+        type: 'button', class: 'scenario-item' + (p.id === S.presetId ? ' active' : ''),
+        onclick: () => {
+          menu.hidden = true;
+          trigger.setAttribute('aria-expanded', 'false');
+          applyPreset(p);
+        },
+      },
+      h('span', { class: 'sc-title', text: p.title }),
+      h('span', { class: 'sc-desc', text: p.desc }));
+      menu.append(item);
     });
+
+    document.addEventListener('click', (e) => {
+      if (!scenarioDropdown.contains(e.target)) {
+        menu.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    scenarioDropdown.append(trigger, menu);
   }
 
   async function applyPreset(p) {
@@ -432,7 +471,7 @@
     switchMode(S.mode, true);
   }
 
-  // ------------------------------------------------------------------ Background Data Sync (/api/labs, /api/recommend, /api/analyze)
+  // ------------------------------------------------------------------ Background Data Sync
   let syncSeq = 0;
   async function refreshBackendData() {
     const seq = ++syncSeq;
@@ -455,7 +494,6 @@
       save();
     } catch (e) { /* ignore */ }
 
-    // Trigger non-blocking organ analysis if needed
     runBackgroundAnalysis(seq);
   }
 
@@ -481,27 +519,20 @@
           return;
         }
       }
-    } catch (e) { /* background job optional */ }
+    } catch (e) { /* background optional */ }
   }
 
   function resultSig() {
     return JSON.stringify([condList(), rawValues(), allChoice(), S.first]);
   }
 
-  // ------------------------------------------------------------------ Unified Patient & Active-Organ Bar (Top of Mode 0 & Mode 1)
+  // ------------------------------------------------------------------ Unified Patient Context Bar
   function buildWorkspaceBar(onChanged) {
     const st = { q: '', items: [], cur: -1, timer: 0, seq: 0 };
     const input = h('input', {
-      type: 'text',
-      role: 'combobox',
-      'aria-expanded': 'false',
-      'aria-controls': 'wb-sugg',
-      'aria-autocomplete': 'list',
-      'aria-label': 'Condition, symptom or cancer',
-      placeholder: 'Condition, symptom or cancer',
-      autocomplete: 'off',
-      autocapitalize: 'off',
-      spellcheck: 'false',
+      type: 'text', role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'wb-sugg',
+      'aria-autocomplete': 'list', 'aria-label': 'Condition, symptom or cancer',
+      placeholder: 'Condition, symptom or cancer', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
     });
     const sugg = h('ul', { class: 'wb-sugg', id: 'wb-sugg', role: 'listbox', 'aria-label': 'Suggestions', hidden: true });
     const chipsWrap = h('div', { class: 'wb-chips', 'aria-label': 'Active patient profile' });
@@ -546,39 +577,25 @@
       S.conds.forEach((c, idx) => {
         const isCancer = cancerConds.has(c.label) || cancerConds.has(c.value) || /carcinoma|cancer|lymphoma|myeloma|leukemia|tumor/i.test(c.label);
         const rm = h('button', {
-          type: 'button', class: 'x',
-          'aria-label': 'Remove ' + c.label,
-          text: '×',
+          type: 'button', class: 'x-btn', 'aria-label': 'Remove ' + c.label,
           onclick: () => removeConditionChip(idx),
-        });
+        }, svgClose());
         chipsWrap.append(h('span', { class: 'p-chip' + (isCancer ? ' cancer-chip' : '') },
           h('span', { text: c.label }), rm));
       });
 
-      // Summary lab chips (clickable to jump to Patient & Labs mode)
       const L = S.labs || {};
       const sh = (L.derived && L.derived.shown) || {};
       const labBadges = [];
-      if (sh.bili) labBadges.push(`Bili ${sh.bili}xULN`);
-      else if (S.raw.bilirubin) labBadges.push(`Bili ${S.raw.bilirubin} mg/dL`);
+      if (S.raw.bilirubin) labBadges.push(`Bilirubin ${S.raw.bilirubin} mg/dL`);
       if (sh.crcl) labBadges.push(`CLcr ${sh.crcl} mL/min`);
-      else if (S.raw.creatinine) labBadges.push(`Cr ${S.raw.creatinine} mg/dL`);
+      else if (S.raw.creatinine) labBadges.push(`Creatinine ${S.raw.creatinine} mg/dL`);
       if (S.raw.lvef) labBadges.push(`LVEF ${S.raw.lvef}%`);
 
       if (labBadges.length) {
         chipsWrap.append(h('button', {
-          type: 'button',
-          class: 'p-chip lab-chip',
-          title: 'Edit laboratory values',
-          text: labBadges.join('  /  '),
-          onclick: () => switchMode(2),
-        }));
-      } else {
-        chipsWrap.append(h('button', {
-          type: 'button',
-          class: 'p-chip lab-chip',
-          text: '+ Labs',
-          onclick: () => switchMode(2),
+          type: 'button', class: 'p-chip lab-chip', title: 'Open Patient and Labs flowsheet',
+          text: labBadges.join('  /  '), onclick: () => switchMode(2),
         }));
       }
     }
@@ -591,8 +608,7 @@
       if (!show) return;
       st.items.slice(0, 7).forEach((it, i) => {
         const li = h('li', {
-          class: 'opt', role: 'option',
-          'aria-selected': i === st.cur ? 'true' : 'false',
+          class: 'opt', role: 'option', 'aria-selected': i === st.cur ? 'true' : 'false',
         },
         h('span', { class: 'nm' },
           h('span', { class: 'main', text: it.kind === 'raw' ? `+ Add "${it.text}"` : it.s.text }),
@@ -661,7 +677,6 @@
 
     renderChips();
 
-    // Right side: Active Organ Horizon Strip (ONLY the patient's active organs!)
     const activeOrgans = activeOrgansWithScores();
     const organsGrid = h('div', { class: 'active-organs-grid' });
     if (activeOrgans.length) {
@@ -669,9 +684,8 @@
         const pct = Math.round(Math.max(15, Math.min(100, item.score * 100)));
         const isPrio = item.condKey && S.first === item.condKey;
         const btn = h('button', {
-          type: 'button',
-          class: 'organ-meter-btn' + (isPrio ? ' prio-active' : ''),
-          title: item.condKey ? 'Click to prioritize ' + (SHORT[item.organ] || item.organ) + ' safety in ADC ranking' : (SHORT[item.organ] || item.organ),
+          type: 'button', class: 'organ-meter-btn' + (isPrio ? ' prio-active' : ''),
+          title: item.condKey ? 'Prioritize ' + (SHORT[item.organ] || item.organ) + ' safety in ADC ranking' : (SHORT[item.organ] || item.organ),
           onclick: async () => {
             if (!item.condKey) return;
             S.first = S.first === item.condKey ? null : item.condKey;
@@ -688,7 +702,7 @@
         organsGrid.append(btn);
       });
     } else {
-      organsGrid.append(h('span', { class: 'dim', text: 'No vulnerable organs flagged yet' }));
+      organsGrid.append(h('span', { class: 'dim', text: 'No vulnerable organs flagged' }));
     }
 
     return h('section', { class: 'workspace-bar', 'aria-label': 'Patient and active organ profile' },
@@ -697,17 +711,16 @@
           h('div', { class: 'wb-input-wrap' },
             h('span', { class: 'dim', 'aria-hidden': 'true', text: '+' }),
             input),
-          h('button', { type: 'button', class: 'wb-btn', text: 'Labs & AI', onclick: () => switchMode(2) }),
           sugg),
         chipsWrap),
       h('div', { class: 'wb-right' },
         h('div', { class: 'horizon-head' },
-          h('span', { class: 'horizon-label', text: `Active Patient Organs (${activeOrgans.length})` }),
-          h('span', { class: 'horizon-sub', text: S.first ? 'Prioritized' : 'Click organ to weight first' })),
+          h('span', { class: 'horizon-label', text: `Patient Active Organs (${activeOrgans.length})` }),
+          h('span', { class: 'horizon-sub', text: S.first ? 'Priority Active' : 'Select organ to prioritize' })),
         organsGrid));
   }
 
-  // ------------------------------------------------------------------ Helpers for ADC Cards & Rows
+  // ------------------------------------------------------------------ Helpers for Drug Cards & Rows
   function getArchPills(adcId, row) {
     const m = MECH[adcId];
     if (m) {
@@ -718,30 +731,18 @@
       return pills;
     }
     const p = row && row.detail && row.detail.payload;
-    if (p && p.rows) {
-      return p.rows.slice(0, 3).map(([, v]) => v.split(',')[0]);
-    }
+    if (p && p.rows) return p.rows.slice(0, 3).map(([, v]) => v.split(',')[0]);
     return [];
   }
 
   function statusInfo(row) {
     const detail = row.detail || {};
     const reason = (detail.reasons || []).find((r) => r.status === row.status && !!r.sure === !!row.sure) || (detail.reasons || []).find((r) => r.status === row.status);
-    if (row.status === 'None' || row.status === 'No change') {
-      return { tone: 'clear', bars: 'clear', label: 'Standard', full: 'Standard dosing' };
-    }
-    if (reason && reason.code === 'contraindicated') {
-      return { tone: 'avoid', bars: 'avoid', label: 'Contraindicated', full: 'Contraindicated' };
-    }
-    if (row.status === 'Avoid') {
-      return { tone: 'avoid', bars: 'avoid', label: row.sure ? 'Avoid' : 'Avoid (check)', full: 'Avoid use' };
-    }
-    if (row.status === 'Lower dose' || (reason && reason.code === 'reduce_dose')) {
-      return { tone: 'monitor', bars: 'monitor', label: 'Dose adjust', full: 'Dose adjustment' };
-    }
-    if (row.status === 'Monitor') {
-      return { tone: 'monitor', bars: 'monitor', label: 'Monitor', full: 'Close monitoring' };
-    }
+    if (row.status === 'None' || row.status === 'No change') return { tone: 'clear', bars: 'clear', label: 'Standard', full: 'Standard dosing' };
+    if (reason && reason.code === 'contraindicated') return { tone: 'avoid', bars: 'avoid', label: 'Contraindicated', full: 'Contraindicated' };
+    if (row.status === 'Avoid') return { tone: 'avoid', bars: 'avoid', label: row.sure ? 'Avoid' : 'Avoid (check)', full: 'Avoid use' };
+    if (row.status === 'Lower dose' || (reason && reason.code === 'reduce_dose')) return { tone: 'monitor', bars: 'monitor', label: 'Dose adjust', full: 'Dose adjustment' };
+    if (row.status === 'Monitor') return { tone: 'monitor', bars: 'monitor', label: 'Monitor', full: 'Close monitoring' };
     return { tone: 'limited', bars: 'limited', label: 'Limited data', full: 'Not studied in cohort' };
   }
 
@@ -750,16 +751,13 @@
     const allWarnings = [].concat(detail.warnings || [], detail.other_warnings || []);
     const found = allWarnings.find((w) => w.organ === organ);
     if (!found) return { cls: 'clear', tag: 'Clear', title: 'No label warning on ' + (SHORT[organ] || organ) };
-    if (String(found.mark).trim() === '!!') {
-      return { cls: 'boxed', tag: 'Boxed', title: 'Boxed Warning: ' + found.text };
-    }
+    if (String(found.mark).trim() === '!!') return { cls: 'boxed', tag: 'Boxed', title: 'Boxed Warning: ' + found.text };
     return { cls: 'warn', tag: 'Warn', title: 'Section 5 Warning: ' + found.text };
   }
 
   function primaryTrialEvent(row, activeOrgans) {
     const t = row.detail && row.detail.trial;
     if (!t || !t.trial || t.no_results || !Array.isArray(t.organs)) return null;
-    // Pick event on first active organ that has events, or fallback to any organ event
     for (const item of activeOrgans) {
       const o = t.organs.find((x) => x.organ === item.organ);
       if (o && o.events && o.events.length) return { trial: t, organ: item.organ, ev: o.events[0] };
@@ -771,9 +769,7 @@
   }
 
   function buildDualBar(trialHit) {
-    if (!trialHit) {
-      return h('span', { class: 'dim', style: 'font-size:11px', text: 'Single-arm / registry' });
-    }
+    if (!trialHit) return h('span', { class: 'dim', style: 'font-size:11px', text: 'Single-arm trial' });
     const { trial, ev } = trialHit;
     const adcPct = (100 * ev.a) / Math.max(1, ev.n);
     const cmpPct = ev.comp ? (100 * ev.comp[0]) / Math.max(1, ev.comp[1]) : null;
@@ -796,7 +792,7 @@
       h('span', { class: 'db-pct cmp', text: ev.comp_pct })) : null);
   }
 
-  // ------------------------------------------------------------------ Mode 0: Visual ADC Matrix (Spotlight Hero Cards + Monochrome Cohort Table)
+  // ------------------------------------------------------------------ Mode 0: Visual ADC Matrix
   function buildAdcMatrixMode() {
     const box = h('div', { class: 's5' });
     box.append(buildWorkspaceBar(() => renderMatrixContent()));
@@ -816,13 +812,10 @@
       const rows = res.rows;
       const activeOrgans = activeOrgansWithScores();
 
-      // Determine Top Recommended Spotlight ADCs:
-      // Indicated (when cancer entered) and not Avoid, up to top 2 rank tier
       const topCandidates = rows.filter((r) => (hasCancer ? r.indicated === true : true) && r.status !== 'Avoid');
       const spotlightRows = (topCandidates.length ? topCandidates : rows).slice(0, 2);
       const spotlightSet = new Set(spotlightRows.map((r) => r.adc));
 
-      // 1. Spotlight Section for Top Recommended ADCs (Full Cobalt/Emerald Color & Larger Cards)
       const spGrid = h('div', { class: 'spotlight-grid' });
       const cardEls = new Map();
 
@@ -842,8 +835,7 @@
         });
 
         const card = h('article', {
-          class: 'spotlight-card',
-          tabindex: '0',
+          class: 'spotlight-card', tabindex: '0',
           'aria-selected': S.sel === idx ? 'true' : 'false',
           onclick: () => { selectRow(idx, false); openDrawer(); },
           onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectRow(idx, false); openDrawer(); } },
@@ -870,11 +862,10 @@
 
       content.append(h('section', { class: 'spotlight-section', 'aria-label': 'Top recommended ADCs' },
         h('div', { class: 'sec-bar' },
-          h('span', { class: 'sec-kicker', text: 'Primary Recommendation Spotlight' }),
-          h('span', { class: 'dim', style: 'font-size:11.5px', text: 'Click any card or row for FDA label & trial evidence' })),
+          h('span', { class: 'sec-kicker', text: 'Primary Recommendation' }),
+          h('span', { class: 'dim', style: 'font-size:11.5px', text: 'Click card for 3D architecture and FDA trial evidence' })),
         spGrid));
 
-      // 2. Full Cohort Comparison Table (Lower-ranked rows rendered in quiet monochrome slate)
       let filter = 'all';
       const relevant = (row) => (hasCancer ? row.indicated === true : true);
       const restricted = (row) => row.status && !['None', 'No change'].includes(row.status);
@@ -887,13 +878,13 @@
       const tabs = h('div', { class: 'review-filters', role: 'group', 'aria-label': 'Filter ADCs' });
       const toolbar = h('div', { class: 'review-toolbar' },
         tabs,
-        h('button', { type: 'button', class: 'export-button', text: 'Export Clinical Summary', onclick: () => saveReview(res) }));
+        h('button', { type: 'button', class: 'export-button', text: 'Export Summary', onclick: () => saveReview(res) }));
       content.append(toolbar);
 
       const grid = h('div', { class: 'review-grid', role: 'grid', 'aria-label': 'ADC Cohort Matrix' },
         h('div', { class: 'review-grid-head', role: 'row' },
           h('span', { role: 'columnheader', text: '#' }),
-          h('span', { role: 'columnheader', text: 'ADC & Architecture' }),
+          h('span', { role: 'columnheader', text: 'ADC and Architecture' }),
           tipped(h('span', { role: 'columnheader', text: 'Regimen Fit' })),
           tipped(h('span', { role: 'columnheader', text: 'Active Organ Profile' })),
           tipped(h('span', { role: 'columnheader', text: 'Pivotal Trial vs Control' }))));
@@ -918,8 +909,7 @@
 
         const tr = h('div', {
           class: 'review-row ' + (isTop ? 'tier-top' : 'tier-muted'),
-          role: 'row',
-          tabindex: i === S.sel ? '0' : '-1',
+          role: 'row', tabindex: i === S.sel ? '0' : '-1',
           'aria-selected': i === S.sel ? 'true' : 'false',
         },
         h('div', { class: 'rank-cell', role: 'gridcell', text: `#${row.rank}` }),
@@ -1007,7 +997,8 @@
     return box;
   }
 
-  // ------------------------------------------------------------------ Mode 1: Structure & Combination Studio (4-Part Conjugate Design)
+  // ------------------------------------------------------------------ Mode 1: Structure & Combination Studio (with Pareto Scan Simulation)
+  let simAnimId = 0;
   function buildStructureStudioMode() {
     const box = h('div', { class: 's-studio' });
     box.append(buildWorkspaceBar(() => renderStudioCanvas()));
@@ -1017,18 +1008,35 @@
     wrap.append(controls, canvas);
     box.append(wrap);
 
+    let isOptimizing = false;
+
     function renderControls() {
       clear(controls);
+      const headAction = h('div', { class: 'studio-head-action' },
+        h('span', { class: 'sec-kicker', text: 'Conjugate Architecture' }),
+        h('button', {
+          type: 'button', class: 'btn-optimize', text: 'Auto Optimize',
+          onclick: () => runOptimizationSimulation(),
+        }));
+      controls.append(headAction);
+
       const makeGroup = (label, items, current, onPick) => {
         const pills = h('div', { class: 'studio-pills' });
         items.forEach((it) => {
           const val = typeof it === 'string' ? it : it.id;
+          const popoverText = typeof it === 'object' && it.popover ? it.popover : null;
           const b = h('button', {
-            type: 'button',
-            class: 'st-pill',
-            'aria-pressed': val === current ? 'true' : 'false',
+            type: 'button', class: 'st-pill', 'aria-pressed': val === current ? 'true' : 'false',
             text: val,
-            onclick: () => { onPick(val); save(); renderControls(); renderStudioCanvas(); },
+            onmouseenter: (e) => {
+              if (popoverText) {
+                showMicroPopover(b, popoverText);
+              }
+            },
+            onmouseleave: () => hideMicroPopover(),
+            onclick: () => {
+              onPick(val); save(); renderControls(); renderStudioCanvas();
+            },
           });
           pills.append(b);
         });
@@ -1040,11 +1048,27 @@
         makeGroup('2. Chemical Linker', STUDIO_LINKERS, S.studio.linker, (v) => { S.studio.linker = v; }),
         makeGroup('3. Cytotoxic Payload', STUDIO_PAYLOADS, S.studio.payload, (v) => { S.studio.payload = v; }),
         makeGroup('4. Drug-to-Antibody Ratio (DAR)', ['2', '3.5', '4', '6', '7.6', '8'], String(S.studio.dar), (v) => { S.studio.dar = parseFloat(v); }),
-        makeGroup('5. Fc Gamma Receptor Engineering', ['Wild-type IgG1', 'Fc-Silenced (LALA-PG)'], S.studio.fc ? 'Fc-Silenced (LALA-PG)' : 'Wild-type IgG1', (v) => { S.studio.fc = v.includes('LALA'); })
+        makeGroup('5. Fc Engineering', ['Wild-type IgG1', 'Fc-Silenced (LALA-PG)'], S.studio.fc ? 'Fc-Silenced (LALA-PG)' : 'Wild-type IgG1', (v) => { S.studio.fc = v.includes('LALA'); })
       );
     }
 
-    function renderStudioCanvas() {
+    let popoverEl = null;
+    function showMicroPopover(targetBtn, text) {
+      hideMicroPopover();
+      popoverEl = h('div', { class: 'micro-popover', text });
+      targetBtn.append(popoverEl);
+    }
+    function hideMicroPopover() {
+      if (popoverEl) { popoverEl.remove(); popoverEl = null; }
+    }
+
+    function runOptimizationSimulation() {
+      if (isOptimizing) return;
+      isOptimizing = true;
+      renderStudioCanvas(true);
+    }
+
+    function renderStudioCanvas(animateScan) {
       clear(canvas);
       const tgt = STUDIO_TARGETS.find((x) => x.id === S.studio.target) || STUDIO_TARGETS[0];
       const lnk = STUDIO_LINKERS.find((x) => x.id === S.studio.linker) || STUDIO_LINKERS[0];
@@ -1052,40 +1076,46 @@
       const dar = Number(S.studio.dar) || 4;
       const fcSilenced = !!S.studio.fc;
 
-      // 1. Chemical Handle Compatibility
       const handleMatch = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
-      // 2. Bystander Effect
       const bystander = lnk.cleavable && pld.perm;
-      // 3. Hydrophobic Aggregation / Clearance adjustment for high DAR
       const darPenalty = dar > 4 && !lnk.id.includes('GGFG') && !lnk.id.includes('CL2A') ? (dar - 4) * 5.5 : (dar - 4) * 2.0;
       const stabilityScore = Math.max(25, Math.min(98, Math.round(lnk.stability - Math.max(0, darPenalty))));
 
-      // Top Summary Metrics Bar
+      // 1. Pareto Frontier Architecture Simulator Canvas
+      const simWrap = h('section', { class: 'sim-canvas-panel panel' });
+      const simHead = h('div', { class: 'sim-canvas-head' },
+        h('span', { class: 'sim-canvas-title', text: 'Multi-Objective Pareto Scan (Tumor Selectivity vs Organ Burden)' }),
+        h('span', { class: 'sim-canvas-status', text: animateScan ? 'Simulating candidate space...' : 'Optimal Architecture Locked' }));
+
+      const chartWrap = h('div', { class: 'sim-chart-wrap' });
+      const cvs = h('canvas', { class: 'sim-canvas' });
+      chartWrap.append(cvs);
+      simWrap.append(simHead, chartWrap);
+
+      // 2. Metrics Strip
       const hero = h('div', { class: 'studio-hero panel' },
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: 'Chemical Conjugation Gate' }),
-          h('span', { class: 'sh-val ' + (handleMatch ? 't-green' : 't-amber'), text: handleMatch ? 'Compatible Handle' : 'Spacer Required' }),
-          h('div', { class: 'sh-bar' }, h('i', { style: `width:${handleMatch ? 100 : 55}%;background:${handleMatch ? 'var(--emerald)' : 'var(--amber)'}` }))),
+          h('span', { class: 'sh-kicker', text: 'Conjugation Handle Compatibility' }),
+          h('span', { class: 'sh-val ' + (handleMatch ? 't-green' : 't-amber'), text: handleMatch ? 'Direct Coupling' : 'Linker Spacer Needed' }),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${handleMatch ? 100 : 50}%;background:${handleMatch ? 'var(--emerald)' : 'var(--amber)'}` }))),
         h('div', { class: 'sh-metric' },
           h('span', { class: 'sh-kicker', text: 'Tumor / Normal Selectivity' }),
           h('span', { class: 'sh-val', text: `+${tgt.selectivity.toFixed(1)} log2FC` }),
           h('div', { class: 'sh-bar' }, h('i', { style: `width:${Math.min(100, tgt.selectivity * 16)}%;background:var(--accent)` }))),
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: 'Bystander Killing Capacity' }),
+          h('span', { class: 'sh-kicker', text: 'Bystander Killing Effect' }),
           h('span', { class: 'sh-val', text: bystander ? 'Active Diffusion' : 'Cell-Autonomous' }),
-          h('div', { class: 'sh-bar' }, h('i', { style: `width:${bystander ? 92 : 34}%;background:${bystander ? 'var(--accent)' : 'var(--dim)'}` }))),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${bystander ? 92 : 30}%;background:${bystander ? 'var(--accent)' : 'var(--dim)'}` }))),
         h('div', { class: 'sh-metric' },
           h('span', { class: 'sh-kicker', text: 'Plasma Linker Stability' }),
           h('span', { class: 'sh-val', text: `${stabilityScore}% Intact` }),
           h('div', { class: 'sh-bar' }, h('i', { style: `width:${stabilityScore}%;background:var(--emerald)` }))));
 
-      // Panel A: Patient Active Organ Burden for Designed Conjugate vs Approved Reference
+      // 3. Organ & Tissue Expression Grid
       const activeOrgans = activeOrgansWithScores();
       const organsToShow = activeOrgans.length ? activeOrgans : [
-        { organ: 'pulmonary', score: 0.85 },
-        { organ: 'hepatic', score: 0.78 },
-        { organ: 'haematologic', score: 0.72 },
-        { organ: 'cardiovascular', score: 0.65 },
+        { organ: 'pulmonary', score: 0.85 }, { organ: 'hepatic', score: 0.78 },
+        { organ: 'haematologic', score: 0.72 }, { organ: 'cardiovascular', score: 0.65 },
       ];
 
       const organRows = h('div', { class: 'expr-list' });
@@ -1103,7 +1133,6 @@
           h('span', { class: 'ex-val', style: `color:${color}`, text: `${burden} idx` })));
       });
 
-      // Panel B: GTEx Normal Tissue Target Expression Profile
       const gtexRows = h('div', { class: 'expr-list' });
       tgt.tissues.forEach((t) => {
         gtexRows.append(h('div', { class: 'expr-row' },
@@ -1114,15 +1143,116 @@
 
       const grid2 = h('div', { class: 'studio-grid-2' },
         h('section', { class: 'studio-card panel' },
-          h('h3', { text: 'Patient Active Organ Toxicity Index (Simulated Architecture)' }),
+          h('h3', { text: 'Simulated Patient Organ Toxicity Index' }),
           organRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: fcSilenced ? 'LALA-PG Fc-silencing active: off-target FcgammaR alveolar macrophage and megakaryocyte uptake reduced.' : 'Wild-type IgG1 Fc: standard FcgammaR-mediated immune effector & macrophage uptake.' })),
+          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: fcSilenced ? 'LALA-PG Fc-silencing active: FcgammaR macrophage uptake attenuated.' : 'Wild-type IgG1: standard immune effector and macrophage uptake.' })),
         h('section', { class: 'studio-card panel' },
-          h('h3', { text: `GTEx Normal Tissue Expression (${tgt.gene})` }),
+          h('h3', { text: `GTEx Normal Tissue Profile (${tgt.gene})` }),
           gtexRows,
           h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: lnk.note })));
 
-      canvas.append(hero, grid2);
+      canvas.append(simWrap, hero, grid2);
+
+      setTimeout(() => initParetoCanvas(cvs, animateScan, () => {
+        if (animateScan) {
+          isOptimizing = false;
+          // Set to optimal architecture
+          S.studio.target = 'HER2 (ERBB2)';
+          S.studio.linker = 'Tetrapeptide GGFG';
+          S.studio.payload = 'DXd ( Topo I )';
+          S.studio.dar = 8;
+          S.studio.fc = true;
+          save();
+          renderControls();
+          renderStudioCanvas(false);
+        }
+      }), 0);
+    }
+
+    function initParetoCanvas(cvs, animate, onComplete) {
+      const rect = cvs.getBoundingClientRect();
+      const w = cvs.width = (rect.width || 600) * (window.devicePixelRatio || 1);
+      const h = cvs.height = (rect.height || 220) * (window.devicePixelRatio || 1);
+      const ctx = cvs.getContext('2d');
+      if (!ctx) return;
+
+      cancelAnimationFrame(simAnimId);
+      const dpr = window.devicePixelRatio || 1;
+      const count = 38;
+      const curves = [];
+      for (let i = 0; i < count; i++) {
+        curves.push({
+          x0: w * 0.08,
+          y0: h * (0.85 - Math.random() * 0.1),
+          cp1x: w * (0.25 + Math.random() * 0.2),
+          cp1y: h * (0.2 + Math.random() * 0.6),
+          cp2x: w * (0.55 + Math.random() * 0.25),
+          cp2y: h * (0.1 + Math.random() * 0.5),
+          x1: w * 0.92,
+          y1: h * (0.15 + Math.random() * 0.5),
+          alpha: 0.12 + Math.random() * 0.18,
+          speed: 0.5 + Math.random() * 0.8,
+        });
+      }
+
+      let startTime = performance.now();
+      const duration = animate ? 1400 : 0;
+
+      function renderFrame(now) {
+        const elapsed = now - startTime;
+        ctx.clearRect(0, 0, w, h);
+
+        // Grid lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.lineWidth = 1 * dpr;
+        for (let x = w * 0.1; x < w * 0.95; x += w * 0.15) {
+          ctx.beginPath(); ctx.moveTo(x, h * 0.1); ctx.lineTo(x, h * 0.9); ctx.stroke();
+        }
+        for (let y = h * 0.2; y < h * 0.95; y += h * 0.2) {
+          ctx.beginPath(); ctx.moveTo(w * 0.08, y); ctx.lineTo(w * 0.92, y); ctx.stroke();
+        }
+
+        const progress = duration > 0 ? Math.min(1, elapsed / duration) : 1;
+
+        // Draw scanning curves
+        curves.forEach((c) => {
+          ctx.beginPath();
+          ctx.moveTo(c.x0, c.y0);
+          ctx.bezierCurveTo(c.cp1x, c.cp1y, c.cp2x, c.cp2y, c.x1, c.y1);
+          ctx.strokeStyle = `rgba(148, 163, 184, ${(c.alpha * (1 - progress * 0.75)).toFixed(3)})`;
+          ctx.lineWidth = 1.2 * dpr;
+          ctx.stroke();
+        });
+
+        // Golden Best Candidate Curve
+        ctx.beginPath();
+        ctx.moveTo(w * 0.08, h * 0.82);
+        ctx.bezierCurveTo(w * 0.35, h * 0.28, w * 0.68, h * 0.12, w * 0.92, h * 0.16);
+        ctx.strokeStyle = '#0D9488';
+        ctx.lineWidth = 2.8 * dpr;
+        ctx.stroke();
+
+        // High-performing points
+        ctx.fillStyle = '#2563EB';
+        ctx.beginPath();
+        ctx.arc(w * 0.92, h * 0.16, 5 * dpr, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = `bold ${10 * dpr}px sans-serif`;
+        ctx.fillText('Optimal (Selectivity: +4.8 log2FC, Organ Tox: 38 idx)', w * 0.52, h * 0.12);
+
+        if (progress < 1) {
+          simAnimId = requestAnimationFrame(renderFrame);
+        } else if (onComplete) {
+          onComplete();
+        }
+      }
+
+      if (duration > 0) {
+        simAnimId = requestAnimationFrame(renderFrame);
+      } else {
+        renderFrame(performance.now());
+      }
     }
 
     renderControls();
@@ -1132,136 +1262,254 @@
     return box;
   }
 
-  // ------------------------------------------------------------------ Mode 2: Full Patient, Lab & AI Organ Editor
-  const touched = new Set();
+  // ------------------------------------------------------------------ Mode 2: Patient & Labs (Biomarker Flowsheet)
   function buildPatientLabsMode() {
     const box = h('div', { class: 's2' });
     box.append(buildWorkspaceBar(() => {
-      refreshBackendData().then(() => renderPatientLabsBody());
+      refreshBackendData().then(() => renderFlowsheet());
     }));
-    const bodyWrap = h('div');
-    box.append(bodyWrap);
+    const content = h('div');
+    box.append(content);
 
-    function renderPatientLabsBody() {
-      clear(bodyWrap);
-      // 1. Categorized Lab Editor (preserving .groups { columns: 2 } container layout)
-      const groupNames = ((APP && APP.labs && APP.labs.groups) || []).filter((g) => FIELDS.some((f) => f.group === g));
-      let activeGroup = groupNames.includes(S.labGroup) ? S.labGroup : (groupNames[0] || 'Basic');
-      const groupLabels = {
-        Basic: 'Basic & Anthropometrics', Kidney: 'Renal Function', Liver: 'Hepatic Panel',
-        Blood: 'Haematology', Glucose: 'Metabolic', Pancreas: 'Pancreatic',
-        Thyroid: 'Thyroid', Cardio: 'Cardiovascular', Genotype: 'Pharmacogenomics',
-      };
-      const groupButtons = new Map();
-      const rows = {};
+    const BIO_FIELDS = [
+      { key: 'bilirubin', name: 'Total Bilirubin', unit: 'mg/dL', refLow: 0.2, refHigh: 1.2, organ: 'hepatic', defaultVal: '1.2' },
+      { key: 'creatinine', name: 'Serum Creatinine', unit: 'mg/dL', refLow: 0.6, refHigh: 1.2, organ: 'renal', defaultVal: '1.0' },
+      { key: 'ast', name: 'Aspartate Aminotransferase (AST)', unit: 'U/L', refLow: 10, refHigh: 40, organ: 'hepatic', defaultVal: '28' },
+      { key: 'alt', name: 'Alanine Aminotransferase (ALT)', unit: 'U/L', refLow: 7, refHigh: 56, organ: 'hepatic', defaultVal: '32' },
+      { key: 'platelets', name: 'Platelet Count', unit: 'x10³/µL', refLow: 150, refHigh: 450, organ: 'haematologic', defaultVal: '220' },
+      { key: 'anc', name: 'Absolute Neutrophil Count (ANC)', unit: 'x10³/µL', refLow: 1.5, refHigh: 8.0, organ: 'haematologic', defaultVal: '3.5' },
+      { key: 'hb', name: 'Hemoglobin (Hb)', unit: 'g/dL', refLow: 12.0, refHigh: 17.5, organ: 'haematologic', defaultVal: '13.8' },
+      { key: 'lvef', name: 'Left Ventricular Ejection Fraction (LVEF)', unit: '%', refLow: 50, refHigh: 75, organ: 'cardiovascular', defaultVal: '60' },
+    ];
 
-      function selectGroup(name) {
-        activeGroup = name;
-        S.labGroup = name;
-        save();
-        groups.forEach((g) => { g.hidden = g.dataset.group !== name; });
-        groupButtons.forEach((btn, k) => btn.setAttribute('aria-pressed', k === name ? 'true' : 'false'));
-      }
+    function renderFlowsheet() {
+      clear(content);
+      const wrap = h('div', { class: 'flowsheet-wrap' });
+      const leftPanel = h('div', { class: 'flowsheet-panel panel' });
+      const rightPanel = h('div', { class: 'organ-linkage-panel panel' });
+      wrap.append(leftPanel, rightPanel);
+      content.append(wrap);
 
-      function labRow(f) {
-        const id = 'lab-' + f.key;
-        const err = h('div', { class: 'err', id: id + '-err', hidden: true });
-        const flag = h('span', { class: 'flag', hidden: true });
-        const state = h('span', { class: 'lab-state', id: id + '-state' });
-        const ok = h('span', { class: 'ok', hidden: true, text: 'OK' });
-        const anchor = f.uln !== null && f.uln !== undefined ? `ULN ${f.uln}` : '';
-        const anc = f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null;
-        const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, anc, flag, ok, state);
+      leftPanel.append(
+        h('div', { class: 'flowsheet-head' },
+          h('h2', { class: 'flowsheet-title', text: 'Clinical Biomarker Flowsheet' }),
+          h('span', { class: 'flowsheet-sub', text: 'Values mapped against institutional reference intervals' })));
 
-        let control;
-        if (f.kind === 'number') {
-          control = h('input', {
-            class: 'num', id, type: 'text', inputmode: 'decimal',
-            autocomplete: 'off', spellcheck: 'false', placeholder: '—',
-            value: S.raw[f.key] || '',
-          });
-          control.addEventListener('input', () => {
-            S.raw[f.key] = control.value;
-            S.presetId = null;
-            save();
-          });
-          control.addEventListener('blur', async () => {
-            touched.add(f.key);
-            await refreshBackendData();
-            refreshLabIndicators();
-          });
-        } else {
-          const opts = f.kind === 'sex' ? [['M', 'M'], ['F', 'F']] : f.kind === 'child_pugh' ? [['A', 'A'], ['B', 'B'], ['C', 'C']] : [['y', 'Yes'], ['n', 'No']];
-          const norm = (v) => String(v || '').trim().toUpperCase().slice(0, 1);
-          const btns = opts.map(([v, label]) => h('button', {
-            type: 'button', role: 'radio', text: label, 'data-v': v,
-            'aria-checked': norm(S.raw[f.key]) === norm(v) ? 'true' : 'false',
-            onclick: async () => {
-              S.raw[f.key] = norm(S.raw[f.key]) === norm(v) ? '' : v;
-              S.presetId = null;
-              save();
-              await refreshBackendData();
-              renderPatientLabsBody();
-            },
-          }));
-          control = h('div', { class: 'seg', role: 'radiogroup', id, 'aria-label': f.label }, btns);
-        }
+      const groupEl = h('div', { class: 'lab-card-group' });
+      BIO_FIELDS.forEach((bf) => {
+        const valStr = S.raw[bf.key];
+        const valNum = parseFloat(valStr);
+        const hasVal = !isNaN(valNum);
 
-        const row = h('div', { class: 'lab' },
-          h('label', { for: f.kind === 'number' ? id : null, text: f.label }),
-          control, unit, err);
-        rows[f.key] = { row, err, flag, ok, control, f, anc, state };
-        return row;
-      }
+        let statusClass = 'empty';
+        let statusText = 'Not entered';
+        let needlePos = 50;
 
-      const groups = groupNames.map((g) => {
-        const fs = FIELDS.filter((f) => f.group === g);
-        return h('section', { class: 'group', 'data-group': g, hidden: g !== activeGroup },
-          h('h2', { class: 'h2', text: groupLabels[g] || g }),
-          fs.map(labRow));
-      });
+        if (hasVal) {
+          const span = (bf.refHigh - bf.refLow) * 2.2;
+          const minRange = Math.max(0, bf.refLow - span * 0.25);
+          const maxRange = bf.refHigh + span * 0.75;
+          needlePos = Math.max(3, Math.min(97, ((valNum - minRange) / (maxRange - minRange)) * 100));
 
-      const groupNav = h('nav', { class: 'lab-nav', 'aria-label': 'Lab categories' }, groupNames.map((name) => {
-        const btn = h('button', {
-          type: 'button',
-          'aria-pressed': name === activeGroup ? 'true' : 'false',
-          onclick: () => selectGroup(name),
-        }, h('span', { text: groupLabels[name] || name }), h('span', { class: 'lab-count' }));
-        groupButtons.set(name, btn);
-        return btn;
-      }));
-
-      function refreshLabIndicators() {
-        const r = S.labs || {};
-        const errs = r.errors || {}, flags = r.flags || [];
-        groupButtons.forEach((button, name) => {
-          const fs = FIELDS.filter((f) => f.group === name && !f.key.startsWith('uln_'));
-          const n = fs.filter((f) => String(S.raw[f.key] ?? '').trim()).length;
-          button.querySelector('.lab-count').textContent = n ? `${n}` : '';
-        });
-        for (const k in rows) {
-          const { err, flag, control } = rows[k];
-          const msg = errs[k] && touched.has(k) && String(S.raw[k] || '').trim() ? String(errs[k]) : '';
-          err.hidden = !msg; err.textContent = msg;
-          const fl = flags.filter((x) => x.key === k && String(S.raw[k] || '').trim());
-          flag.hidden = !fl.length;
-          flag.textContent = fl.length ? (SHORT[fl[0].organ] || fl[0].organ) : '';
-          if (control.classList) {
-            control.classList.toggle('bad', !!msg);
-            control.classList.toggle('flg', !!fl.length && !msg);
+          if (valNum > bf.refHigh * 1.5 || valNum < bf.refLow * 0.7) {
+            statusClass = 'alarm'; statusText = 'Elevated';
+          } else if (valNum > bf.refHigh || valNum < bf.refLow) {
+            statusClass = 'warn'; statusText = 'Borderline';
+          } else {
+            statusClass = 'normal'; statusText = 'Normal';
           }
         }
-      }
 
-      refreshLabIndicators();
-      bodyWrap.append(h('div', { class: 'lab-workspace' }, groupNav, h('div', { class: 'groups' }, groups)));
+        const input = h('input', {
+          type: 'text', inputmode: 'decimal', placeholder: '—', value: valStr || '',
+          class: statusClass !== 'normal' && statusClass !== 'empty' ? 'flagged' : '',
+          oninput: (e) => {
+            S.raw[bf.key] = e.target.value;
+            S.presetId = null;
+            save();
+          },
+          onblur: async () => {
+            await refreshBackendData();
+            renderFlowsheet();
+          },
+        });
+
+        const normalLeft = 25;
+        const normalWidth = 50;
+
+        const row = h('div', { class: 'bio-row' },
+          h('div', { class: 'bio-info' },
+            h('span', { class: 'bio-name', text: bf.name }),
+            h('span', { class: 'bio-ref', text: `Ref: ${bf.refLow} – ${bf.refHigh} ${bf.unit}` })),
+          h('div', { class: 'bio-input-wrap' }, input),
+          h('div', { class: 'bio-spectrum-wrap' },
+            h('div', { class: 'bio-spectrum-track' },
+              h('i', { class: 'bio-spectrum-normal', style: `left:${normalLeft}%;width:${normalWidth}%` }),
+              hasVal ? h('i', { class: `bio-spectrum-needle ${statusClass}`, style: `left:${needlePos}%` }) : null)),
+          h('span', { class: `bio-status-badge ${statusClass}`, text: statusText }));
+
+        groupEl.append(row);
+      });
+
+      leftPanel.append(groupEl);
+
+      // Right Linkage Panel
+      rightPanel.append(h('h3', { class: 'linkage-title', text: 'AI Organ Vulnerability Linkage' }));
+      const activeOrgans = activeOrgansWithScores();
+      const linkageList = h('div', { class: 'linkage-list' });
+
+      if (activeOrgans.length) {
+        activeOrgans.forEach((ao) => {
+          linkageList.append(h('div', { class: 'linkage-card' },
+            h('div', { class: 'linkage-head' },
+              h('span', { class: 'linkage-organ', text: SHORT[ao.organ] || ao.organ }),
+              h('span', { class: 'linkage-source', text: `${Math.round(ao.score * 100)}% Risk Weight` })),
+            h('span', { class: 'linkage-why', text: ao.condKey ? `Triggered by clinical diagnosis: ${condName(ao.condKey)}` : 'Triggered by laboratory biomarker elevation' })));
+        });
+      } else {
+        linkageList.append(h('span', { class: 'dim', text: 'No active organ toxicity triggers detected.' }));
+      }
+      rightPanel.append(linkageList);
     }
 
-    renderPatientLabsBody();
+    renderFlowsheet();
     return box;
   }
 
-  // ------------------------------------------------------------------ Secondary Drill-Down Drawer (FDA Label + Pivotal Trial + 4-Part Architecture)
+  // ------------------------------------------------------------------ 3D ADC Molecular Canvas Renderer
+  let adcAnimId = 0;
+  function init3dAdcCanvas(cvs, adcRow) {
+    const rect = cvs.getBoundingClientRect();
+    const w = cvs.width = (rect.width || 400) * (window.devicePixelRatio || 1);
+    const h = cvs.height = (rect.height || 240) * (window.devicePixelRatio || 1);
+    const ctx = cvs.getContext('2d');
+    if (!ctx) return;
+
+    cancelAnimationFrame(adcAnimId);
+    const dpr = window.devicePixelRatio || 1;
+    let rotY = 0.4;
+    let rotX = 0.2;
+    let isDragging = false;
+    let lastMouseX = 0, lastMouseY = 0;
+
+    cvs.onmousedown = (e) => { isDragging = true; lastMouseX = e.clientX; lastMouseY = e.clientY; };
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - lastMouseX;
+      const dy = e.clientY - lastMouseY;
+      lastMouseX = e.clientX; lastMouseY = e.clientY;
+      rotY += dx * 0.01;
+      rotX += dy * 0.01;
+    });
+
+    const m = (adcRow && MECH[adcRow.adc]) || {};
+    const darCount = Math.round(parseFloat(m.dar || 4)) || 4;
+
+    // Molecular nodes: Y-shaped IgG1 antibody + Linker/Payload spheres
+    const nodes = [
+      // Fc stem (bottom center)
+      { x: 0, y: 35, z: 0, r: 8, col: '#475569', type: 'Fc' },
+      { x: 0, y: 15, z: 0, r: 7, col: '#475569', type: 'Fc' },
+      // Hinge region
+      { x: 0, y: -5, z: 0, r: 6, col: '#2563EB', type: 'Hinge' },
+      // Fab Arm Left
+      { x: -25, y: -25, z: 5, r: 7, col: '#334155', type: 'Fab' },
+      { x: -45, y: -45, z: 10, r: 8, col: '#334155', type: 'Fab' },
+      // Fab Arm Right
+      { x: 25, y: -25, z: -5, r: 7, col: '#334155', type: 'Fab' },
+      { x: 45, y: -45, z: -10, r: 8, col: '#334155', type: 'Fab' },
+    ];
+
+    // Payload branches
+    for (let k = 0; k < darCount; k++) {
+      const angle = (k / darCount) * Math.PI * 2;
+      const radius = 32 + (k % 2) * 12;
+      const py = -10 + (k % 3) * 15;
+      nodes.push({
+        x: Math.cos(angle) * radius,
+        y: py,
+        z: Math.sin(angle) * radius,
+        r: 5.5,
+        col: '#0D9488',
+        glow: true,
+        type: 'Payload',
+      });
+    }
+
+    function project(p, ry, rx) {
+      // Rotate Y
+      const cosY = Math.cos(ry), sinY = Math.sin(ry);
+      const x1 = p.x * cosY + p.z * sinY;
+      const z1 = -p.x * sinY + p.z * cosY;
+      // Rotate X
+      const cosX = Math.cos(rx), sinX = Math.sin(rx);
+      const y2 = p.y * cosX - z1 * sinX;
+      const z2 = p.y * sinX + z1 * cosX;
+      // Perspective
+      const fov = 260;
+      const scale = fov / (fov + z2 + 80);
+      return {
+        x: w / 2 + x1 * scale * 1.8 * dpr,
+        y: h / 2 + y2 * scale * 1.8 * dpr,
+        z: z2,
+        r: p.r * scale * dpr,
+        col: p.col,
+        glow: p.glow,
+      };
+    }
+
+    function render3d() {
+      if (!cvs.isConnected) return;
+      if (!isDragging) rotY += 0.006;
+      ctx.clearRect(0, 0, w, h);
+
+      // Grid backdrop
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      ctx.lineWidth = 1 * dpr;
+      for (let y = h * 0.15; y < h; y += h * 0.2) {
+        ctx.beginPath(); ctx.moveTo(w * 0.1, y); ctx.lineTo(w * 0.9, y); ctx.stroke();
+      }
+
+      const proj = nodes.map((n) => project(n, rotY, rotX)).sort((a, b) => b.z - a.z);
+
+      // Draw backbone connections
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.4)';
+      ctx.lineWidth = 2.2 * dpr;
+      const pC = proj[0], pH = proj[2], pL1 = proj[3], pL2 = proj[4], pR1 = proj[5], pR2 = proj[6];
+      if (pC && pH && pL1 && pL2 && pR1 && pR2) {
+        ctx.beginPath();
+        ctx.moveTo(pC.x, pC.y); ctx.lineTo(pH.x, pH.y);
+        ctx.lineTo(pL1.x, pL1.y); ctx.lineTo(pL2.x, pL2.y);
+        ctx.moveTo(pH.x, pH.y);
+        ctx.lineTo(pR1.x, pR1.y); ctx.lineTo(pR2.x, pR2.y);
+        ctx.stroke();
+      }
+
+      // Draw spheres
+      proj.forEach((p) => {
+        if (p.glow) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r * 1.6, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(13, 148, 136, 0.25)';
+          ctx.fill();
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(1, p.r), 0, Math.PI * 2);
+        ctx.fillStyle = p.col;
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.lineWidth = 0.8 * dpr;
+        ctx.stroke();
+      });
+
+      adcAnimId = requestAnimationFrame(render3d);
+    }
+
+    adcAnimId = requestAnimationFrame(render3d);
+  }
+
+  // ------------------------------------------------------------------ Detail Drawer
   let openDrawer = () => {}, returnFocus = () => {}, keepRow = () => {}, resultKeys = null, settle = 0, shownPatient = {};
 
   function docked(on) {
@@ -1318,23 +1566,22 @@
       h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
       h('span', { class: 'm ' + (w.mark.trim() === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }),
       h('span', { text: w.text.replace(/;\s*/g, ', ') }),
-    ])) : h('p', { class: 'dim', text: 'No boxed or Section 5 warnings on the patient\'s active organs.' }));
+    ])) : h('p', { class: 'dim', text: 'No boxed or Section 5 warnings on patient\'s active organs.' }));
 
-    // 3. Pre-treatment checks & Missing inputs
     const secChecks = (d.checks || []).length ? section('Pre-treatment checks', h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))) : null;
     const secMissing = (d.missing || []).length ? section('Missing inputs',
       h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m }))),
       h('button', { type: 'button', class: 'review-link', text: 'Enter lab values', onclick: () => { closeDrawer(); switchMode(2); } })) : null;
 
-    // 4. Pivotal Trial Context & Dual-Bar Events
+    // 3. Pivotal Trial Study Tab
     const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
-    const secTrial = t ? section('Trial context',
-      h('p', { style: 'margin:0 0 6px;font-weight:700', text: `${t.trial}${t.phase ? ' (Phase ' + t.phase + ')' : ''}` }),
-      h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: t.population || '' }),
-      h('p', { style: 'margin:0 0 4px;font-size:12px', text: `ADC Arm: ${t.regimen} (n=${t.n})` }),
+    const trialSummaryCard = t ? h('div', { class: 'trial-summary-card' },
+      h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:13.5px;color:var(--ink-hi)', text: `${t.trial}${t.phase ? ' (Phase ' + t.phase + ' Registration Trial)' : ''}` }),
+      h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: t.population || 'Patient cohort not specified' }),
+      h('p', { style: 'margin:0 0 4px;font-size:12px;font-weight:600', text: `Treatment Arm: ${t.regimen} (n=${t.n})` }),
       t.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `Control Arm: ${t.comparator.regimen} (n=${t.comparator.n})` }) : null,
       /^NCT\d{8}$/.test(t.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + t.nct, target: '_blank', rel: 'noopener noreferrer', text: `ClinicalTrials.gov ${t.nct} ↗` }) : null
-    ) : section('Trial context', h('p', { class: 'dim', text: (d.trial && d.trial.no_results) || 'Single-arm or registry clinical study.' }));
+    ) : h('p', { class: 'dim', text: (d.trial && d.trial.no_results) || 'Single-arm registration study without comparator arm.' });
 
     const trialEvents = [];
     for (const o of (t && t.organs) || []) {
@@ -1342,13 +1589,13 @@
         trialEvents.push(h('div', { class: 'trial-event' },
           buildDualBar({ trial: t, organ: o.organ, ev: e }),
           h('div', { class: 'event-values', style: 'margin-top:6px' },
-            h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' ADC'),
-            e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' Comparator') : null)));
+            h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' Treatment Arm'),
+            e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' Comparator Arm') : null)));
       }
     }
-    const secEvents = trialEvents.length ? section('Study events', ...trialEvents) : null;
+    const secStudy = section('Trial context and adverse events', trialSummaryCard, ...trialEvents);
 
-    // 5. 4-Part Conjugate Structure & Indications
+    // 4. Structure 3D Tab
     const m = MECH[row.adc];
     const kvRows = m ? [
       ['Target Antigen', m.target],
@@ -1359,36 +1606,39 @@
       ['Average DAR', m.dar],
     ].filter(([, v]) => v) : ((d.payload && d.payload.rows) || []);
 
-    const secPayload = section('Payload and linker',
+    const cvs3d = h('canvas', { class: 'adc-3d-canvas' });
+    const wrap3d = h('div', { class: 'adc-3d-wrap' },
+      cvs3d,
+      h('span', { class: 'adc-3d-hint', text: 'Drag to rotate 3D structure' }));
+
+    const secStructure3d = section('3D Conjugate Architecture (Interactive)',
+      wrap3d,
       kvRows.length ? h('div', { class: 'kv3' }, kvRows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : null,
       h('button', {
-        type: 'button', class: 'review-link', style: 'margin-top:8px',
-        text: 'Open in Structure Studio →',
+        type: 'button', class: 'review-link', style: 'margin-top:10px',
+        text: 'Tune in Structure Studio →',
         onclick: () => { closeDrawer(); switchMode(1); },
       }));
 
-    const secInd = section('Indication',
+    const secInd = section('FDA Approved Indications',
       d.indication ? h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x }))) : null);
-
-    const wo = d.other_warnings || [];
-    const secOtherWarn = wo.length ? section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [
-      h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
-      h('span', { class: 'm ' + (w.mark.trim() === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }),
-      h('span', { text: w.text.replace(/;\s*/g, ', ') }),
-    ]))) : null;
 
     const tabGroups = {
       Patient: [secRestriction, secPatientWarn, secChecks, secMissing].filter(Boolean),
-      Study: [secTrial, secEvents].filter(Boolean),
-      'Structure & Label': [secPayload, secInd, secOtherWarn].filter(Boolean),
+      Study: [secStudy].filter(Boolean),
+      'Structure 3D': [secStructure3d, secInd].filter(Boolean),
     };
 
     const nav = h('div', { class: 'evidence-tabs', role: 'group', 'aria-label': 'Evidence tabs' });
     const allSecs = Object.values(tabGroups).flat();
 
     function switchTab(name) {
+      S.drawerTab = name;
       allSecs.forEach((s) => { s.hidden = !tabGroups[name].includes(s); });
       [...nav.children].forEach((b) => b.setAttribute('aria-pressed', b.dataset.view === name ? 'true' : 'false'));
+      if (name === 'Structure 3D') {
+        setTimeout(() => init3dAdcCanvas(cvs3d, row), 50);
+      }
     }
 
     Object.keys(tabGroups).forEach((name) => {
@@ -1399,7 +1649,7 @@
     });
 
     drawerBody.append(nav, ...allSecs);
-    switchTab('Patient');
+    switchTab(S.drawerTab || 'Patient');
   }
 
   function saveReview(result) {
@@ -1411,7 +1661,7 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
-  // ------------------------------------------------------------------ Mode Switching & Keyboard Navigation
+  // ------------------------------------------------------------------ Mode Switching & Keyboard Controls
   function switchMode(m, keepDrawer) {
     if (!keepDrawer) closeDrawer(true);
     S.mode = m;
@@ -1470,7 +1720,6 @@
 
     restore();
     renderHeaderControls();
-    // Render immediately so DOM has .crumbs and search input without waiting, then populate live matrix
     renderActiveMode(false);
     await refreshBackendData();
     renderActiveMode(false);
