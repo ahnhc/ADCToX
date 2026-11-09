@@ -444,14 +444,17 @@ def ensure_side_launcher(name, flag):
     return side
 
 
-def auto_update_app(allow_local=False):
+AUTO_CHECK_MINUTES = 5                      # the published version is read at most this often (GitHub caches the raw file for about 5 minutes anyway)
+
+
+def auto_update_app(allow_local=False, startup=True):
     """At start of an installed app: when the published app version (read at most once a day) is newer, download, verify and
     switch to it (update_app). -> True when this start switched releases and should restart; False for anything else
     (offline, up to date, a checkout, ADCTOX_NO_AUTO_UPDATE=1, new packages needed). Never raises, so a failure never blocks the app."""
-    if os.environ.get("ADCTOX_NO_AUTO_UPDATE") or os.environ.get("ADCTOX_AUTO_UPDATED") or app_layout() is None:
+    if os.environ.get("ADCTOX_NO_AUTO_UPDATE") or (startup and os.environ.get("ADCTOX_AUTO_UPDATED")) or app_layout() is None:
         return False
     try:
-        c = check_app(allow_local=allow_local)
+        c = check_app(max_age_hours=AUTO_CHECK_MINUTES / 60, allow_local=allow_local)
         if not c or not c.get("newer"): return False
         print(f"New ADCTOX {c['latest']} found (running {APP_VERSION}); updating...", flush=True)
         message = update_app(allow_local=allow_local)
@@ -460,6 +463,21 @@ def auto_update_app(allow_local=False):
     except Exception as error:                      # offline, bad manifest, changed packages: keep running this release
         print(f"Automatic app update skipped: {error}", file=__import__("sys").stderr)
         return False
+
+
+def watch_for_updates(interval_minutes=10):
+    """A running app (the web server) looks for a newer release every few minutes and switches to it; it restarts at once only
+    with ADCTOX_AUTO_RESTART=1 (a server), else the new release starts with the next start. -> the daemon thread."""
+    import threading, time
+    def loop():
+        while True:
+            time.sleep(interval_minutes * 60)
+            if auto_update_app(startup=False):
+                if os.environ.get("ADCTOX_AUTO_RESTART") == "1": restart_app()
+                print("A new ADCTOX release is installed; it starts with the next start.", flush=True)
+                return
+    thread = threading.Thread(target=loop, daemon=True); thread.start()
+    return thread
 
 
 def restart_app():

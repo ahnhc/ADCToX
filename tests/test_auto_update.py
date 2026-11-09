@@ -33,3 +33,11 @@ def test_a_repository_checkout_is_never_auto_updated(monkeypatch):
     monkeypatch.delenv("ADCTOX_NO_AUTO_UPDATE", raising=False); monkeypatch.delenv("ADCTOX_AUTO_UPDATED", raising=False)
     monkeypatch.setattr(U, "app_layout", lambda program=None: None)
     assert U.auto_update_app() is False
+
+
+def test_a_running_app_checks_again_and_restarts_only_when_asked(monkeypatch):
+    monkeypatch.delenv("ADCTOX_NO_AUTO_UPDATE", raising=False); monkeypatch.setenv("ADCTOX_AUTO_UPDATED", "1")   # set by a restart: only the startup check is skipped
+    monkeypatch.setattr(U, "app_layout", lambda program=None: (pathlib.Path("/p"), pathlib.Path("/p/apps/x")))
+    monkeypatch.setattr(U, "check_app", lambda **k: {"latest": "9.9.9", "newer": True})
+    monkeypatch.setattr(U, "update_app", lambda **k: "App switched to 9.9.9.")
+    assert U.auto_update_app() is False and U.auto_update_app(startup=False) is True
