@@ -15,7 +15,7 @@ The browser still uses the existing model and deterministic label rules. This re
 
 - `ml/web/app.js`: DOM rendering and interaction for the five steps.
 - `ml/web/review.js`: pure lab-state, indication-state and export functions, tested by `tests/js/review.js`.
-- `ml/web/app.css`: layout, typography, responsive presentation; Pretendard is the shipped UI face.
+- `ml/web/app.css`: layout, typography, responsive presentation; Intel One Mono is the shipped UI face.
 - `ml/webapp.py`: API adapter, per-request recommendation state and serial analysis worker.
 - `ml/recommend.py`: condition analysis and evidence ordering.
 - `ml/restrictions.py`, `ml/labs.py`: deterministic restrictions and lab parsing.

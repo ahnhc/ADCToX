@@ -5,7 +5,7 @@ ADCToX 0.6.15 — evidence review and local export
 - Cancer-match status on each ADC, with direct return to conditions and labs.
 - Trial population, treatment/comparator counts and source links alongside the warnings.
 - Save review: local text file containing inputs, missing information and evidence.
-- Shared review presentation functions and a consistent Pretendard UI.
+- Shared review presentation functions and a consistent Intel One Mono UI.
 - Includes the input, restriction and updater fixes prepared for 0.6.14. Models remain at 0.8.
 
 This research prototype has no measured clinical time-saving effect. Experimental antigravity de novo design files are not in the release.

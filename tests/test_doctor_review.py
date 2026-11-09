@@ -1,6 +1,6 @@
 """Fixes from going through the app as a doctor would (2026-10-28): the picked condition reorders the ADCs, the result words say
 what they mean, Missing inputs lists only what is missing, and the input screens explain themselves."""
-import re, sys, pathlib, types
+import re, sys, pathlib
 import pytest
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "ml"))
 import term, tui

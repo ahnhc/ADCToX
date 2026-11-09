@@ -14,7 +14,7 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 | `recommend.py` | 앱 진입점. 기저질환과 lab 값을 받아 ADC를 label restriction → boxed warning → W&P 순으로 정렬한다 |
 | `form.py` | 한 화면 입력 UI. 질환 선택, lab 값, 질환 간 우선순위를 단계별로 받는다. ESC는 한 단계 뒤로 |
 | `tui.py` | curses 메뉴(화살표 radio list, 검색 checklist) |
-| `webapp.py` | `adctox --web`: 같은 다섯 단계를 브라우저에서. 127.0.0.1의 빈 포트(`ADCTOX_PORT`가 있으면 그 포트)에 stdlib HTTP 서버를 띄우고 `ml/web/`(index.html, app.css, app.js, 글꼴 AnthropicSansText-Light.otf와 PretendardVariable.woff2, mock.js는 개발용 fixture라 배포에서 빠진다)를 내보낸다. 서버에는 아무것도 남지 않는다 |
+| `webapp.py` | `adctox --web`: 같은 다섯 단계를 브라우저에서. 127.0.0.1의 빈 포트(`ADCTOX_PORT`가 있으면 그 포트)에 stdlib HTTP 서버를 띄우고 `ml/web/`(index.html, app.css, app.js, 글꼴 IntelOneMono-Regular/Medium/Bold.woff2와 PretendardVariable.woff2, mock.js는 개발용 fixture라 배포에서 빠진다)를 내보낸다. 서버에는 아무것도 남지 않는다 |
 | `term.py` | curses가 없거나 한글 폭이 틀리는 환경(Windows)에서 쓰는 ANSI 대체 구현 |
 | `suggest.py` | 입력 화면 검색. 철자 검색(한국어 초성 포함), 판정 모델의 가까운 개념 이름, 증상, 문장 → 질환 검색 |
 | `mondo_index.py` | MONDO 이름 색인. 앱은 이름, 장기, 한국어 KCD 이름만 읽는다. 연구용 SapBERT linker(THETA 0.75)도 여기 있다 |

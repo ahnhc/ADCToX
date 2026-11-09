@@ -79,7 +79,7 @@
   }
   const clear = (el) => { while (el.firstChild) el.firstChild.remove(); return el; };
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const kbd = (k, label) => h('span', null, h('kbd', { text: k }), label);
+  const kbd = (k, label) => h('span', null, h('kbd', { text: k }), ({ add: 'Add', choose: 'Choose', remove: 'Remove', move: 'Move', back: 'Back', next: 'Next', select: 'Select', details: 'Details' })[label] || label);
 
   // ------------------------------------------------------------------ help: a note on dotted titles (hover or focus), one card per step
   // on the first visit (remembered in this browser), and the ? guide in the header
@@ -173,8 +173,8 @@
         h('ol', { class: 'g-steps' }, STEPS.map((name, i) => h('li', null, h('b', { text: name }), h('span', { text: STEP_TIPS[i] })))),
         h('h3', { text: 'Reading the results' }),
         h('div', { class: 'g-keys' },
-          h('span', null, [['cyan', 1], ['ink', 2], ['red', 3]].map(([t, k]) => h('span', { class: 't-' + t }, levelNode(k, k)))), 'Label restriction: Monitor, Not studied, Avoid',
-          h('span', { class: 't-dim' }, levelNode(3, 1)), 'Dashed: a value not entered could raise the level',
+          h('span', { class: 'status-pill limited', text: 'Label status' }), 'Applicable label restrictions, grouped for review, not treatment ranking',
+          h('span', { class: 'conditional-label', text: 'Depends on a value not entered' }), 'The restriction depends on a value not entered',
           h('span', null, h('b', { class: 't-red mono', text: '!!' })), 'Boxed warning on that organ',
           h('span', null, h('b', { class: 't-amber mono', text: '!' })), 'Warning on that organ'),
         h('h3', { text: 'Keys' }),
@@ -192,7 +192,6 @@
   // ------------------------------------------------------------------ app data (GET /api/app)
   let APP = null, AX = [], SHORT = {}, REG = {}, REG_I = {}, FIELDS = [], STEPS = [];
   const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'ink', no_statement: 'ink', reduce_dose: 'cyan', monitor: 'cyan', no_adjustment: 'green' };
-  const STATE_TONE = { None: 'green', Monitor: 'cyan', 'No data': 'ink', 'Not studied': 'ink', Avoid: 'red' };
 
   // ------------------------------------------------------------------ state (kept in sessionStorage; nothing on the server)
   const KEY = 'adctox.web.1';
@@ -384,13 +383,13 @@
   }
 
   // ================================================================== page frame
-  let top, crumbsOl, verEl, layout, stageBox, side, bar, barLeft, barKeys, barBtn, drawer, drawerTitle, drawerBody, body;
+  let top, crumbsOl, verEl, layout, stageBox, side, bar, barLeft, barKeys, barBtn, stageActions, drawer, drawerTitle, drawerBody, body;
 
   function frame() {
     document.title = 'ADCTOX';
     crumbsOl = h('ol');
     verEl = h('div', { class: 'ver', text: '' });
-    top = h('header', { class: 'top' }, h('div', { class: 'brand', text: 'ADCToX', 'aria-hidden': 'true' }), h('nav', { class: 'crumbs', 'aria-label': 'Steps' }, crumbsOl), h('div', { class: 'right' }, helpBtn(), verEl));
+    top = h('header', { class: 'top' }, h('div', { class: 'brand', text: 'ADCToX', 'aria-hidden': 'true' }), h('nav', { class: 'crumbs', 'aria-label': 'Steps' }, crumbsOl), h('div', { class: 'right' }, h('span', { class: 'preview-badge', text: 'UI preview' }), helpBtn(), verEl));
     stageBox = h('main', { class: 'stage' });
     body = buildBody();
     side = h('aside', { class: 'side', 'aria-label': 'Body map' }, body.el);
@@ -399,7 +398,8 @@
     barKeys = h('div', { class: 'keys', 'aria-hidden': 'true' });
     barBtn = h('button', { class: 'go', type: 'button', hidden: true });      // setBar shows it
     barBtn.addEventListener('click', () => barBtn._act && barBtn._act());
-    bar = h('footer', { class: 'bar' }, barLeft, barKeys, barBtn);
+    stageActions = h('div', { class: 'stage-actions' }, barLeft, barBtn);
+    bar = h('footer', { class: 'bar' }, barKeys);
     drawerTitle = h('h2', { id: 'dr-title' });
     drawerBody = h('div', { class: 'dr-body' });
     const x = h('button', { class: 'x', type: 'button', 'aria-label': 'Close', text: '×', onclick: () => closeDrawer() });
@@ -410,11 +410,12 @@
 
   function setBar(o) {
     clear(barLeft); add(barLeft, [o.left || '']);
-    clear(barKeys); add(barKeys, o.keys || []);
     const b = o.button;
+    clear(barKeys); add(barKeys, (o.keys || []).concat(b && b.key ? [kbd(b.key, b.keyLabel || 'next')] : []));
     barBtn.hidden = !b;
     if (b) {
-      clear(barBtn); add(barBtn, [b.label, b.key ? h('kbd', { text: b.key }) : null]);
+      clear(barBtn); add(barBtn, [b.label]);
+      if (b.key) barBtn.title = b.key + ': ' + (b.keyLabel || 'Next step'); else barBtn.removeAttribute('title');
       barBtn.disabled = !!b.disabled; barBtn.className = 'go' + (b.quiet ? ' quiet' : ''); barBtn._act = b.act;
     }
   }
@@ -447,7 +448,8 @@
       const done = i < S.step && !skipped;
       const now = i === S.step;
       const cls = 'crumb' + (now ? ' now' : done ? ' done' : skipped ? ' skip' : '');
-      const cb = done ? h('button', { class: 'cb', type: 'button', text: name, onclick: () => go(i) }) : h('span', { class: 'cb', text: name, 'aria-current': now ? 'step' : null });
+      const cb = done ? h('button', { class: 'cb', type: 'button', onclick: () => go(i) }) : h('span', { class: 'cb', 'aria-current': now ? 'step' : null });
+      add(cb, [h('span', { class: 'step-number', 'aria-hidden': 'true', text: String(i + 1) }), name]);
       const sum = done ? summary(i) : '';
       crumbsOl.append(h('li', { class: cls }, cb, sum ? h('span', { class: 'sum', text: sum, title: sum }) : null));
     });
@@ -461,6 +463,7 @@
     closeDrawer(true);
     if (keepDrawer) S.drawer = reopen;
     S.step = n; S.reached = Math.max(S.reached, n); save();
+    ROOT.classList.toggle('review-mode', n === 4);
     layout.className = 'layout' + (n ? ' body-on' : '') + ' st-' + n;      // the body map from step 2 on (the start screen is the search alone)
     if (n === 0) body.update({});
     renderCrumbs();
@@ -468,17 +471,19 @@
     stageBox.classList.remove('enter');
     const build = [stage1, stage2, stage3, stage4, stage5][n];
     const node = build();
+    const actionHost = n === 1 ? node.querySelector('.groups') : n === 4 ? node.querySelector('.review-toolbar') : node;
+    (actionHost || node).append(stageActions);
     stageBox.append(node);
     if (!still()) { void stageBox.offsetWidth; stageBox.classList.add('enter'); }
     window.scrollTo(0, 0);
-    hideTip(); stepCard(n);
+    hideTip(); closeCard();
   }
   let busy = false;                       // a step change waiting on the server: PgDn, PgUp and the bar button do nothing meanwhile
   async function next() {
     if (busy) return;
     if (S.step === 0) {
-      if (typedText()) { stageNote('Not added yet. Press Enter to add it, or Esc to clear it'); return; }
-      if (!S.conds.length) { stageNote('Add at least one condition'); return; }
+      if (typedText()) { stageNote('Enter the items you typed'); return; }
+      if (!S.conds.length) { stageNote('Add at least one cancer or condition'); return; }
       go(1);
     } else if (S.step === 1) {
       busy = true; barBtn.setAttribute('aria-busy', 'true');
@@ -496,13 +501,13 @@
   }
   let stageNote = () => {}, typedText = () => '';
 
-  // ================================================================== step 1: 질환
+  // ================================================================== step 1: Conditions
   function stage1() {
     const st = { q: '', listQ: null, pending: null, items: [], cur: -1, moved: false, armed: false, timer: 0, aiTimer: 0, busyTimer: 0, seq: 0, aiSeq: 0, fresh: -1, lastKey: 0 };
     const chips = h('ul', { class: 'chips', 'aria-label': 'Selected conditions' });
     const input = h('input', {
       type: 'text', role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'sugg', 'aria-autocomplete': 'list', 'aria-label': 'Condition',
-      placeholder: 'Condition, symptom or cancer', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
+      placeholder: 'e.g. breast cancer, heart failure', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
     });
     const list = h('ul', { class: 'sugg panel', id: 'sugg', role: 'listbox', 'aria-label': 'Suggestions', hidden: true });
     const note = h('div', { class: 'note', role: 'status' });
@@ -543,7 +548,7 @@
       for (const s of r.names || []) if (fresh(s)) out.push({ kind: 's', s });
       for (const s of r.ai || []) if (fresh(s)) out.push({ kind: 'ai', s });
       const sym = (r.symptoms || []).filter(fresh);
-      if (sym.length) { out.push({ kind: 'head', text: 'Conditions that match the description' }); sym.forEach((s) => out.push({ kind: 'sym', s })); }
+      if (sym.length) { out.push({ kind: 'head', text: 'Items related to the input' }); sym.forEach((s) => out.push({ kind: 'sym', s })); }
       out.push({ kind: 'raw', text: q });
       return out;
     }
@@ -570,7 +575,7 @@
       chips.hidden = !S.conds.length;
       setBar({
         keys: [kbd('Enter', 'add'), kbd('↑↓', 'choose'), S.conds.length ? kbd('Backspace', 'remove') : null],
-        button: { label: 'Next', key: 'PgDn', act: next },
+        button: { label: 'Enter lab values', key: 'PgDn', act: next },
       });
     }
     function renderList() {
@@ -706,7 +711,7 @@
       } else if (e.key === 'Enter') {
         e.preventDefault();
         const q = st.q.trim();
-        if (!q) { note.textContent = S.conds.length ? 'PgDn for the next step' : 'Condition, symptom or cancer'; return; }
+        if (!q) { note.textContent = S.conds.length ? 'PgDn for the next step' : 'e.g. breast cancer, heart failure'; return; }
         if (st.listQ !== q) enter(q);       // the list for q has not come yet
         else if (st.cur >= 0 && selectable(st.cur)) pick();
         else if (st.added) { note.textContent = `Already added: ${st.added}`; reset(); }
@@ -722,9 +727,8 @@
       }
     });
     const node = h('div', { class: 's1' },
-      h('div', { class: 'hero' }, h('h1', { class: 'logo', 'aria-label': 'ADCToX' }, h('span', { class: 'a', text: 'ADC' }), h('span', { class: 'b', text: 'ToX' }))),
-      h('p', { class: 'intro', text: 'Review ADC label evidence for the patient’s conditions and lab values.' }),
-      h('p', { class: 'step-description', text: 'Add a cancer to check indication matches. English and Korean inputs are supported.' }),
+      h('div', { class: 'hero' }, h('span', { class: 'flow-kicker', text: 'Patient' }), h('h1', { class: 'flow-title', text: 'Enter the cancer and conditions' })),
+      h('p', { class: 'step-description', text: 'Type a cancer, condition or symptom, then press Enter to add it' }),
       chips, h('div', { class: 'field' }, h('span', { class: 'pr', 'aria-hidden': 'true', text: '›' }), input), list, note, status);
     renderChips();
     const preset = MOCK && Q.get('q') && !stage1.preset ? Q.get('q') : '';
@@ -734,7 +738,7 @@
     return node;
   }
 
-  // ================================================================== step 2: 검사 수치
+  // ================================================================== step 2: Labs
   const touched = new Set();
   let labsTimer = 0, labsSeq = 0, labUI = null, labsErr = '';
   async function labsNow() {               // POST /api/labs; the answer for the latest values is kept, and returned to its caller either way
@@ -753,7 +757,8 @@
     const bad = FIELDS.filter((f) => errs[f.key]);
     if (!bad.length) return true;
     bad.forEach((f) => touched.add(f.key));
-    if (labUI) labUI();
+    S.labGroup = bad[0].group;
+    if (labUI) labUI(bad[0].group);
     const el = document.getElementById('lab-' + bad[0].key);
     if (el) el.focus();
     return false;
@@ -771,16 +776,36 @@
   function stage2() {
     const order = [];                       // focusable controls, in field order
     const rows = {};
+    const groupNames = (APP.labs.groups || []).filter(g => FIELDS.some(f => f.group === g));
+    let activeGroup = groupNames.includes(S.labGroup) ? S.labGroup : groupNames[0];
+    const groupLabels = { Basic: 'Basic information', Kidney: 'Renal', Liver: 'Liver', Blood: 'Haematologic', Glucose: 'Glucose', Pancreas: 'Pancreas', Thyroid: 'Thyroid', Cardio: 'Cardiovascular', Genotype: 'Genotype' };
+    const fieldLabels = { age: 'Age', sex: 'Sex', weight: 'Weight', lvef: 'Left ventricular ejection fraction (LVEF)', creatinine: 'Creatinine', bilirubin: 'Bilirubin', ast: 'AST', alt: 'ALT', albumin: 'Albumin', platelets: 'Platelets', anc: 'Neutrophil count' };
+    const groupButtons = new Map();
     const groups = (APP.labs.groups || []).map((g) => {
       const fs = FIELDS.filter((f) => f.group === g);
       if (!fs.length) return null;
-      return h('section', { class: 'group panel', 'aria-label': g }, h('h2', { class: 'h2', text: g }), fs.map(labRow));
+      return h('section', { class: 'group', 'aria-label': g, 'data-group': g, hidden: g !== activeGroup }, h('h2', { class: 'h2', text: groupLabels[g] || g }), fs.map(labRow));
     }).filter(Boolean);
 
+    function selectGroup(name) {
+      activeGroup = name; S.labGroup = name; save();
+      groups.forEach(group => { group.hidden = group.dataset.group !== name; });
+      groupButtons.forEach((button, key) => button.setAttribute('aria-pressed', key === name ? 'true' : 'false'));
+      updateGroupAction();
+    }
+    const groupNav = h('nav', { class: 'lab-nav', 'aria-label': 'Lab categories' }, groupNames.map(name => {
+      const button = h('button', { type: 'button', 'aria-pressed': name === activeGroup ? 'true' : 'false', onclick: () => selectGroup(name) }, h('span', { text: groupLabels[name] || name }), h('span', { class: 'lab-count' }));
+      groupButtons.set(name, button); return button;
+    }));
+
+    const groupNext = h('button', { type: 'button', class: 'group-next', text: 'Next group', onclick: () => { const i = groupNames.indexOf(activeGroup); if (i + 1 < groupNames.length) selectGroup(groupNames[i + 1]); } });
+    stageActions.prepend(groupNext);
+    const labProgress = h('p', { class: 'lab-progress', 'aria-live': 'polite' });
+    function updateGroupAction() { const last = groupNames.indexOf(activeGroup) === groupNames.length - 1; groupNext.hidden = last; barBtn.classList.toggle('quiet', !last); }
     function move(f, dir) {
       const i = order.findIndex((o) => o.key === f.key);
       const t = order[i + dir];
-      if (t) t.focus();
+      if (t) { selectGroup(FIELDS.find(field => field.key === t.key).group); t.focus(); }
     }
     function labRow(f) {
       const id = 'lab-' + f.key;
@@ -832,13 +857,24 @@
         sync();
         order.push({ key: f.key, focus: () => (btns.find((b) => b.tabIndex === 0) || btns[0]).focus() });
       }
-      const row = h('div', { class: 'lab' }, h('label', { for: f.kind === 'number' ? id : null, text: f.label, id: id + '-l' }), control, unit, err);
+      const row = h('div', { class: 'lab' }, h('label', { for: f.kind === 'number' ? id : null, text: fieldLabels[f.key] || f.label, id: id + '-l' }), control, unit, err);
       rows[f.key] = { row, err, flag, ok, control, f, anc, state };
       return row;
     }
-    function refresh() {
+    function refresh(revealGroup) {
+      if (typeof revealGroup === 'string' && groupNames.includes(revealGroup)) selectGroup(revealGroup);
       const r = S.labs || {};
       const errs = r.errors || {}, flags = r.flags || [];
+      const countable = FIELDS.filter(f => !f.key.startsWith('uln_'));
+      const enteredCount = countable.filter(f => String(S.raw[f.key] ?? '').trim()).length;
+      labProgress.textContent = `Entered ${enteredCount}, not entered ${countable.length - enteredCount} (optional)`;
+      groupButtons.forEach((button, name) => {
+        const fields = FIELDS.filter(f => f.group === name);
+        const n = fields.filter(f => String(S.raw[f.key] ?? '').trim()).length;
+        const hasError = fields.some(f => errs[f.key]);
+        button.querySelector('.lab-count').textContent = hasError ? 'Check' : n ? `${n} entered` : 'Not entered';
+        button.classList.toggle('has-error', hasError);
+      });
       for (const k in rows) {
         const { err, flag, ok, control, f, anc, state } = rows[k];
         if (anc && r.uln && r.uln[k] !== undefined) anc.textContent = `ULN ${r.uln[k]}`;
@@ -851,8 +887,9 @@
         flag.title = fl.map((x) => x.why).join('\n');
         const entered = String(S.raw[k] || '').trim() && r.raw && r.raw[k] !== undefined && r.raw[k] !== null;
         ok.hidden = !(f.rule && entered && !msg && !errs[k] && !fl.length);
-        state.textContent = REVIEW.labState(S.raw[k], errs[k], fl.length, !ok.hidden, k.startsWith('uln_'));
+        state.textContent = ({ 'Not entered': 'Not entered', 'Check input': 'Check input', 'Review needed': 'Review needed', 'No flag triggered': 'Entered', 'Default reference': 'Default reference', 'Entered': 'Entered' })[REVIEW.labState(S.raw[k], errs[k], fl.length, !ok.hidden, k.startsWith('uln_'))] || '';
         state.classList.toggle('entered', !!entered);
+        state.classList.toggle('missing', state.textContent === 'Not entered');
         if (control.classList) { control.classList.toggle('okv', !ok.hidden); control.classList.toggle('flg', !!fl.length && !msg); }
       }
       const lit = {};
@@ -863,19 +900,21 @@
       setBar({
         left: labsErr ? h('span', { class: 'err-line', text: labsErr }) : parts.map((t) => h('span', { class: 'info', text: t })),
         keys: [kbd('↑↓', 'move'), kbd('PgUp', 'back')],
-        button: { label: 'Next', key: 'PgDn', act: next },
+        button: { label: 'Finish lab entry', key: 'PgDn', keyLabel: 'Finish lab entry', quiet: groupNames.indexOf(activeGroup) !== groupNames.length - 1, act: next },
       });
     }
     labUI = refresh;
-    const node = h('div', { class: 's2' }, h('h1', { class: 'title', text: 'Labs' }), h('p', { class: 'step-description', text: 'Enter the available results. Blank values remain unknown. No flag triggered means only that these checks did not flag the value.' }), h('div', { class: 'groups' }, groups));
-    refresh();
+    const node = h('div', { class: 's2' }, h('span', { class: 'flow-kicker', text: condList().map(condName).join(', ') }),
+      h('h1', { class: 'flow-title', text: 'Enter the lab values' }), h('p', { class: 'step-description', text: 'Enter only the values you have. Empty boxes stay not entered.' }), labProgress,
+      h('div', { class: 'lab-workspace' }, groupNav, h('div', { class: 'groups' }, groups)));
+    refresh(); updateGroupAction();
     labsNow();
-    setTimeout(() => { const first = order.find((o) => !String(S.raw[o.key] || '').trim()) || order[0]; if (first && S.step === 1) first.focus({ preventScroll: true }); }, 0);
-    cleanup = () => { labUI = null; barLeft.title = ''; };
+    setTimeout(() => { const first = order.find(o => FIELDS.find(f => f.key === o.key).group === activeGroup); if (first && S.step === 1) first.focus({ preventScroll: true }); }, 0);
+    cleanup = () => { labUI = null; barLeft.title = ''; groupNext.remove(); };
     return node;
   }
 
-  // ================================================================== step 3: AI 장기 분석
+  // ================================================================== step 3: AI organ analysis
   function readingOf(r) {                 // the reading picked for an input that reads as several diseases; undefined when there is none to pick
     const amb = S.analysis && (S.analysis.ambiguous || []).find((a) => a.text === r.condition);
     if (!amb || !Object.prototype.hasOwnProperty.call(S.meanings, r.condition)) return undefined;
@@ -914,31 +953,32 @@
 
   function stage3() {
     const box = h('div');
-    const node = h('div', { class: 's3' }, h('h1', { class: 'title', text: 'Organs to review' }), h('p', { class: 'step-description', text: 'Model scores describe a condition–organ association, not the probability of organ damage or an adverse reaction. Registry matches use predefined mappings.' }), box);
+    const labSummary = Object.entries(rawValues()).map(([key, value]) => { const f = FIELDS.find(x => x.key === key); return f ? `${f.label} ${value}${f.unit ? ' ' + f.unit : ''}` : `${key}: ${value}`; });
+    const node = h('div', { class: 's3' }, h('h1', { class: 'title', text: 'Condition-organ association' }), h('p', { class: 'step-description', text: 'Model association scores are not individual toxicity probabilities.' , title: 'Model scores are condition-organ associations, not individual toxicity probabilities.' }), h('div', { class: 'input-summary' }, h('strong', { text: 'Lab results' }), h('span', { text: labSummary.join(', ') || 'Not entered' }), h('button', { class: 'review-link', type: 'button', text: 'Edit', onclick: () => go(1) })), box);
     const run = ++analysisRun;
     const sig = analysisSig();
     let ticker = 0, ui = null, rerun = false;
     const cells = {};                     // condition -> its Organs cells in the review table
-    cleanup = () => { analysisRun++; clearInterval(ticker); };
+    cleanup = () => { analysisRun++; clearInterval(ticker); side.classList.remove('analyzing'); };
 
     // the TUI's wait: the step the model reports with a dot cycle, the inputs, and the process's CPU and RAM (form.Form.analyze)
     function running() {
-      clear(box);
+      clear(box); body.update({}); side.classList.add('analyzing');
       ui = { st: h('span', { class: 'st' }), dots: h('span', { class: 'dots', 'aria-hidden': 'true' }), secs: h('span', { class: 'secs' }), usage: h('div', { class: 'usage' }) };
       ui.track = h('div', { class: 'track', role: 'progressbar', 'aria-label': 'Organ analysis' }, h('span'));
-      box.append(h('div', { class: 'run' }, ui.track,
+      box.append(h('div', { class: 'run' }, h('strong', { class: 'run-label', text: 'Analysing condition-organ associations' }), ui.track,
         h('div', { class: 'pline' }, h('span', null, ui.st, ui.dots), ui.secs),
         h('div', { class: 'who', text: condList().map(condName).join(', ') }), ui.usage));
       setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', disabled: true, act: next } });
     }
     function failed(msg) {
-      clearInterval(ticker);
+      clearInterval(ticker); side.classList.remove('analyzing');
       clear(box);
       box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'The AI analysis did not finish' }), h('p', { class: 'msg', text: msg })));
-      setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Back to conditions', act: () => go(0) } });
+      setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Back to patient information', act: () => go(0) } });
     }
     function finish() {
-      clearInterval(ticker);
+      clearInterval(ticker); side.classList.remove('analyzing');
       const A = S.analysis;
       if (A.state === 'error') failed(A.error || 'error');
       else { defaultMeanings(); review(true); }
@@ -1000,12 +1040,11 @@
       if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge failed. Typed conditions were not read.' }));
       const table = h('div', { class: 'review', role: 'table', 'aria-label': 'Organ analysis' },
         h('div', { class: 'rv-head', role: 'row' },
-          h('span', { role: 'columnheader', text: 'Input' }),
-          h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Organs' }))),
-          h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Read as' })))));
+          h('span', { role: 'columnheader', text: 'Input item' }),
+          h('span', { role: 'columnheader', text: 'Related organs, association score' })));
       reps.forEach((r, i) => {
-        const cell = h('span', { role: 'cell' }, organCell(r));
-        const read = h('span', { class: 'read', role: 'cell' }, readParts(r, ambText));
+        const cell = h('span', { role: 'cell' }, r.source === 'Cancer' ? 'Cancer' : organCell(r));
+        const read = h('span', { class: 'read', role: 'cell', hidden: true }, readParts(r, ambText));
         (cells[r.condition] = cells[r.condition] || []).push({ cell, r, read });
         table.append(h('div', { class: 'rv-row' + (cascade && !still() ? ' in' : ''), role: 'row', style: `--i:${i}` },
           h('span', { class: 'inp', role: 'cell', text: shownName(r), title: shownName(r) }),
@@ -1014,7 +1053,7 @@
       });
       box.append(table);
       if ((A.ambiguous || []).length) box.append(meanings());
-      setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', act: next } });
+      setBar({ keys: [kbd('PgUp', 'back')], button: { label: hasPriority() ? 'Select review order' : 'Drug review', key: 'PgDn', act: next } });
       lightAnalysis(cascade);
     }
     function readParts(r, ambText) {      // what the analysis read, until another reading of the input is picked below
@@ -1023,27 +1062,26 @@
       const g = (S.analysis.ambiguous || []).find((a) => a.text === r.condition), rd = readingOf(r);
       const applied = g && (g.default !== undefined ? g.default : (g.readings[0] || { mondo: null }).mondo);
       if (g && rd !== undefined && S.meanings[r.condition] !== applied) {
-        return rd ? [h('span', { class: 'rd', text: rd.name || rd.mondo }), h('span', { class: 'how', text: 'Chosen' }), mean] : [h('span', { class: 'how', text: 'Not sure' }), mean];
+        return rd ? [h('span', { class: 'rd', text: rd.name || rd.mondo }), h('span', { class: 'how', text: 'Chosen' }), mean] : [h('span', { class: 'how', text: 'Unclear' }), mean];
       }
-      return [r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: r.how || '' }), mean, r.check ? h('span', { class: 'mean', text: r.check }) : null];
+      return [r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: ({ Registry: 'Registry condition', MONDO: 'Disease term', 'Chosen (record)': 'Selected item' })[r.how] || r.how || '' }), mean, r.check ? h('span', { class: 'mean', text: r.check }) : null];
     }
     function organCell(r) {               // form.likely: the judge's three most probable organs (and a used one outside them), as the server wrote them
       const used = organsOf(r);
       if (!used.length) {
         const rd = readingOf(r);
-        const text = r.source === 'Cancer' ? r.no_organs || 'Cancer' : rd === undefined ? r.no_organs || '-' : rd ? 'none of 13' : '-';
+        const text = r.source === 'Cancer' ? 'Cancer (excluded from organ judging)' : rd === undefined ? r.no_organs || '-' : rd ? 'none of 13' : '-';
         return h('span', { class: text === 'Cancer' ? 'cancer' : 'dim', text });
       }
-      const same = used.length === (r.organs || []).length && used.every((o) => r.organs.includes(o));
-      const lk = same && (r.likely || []).length ? r.likely : used.map((o) => ({ organ: o, used: true, p: null, text: null }));
-      if (!lk.some((x) => x.text)) return strip(used);
-      return h('span', { class: 'orgcell' },
-        h('span', { class: 'p3' }, lk.map((x) => [
-          h('span', { class: 'o' + (x.used ? ' used' : ''), text: SHORT[x.organ] || x.organ }),
-          h('span', { class: 'bar1', title: x.text ? 'Model association score: ' + x.text + ' (not patient risk)' : null, 'aria-label': x.text ? 'Model association score: ' + x.text : null }, h('b', { class: x.used ? 'used' : null, style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` }))])));
+      const same = used.length === (r.organs || []).length && used.every(o => r.organs.includes(o));
+      const likely = same && (r.likely || []).length ? r.likely : used.map(organ => ({ organ, used: true }));
+      const model = likely.some(x => x.text);
+      return h('span', { class: 'association' }, h('span', { class: 'association-source', text: model ? (r.source === 'Registry' ? 'Registry condition, model association score' : 'Model association score') : (r.source === 'Registry' ? 'Registry condition, assigned organs' : 'Linked organs') }),
+        model ? h('span', { class: 'association-list' }, likely.map(x => h('span', { class: 'association-row', title: 'Condition-organ association score, not individual toxicity probability' },
+          h('span', { text: SHORT[x.organ] || x.organ }), h('span', { class: 'association-bar' + (x.used ? ' used' : '') }, h('i', { style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` })), h('span', { text: x.text || '—' })))) : h('span', { class: 'organ-names', text: used.map(o => SHORT[o] || o).join(', ') }));
     }
     function meanings() {
-      const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: 'Which one did you mean?' }));
+      const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: 'Check the items you entered' }));
       for (const g of S.analysis.ambiguous) {
         const opts = g.readings.map((r) => ({ id: r.mondo, label: r.name || r.mondo, organs: r.organs || [], hpo: r.hpo || String(r.mondo || '').startsWith('HP:') }));
         opts.push({ id: null, label: 'Not sure', organs: null });
@@ -1116,7 +1154,7 @@
     return ul;
   }
 
-  // ================================================================== step 4: 우선순위
+  // ================================================================== step 4: Priority
   function stage4() {
     const pc = patientConds();
     if (S.first && !pc.some((c) => c.key === S.first)) S.first = null;
@@ -1129,53 +1167,17 @@
     };
     const list = radioList(opts, S.first, (id) => { S.first = id; save(); preview(id); },
       (o) => [h('span', { class: 'lbl', text: o.label }), o.organs ? strip(o.organs) : null], 's4-title', next);
-    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: 'Which condition should be reviewed first?' }), h('p', { class: 'step-description', text: 'Choose where to begin the evidence review. This changes the review order, not an estimated toxicity risk.' }), list);
+    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: 'Which condition should be reviewed first?' }), h('p', { class: 'step-description', text: 'The related organs of the selected condition are shown first.' }), list);
     preview(S.first);
-    setBar({ keys: [kbd('↑↓', 'choose'), kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', act: next } });
+    setBar({ keys: [kbd('↑↓', 'choose'), kbd('PgUp', 'back')], button: { label: 'Drug review', key: 'PgDn', act: next } });
     setTimeout(() => { if (S.step === 3) list.focusFirst(); }, 0);
     return node;
   }
 
-  // ================================================================== step 5: 결과
-  function restriction(row) {             // recommend._result_list's state: None / Monitor / No data / Not studied / Avoid; a dashed level when a missing value could set it
-    return { text: row.status === 'None' ? 'No restriction found' : row.status, tone: STATE_TONE[row.status] || 'dim', sure: !!row.sure, tier: Math.min(3, row.tier | 0), known: Math.min(3, row.sure ? row.tier | 0 : row.known | 0), cause: row.cause || [] };
+  // ================================================================== step 5: Results
+  function restriction(row) {
+    return { text: row.status === 'None' ? 'No restriction found' : row.status, sure: !!row.sure };
   }
-  // the restriction's level as three rising bars (Monitor 1, Not studied 2, Avoid 3): solid up to what the entered values set,
-  // dashed up to what a value not entered could set
-  function levelNode(tier, known) {
-    return h('span', { class: 'lv', 'aria-hidden': 'true' }, [1, 2, 3].map((k) => h('i', { class: k <= known ? 'on' : k <= tier ? 'may' : null })));
-  }
-  function previewCells(row) {            // recommend._organ_preview (the server's): two warned patient organs, + for more; one other warned organ, + for more
-    const pv = row.preview || { patient: [], other: [] }, own = pv.patient || [], other = pv.other || [];
-    const cell = (c, rest) => (c ? { o: c.organ, boxed: c.mark === '!!', rest: rest || [] } : { none: true });
-    return [cell(own[0]), own.length ? (own[1] ? cell(own[1], own.slice(2)) : { blank: true }) : cell(null), cell(other[0], other.slice(1))];
-  }
-  function ocNode(c) {
-    if (c.blank || c.none) return h('span', { class: 'oc' });
-    const rest = c.rest || [];
-    return h('span', { class: 'oc ' + (c.boxed ? 'b' : 'w') }, h('span', { class: 'mk2', text: c.boxed ? '!!' : '!' }), SHORT[c.o] || c.o,
-      rest.length ? h('span', { class: 'plus', title: rest.map((r) => `${r.mark} ${SHORT[r.organ] || r.organ}`).join(', '), text: '+' + rest.length }) : null);
-  }
-  // a Key value line as name | value | gauge | organ: x ULN on 0 to 3 (ticks 1, 1.5), CLcr on 0 to 120 mL/min (ticks 30, 60, 90)
-  function valueRow(text) {
-    const m = /^(.*?)\s((?:≈\s)?[\d.]+.*?)(?:\s→\s(.+))?$/.exec(text);
-    if (!m) return h('li', null, h('span', { class: 'kn', text }));
-    const [, name, val, organ] = m;
-    let g = null;
-    const uln = /^([\d.]+)×ULN\b/.exec(val), cl = /^CLcr/.test(name) && /([\d.]+)/.exec(val);
-    if (uln) { const x = +uln[1]; g = gauge(x / 3, [1 / 3, 1.5 / 3], x > 1 ? (x > 3 ? 'red' : 'amber') : 'ok'); }
-    else if (cl) { const x = +cl[1]; g = gauge(x / 120, [.25, .5, .75], x < 30 ? 'red' : x < 60 ? 'amber' : 'ok'); }
-    return h('li', null, h('span', { class: 'kn', text: name }), h('span', { class: 'kv2' + (organ ? ' t-amber' : ''), text: val }),
-      g || h('span'), h('span', { class: 'ko', text: organ ? '→ ' + organ : '' }));
-  }
-  function gauge(f, ticks, tone) {
-    return h('span', { class: 'gauge ' + tone, 'aria-hidden': 'true' }, h('b', { style: `width:${Math.max(2, Math.min(100, f * 100))}%` }),
-      ticks.map((t) => h('i', { style: `left:${t * 100}%` })));
-  }
-  const legendNode = (cls) => h('div', { class: cls },
-    h('span', { class: 't-cyan' }, levelNode(1, 1), h('em', { text: 'Monitor' })), h('span', { class: 't-amber' }, levelNode(2, 2), h('em', { text: 'Not studied' })),
-    h('span', { class: 't-red' }, levelNode(3, 3), h('em', { text: 'Avoid' })), h('span', { class: 't-dim' }, levelNode(3, 1), h('em', { text: 'Depends on missing value' })),
-    h('span', { class: 'gap' }, h('b', { class: 't-red', text: '!!' }), 'Boxed warning'), h('span', null, h('b', { class: 't-amber', text: '!' }), 'Warning'));
   function resultSig() { return JSON.stringify([condList(), rawValues(), allChoice(), S.first]); }
 
   function stage5() {
@@ -1183,7 +1185,7 @@
     const node = h('div', { class: 's5' }, box);
     let alive = true;
     cleanup = () => { alive = false; resultKeys = null; };
-    setBar({ left: legendNode('legend'), keys: [kbd('↑↓', 'select'), kbd('Enter', 'evidence'), kbd('PgUp', 'back')], button: { label: 'New patient', quiet: true, act: restart } });
+    setBar({ left: h('span', { class: 'result-legend', text: '!! Boxed warning    ! Warning' }), keys: [kbd('↑↓', 'select'), kbd('Enter', 'details')], button: { label: 'New patient', quiet: true, act: restart } });
     const sig = resultSig();
     if (S.result && S.result.sig === sig) draw(S.result.data);
     else {
@@ -1192,105 +1194,138 @@
       API.recommend({ conditions: condList(), raw: lab, choice: allChoice(), first: S.first })
         .then((data) => {
           clearTimeout(wait); if (!alive) return;
-          const was = S.result && (S.result.data.rows || [])[S.sel];      // the new ranking keeps the ADC selected, not the row number
-          if (was) S.sel = Math.max(0, (data.rows || []).findIndex((r) => r.adc === was.adc));
           S.result = { sig, data }; save(); draw(data, true);
         })
         .catch((e) => { clearTimeout(wait); if (!alive) return; clear(box); box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'Results' }), h('p', { class: 'msg', text: e.message }))); });
     }
     function draw(res, fresh) {
       clear(box);
-      const rows = res.rows || [], P = res.patient || {}, levels = P.organ_levels || {};
+      const P = res.patient || {};
       shownPatient = P;
-      box.append(h('div', { class: 'review-header' }, h('div', null, h('h1', { class: 'title', text: 'ADC evidence review' }), h('p', { class: 'step-description', text: 'Compare label restrictions and warnings. The order does not estimate treatment benefit or individual toxicity.' })), h('button', { type: 'button', class: 'review-action', text: 'Save review', onclick: () => saveReview(res) })));
-      box.append(h('div', { class: 'review-context' }, h('span', { text: (P.cancers || []).length ? 'Cancer entered — confirm full indication in details' : 'Indication not assessed — add a cancer' }), h('button', { type: 'button', class: 'review-link', text: 'Edit conditions', onclick: () => go(0) }), h('button', { type: 'button', class: 'review-link', text: 'Complete lab values', onclick: () => go(1) })));
-      // Key values (the selected ADC's: its restriction's values first) | Review order
-      const keyList = h('ul', { class: 'kvs' });
-      const keyValues = (i) => {
-        const vals = i >= 0 && rows[i] && rows[i].detail && rows[i].detail.values ? rows[i].detail.values : P.values || [];
-        clear(keyList); add(keyList, [vals.length ? vals.map(valueRow) : h('li', { class: 'none', text: 'Not entered' })]);
-      };
-      const prio = P.organ_priority || [];
-      box.append(h('div', { class: 'ctx panel' },
-        h('div', null, tipped(h('h2', { class: 'h2', text: 'Key values' })), keyList),
-        h('div', null, tipped(h('h2', { class: 'h2', text: 'Review order' })), h('p', { class: 'microcopy', text: 'Where to look first, not a risk ranking' }),
-          prio.length ? h('div', { class: 'tiers' }, prio.map(([l, organs], k) => [k ? h('span', { class: 'arr', 'aria-hidden': 'true', text: '→' }) : null,
-            h('span', { class: 'tier' + (l > 1 ? ' l2' : '') }, organs.map((o) => h('span', { class: 'org', text: SHORT[o] || o })))])) : h('ul', null, h('li', { class: 'none', text: 'None specified' })))));
-      if ((P.unmapped || []).length) box.append(h('p', { class: 'unmapped', text: 'Unmapped: ' + P.unmapped.join(', ') }));
-
-      const grid = h('div', { class: 'grid', role: 'grid', 'aria-label': 'ADC', 'aria-rowcount': String(rows.length + 1) },
-        h('div', { class: 'grid-h', role: 'row' },
-          h('span', { class: 'rk', role: 'columnheader', text: '#' }), h('span', { role: 'columnheader', text: 'ADC' }),
-          h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Label restriction' }))), h('span', { class: 'po', role: 'columnheader' }, tipped(h('span', { text: 'Patient organs' }))),
-          h('span', { role: 'columnheader' }, tipped(h('span', { text: 'Other' })))));
-      const trs = [];
-      let prevRank = null;
-      rows.forEach((row, i) => {
-        if (row.indicated === false && (i === 0 || rows[i - 1].indicated !== false)) grid.append(h('div', { class: 'sep', role: 'row' }, h('span', { role: 'gridcell', text: 'Other cancers' })));
-        const rs = restriction(row), cells = previewCells(row);
-        const tie = row.rank === prevRank;           // a tie repeats its number, set faint
-        prevRank = row.rank;
-        const mine = cells.slice(0, 2).filter((c) => c.o);
-        const tr = h('div', { class: 'tr', role: 'row', tabindex: '-1', 'aria-selected': 'false', 'aria-rowindex': String(i + 2), 'data-i': String(i) },
-          h('span', { class: 'rk' + (tie ? ' tie' : ''), role: 'gridcell', text: String(row.rank) }),
-          h('span', { class: 'nm', role: 'gridcell' }, h('span', { text: row.name }), h('span', { class: 'indication-state', text: REVIEW.indicationText(row.indicated, !!(P.cancers || []).length) })),
-          h('span', { class: `rs t-${rs.tone}` + (row.status === 'Avoid' && rs.sure ? ' sure' : ''), role: 'gridcell', 'aria-label': rs.text + (rs.sure ? '' : ' (depends on a value not entered)') + (rs.cause.length ? ', ' + rs.cause.join(', ') : '') },
-            levelNode(rs.tier, rs.known), h('span', { text: rs.text }), rs.cause.length ? h('span', { class: 'cz', text: rs.cause.join(' ') }) : null),
-          cells.map((c) => h('span', { role: 'gridcell' }, ocNode(c))),
-          h('span', { class: 'pt', 'aria-hidden': 'true' }, 'Patient: ', mine.length ? mine.map(ocNode) : '-', '   Other: ', cells[2].o ? ocNode(cells[2]) : '-'));
-        tr.addEventListener('click', () => { select(i, true); openDrawer(); });
-        tr.addEventListener('mouseenter', () => hover(i));
-        trs.push(tr);
-        grid.append(tr);
+      const hasCancer = !!(P.cancers || []).length;
+      const labs = Object.keys(rawValues()).filter(k => !k.startsWith('uln_')).length;
+      const patientWarning = row => ((row.detail || {}).warnings || []).length > 0;
+      const restricted = row => row.status && !['None', 'No change'].includes(row.status);
+      const groupOf = row => restricted(row) ? 0 : patientWarning(row) ? 1 : 2;
+      // Group findings by what needs review, without presenting a treatment ranking.
+      const rows = [...(res.rows || [])].sort((a, b) => groupOf(a) - groupOf(b) ||
+        (groupOf(a) === 0 ? Number(!!b.sure) - Number(!!a.sure) : 0) || a.name.localeCompare(b.name));
+      const contextButton = (text, step, cls = '', title = text) => h('button', {
+        type: 'button', class: 'context-chip ' + cls, text, title, onclick: () => go(step)
       });
-      grid.addEventListener('mouseleave', () => hover(-1));
-      resultKeys = (e) => {
-        const i = S.sel < 0 ? 0 : S.sel;
-        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); select(Math.max(0, Math.min(rows.length - 1, S.sel < 0 ? 0 : i + (e.key === 'ArrowDown' ? 1 : -1))), true); }
-        else if (e.key === 'Home') { e.preventDefault(); select(0, true); }
-        else if (e.key === 'End') { e.preventDefault(); select(rows.length - 1, true); }
-        else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (S.sel < 0) select(0, true); openDrawer(); }
+      box.append(h('div', { class: 'patient-strip' },
+        h('div', { class: 'patient-identity' }, h('span', { class: 'eyebrow', text: 'Patient' }),
+          contextButton(condList().map(condName).join(', '), 0)),
+        h('div', { class: 'patient-fields' },
+          !hasCancer ? contextButton('+ Add a cancer', 0, 'missing-chip', 'Enter a cancer before checking indication.') : null,
+          contextButton(labs ? (P.values || []).slice(0, 2).join(', ') || `${labs} labs entered` : 'Labs not entered', 1, labs ? '' : 'missing-chip', (P.values || []).join(', ') || 'Lab values not entered'),
+          contextButton(analysisOrgans().map(o => SHORT[o] || o).join(', ') || 'Organs', 2))));
+      box.append(h('div', { class: 'review-toolbar' },
+        h('div', { class: 'review-title' }, h('h1', { text: 'Drug-by-drug review'  }), h('span', { class: 'count', text: rows.length })),
+        h('button', { type: 'button', class: 'export-button', text: '↓ Save', 'aria-label': 'Save review', onclick: () => saveReview(res) })));
+      box.querySelector('.review-toolbar').append(stageActions);
+
+      const missingNames = [...new Set(rows.flatMap(row => (row.detail || {}).missing || []))];
+      box.append(h('div', { class: 'review-summary' },
+        h('div', null, h('strong', { text: 'Information to check' }), h('span', { text: hasCancer ? 'Cancer entered, check the detailed criteria of approved indications' : 'Cancer not entered, indication cannot be checked' })),
+        h('div', null, h('strong', { text: 'Labs' }), h('span', { text: (labs ? `Entered ${labs} labs` : 'Labs not entered') + (missingNames.length ? ', check: ' + missingNames.join(', ') : '') }),
+          h('button', { class: 'review-link', type: 'button', text: 'Enter labs', onclick: () => go(1) } ))));
+      const relevant = row => hasCancer ? row.indicated === true : restricted(row) || patientWarning(row);
+      let filter = hasCancer || rows.some(relevant) ? 'relevant' : 'all';
+      const tabs = h('div', { class: 'review-filters', role: 'group', 'aria-label': 'Filter ADCs' });
+      const filters = [
+        ['relevant', 'Patient context', rows.filter(relevant).length, relevant],
+        ['all', 'All', rows.length, () => true],
+        ['restrictions', 'Label restrictions', rows.filter(restricted).length, restricted]
+      ];
+      const grid = h('div', { class: 'review-grid', role: 'grid', 'aria-label': 'ADC' },
+        h('div', { class: 'review-grid-head', role: 'row' },
+          ...['Drug', 'Applicable conditions', 'Patient warnings', 'Other warnings'].map(text => h('span', { role: 'columnheader', text }))));
+      const trs = [];
+      const groupHeaders = [];
+      let visible = rows.map((row, i) => filter === 'all' || relevant(row) ? i : -1).filter(i => i >= 0);
+      const empty = h('div', { class: 'review-empty', hidden: visible.length > 0, text: hasCancer ? 'No drug matches the entered cancer. Check all drugs.' : 'No items to check.' });
+
+      rows.forEach((row, i) => {
+        if (i === 0 || groupOf(row) !== groupOf(rows[i - 1])) {
+          const group = groupOf(row);
+          const heading = h('div', { class: 'review-group', role: 'row' }, h('span', { role: 'gridcell', text: ['Check applicable conditions', 'Patient warnings', 'Additional drugs to check'][group] }));
+          heading.hidden = !visible.some(index => groupOf(rows[index]) === group);
+          groupHeaders.push([group, heading]); grid.append(heading);
+        }
+        const rs = restriction(row), detail = row.detail || {};
+        const warnings = (row.preview || {}).patient || [];
+        const others = detail.other_warnings || [];
+        const noRestriction = row.status === 'None';
+        const reason = (detail.reasons || []).find(r => r.status === row.status && !!r.sure === !!row.sure) || (detail.reasons || []).find(r => r.status === row.status);
+        const statusText = reason && reason.code === 'contraindicated' ? 'Contraindicated' : reason && reason.code === 'reduce_dose' ? 'Dose adjustment' : ({ 'Not studied': 'Limited data, check detailed evidence', 'Avoid': 'Avoid use', 'Monitor': 'Monitoring', 'Lower dose': 'Dose adjustment', 'No data': 'No label statement', 'No change': 'No adjustment' })[row.status] || row.status;
+        const tr = h('div', { class: 'review-row', role: 'row', tabindex: '-1', 'aria-selected': 'false' },
+          h('div', { class: 'drug-cell', role: 'gridcell' },
+            h('span', { class: 'drug-name', text: row.name }),
+            hasCancer ? h('span', { class: 'indication-state', text: row.indicated === true ? 'Cancer match, check detailed indication' : row.indicated === false ? 'No match for entered cancer' : 'Indication cannot be checked' }) : null),
+          h('div', { class: 'status-cell', role: 'gridcell' },
+            h('span', { class: 'status-pill ' + (noRestriction ? 'neutral' : row.status === 'Avoid' ? 'avoid' : row.status === 'Monitor' ? 'monitor' : 'limited'),
+              title: noRestriction ? 'No additional restriction found for the entered information.' : rs.text,
+              text: noRestriction ? 'Additional restriction not found' : statusText }),
+            reason && reason.basis ? h('span', { class: 'status-basis', text: reason.basis === '-' ? 'Applies to all patients' : reason.sure && reason.patient ? 'Patient: ' + reason.patient : 'Condition: ' + reason.basis.replace(/^if /, '') }) : null,
+            !rs.sure && !noRestriction ? h('span', { class: 'conditional-label', title: 'Depends on a value not entered', text: 'Depends on a value not entered' }) : null),
+          h('div', { class: 'warning-cell', role: 'gridcell' }, warnings.length ? warnings.map(w =>
+            h('span', { class: 'organ-tag ' + (w.mark === '!!' ? 'boxed' : ''), title: w.mark === '!!' ? 'Boxed warning' : 'Warning', text: `${w.mark === '!!' ? '!!' : '!'} ${SHORT[w.organ] || w.organ}` })) : h('span', { class: 'empty-value', text: '—' })),
+          h('span', { class: 'other-cell', role: 'gridcell', text: others.length || '—', title: others.map(w => `${SHORT[w.organ] || w.organ}: ${w.text}`).join('\n') }));
+        tr.addEventListener('click', () => { select(i, true); openDrawer(); });
+        tr.hidden = !visible.includes(i);
+        trs.push(tr); grid.append(tr);
+      });
+      grid.append(empty);
+      const buttons = filters.map(([id, label, count, matches]) => {
+        const button = h('button', { type: 'button', class: 'filter-tab', 'aria-pressed': id === filter ? 'true' : 'false' },
+          label, h('span', { class: 'filter-count', text: count }));
+        button.addEventListener('click', () => {
+          filter = id;
+          buttons.forEach((b, k) => b.setAttribute('aria-pressed', filters[k][0] === id ? 'true' : 'false'));
+          visible = rows.map((row, i) => matches(row) ? i : -1).filter(i => i >= 0);
+          trs.forEach((tr, i) => { tr.hidden = !visible.includes(i); });
+          groupHeaders.forEach(([group, heading]) => { heading.hidden = !visible.some(i => groupOf(rows[i]) === group); });
+          empty.hidden = visible.length > 0;
+          if (!visible.includes(S.sel)) {
+            closeDrawer();
+            select(-1, false);
+          }
+        });
+        tabs.append(button); return button;
+      });
+      const showAll = h('button', { type: 'button', class: 'show-all', text: filter === 'all' ? 'Showing all drugs' : hasCancer ? `View ${rows.length - visible.length} other drugs` : `View all ${rows.length} drugs` });
+      showAll.addEventListener('click', () => { buttons[1].click(); showAll.textContent = 'Showing all drugs'; showAll.disabled = true; });
+      if (filter === 'all') showAll.disabled = true;
+      box.append(h('div', { class: 'review-legend', text: 'Based on entered information, !! boxed warning, ! warning' }), grid, showAll);
+      if ((P.unmapped || []).length) box.append(h('div', { class: 'unmapped', text: 'Unmapped: ' + P.unmapped.join(', ') }));
+
+      function select(i, focus) {
+        S.sel = i; S.reviewAdc = rows[i]?.adc || null; save();
+        trs.forEach((tr, k) => { tr.setAttribute('aria-selected', k === i ? 'true' : 'false'); tr.tabIndex = k === i ? 0 : -1; });
+        if (focus && trs[i]) trs[i].focus({ preventScroll: false });
+        if (S.drawer && rows[i]) fillDrawer(rows[i]);
+      }
+      resultKeys = e => {
+        if (!visible.length) return;
+        const at = visible.indexOf(S.sel);
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault(); select(visible[Math.max(0, Math.min(visible.length - 1, at + (e.key === 'ArrowDown' ? 1 : -1)))], true);
+        } else if (e.key === 'Home' || e.key === 'End') {
+          e.preventDefault(); select(e.key === 'Home' ? visible[0] : visible[visible.length - 1], true);
+        } else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawer(); }
       };
       grid.addEventListener('keydown', resultKeys);
-      box.append(h('div', { class: 'adcs' }, grid), legendNode('legend narrow'));      // the legend is in the bar; under the list only on a phone
-      if (fresh && !still()) box.classList.add('fadein');
-
-      let hov = -1;
-      function bodyFor() {
-        const lit = {};
-        for (const [o, l] of Object.entries(levels)) lit[o] = l <= 1 ? 'l1' : 'l2';
-        const k = hov >= 0 ? hov : S.sel;
-        const rings = {};
-        if (k >= 0 && rows[k]) {
-          const row = rows[k];
-          for (const a of AX) {
-            const l = (row.levels && row.levels[a]) || (row.boxed.includes(a) ? 'boxed' : row.warn.includes(a) ? 'W&P' : '');
-            if (l === 'boxed') rings[a] = 'b'; else if (l === 'W&P') rings[a] = 'w';
-          }
-        }
-        body.update({ lit, rings, caption: k >= 0 && rows[k] ? rows[k].name : '', legend: true });
-      }
-      function hover(i) { hov = i; bodyFor(); }
-      function select(i, focus) {
-        S.sel = i; save();
-        trs.forEach((t, k) => { t.setAttribute('aria-selected', k === i ? 'true' : 'false'); t.tabIndex = k === i ? 0 : -1; });
-        if (i >= 0 && trs[i]) { if (focus) trs[i].focus({ preventScroll: false }); }
-        if (S.drawer) fillDrawer(rows[i]);
-        keyValues(i);
-        bodyFor();
-      }
-      openDrawer = () => { if (S.sel < 0 || !rows[S.sel]) return; fillDrawer(rows[S.sel]); showDrawer(); };
+      openDrawer = () => { if (rows[S.sel]) { fillDrawer(rows[S.sel]); showDrawer(); } };
       returnFocus = () => { if (trs[S.sel]) trs[S.sel].focus({ preventScroll: true }); };
       keepRow = () => { if (S.step === 4 && trs[S.sel] && trs[S.sel].isConnected) trs[S.sel].scrollIntoView({ block: 'nearest' }); };
-      if (S.sel < 0 || S.sel >= rows.length) S.sel = rows.length ? 0 : -1;
+      S.sel = rows.findIndex(row => row.adc === S.reviewAdc);
+      if (!visible.includes(S.sel)) S.sel = -1;
       select(S.sel, false);
-      setTimeout(() => {
-        if (S.step === 4 && trs[S.sel] && trs[S.sel].isConnected && !drawer.contains(document.activeElement)) trs[S.sel].focus({ preventScroll: true });
-      }, 0);
       const want = MOCK && Q.get('adc') && !mockAdcUsed ? String(Q.get('adc')).replace(/_/g, '-') : null;
       mockAdcUsed = true;
-      if (want) { const k = rows.findIndex((r) => r.adc === want || r.adc.replace(/_/g, '-') === want); if (k >= 0) { select(k, false); openDrawer(); } }
-      else if (S.drawer && S.sel >= 0) openDrawer();
+      if (want) { const i = rows.findIndex(r => r.adc.replace(/_/g, '-') === want); if (i >= 0) select(i, false); }
+      if (S.sel >= 0 && (S.drawer || want)) openDrawer();
     }
     return node;
   }
@@ -1340,24 +1375,22 @@
     drawerBody.scrollTop = 0;
     // 1 indication for the entered cancer, 2 label restriction, 3 warnings on the patient's organs, 4 warnings on other organs
     const cancers = [...new Set((shownPatient.cancers || []).map((c) => c.name))];
-    const verdict = !cancers.length ? { cls: 't-dim', mark: '—', word: 'Not assessed — cancer not entered' }
-      : row.indicated === false ? { cls: 't-red', mark: '✕', word: 'Not approved for ' } : { cls: 't-green', mark: '✓', word: 'Cancer match — confirm eligibility for ' };
+    const verdict = !cancers.length ? { cls: 't-dim', mark: '—', word: 'Cancer not entered, indication cannot be checked' }
+      : row.indicated === false ? { cls: 't-red', mark: '✕', word: 'No match for entered cancer: ' } : row.indicated === true ? { cls: 't-green', mark: '✓', word: 'Cancer match, check detailed criteria: ' } : { cls: 't-dim', mark: '—', word: 'Indication cannot be checked: ' };
     drawerBody.append(section('Indication', verdict ? h('p', { class: 'indv ' + verdict.cls }, h('span', { class: 'im', text: verdict.mark }), h('span', null, h('span', { class: 'iv', text: verdict.word }), cancers.join(', '))) : null,
-      d.indication ? [h('div', { class: 'sub', text: 'All approved uses' }), h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x })))] : null));
+      d.indication ? [h('div', { class: 'sub', text: 'Approved indication text' }), h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x })))] : null));
     const rs = d.reasons || [];
-    const RULE = { contraindicated: 'Avoid', avoid: 'Avoid', insufficient_data: 'Not studied', reduce_dose: 'Lower dose', monitor: 'Monitor', no_adjustment: 'No change' };
     const rule = (r) => {                 // 'Monitor with bilirubin >1.5 to 3×ULN', 'Not studied if LVEF < 50%' (a value not entered)
       const b = String(r.basis || '').replace(/^if /, '');
-      if (b === '-') return 'Applies to every patient';
-      return RULE[r.code] ? `${RULE[r.code]} ${r.sure ? 'with' : 'if'} ${b}` : b;
+      if (b === '-') return 'Applies to all patients';
+      return b;
     };
     drawerBody.append(section('Label restriction', rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
-      h('div', { class: 'rh' }, h('span', { class: 'k', text: r.organ }), h('span', { class: `s t-${TONE[r.code] || 'dim'}` + (r.sure ? ' sure' : ''), text: r.status })),
+      h('div', { class: 'rh' }, h('span', { class: 'k', text: SHORT[r.organ] || r.organ }), h('span', { class: `s t-${TONE[r.code] || 'dim'}` + (r.sure ? ' sure' : ''), text: r.code === 'contraindicated' ? 'Contraindicated' : r.code === 'reduce_dose' ? 'Dose adjustment' : ({ 'Not studied': 'Limited data, check detailed evidence', Avoid: 'Avoid use', Monitor: 'Monitoring', 'Lower dose': 'Dose adjustment', 'No data': 'No label statement', 'No change': 'No adjustment' })[r.status] || r.status })),
       h('div', { class: 'pl' }, r.patient ? [h('span', { class: 'pk', text: 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
-        h('span', { class: 'pk', text: 'Label' }), h('span', { class: 'lv2', text: rule(r) })))))
-      : h('p', { class: 'line dim', text: 'No applicable label restriction' })));
-    // the main trial's rate for each warning, as 20 dots (one per 5 patients in 100); pink dots the serious ones. The comparator
-    // is not drawn: an event about as common on the other treatment is greyed and says so; the trial and both arms are on hover
+        h('span', { class: 'pk', text: 'Applicable condition' }), h('span', { class: 'lv2', text: rule(r) })))))
+      : h('p', { class: 'line dim', text: 'No restriction found for the entered information.' })));
+    // Study-group event counts retain both denominators; no relative-risk inference is made.
     const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
     if (t) {
       drawerBody.append(section('Trial context',
@@ -1365,26 +1398,20 @@
         h('p', { class: 'line', text: t.population || 'Population not specified' }),
         h('p', { class: 'line', text: `${t.regimen} (n=${t.n})` }),
         t.comparator ? h('p', { class: 'line', text: `Comparator: ${t.comparator.regimen} (n=${t.comparator.n})` }) : null,
-        h('p', { class: 'note2', text: 'Check that this trial population and treatment setting match the case being reviewed.' }),
-        /^NCT\d{8}$/.test(t.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + t.nct, target: '_blank', rel: 'noopener noreferrer', text: 'Open source study ' + t.nct }) : null));
+        /^NCT\d{8}$/.test(t.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + t.nct, target: '_blank', rel: 'noopener noreferrer', text: t.nct + ' ↗' }) : null));
     } else if (d.trial && d.trial.no_results) {
       drawerBody.append(section('Trial context', h('p', { class: 'line', text: 'No results in the bundled ClinicalTrials.gov snapshot: ' + d.trial.trial })));
     }
     const evOf = {};
     for (const o of (t && t.organs) || []) if ((o.events || []).length) evOf[o.organ] = o.events;
-    const per100 = (a, n) => 100 * a / n;
     let drawn = 0;
-    function dots(e) {
+    function trialEvent(e) {
       drawn++;
-      const r = per100(e.a, e.n), sv = e.serious ? r : per100(e.sa || 0, e.n), c = e.comp ? per100(e.comp[0], e.comp[1]) : null;
-      const same = c !== null && r >= 1 && c >= r * 0.6;
-      const n = Math.round(r / 5), ns = Math.min(n, Math.round(sv / 5));
-      const strip = h('span', { class: 'dots', 'aria-hidden': 'true' }, Array.from({ length: 20 }, (_, i) => h('i', { class: i < ns ? 'sv' : i < n ? 'on' : null })));
-      const count = r < 1 ? 'Under 1 in 100' : `${Math.round(r)} in 100`;
       const tip = `${t.trial}: ${e.term}\n${t.regimen}: ${e.pct} (n=${t.n})` + (e.comp ? `\n${t.comparator.regimen}: ${e.comp_pct} (n=${t.comparator.n})` : '');
-      return h('div', { class: 'risk' + (same ? ' same' : ''), title: tip }, strip,
-        h('span', { class: 'rt' }, h('b', { text: count }), ` had ${e.term}`, sv >= 0.5 && !same ? h('span', { class: 't-red', text: `, ${Math.round(sv)} serious` }) : null,
-          same ? h('span', { class: 'dim', text: ', as on other treatment' }) : null));
+      return h('div', { class: 'trial-event', title: tip },
+        h('span', { class: 'event-term', text: e.term + (e.serious ? ', Serious' : '') }),
+        h('div', { class: 'event-values' }, h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' Treatment'),
+          e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' Comparator') : null));
     }
     const done = new Set();
     const wrow = (organ, mark, text) => {
@@ -1392,18 +1419,51 @@
       done.add(organ);
       return [h('span', { class: 'k', text: SHORT[organ] || organ }),
         h('span', { class: 'm ' + (mark === '!!' ? 't-red' : 't-amber'), text: mark }),
-        h('div', { class: 'wt' }, h('span', { text: text.replace(/;\s*/g, ', ') }), evs.map(dots))];
+        h('div', { class: 'wt' }, h('span', { text: text.replace(/;\s*/g, ', ') }), evs.map(trialEvent))];
     };
     const ws = d.warnings || [], wo = d.other_warnings || [];
     const rows = ws.map((w) => wrow(w.organ, w.mark.trim(), w.text));
     for (const o in evOf) if (!done.has(o)) rows.push(wrow(o, '', 'No label warning'));       // a patient organ the label is silent on
     drawerBody.append(section("Warnings on the patient's organs", rows.length ? h('div', { class: 'wl' }, rows) : h('p', { class: 'line dim', text: 'None' }),
-      t && drawn ? h('p', { class: 'src', text: `Study group: ${t.trial}. One dot represents 5 patients in 100; this is not an individual risk estimate. Serious refers to the registry category, not a severity grade.` }) : null));
+      t && drawn ? h('p', { class: 'src', text: 'Trial population, ' + t.trial, title: 'Study-group events, not individual risk. Serious is a registry category, not a severity grade.' }) : null));
     if (wo.length) drawerBody.append(section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
       h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }), h('span', { text: w.text.replace(/;\s*/g, ', ') })]))));
-    if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m }))), h('button', { type: 'button', class: 'review-link', text: 'Complete lab values', onclick: () => { closeDrawer(); go(1); } })));
+    if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m }))), h('button', { type: 'button', class: 'review-link', text: 'Enter lab values', onclick: () => { closeDrawer(); go(1); } })));
     if (d.payload) drawerBody.append(section('Payload and linker', d.payload.rows ? h('div', { class: 'kv3' }, d.payload.rows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : h('p', { class: 'line', text: d.payload.line }), d.payload.note ? h('p', { class: 'note2', text: d.payload.note }) : null));
     if ((d.checks || []).length) drawerBody.append(section('Pre-treatment checks', h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))));
+    const events = [...drawerBody.querySelectorAll('.trial-event')];
+    drawerBody.querySelectorAll('.src').forEach(el => el.remove());
+    if (events.length) drawerBody.append(section('Study events', ...events,
+      h('p', { class: 'src', text: 'Study-group counts, not individual risk' })));
+    if (!t && !(d.trial && d.trial.no_results)) drawerBody.append(section('Trial context', h('p', { class: 'line dim', text: 'No clinical study in this snapshot.' })));
+    // Separate patient findings from study populations and general reference material.
+    const sections = new Map([...drawerBody.children].map(el => [el.querySelector('h3')?.textContent, el]));
+    const order = ['Label restriction', 'Missing inputs', "Warnings on the patient's organs", 'Pre-treatment checks', 'Trial context', 'Study events', 'Indication', 'Warnings on other organs', 'Payload and linker'];
+    const folded = new Set(['Indication', 'Warnings on other organs', 'Pre-treatment checks', 'Payload and linker']);
+    for (const title of order) {
+      const el = sections.get(title); if (!el) continue;
+      const heading = el.querySelector('h3');
+      if (folded.has(title)) {
+        heading.remove();
+        const disclosure = h('details', { class: 'evidence-fold' }, h('summary', { text: title }), ...el.childNodes);
+        el.replaceChildren(disclosure);
+      } else heading.textContent = title;
+      drawerBody.append(el);
+    }
+    const views = {
+      Patient: ['Label restriction', 'Missing inputs', "Warnings on the patient's organs", 'Pre-treatment checks'],
+      Study: ['Trial context', 'Study events'],
+      Reference: ['Indication', 'Warnings on other organs', 'Payload and linker']
+    };
+    const nav = h('div', { class: 'evidence-tabs', role: 'group', 'aria-label': 'Evidence view' });
+    const switchView = name => {
+      sections.forEach((el, title) => { el.hidden = !views[name].includes(title); });
+      [...nav.children].forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === name)));
+    };
+    const viewLabels = { Patient: 'Patient', Study: 'Study', Reference: 'Reference' };
+    Object.keys(views).forEach(name => nav.append(h('button', { type: 'button', text: viewLabels[name], 'data-view': name, onclick: () => switchView(name) })));
+    drawerBody.prepend(nav);
+    switchView('Patient');
   }
 
   // ------------------------------------------------------------------ keys that work everywhere (the TUI's)
@@ -1435,11 +1495,11 @@
       return;
     }
     AX = APP.axes || [];
-    SHORT = APP.organ_short || {};
+    SHORT = Object.assign({}, APP.organ_short || {});
     body.names(SHORT);
     (APP.registry || []).forEach((r, i) => { REG[r.id] = r; REG_I[r.id] = i; });
     FIELDS = (APP.labs && APP.labs.fields) || [];
-    STEPS = APP.steps || ['Conditions', 'Labs', 'Organs', 'Priority', 'Results'];
+    STEPS = ['Patient', 'Labs', 'Organ analysis', 'Review order', 'Drug review'];
     verEl.textContent = APP.version || '';
     if (APP.models) verEl.title = 'models ' + APP.models;
 

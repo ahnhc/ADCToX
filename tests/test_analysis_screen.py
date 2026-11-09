@@ -1,7 +1,6 @@
 """The AI 장기 분석 step: the line says what the model reports it is doing, the table follows the highlighted input, and a failed
 organ judge is never shown as used."""
 import sys, pathlib, types
-import pytest
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "ml"))
 import term, tui
 
