@@ -1643,6 +1643,22 @@
   }
 
   // ------------------------------------------------------------------ 3D ADC Molecular Canvas Renderer
+  const ADC_SPECS = {
+    'trastuzumab-deruxtecan': { brand: 'ENHERTU', target: 'HER2', dar: 8, payload: 'DXd', payloadClass: 'Topo I inhibitor', payloadColor: '#06B6D4', paratopeColor: '#38BDF8', linker: 'GGFG (Tetrapeptide)', linkerLength: 22, linkerType: 'cleavable' },
+    'sacituzumab-govitecan': { brand: 'TRODELVY', target: 'TROP2', dar: 8, payload: 'SN-38', payloadClass: 'Topo I inhibitor', payloadColor: '#10B981', paratopeColor: '#F472B6', linker: 'CL2A (pH-sensitive)', linkerLength: 19, linkerType: 'cleavable' },
+    'datopotamab-deruxtecan': { brand: 'DATO-DXd', target: 'TROP2', dar: 4, payload: 'DXd', payloadClass: 'Topo I inhibitor', payloadColor: '#06B6D4', paratopeColor: '#F472B6', linker: 'GGFG (Tetrapeptide)', linkerLength: 22, linkerType: 'cleavable' },
+    'trastuzumab-emtansine': { brand: 'KADCYLA', target: 'HER2', dar: 4, payload: 'DM1', payloadClass: 'Maytansinoid', payloadColor: '#F59E0B', paratopeColor: '#38BDF8', linker: 'SMCC (Thioether)', linkerLength: 11, linkerType: 'non-cleavable' },
+    'enfortumab-vedotin': { brand: 'PADCEV', target: 'Nectin-4', dar: 4, payload: 'MMAE', payloadClass: 'Auristatin', payloadColor: '#8B5CF6', paratopeColor: '#FBBF24', linker: 'vc-PABC (Protease)', linkerLength: 18, linkerType: 'cleavable' },
+    'polatuzumab-vedotin': { brand: 'POLIVY', target: 'CD79b', dar: 4, payload: 'MMAE', payloadClass: 'Auristatin', payloadColor: '#8B5CF6', paratopeColor: '#34D399', linker: 'vc-PABC (Protease)', linkerLength: 18, linkerType: 'cleavable' },
+    'brentuximab-vedotin': { brand: 'ADCETRIS', target: 'CD30', dar: 4, payload: 'MMAE', payloadClass: 'Auristatin', payloadColor: '#8B5CF6', paratopeColor: '#FB923C', linker: 'vc-PABC (Protease)', linkerLength: 18, linkerType: 'cleavable' },
+    'tisotumab-vedotin': { brand: 'TIVDAK', target: 'Tissue Factor', dar: 4, payload: 'MMAE', payloadClass: 'Auristatin', payloadColor: '#8B5CF6', paratopeColor: '#A78BFA', linker: 'vc-PABC (Protease)', linkerLength: 18, linkerType: 'cleavable' },
+    'belantamab-mafodotin': { brand: 'BLENREP', target: 'BCMA', dar: 4, payload: 'MMAF', payloadClass: 'Charged Auristatin', payloadColor: '#6366F1', paratopeColor: '#C084FC', linker: 'mc (Maleimidocaproyl)', linkerLength: 10, linkerType: 'non-cleavable' },
+    'mirvetuximab-soravtansine': { brand: 'ELAHERE', target: 'FRalpha', dar: 4, payload: 'DM4', payloadClass: 'Maytansinoid', payloadColor: '#D97706', paratopeColor: '#E879F9', linker: 'sulfo-SPDB (Disulfide)', linkerLength: 16, linkerType: 'cleavable' },
+    'loncastuximab-tesirine': { brand: 'ZYNLONTA', target: 'CD19', dar: 2, payload: 'SG3199', payloadClass: 'PBD Dimer', payloadColor: '#F43F5E', paratopeColor: '#2DD4BF', linker: 'val-ala-PEG8', linkerLength: 24, linkerType: 'cleavable' },
+    'gemtuzumab-ozogamicin': { brand: 'MYLOTARG', target: 'CD33', dar: 3, payload: 'Calicheamicin', payloadClass: 'DNA Cleaver', payloadColor: '#E11D48', paratopeColor: '#F87171', linker: 'AcBut Hydrazone', linkerLength: 15, linkerType: 'cleavable' },
+    'inotuzumab-ozogamicin': { brand: 'BESPONSA', target: 'CD22', dar: 6, payload: 'Calicheamicin', payloadClass: 'DNA Cleaver', payloadColor: '#E11D48', paratopeColor: '#818CF8', linker: 'AcBut Hydrazone', linkerLength: 15, linkerType: 'cleavable' },
+  };
+
   let adcAnimId = 0;
   function init3dAdcCanvas(cvs, adcRow) {
     const rect = cvs.getBoundingClientRect();
@@ -1653,8 +1669,8 @@
 
     cancelAnimationFrame(adcAnimId);
     const dpr = window.devicePixelRatio || 1;
-    let rotY = 0.4;
-    let rotX = 0.2;
+    let rotY = 0.45;
+    let rotX = 0.22;
     let isDragging = false;
     let lastMouseX = 0, lastMouseY = 0;
 
@@ -1669,39 +1685,55 @@
       rotX += dy * 0.01;
     });
 
-    const m = (adcRow && MECH[adcRow.adc]) || {};
-    const darCount = Math.round(parseFloat(m.dar || 4)) || 4;
+    const adcId = (adcRow && (adcRow.adc || adcRow.id)) || '';
+    const m = (adcRow && MECH[adcId]) || {};
+    const spec = ADC_SPECS[adcId] || {};
+
+    const drugName = (adcRow && (adcRow.name || adcRow.drug || m.brand || adcId)) || 'Antibody-Drug Conjugate';
+    const brand = spec.brand || m.brand || (adcRow && adcRow.brand) || '';
+    const target = spec.target || m.target || (adcRow && adcRow.target) || 'HER2';
+    const payload = spec.payload || m.payload || (adcRow && adcRow.payload) || 'Payload';
+    const payloadClass = spec.payloadClass || m.payload_family || 'Cytotoxin';
+    const linker = spec.linker || m.linker || (adcRow && adcRow.linker) || 'Linker';
+    const darCount = Math.max(1, Math.min(8, Math.round(parseFloat(spec.dar || m.dar || (adcRow && adcRow.dar) || 4))));
+    const payloadColor = spec.payloadColor || '#10B981';
+    const paratopeColor = spec.paratopeColor || '#38BDF8';
+    const isCleavable = spec.linkerType !== 'non-cleavable' && m.linker_cleavable !== 'False';
+    const linkerLength = spec.linkerLength || (isCleavable ? 18 : 11);
 
     // Molecular nodes: Y-shaped IgG1 antibody + Linker/Payload spheres with fixed IDs
     const nodes = [
       // Fc stem (bottom center)
       { id: 'fc2', x: 0, y: 35, z: 0, r: 8, col: '#475569', type: 'Fc' },
-      { id: 'fc1', x: 0, y: 15, z: 0, r: 7, col: '#475569', type: 'Fc' },
+      { id: 'fc1', x: 0, y: 15, z: 0, r: 7.2, col: '#475569', type: 'Fc' },
       // Hinge region
-      { id: 'hinge', x: 0, y: -5, z: 0, r: 6, col: '#2563EB', type: 'Hinge' },
+      { id: 'hinge', x: 0, y: -5, z: 0, r: 6.2, col: '#2563EB', type: 'Hinge' },
       // Fab Arm Left
-      { id: 'fab_l1', x: -25, y: -25, z: 5, r: 7, col: '#334155', type: 'Fab' },
-      { id: 'fab_l2', x: -45, y: -45, z: 10, r: 8, col: '#334155', type: 'Fab' },
+      { id: 'fab_l1', x: -24, y: -24, z: 5, r: 7, col: '#334155', type: 'Fab' },
+      { id: 'fab_l2', x: -44, y: -44, z: 10, r: 7.8, col: '#334155', type: 'Fab' },
+      { id: 'para_l', x: -55, y: -55, z: 12, r: 5.4, col: paratopeColor, type: 'Paratope' },
       // Fab Arm Right
-      { id: 'fab_r1', x: 25, y: -25, z: -5, r: 7, col: '#334155', type: 'Fab' },
-      { id: 'fab_r2', x: 45, y: -45, z: -10, r: 8, col: '#334155', type: 'Fab' },
+      { id: 'fab_r1', x: 24, y: -24, z: -5, r: 7, col: '#334155', type: 'Fab' },
+      { id: 'fab_r2', x: 44, y: -44, z: -10, r: 7.8, col: '#334155', type: 'Fab' },
+      { id: 'para_r', x: 55, y: -55, z: -12, r: 5.4, col: paratopeColor, type: 'Paratope' },
     ];
 
-    // Explicit Linker-tethered payload branches
+    // Explicit Linker-tethered payload branches based on true DAR
     const conjAnchors = ['hinge', 'fab_l1', 'fab_r1', 'hinge', 'fab_l2', 'fab_r2', 'fab_l1', 'fab_r1'];
     for (let k = 0; k < darCount; k++) {
       const angle = (k / darCount) * Math.PI * 2;
-      const radius = 34 + (k % 2) * 10;
+      const radius = 28 + (k % 2) * 8 + (linkerLength * 0.4);
       const py = -10 + (k % 3) * 14;
       const anchor = conjAnchors[k % conjAnchors.length];
+      const pldRadius = payloadClass.includes('PBD') || payloadClass.includes('DNA') ? 6.8 : (payloadClass.includes('Topo') ? 6.0 : 5.4);
       nodes.push({
         id: 'pld_' + k,
         anchor,
         x: Math.cos(angle) * radius,
         y: py,
         z: Math.sin(angle) * radius,
-        r: 5.5,
-        col: '#0D9488',
+        r: pldRadius,
+        col: payloadColor,
         glow: true,
         type: 'Payload',
       });
@@ -1723,7 +1755,7 @@
         id: p.id,
         anchor: p.anchor,
         x: w / 2 + x1 * scale * 1.8 * dpr,
-        y: h / 2 + y2 * scale * 1.8 * dpr,
+        y: h / 2 + y2 * scale * 1.8 * dpr + 4 * dpr,
         z: z2,
         r: p.r * scale * dpr,
         col: p.col,
@@ -1740,7 +1772,7 @@
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
       ctx.lineWidth = 1 * dpr;
       for (let y = h * 0.15; y < h; y += h * 0.2) {
-        ctx.beginPath(); ctx.moveTo(w * 0.1, y); ctx.lineTo(w * 0.9, y); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(w * 0.08, y); ctx.lineTo(w * 0.92, y); ctx.stroke();
       }
 
       // Map projected coordinates by node ID (prevents scrambling on Z-sort!)
@@ -1756,21 +1788,21 @@
       ctx.strokeStyle = 'rgba(148, 163, 184, 0.5)';
       ctx.lineWidth = 2.4 * dpr;
       const pFc2 = projMap['fc2'], pFc1 = projMap['fc1'], pH = projMap['hinge'];
-      const pL1 = projMap['fab_l1'], pL2 = projMap['fab_l2'];
-      const pR1 = projMap['fab_r1'], pR2 = projMap['fab_r2'];
+      const pL1 = projMap['fab_l1'], pL2 = projMap['fab_l2'], pParaL = projMap['para_l'];
+      const pR1 = projMap['fab_r1'], pR2 = projMap['fab_r2'], pParaR = projMap['para_r'];
 
-      if (pFc2 && pFc1 && pH && pL1 && pL2 && pR1 && pR2) {
+      if (pFc2 && pFc1 && pH && pL1 && pL2 && pParaL && pR1 && pR2 && pParaR) {
         ctx.beginPath();
         ctx.moveTo(pFc2.x, pFc2.y); ctx.lineTo(pFc1.x, pFc1.y); ctx.lineTo(pH.x, pH.y);
-        ctx.lineTo(pL1.x, pL1.y); ctx.lineTo(pL2.x, pL2.y);
+        ctx.lineTo(pL1.x, pL1.y); ctx.lineTo(pL2.x, pL2.y); ctx.lineTo(pParaL.x, pParaL.y);
         ctx.moveTo(pH.x, pH.y);
-        ctx.lineTo(pR1.x, pR1.y); ctx.lineTo(pR2.x, pR2.y);
+        ctx.lineTo(pR1.x, pR1.y); ctx.lineTo(pR2.x, pR2.y); ctx.lineTo(pParaR.x, pParaR.y);
         ctx.stroke();
       }
 
       // Draw linker tether lines from conjugation anchors to payload spheres
-      ctx.strokeStyle = '#F59E0B';
-      ctx.lineWidth = 1.4 * dpr;
+      ctx.strokeStyle = isCleavable ? '#F59E0B' : '#94A3B8';
+      ctx.lineWidth = isCleavable ? 1.6 * dpr : 2.2 * dpr;
       for (let k = 0; k < darCount; k++) {
         const pNode = projMap['pld_' + k];
         if (pNode && pNode.anchor && projMap[pNode.anchor]) {
@@ -1790,16 +1822,46 @@
         if (p.glow) {
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.r * 1.6, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(13, 148, 136, 0.25)';
+          ctx.fillStyle = payloadColor + '33';
           ctx.fill();
         }
         ctx.beginPath();
         ctx.arc(p.x, p.y, Math.max(1, p.r), 0, Math.PI * 2);
         ctx.fillStyle = p.col;
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-        ctx.lineWidth = 0.8 * dpr;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.lineWidth = 0.9 * dpr;
         ctx.stroke();
+      });
+
+      // Top Construct Header Overlay
+      ctx.font = `bold ${10 * dpr}px sans-serif`;
+      ctx.fillStyle = '#E2E8F0';
+      ctx.textAlign = 'left';
+      ctx.fillText(`${drugName}${brand ? ' (' + brand + ')' : ''}`, 10 * dpr, 16 * dpr);
+
+      ctx.font = `${8.5 * dpr}px sans-serif`;
+      ctx.fillStyle = '#94A3B8';
+      ctx.fillText(`Target: ${target} | Linker: ${linker} | Payload: ${payload} (DAR ${darCount})`, 10 * dpr, 28 * dpr);
+
+      // Bottom Legend
+      const legendItems = [
+        ['#334155', 'IgG1 Backbone'],
+        [paratopeColor, `Paratope (${target})`],
+        [isCleavable ? '#F59E0B' : '#94A3B8', `Linker (${isCleavable ? 'Cleavable' : 'Direct'})`],
+        [payloadColor, `${payload} (x${darCount})`],
+      ];
+      let lx = 10 * dpr;
+      const ly = h - 10 * dpr;
+      ctx.font = `600 ${8 * dpr}px sans-serif`;
+      legendItems.forEach(([col, txt]) => {
+        ctx.fillStyle = col;
+        ctx.beginPath();
+        ctx.arc(lx + 3 * dpr, ly - 3 * dpr, 3 * dpr, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#CBD5E1';
+        ctx.fillText(txt, lx + 8 * dpr, ly);
+        lx += ctx.measureText(txt).width + 16 * dpr;
       });
 
       adcAnimId = requestAnimationFrame(render3d);
@@ -2014,7 +2076,12 @@
     SHORT = Object.assign({}, APP.organ_short || {});
     (APP.registry || []).forEach((r, i) => { REG[r.id] = r; REG_I[r.id] = i; });
     FIELDS = (APP.labs && APP.labs.fields) || [];
-    (APP.mechanisms || []).forEach((m) => { if (m && m.adc_id) MECH[m.adc_id] = m; });
+    (APP.mechanisms || []).forEach((m) => {
+      if (m) {
+        const id = m.adc || m.adc_id;
+        if (id) MECH[id] = m;
+      }
+    });
     verEl.textContent = 'v' + (APP.version || '0.7.0');
 
     restore();
