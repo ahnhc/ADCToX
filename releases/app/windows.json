@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "app_version": "0.6.15",
-  "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.6.15/ADCTOX-windows.zip",
-  "size": 223433113,
-  "sha256": "425022c2bac3ada79dfa2d52a04ed30554fc66e3f597226a70394f6a64c8a8cf",
+  "app_version": "0.7.0",
+  "url": "https://github.com/ahnhc/ADCToX/releases/download/v0.7.0/ADCTOX-windows.zip",
+  "size": 223463706,
+  "sha256": "e4f8ba70777fbe3f3cf93678f36dacbb6ab296dca3e39c63f6d0c6bb46e5c144",
   "python": "3.12.10 embeddable",
   "torch_version": "2.11.0",
   "wheels": [
@@ -33,7 +33,7 @@
     "packaging-26.3-py3-none-any.whl",
     "pygments-2.21.0-py3-none-any.whl",
     "pyyaml-6.0.3-cp312-cp312-win_amd64.whl",
-    "regex-2026.11.8-cp312-cp312-win_amd64.whl",
+    "regex-2026.11.9-cp312-cp312-win_amd64.whl",
     "rich-15.0.0-py3-none-any.whl",
     "safetensors-0.8.0-cp310-abi3-win_amd64.whl",
     "scikit_learn-1.9.1-cp312-cp312-win_amd64.whl",

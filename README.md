@@ -1,160 +1,110 @@
-# ADCTOX
+# ADCTOX v0.7.0
 
-[![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-E95420?logo=linux&logoColor=white)](docs/INSTALL.md)
-[![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-000000?logo=apple&logoColor=white)](docs/INSTALL.md)
-[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows&logoColor=white)](docs/INSTALL.md)
+[![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](docs/INSTALL.md)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](docs/INSTALL.md)
+[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](docs/INSTALL.md)
 [![Ubuntu terminal](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml)
 [![One-line install](https://github.com/ahnhc/ADCToX/actions/workflows/install.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/install.yml)
 
-**환자의 기저질환 이름만으로 이미 손상된 장기를 판정하고, 환자의 암에 승인된 ADC 중 그 장기에 라벨 경고가 적은 약부터 보여 주는 앱입니다. 브라우저 화면과 터미널 화면이 있습니다.** 장기 판정은 사전학습 가중치 없이 무작위에서 처음부터 학습한 1.1억 파라미터 모델이 PC 안에서 합니다(학습 자료와 Gemma의 역할은 아래 노벨티 1).
+**Patient-Specific Antibody-Drug Conjugate (ADC) Clinical Decision & 4-Part Architecture Workspace.**  
+ADCTOX links a patient's cancer, comorbidities, and laboratory values to the 13 organ axes, compares all 15 FDA-approved ADCs against DailyMed label restrictions and ClinicalTrials.gov pivotal study incidence, and provides an interactive **Structure Studio** (`Target × Linker × Payload × DAR & Fc-Silencing`) for de novo conjugate evaluation.
 
-<p align="center">
-  <img src="docs/images/performance.svg" alt="장기 판정 정확도: 이 프로젝트의 모델 평균 0.723, 튜닝한 Gemma 4 E2B 0.711, 튜닝 안 한 Gemma 0.586" width="820">
-</p>
+---
 
-## 왜 필요한가
+## What's New in v0.7.0
 
-ADC(antibody-drug conjugate)는 항체에 강한 세포독성 payload를 붙인 항암제입니다. payload와 linker에 따라 손상되는 장기가 다릅니다. DXd 계열은 간질성 폐질환, MMAE 계열은 말초신경병증, calicheamicin과 DM1 계열은 간 독성이 대표적입니다. 그래서 15종의 FDA 라벨에는 장기별 Boxed warning과 Warning이 촘촘하게 걸려 있습니다.
+1. **Instant Visual ADC Matrix (No 5-Step Wizard Wall):** Opens directly into the visual workspace. Switch seamlessly between **`1 ADC Matrix`**, **`2 Structure Studio`**, and **`3 Patient & Labs`**, or load clinical presets (`HER2+ / ILD + HF`, `DLBCL / Cirrhosis`, `TNBC / CKD3`, `Myeloma / Ocular`) with one tap.
+2. **Active-Organ-Only Horizon Strip & Spotlight Hierarchy:** Instead of cluttering every row with 13 organ cells, ADCTOX surfaces **only the patient's active vulnerable organs** (1–4 axes) as horizontal bars. Top recommended ADCs are elevated into **Cobalt & Emerald Spotlight Hero Cards**, while lower-ranked options recede into calm monochrome slate rows.
+3. **Pivotal Trial Dual-Bars (`ADC` vs `CMP`):** Side-by-side horizontal incidence bars compare the ADC treatment arm against the pivotal trial control arm with `tabular-nums` precision.
+4. **4-Part ADC Structure Studio:** Interactively combine **Target Antigen (`mAb`) × Chemical Linker × Cytotoxic Payload × DAR × Fc Engineering (`LALA-PG`)** to inspect chemical conjugation compatibility, GTEx normal tissue expression (`nTPM`), bystander diffusion, and simulated organ burden.
+5. **Android / iOS Mobile PWA & Server Hosting (`ubuntu-a1-osaka` Ready):** Ships with `Manrope` variable typography, a responsive mobile bottom-sheet drawer, installable PWA manifest (`manifest.webmanifest`), and `ADCTOX_HOST` / `ADCTOX_ALLOWED_HOSTS` support for remote server deployment.
 
-흔한 기저질환 하나만 있어도, 그 장기에 경고가 걸린 ADC가 15종 중 절반 가까이 됩니다.
+---
 
-| 기저질환 | 손상된 장기 | 그 장기에 경고가 있는 ADC |
-|---|---|---|
-| Interstitial lung disease, COPD | Lung | **8 / 15** |
-| Cirrhosis | Liver | **7 / 15** |
-| Heart failure, hypertension | Cardio | **7 / 15** |
-| Peripheral neuropathy | Neuro | **7 / 15** |
-| Glaucoma | Eye | **6 / 15** |
-| Type 2 diabetes | Metabolic | **4 / 15** |
+## One-Line Installation (Ubuntu, macOS, Windows)
 
-기저질환이 있는 환자는 임상시험에서 대부분 제외됩니다. 그래서 라벨에는 해당 환자군이 연구되지 않았다고만 적혀 있는 경우가 많습니다. 결국 의사가 환자마다 15종의 라벨을 기저질환 하나하나와 직접 대조해야 합니다. 게다가 기저질환은 차트에 한국어, 약어, 오타, 증상 문장 등 여러 형태로 적혀 있습니다.
-
-## 목표
-
-1. 어떤 형태로 적힌 기저질환이든 표준 질환(MONDO)에 연결하고, 13개 장기 중 이미 손상된 장기를 판정한다.
-2. 그 장기를 ADC 15종의 라벨 경고, 라벨 제한 기준(간, 신장 기능 수치), payload 기전과 맞춰, 환자의 암에 승인된 약부터 경고가 적은 순서로 보여 준다.
-3. 앱에 거대 언어 모델 없이, 처음부터 학습한 작은 모델로 같은 수준에 도달한다(학습에는 Gemma의 출력을 목표로 썼다).
-4. 환자 정보가 PC 밖으로 나가지 않는다.
-
-## 노벨티
-
-**1. 처음부터 학습한 의학 언어 모델.** 사전학습된 가중치를 쓰지 않았습니다. BERT-base 구조를 무작위 가중치에서 시작하고 tokenizer도 직접 만들었습니다. 사전학습 텍스트는 PubMed 초록(86%), UMLS 이름과 정의(12%), MONDO와 HPO(1%), 의약품 라벨과 임상시험 문서(0.5%)입니다. UMLS는 이용 허가를 받아 쓴 자료입니다. 앱에는 Gemma가 없지만, 판정 학습에서는 GPT가 만든 v5.1 장기 라벨과, 그 라벨로 튜닝한 Gemma의 장기 확률을 증류 목표의 하나로 썼습니다. GPU 1장으로 48시간 학습한 1.1억 파라미터 모델이, 같은 라벨로 튜닝한 Gemma 4 E2B와 같은 수준의 장기 판정 정확도를 냅니다.
-
-**2. 처음 보는 질환은 온톨로지 기록을 읽고 판정한다.** 모델은 입력을 MONDO 질환에 연결한 다음, 그 질환의 정의, 상위 개념, 증상 기록을 두 번째 모델이 읽어 장기를 정합니다. 사람이 모르는 병을 교과서에서 찾아 읽는 방식과 같습니다. 예를 들어 "TUBERCULOSIS"는 이름만 보면 감염으로만 판정되지만, 기록("the lungs being the most common site")을 읽으면 폐와 감염으로 판정됩니다. 이 방식과 오타, 약어 학습을 더하면 처음 보는 질환의 정확도가 0.694에서 0.778로 오릅니다(test).
-
-<p align="center">
-  <img src="docs/images/competition/evidence_example.svg" alt="이름만 본 판정과 MONDO 기록을 읽은 판정 비교" width="820">
-</p>
-
-**3. 2만 2천여 질환의 장기 라벨.** MONDO 사람 질환 22,638개에 13개 장기 라벨을 만들었습니다. 모든 질환을 독립적으로 세 번 라벨링했고(패스 간 κ 0.94~0.98), 세 번이 다르면 판정하고 일부는 감사했습니다. 이어서 규칙에 따라 다시 검토했습니다. 이 라벨이 판정 모델의 학습 목표입니다.
-
-**4. 라벨 원문 그대로의 판정.** 장기 경고는 DailyMed 라벨의 Boxed warning과 Warnings and Precautions 절에서, 기전은 12.1절 원문에서 가져옵니다. bilirubin ×ULN과 Cockcroft–Gault CLcr은 반올림 없이 라벨 기준값과 정확히 비교합니다.
-
-## 성능
-
-| test, 장기 macro-F1 (seed 3개 평균) | 처음 보는 질환 | 아는 질환, 새 표현 | 평균 |
-|---|---|---|---|
-| Gemma 4 E2B, 튜닝 안 함 | 0.739 | 0.432 | 0.586 |
-| Gemma 4 E2B, 같은 라벨로 튜닝 | 0.834 | 0.588 | 0.711 |
-| **이 프로젝트의 모델 (앱에 들어간 모델)** | 0.778 | **0.667** | **0.723** |
-| 이 프로젝트의 모델 + Gemma | **0.836** | **0.674** | **0.755** |
-
-- **처음 보는 질환 (296문항):** 흔한 기저질환 211개에 대해 LLM 주석자 두 개가 합의한 장기 정답입니다. 이 질환들과 그 상위, 하위 개념은 학습 데이터에서 모두 뺐습니다.
-- **아는 질환, 새 표현 (168문항):** 학습한 질환을 논문 속 다른 표현으로 묻습니다.
-- 모델 선택은 dev로만 했고, test는 모델을 정한 뒤 채점했습니다.
-- 이 프로젝트의 모델은 아는 질환에서, Gemma는 처음 보는 질환에서 강합니다. "+ Gemma" 행은 비교용 기록입니다. 앱에는 Gemma를 넣지 않았고 넣을 계획도 없습니다.
-- **이 점수는 LLM이 만든 라벨과의 일치도입니다.** 임상의가 검토한 정답이 아니며, 사람의 검토는 아직 한 건도 받지 못했습니다.
-
-## 알려진 한계
-
-- **환자 단위 결과 검증이 없습니다.** 이 순서가 실제 환자의 경과와 맞는지는 확인하지 않았습니다.
-- **라벨 경고 수준의 FAERS AUROC 0.778 [0.727, 0.837]은 약물 단위입니다.** 15종 ADC의 라벨 경고를 시판 후 보고와 맞춘 값이고 환자 정보가 없습니다([검증 계획](ml/docs/validation_plan.md)).
-- **환자에게 가지 않는 경고가 있습니다.** 처음 보는 질환 dev(유효 243문항, seed 8)에서 정답 장기에 걸린 Boxed 연결 277개 중 55개(19.9%), Warning 연결 1,767개 중 419개(23.7%)가 판정 단계에서 빠집니다. macro-F1은 이 손실을 따로 보여 주지 않으므로 `ml/bench_judge.py --table`이 함께 출력합니다.
-- **약어가 가장 약한 입력입니다.** 처음 보는 질환 dev의 약어 macro-F1은 0.508(seed 3개 평균)이고, 같은 모델의 질문 변형 평가(`ml/eval_query_variants.py`)에서도 약어가 0.626으로 가장 낮습니다. 이 평가는 쉬운 쪽으로 치우쳐 있어 표현 유형끼리 비교하는 데만 씁니다.
-
-## 구현된 것
-
-```
-기저질환 입력 ──▶ MONDO 질환 연결 ──▶ 13개 장기 판정 ──▶ ADC 15종 라벨 비교 ──▶ 경고가 적은 순서
-(한국어, 영어,      (이름 벡터 검색)     (이름 판정, 또는      (Boxed warning, Warning,
- 약어, 증상 문장)                        기록 읽기 판정)       라벨 제한, payload 기전)
-```
-
-**질환 입력.** 한국어, 영어, 약어, 증상 문장으로 찾습니다. MONDO 사람 질환 23,258개에 한국어 이름이 있습니다. 증상 문장은 질환 프로필의 증상 문구와 글자 단위로 맞춰 찾습니다.
-
-<p align="center">
-  <img src="docs/images/search.svg" alt="질환 검색 화면" width="820">
-</p>
-
-**AI 장기 분석.** 질환마다 판정 모델의 장기 확률 상위 3개가 나옵니다.
-
-<p align="center">
-  <img src="docs/images/ai.svg" alt="AI 장기 분석 화면: 질환마다 장기 확률 상위 3개" width="820">
-</p>
-
-**ADC 비교.** 입력한 질환 중 암이 있으면 그 암을 환자의 암으로 보고, 그 암에 승인된 ADC가 먼저 나오고 나머지는 그 아래에 이어집니다. 암은 장기 손상으로 세지 않습니다. 각 묶음 안에서는 라벨 제한과 환자 장기에 걸린 경고 순으로 정렬합니다. 가장 걱정되는 질환을 하나 고르면 그 장기에 경고가 있는 ADC가 아래로 내려갑니다. ADC를 고르면 적응증, 라벨 제한 기준, 환자 장기에 걸린 경고, 주요 임상시험에서 그 장기에 생긴 이상반응 비율, payload와 linker 기전이 나옵니다.
-
-**임상시험 결과.** ADC 15종의 주요 임상시험 32건(ClinicalTrials.gov에 결과가 게시된 28건)에서, 환자 장기마다 라벨 경고가 가리키는 이상반응의 비율을 보여 줍니다. 브라우저에서는 경고 아래에 점 20개(점 하나가 100명 중 5명, 중증은 분홍)와 "6 in 100 had pneumonitis, 2 serious" 같은 한 줄로, 터미널에서는 대조군과 나란히(`pneumonitis 18/257 (7.0%, vs 0.4%), serious 1/257`) 보입니다. 환자의 암을 알면 그 암의 임상시험을 고릅니다. 순서에는 쓰지 않습니다.
-
-<p align="center">
-  <img src="docs/images/results.svg" alt="ADC 비교 결과" width="820">
-</p>
-
-**검사 수치.** bilirubin, AST, ALT는 ULN 배수로(검사실 ULN을 넣으면 그 값으로), 크레아티닌은 Cockcroft–Gault CLcr로 바꿔 라벨의 간, 신장 기능 기준과 맞춥니다. 입력하지 않은 값에 따라 판정이 달라지면 `?`로 표시하고, 필요한 값을 알려 줍니다.
-
-**브라우저 화면.** `adctox`는 다섯 화면을 기본 브라우저에서 엽니다. 이 컴퓨터 안에서만 열리고 서버에는 아무것도 남지 않습니다. 인체 지도가 환자의 장기와 고른 ADC의 경고(boxed warning은 분홍 고리, warning은 청록 고리)를 비추고, ADC 상세는 넓은 화면에서는 세 번째 열로, 좁은 화면에서는 서랍으로 열립니다. 결과 화면은 Ctrl-P로 A4에 인쇄됩니다. 화면은 영어이고(한글 입력도 읽습니다), 처음 쓰는 사람을 위해 단계마다 팁 카드, 점선 제목의 설명, 위쪽 `?` 가이드가 있습니다.
-
-<p align="center">
-  <img src="docs/images/web_result.png" alt="브라우저 화면: 결과와 ADC 상세, 인체 지도" width="820">
-</p>
-
-**PC 안에서 실행.** Windows, macOS, Linux에서 관리자 권한 없이 설치되고, 판정은 인터넷 없이 CPU에서 합니다.
-
-## 설치
-
-**Linux, macOS (Apple silicon)**
+### Ubuntu / Linux (`x86_64` & `arm64`) and macOS (`Apple Silicon`)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.sh | bash
 ```
 
-**Windows 10, 11** (PowerShell)
+### Windows 10 / 11 (PowerShell)
 
 ```powershell
 irm https://raw.githubusercontent.com/ahnhc/ADCToX/main/install.ps1 | iex
 ```
 
-설치가 끝나면 `adctox`(브라우저) 또는 `adctox-cli`(터미널)를 실행합니다. 처음 설치할 때 추론 환경과 모델 파일(약 305 MB)을 받습니다. 설치 경로, GPU, 삭제 방법은 [설치 안내](docs/INSTALL.md)에 있습니다.
+The installer sets up an isolated Python runtime, downloads the `0.8` from-scratch organ judge model bundle (~305 MB), and registers `adctox` (WebApp, default) and `adctox-cli` (Terminal TUI).
 
-## 사용법
+---
 
-`adctox`를 실행하면 기본 브라우저에 화면이 열립니다. 이 컴퓨터 안에서만 열리고(127.0.0.1) 서버에는 아무것도 남지 않습니다. 터미널에서 쓰려면 `adctox-cli`를 실행합니다. 두 화면 모두 `질환   검사 수치   AI 장기 분석   우선순위   결과`의 다섯 화면을 **PgUp / PgDn**으로 오갑니다.
+## Quick Start & Remote Server Hosting (Mobile / Android Access)
 
-| 화면 | 하는 일 |
-|---|---|
-| 질환 | 질환명, 증상, 환자의 암을 입력하고 Enter로 추가합니다 |
-| 검사 수치 | 아는 값만 입력합니다 |
-| AI 장기 분석 | 질환마다 판정한 장기를 확인합니다 |
-| 우선순위 | 장기가 다른 질환이 여럿이면, 가장 걱정되는 질환을 하나 고릅니다 |
-| 결과 | ↑↓로 ADC를 골라 근거를 봅니다 |
-
-화면이 없는 서버에서 쓸 때는 서버에서 포트를 정해 켜고, 내 컴퓨터에서 SSH 터널로 엽니다.
+### Local Desktop Browser
 
 ```bash
-ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox              # 서버에서
-ssh -L 8765:127.0.0.1:8765 <사용자>@<서버>               # 내 컴퓨터에서, 그다음 http://localhost:8765
+adctox               # Opens the v0.7.0 WebApp in your default browser (127.0.0.1)
+adctox-cli           # Opens the 5-step Terminal TUI
 ```
+
+### Hosting on an Ubuntu Server (`ubuntu-a1-osaka`) for Phone / PWA Access
+
+To host ADCTOX on a remote Linux server and access it directly from an Android or iOS phone browser (or install it to the home screen as a PWA):
 
 ```bash
-adctox --update-app      # 앱 업데이트
-adctox --update-models   # 모델 업데이트
+ADCTOX_NO_BROWSER=1 ADCTOX_HOST=0.0.0.0 ADCTOX_PORT=8765 ADCTOX_ALLOWED_HOSTS="*" adctox
 ```
 
-## 더 보기
+Or behind a reverse proxy / specific domain:
 
-- [처음부터 만든 모델](ml/docs/scratch_model.md)
-- [Gemma 비교 기준 재현](ml/docs/reproduce.md): Gemma 튜닝부터 비교 보고서까지 명령 하나로
-- [코드 구성](ml/README.md)
-- [데이터와 모델의 출처, 이용 조건](THIRD_PARTY_NOTICES.md)
+```bash
+ADCTOX_NO_BROWSER=1 ADCTOX_HOST=0.0.0.0 ADCTOX_PORT=8765 ADCTOX_ALLOWED_HOSTS="ubuntu-a1-osaka,adc.example.com" adctox
+```
 
-코드와 이 프로젝트가 만든 데이터는 [Apache License 2.0](LICENSE)입니다.
+### Live Over-the-Air Updates
+
+```bash
+adctox --update-app      # Update the application to the latest release
+adctox --update-models   # Update the organ judge model bundle
+```
+
+---
+
+## Core Architecture & From-Scratch Medical Language Model (`x2te`)
+
+```
+Patient Input ──▶ MONDO Concept Link ──▶ 13-Organ Judge (x2te) ──▶ 15 FDA ADC Labels & 32 Pivotal Trials
+(EN / KO /        (Vector & Alias        (110M BERT trained        (Boxed / Section 5 warnings, ULN & CLcr
+ Symptoms)         Index)                 from random weights)      thresholds, Section 12.1 architecture)
+```
+
+- **Trained From Random Weights (`ScratchJudge/`):** A 110M-parameter BERT encoder pretrained from scratch on PubMed abstracts (86%), UMLS level-0 terms and definitions (12%), MONDO/HPO ontologies (1%), and drug labels/clinical trials (0.5%), distilled against 22,638 triple-annotated MONDO disease-organ profiles.
+- **Ontology Evidence Reading:** For unseen diseases, the model reads MONDO definitions, parent hierarchies, and HPO phenotypes, raising unseen-disease macro-F1 from `0.694` to `0.778` (overall test macro-F1 `0.723` across 3 seeds vs `0.711` for fine-tuned Gemma 4 E2B).
+- **Exact FDA Label & Trial Arithmetic:** Unrounded Cockcroft–Gault `CLcr` and laboratory `×ULN` ratios (`Bilirubin`, `AST`, `ALT`) are matched directly against DailyMed label rules alongside adverse event counts from 28 ClinicalTrials.gov pivotal studies.
+
+| Test Macro-F1 (3-seed mean) | Unseen Diseases (296) | Known Diseases, New Phrasing (168) | Mean |
+|---|---|---|---|
+| Gemma 4 E2B (untuned) | 0.739 | 0.432 | 0.586 |
+| Gemma 4 E2B (fine-tuned on same labels) | 0.834 | 0.588 | 0.711 |
+| **ADCTOX `x2te` (shipped in app, 110M params)** | **0.778** | **0.667** | **0.723** |
+
+---
+
+## Known Limitations
+
+- **Research Prototype:** Rankings and simulated conjugate metrics have not been prospectively validated against patient clinical outcomes.
+- **Drug-Level Post-Marketing Calibration:** FAERS AUROC `0.778 [0.727, 0.837]` reflects drug-level label-warning alignment rather than patient-level risk prediction ([validation plan](ml/docs/validation_plan.md)).
+- **Missed Organ Links:** On unseen diseases (`dev`), 19.9% of Boxed Warning links and 23.7% of Section 5 Warning links are missed at the organ-judging stage (`ml/bench_judge.py --table`).
+
+---
+
+## Documentation & Licenses
+
+- [Installation & Platform Guide](docs/INSTALL.md)
+- [From-Scratch Organ Judge (`x2te`) Architecture](ml/docs/scratch_model.md)
+- [Reproducing the Gemma Benchmark](ml/docs/reproduce.md)
+- [Module Reference](ml/README.md)
+- [Third-Party Notices & Font Licenses (`Manrope`, `Pretendard`)](THIRD_PARTY_NOTICES.md)
+
+Code and project-curated datasets are licensed under the [Apache License 2.0](LICENSE).

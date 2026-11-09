@@ -1,0 +1,19 @@
+{
+  "name": "ADCTOX Clinical & Structure Studio",
+  "short_name": "ADCTOX",
+  "description": "Visual ADC clinical evaluation, organ vulnerability analysis, and combination structure studio.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F8FAFC",
+  "theme_color": "#F8FAFC",
+  "icons": [
+    {
+      "src": "/static/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,18 +1,18 @@
-/* ADCTOX browser UI: the TUI's five steps (ml/form.py, ml/recommend.py) over the local server's /api (ml/webapp.py).
-   No framework, no build step. index.html?mock=1 runs on the fixtures in mock.js (window.ADCTOX_MOCK, same shapes). */
+/* ADCTOX v0.7.0 Architectural Daylight WebApp
+   Option A: Active-Organ Horizon Strip + Top ADC Spotlight Hero Cards + Dual-Bar Trial Incidence + Structure Studio.
+   Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
   'use strict';
 
-  try { sessionStorage.removeItem('adctoxReload'); } catch (e) { /* no storage: index.html does not retry */ }
+  try { sessionStorage.removeItem('adctoxReload'); } catch (e) { /* ignore */ }
   const Q = new URLSearchParams(location.search);
-  // the mock and its parameters (motion, step, adc, q) only for the page opened as a file; over http they are ignored
   const MOCK = location.protocol === 'file:' && Q.get('mock') === '1' && window.ADCTOX_MOCK ? window.ADCTOX_MOCK : null;
   const REVIEW = window.ADCTOX_REVIEW;
   const ROOT = document.documentElement;
   const REDUCE = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
   const still = () => ROOT.classList.contains('still') || REDUCE.matches;
 
-  // ------------------------------------------------------------------ the server: one small object (the mock has the same methods)
+  // ------------------------------------------------------------------ API Client
   async function call(method, url, body) {
     let res;
     const send = () => fetch(url, {
@@ -21,24 +21,25 @@
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     try {
-      try { res = await send(); } catch (e) {     // one lost connection is not the end (a loopback filter can reset one); starting an analysis twice would be
+      try { res = await send(); } catch (e) {
         if (url === '/api/analyze') throw e;
         await new Promise((go) => setTimeout(go, 200));
         try { res = await send(); } catch (e2) { await new Promise((go) => setTimeout(go, 500)); res = await send(); }
       }
-    } catch (e) {                         // no answer at all ("Failed to fetch"): the adctox process that served this page has ended
-      const err = new Error('ADCTOX stopped (its terminal window was closed, or Ctrl-C). Run adctox again; it opens a new page.');
+    } catch (e) {
+      const err = new Error('ADCTOX server connection closed. Start adctox again to reconnect.');
       err.status = 0; throw err;
     }
     let data = null;
     try { data = await res.json(); } catch (e) { /* not JSON */ }
-    if (!res.ok) {                        // the server's error line as it sent it, and the whole answer with it
+    if (!res.ok) {
       const err = new Error((data && data.error) || `HTTP ${res.status}`);
       err.status = res.status; err.data = data;
       throw err;
     }
     return data;
   }
+
   const API = MOCK || {
     app: () => call('GET', '/api/app'),
     suggest: (q, picked, ai) => call('GET', '/api/suggest?' + new URLSearchParams(
@@ -49,7 +50,7 @@
     recommend: (body) => call('POST', '/api/recommend', body),
   };
 
-  // ------------------------------------------------------------------ DOM helpers
+  // ------------------------------------------------------------------ DOM Helpers
   function h(tag, props, ...kids) {
     const el = document.createElement(tag);
     if (props) for (const k in props) {
@@ -70,48 +71,37 @@
     }
     return el;
   }
-  const SVGNS = 'http://www.w3.org/2000/svg';
-  function sv(tag, attrs, ...kids) {
-    const el = document.createElementNS(SVGNS, tag);
-    for (const k in attrs || {}) el.setAttribute(k, attrs[k]);
-    for (const kid of kids.flat()) if (kid) el.append(kid);
-    return el;
-  }
-  const clear = (el) => { while (el.firstChild) el.firstChild.remove(); return el; };
+  const clear = (el) => { while (el && el.firstChild) el.firstChild.remove(); return el; };
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const kbd = (k, label) => h('span', null, h('kbd', { text: k }), ({ add: 'Add', choose: 'Choose', remove: 'Remove', move: 'Move', back: 'Back', next: 'Next', select: 'Select', details: 'Details' })[label] || label);
+  const kbd = (k, label) => h('span', null, h('kbd', { text: k }), ({
+    add: 'Add', choose: 'Choose', remove: 'Remove', move: 'Move',
+    back: 'Back', next: 'Next', select: 'Select', details: 'Evidence',
+  })[label] || label);
 
-  // ------------------------------------------------------------------ help: a note on dotted titles (hover or focus), one card per step
-  // on the first visit (remembered in this browser), and the ? guide in the header
-  const STEP_TIPS = [         // one sentence per line
-    'Type the patient\'s conditions, symptoms or cancer, in English or Korean.\nPress Enter to add each one, then PgDn.',
-    'Enter only the values you have. Empty boxes are fine.\nBlank values remain unknown. A flagged value needs review.',
-    'The AI maps each condition to the organs it affects.\nBars show model association scores, not patient risk. Teal marks the organs used.',
-    'Pick the condition to review first. Its organs lead the Review order and the ranking.\nAuto orders the conditions by severity.',
-    'ADCs ranked for this patient.\nClick a row or press Enter for the label evidence.\nHover a dotted title to see what it means.',
-  ];
-  const TIPS = {          // the hover note: one summary line, then [mark, meaning] rows
-    'Key values': ['The patient\'s values that this ADC\'s label checks.', [['×ULN', '0 to 3, ticks at 1× and 1.5×'], ['CLcr', '0 to 120 mL/min, ticks at 30, 60, 90']]],
-    'Review order': ['Organs to check first, from the conditions and labs.', [['Filled', 'check first'], ['Outlined', 'check next']]],
-    'Label restriction': ['What the FDA label says about this ADC for this patient.', [['1 bar', 'Monitor: usable, check more often'], ['2 bars', 'Not studied: no data in such patients'], ['3 bars', 'Avoid: the label says not to use'], ['Dashed', 'a value not entered could raise it'], ['Patient', 'what the patient has'], ['Label', 'the label\'s rule it meets']]],
-    'Patient organs': ['Label warnings on organs where the patient already has a problem.', [['!!', 'boxed warning'], ['!', 'warning'], ['+N', 'more organs (hover it)']]],
-    'Other': ['Label warnings on the patient\'s other organs.', [['!!', 'boxed warning'], ['!', 'warning']]],
-    'Organs': ['The organs each condition affects, by the AI.', [['Bar', 'model association, not toxicity probability'], ['Teal', 'the organs used']]],
-    'Read as': ['The disease concept the input was matched to.', [['Source', 'where the match came from']]],
-    'Indication': ['Is this ADC approved for the patient\'s cancer?', [['✓', 'approved'], ['✕', 'not approved'], ['List', 'all approved uses']]],
-    "Warnings on the patient's organs": ['The label\'s warnings on the patient\'s affected organs.', [['!!', 'boxed warning'], ['!', 'warning'], ['Dots', 'patients in the main trial, one per 5 in 100'], ['Pink dot', 'serious'], ['Grey dots', 'as common on the other treatment']]],
-    'Warnings on other organs': ['The label\'s warnings on organs where the patient has no known problem.', []],
-    'Payload and linker': ['What the ADC delivers and what it binds.', [['Payload', 'the drug released in the cell, its class explains most warnings'], ['Linker', 'how the payload is attached'], ['Bystander', 'the payload also reaches nearby cells'], ['Target', 'the protein the antibody binds']]],
-    'Pre-treatment checks': ['Baseline tests the label asks for before the first dose.', []],
-    'Missing inputs': ['Values that could change the Label restriction if entered.', []],
+  // ------------------------------------------------------------------ Tooltips & Guide
+  const TIPS = {
+    'Regimen Fit': ['FDA label dosing & eligibility rules for this patient profile.', [
+      ['1 bar', 'Standard dosing: no label restriction triggered'],
+      ['2 bars', 'Monitor or Dose Adjust: check organ lab thresholds'],
+      ['3 bars', 'Avoid or Contraindicated: label advises against use'],
+    ]],
+    'Active Organ Profile': ['Warnings on the patient\'s active vulnerable organs only.', [
+      ['Emerald bar', 'Clear: no boxed or Section 5 warning on this organ'],
+      ['Amber bar', 'Section 5 Warning on this organ'],
+      ['Crimson bar', 'Boxed Warning on this organ'],
+    ]],
+    'Pivotal Trial vs Control': ['Study-group adverse event incidence in the pivotal trial.', [
+      ['ADC', 'Treatment arm incidence (events / sample size)'],
+      ['CMP', 'Comparator arm incidence (events / sample size)'],
+    ]],
+    'Label restriction': ['FDA label rules evaluated against entered conditions and labs.', []],
+    'Indication': ['Approved oncology indications on the FDA label.', []],
+    'Payload and linker': ['4-part antibody-drug conjugate architecture (Section 12.1).', []],
   };
-  const TIP_KEY = 'adctox.tips.v1';
-  let seen = {};
-  try { seen = JSON.parse(localStorage.getItem(TIP_KEY) || '{}') || {}; } catch (e) { seen = {}; }
-  const keepSeen = () => { try { localStorage.setItem(TIP_KEY, JSON.stringify(seen)); } catch (e) { /* the cards just show again */ } };
+
   const tipBox = h('div', { class: 'tipbox', role: 'tooltip', id: 'tipbox', hidden: true });
   const tipOfEl = new WeakMap();
-  function tipped(el, text) {             // a title with a note: dotted underline, the note on hover or focus
+  function tipped(el, text) {
     const t = text || TIPS[el.textContent];
     if (!t) return el;
     el.classList.add('tipped'); tipOfEl.set(el, t); el.tabIndex = 0; el.setAttribute('aria-describedby', 'tipbox');
@@ -121,1216 +111,1299 @@
     const t = tipOfEl.get(el); if (!t) return;
     clear(tipBox);
     if (typeof t === 'string') tipBox.textContent = t;
-    else tipBox.append(h('div', { class: 'ts', text: t[0] }), t[1].length ? h('div', { class: 'tr' }, t[1].map(([k, v]) => [h('span', { class: 'tk', text: k }), h('span', { text: v })])) : null);
+    else tipBox.append(
+      h('div', { class: 'ts', text: t[0] }),
+      t[1] && t[1].length ? h('div', { class: 'tr' }, t[1].map(([k, v]) => h('div', null, h('b', { text: k + ': ' }), h('span', { text: v })))) : null
+    );
     tipBox.hidden = false;
     const r = el.getBoundingClientRect(), w = tipBox.offsetWidth, ht = tipBox.offsetHeight;
-    const x = Math.min(window.innerWidth - w - 12, Math.max(12, r.left - 8));
+    const x = Math.min(window.innerWidth - w - 12, Math.max(12, r.left));
     const y = r.bottom + 8 + ht > window.innerHeight - 8 ? r.top - ht - 8 : r.bottom + 8;
     tipBox.style.left = x + 'px'; tipBox.style.top = y + 'px';
   }
   const hideTip = () => { tipBox.hidden = true; };
-  const tipOf = (e) => (e.target && e.target.closest ? e.target.closest('.tipped') : null);
-  document.addEventListener('mouseover', (e) => { const t = tipOf(e); if (t) showTip(t); else if (!tipBox.hidden && document.activeElement !== tipBox._f) hideTip(); });
-  document.addEventListener('focusin', (e) => { const t = tipOf(e); tipBox._f = t; if (t) showTip(t); else hideTip(); });
+  document.addEventListener('mouseover', (e) => {
+    const t = e.target && e.target.closest ? e.target.closest('.tipped') : null;
+    if (t) showTip(t); else if (!tipBox.hidden) hideTip();
+  });
   window.addEventListener('scroll', hideTip, true);
 
-  let card = null;
-  function closeCard() { if (card) { card.remove(); card = null; } }
-  function stepCard(n) {                  // the step's card, once; it never takes the focus from the step's own field
-    closeCard();
-    if (seen['s' + n] || seen.off || !STEP_TIPS[n]) return;
-    const done = () => { seen['s' + n] = 1; keepSeen(); closeCard(); };
-    card = h('div', { class: 'stepcard', role: 'note', 'aria-label': 'Tip' },
-      h('div', { class: 'sc-head' }, h('span', { class: 'sc-n', text: `${n + 1} / ${STEPS.length}` }), h('span', { class: 'sc-t', text: STEPS[n] })),
-      h('p', { text: STEP_TIPS[n] }),
-      h('div', { class: 'sc-row' },
-        h('button', { type: 'button', class: 'link', text: 'Hide all tips', onclick: () => { seen.off = 1; keepSeen(); closeCard(); } }),
-        h('button', { type: 'button', class: 'ok', text: 'Got it', onclick: done })));
-    document.body.append(card);
-  }
   let guide = null;
-  function dropGuide() { if (guide) { guide.remove(); guide = null; } }
   function closeGuide() {
     if (!guide) return;
-    dropGuide();
+    guide.remove(); guide = null;
     const opener = document.querySelector('.help');
     if (opener) opener.focus();
   }
-  // the guide is aria-modal: Tab stays inside it, also when focus was lost to the page behind
-  function trapTab(e) {
-    const f = [...guide.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter((el) => !el.disabled);
-    if (!f.length) { e.preventDefault(); return; }
-    const first = f[0], last = f[f.length - 1], at = document.activeElement;
-    if (!guide.contains(at)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
-    else if (e.shiftKey && at === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && at === last) { e.preventDefault(); first.focus(); }
-  }
   function openGuide() {
-    dropGuide(); closeCard();
+    if (guide) closeGuide();
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
-        h('div', { class: 'g-head' }, h('h2', { id: 'g-title', text: 'How ADCTOX works' }), h('button', { type: 'button', class: 'x', 'aria-label': 'Close', text: '×', onclick: closeGuide })),
-        h('ol', { class: 'g-steps' }, STEPS.map((name, i) => h('li', null, h('b', { text: name }), h('span', { text: STEP_TIPS[i] })))),
-        h('h3', { text: 'Reading the results' }),
+        h('div', { class: 'g-head' },
+          h('h2', { id: 'g-title', text: 'ADCTOX v0.7.0 Visual Workspace' }),
+          h('button', { type: 'button', class: 'x', 'aria-label': 'Close', text: '×', onclick: closeGuide })),
+        h('ol', { class: 'g-steps' },
+          h('li', null, h('b', { text: '1. ADC Matrix: ' }), 'Top recommended ADCs are highlighted in full-color Spotlight Cards. Lower-ranked drugs recede into monochrome slate rows. Only the patient\'s active organs are graphed.'),
+          h('li', null, h('b', { text: '2. Structure Studio: ' }), 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) to inspect chemical compatibility, GTEx tissue selectivity, and organ burden.'),
+          h('li', null, h('b', { text: '3. Patient & Labs: ' }), 'Search conditions in English or Korean, enter lab values (Cockcroft-Gault CLcr & ULN ratios), and inspect AI condition-organ associations.')),
+        h('h3', { text: 'Visual Encodings' }),
         h('div', { class: 'g-keys' },
-          h('span', { class: 'status-pill limited', text: 'Label status' }), 'Applicable label restrictions, grouped for review, not treatment ranking',
-          h('span', { class: 'conditional-label', text: 'Depends on a value not entered' }), 'The restriction depends on a value not entered',
-          h('span', null, h('b', { class: 't-red mono', text: '!!' })), 'Boxed warning on that organ',
-          h('span', null, h('b', { class: 't-amber mono', text: '!' })), 'Warning on that organ'),
-        h('h3', { text: 'Keys' }),
-        h('div', { class: 'g-keys' },
-          h('span', null, h('kbd', { text: 'PgDn' })), 'Next step', h('span', null, h('kbd', { text: 'PgUp' })), 'Previous step',
-          h('span', null, h('kbd', { text: '↑↓' })), 'Move in a list', h('span', null, h('kbd', { text: 'Enter' })), 'Add, choose, or open the evidence',
-          h('span', null, h('kbd', { text: 'Esc' })), 'Close'),
-        h('div', { class: 'g-foot' }, h('button', { type: 'button', class: 'link', text: 'Show the step tips again', onclick: () => { seen = {}; keepSeen(); closeGuide(); stepCard(S.step); } }),
+          h('span', { class: 'sp-status-badge clear', text: 'Standard' }), 'No FDA label restriction triggered for entered profile',
+          h('span', { class: 'sp-status-badge monitor', text: 'Monitor / Adjust' }), 'Close clinical monitoring or dose modification advised',
+          h('span', { class: 'sp-status-badge avoid', text: 'Avoid' }), 'FDA label advises against use or contraindicated',
+          h('span', { class: 'sp-match-tag', text: 'ADC vs CMP' }), 'Pivotal trial treatment arm vs comparator arm incidence'),
+        h('div', { class: 'g-foot' },
           h('button', { type: 'button', class: 'ok', text: 'Close', onclick: closeGuide }))));
     document.body.append(guide);
-    guide.querySelector('.ok').focus({ preventScroll: true });     // the guide opens at its title, not at this button
   }
-  const helpBtn = () => h('button', { type: 'button', class: 'help', 'aria-label': 'How it works', title: 'How it works', text: '?', onclick: openGuide });
 
-  // ------------------------------------------------------------------ app data (GET /api/app)
-  let APP = null, AX = [], SHORT = {}, REG = {}, REG_I = {}, FIELDS = [], STEPS = [];
-  const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'ink', no_statement: 'ink', reduce_dose: 'cyan', monitor: 'cyan', no_adjustment: 'green' };
+  // ------------------------------------------------------------------ App Data & Clinical Presets
+  let APP = null, AX = [], SHORT = {}, REG = {}, REG_I = {}, FIELDS = [], MECH = {};
+  const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'ink', no_statement: 'ink', reduce_dose: 'amber', monitor: 'amber', no_adjustment: 'green' };
+  const MODES = ['ADC Matrix', 'Structure Studio', 'Patient & Labs'];
 
-  // ------------------------------------------------------------------ state (kept in sessionStorage; nothing on the server)
-  const KEY = 'adctox.web.1';
-  const blank = () => ({ step: 0, reached: 0, conds: [], raw: {}, labs: null, meanings: {}, first: null, analysis: null, result: null, sel: -1, drawer: false });
-  let S = blank();
+  const PRESETS = [
+    {
+      id: 'her2-ild',
+      label: 'HER2+ / ILD + HF',
+      conds: [
+        { kind: 'mondo', value: 'MONDO:0006244', label: 'HER2 positive breast carcinoma', mondo: 'MONDO:0006244' },
+        { kind: 'reg', value: 'interstitial_lung_disease', label: 'Interstitial lung disease (ILD)', mondo: 'MONDO:0015925' },
+        { kind: 'reg', value: 'heart_failure', label: 'Heart failure', mondo: 'MONDO:0005252' },
+      ],
+      raw: { bilirubin: '2.0', creatinine: '1.4', age: '68', sex: 'F', weight: '55' },
+      studio: { target: 'HER2 (ERBB2)', linker: 'Tetrapeptide GGFG', payload: 'DXd ( Topo I )', dar: 8, fc: false },
+    },
+    {
+      id: 'dlbcl-cirr',
+      label: 'DLBCL / Cirrhosis',
+      conds: [
+        { kind: 'mondo', value: 'MONDO:0018905', label: 'diffuse large B-cell lymphoma', mondo: 'MONDO:0018905' },
+        { kind: 'reg', value: 'cirrhosis', label: 'Cirrhosis', mondo: 'MONDO:0005155' },
+        { kind: 'reg', value: 'peripheral_neuropathy', label: 'Peripheral neuropathy', mondo: 'MONDO:0005244' },
+      ],
+      raw: { bilirubin: '2.4', ast: '95', age: '64', sex: 'M', weight: '72', child_pugh: 'B' },
+      studio: { target: 'CD79b', linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 3.5, fc: false },
+    },
+    {
+      id: 'tnbc-ckd',
+      label: 'TNBC / CKD3',
+      conds: [
+        { kind: 'mondo', value: 'MONDO:0005494', label: 'triple-negative breast carcinoma', mondo: 'MONDO:0005494' },
+        { kind: 'reg', value: 'ckd_stage_3', label: 'Chronic kidney disease stage 3', mondo: 'MONDO:0005300' },
+      ],
+      raw: { creatinine: '1.8', hb: '9.4', anc: '1.3', age: '61', sex: 'F', weight: '58' },
+      studio: { target: 'TROP2 (TACSTD2)', linker: 'Hydrolyzable CL2A', payload: 'SN-38 ( Topo I )', dar: 7.6, fc: false },
+    },
+    {
+      id: 'myeloma-eye',
+      label: 'Myeloma / Ocular',
+      conds: [
+        { kind: 'mondo', value: 'MONDO:0009693', label: 'plasma cell myeloma', mondo: 'MONDO:0009693' },
+        { kind: 'reg', value: 'dry_eye', label: 'Dry eye syndrome', mondo: 'MONDO:0021107' },
+      ],
+      raw: { creatinine: '1.2', age: '70', sex: 'M', weight: '68' },
+      studio: { target: 'BCMA (TNFRSF17)', linker: 'Non-cleavable mc', payload: 'MMAF ( Auristatin )', dar: 4, fc: true },
+    },
+  ];
+
+  // ------------------------------------------------------------------ Structure Studio Knowledge Base
+  const STUDIO_TARGETS = [
+    { id: 'HER2 (ERBB2)', gene: 'ERBB2', refAdc: 'trastuzumab-deruxtecan', selectivity: 4.8, tissues: [
+      { organ: 'pulmonary', name: 'Lung alveolar', tpm: 48, max: 100 },
+      { organ: 'cardiovascular', name: 'Cardiomyocyte', tpm: 36, max: 100 },
+      { organ: 'gastrointestinal', name: 'GI mucosa', tpm: 42, max: 100 },
+    ]},
+    { id: 'TROP2 (TACSTD2)', gene: 'TACSTD2', refAdc: 'sacituzumab-govitecan', selectivity: 4.1, tissues: [
+      { organ: 'gastrointestinal', name: 'Colonic epithelium', tpm: 68, max: 100 },
+      { organ: 'dermatologic', name: 'Stratified skin', tpm: 62, max: 100 },
+      { organ: 'pulmonary', name: 'Bronchial epithelium', tpm: 39, max: 100 },
+    ]},
+    { id: 'Nectin-4', gene: 'NECTIN4', refAdc: 'enfortumab-vedotin', selectivity: 3.7, tissues: [
+      { organ: 'dermatologic', name: 'Epidermal keratinocyte', tpm: 84, max: 100 },
+      { organ: 'metabolic_endocrine', name: 'Salivary / Sweat gland', tpm: 45, max: 100 },
+      { organ: 'ocular', name: 'Corneal epithelium', tpm: 34, max: 100 },
+    ]},
+    { id: 'CD79b', gene: 'CD79B', refAdc: 'polatuzumab-vedotin', selectivity: 5.4, tissues: [
+      { organ: 'haematologic', name: 'B-lineage lymphoid', tpm: 72, max: 100 },
+      { organ: 'infectious_immune', name: 'Spleen / Lymph node', tpm: 58, max: 100 },
+      { organ: 'hepatic', name: 'Hepatic sinusoid', tpm: 12, max: 100 },
+    ]},
+    { id: 'BCMA (TNFRSF17)', gene: 'TNFRSF17', refAdc: 'belantamab-mafodotin', selectivity: 5.8, tissues: [
+      { organ: 'haematologic', name: 'Plasma cell niche', tpm: 66, max: 100 },
+      { organ: 'ocular', name: 'Corneal macropinocytosis', tpm: 49, max: 100 },
+      { organ: 'renal', name: 'Renal tubular', tpm: 14, max: 100 },
+    ]},
+    { id: 'FRalpha (FOLR1)', gene: 'FOLR1', refAdc: 'mirvetuximab-soravtansine', selectivity: 4.5, tissues: [
+      { organ: 'ocular', name: 'Ocular epithelium', tpm: 54, max: 100 },
+      { organ: 'pulmonary', name: 'Type II pneumocyte', tpm: 44, max: 100 },
+      { organ: 'renal', name: 'Proximal kidney tubule', tpm: 51, max: 100 },
+    ]},
+  ];
+
+  const STUDIO_LINKERS = [
+    { id: 'Tetrapeptide GGFG', cleavable: true, stability: 88, handle: 'amine_hydroxyl', note: 'Cathepsin B/L-cleavable tetrapeptide; self-immolative aminomethylene releases hydroxy/amine payload' },
+    { id: 'Val-Cit PABC', cleavable: true, stability: 76, handle: 'amine', note: 'Cathepsin B-cleavable dipeptide with para-aminobenzyl carbamate spacer for secondary/primary amines' },
+    { id: 'Hydrolyzable CL2A', cleavable: true, stability: 54, handle: 'hydroxyl', note: 'pH-sensitive carbonate linker; systemic and intratumoral hydrolysis releases SN-38' },
+    { id: 'Non-cleavable mc', cleavable: false, stability: 96, handle: 'amine', note: 'Maleimidocaproyl thioether; requires complete lysosomal proteolysis to release Cys-mc-payload' },
+    { id: 'Disulfide SPDB', cleavable: true, stability: 68, handle: 'thiol', note: 'Sterically hindered disulfide cleaved by intracellular glutathione for thiol maytansinoids' },
+    { id: 'Acid Hydrazone', cleavable: true, stability: 48, handle: 'ketone', note: 'Acid-labile AcBut hydrazone hydrolyzed in endosomes/lysosomes (pH 4.5-5.0)' },
+  ];
+
+  const STUDIO_PAYLOADS = [
+    { id: 'DXd ( Topo I )', cls: 'Topoisomerase I inhibitor', perm: true, handle: 'amine_hydroxyl', potency: 92, organs: { pulmonary: 82, haematologic: 68, gastrointestinal: 64, cardiovascular: 38 } },
+    { id: 'SN-38 ( Topo I )', cls: 'Topoisomerase I inhibitor (UGT1A1)', perm: true, handle: 'hydroxyl', potency: 78, organs: { haematologic: 86, gastrointestinal: 84, hepatic: 44 } },
+    { id: 'MMAE ( Auristatin )', cls: 'Microtubule inhibitor (Auristatin)', perm: true, handle: 'amine', potency: 90, organs: { neurologic: 84, haematologic: 76, dermatologic: 66, hepatic: 52 } },
+    { id: 'MMAF ( Auristatin )', cls: 'Charged Auristatin (low permeability)', perm: false, handle: 'amine', potency: 86, organs: { ocular: 92, haematologic: 64, renal: 28 } },
+    { id: 'DM4 / DM1 ( Maytansinoid )', cls: 'Microtubule inhibitor (Maytansinoid)', perm: true, handle: 'thiol', potency: 84, organs: { ocular: 74, hepatic: 72, neurologic: 62, haematologic: 58 } },
+    { id: 'SG3199 ( PBD Dimer )', cls: 'DNA minor-groove crosslinker', perm: true, handle: 'amine', potency: 98, organs: { haematologic: 92, hepatic: 78, pulmonary: 68, dermatologic: 62 } },
+  ];
+
+  // ------------------------------------------------------------------ Session State
+  const KEY = 'adctox.web.v070';
+  function defaultState() {
+    const p = PRESETS[0];
+    return {
+      mode: 0, // 0: ADC Matrix, 1: Structure Studio, 2: Patient & Labs
+      presetId: p.id,
+      conds: p.conds.map((c) => Object.assign({}, c)),
+      raw: Object.assign({}, p.raw),
+      labs: null,
+      meanings: {},
+      first: null,
+      analysis: null,
+      result: null,
+      sel: -1,
+      reviewAdc: null,
+      drawer: false,
+      labGroup: 'Basic',
+      studio: Object.assign({}, p.studio),
+    };
+  }
+  let S = defaultState();
   function save() {
-    try { sessionStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* private mode: the page still works */ }
+    try { sessionStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ignore */ }
   }
   function restore() {
-    try { const d = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (d && typeof d === 'object') S = Object.assign(blank(), d); } catch (e) { S = blank(); }
+    try {
+      const d = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+      if (d && typeof d === 'object' && Array.isArray(d.conds) && d.conds.length) {
+        S = Object.assign(defaultState(), d);
+      }
+    } catch (e) { S = defaultState(); }
   }
 
-  // conditions as form.run sends them: registry picks in registry order, then the typed texts in the order they were added
-  const regName = (id) => (REG[id] ? REG[id].label.replace(/\s*\([^)]*\)/g, '') : id);        // recommend.condition_name
+  const regName = (id) => (REG[id] ? REG[id].label.replace(/\s*\([^)]*\)/g, '') : id);
   function condList() {
     const reg = S.conds.filter((c) => c.kind === 'reg').map((c) => c.value).sort((a, b) => (REG_I[a] ?? 1e9) - (REG_I[b] ?? 1e9));
     return reg.concat(S.conds.filter((c) => c.kind !== 'reg').map((c) => c.label));
   }
   const condName = (c) => (REG[c] ? regName(c) : c);
-  function pickChoice() {                 // {typed name: MONDO id} for the names picked from the suggestions
+  function pickChoice() {
     const out = {};
     for (const c of S.conds) if (c.kind === 'mondo') out[c.label] = c.value;
     return out;
   }
   const allChoice = () => Object.assign(pickChoice(), S.meanings);
   const rawValues = () => Object.fromEntries(Object.entries(S.raw).filter(([, v]) => String(v).trim() !== ''));
-  // a chip's MONDO id: its own, or its registry entry's (Cirrhosis and "Cirrhosis of liver" are one disease)
   const chipMondo = (c) => c.mondo || (c.kind === 'mondo' ? c.value : c.kind === 'reg' && REG[c.value] ? REG[c.value].mondo || null : null);
-  function pickedList() {                 // /api/suggest picked=: every chip's registry id, text and MONDO id, and the readings chosen
+  function pickedList() {
     const out = [];
-    for (const c of S.conds) { if (c.kind === 'reg') out.push(c.value); out.push(c.label); const m = chipMondo(c); if (m) out.push(m); }
+    for (const c of S.conds) {
+      if (c.kind === 'reg') out.push(c.value);
+      out.push(c.label);
+      const m = chipMondo(c);
+      if (m) out.push(m);
+    }
     for (const v of Object.values(S.meanings)) if (v) out.push(v);
     return [...new Set(out)];
   }
-  // Every number on the page is the server's text (labs.shown, form.likely, recommend._event_text); the page never rounds one.
 
-  // ------------------------------------------------------------------ the 13-cell organ strip (AXES order) with the short names
-  function strip(organs, opts) {
-    const on = new Set(organs || []);
-    const o = opts || {};
-    const names = AX.filter((a) => on.has(a)).map((a) => SHORT[a]);
-    return h('span', { class: 'strip', title: names.join(', ') || null },
-      h('span', { class: 'cells', 'aria-hidden': 'true' }, AX.map((a) => h('i', { class: on.has(a) ? 'on' : null }))),
-      o.names === false ? null : names.length ? h('span', { class: 'names', text: names.join(' ') }) : o.none === '' ? null : h('span', { class: 'none', text: o.none || '-' }));
-  }
-
-  // ================================================================== body map
-  // The silhouette: the right half as points, mirrored, through a centripetal Catmull-Rom spline (so it is symmetric by construction).
-  const HALF = [
-    [180, 22], [193, 24.5], [202.5, 31.5], [207, 44], [207.5, 58], [205.5, 71], [201, 83.5], [196, 92.5], [192.5, 99.5],
-    [193, 106.5], [195, 114.5],
-    [203, 121.5], [217, 126.5], [230, 131], [240.5, 137], [248, 145.5], [252.5, 156], [255.5, 171],
-    [258, 190], [263, 220], [267.5, 250], [274, 276], [278.5, 305], [282.5, 335],
-    [288, 351], [291, 367], [290.5, 383], [286.5, 395.5], [281, 401.5], [275.5, 398], [272.5, 384], [270.5, 367], [267.5, 350], [264, 336],
-    [256, 305], [247.5, 276], [242.5, 251], [236, 222], [230.5, 202],
-    [228.5, 215], [226.5, 235], [223.5, 254], [222, 268], [223.5, 288], [228.5, 308], [232, 329], [232.5, 346],
-    [230, 371], [226.5, 400], [222.5, 430], [218.5, 457], [217, 476], [218.5, 500], [218, 525], [213, 552], [208, 579],
-    [211, 594], [213, 606], [208.5, 614], [199.5, 616], [192.5, 612], [190.5, 602],
-    [191.5, 584], [190.8, 560], [188.2, 530], [187.6, 505], [189, 478], [187.8, 455], [185, 425], [182.6, 398], [181, 372],
-    [180, 355]];
-  function figurePath() {
-    const pts = HALF.concat(HALF.slice(1, -1).reverse().map(([x, y]) => [360 - x, y]));
-    const n = pts.length, f = (v) => +v.toFixed(2);
-    const dist = (a, b) => Math.sqrt(Math.hypot(b[0] - a[0], b[1] - a[1])) || 1e-6;
-    let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;
-    for (let i = 0; i < n; i++) {
-      const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
-      const d1 = dist(p0, p1), d2 = dist(p1, p2), d3 = dist(p2, p3);
-      const c1 = [0, 1].map((k) => (d1 * d1 * p2[k] - d2 * d2 * p0[k] + (2 * d1 * d1 + 3 * d1 * d2 + d2 * d2) * p1[k]) / (3 * d1 * (d1 + d2)));
-      const c2 = [0, 1].map((k) => (d3 * d3 * p1[k] - d2 * d2 * p3[k] + (2 * d3 * d3 + 3 * d3 * d2 + d2 * d2) * p2[k]) / (3 * d3 * (d3 + d2)));
-      d += `C${f(c1[0])} ${f(c1[1])} ${f(c2[0])} ${f(c2[1])} ${f(p2[0])} ${f(p2[1])}`;
-    }
-    return d + 'Z';
-  }
-  // marker spots per organ axis [x, y, glow size] in the 360 x 640 frame; skin is the outline itself (its spot is for the name)
-  const SPOTS = {
-    neurologic: [[180, 46, 74]],
-    ocular: [[169.5, 63, 20], [190.5, 63, 20]],
-    otologic: [[153.5, 66, 20], [206.5, 66, 20]],
-    infectious_immune: [[168, 101, 17], [192, 101, 17], [135, 193, 18], [225, 193, 18]],
-    metabolic_endocrine: [[180, 116, 24]],
-    haematologic: [[180, 149, 22], [151, 318, 22], [209, 318, 22]],
-    musculoskeletal: [[119, 150, 26], [241, 150, 26], [149, 346, 26], [211, 346, 26]],
-    pulmonary: [[160.5, 182, 56], [199.5, 182, 56]],
-    cardiovascular: [[188, 212, 46]],
-    hepatic: [[161, 246, 54]],
-    renal: [[156.5, 274, 26], [203.5, 274, 26]],
-    gastrointestinal: [[181, 294, 56]],
-    dermatologic: [[134, 420, 16]],
-  };
-  // where an organ's name goes when it is lit: side and the spot the leader starts from
-  const CALL = {
-    neurologic: ['right', 0], ocular: ['left', 0], otologic: ['right', 1], infectious_immune: ['right', 1], metabolic_endocrine: ['left', 0],
-    haematologic: ['left', 0], musculoskeletal: ['right', 1], pulmonary: ['left', 0], cardiovascular: ['right', 0], hepatic: ['left', 0],
-    renal: ['right', 1], gastrointestinal: ['left', 0], dermatologic: ['left', 0],
-  };
-
-  function buildBody() {
-    const P = figurePath(), VB = '0 0 360 640';
-    const stop = (o, style) => sv('stop', { offset: o, style });
-    const base = sv('svg', { class: 'bm-base', viewBox: VB, 'aria-hidden': 'true', focusable: 'false' },
-      sv('defs', null,
-        sv('pattern', { id: 'bm-grid', width: 20, height: 20, patternUnits: 'userSpaceOnUse' }, sv('path', { d: 'M20 0H0V20', fill: 'none', style: 'stroke: var(--grid)', 'stroke-width': 1 })),
-        sv('pattern', { id: 'bm-grid2', width: 100, height: 100, patternUnits: 'userSpaceOnUse', x: 80, y: 20 }, sv('path', { d: 'M100 0H0V100', fill: 'none', style: 'stroke: var(--grid-2)', 'stroke-width': 1 })),
-        sv('radialGradient', { id: 'bm-fade', cx: '.5', cy: '.47', r: '.6' }, stop('0', 'stop-color:#fff'), stop('.7', 'stop-color:#fff;stop-opacity:.55'), stop('1', 'stop-color:#fff;stop-opacity:0')),
-        sv('mask', { id: 'bm-mask' }, sv('rect', { width: 360, height: 640, fill: 'url(#bm-fade)' })),
-        sv('linearGradient', { id: 'bm-fill', x1: 0, y1: 0, x2: 0, y2: 1 }, stop('0', 'stop-color:var(--fig-top)'), stop('1', 'stop-color:var(--fig-bot)')),
-        sv('radialGradient', { id: 'bm-hl', gradientUnits: 'userSpaceOnUse', cx: 180, cy: 205, r: 150, gradientTransform: 'translate(180 205) scale(1 2.1) translate(-180 -205)' },
-          stop('0', 'stop-color:var(--fig-hl)'), stop('1', 'stop-color:var(--fig-hl);stop-opacity:0')),
-        sv('radialGradient', { id: 'bm-floor', cx: '.5', cy: '.5', r: '.5' }, stop('0', 'stop-color:var(--floor)'), stop('1', 'stop-color:var(--floor);stop-opacity:0')),
-        sv('clipPath', { id: 'bm-clip' }, sv('path', { d: P })),
-        sv('filter', { id: 'bm-blur', x: '-10%', y: '-10%', width: '120%', height: '120%' }, sv('feGaussianBlur', { stdDeviation: 4.5 })),
-        sv('filter', { id: 'bm-soft', x: '-10%', y: '-10%', width: '120%', height: '120%' }, sv('feGaussianBlur', { stdDeviation: 2.6 }))),
-      sv('g', { mask: 'url(#bm-mask)' }, sv('rect', { width: 360, height: 640, fill: 'url(#bm-grid)' }), sv('rect', { width: 360, height: 640, fill: 'url(#bm-grid2)' })),
-      sv('ellipse', { cx: 180, cy: 619, rx: 72, ry: 8, fill: 'url(#bm-floor)' }),
-      sv('path', { d: P, fill: 'url(#bm-fill)' }),
-      sv('path', { d: P, fill: 'url(#bm-hl)' }),
-      sv('g', { 'clip-path': 'url(#bm-clip)' },
-        sv('path', { d: P, fill: 'none', style: 'stroke: var(--fig-shade)', 'stroke-width': 10, filter: 'url(#bm-blur)' }),
-        sv('path', { d: P, fill: 'none', style: 'stroke: var(--fig-rim)', 'stroke-width': 2.2 })),
-      sv('path', { d: P, fill: 'none', style: 'stroke: var(--fig-line)', 'stroke-width': 1 }));
-    const skin = sv('svg', { class: 'bm-skin', viewBox: VB, 'aria-hidden': 'true', focusable: 'false' },
-      sv('path', { d: P, fill: 'none', style: 'stroke: var(--glow)', 'stroke-width': 5, 'stroke-opacity': '.4', filter: 'url(#bm-soft)' }),
-      sv('path', { d: P, fill: 'none', style: 'stroke: var(--glow)', 'stroke-width': 1.4 }));
-    const ring = sv('svg', { class: 'bm-ring', viewBox: VB, 'aria-hidden': 'true', focusable: 'false' },
-      sv('path', { d: P, fill: 'none', 'stroke-width': 1.3, 'stroke-dasharray': '3 3.5' }));
-    const lines = sv('svg', { class: 'bm-lines', viewBox: VB, 'aria-hidden': 'true', focusable: 'false' });
-    const marks = h('div', { class: 'mks', style: 'container-type: inline-size' });
-    const byAxis = {};
-    for (const a of Object.keys(SPOTS)) {
-      byAxis[a] = SPOTS[a].map(([x, y, size]) => {
-        const mk = h('div', { class: 'mk', style: `left:${(x / 3.6).toFixed(3)}%;top:${(y / 6.4).toFixed(3)}%;--s:${(size / 3.6).toFixed(2)}cqw` },
-          h('i', { class: 'g' }), h('i', { class: 'r' }), h('i', { class: 'c' }), h('i', { class: 'hit' }), h('i', { class: 'tip', 'data-axis': a }));
-        marks.append(mk);
-        return mk;
-      });
-    }
-    const labels = h('div', { class: 'mks' });
-    const fig = h('div', { class: 'bm-fig', role: 'img' }, base, skin, ring, lines, marks, labels);
-    const cap = h('div', { class: 'bm-cap', 'aria-live': 'polite' });
-    const legend = h('div', { class: 'bm-legend', hidden: true },
-      h('div', null, h('span', null, h('i', { class: 'lgb' }), 'Boxed warning'), h('span', null, h('i', { class: 'lgw' }), 'Warning')));
-    const el = h('div', { class: 'bm panel' }, fig, cap, legend);
-    let last = '';
-
-    function update(st) {
-      const lit = st.lit || {}, rings = st.rings || {};
-      const sig = JSON.stringify([lit, rings, st.caption || '', !!st.legend]);
-      if (sig === last) return;
-      last = sig;
-      for (const a in byAxis) {
-        const cls = 'mk' + (lit[a] ? ' ' + lit[a] : '') + (rings[a] ? ' r' + rings[a] : '');
-        for (const mk of byAxis[a]) if (mk.className !== cls) mk.className = cls;
-      }
-      const skinCls = ['skin-on', 'skin-l1', 'skin-l2', 'skin-rb', 'skin-rw'];
-      fig.classList.remove(...skinCls);
-      if (lit.dermatologic) fig.classList.add('skin-' + lit.dermatologic);
-      if (rings.dermatologic) fig.classList.add('skin-r' + rings.dermatologic);
-      // names of the lit organs at the sides, with a hairline to the organ
-      clear(labels); clear(lines);
-      const sides = { left: [], right: [] };
-      for (const a of AX) if (lit[a] && SPOTS[a]) {
-        const [side, k] = CALL[a]; const [x, y] = SPOTS[a][k];
-        sides[side].push({ a, x, y, ly: y, lv: lit[a] });
-      }
-      for (const side of ['left', 'right']) {
-        const items = sides[side].sort((p, q) => p.y - q.y);
-        for (let i = 1; i < items.length; i++) items[i].ly = Math.max(items[i].ly, items[i - 1].ly + 15);
-        for (const it of items) {
-          const lx = side === 'left' ? 62 : 298;
-          const cls = it.lv === 'l2' ? 'l2' : '';
-          lines.append(sv('line', { x1: side === 'left' ? lx + 4 : lx - 4, y1: it.ly, x2: it.x + (side === 'left' ? -5 : 5), y2: it.y, class: cls }));
-          labels.append(h('span', {
-            class: `co ${side} ${cls}`, text: SHORT[it.a],
-            style: `top:${(it.ly / 6.4).toFixed(3)}%;` + (side === 'left' ? `right:${((360 - lx) / 3.6).toFixed(3)}%` : `left:${(lx / 3.6).toFixed(3)}%`),
-          }));
+  // ------------------------------------------------------------------ Active Organ Resolution (Never 13 cells!)
+  function activeOrgansWithScores() {
+    const map = new Map();
+    // 1. From completed AI analysis reports
+    if (S.analysis && S.analysis.state === 'done') {
+      for (const r of S.analysis.reports || []) {
+        if (r.source === 'Cancer') continue;
+        const used = r.organs || [];
+        const pMap = r.p || {};
+        for (const o of used) {
+          const prev = map.get(o) || { organ: o, score: 0.78, condKey: r.condition };
+          const sc = typeof pMap[o] === 'number' && pMap[o] > 0 ? pMap[o] : 0.85;
+          if (sc >= prev.score) map.set(o, { organ: o, score: sc, condKey: r.condition });
         }
       }
-      const names = AX.filter((a) => lit[a]).map((a) => SHORT[a]);
-      fig.setAttribute('aria-label', 'Body map' + (names.length ? ': ' + names.join(', ') : ''));
-      cap.textContent = st.caption || '';
-      legend.hidden = !st.legend;
     }
-    function names(short) {               // the hover names, once /api/app has sent organ_short
-      for (const tip of marks.querySelectorAll('.tip')) tip.textContent = short[tip.dataset.axis] || '';
+    // 2. From registry conditions directly (immediate before analysis job finishes)
+    for (const c of S.conds) {
+      if (c.kind === 'reg' && REG[c.value]) {
+        for (const o of REG[c.value].organs || []) {
+          if (!map.has(o)) map.set(o, { organ: o, score: 0.88, condKey: c.value });
+        }
+      }
     }
-    update({});
-    return { el, update, names };
+    // 3. From lab flags
+    for (const fl of (S.labs && S.labs.flags) || []) {
+      if (String(S.raw[fl.key] || '').trim()) {
+        const prev = map.get(fl.organ);
+        if (!prev) map.set(fl.organ, { organ: fl.organ, score: 0.82, condKey: null });
+      }
+    }
+    // Order by AXES order, cap at 5 active organs for clean visual density
+    return AX.filter((a) => map.has(a)).map((a) => map.get(a));
   }
 
-  // ================================================================== page frame
-  let top, crumbsOl, verEl, layout, stageBox, side, bar, barLeft, barKeys, barBtn, stageActions, drawer, drawerTitle, drawerBody, body;
+  // ------------------------------------------------------------------ Page Frame
+  let top, crumbsOl, verEl, presetBar, layout, stageBox, bar, barKeys, drawer, drawerTitle, drawerBody;
 
   function frame() {
     document.title = 'ADCTOX';
     crumbsOl = h('ol');
     verEl = h('div', { class: 'ver', text: '' });
-    top = h('header', { class: 'top' }, h('div', { class: 'brand', text: 'ADCToX', 'aria-hidden': 'true' }), h('nav', { class: 'crumbs', 'aria-label': 'Steps' }, crumbsOl), h('div', { class: 'right' }, h('span', { class: 'preview-badge', text: 'UI preview' }), helpBtn(), verEl));
+    presetBar = h('div', { class: 'preset-group', role: 'group', 'aria-label': 'Clinical presets' });
+    const brandWrap = h('div', { class: 'brand-wrap' },
+      h('div', { class: 'brand' },
+        h('span', { class: 'brand-bars', 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
+        'ADCToX'),
+      verEl);
+    top = h('header', { class: 'top' },
+      brandWrap,
+      h('nav', { class: 'crumbs', 'aria-label': 'Workspace modes' }, crumbsOl),
+      h('div', { class: 'right' },
+        presetBar,
+        h('button', { type: 'button', class: 'help', 'aria-label': 'How it works', title: 'How it works', text: '?', onclick: openGuide })));
+
     stageBox = h('main', { class: 'stage' });
-    body = buildBody();
-    side = h('aside', { class: 'side', 'aria-label': 'Body map' }, body.el);
-    layout = h('div', { class: 'layout body-on' }, side, stageBox);
-    barLeft = h('div', { class: 'left', 'aria-live': 'polite' });
+    layout = h('div', { class: 'layout' }, stageBox);
     barKeys = h('div', { class: 'keys', 'aria-hidden': 'true' });
-    barBtn = h('button', { class: 'go', type: 'button', hidden: true });      // setBar shows it
-    barBtn.addEventListener('click', () => barBtn._act && barBtn._act());
-    stageActions = h('div', { class: 'stage-actions' }, barLeft, barBtn);
-    bar = h('footer', { class: 'bar' }, barKeys);
+    bar = h('footer', { class: 'bar' },
+      h('span', { text: 'ADCTOX Clinical Decision & Conjugate Architecture Workspace' }),
+      barKeys);
+
     drawerTitle = h('h2', { id: 'dr-title' });
     drawerBody = h('div', { class: 'dr-body' });
     const x = h('button', { class: 'x', type: 'button', 'aria-label': 'Close', text: '×', onclick: () => closeDrawer() });
     drawer = h('div', { class: 'drawer', role: 'dialog', 'aria-modal': 'false', 'aria-labelledby': 'dr-title', 'aria-hidden': 'true' },
       h('div', { class: 'dr-head' }, drawerTitle, x), drawerBody);
-    document.body.append(top, h('div', { class: 'shell' }, h('div', { class: 'wrap' }, layout)), bar, drawer, tipBox);     // .shell makes room for the docked drawer
+
+    document.body.append(top, h('div', { class: 'shell' }, h('div', { class: 'wrap' }, layout)), bar, drawer, tipBox);
   }
 
-  function setBar(o) {
-    clear(barLeft); add(barLeft, [o.left || '']);
-    const b = o.button;
-    clear(barKeys); add(barKeys, (o.keys || []).concat(b && b.key ? [kbd(b.key, b.keyLabel || 'next')] : []));
-    barBtn.hidden = !b;
-    if (b) {
-      clear(barBtn); add(barBtn, [b.label]);
-      if (b.key) barBtn.title = b.key + ': ' + (b.keyLabel || 'Next step'); else barBtn.removeAttribute('title');
-      barBtn.disabled = !!b.disabled; barBtn.className = 'go' + (b.quiet ? ' quiet' : ''); barBtn._act = b.act;
-    }
-  }
-
-  // ------------------------------------------------------------------ crumbs
-  function analysisOrgans() {
-    const a = S.analysis;
-    if (!a || a.state !== 'done') return [];
-    const on = new Set();
-    for (const r of a.reports || []) for (const o of organsOf(r)) on.add(o);
-    return AX.filter((o) => on.has(o));
-  }
-  function summary(i) {
-    if (i === 0) return condList().map(condName).join(', ');
-    if (i === 1) { const n = Object.keys(rawValues()).length; return n ? `${n} entered` : 'None entered'; }
-    if (i === 2) {
-      const a = S.analysis; if (!a || a.state !== 'done') return '';
-      const names = analysisOrgans().map((o) => SHORT[o]);
-      if ((a.reports || []).some((r) => r.source === 'Cancer')) names.push('Cancer');
-      return names.join(', ') || '-';
-    }
-    if (i === 3) { const p = patientConds().find((c) => c.key === S.first); return p ? p.name : 'Auto'; }
-    return '';
-  }
-  function renderCrumbs() {
+  function renderHeaderControls() {
     clear(crumbsOl);
-    const prio = S.step >= 2 ? hasPriority() : true;
-    STEPS.forEach((name, i) => {
-      const skipped = i === 3 && S.step > 3 && !prio;
-      const done = i < S.step && !skipped;
-      const now = i === S.step;
-      const cls = 'crumb' + (now ? ' now' : done ? ' done' : skipped ? ' skip' : '');
-      const cb = done ? h('button', { class: 'cb', type: 'button', onclick: () => go(i) }) : h('span', { class: 'cb', 'aria-current': now ? 'step' : null });
-      add(cb, [h('span', { class: 'step-number', 'aria-hidden': 'true', text: String(i + 1) }), name]);
-      const sum = done ? summary(i) : '';
-      crumbsOl.append(h('li', { class: cls }, cb, sum ? h('span', { class: 'sum', text: sum, title: sum }) : null));
+    MODES.forEach((name, i) => {
+      const now = i === S.mode;
+      const btn = h('button', {
+        class: 'cb', type: 'button',
+        'aria-current': now ? 'step' : null,
+        onclick: () => switchMode(i),
+      }, h('span', { class: 'step-number', 'aria-hidden': 'true', text: String(i + 1) }), name);
+      crumbsOl.append(h('li', { class: 'crumb' + (now ? ' now' : '') }, btn));
+    });
+
+    clear(presetBar);
+    PRESETS.forEach((p) => {
+      const b = h('button', {
+        type: 'button',
+        class: 'preset-btn' + (S.presetId === p.id ? ' active' : ''),
+        text: p.label,
+        title: 'Load clinical preset: ' + p.label,
+        onclick: () => applyPreset(p),
+      });
+      presetBar.append(b);
     });
   }
 
-  // ------------------------------------------------------------------ stage switching: one motion at a time
-  let cleanup = null;
-  function go(n, keepDrawer) {
-    if (cleanup) { cleanup(); cleanup = null; }
-    const reopen = S.drawer;
+  async function applyPreset(p) {
+    S.presetId = p.id;
+    S.conds = p.conds.map((c) => Object.assign({}, c));
+    S.raw = Object.assign({}, p.raw);
+    S.meanings = {};
+    S.first = null;
+    S.analysis = null;
+    S.result = null;
+    S.sel = 0;
+    if (p.studio) S.studio = Object.assign({}, p.studio);
+    save();
     closeDrawer(true);
-    if (keepDrawer) S.drawer = reopen;
-    S.step = n; S.reached = Math.max(S.reached, n); save();
-    ROOT.classList.toggle('review-mode', n === 4);
-    layout.className = 'layout' + (n ? ' body-on' : '') + ' st-' + n;      // the body map from step 2 on (the start screen is the search alone)
-    if (n === 0) body.update({});
-    renderCrumbs();
-    clear(stageBox);
-    stageBox.classList.remove('enter');
-    const build = [stage1, stage2, stage3, stage4, stage5][n];
-    const node = build();
-    const actionHost = n === 1 ? node.querySelector('.groups') : n === 4 ? node.querySelector('.review-toolbar') : node;
-    (actionHost || node).append(stageActions);
-    stageBox.append(node);
-    if (!still()) { void stageBox.offsetWidth; stageBox.classList.add('enter'); }
-    window.scrollTo(0, 0);
-    hideTip(); closeCard();
+    renderHeaderControls();
+    await refreshBackendData();
+    switchMode(S.mode, true);
   }
-  let busy = false;                       // a step change waiting on the server: PgDn, PgUp and the bar button do nothing meanwhile
-  async function next() {
-    if (busy) return;
-    if (S.step === 0) {
-      if (typedText()) { stageNote('Enter the items you typed'); return; }
-      if (!S.conds.length) { stageNote('Add at least one cancer or condition'); return; }
-      go(1);
-    } else if (S.step === 1) {
-      busy = true; barBtn.setAttribute('aria-busy', 'true');
-      try { if (await labsCommit() && S.step === 1) go(2); } finally { busy = false; barBtn.removeAttribute('aria-busy'); }
-    } else if (S.step === 2) {
-      const a = S.analysis;
-      if (a && a.state === 'done') go(hasPriority() ? 3 : 4);
-      else if (a && a.state === 'error') go(0);
-    } else if (S.step === 3) go(4);
-  }
-  function prev() {
-    if (busy) return;
-    if (S.step === 4) go(hasPriority() ? 3 : 2);
-    else if (S.step > 0) go(S.step - 1);
-  }
-  let stageNote = () => {}, typedText = () => '';
 
-  // ================================================================== step 1: Conditions
-  function stage1() {
-    const st = { q: '', listQ: null, pending: null, items: [], cur: -1, moved: false, armed: false, timer: 0, aiTimer: 0, busyTimer: 0, seq: 0, aiSeq: 0, fresh: -1, lastKey: 0 };
-    const chips = h('ul', { class: 'chips', 'aria-label': 'Selected conditions' });
+  // ------------------------------------------------------------------ Background Data Sync (/api/labs, /api/recommend, /api/analyze)
+  let syncSeq = 0;
+  async function refreshBackendData() {
+    const seq = ++syncSeq;
+    try {
+      const labsRes = await API.labs(rawValues());
+      if (seq !== syncSeq) return;
+      S.labs = labsRes;
+    } catch (e) { /* keep existing */ }
+
+    try {
+      const labRaw = (S.labs && S.labs.raw) || rawValues();
+      const recRes = await API.recommend({
+        conditions: condList(),
+        raw: labRaw,
+        choice: allChoice(),
+        first: S.first,
+      });
+      if (seq !== syncSeq) return;
+      S.result = { sig: resultSig(), data: recRes };
+      save();
+    } catch (e) { /* ignore */ }
+
+    // Trigger non-blocking organ analysis if needed
+    runBackgroundAnalysis(seq);
+  }
+
+  async function runBackgroundAnalysis(seq) {
+    const sig = JSON.stringify([condList(), pickChoice()]);
+    if (S.analysis && S.analysis.sig === sig && S.analysis.state === 'done') return;
+    if (!condList().length) return;
+    try {
+      const start = await API.analyze(condList(), pickChoice());
+      if (seq !== syncSeq) return;
+      const job = start.job;
+      for (let k = 0; k < 80; k++) {
+        await sleep(200);
+        if (seq !== syncSeq) return;
+        const r = await API.job(job);
+        if (r.state === 'done' || r.state === 'error') {
+          S.analysis = {
+            sig, state: r.state, error: r.error || null,
+            reports: r.reports || [], ambiguous: r.ambiguous || [], unresolved: r.unresolved || [],
+          };
+          save();
+          if (S.mode === 0 || S.mode === 2) renderActiveMode(false);
+          return;
+        }
+      }
+    } catch (e) { /* background job optional */ }
+  }
+
+  function resultSig() {
+    return JSON.stringify([condList(), rawValues(), allChoice(), S.first]);
+  }
+
+  // ------------------------------------------------------------------ Unified Patient & Active-Organ Bar (Top of Mode 0 & Mode 1)
+  function buildWorkspaceBar(onChanged) {
+    const st = { q: '', items: [], cur: -1, timer: 0, seq: 0 };
     const input = h('input', {
-      type: 'text', role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'sugg', 'aria-autocomplete': 'list', 'aria-label': 'Condition',
-      placeholder: 'e.g. breast cancer, heart failure', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
+      type: 'text',
+      role: 'combobox',
+      'aria-expanded': 'false',
+      'aria-controls': 'wb-sugg',
+      'aria-autocomplete': 'list',
+      'aria-label': 'Condition, symptom or cancer',
+      placeholder: 'Condition, symptom or cancer',
+      autocomplete: 'off',
+      autocapitalize: 'off',
+      spellcheck: 'false',
     });
-    const list = h('ul', { class: 'sugg panel', id: 'sugg', role: 'listbox', 'aria-label': 'Suggestions', hidden: true });
-    const note = h('div', { class: 'note', role: 'status' });
-    const status = h('div', { class: 'note busy', 'aria-live': 'polite' });       // the TUI's status line: a search still running, or failed
-    stageNote = (t) => { note.textContent = t; };
-    typedText = () => input.value.trim();
-    const SYM_BUSY = 'Finding conditions that match ...';
-    // suggest: a text of 4 or more characters and 2 or more words that is not a list of names or a numbered name (MODY 3) reads as a sentence (symptom search, no AI names)
-    const sentence = (q, parts) => q.length >= 4 && q.split(/\s+/).length >= 2 && !(parts && parts.length) && !/\s\d+$/.test(q);
+    const sugg = h('ul', { class: 'wb-sugg', id: 'wb-sugg', role: 'listbox', 'aria-label': 'Suggestions', hidden: true });
+    const chipsWrap = h('div', { class: 'wb-chips', 'aria-label': 'Active patient profile' });
 
-    const chipKeys = () => {
-      const k = new Set();
-      for (const c of S.conds) { k.add(`${c.kind}:${c.value}`); k.add('name:' + c.label.toLowerCase()); const m = chipMondo(c); if (m) k.add('mondo:' + m); }
-      return k;
-    };
-    function chipOf(s) {                  // what form.run gets for the row (s.pick): a registry id, or a name with its MONDO or HP id
+    function chipOf(s) {
       const p = s.pick || {};
       if (s.id) return { kind: 'reg', value: s.id, label: s.text, mondo: s.mondo || null };
       if (p.choice) return { kind: 'mondo', value: p.choice, label: p.condition || s.text, mondo: p.choice };
       return { kind: 'text', value: p.condition || s.text, label: p.condition || s.text };
     }
-    function addChip(c) {
-      if (c.kind === 'text') c.value = c.value.normalize('NFC');
-      c.label = c.label.normalize('NFC');            // the name the server answers with
+
+    async function addConditionChip(c) {
+      c.label = String(c.label || '').normalize('NFC');
       const m = chipMondo(c);
-      if (S.conds.some((x) => (x.kind === c.kind && x.value === c.value) || x.label.toLowerCase() === c.label.toLowerCase() || (m && chipMondo(x) === m))) return `Already added: ${c.label}`;
-      S.conds.push(c); st.fresh = S.conds.length - 1; save();
-      return `Added: ${c.label}`;
-    }
-    function build(q, r) {                // form.Form.conditions' rows: the split, names, AI names, then diseases from symptoms, then the text as typed
-      const have = chipKeys(), seen = new Set(), out = [];
-      const fresh = (s) => {
-        const keys = [s.id ? 'reg:' + s.id : null, s.mondo ? 'mondo:' + s.mondo : null, 'name:' + String(s.text).toLowerCase(), s.sub ? 'name:' + s.sub.toLowerCase() : null].filter(Boolean);
-        if (keys.some((k) => have.has(k) || seen.has(k))) return false;
-        keys.forEach((k) => seen.add(k)); return true;
-      };
-      if (r.parts && r.parts.length) out.push({ kind: 'split', words: r.parts });
-      for (const s of r.names || []) if (fresh(s)) out.push({ kind: 's', s });
-      for (const s of r.ai || []) if (fresh(s)) out.push({ kind: 'ai', s });
-      const sym = (r.symptoms || []).filter(fresh);
-      if (sym.length) { out.push({ kind: 'head', text: 'Items related to the input' }); sym.forEach((s) => out.push({ kind: 'sym', s })); }
-      out.push({ kind: 'raw', text: q });
-      return out;
-    }
-    // the condition this text already is: its name, or the best name the server left out as picked (Enter must not take the next best)
-    const addedAs = (q, r) => {
-      if (r && (r.parts || []).length) return null;
-      const c = S.conds.find((x) => x.label.toLowerCase() === q.toLowerCase());
-      return c ? c.label : (r && r.already) || null;
-    };
-    const itemKey = (x) => x.kind + ':' + (x.s ? x.s.id || x.s.mondo || x.s.text : x.words ? x.words.join(',') : x.text);
-    const selectable = (i) => st.items[i] && st.items[i].kind !== 'head';
-    function forget(c) {                  // a removed condition takes its chosen reading and its place in the priority along
-      delete S.meanings[c.label];
-      if (S.first === c.label || S.first === c.value) S.first = null;
-    }
-    function renderChips() {
-      clear(chips);
-      S.conds.forEach((c, i) => {
-        const x = h('button', { class: 'x', type: 'button', 'aria-label': `Remove ${c.label}`, text: '×' });
-        x.addEventListener('click', () => { forget(S.conds.splice(i, 1)[0]); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; renderChips(); input.focus(); });
-        chips.append(h('li', { class: 'chip' + (i === st.fresh && !still() ? ' fresh' : '') + (st.armed && i === S.conds.length - 1 ? ' armed' : '') }, h('span', { class: 'lbl', text: c.label }), x));
-      });
-      st.fresh = -1;
-      chips.hidden = !S.conds.length;
-      setBar({
-        keys: [kbd('Enter', 'add'), kbd('↑↓', 'choose'), S.conds.length ? kbd('Backspace', 'remove') : null],
-        button: { label: 'Enter lab values', key: 'PgDn', act: next },
-      });
-    }
-    function renderList() {
-      clear(list);
-      const show = st.items.length > 0 && st.q.trim() !== '';
-      list.hidden = !show;
-      input.setAttribute('aria-expanded', show ? 'true' : 'false');
-      if (!show) { input.removeAttribute('aria-activedescendant'); return; }
-      st.items.forEach((it, i) => {
-        if (it.kind === 'head') { list.append(h('li', { class: 'head', role: 'presentation', text: it.text })); return; }
-        const on = i === st.cur;
-        let left;
-        if (it.kind === 'split') left = h('span', { class: 'nm main', text: 'Add each: ' + it.words.join(', ') });
-        else if (it.kind === 'raw') left = h('span', { class: 'nm main' }, h('span', { class: 'pre', text: '+ Add as typed:' }), it.text);
-        else {                            // names only (the organs come with the analysis); a symptom row says what it matched
-          const tail = it.kind === 'sym' ? it.s.why || '' : it.s.sub || '';
-          left = h('span', { class: 'nm' }, h('span', { class: 'main', text: it.s.text }), tail ? h('span', { class: 'sub', text: tail }) : null,
-            it.kind === 'ai' ? h('span', { class: 'tag', text: 'AI' }) : null);
-        }
-        const li = h('li', { class: 'opt', role: 'option', id: 'sg-' + i, 'aria-selected': on ? 'true' : 'false' }, left);
-        li.addEventListener('mousemove', () => { if (st.cur !== i) { st.cur = i; st.moved = true; mark(); } });
-        li.addEventListener('click', () => { st.cur = i; pick(); });
-        list.append(li);
-      });
-      mark();
-    }
-    function mark() {
-      for (const li of list.querySelectorAll('.opt')) li.setAttribute('aria-selected', li.id === 'sg-' + st.cur ? 'true' : 'false');
-      if (st.cur >= 0 && selectable(st.cur)) {
-        input.setAttribute('aria-activedescendant', 'sg-' + st.cur);
-        const li = list.querySelector('#sg-' + st.cur);
-        if (li) li.scrollIntoView({ block: 'nearest' });
-      } else input.removeAttribute('aria-activedescendant');
-    }
-    function quiet() {                    // drop the searches in flight and their status line
-      clearTimeout(st.timer); clearTimeout(st.aiTimer); clearTimeout(st.busyTimer);
-      st.timer = st.aiTimer = st.busyTimer = 0; st.seq++; st.aiSeq++; status.textContent = '';
-    }
-    async function search() {
-      clearTimeout(st.timer); st.timer = 0;
-      clearTimeout(st.aiTimer); st.aiSeq++;
-      const q = st.q.trim(), seq = ++st.seq;
-      clearTimeout(st.busyTimer);
-      if (!q) { st.items = []; st.listQ = ''; status.textContent = ''; renderList(); return; }
-      if (sentence(q)) st.busyTimer = setTimeout(() => { if (seq === st.seq) status.textContent = SYM_BUSY; }, 250);
-      let r;
-      const pending = API.suggest(q, pickedList());
-      st.pending = { q, p: pending };
-      let lost = '';                      // no answer: the row below still adds the text, and the line says why there are no names
-      try { r = await pending; } catch (e) { lost = e.message; r = { q, names: [], parts: [], ai: [], symptoms: [], symptoms_error: null }; }
-      if (seq !== st.seq) return;
-      clearTimeout(st.busyTimer);
-      status.textContent = lost || (r.symptoms_error ? 'Symptom search failed: ' + r.symptoms_error : '');
-      st.items = build(q, r); st.listQ = q; st.added = addedAs(q, r);
-      st.cur = st.added ? -1 : st.items.findIndex((x, i) => selectable(i)); st.moved = false;
-      renderList();
-      // the AI names: a second request about 500 ms after the last key, when the models are installed and the text is not a sentence
-      if (APP.has_learned && q.length >= 2 && !sentence(q, r.parts)) {
-        st.aiTimer = setTimeout(() => searchAI(q, seq), Math.max(0, 500 - (performance.now() - st.lastKey)));
+      if (S.conds.some((x) => (x.kind === c.kind && x.value === c.value) || x.label.toLowerCase() === c.label.toLowerCase() || (m && chipMondo(x) === m))) {
+        return;
       }
-    }
-    async function searchAI(q, seq) {
-      if (seq !== st.seq) return;
-      const aseq = ++st.aiSeq;
-      st.busyTimer = setTimeout(() => { if (aseq === st.aiSeq) status.textContent = 'Finding AI suggestions ...'; }, 250);
-      let r = null, lost = '';
-      try { r = await API.suggest(q, pickedList(), true); } catch (e) { r = null; lost = e.message; }
-      if (aseq !== st.aiSeq) return;      // a newer key or search: this answer is stale
-      clearTimeout(st.busyTimer); status.textContent = lost;
-      if (!r || r.q !== q || st.q.trim() !== q || seq !== st.seq || !(r.ai || []).length) return;
-      const was = st.moved ? st.items[st.cur] : null;      // a cursor the user moved stays on its row; else it is on the best row again
-      st.items = build(q, r);
-      const k = was ? st.items.findIndex((x) => itemKey(x) === itemKey(was)) : -1;
-      st.cur = k >= 0 ? k : st.added ? -1 : st.items.findIndex((x, i) => selectable(i));
-      renderList();
-    }
-    function reset() { input.value = ''; st.q = ''; st.added = null; quiet(); st.items = []; st.cur = -1; st.listQ = ''; renderList(); renderChips(); }
-    function addItem(it) {
-      if (it.kind === 'split') return it.words.map((w) => addChip({ kind: 'text', value: w, label: w })).join('   ');
-      if (it.kind === 'raw') return addChip({ kind: 'text', value: it.text, label: it.text });
-      return addChip(chipOf(it.s));
-    }
-    async function addEach(words) {       // each item as if typed and entered by itself: an abbreviation gets its name, not the judge's guess
-      busy = true;
-      try {
-        const said = [];
-        for (const w of words) {
-          let r = null;
-          try { r = await API.suggest(w, pickedList()); } catch (e) { r = null; }
-          const added = addedAs(w, r);
-          said.push(added ? `Already added: ${added}` : addItem((r ? build(w, r) : [{ kind: 'raw', text: w }]).find((x) => x.kind !== 'head')));
-        }
-        return said.join('   ');
-      } finally { busy = false; }
-    }
-    async function pick() {
-      const it = st.items[st.cur];
-      if (!it) return;
-      if (it.kind === 'split') { reset(); input.focus(); note.textContent = await addEach(it.words); renderChips(); return; }
-      note.textContent = addItem(it); reset(); input.focus();
-    }
-    async function enter(q) {             // Enter before the list for q has come: its best row once it comes, even if typing went on
-      let r = null;
-      try { r = await (st.pending && st.pending.q === q ? st.pending.p : API.suggest(q, pickedList())); } catch (e) { r = null; }
-      if (S.step !== 0 || !input.isConnected) return;
-      const it = (r ? build(q, r) : [{ kind: 'raw', text: q }]).find((x) => x.kind !== 'head');
-      const added = addedAs(q, r);
-      note.textContent = added ? `Already added: ${added}` : it.kind === 'split' ? await addEach(it.words) : addItem(it);
-      if (st.q.trim() === q) reset();
-      else { renderChips(); clearTimeout(st.timer); st.timer = setTimeout(search, 0); }     // the text typed since keeps its own list
-    }
-    list.addEventListener('mousedown', (e) => e.preventDefault());     // a click on the list keeps the field's focus
-    input.addEventListener('blur', () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); });
-    input.addEventListener('focus', renderList);
-    input.addEventListener('input', () => {
-      st.q = input.value; note.textContent = ''; st.lastKey = performance.now();
-      if (st.armed) { st.armed = false; renderChips(); }
-      quiet();
-      if (!st.q.trim()) { st.items = []; st.listQ = ''; renderList(); renderChips(); return; }
-      st.timer = setTimeout(search, 150);
-    });
-    input.addEventListener('keydown', async (e) => {
-      if (e.isComposing || e.keyCode === 229) return;          // a Korean syllable still being composed: this key is the IME's
-      if (st.armed && e.key !== 'Backspace') { st.armed = false; note.textContent = ''; renderChips(); }     // any other key drops the mark
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (!st.items.length) return;
-        const dir = e.key === 'ArrowDown' ? 1 : -1;
-        let i = st.cur;
-        do { i += dir; } while (i >= 0 && i < st.items.length && !selectable(i));
-        if (i >= st.items.length) return;
-        st.cur = i < 0 ? -1 : i; st.moved = true; mark();
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        const q = st.q.trim();
-        if (!q) { note.textContent = S.conds.length ? 'PgDn for the next step' : 'e.g. breast cancer, heart failure'; return; }
-        if (st.listQ !== q) enter(q);       // the list for q has not come yet
-        else if (st.cur >= 0 && selectable(st.cur)) pick();
-        else if (st.added) { note.textContent = `Already added: ${st.added}`; reset(); }
-        else { note.textContent = addChip({ kind: 'text', value: q, label: q }); reset(); }      // no row chosen: the text as typed
-      } else if (e.key === 'Escape') {
-        if (st.q) { e.preventDefault(); reset(); note.textContent = ''; }
-      } else if (e.key === 'Backspace' && !input.value) {
-        if (!S.conds.length) return;
-        e.preventDefault();
-        if (st.armed) { const c = S.conds.pop(); forget(c); save(); st.armed = false; note.textContent = `Removed: ${c.label}`; }
-        else { st.armed = true; note.textContent = `Press again to remove: ${S.conds[S.conds.length - 1].label}`; }
-        renderChips();
-      }
-    });
-    const node = h('div', { class: 's1' },
-      h('div', { class: 'hero' }, h('span', { class: 'flow-kicker', text: 'Patient' }), h('h1', { class: 'flow-title', text: 'Enter the cancer and conditions' })),
-      h('p', { class: 'step-description', text: 'Type a cancer, condition or symptom, then press Enter to add it' }),
-      chips, h('div', { class: 'field' }, h('span', { class: 'pr', 'aria-hidden': 'true', text: '›' }), input), list, note, status);
-    renderChips();
-    const preset = MOCK && Q.get('q') && !stage1.preset ? Q.get('q') : '';
-    if (preset) { stage1.preset = true; input.value = preset; st.q = preset; search(); }
-    setTimeout(() => { if (S.step === 0) input.focus({ preventScroll: true }); }, 0);
-    cleanup = () => { quiet(); stageNote = () => {}; typedText = () => ''; };
-    return node;
-  }
-
-  // ================================================================== step 2: Labs
-  const touched = new Set();
-  let labsTimer = 0, labsSeq = 0, labUI = null, labsErr = '';
-  async function labsNow() {               // POST /api/labs; the answer for the latest values is kept, and returned to its caller either way
-    clearTimeout(labsTimer); labsTimer = 0;
-    const seq = ++labsSeq;
-    let r = null;
-    try { r = await API.labs(rawValues()); } catch (e) { if (seq === labsSeq) { labsErr = e.message; if (labUI) labUI(); } return null; }
-    if (seq === labsSeq) { labsErr = ''; S.labs = r; save(); if (labUI) labUI(); }
-    return r;
-  }
-  function labsSoon() { clearTimeout(labsTimer); labsTimer = setTimeout(labsNow, 250); }
-  async function labsCommit() {
-    const r = await labsNow();
-    if (!r) return false;                   // the server's error line is in the bar
-    const errs = r.errors || {};
-    const bad = FIELDS.filter((f) => errs[f.key]);
-    if (!bad.length) return true;
-    bad.forEach((f) => touched.add(f.key));
-    S.labGroup = bad[0].group;
-    if (labUI) labUI(bad[0].group);
-    const el = document.getElementById('lab-' + bad[0].key);
-    if (el) el.focus();
-    return false;
-  }
-  function derivedLine() {                 // form.Form.labs' line: x ULN of the fields that have one, then the CLcr lines, as the server wrote them
-    const L = S.labs || {}, sh = (L.derived && L.derived.shown) || {};
-    const notes = (L.notes || []).map(String);
-    const out = notes.filter((n) => /^(CLcr|Creatinine needs)/.test(n));     // first: the bar has room for only some of the line
-    for (const f of FIELDS) {
-      const k = f.key === 'bilirubin' ? 'bili' : f.key;
-      if (k !== 'crcl' && f.uln !== null && f.uln !== undefined && sh[k] !== undefined && sh[k] !== null) out.push(`${f.label} ${sh[k]}×ULN`);
-    }
-    return out.concat(notes.filter((n) => /^ULN used/.test(n)));
-  }
-  function stage2() {
-    const order = [];                       // focusable controls, in field order
-    const rows = {};
-    const groupNames = (APP.labs.groups || []).filter(g => FIELDS.some(f => f.group === g));
-    let activeGroup = groupNames.includes(S.labGroup) ? S.labGroup : groupNames[0];
-    const groupLabels = { Basic: 'Basic information', Kidney: 'Renal', Liver: 'Liver', Blood: 'Haematologic', Glucose: 'Glucose', Pancreas: 'Pancreas', Thyroid: 'Thyroid', Cardio: 'Cardiovascular', Genotype: 'Genotype' };
-    const fieldLabels = { age: 'Age', sex: 'Sex', weight: 'Weight', lvef: 'Left ventricular ejection fraction (LVEF)', creatinine: 'Creatinine', bilirubin: 'Bilirubin', ast: 'AST', alt: 'ALT', albumin: 'Albumin', platelets: 'Platelets', anc: 'Neutrophil count' };
-    const groupButtons = new Map();
-    const groups = (APP.labs.groups || []).map((g) => {
-      const fs = FIELDS.filter((f) => f.group === g);
-      if (!fs.length) return null;
-      return h('section', { class: 'group', 'aria-label': g, 'data-group': g, hidden: g !== activeGroup }, h('h2', { class: 'h2', text: groupLabels[g] || g }), fs.map(labRow));
-    }).filter(Boolean);
-
-    function selectGroup(name) {
-      activeGroup = name; S.labGroup = name; save();
-      groups.forEach(group => { group.hidden = group.dataset.group !== name; });
-      groupButtons.forEach((button, key) => button.setAttribute('aria-pressed', key === name ? 'true' : 'false'));
-      updateGroupAction();
-    }
-    const groupNav = h('nav', { class: 'lab-nav', 'aria-label': 'Lab categories' }, groupNames.map(name => {
-      const button = h('button', { type: 'button', 'aria-pressed': name === activeGroup ? 'true' : 'false', onclick: () => selectGroup(name) }, h('span', { text: groupLabels[name] || name }), h('span', { class: 'lab-count' }));
-      groupButtons.set(name, button); return button;
-    }));
-
-    const groupNext = h('button', { type: 'button', class: 'group-next', text: 'Next group', onclick: () => { const i = groupNames.indexOf(activeGroup); if (i + 1 < groupNames.length) selectGroup(groupNames[i + 1]); } });
-    stageActions.prepend(groupNext);
-    const labProgress = h('p', { class: 'lab-progress', 'aria-live': 'polite' });
-    function updateGroupAction() { const last = groupNames.indexOf(activeGroup) === groupNames.length - 1; groupNext.hidden = last; barBtn.classList.toggle('quiet', !last); }
-    function move(f, dir) {
-      const i = order.findIndex((o) => o.key === f.key);
-      const t = order[i + dir];
-      if (t) { selectGroup(FIELDS.find(field => field.key === t.key).group); t.focus(); }
-    }
-    function labRow(f) {
-      const id = 'lab-' + f.key;
-      const err = h('div', { class: 'err', id: id + '-err', hidden: true });
-      const flag = h('span', { class: 'flag', hidden: true });
-      const state = h('span', { class: 'lab-state', id: id + '-state' });
-      const ok = h('span', { class: 'ok', hidden: true, text: '✓', 'aria-label': 'OK', title: f.rule ? `Flag: ${f.rule}` : null });   // checked against labs.FLAGS and not met
-      const base = f.key.startsWith('uln_') ? FIELDS.find((x) => x.key === f.key.slice(4)) : null;
-      const anchor = f.uln !== null && f.uln !== undefined ? `ULN ${f.uln}` : base ? `default ${base.uln}` : '';      // the reference the x ULN uses; the range is in the error line
-      const anc = f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null;
-      const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, anc, flag, ok, state);
-      let control;
-      if (f.kind === 'number') {
-        control = h('input', { class: 'num', id, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', placeholder: 'Not entered', 'aria-describedby': id + '-err', value: S.raw[f.key] || '' });
-        control.addEventListener('input', () => { S.raw[f.key] = control.value; touched.delete(f.key); save(); labsSoon(); refresh(); });
-        control.addEventListener('blur', () => { if (control.value.trim()) touched.add(f.key); labsNow(); });
-        control.addEventListener('keydown', (e) => {
-          if (e.isComposing || e.keyCode === 229) return;
-          if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); move(f, e.key === 'ArrowDown' ? 1 : -1); }
-          else if (e.key === 'Enter') { e.preventDefault(); touched.add(f.key); labsNow().then((r) => { if (r && !(r.errors || {})[f.key] && S.step === 1) move(f, 1); }); }
-          else if (e.key === 'Escape') { control.value = ''; S.raw[f.key] = ''; save(); labsSoon(); refresh(); }
-        });
-        control.key = f.key;
-        order.push(control);
-      } else {
-        const opts = f.kind === 'sex' ? [['M', 'M'], ['F', 'F']] : f.kind === 'child_pugh' ? [['A', 'A'], ['B', 'B'], ['C', 'C']] : [['y', 'Yes'], ['n', 'No']];
-        const norm = (v) => String(v || '').trim().toUpperCase().slice(0, 1);
-        const btns = opts.map(([v, label]) => h('button', { type: 'button', role: 'radio', text: label, 'data-v': v, 'aria-label': `${f.label} ${label}` }));
-        control = h('div', { class: 'seg', role: 'radiogroup', id, 'aria-label': f.label }, btns);
-        const sync = () => {
-          const cur = norm(S.raw[f.key]);
-          let focusable = null;
-          btns.forEach((b) => { const on = norm(b.dataset.v) === cur; b.setAttribute('aria-checked', on ? 'true' : 'false'); b.tabIndex = -1; if (on) focusable = b; });
-          (focusable || btns[0]).tabIndex = 0;
-        };
-        const set = (v) => { S.raw[f.key] = norm(S.raw[f.key]) === norm(v) ? '' : v; save(); sync(); labsNow(); refresh(); };
-        btns.forEach((b, k) => {
-          b.addEventListener('click', () => set(b.dataset.v));
-          b.addEventListener('keydown', (e) => {
-            if (e.isComposing || e.keyCode === 229) return;
-            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-              e.preventDefault();
-              const t = btns[(k + (e.key === 'ArrowRight' ? 1 : btns.length - 1)) % btns.length];
-              t.focus(); S.raw[f.key] = t.dataset.v; save(); sync(); labsNow(); refresh();
-            } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); move(f, e.key === 'ArrowDown' ? 1 : -1); }
-            else if (e.key === 'Enter') { e.preventDefault(); move(f, 1); }
-          });
-        });
-        sync();
-        order.push({ key: f.key, focus: () => (btns.find((b) => b.tabIndex === 0) || btns[0]).focus() });
-      }
-      const row = h('div', { class: 'lab' }, h('label', { for: f.kind === 'number' ? id : null, text: fieldLabels[f.key] || f.label, id: id + '-l' }), control, unit, err);
-      rows[f.key] = { row, err, flag, ok, control, f, anc, state };
-      return row;
-    }
-    function refresh(revealGroup) {
-      if (typeof revealGroup === 'string' && groupNames.includes(revealGroup)) selectGroup(revealGroup);
-      const r = S.labs || {};
-      const errs = r.errors || {}, flags = r.flags || [];
-      const countable = FIELDS.filter(f => !f.key.startsWith('uln_'));
-      const enteredCount = countable.filter(f => String(S.raw[f.key] ?? '').trim()).length;
-      labProgress.textContent = `Entered ${enteredCount}, not entered ${countable.length - enteredCount} (optional)`;
-      groupButtons.forEach((button, name) => {
-        const fields = FIELDS.filter(f => f.group === name);
-        const n = fields.filter(f => String(S.raw[f.key] ?? '').trim()).length;
-        const hasError = fields.some(f => errs[f.key]);
-        button.querySelector('.lab-count').textContent = hasError ? 'Check' : n ? `${n} entered` : 'Not entered';
-        button.classList.toggle('has-error', hasError);
-      });
-      for (const k in rows) {
-        const { err, flag, ok, control, f, anc, state } = rows[k];
-        if (anc && r.uln && r.uln[k] !== undefined) anc.textContent = `ULN ${r.uln[k]}`;
-        const msg = errs[k] && touched.has(k) && String(S.raw[k] || '').trim() ? String(errs[k]) : '';      // form._lab_error, as sent
-        err.hidden = !msg; err.textContent = msg;
-        if (control.classList) control.classList.toggle('bad', !!msg);
-        const fl = flags.filter((x) => x.key === k && String(S.raw[k] || '').trim());
-        flag.hidden = !fl.length;
-        flag.textContent = fl.length ? '→ ' + [...new Set(fl.map((x) => SHORT[x.organ] || x.organ))].join(', ') : '';
-        flag.title = fl.map((x) => x.why).join('\n');
-        const entered = String(S.raw[k] || '').trim() && r.raw && r.raw[k] !== undefined && r.raw[k] !== null;
-        ok.hidden = !(f.rule && entered && !msg && !errs[k] && !fl.length);
-        state.textContent = ({ 'Not entered': 'Not entered', 'Check input': 'Check input', 'Review needed': 'Review needed', 'No flag triggered': 'Entered', 'Default reference': 'Default reference', 'Entered': 'Entered' })[REVIEW.labState(S.raw[k], errs[k], fl.length, !ok.hidden, k.startsWith('uln_'))] || '';
-        state.classList.toggle('entered', !!entered);
-        state.classList.toggle('missing', state.textContent === 'Not entered');
-        if (control.classList) { control.classList.toggle('okv', !ok.hidden); control.classList.toggle('flg', !!fl.length && !msg); }
-      }
-      const lit = {};
-      for (const x of flags) if (String(S.raw[x.key] || '').trim()) lit[x.organ] = 'l2';
-      body.update({ lit });
-      const parts = derivedLine();
-      barLeft.title = labsErr ? '' : parts.join('\n');     // the whole line, when it does not fit
-      setBar({
-        left: labsErr ? h('span', { class: 'err-line', text: labsErr }) : parts.map((t) => h('span', { class: 'info', text: t })),
-        keys: [kbd('↑↓', 'move'), kbd('PgUp', 'back')],
-        button: { label: 'Finish lab entry', key: 'PgDn', keyLabel: 'Finish lab entry', quiet: groupNames.indexOf(activeGroup) !== groupNames.length - 1, act: next },
-      });
-    }
-    labUI = refresh;
-    const node = h('div', { class: 's2' }, h('span', { class: 'flow-kicker', text: condList().map(condName).join(', ') }),
-      h('h1', { class: 'flow-title', text: 'Enter the lab values' }), h('p', { class: 'step-description', text: 'Enter only the values you have. Empty boxes stay not entered.' }), labProgress,
-      h('div', { class: 'lab-workspace' }, groupNav, h('div', { class: 'groups' }, groups)));
-    refresh(); updateGroupAction();
-    labsNow();
-    setTimeout(() => { const first = order.find(o => FIELDS.find(f => f.key === o.key).group === activeGroup); if (first && S.step === 1) first.focus({ preventScroll: true }); }, 0);
-    cleanup = () => { labUI = null; barLeft.title = ''; groupNext.remove(); };
-    return node;
-  }
-
-  // ================================================================== step 3: AI organ analysis
-  function readingOf(r) {                 // the reading picked for an input that reads as several diseases; undefined when there is none to pick
-    const amb = S.analysis && (S.analysis.ambiguous || []).find((a) => a.text === r.condition);
-    if (!amb || !Object.prototype.hasOwnProperty.call(S.meanings, r.condition)) return undefined;
-    return amb.readings.find((x) => x.mondo === S.meanings[r.condition]) || null;
-  }
-  function organsOf(r) {                  // the organs the recommendation uses; for an input that reads as several diseases, the picked reading's
-    if (r.source === 'Cancer') return [];
-    const rd = readingOf(r);
-    if (rd !== undefined) return rd ? rd.organs || [] : [];
-    return r.organs || [];
-  }
-  const shownName = (r) => r.shown || (REG[r.condition] ? regName(r.condition) : r.condition);
-  function patientConds() {
-    const out = [];
-    for (const r of (S.analysis && S.analysis.reports) || []) {
-      const organs = organsOf(r);
-      if (organs.length) out.push({ key: r.condition, name: shownName(r), organs: AX.filter((a) => organs.includes(a)) });
-    }
-    return out;
-  }
-  function hasPriority() {                // form.run step 3: two or more conditions (lab findings included) on different organs
-    const pc = patientConds();
-    const labs = [...new Set(((S.labs && S.labs.flags) || []).filter((f) => String(S.raw[f.key] || '').trim()).map((f) => f.organ))];
-    const sets = new Set(pc.map((c) => c.organs.join()).concat(labs));
-    return pc.length + labs.length >= 2 && sets.size >= 2;
-  }
-  let analysisRun = 0;
-  const myJobs = new Set();               // the analyses this page posted; after a reload a stored job id is not polled (its answer may be taken)
-  function analysisSig() { return JSON.stringify([condList(), pickChoice()]); }
-  function keepAnalysis(job, r) {         // a finished job is handed out once: keep it at once, whatever the page shows by then
-    const A = S.analysis;
-    if (!A || A.job !== job) return;
-    Object.assign(A, { state: r.state, error: r.error || null, elapsed: r.elapsed, usage: r.usage || '', reports: r.reports || [], ambiguous: r.ambiguous || [], unresolved: r.unresolved || [] });
-    save();
-  }
-
-  function stage3() {
-    const box = h('div');
-    const labSummary = Object.entries(rawValues()).map(([key, value]) => { const f = FIELDS.find(x => x.key === key); return f ? `${f.label} ${value}${f.unit ? ' ' + f.unit : ''}` : `${key}: ${value}`; });
-    const node = h('div', { class: 's3' }, h('h1', { class: 'title', text: 'Condition-organ association' }), h('p', { class: 'step-description', text: 'Model association scores are not individual toxicity probabilities.' , title: 'Model scores are condition-organ associations, not individual toxicity probabilities.' }), h('div', { class: 'input-summary' }, h('strong', { text: 'Lab results' }), h('span', { text: labSummary.join(', ') || 'Not entered' }), h('button', { class: 'review-link', type: 'button', text: 'Edit', onclick: () => go(1) })), box);
-    const run = ++analysisRun;
-    const sig = analysisSig();
-    let ticker = 0, ui = null, rerun = false;
-    const cells = {};                     // condition -> its Organs cells in the review table
-    cleanup = () => { analysisRun++; clearInterval(ticker); side.classList.remove('analyzing'); };
-
-    // the TUI's wait: the step the model reports with a dot cycle, the inputs, and the process's CPU and RAM (form.Form.analyze)
-    function running() {
-      clear(box); body.update({}); side.classList.add('analyzing');
-      ui = { st: h('span', { class: 'st' }), dots: h('span', { class: 'dots', 'aria-hidden': 'true' }), secs: h('span', { class: 'secs' }), usage: h('div', { class: 'usage' }) };
-      ui.track = h('div', { class: 'track', role: 'progressbar', 'aria-label': 'Organ analysis' }, h('span'));
-      box.append(h('div', { class: 'run' }, h('strong', { class: 'run-label', text: 'Analysing condition-organ associations' }), ui.track,
-        h('div', { class: 'pline' }, h('span', null, ui.st, ui.dots), ui.secs),
-        h('div', { class: 'who', text: condList().map(condName).join(', ') }), ui.usage));
-      setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Next', key: 'PgDn', disabled: true, act: next } });
-    }
-    function failed(msg) {
-      clearInterval(ticker); side.classList.remove('analyzing');
-      clear(box);
-      box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'The AI analysis did not finish' }), h('p', { class: 'msg', text: msg })));
-      setBar({ keys: [kbd('PgUp', 'back')], button: { label: 'Back to patient information', act: () => go(0) } });
-    }
-    function finish() {
-      clearInterval(ticker); side.classList.remove('analyzing');
-      const A = S.analysis;
-      if (A.state === 'error') failed(A.error || 'error');
-      else { defaultMeanings(); review(true); }
-      renderCrumbs();
-    }
-    async function poll(job) {
-      myJobs.add(job);
-      if (!ui) running();
-      const t0 = performance.now();
-      const w = { text: '', queued: false, base: 0, at: t0, usage: '' };
-      const set = (el, t) => { if (el.textContent !== t) el.textContent = t; };
-      const paint = () => {
-        const now = performance.now();
-        set(ui.st, w.text);
-        set(ui.dots, !w.text ? '' : still() ? '...' : '.'.repeat(1 + Math.floor(((now - t0) / 1000) * 2.5) % 3));
-        set(ui.secs, w.text && !w.queued ? `${(w.base + (now - w.at) / 1000).toFixed(1)} s` : '');
-        set(ui.usage, w.usage);
-        ui.track.setAttribute('aria-valuetext', w.text);
-      };
-      paint();
-      clearInterval(ticker);
-      ticker = setInterval(paint, 100);
-      for (let k = 0; ; k++) {
-        if (k) await sleep(250);
-        if (run !== analysisRun) return;
-        let r;
-        try { r = await API.job(job); } catch (e) { r = e.status === 404 ? { state: 'gone' } : { state: 'error', error: e.message }; }
-        if (r.state === 'done' || r.state === 'error') keepAnalysis(job, r);
-        if (run !== analysisRun) return;
-        const A = S.analysis;
-        if (A && A.job === job && (A.state === 'done' || A.state === 'error')) { finish(); return; }     // this answer, or the one an earlier visit took
-        if (r.state === 'gone') {          // the server no longer has the job (taken, dropped or restarted): run it again, once
-          if (rerun) { A.state = 'error'; A.error = 'unknown analysis job'; save(); failed(A.error); return; }
-          rerun = true; start(); return;
-        }
-        w.text = r.state === 'queued' ? 'Waiting in queue' : r.step_text || (w.queued ? '' : w.text);
-        w.queued = r.state === 'queued';
-        if (typeof r.elapsed === 'number') { w.base = r.elapsed; w.at = performance.now(); }
-        if (r.usage) w.usage = r.usage;
-        paint();
-      }
-    }
-    async function start() {
-      const mine = S.analysis = { sig, state: 'running', job: null, reports: [], ambiguous: [], unresolved: [] };
+      S.presetId = null;
+      S.conds.push(c);
       save();
-      running();
-      try {
-        const r = await API.analyze(condList(), pickChoice());
-        if (S.analysis === mine) { mine.job = r.job; myJobs.add(r.job); save(); }      // kept even if the page moved on, so coming back polls it
-        if (run !== analysisRun) return;
-        poll(r.job);
-      } catch (e) { if (S.analysis === mine) { mine.state = 'error'; mine.error = e.message; save(); } if (run === analysisRun) failed(e.message); }
+      await refreshBackendData();
+      if (onChanged) onChanged();
     }
 
-    function review(cascade) {
-      clear(box);
-      const A = S.analysis, reps = A.reports || [];
-      const ambText = new Set((A.ambiguous || []).map((a) => a.text));
-      if (reps.some((r) => r.fallback)) box.append(h('p', { class: 'warnline', text: 'Organ judge failed. Typed conditions were not read.' }));
-      const table = h('div', { class: 'review', role: 'table', 'aria-label': 'Organ analysis' },
-        h('div', { class: 'rv-head', role: 'row' },
-          h('span', { role: 'columnheader', text: 'Input item' }),
-          h('span', { role: 'columnheader', text: 'Related organs, association score' })));
-      reps.forEach((r, i) => {
-        const cell = h('span', { role: 'cell' }, r.source === 'Cancer' ? 'Cancer' : organCell(r));
-        const read = h('span', { class: 'read', role: 'cell', hidden: true }, readParts(r, ambText));
-        (cells[r.condition] = cells[r.condition] || []).push({ cell, r, read });
-        table.append(h('div', { class: 'rv-row' + (cascade && !still() ? ' in' : ''), role: 'row', style: `--i:${i}` },
-          h('span', { class: 'inp', role: 'cell', text: shownName(r), title: shownName(r) }),
-          cell,
-          read));
+    async function removeConditionChip(idx) {
+      const removed = S.conds.splice(idx, 1)[0];
+      if (removed) {
+        delete S.meanings[removed.label];
+        if (S.first === removed.label || S.first === removed.value) S.first = null;
+      }
+      S.presetId = null;
+      save();
+      await refreshBackendData();
+      if (onChanged) onChanged();
+    }
+
+    function renderChips() {
+      clear(chipsWrap);
+      const P = (S.result && S.result.data && S.result.data.patient) || {};
+      const cancerConds = new Set((P.cancers || []).map((c) => c.condition));
+
+      S.conds.forEach((c, idx) => {
+        const isCancer = cancerConds.has(c.label) || cancerConds.has(c.value) || /carcinoma|cancer|lymphoma|myeloma|leukemia|tumor/i.test(c.label);
+        const rm = h('button', {
+          type: 'button', class: 'x',
+          'aria-label': 'Remove ' + c.label,
+          text: '×',
+          onclick: () => removeConditionChip(idx),
+        });
+        chipsWrap.append(h('span', { class: 'p-chip' + (isCancer ? ' cancer-chip' : '') },
+          h('span', { text: c.label }), rm));
       });
-      box.append(table);
-      if ((A.ambiguous || []).length) box.append(meanings());
-      setBar({ keys: [kbd('PgUp', 'back')], button: { label: hasPriority() ? 'Select review order' : 'Drug review', key: 'PgDn', act: next } });
-      lightAnalysis(cascade);
-    }
-    function readParts(r, ambText) {      // what the analysis read, until another reading of the input is picked below
-      const tag = ambText.has(r.condition) && r.tag ? String(r.tag).split(':')[0] : '';    // '2 meanings' (they are picked below)
-      const mean = tag ? h('span', { class: 'mean', text: tag }) : null;
-      const g = (S.analysis.ambiguous || []).find((a) => a.text === r.condition), rd = readingOf(r);
-      const applied = g && (g.default !== undefined ? g.default : (g.readings[0] || { mondo: null }).mondo);
-      if (g && rd !== undefined && S.meanings[r.condition] !== applied) {
-        return rd ? [h('span', { class: 'rd', text: rd.name || rd.mondo }), h('span', { class: 'how', text: 'Chosen' }), mean] : [h('span', { class: 'how', text: 'Unclear' }), mean];
+
+      // Summary lab chips (clickable to jump to Patient & Labs mode)
+      const L = S.labs || {};
+      const sh = (L.derived && L.derived.shown) || {};
+      const labBadges = [];
+      if (sh.bili) labBadges.push(`Bili ${sh.bili}xULN`);
+      else if (S.raw.bilirubin) labBadges.push(`Bili ${S.raw.bilirubin} mg/dL`);
+      if (sh.crcl) labBadges.push(`CLcr ${sh.crcl} mL/min`);
+      else if (S.raw.creatinine) labBadges.push(`Cr ${S.raw.creatinine} mg/dL`);
+      if (S.raw.lvef) labBadges.push(`LVEF ${S.raw.lvef}%`);
+
+      if (labBadges.length) {
+        chipsWrap.append(h('button', {
+          type: 'button',
+          class: 'p-chip lab-chip',
+          title: 'Edit laboratory values',
+          text: labBadges.join('  /  '),
+          onclick: () => switchMode(2),
+        }));
+      } else {
+        chipsWrap.append(h('button', {
+          type: 'button',
+          class: 'p-chip lab-chip',
+          text: '+ Labs',
+          onclick: () => switchMode(2),
+        }));
       }
-      return [r.read_as ? h('span', { class: 'rd', text: r.read_as }) : null, h('span', { class: 'how', text: ({ Registry: 'Registry condition', MONDO: 'Disease term', 'Chosen (record)': 'Selected item' })[r.how] || r.how || '' }), mean, r.check ? h('span', { class: 'mean', text: r.check }) : null];
-    }
-    function organCell(r) {               // form.likely: the judge's three most probable organs (and a used one outside them), as the server wrote them
-      const used = organsOf(r);
-      if (!used.length) {
-        const rd = readingOf(r);
-        const text = r.source === 'Cancer' ? 'Cancer (excluded from organ judging)' : rd === undefined ? r.no_organs || '-' : rd ? 'none of 13' : '-';
-        return h('span', { class: text === 'Cancer' ? 'cancer' : 'dim', text });
-      }
-      const same = used.length === (r.organs || []).length && used.every(o => r.organs.includes(o));
-      const likely = same && (r.likely || []).length ? r.likely : used.map(organ => ({ organ, used: true }));
-      const model = likely.some(x => x.text);
-      return h('span', { class: 'association' }, h('span', { class: 'association-source', text: model ? (r.source === 'Registry' ? 'Registry condition, model association score' : 'Model association score') : (r.source === 'Registry' ? 'Registry condition, assigned organs' : 'Linked organs') }),
-        model ? h('span', { class: 'association-list' }, likely.map(x => h('span', { class: 'association-row', title: 'Condition-organ association score, not individual toxicity probability' },
-          h('span', { text: SHORT[x.organ] || x.organ }), h('span', { class: 'association-bar' + (x.used ? ' used' : '') }, h('i', { style: `width:${Math.max(2, Math.min(100, (x.p || 0) * 100))}%` })), h('span', { text: x.text || '—' })))) : h('span', { class: 'organ-names', text: used.map(o => SHORT[o] || o).join(', ') }));
-    }
-    function meanings() {
-      const wrap = h('div', { class: 'meanings' }, h('h2', { class: 'h2', text: 'Check the items you entered' }));
-      for (const g of S.analysis.ambiguous) {
-        const opts = g.readings.map((r) => ({ id: r.mondo, label: r.name || r.mondo, organs: r.organs || [], hpo: r.hpo || String(r.mondo || '').startsWith('HP:') }));
-        opts.push({ id: null, label: 'Not sure', organs: null });
-        const qid = 'mq-' + g.text.replace(/\W/g, '_');
-        const changed = (id) => {
-          S.meanings[g.text] = id; save();
-          for (const { cell, r, read } of cells[g.text] || []) {
-            clear(cell); cell.append(organCell(r));
-            clear(read); add(read, readParts(r, new Set(S.analysis.ambiguous.map((a) => a.text))));
-          }
-          lightAnalysis(false); renderCrumbs();
-        };
-        wrap.append(h('div', { class: 'mgroup' }, h('p', { class: 'q', text: g.text, id: qid }),
-          radioList(opts, S.meanings[g.text] === undefined ? opts[0].id : S.meanings[g.text], changed,
-            (o) => [h('span', { class: 'lbl' }, o.label, o.hpo ? h('span', { class: 'tag', text: 'Symptom' }) : null),
-              o.organs === null ? null : o.organs.length ? strip(o.organs) : h('span', { class: 'dim', text: 'None of the 13 organs' })],
-            qid)));
-      }
-      return wrap;
     }
 
-    const A = S.analysis;
-    if (A && A.sig === sig && A.state === 'done') { defaultMeanings(); review(false); }
-    else if (A && A.sig === sig && A.state === 'running' && A.job && myJobs.has(A.job)) poll(A.job);    // back on this step while it runs
-    else start();                         // nothing stored, or a reload that finds a job id without its answer: run it again
-    return node;
-  }
-  function defaultMeanings() {            // form.meanings: the reading the analysis applied (the server's default), else the first
-    for (const g of (S.analysis && S.analysis.ambiguous) || []) {
-      if (Object.prototype.hasOwnProperty.call(S.meanings, g.text)) continue;
-      S.meanings[g.text] = g.default !== undefined ? g.default : (g.readings[0] || { mondo: null }).mondo;
+    function renderSugg() {
+      clear(sugg);
+      const show = st.items.length > 0 && st.q.trim() !== '';
+      sugg.hidden = !show;
+      input.setAttribute('aria-expanded', show ? 'true' : 'false');
+      if (!show) return;
+      st.items.slice(0, 7).forEach((it, i) => {
+        const li = h('li', {
+          class: 'opt', role: 'option',
+          'aria-selected': i === st.cur ? 'true' : 'false',
+        },
+        h('span', { class: 'nm' },
+          h('span', { class: 'main', text: it.kind === 'raw' ? `+ Add "${it.text}"` : it.s.text }),
+          it.s && it.s.sub ? h('span', { class: 'sub', text: it.s.sub }) : null));
+        li.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          pickItem(it);
+        });
+        sugg.append(li);
+      });
     }
-    save();
-  }
-  let lightTimers = [];
-  function lightAnalysis(cascade) {        // the organs of each reviewed input light as its row appears
-    lightTimers.forEach(clearTimeout); lightTimers = [];
-    const reps = (S.analysis && S.analysis.reports) || [];
-    const lit = {};
-    const apply = () => body.update({ lit: Object.assign({}, lit) });
-    if (!cascade || still()) { reps.forEach((r) => organsOf(r).forEach((o) => { lit[o] = 'on'; })); apply(); return; }
-    body.update({});
-    reps.forEach((r, i) => lightTimers.push(setTimeout(() => { organsOf(r).forEach((o) => { lit[o] = 'on'; }); apply(); }, 120 + i * 40)));
-  }
 
-  // generic radio list (meanings, priority): arrow keys move the choice, Enter goes on
-  function radioList(opts, value, onChange, render, labelledby, onEnter) {
-    const ul = h('ul', { class: 'radios', role: 'radiogroup', 'aria-labelledby': labelledby || null });
-    const lis = opts.map((o) => {
-      const li = h('li', { class: 'ropt', role: 'radio', tabindex: '-1' }, h('span', { class: 'dot', 'aria-hidden': 'true' }), render(o));
-      li.addEventListener('click', () => choose(o, li, true));
-      return li;
+    async function pickItem(it) {
+      input.value = '';
+      st.q = '';
+      st.items = [];
+      renderSugg();
+      if (it.kind === 'raw') await addConditionChip({ kind: 'text', value: it.text, label: it.text });
+      else await addConditionChip(chipOf(it.s));
+    }
+
+    async function runSuggest() {
+      const q = st.q.trim();
+      const seq = ++st.seq;
+      if (!q) { st.items = []; renderSugg(); return; }
+      try {
+        const r = await API.suggest(q, pickedList());
+        if (seq !== st.seq) return;
+        const out = [];
+        for (const s of r.names || []) out.push({ kind: 's', s });
+        for (const s of r.symptoms || []) out.push({ kind: 'sym', s });
+        out.push({ kind: 'raw', text: q });
+        st.items = out;
+        st.cur = 0;
+        renderSugg();
+      } catch (e) {
+        st.items = [{ kind: 'raw', text: q }];
+        st.cur = 0;
+        renderSugg();
+      }
+    }
+
+    input.addEventListener('input', () => {
+      st.q = input.value;
+      clearTimeout(st.timer);
+      if (!st.q.trim()) { st.items = []; renderSugg(); return; }
+      st.timer = setTimeout(runSuggest, 120);
     });
-    let cur = opts.findIndex((o) => o.id === value);
-    if (cur < 0) cur = 0;
-    function paint() { lis.forEach((li, i) => { li.setAttribute('aria-checked', i === cur ? 'true' : 'false'); li.tabIndex = i === cur ? 0 : -1; }); }
-    function choose(o, li, focus) { cur = opts.indexOf(o); paint(); if (focus) li.focus(); onChange(o.id); }
-    lis.forEach((li, i) => li.addEventListener('keydown', (e) => {
+    input.addEventListener('blur', () => { setTimeout(() => { sugg.hidden = true; input.setAttribute('aria-expanded', 'false'); }, 150); });
+    input.addEventListener('keydown', (e) => {
       if (e.isComposing || e.keyCode === 229) return;
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        if (!st.items.length) return;
         e.preventDefault();
-        const j = Math.max(0, Math.min(lis.length - 1, i + (e.key === 'ArrowDown' ? 1 : -1)));
-        choose(opts[j], lis[j], true);
-      } else if (e.key === ' ') { e.preventDefault(); choose(opts[i], li, true); }
-      else if (e.key === 'Enter' && onEnter) { e.preventDefault(); onEnter(); }
-    }));
-    paint();
-    add(ul, lis);
-    ul.focusFirst = () => lis[cur] && lis[cur].focus({ preventScroll: true });
-    return ul;
-  }
+        const max = Math.min(7, st.items.length) - 1;
+        st.cur = Math.max(0, Math.min(max, st.cur + (e.key === 'ArrowDown' ? 1 : -1)));
+        renderSugg();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (st.items[st.cur]) pickItem(st.items[st.cur]);
+        else if (st.q.trim()) pickItem({ kind: 'raw', text: st.q.trim() });
+      } else if (e.key === 'Escape') {
+        st.q = ''; input.value = ''; st.items = []; renderSugg();
+      }
+    });
 
-  // ================================================================== step 4: Priority
-  function stage4() {
-    const pc = patientConds();
-    if (S.first && !pc.some((c) => c.key === S.first)) S.first = null;
-    const opts = [{ id: null, label: 'Auto', organs: null }].concat(pc.map((c) => ({ id: c.key, label: c.name, organs: c.organs })));
-    const preview = (id) => {
-      const lit = {};
-      for (const c of pc) for (const o of c.organs) lit[o] = 'on';
-      if (id) { for (const o in lit) lit[o] = 'l2'; for (const o of (pc.find((c) => c.key === id) || {}).organs || []) lit[o] = 'l1'; }
-      body.update({ lit });
-    };
-    const list = radioList(opts, S.first, (id) => { S.first = id; save(); preview(id); },
-      (o) => [h('span', { class: 'lbl', text: o.label }), o.organs ? strip(o.organs) : null], 's4-title', next);
-    const node = h('div', { class: 's4' }, h('h1', { class: 'title', id: 's4-title', text: 'Which condition should be reviewed first?' }), h('p', { class: 'step-description', text: 'The related organs of the selected condition are shown first.' }), list);
-    preview(S.first);
-    setBar({ keys: [kbd('↑↓', 'choose'), kbd('PgUp', 'back')], button: { label: 'Drug review', key: 'PgDn', act: next } });
-    setTimeout(() => { if (S.step === 3) list.focusFirst(); }, 0);
-    return node;
-  }
+    renderChips();
 
-  // ================================================================== step 5: Results
-  function restriction(row) {
-    return { text: row.status === 'None' ? 'No restriction found' : row.status, sure: !!row.sure };
-  }
-  function resultSig() { return JSON.stringify([condList(), rawValues(), allChoice(), S.first]); }
-
-  function stage5() {
-    const box = h('div');
-    const node = h('div', { class: 's5' }, box);
-    let alive = true;
-    cleanup = () => { alive = false; resultKeys = null; };
-    setBar({ left: h('span', { class: 'result-legend', text: '!! Boxed warning    ! Warning' }), keys: [kbd('↑↓', 'select'), kbd('Enter', 'details')], button: { label: 'New patient', quiet: true, act: restart } });
-    const sig = resultSig();
-    if (S.result && S.result.sig === sig) draw(S.result.data);
-    else {
-      const wait = setTimeout(() => { if (alive && !box.firstChild) box.append(h('div', { class: 'run' }, h('div', { class: 'track', role: 'progressbar', 'aria-label': 'Results' }, h('span')))); }, 250);
-      const lab = (S.labs && S.labs.raw) || {};
-      API.recommend({ conditions: condList(), raw: lab, choice: allChoice(), first: S.first })
-        .then((data) => {
-          clearTimeout(wait); if (!alive) return;
-          S.result = { sig, data }; save(); draw(data, true);
-        })
-        .catch((e) => { clearTimeout(wait); if (!alive) return; clear(box); box.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'Results' }), h('p', { class: 'msg', text: e.message }))); });
+    // Right side: Active Organ Horizon Strip (ONLY the patient's active organs!)
+    const activeOrgans = activeOrgansWithScores();
+    const organsGrid = h('div', { class: 'active-organs-grid' });
+    if (activeOrgans.length) {
+      activeOrgans.forEach((item) => {
+        const pct = Math.round(Math.max(15, Math.min(100, item.score * 100)));
+        const isPrio = item.condKey && S.first === item.condKey;
+        const btn = h('button', {
+          type: 'button',
+          class: 'organ-meter-btn' + (isPrio ? ' prio-active' : ''),
+          title: item.condKey ? 'Click to prioritize ' + (SHORT[item.organ] || item.organ) + ' safety in ADC ranking' : (SHORT[item.organ] || item.organ),
+          onclick: async () => {
+            if (!item.condKey) return;
+            S.first = S.first === item.condKey ? null : item.condKey;
+            save();
+            await refreshBackendData();
+            if (onChanged) onChanged();
+          },
+        },
+        h('div', { class: 'om-top' },
+          h('span', { class: 'om-name', text: SHORT[item.organ] || item.organ }),
+          h('span', { class: 'om-val', text: isPrio ? 'Priority 1' : `${pct}%` })),
+        h('div', { class: 'om-track' },
+          h('i', { class: 'om-fill', style: `width:${pct}%` })));
+        organsGrid.append(btn);
+      });
+    } else {
+      organsGrid.append(h('span', { class: 'dim', text: 'No vulnerable organs flagged yet' }));
     }
-    function draw(res, fresh) {
-      clear(box);
+
+    return h('section', { class: 'workspace-bar', 'aria-label': 'Patient and active organ profile' },
+      h('div', { class: 'wb-left' },
+        h('div', { class: 'wb-search-row' },
+          h('div', { class: 'wb-input-wrap' },
+            h('span', { class: 'dim', 'aria-hidden': 'true', text: '+' }),
+            input),
+          h('button', { type: 'button', class: 'wb-btn', text: 'Labs & AI', onclick: () => switchMode(2) }),
+          sugg),
+        chipsWrap),
+      h('div', { class: 'wb-right' },
+        h('div', { class: 'horizon-head' },
+          h('span', { class: 'horizon-label', text: `Active Patient Organs (${activeOrgans.length})` }),
+          h('span', { class: 'horizon-sub', text: S.first ? 'Prioritized' : 'Click organ to weight first' })),
+        organsGrid));
+  }
+
+  // ------------------------------------------------------------------ Helpers for ADC Cards & Rows
+  function getArchPills(adcId, row) {
+    const m = MECH[adcId];
+    if (m) {
+      const pills = [];
+      if (m.target) pills.push(m.target.split(';')[0].trim());
+      if (m.payload_class) pills.push(m.payload_class.replace(/\s*inhibitor/i, '').trim());
+      if (m.dar) pills.push('DAR ' + String(m.dar).replace(/^~/, ''));
+      return pills;
+    }
+    const p = row && row.detail && row.detail.payload;
+    if (p && p.rows) {
+      return p.rows.slice(0, 3).map(([, v]) => v.split(',')[0]);
+    }
+    return [];
+  }
+
+  function statusInfo(row) {
+    const detail = row.detail || {};
+    const reason = (detail.reasons || []).find((r) => r.status === row.status && !!r.sure === !!row.sure) || (detail.reasons || []).find((r) => r.status === row.status);
+    if (row.status === 'None' || row.status === 'No change') {
+      return { tone: 'clear', bars: 'clear', label: 'Standard', full: 'Standard dosing' };
+    }
+    if (reason && reason.code === 'contraindicated') {
+      return { tone: 'avoid', bars: 'avoid', label: 'Contraindicated', full: 'Contraindicated' };
+    }
+    if (row.status === 'Avoid') {
+      return { tone: 'avoid', bars: 'avoid', label: row.sure ? 'Avoid' : 'Avoid (check)', full: 'Avoid use' };
+    }
+    if (row.status === 'Lower dose' || (reason && reason.code === 'reduce_dose')) {
+      return { tone: 'monitor', bars: 'monitor', label: 'Dose adjust', full: 'Dose adjustment' };
+    }
+    if (row.status === 'Monitor') {
+      return { tone: 'monitor', bars: 'monitor', label: 'Monitor', full: 'Close monitoring' };
+    }
+    return { tone: 'limited', bars: 'limited', label: 'Limited data', full: 'Not studied in cohort' };
+  }
+
+  function organStatusForRow(row, organ) {
+    const detail = row.detail || {};
+    const allWarnings = [].concat(detail.warnings || [], detail.other_warnings || []);
+    const found = allWarnings.find((w) => w.organ === organ);
+    if (!found) return { cls: 'clear', tag: 'Clear', title: 'No label warning on ' + (SHORT[organ] || organ) };
+    if (String(found.mark).trim() === '!!') {
+      return { cls: 'boxed', tag: 'Boxed', title: 'Boxed Warning: ' + found.text };
+    }
+    return { cls: 'warn', tag: 'Warn', title: 'Section 5 Warning: ' + found.text };
+  }
+
+  function primaryTrialEvent(row, activeOrgans) {
+    const t = row.detail && row.detail.trial;
+    if (!t || !t.trial || t.no_results || !Array.isArray(t.organs)) return null;
+    // Pick event on first active organ that has events, or fallback to any organ event
+    for (const item of activeOrgans) {
+      const o = t.organs.find((x) => x.organ === item.organ);
+      if (o && o.events && o.events.length) return { trial: t, organ: item.organ, ev: o.events[0] };
+    }
+    for (const o of t.organs) {
+      if (o.events && o.events.length) return { trial: t, organ: o.organ, ev: o.events[0] };
+    }
+    return null;
+  }
+
+  function buildDualBar(trialHit) {
+    if (!trialHit) {
+      return h('span', { class: 'dim', style: 'font-size:11px', text: 'Single-arm / registry' });
+    }
+    const { trial, ev } = trialHit;
+    const adcPct = (100 * ev.a) / Math.max(1, ev.n);
+    const cmpPct = ev.comp ? (100 * ev.comp[0]) / Math.max(1, ev.comp[1]) : null;
+    const scaleMax = Math.max(25, adcPct, cmpPct || 0);
+
+    return h('div', {
+      class: 'dual-bar-group',
+      title: `${trial.trial}: ${ev.term}\nADC (${trial.regimen}): ${ev.a}/${ev.n} (${ev.pct})` + (ev.comp ? `\nControl (${trial.comparator.regimen}): ${ev.comp[0]}/${ev.comp[1]} (${ev.comp_pct})` : ''),
+    },
+    h('div', { class: 'dual-bar-title' },
+      h('span', { text: ev.term }),
+      h('span', { class: 'dim', text: trial.trial })),
+    h('div', { class: 'dual-bar-row' },
+      h('span', { class: 'db-tag', text: 'ADC' }),
+      h('span', { class: 'db-track' }, h('i', { class: 'db-fill-adc', style: `width:${Math.min(100, (adcPct / scaleMax) * 100).toFixed(1)}%` })),
+      h('span', { class: 'db-pct', text: ev.pct })),
+    cmpPct !== null ? h('div', { class: 'dual-bar-row' },
+      h('span', { class: 'db-tag', text: 'CMP' }),
+      h('span', { class: 'db-track' }, h('i', { class: 'db-fill-cmp', style: `width:${Math.min(100, (cmpPct / scaleMax) * 100).toFixed(1)}%` })),
+      h('span', { class: 'db-pct cmp', text: ev.comp_pct })) : null);
+  }
+
+  // ------------------------------------------------------------------ Mode 0: Visual ADC Matrix (Spotlight Hero Cards + Monochrome Cohort Table)
+  function buildAdcMatrixMode() {
+    const box = h('div', { class: 's5' });
+    box.append(buildWorkspaceBar(() => renderMatrixContent()));
+    const content = h('div');
+    box.append(content);
+
+    function renderMatrixContent() {
+      clear(content);
+      const res = S.result && S.result.data;
+      if (!res || !Array.isArray(res.rows)) {
+        content.append(h('div', { class: 'panel', style: 'padding:24px' }, h('span', { class: 'dim', text: 'Loading ADC matrix...' })));
+        return;
+      }
       const P = res.patient || {};
       shownPatient = P;
       const hasCancer = !!(P.cancers || []).length;
-      const labs = Object.keys(rawValues()).filter(k => !k.startsWith('uln_')).length;
-      const patientWarning = row => ((row.detail || {}).warnings || []).length > 0;
-      const restricted = row => row.status && !['None', 'No change'].includes(row.status);
-      const groupOf = row => restricted(row) ? 0 : patientWarning(row) ? 1 : 2;
-      // Group findings by what needs review, without presenting a treatment ranking.
-      const rows = [...(res.rows || [])].sort((a, b) => groupOf(a) - groupOf(b) ||
-        (groupOf(a) === 0 ? Number(!!b.sure) - Number(!!a.sure) : 0) || a.name.localeCompare(b.name));
-      const contextButton = (text, step, cls = '', title = text) => h('button', {
-        type: 'button', class: 'context-chip ' + cls, text, title, onclick: () => go(step)
-      });
-      box.append(h('div', { class: 'patient-strip' },
-        h('div', { class: 'patient-identity' }, h('span', { class: 'eyebrow', text: 'Patient' }),
-          contextButton(condList().map(condName).join(', '), 0)),
-        h('div', { class: 'patient-fields' },
-          !hasCancer ? contextButton('+ Add a cancer', 0, 'missing-chip', 'Enter a cancer before checking indication.') : null,
-          contextButton(labs ? (P.values || []).slice(0, 2).join(', ') || `${labs} labs entered` : 'Labs not entered', 1, labs ? '' : 'missing-chip', (P.values || []).join(', ') || 'Lab values not entered'),
-          contextButton(analysisOrgans().map(o => SHORT[o] || o).join(', ') || 'Organs', 2))));
-      box.append(h('div', { class: 'review-toolbar' },
-        h('div', { class: 'review-title' }, h('h1', { text: 'Drug-by-drug review'  }), h('span', { class: 'count', text: rows.length })),
-        h('button', { type: 'button', class: 'export-button', text: '↓ Save', 'aria-label': 'Save review', onclick: () => saveReview(res) })));
-      box.querySelector('.review-toolbar').append(stageActions);
+      const rows = res.rows;
+      const activeOrgans = activeOrgansWithScores();
 
-      const missingNames = [...new Set(rows.flatMap(row => (row.detail || {}).missing || []))];
-      box.append(h('div', { class: 'review-summary' },
-        h('div', null, h('strong', { text: 'Information to check' }), h('span', { text: hasCancer ? 'Cancer entered, check the detailed criteria of approved indications' : 'Cancer not entered, indication cannot be checked' })),
-        h('div', null, h('strong', { text: 'Labs' }), h('span', { text: (labs ? `Entered ${labs} labs` : 'Labs not entered') + (missingNames.length ? ', check: ' + missingNames.join(', ') : '') }),
-          h('button', { class: 'review-link', type: 'button', text: 'Enter labs', onclick: () => go(1) } ))));
-      const relevant = row => hasCancer ? row.indicated === true : restricted(row) || patientWarning(row);
-      let filter = hasCancer || rows.some(relevant) ? 'relevant' : 'all';
-      const tabs = h('div', { class: 'review-filters', role: 'group', 'aria-label': 'Filter ADCs' });
+      // Determine Top Recommended Spotlight ADCs:
+      // Indicated (when cancer entered) and not Avoid, up to top 2 rank tier
+      const topCandidates = rows.filter((r) => (hasCancer ? r.indicated === true : true) && r.status !== 'Avoid');
+      const spotlightRows = (topCandidates.length ? topCandidates : rows).slice(0, 2);
+      const spotlightSet = new Set(spotlightRows.map((r) => r.adc));
+
+      // 1. Spotlight Section for Top Recommended ADCs (Full Cobalt/Emerald Color & Larger Cards)
+      const spGrid = h('div', { class: 'spotlight-grid' });
+      const cardEls = new Map();
+
+      spotlightRows.forEach((row) => {
+        const idx = rows.indexOf(row);
+        const st = statusInfo(row);
+        const pills = getArchPills(row.adc, row);
+        const trialHit = primaryTrialEvent(row, activeOrgans);
+
+        const organBars = h('div', { class: 'sp-organ-bars' });
+        (activeOrgans.length ? activeOrgans.slice(0, 4) : [{ organ: 'hepatic' }, { organ: 'pulmonary' }, { organ: 'haematologic' }]).forEach((item) => {
+          const os = organStatusForRow(row, item.organ);
+          organBars.append(h('div', { class: 'sp-organ-row', title: os.title },
+            h('span', { class: 'sp-organ-name', text: SHORT[item.organ] || item.organ }),
+            h('span', { class: 'sp-organ-track' }, h('i', { class: 'sp-organ-fill ' + os.cls })),
+            h('span', { class: 'sp-organ-state ' + os.cls, text: os.tag })));
+        });
+
+        const card = h('article', {
+          class: 'spotlight-card',
+          tabindex: '0',
+          'aria-selected': S.sel === idx ? 'true' : 'false',
+          onclick: () => { selectRow(idx, false); openDrawer(); },
+          onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectRow(idx, false); openDrawer(); } },
+        },
+        h('div', { class: 'sp-head' },
+          h('div', { class: 'sp-title-group' },
+            h('div', { class: 'sp-rank-row' },
+              h('span', { class: 'sp-rank', text: `TOP #${row.rank}` }),
+              hasCancer && row.indicated ? h('span', { class: 'sp-match-tag', text: (row.cancers && row.cancers[0]) || 'Indicated' }) : null),
+            h('h2', { class: 'sp-name', text: row.name }),
+            pills.length ? h('div', { class: 'sp-arch' }, pills.map((p) => h('span', { class: 'arch-pill', text: p }))) : null),
+          h('span', { class: 'sp-status-badge ' + st.tone, text: st.full })),
+        h('div', { class: 'sp-metrics' },
+          h('div', { class: 'sp-metric-box' },
+            h('span', { class: 'sp-metric-label', text: 'Patient Active Organs' }),
+            organBars),
+          h('div', { class: 'sp-metric-box' },
+            h('span', { class: 'sp-metric-label', text: 'Pivotal Trial Incidence' }),
+            buildDualBar(trialHit))));
+
+        cardEls.set(idx, card);
+        spGrid.append(card);
+      });
+
+      content.append(h('section', { class: 'spotlight-section', 'aria-label': 'Top recommended ADCs' },
+        h('div', { class: 'sec-bar' },
+          h('span', { class: 'sec-kicker', text: 'Primary Recommendation Spotlight' }),
+          h('span', { class: 'dim', style: 'font-size:11.5px', text: 'Click any card or row for FDA label & trial evidence' })),
+        spGrid));
+
+      // 2. Full Cohort Comparison Table (Lower-ranked rows rendered in quiet monochrome slate)
+      let filter = 'all';
+      const relevant = (row) => (hasCancer ? row.indicated === true : true);
+      const restricted = (row) => row.status && !['None', 'No change'].includes(row.status);
       const filters = [
-        ['relevant', 'Patient context', rows.filter(relevant).length, relevant],
-        ['all', 'All', rows.length, () => true],
-        ['restrictions', 'Label restrictions', rows.filter(restricted).length, restricted]
+        ['all', 'All Approved ADCs', rows.length, () => true],
+        ['relevant', 'Cancer Match', rows.filter(relevant).length, relevant],
+        ['restrictions', 'Label Restrictions', rows.filter(restricted).length, restricted],
       ];
-      const grid = h('div', { class: 'review-grid', role: 'grid', 'aria-label': 'ADC' },
+
+      const tabs = h('div', { class: 'review-filters', role: 'group', 'aria-label': 'Filter ADCs' });
+      const toolbar = h('div', { class: 'review-toolbar' },
+        tabs,
+        h('button', { type: 'button', class: 'export-button', text: 'Export Clinical Summary', onclick: () => saveReview(res) }));
+      content.append(toolbar);
+
+      const grid = h('div', { class: 'review-grid', role: 'grid', 'aria-label': 'ADC Cohort Matrix' },
         h('div', { class: 'review-grid-head', role: 'row' },
-          ...['Drug', 'Applicable conditions', 'Patient warnings', 'Other warnings'].map(text => h('span', { role: 'columnheader', text }))));
+          h('span', { role: 'columnheader', text: '#' }),
+          h('span', { role: 'columnheader', text: 'ADC & Architecture' }),
+          tipped(h('span', { role: 'columnheader', text: 'Regimen Fit' })),
+          tipped(h('span', { role: 'columnheader', text: 'Active Organ Profile' })),
+          tipped(h('span', { role: 'columnheader', text: 'Pivotal Trial vs Control' }))));
+
       const trs = [];
-      const groupHeaders = [];
-      let visible = rows.map((row, i) => filter === 'all' || relevant(row) ? i : -1).filter(i => i >= 0);
-      const empty = h('div', { class: 'review-empty', hidden: visible.length > 0, text: hasCancer ? 'No drug matches the entered cancer. Check all drugs.' : 'No items to check.' });
+      let visible = rows.map((_, i) => i);
 
       rows.forEach((row, i) => {
-        if (i === 0 || groupOf(row) !== groupOf(rows[i - 1])) {
-          const group = groupOf(row);
-          const heading = h('div', { class: 'review-group', role: 'row' }, h('span', { role: 'gridcell', text: ['Check applicable conditions', 'Patient warnings', 'Additional drugs to check'][group] }));
-          heading.hidden = !visible.some(index => groupOf(rows[index]) === group);
-          groupHeaders.push([group, heading]); grid.append(heading);
-        }
-        const rs = restriction(row), detail = row.detail || {};
-        const warnings = (row.preview || {}).patient || [];
-        const others = detail.other_warnings || [];
-        const noRestriction = row.status === 'None';
-        const reason = (detail.reasons || []).find(r => r.status === row.status && !!r.sure === !!row.sure) || (detail.reasons || []).find(r => r.status === row.status);
-        const statusText = reason && reason.code === 'contraindicated' ? 'Contraindicated' : reason && reason.code === 'reduce_dose' ? 'Dose adjustment' : ({ 'Not studied': 'Limited data, check detailed evidence', 'Avoid': 'Avoid use', 'Monitor': 'Monitoring', 'Lower dose': 'Dose adjustment', 'No data': 'No label statement', 'No change': 'No adjustment' })[row.status] || row.status;
-        const tr = h('div', { class: 'review-row', role: 'row', tabindex: '-1', 'aria-selected': 'false' },
-          h('div', { class: 'drug-cell', role: 'gridcell' },
-            h('span', { class: 'drug-name', text: row.name }),
-            hasCancer ? h('span', { class: 'indication-state', text: row.indicated === true ? 'Cancer match, check detailed indication' : row.indicated === false ? 'No match for entered cancer' : 'Indication cannot be checked' }) : null),
-          h('div', { class: 'status-cell', role: 'gridcell' },
-            h('span', { class: 'status-pill ' + (noRestriction ? 'neutral' : row.status === 'Avoid' ? 'avoid' : row.status === 'Monitor' ? 'monitor' : 'limited'),
-              title: noRestriction ? 'No additional restriction found for the entered information.' : rs.text,
-              text: noRestriction ? 'Additional restriction not found' : statusText }),
-            reason && reason.basis ? h('span', { class: 'status-basis', text: reason.basis === '-' ? 'Applies to all patients' : reason.sure && reason.patient ? 'Patient: ' + reason.patient : 'Condition: ' + reason.basis.replace(/^if /, '') }) : null,
-            !rs.sure && !noRestriction ? h('span', { class: 'conditional-label', title: 'Depends on a value not entered', text: 'Depends on a value not entered' }) : null),
-          h('div', { class: 'warning-cell', role: 'gridcell' }, warnings.length ? warnings.map(w =>
-            h('span', { class: 'organ-tag ' + (w.mark === '!!' ? 'boxed' : ''), title: w.mark === '!!' ? 'Boxed warning' : 'Warning', text: `${w.mark === '!!' ? '!!' : '!'} ${SHORT[w.organ] || w.organ}` })) : h('span', { class: 'empty-value', text: '—' })),
-          h('span', { class: 'other-cell', role: 'gridcell', text: others.length || '—', title: others.map(w => `${SHORT[w.organ] || w.organ}: ${w.text}`).join('\n') }));
-        tr.addEventListener('click', () => { select(i, true); openDrawer(); });
-        tr.hidden = !visible.includes(i);
-        trs.push(tr); grid.append(tr);
-      });
-      grid.append(empty);
-      const buttons = filters.map(([id, label, count, matches]) => {
-        const button = h('button', { type: 'button', class: 'filter-tab', 'aria-pressed': id === filter ? 'true' : 'false' },
-          label, h('span', { class: 'filter-count', text: count }));
-        button.addEventListener('click', () => {
-          filter = id;
-          buttons.forEach((b, k) => b.setAttribute('aria-pressed', filters[k][0] === id ? 'true' : 'false'));
-          visible = rows.map((row, i) => matches(row) ? i : -1).filter(i => i >= 0);
-          trs.forEach((tr, i) => { tr.hidden = !visible.includes(i); });
-          groupHeaders.forEach(([group, heading]) => { heading.hidden = !visible.some(i => groupOf(rows[i]) === group); });
-          empty.hidden = visible.length > 0;
-          if (!visible.includes(S.sel)) {
-            closeDrawer();
-            select(-1, false);
-          }
-        });
-        tabs.append(button); return button;
-      });
-      const showAll = h('button', { type: 'button', class: 'show-all', text: filter === 'all' ? 'Showing all drugs' : hasCancer ? `View ${rows.length - visible.length} other drugs` : `View all ${rows.length} drugs` });
-      showAll.addEventListener('click', () => { buttons[1].click(); showAll.textContent = 'Showing all drugs'; showAll.disabled = true; });
-      if (filter === 'all') showAll.disabled = true;
-      box.append(h('div', { class: 'review-legend', text: 'Based on entered information, !! boxed warning, ! warning' }), grid, showAll);
-      if ((P.unmapped || []).length) box.append(h('div', { class: 'unmapped', text: 'Unmapped: ' + P.unmapped.join(', ') }));
+        const isTop = spotlightSet.has(row.adc);
+        const st = statusInfo(row);
+        const pills = getArchPills(row.adc, row);
+        const trialHit = primaryTrialEvent(row, activeOrgans);
 
-      function select(i, focus) {
-        S.sel = i; S.reviewAdc = rows[i]?.adc || null; save();
-        trs.forEach((tr, k) => { tr.setAttribute('aria-selected', k === i ? 'true' : 'false'); tr.tabIndex = k === i ? 0 : -1; });
-        if (focus && trs[i]) trs[i].focus({ preventScroll: false });
+        const miniOrgans = h('div', { class: 'active-organ-cell', role: 'gridcell' });
+        (activeOrgans.length ? activeOrgans.slice(0, 3) : [{ organ: 'hepatic' }, { organ: 'pulmonary' }]).forEach((item) => {
+          const os = organStatusForRow(row, item.organ);
+          miniOrgans.append(h('div', { class: 'mini-organ-bar ' + os.cls, title: os.title },
+            h('span', { text: SHORT[item.organ] || item.organ }),
+            h('b', null, h('i')),
+            h('span', { class: 'mo-tag', text: os.cls === 'boxed' ? '!!' : os.cls === 'warn' ? '!' : 'OK' })));
+        });
+
+        const tr = h('div', {
+          class: 'review-row ' + (isTop ? 'tier-top' : 'tier-muted'),
+          role: 'row',
+          tabindex: i === S.sel ? '0' : '-1',
+          'aria-selected': i === S.sel ? 'true' : 'false',
+        },
+        h('div', { class: 'rank-cell', role: 'gridcell', text: `#${row.rank}` }),
+        h('div', { class: 'drug-cell', role: 'gridcell' },
+          h('div', { class: 'drug-name-row' },
+            h('span', { class: 'drug-name', text: row.name }),
+            hasCancer && row.indicated ? h('span', { class: 'sp-match-tag', text: 'Match' }) : null),
+          h('span', { class: 'drug-meta', text: pills.join('  /  ') || (row.cancers || []).join(', ') })),
+        h('div', { class: 'status-cell', role: 'gridcell' },
+          h('span', { class: 'reg-bars ' + st.bars, 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
+          h('span', { class: 'status-pill ' + (st.tone === 'clear' ? 'neutral' : st.tone), text: st.label })),
+        miniOrgans,
+        h('div', { class: 'trial-cell', role: 'gridcell' }, buildDualBar(trialHit)));
+
+        tr.addEventListener('click', () => { selectRow(i, true); openDrawer(); });
+        trs.push(tr);
+        grid.append(tr);
+      });
+
+      const filterBtns = filters.map(([id, label, count, fn]) => {
+        const b = h('button', { type: 'button', class: 'filter-tab', 'aria-pressed': id === filter ? 'true' : 'false' },
+          label, h('span', { class: 'filter-count', text: count }));
+        b.addEventListener('click', () => {
+          filter = id;
+          filterBtns.forEach((btn, k) => btn.setAttribute('aria-pressed', filters[k][0] === id ? 'true' : 'false'));
+          visible = rows.map((r, idx) => (fn(r) ? idx : -1)).filter((idx) => idx >= 0);
+          trs.forEach((tr, idx) => { tr.hidden = !visible.includes(idx); });
+        });
+        tabs.append(b);
+        return b;
+      });
+
+      content.append(grid);
+
+      function selectRow(i, focusRow) {
+        S.sel = i;
+        S.reviewAdc = rows[i] ? rows[i].adc : null;
+        save();
+        trs.forEach((tr, k) => {
+          tr.setAttribute('aria-selected', k === i ? 'true' : 'false');
+          tr.tabIndex = k === i ? 0 : -1;
+        });
+        cardEls.forEach((card, k) => {
+          card.setAttribute('aria-selected', k === i ? 'true' : 'false');
+        });
+        if (focusRow && trs[i]) trs[i].focus({ preventScroll: false });
         if (S.drawer && rows[i]) fillDrawer(rows[i]);
       }
-      resultKeys = e => {
+
+      resultKeys = (e) => {
         if (!visible.length) return;
         const at = visible.indexOf(S.sel);
         if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-          e.preventDefault(); select(visible[Math.max(0, Math.min(visible.length - 1, at + (e.key === 'ArrowDown' ? 1 : -1)))], true);
-        } else if (e.key === 'Home' || e.key === 'End') {
-          e.preventDefault(); select(e.key === 'Home' ? visible[0] : visible[visible.length - 1], true);
-        } else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawer(); }
+          e.preventDefault();
+          const nextIdx = visible[Math.max(0, Math.min(visible.length - 1, (at < 0 ? 0 : at) + (e.key === 'ArrowDown' ? 1 : -1)))];
+          selectRow(nextIdx, true);
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openDrawer();
+        }
       };
-      grid.addEventListener('keydown', resultKeys);
-      openDrawer = () => { if (rows[S.sel]) { fillDrawer(rows[S.sel]); showDrawer(); } };
+
+      openDrawer = () => {
+        if (S.sel < 0 && rows.length) S.sel = 0;
+        if (rows[S.sel]) {
+          fillDrawer(rows[S.sel]);
+          showDrawer();
+        }
+      };
       returnFocus = () => { if (trs[S.sel]) trs[S.sel].focus({ preventScroll: true }); };
-      keepRow = () => { if (S.step === 4 && trs[S.sel] && trs[S.sel].isConnected) trs[S.sel].scrollIntoView({ block: 'nearest' }); };
-      S.sel = rows.findIndex(row => row.adc === S.reviewAdc);
-      if (!visible.includes(S.sel)) S.sel = -1;
-      select(S.sel, false);
-      const want = MOCK && Q.get('adc') && !mockAdcUsed ? String(Q.get('adc')).replace(/_/g, '-') : null;
-      mockAdcUsed = true;
-      if (want) { const i = rows.findIndex(r => r.adc.replace(/_/g, '-') === want); if (i >= 0) select(i, false); }
-      if (S.sel >= 0 && (S.drawer || want)) openDrawer();
+      keepRow = () => { if (S.mode === 0 && trs[S.sel] && trs[S.sel].isConnected) trs[S.sel].scrollIntoView({ block: 'nearest' }); };
+
+      if (S.reviewAdc) {
+        const foundIdx = rows.findIndex((r) => r.adc === S.reviewAdc);
+        if (foundIdx >= 0) S.sel = foundIdx;
+      }
+      if (S.sel < 0 && rows.length) S.sel = 0;
+      selectRow(S.sel, false);
+      if (S.drawer && rows[S.sel]) openDrawer();
     }
-    return node;
+
+    renderMatrixContent();
+    clear(barKeys);
+    add(barKeys, [kbd('↑↓', 'select'), kbd('Enter', 'details')]);
+    return box;
   }
-  let mockAdcUsed = false, shownPatient = {};
+
+  // ------------------------------------------------------------------ Mode 1: Structure & Combination Studio (4-Part Conjugate Design)
+  function buildStructureStudioMode() {
+    const box = h('div', { class: 's-studio' });
+    box.append(buildWorkspaceBar(() => renderStudioCanvas()));
+    const wrap = h('div', { class: 'studio-wrap' });
+    const controls = h('aside', { class: 'studio-controls panel', 'aria-label': 'Conjugate Architecture Controls' });
+    const canvas = h('div', { class: 'studio-canvas' });
+    wrap.append(controls, canvas);
+    box.append(wrap);
+
+    function renderControls() {
+      clear(controls);
+      const makeGroup = (label, items, current, onPick) => {
+        const pills = h('div', { class: 'studio-pills' });
+        items.forEach((it) => {
+          const val = typeof it === 'string' ? it : it.id;
+          const b = h('button', {
+            type: 'button',
+            class: 'st-pill',
+            'aria-pressed': val === current ? 'true' : 'false',
+            text: val,
+            onclick: () => { onPick(val); save(); renderControls(); renderStudioCanvas(); },
+          });
+          pills.append(b);
+        });
+        return h('div', { class: 'studio-group' }, h('span', { class: 'studio-label', text: label }), pills);
+      };
+
+      controls.append(
+        makeGroup('1. Target Antigen (mAb)', STUDIO_TARGETS, S.studio.target, (v) => { S.studio.target = v; }),
+        makeGroup('2. Chemical Linker', STUDIO_LINKERS, S.studio.linker, (v) => { S.studio.linker = v; }),
+        makeGroup('3. Cytotoxic Payload', STUDIO_PAYLOADS, S.studio.payload, (v) => { S.studio.payload = v; }),
+        makeGroup('4. Drug-to-Antibody Ratio (DAR)', ['2', '3.5', '4', '6', '7.6', '8'], String(S.studio.dar), (v) => { S.studio.dar = parseFloat(v); }),
+        makeGroup('5. Fc Gamma Receptor Engineering', ['Wild-type IgG1', 'Fc-Silenced (LALA-PG)'], S.studio.fc ? 'Fc-Silenced (LALA-PG)' : 'Wild-type IgG1', (v) => { S.studio.fc = v.includes('LALA'); })
+      );
+    }
+
+    function renderStudioCanvas() {
+      clear(canvas);
+      const tgt = STUDIO_TARGETS.find((x) => x.id === S.studio.target) || STUDIO_TARGETS[0];
+      const lnk = STUDIO_LINKERS.find((x) => x.id === S.studio.linker) || STUDIO_LINKERS[0];
+      const pld = STUDIO_PAYLOADS.find((x) => x.id === S.studio.payload) || STUDIO_PAYLOADS[0];
+      const dar = Number(S.studio.dar) || 4;
+      const fcSilenced = !!S.studio.fc;
+
+      // 1. Chemical Handle Compatibility
+      const handleMatch = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
+      // 2. Bystander Effect
+      const bystander = lnk.cleavable && pld.perm;
+      // 3. Hydrophobic Aggregation / Clearance adjustment for high DAR
+      const darPenalty = dar > 4 && !lnk.id.includes('GGFG') && !lnk.id.includes('CL2A') ? (dar - 4) * 5.5 : (dar - 4) * 2.0;
+      const stabilityScore = Math.max(25, Math.min(98, Math.round(lnk.stability - Math.max(0, darPenalty))));
+
+      // Top Summary Metrics Bar
+      const hero = h('div', { class: 'studio-hero panel' },
+        h('div', { class: 'sh-metric' },
+          h('span', { class: 'sh-kicker', text: 'Chemical Conjugation Gate' }),
+          h('span', { class: 'sh-val ' + (handleMatch ? 't-green' : 't-amber'), text: handleMatch ? 'Compatible Handle' : 'Spacer Required' }),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${handleMatch ? 100 : 55}%;background:${handleMatch ? 'var(--emerald)' : 'var(--amber)'}` }))),
+        h('div', { class: 'sh-metric' },
+          h('span', { class: 'sh-kicker', text: 'Tumor / Normal Selectivity' }),
+          h('span', { class: 'sh-val', text: `+${tgt.selectivity.toFixed(1)} log2FC` }),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${Math.min(100, tgt.selectivity * 16)}%;background:var(--accent)` }))),
+        h('div', { class: 'sh-metric' },
+          h('span', { class: 'sh-kicker', text: 'Bystander Killing Capacity' }),
+          h('span', { class: 'sh-val', text: bystander ? 'Active Diffusion' : 'Cell-Autonomous' }),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${bystander ? 92 : 34}%;background:${bystander ? 'var(--accent)' : 'var(--dim)'}` }))),
+        h('div', { class: 'sh-metric' },
+          h('span', { class: 'sh-kicker', text: 'Plasma Linker Stability' }),
+          h('span', { class: 'sh-val', text: `${stabilityScore}% Intact` }),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${stabilityScore}%;background:var(--emerald)` }))));
+
+      // Panel A: Patient Active Organ Burden for Designed Conjugate vs Approved Reference
+      const activeOrgans = activeOrgansWithScores();
+      const organsToShow = activeOrgans.length ? activeOrgans : [
+        { organ: 'pulmonary', score: 0.85 },
+        { organ: 'hepatic', score: 0.78 },
+        { organ: 'haematologic', score: 0.72 },
+        { organ: 'cardiovascular', score: 0.65 },
+      ];
+
+      const organRows = h('div', { class: 'expr-list' });
+      organsToShow.forEach((item) => {
+        const basePld = pld.organs[item.organ] || 32;
+        const onTarget = (tgt.tissues.find((t) => t.organ === item.organ) || { tpm: 15 }).tpm * 0.45;
+        const darFactor = 0.75 + (dar / 8) * 0.42;
+        const fcFactor = fcSilenced && ['pulmonary', 'haematologic', 'ocular', 'hepatic'].includes(item.organ) ? 0.82 : 1.0;
+        const burden = Math.min(98, Math.round((basePld * 0.65 + onTarget) * darFactor * fcFactor));
+        const color = burden >= 75 ? 'var(--red)' : burden >= 52 ? 'var(--amber)' : 'var(--emerald)';
+
+        organRows.append(h('div', { class: 'expr-row' },
+          h('span', { class: 'ex-name', text: SHORT[item.organ] || item.organ }),
+          h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${burden}%;background:${color}` })),
+          h('span', { class: 'ex-val', style: `color:${color}`, text: `${burden} idx` })));
+      });
+
+      // Panel B: GTEx Normal Tissue Target Expression Profile
+      const gtexRows = h('div', { class: 'expr-list' });
+      tgt.tissues.forEach((t) => {
+        gtexRows.append(h('div', { class: 'expr-row' },
+          h('span', { class: 'ex-name', text: SHORT[t.organ] || t.organ }),
+          h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${t.tpm}%;background:var(--accent)` })),
+          h('span', { class: 'ex-val', text: `${t.tpm} nTPM` })));
+      });
+
+      const grid2 = h('div', { class: 'studio-grid-2' },
+        h('section', { class: 'studio-card panel' },
+          h('h3', { text: 'Patient Active Organ Toxicity Index (Simulated Architecture)' }),
+          organRows,
+          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: fcSilenced ? 'LALA-PG Fc-silencing active: off-target FcgammaR alveolar macrophage and megakaryocyte uptake reduced.' : 'Wild-type IgG1 Fc: standard FcgammaR-mediated immune effector & macrophage uptake.' })),
+        h('section', { class: 'studio-card panel' },
+          h('h3', { text: `GTEx Normal Tissue Expression (${tgt.gene})` }),
+          gtexRows,
+          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:11.5px', text: lnk.note })));
+
+      canvas.append(hero, grid2);
+    }
+
+    renderControls();
+    renderStudioCanvas();
+    clear(barKeys);
+    add(barKeys, [kbd('1-3', 'Switch Mode')]);
+    return box;
+  }
+
+  // ------------------------------------------------------------------ Mode 2: Full Patient, Lab & AI Organ Editor
+  const touched = new Set();
+  function buildPatientLabsMode() {
+    const box = h('div', { class: 's2' });
+    box.append(buildWorkspaceBar(() => {
+      refreshBackendData().then(() => renderPatientLabsBody());
+    }));
+    const bodyWrap = h('div');
+    box.append(bodyWrap);
+
+    function renderPatientLabsBody() {
+      clear(bodyWrap);
+      // 1. Categorized Lab Editor (preserving .groups { columns: 2 } container layout)
+      const groupNames = ((APP && APP.labs && APP.labs.groups) || []).filter((g) => FIELDS.some((f) => f.group === g));
+      let activeGroup = groupNames.includes(S.labGroup) ? S.labGroup : (groupNames[0] || 'Basic');
+      const groupLabels = {
+        Basic: 'Basic & Anthropometrics', Kidney: 'Renal Function', Liver: 'Hepatic Panel',
+        Blood: 'Haematology', Glucose: 'Metabolic', Pancreas: 'Pancreatic',
+        Thyroid: 'Thyroid', Cardio: 'Cardiovascular', Genotype: 'Pharmacogenomics',
+      };
+      const groupButtons = new Map();
+      const rows = {};
+
+      function selectGroup(name) {
+        activeGroup = name;
+        S.labGroup = name;
+        save();
+        groups.forEach((g) => { g.hidden = g.dataset.group !== name; });
+        groupButtons.forEach((btn, k) => btn.setAttribute('aria-pressed', k === name ? 'true' : 'false'));
+      }
+
+      function labRow(f) {
+        const id = 'lab-' + f.key;
+        const err = h('div', { class: 'err', id: id + '-err', hidden: true });
+        const flag = h('span', { class: 'flag', hidden: true });
+        const state = h('span', { class: 'lab-state', id: id + '-state' });
+        const ok = h('span', { class: 'ok', hidden: true, text: 'OK' });
+        const anchor = f.uln !== null && f.uln !== undefined ? `ULN ${f.uln}` : '';
+        const anc = f.kind === 'number' && anchor ? h('span', { class: 'anc', text: anchor }) : null;
+        const unit = h('span', { class: 'unit' }, f.kind === 'number' ? f.unit : null, anc, flag, ok, state);
+
+        let control;
+        if (f.kind === 'number') {
+          control = h('input', {
+            class: 'num', id, type: 'text', inputmode: 'decimal',
+            autocomplete: 'off', spellcheck: 'false', placeholder: '—',
+            value: S.raw[f.key] || '',
+          });
+          control.addEventListener('input', () => {
+            S.raw[f.key] = control.value;
+            S.presetId = null;
+            save();
+          });
+          control.addEventListener('blur', async () => {
+            touched.add(f.key);
+            await refreshBackendData();
+            refreshLabIndicators();
+          });
+        } else {
+          const opts = f.kind === 'sex' ? [['M', 'M'], ['F', 'F']] : f.kind === 'child_pugh' ? [['A', 'A'], ['B', 'B'], ['C', 'C']] : [['y', 'Yes'], ['n', 'No']];
+          const norm = (v) => String(v || '').trim().toUpperCase().slice(0, 1);
+          const btns = opts.map(([v, label]) => h('button', {
+            type: 'button', role: 'radio', text: label, 'data-v': v,
+            'aria-checked': norm(S.raw[f.key]) === norm(v) ? 'true' : 'false',
+            onclick: async () => {
+              S.raw[f.key] = norm(S.raw[f.key]) === norm(v) ? '' : v;
+              S.presetId = null;
+              save();
+              await refreshBackendData();
+              renderPatientLabsBody();
+            },
+          }));
+          control = h('div', { class: 'seg', role: 'radiogroup', id, 'aria-label': f.label }, btns);
+        }
+
+        const row = h('div', { class: 'lab' },
+          h('label', { for: f.kind === 'number' ? id : null, text: f.label }),
+          control, unit, err);
+        rows[f.key] = { row, err, flag, ok, control, f, anc, state };
+        return row;
+      }
+
+      const groups = groupNames.map((g) => {
+        const fs = FIELDS.filter((f) => f.group === g);
+        return h('section', { class: 'group', 'data-group': g, hidden: g !== activeGroup },
+          h('h2', { class: 'h2', text: groupLabels[g] || g }),
+          fs.map(labRow));
+      });
+
+      const groupNav = h('nav', { class: 'lab-nav', 'aria-label': 'Lab categories' }, groupNames.map((name) => {
+        const btn = h('button', {
+          type: 'button',
+          'aria-pressed': name === activeGroup ? 'true' : 'false',
+          onclick: () => selectGroup(name),
+        }, h('span', { text: groupLabels[name] || name }), h('span', { class: 'lab-count' }));
+        groupButtons.set(name, btn);
+        return btn;
+      }));
+
+      function refreshLabIndicators() {
+        const r = S.labs || {};
+        const errs = r.errors || {}, flags = r.flags || [];
+        groupButtons.forEach((button, name) => {
+          const fs = FIELDS.filter((f) => f.group === name && !f.key.startsWith('uln_'));
+          const n = fs.filter((f) => String(S.raw[f.key] ?? '').trim()).length;
+          button.querySelector('.lab-count').textContent = n ? `${n}` : '';
+        });
+        for (const k in rows) {
+          const { err, flag, control } = rows[k];
+          const msg = errs[k] && touched.has(k) && String(S.raw[k] || '').trim() ? String(errs[k]) : '';
+          err.hidden = !msg; err.textContent = msg;
+          const fl = flags.filter((x) => x.key === k && String(S.raw[k] || '').trim());
+          flag.hidden = !fl.length;
+          flag.textContent = fl.length ? (SHORT[fl[0].organ] || fl[0].organ) : '';
+          if (control.classList) {
+            control.classList.toggle('bad', !!msg);
+            control.classList.toggle('flg', !!fl.length && !msg);
+          }
+        }
+      }
+
+      refreshLabIndicators();
+      bodyWrap.append(h('div', { class: 'lab-workspace' }, groupNav, h('div', { class: 'groups' }, groups)));
+    }
+
+    renderPatientLabsBody();
+    return box;
+  }
+
+  // ------------------------------------------------------------------ Secondary Drill-Down Drawer (FDA Label + Pivotal Trial + 4-Part Architecture)
+  let openDrawer = () => {}, returnFocus = () => {}, keepRow = () => {}, resultKeys = null, settle = 0, shownPatient = {};
+
+  function docked(on) {
+    ROOT.classList.toggle('docked', on);
+    clearTimeout(settle);
+    settle = setTimeout(() => keepRow(), still() ? 0 : 300);
+  }
+  function showDrawer() {
+    S.drawer = true; save();
+    if (!drawer.classList.contains('open')) docked(true);
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
+  function closeDrawer(silent) {
+    S.drawer = false;
+    if (!silent) save();
+    if (!drawer || !drawer.classList.contains('open')) return;
+    const inside = drawer.contains(document.activeElement);
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    docked(false);
+    if (inside) returnFocus();
+  }
+
+  function section(title, ...kids) {
+    return h('section', { class: 'dsec' }, title ? tipped(h('h3', { class: 'h2', text: title })) : null, kids);
+  }
+
+  function fillDrawer(row) {
+    if (!row) return;
+    const d = row.detail || {};
+    drawerTitle.textContent = row.name;
+    clear(drawerBody);
+    drawerBody.scrollTop = 0;
+
+    // 1. Label Restriction
+    const rs = d.reasons || [];
+    const ruleText = (r) => {
+      const b = String(r.basis || '').replace(/^if /, '');
+      return b === '-' ? 'Applies to all patients' : b;
+    };
+    const secRestriction = section('Label restriction', rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
+      h('div', { class: 'rh' },
+        h('span', { class: 'k', text: SHORT[r.organ] || r.organ }),
+        h('span', { class: `s t-${TONE[r.code] || 'dim'}`, text: r.status })),
+      h('div', { class: 'pl' },
+        r.patient ? [h('span', { class: 'pk', text: 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
+        h('span', { class: 'pk', text: 'FDA Rule' }), h('span', { class: 'lv2', text: ruleText(r) })))))
+      : h('p', { class: 'dim', text: 'No label restriction triggered for entered values.' }));
+
+    // 2. Warnings on Patient's Active Organs
+    const ws = d.warnings || [];
+    const secPatientWarn = section("Warnings on the patient's organs", ws.length ? h('div', { class: 'wl' }, ws.map((w) => [
+      h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
+      h('span', { class: 'm ' + (w.mark.trim() === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }),
+      h('span', { text: w.text.replace(/;\s*/g, ', ') }),
+    ])) : h('p', { class: 'dim', text: 'No boxed or Section 5 warnings on the patient\'s active organs.' }));
+
+    // 3. Pre-treatment checks & Missing inputs
+    const secChecks = (d.checks || []).length ? section('Pre-treatment checks', h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))) : null;
+    const secMissing = (d.missing || []).length ? section('Missing inputs',
+      h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m }))),
+      h('button', { type: 'button', class: 'review-link', text: 'Enter lab values', onclick: () => { closeDrawer(); switchMode(2); } })) : null;
+
+    // 4. Pivotal Trial Context & Dual-Bar Events
+    const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
+    const secTrial = t ? section('Trial context',
+      h('p', { style: 'margin:0 0 6px;font-weight:700', text: `${t.trial}${t.phase ? ' (Phase ' + t.phase + ')' : ''}` }),
+      h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: t.population || '' }),
+      h('p', { style: 'margin:0 0 4px;font-size:12px', text: `ADC Arm: ${t.regimen} (n=${t.n})` }),
+      t.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `Control Arm: ${t.comparator.regimen} (n=${t.comparator.n})` }) : null,
+      /^NCT\d{8}$/.test(t.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + t.nct, target: '_blank', rel: 'noopener noreferrer', text: `ClinicalTrials.gov ${t.nct} ↗` }) : null
+    ) : section('Trial context', h('p', { class: 'dim', text: (d.trial && d.trial.no_results) || 'Single-arm or registry clinical study.' }));
+
+    const trialEvents = [];
+    for (const o of (t && t.organs) || []) {
+      for (const e of o.events || []) {
+        trialEvents.push(h('div', { class: 'trial-event' },
+          buildDualBar({ trial: t, organ: o.organ, ev: e }),
+          h('div', { class: 'event-values', style: 'margin-top:6px' },
+            h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' ADC'),
+            e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' Comparator') : null)));
+      }
+    }
+    const secEvents = trialEvents.length ? section('Study events', ...trialEvents) : null;
+
+    // 5. 4-Part Conjugate Structure & Indications
+    const m = MECH[row.adc];
+    const kvRows = m ? [
+      ['Target Antigen', m.target],
+      ['Antibody Backbone', m.antibody],
+      ['Chemical Linker', m.linker],
+      ['Cytotoxic Payload', m.payload],
+      ['Payload Class', m.payload_class],
+      ['Average DAR', m.dar],
+    ].filter(([, v]) => v) : ((d.payload && d.payload.rows) || []);
+
+    const secPayload = section('Payload and linker',
+      kvRows.length ? h('div', { class: 'kv3' }, kvRows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : null,
+      h('button', {
+        type: 'button', class: 'review-link', style: 'margin-top:8px',
+        text: 'Open in Structure Studio →',
+        onclick: () => { closeDrawer(); switchMode(1); },
+      }));
+
+    const secInd = section('Indication',
+      d.indication ? h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x }))) : null);
+
+    const wo = d.other_warnings || [];
+    const secOtherWarn = wo.length ? section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [
+      h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
+      h('span', { class: 'm ' + (w.mark.trim() === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }),
+      h('span', { text: w.text.replace(/;\s*/g, ', ') }),
+    ]))) : null;
+
+    const tabGroups = {
+      Patient: [secRestriction, secPatientWarn, secChecks, secMissing].filter(Boolean),
+      Study: [secTrial, secEvents].filter(Boolean),
+      'Structure & Label': [secPayload, secInd, secOtherWarn].filter(Boolean),
+    };
+
+    const nav = h('div', { class: 'evidence-tabs', role: 'group', 'aria-label': 'Evidence tabs' });
+    const allSecs = Object.values(tabGroups).flat();
+
+    function switchTab(name) {
+      allSecs.forEach((s) => { s.hidden = !tabGroups[name].includes(s); });
+      [...nav.children].forEach((b) => b.setAttribute('aria-pressed', b.dataset.view === name ? 'true' : 'false'));
+    }
+
+    Object.keys(tabGroups).forEach((name) => {
+      nav.append(h('button', {
+        type: 'button', text: name, 'data-view': name,
+        onclick: () => switchTab(name),
+      }));
+    });
+
+    drawerBody.append(nav, ...allSecs);
+    switchTab('Patient');
+  }
+
   function saveReview(result) {
+    if (!REVIEW || !REVIEW.reviewText) return;
     const text = REVIEW.reviewText(APP, condList().map(condName), rawValues(), FIELDS, result);
     const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
     const link = h('a', { href: url, download: 'ADCToX-review.txt' });
@@ -1338,186 +1411,70 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
-  function restart() {
-    try { sessionStorage.removeItem(KEY); } catch (e) { /* ignore */ }
-    S = blank(); touched.clear();
-    go(0);
+  // ------------------------------------------------------------------ Mode Switching & Keyboard Navigation
+  function switchMode(m, keepDrawer) {
+    if (!keepDrawer) closeDrawer(true);
+    S.mode = m;
+    save();
+    renderHeaderControls();
+    renderActiveMode(true);
+    window.scrollTo(0, 0);
   }
 
-  // ------------------------------------------------------------------ detail drawer
-  let openDrawer = () => {}, returnFocus = () => {}, keepRow = () => {}, resultKeys = null, settle = 0;
-  // at 1280 px and wider the open drawer is a third column (.docked): the page makes room for it while it slides in
-  function docked(on) {
-    ROOT.classList.toggle('docked', on);
-    clearTimeout(settle);
-    settle = setTimeout(() => keepRow(), still() ? 0 : 300);     // after the motion: the selected row stays in view
-  }
-  function showDrawer() {
-    S.drawer = true; save();
-    if (!drawer.classList.contains('open')) docked(true);
-    drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false');
-  }
-  function closeDrawer(silent) {
-    S.drawer = false;
-    if (!silent) save();
-    if (!drawer || !drawer.classList.contains('open')) return;
-    const inside = drawer.contains(document.activeElement);
-    drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true');
-    docked(false);
-    if (inside) returnFocus();
-  }
-  function section(title, ...kids) { return h('section', { class: 'dsec' }, title ? tipped(h('h3', { class: 'h2', text: title })) : null, kids); }
-  function fillDrawer(row) {
-    if (!row) return;
-    const d = row.detail || {};
-    drawerTitle.textContent = row.name;
-    clear(drawerBody);
-    drawerBody.scrollTop = 0;
-    // 1 indication for the entered cancer, 2 label restriction, 3 warnings on the patient's organs, 4 warnings on other organs
-    const cancers = [...new Set((shownPatient.cancers || []).map((c) => c.name))];
-    const verdict = !cancers.length ? { cls: 't-dim', mark: '—', word: 'Cancer not entered, indication cannot be checked' }
-      : row.indicated === false ? { cls: 't-red', mark: '✕', word: 'No match for entered cancer: ' } : row.indicated === true ? { cls: 't-green', mark: '✓', word: 'Cancer match, check detailed criteria: ' } : { cls: 't-dim', mark: '—', word: 'Indication cannot be checked: ' };
-    drawerBody.append(section('Indication', verdict ? h('p', { class: 'indv ' + verdict.cls }, h('span', { class: 'im', text: verdict.mark }), h('span', null, h('span', { class: 'iv', text: verdict.word }), cancers.join(', '))) : null,
-      d.indication ? [h('div', { class: 'sub', text: 'Approved indication text' }), h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x })))] : null));
-    const rs = d.reasons || [];
-    const rule = (r) => {                 // 'Monitor with bilirubin >1.5 to 3×ULN', 'Not studied if LVEF < 50%' (a value not entered)
-      const b = String(r.basis || '').replace(/^if /, '');
-      if (b === '-') return 'Applies to all patients';
-      return b;
-    };
-    drawerBody.append(section('Label restriction', rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
-      h('div', { class: 'rh' }, h('span', { class: 'k', text: SHORT[r.organ] || r.organ }), h('span', { class: `s t-${TONE[r.code] || 'dim'}` + (r.sure ? ' sure' : ''), text: r.code === 'contraindicated' ? 'Contraindicated' : r.code === 'reduce_dose' ? 'Dose adjustment' : ({ 'Not studied': 'Limited data, check detailed evidence', Avoid: 'Avoid use', Monitor: 'Monitoring', 'Lower dose': 'Dose adjustment', 'No data': 'No label statement', 'No change': 'No adjustment' })[r.status] || r.status })),
-      h('div', { class: 'pl' }, r.patient ? [h('span', { class: 'pk', text: 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
-        h('span', { class: 'pk', text: 'Applicable condition' }), h('span', { class: 'lv2', text: rule(r) })))))
-      : h('p', { class: 'line dim', text: 'No restriction found for the entered information.' })));
-    // Study-group event counts retain both denominators; no relative-risk inference is made.
-    const t = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
-    if (t) {
-      drawerBody.append(section('Trial context',
-        h('p', { class: 'line', text: `${t.trial}${t.phase ? ' / Phase ' + t.phase : ''}` }),
-        h('p', { class: 'line', text: t.population || 'Population not specified' }),
-        h('p', { class: 'line', text: `${t.regimen} (n=${t.n})` }),
-        t.comparator ? h('p', { class: 'line', text: `Comparator: ${t.comparator.regimen} (n=${t.comparator.n})` }) : null,
-        /^NCT\d{8}$/.test(t.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + t.nct, target: '_blank', rel: 'noopener noreferrer', text: t.nct + ' ↗' }) : null));
-    } else if (d.trial && d.trial.no_results) {
-      drawerBody.append(section('Trial context', h('p', { class: 'line', text: 'No results in the bundled ClinicalTrials.gov snapshot: ' + d.trial.trial })));
+  function renderActiveMode(animate) {
+    clear(stageBox);
+    stageBox.classList.remove('enter');
+    const builder = [buildAdcMatrixMode, buildStructureStudioMode, buildPatientLabsMode][S.mode] || buildAdcMatrixMode;
+    stageBox.append(builder());
+    if (animate && !still()) {
+      void stageBox.offsetWidth;
+      stageBox.classList.add('enter');
     }
-    const evOf = {};
-    for (const o of (t && t.organs) || []) if ((o.events || []).length) evOf[o.organ] = o.events;
-    let drawn = 0;
-    function trialEvent(e) {
-      drawn++;
-      const tip = `${t.trial}: ${e.term}\n${t.regimen}: ${e.pct} (n=${t.n})` + (e.comp ? `\n${t.comparator.regimen}: ${e.comp_pct} (n=${t.comparator.n})` : '');
-      return h('div', { class: 'trial-event', title: tip },
-        h('span', { class: 'event-term', text: e.term + (e.serious ? ', Serious' : '') }),
-        h('div', { class: 'event-values' }, h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' Treatment'),
-          e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' Comparator') : null));
-    }
-    const done = new Set();
-    const wrow = (organ, mark, text) => {
-      const evs = done.has(organ) ? [] : evOf[organ] || [];
-      done.add(organ);
-      return [h('span', { class: 'k', text: SHORT[organ] || organ }),
-        h('span', { class: 'm ' + (mark === '!!' ? 't-red' : 't-amber'), text: mark }),
-        h('div', { class: 'wt' }, h('span', { text: text.replace(/;\s*/g, ', ') }), evs.map(trialEvent))];
-    };
-    const ws = d.warnings || [], wo = d.other_warnings || [];
-    const rows = ws.map((w) => wrow(w.organ, w.mark.trim(), w.text));
-    for (const o in evOf) if (!done.has(o)) rows.push(wrow(o, '', 'No label warning'));       // a patient organ the label is silent on
-    drawerBody.append(section("Warnings on the patient's organs", rows.length ? h('div', { class: 'wl' }, rows) : h('p', { class: 'line dim', text: 'None' }),
-      t && drawn ? h('p', { class: 'src', text: 'Trial population, ' + t.trial, title: 'Study-group events, not individual risk. Serious is a registry category, not a severity grade.' }) : null));
-    if (wo.length) drawerBody.append(section('Warnings on other organs', h('div', { class: 'wl' }, wo.map((w) => [h('span', { class: 'k', text: SHORT[w.organ] || w.organ }),
-      h('span', { class: 'm ' + (w.mark === '!!' ? 't-red' : 't-amber'), text: w.mark.trim() }), h('span', { text: w.text.replace(/;\s*/g, ', ') })]))));
-    if ((d.missing || []).length) drawerBody.append(section('Missing inputs', h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m }))), h('button', { type: 'button', class: 'review-link', text: 'Enter lab values', onclick: () => { closeDrawer(); go(1); } })));
-    if (d.payload) drawerBody.append(section('Payload and linker', d.payload.rows ? h('div', { class: 'kv3' }, d.payload.rows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : h('p', { class: 'line', text: d.payload.line }), d.payload.note ? h('p', { class: 'note2', text: d.payload.note }) : null));
-    if ((d.checks || []).length) drawerBody.append(section('Pre-treatment checks', h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))));
-    const events = [...drawerBody.querySelectorAll('.trial-event')];
-    drawerBody.querySelectorAll('.src').forEach(el => el.remove());
-    if (events.length) drawerBody.append(section('Study events', ...events,
-      h('p', { class: 'src', text: 'Study-group counts, not individual risk' })));
-    if (!t && !(d.trial && d.trial.no_results)) drawerBody.append(section('Trial context', h('p', { class: 'line dim', text: 'No clinical study in this snapshot.' })));
-    // Separate patient findings from study populations and general reference material.
-    const sections = new Map([...drawerBody.children].map(el => [el.querySelector('h3')?.textContent, el]));
-    const order = ['Label restriction', 'Missing inputs', "Warnings on the patient's organs", 'Pre-treatment checks', 'Trial context', 'Study events', 'Indication', 'Warnings on other organs', 'Payload and linker'];
-    const folded = new Set(['Indication', 'Warnings on other organs', 'Pre-treatment checks', 'Payload and linker']);
-    for (const title of order) {
-      const el = sections.get(title); if (!el) continue;
-      const heading = el.querySelector('h3');
-      if (folded.has(title)) {
-        heading.remove();
-        const disclosure = h('details', { class: 'evidence-fold' }, h('summary', { text: title }), ...el.childNodes);
-        el.replaceChildren(disclosure);
-      } else heading.textContent = title;
-      drawerBody.append(el);
-    }
-    const views = {
-      Patient: ['Label restriction', 'Missing inputs', "Warnings on the patient's organs", 'Pre-treatment checks'],
-      Study: ['Trial context', 'Study events'],
-      Reference: ['Indication', 'Warnings on other organs', 'Payload and linker']
-    };
-    const nav = h('div', { class: 'evidence-tabs', role: 'group', 'aria-label': 'Evidence view' });
-    const switchView = name => {
-      sections.forEach((el, title) => { el.hidden = !views[name].includes(title); });
-      [...nav.children].forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === name)));
-    };
-    const viewLabels = { Patient: 'Patient', Study: 'Study', Reference: 'Reference' };
-    Object.keys(views).forEach(name => nav.append(h('button', { type: 'button', text: viewLabels[name], 'data-view': name, onclick: () => switchView(name) })));
-    drawerBody.prepend(nav);
-    switchView('Patient');
   }
 
-  // ------------------------------------------------------------------ keys that work everywhere (the TUI's)
   document.addEventListener('keydown', (e) => {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
-    if (guide) {                           // the open guide owns the keyboard; the step behind it stays put
+    if (guide) {
       if (e.key === 'Escape') { e.preventDefault(); closeGuide(); }
-      else if (e.key === 'Tab') trapTab(e);
       return;
     }
-    if (e.key === 'PageDown') { e.preventDefault(); next(); }
-    else if (e.key === 'PageUp') { e.preventDefault(); prev(); }
-    else if (e.key === 'Escape' && S.drawer) { e.preventDefault(); closeDrawer(); }
-    else if (e.key === 'Escape' && card) { e.preventDefault(); closeCard(); }
-    else if (S.step === 4 && resultKeys && !e.defaultPrevented && ['ArrowDown', 'ArrowUp', 'Home', 'End', 'Enter', ' '].includes(e.key)) {
-      const t = e.target;                // keys that land on the page itself (not a field, button or the drawer) work the ADC list
-      const page = t === document.body || t === document.documentElement || (stageBox.contains(t) && !t.closest('input, textarea, select, button, [role="radio"], a'));
-      if (page && !drawer.contains(t)) resultKeys(e);
+    if (e.key === 'Escape' && S.drawer) {
+      e.preventDefault();
+      closeDrawer();
+      return;
+    }
+    const t = e.target;
+    const inInput = t && t.closest && t.closest('input, textarea, select');
+    if (!inInput && S.mode === 0 && resultKeys && ['ArrowDown', 'ArrowUp', 'Enter'].includes(e.key)) {
+      if (!drawer.contains(t)) resultKeys(e);
     }
   });
 
-  // ================================================================== start
+  // ------------------------------------------------------------------ Boot Sequence
   async function start() {
     frame();
     try {
       APP = await API.app();
     } catch (e) {
-      stageBox.append(h('div', { class: 'fail' }, h('h2', { class: 'h2', text: 'ADCTOX' }), h('p', { class: 'msg', text: e.message })));
+      stageBox.append(h('div', { class: 'panel', style: 'padding:24px;margin-top:20px' },
+        h('h2', { style: 'margin:0 0 8px', text: 'ADCTOX' }),
+        h('p', { class: 'dim', text: e.message })));
       return;
     }
     AX = APP.axes || [];
     SHORT = Object.assign({}, APP.organ_short || {});
-    body.names(SHORT);
     (APP.registry || []).forEach((r, i) => { REG[r.id] = r; REG_I[r.id] = i; });
     FIELDS = (APP.labs && APP.labs.fields) || [];
-    STEPS = ['Patient', 'Labs', 'Organ analysis', 'Review order', 'Drug review'];
-    verEl.textContent = APP.version || '';
-    if (APP.models) verEl.title = 'models ' + APP.models;
+    (APP.mechanisms || []).forEach((m) => { if (m && m.adc_id) MECH[m.adc_id] = m; });
+    verEl.textContent = 'v' + (APP.version || '0.7.0');
 
-    let step = null;
-    if (MOCK && Q.get('step')) {            // ?mock=1&step=N: that stage, with the example patient entered for the steps before it
-      const n = Math.max(1, Math.min(5, parseInt(Q.get('step'), 10) || 1)) - 1;
-      const fx = MOCK.fixture();
-      S = blank();
-      S.conds = fx.conds.map((c) => Object.assign({}, c));
-      if (n >= 1) { S.raw = Object.assign({}, fx.raw); S.labs = await API.labs(rawValues()); }
-      if (n >= 3 || (n === 2 && Q.get('analysis') === 'done')) { S.analysis = MOCK.analysisDone(condList(), pickChoice()); S.analysis.sig = analysisSig(); defaultMeanings(); }
-      S.reached = n; step = n;
-    } else {
-      restore();
-      step = Math.max(0, Math.min(4, S.step | 0));
-      if (step >= 3 && !(S.analysis && S.analysis.state === 'done')) step = 2;
-    }
-    go(step, true);
+    restore();
+    renderHeaderControls();
+    // Render immediately so DOM has .crumbs and search input without waiting, then populate live matrix
+    renderActiveMode(false);
+    await refreshBackendData();
+    renderActiveMode(false);
   }
+
   start();
 })();

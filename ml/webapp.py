@@ -17,8 +17,8 @@ HANGUL = re.compile("[가-힣]")
 STEPS = ["Conditions", "Labs", "Organs", "Priority", "Results"]
 STEP_TEXT = {"judging": "Analysing organs"}
 TYPES = {".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
-         ".svg": "image/svg+xml; charset=utf-8", ".json": "application/json; charset=utf-8", ".txt": "text/plain; charset=utf-8", ".woff2": "font/woff2",
-         ".ttf": "font/ttf", ".otf": "font/otf"}
+         ".svg": "image/svg+xml; charset=utf-8", ".json": "application/json; charset=utf-8", ".webmanifest": "application/manifest+json; charset=utf-8",
+         ".txt": "text/plain; charset=utf-8", ".woff2": "font/woff2", ".ttf": "font/ttf", ".otf": "font/otf"}
 BINARY = {".woff2", ".ttf", ".otf"}     # kept base64 in the page dict (the one-file build stores it as JSON), sent as bytes
 JSON = "application/json; charset=utf-8"
 # form.Form._analysis_review: the source words of the analysis table
@@ -273,6 +273,7 @@ class App:
                        rule=rule.get(k)) for k, label, unit, g in LB.FIELDS]
         return dict(version=APP_VERSION, models=models, n_adcs=len(RC._indications()) or 15, has_learned=bool(RC.HAS_LEARNED), axes=list(RC.AXES),
                     organ_short=RC.ORGAN_SHORT, organ_en=RC.EN, organ_ko=RC.ORGAN_KO,
+                    mechanisms=list(RC._mechanisms().values()),
                     registry=[dict(id=i, label=r["label"], name=RC.condition_name(i), ko=RC.KO.get(i), mondo=r.get("mondo_id") or None,
                                    organs=[a for a in r["organ_axes"].split(";") if a]) for i, r in RC._reg.items()],
                     labs=dict(groups=list(dict.fromkeys(f["group"] for f in fields)), fields=fields), steps=STEPS)
@@ -502,7 +503,8 @@ def _handler(app):
             if not _loopback(host): raise _Error(403, "this server answers 127.0.0.1 only")
             if self.command != "GET" or path.startswith("/api/"):
                 origin, site = self.headers.get("Origin"), self.headers.get("Sec-Fetch-Site")
-                if origin is not None and origin != f"http://{host}": raise _Error(403, "cross-origin request refused")
+                allowed_origins = (f"http://{host}", f"https://{host}") if _remote_enabled() else (f"http://{host}",)
+                if origin is not None and origin not in allowed_origins: raise _Error(403, "cross-origin request refused")
                 if site is not None and site not in ("same-origin", "none"): raise _Error(403, "cross-site request refused")
             if self.command == "POST" and (self.headers.get("Content-Type") or "").split(";")[0].strip().lower() != "application/json":
                 raise _Error(415, "Content-Type: application/json is expected")
@@ -545,16 +547,32 @@ class _Server(ThreadingHTTPServer):
         if not isinstance(error, GONE): _log(error)
 
 
+def _remote_enabled():
+    bind = os.environ.get("ADCTOX_HOST", "").strip()
+    allow = os.environ.get("ADCTOX_ALLOWED_HOSTS", "").strip()
+    return bool(allow) or (bool(bind) and bind.lower() not in ("127.0.0.1", "localhost", "::1"))
+
+
 def _loopback(host):
     """a Host header naming this computer, on any port: the port differs behind an SSH tunnel (ssh -L 8080:127.0.0.1:<port>),
-    while a DNS-rebinding page carries its own domain name"""
-    name = host.rsplit(":", 1)[0] if not host.startswith("[") else host.split("]")[0] + "]"
-    return name.lower() in ("127.0.0.1", "localhost", "[::1]")
+    while a DNS-rebinding page carries its own domain name. When ADCTOX_HOST / ADCTOX_ALLOWED_HOSTS is set for server hosting,
+    configured hosts are permitted too."""
+    name = (host.rsplit(":", 1)[0] if not host.startswith("[") else host.split("]")[0] + "]").lower()
+    if name in ("127.0.0.1", "localhost", "[::1]"): return True
+    if not _remote_enabled(): return False
+    allow = [x.strip().lower() for x in os.environ.get("ADCTOX_ALLOWED_HOSTS", "").split(",") if x.strip()]
+    bind = os.environ.get("ADCTOX_HOST", "").strip().lower()
+    if "*" in allow or (bind == "0.0.0.0" and not allow): return bool(name)
+    return name in allow or name == bind
+
+
+def _host():
+    return os.environ.get("ADCTOX_HOST", "").strip() or "127.0.0.1"
 
 
 def make_server(RC, port=0):
-    app = App(RC)
-    try: server = _Server(("127.0.0.1", port), _handler(app))
+    app = App(RC); bind = _host()
+    try: server = _Server((bind, port), _handler(app))
     except OSError as e:
         if not port: raise
         raise SystemExit(f"adctox --web: port {port} is in use (another ADCTOX web?). Close it or set another ADCTOX_PORT.") from e

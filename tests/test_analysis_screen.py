@@ -18,7 +18,6 @@ def _screen(monkeypatch, keys, size=(24, 80)):
 
 
 def _rc():
-    import recommend as RC
     return types.SimpleNamespace(_reg={}, CHOICE={}, AXES=list(tui.GLYPH), condition_name=lambda c: c,
                                  _indications=lambda: {})
 

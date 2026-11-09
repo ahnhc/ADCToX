@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0: Architectural Daylight WebApp, Active-Organ Matrix, Structure Studio, and Mobile PWA (Ubuntu, macOS and Windows)
+
+- **Visual ADC Matrix (Option A, Active-Organ-Only):** replaces the 5-step wizard wall and 13-cell organ clutter with a unified workspace that boots directly into the visual ADC Matrix. Only the patient's active vulnerable organs (1 to 4 axes) are graphed.
+- **Spotlight Hero Cards & Monochrome Hierarchy:** top recommended ADCs render in full-chroma Cobalt (`#2563EB`) and Emerald (`#0D9488`) Spotlight Hero Cards with larger typography, 4-part conjugate tags, active-organ safety bars, and pivotal trial dual-bars (`ADC` vs `CMP` incidence). Lower-ranked or restricted ADCs recede into compact monochrome slate rows until hovered or selected.
+- **Structure & Combination Studio:** interactive 4-part ADC design studio (`Target Antigen × Linker × Payload × DAR & Fc-Silencing LALA-PG`) with visual meters for chemical conjugation handle compatibility, GTEx tumor/normal tissue selectivity (`log2FC`), bystander killing capacity, plasma linker stability, and patient active-organ toxicity index.
+- **Typography & Anti-Slop Polish:** Google Fonts **Manrope** (`ManropeVariable.woff2`, SIL OFL 1.1) with `tabular-nums` replaces Intel One Mono. All indicator dots, warning beads, middle dots, and stock-ticker delta triangles are removed. Detailed FDA label text, boxed warnings, trial populations, and Section 12.1 mechanisms open in the smooth secondary slide-over drawer (desktop) or bottom-sheet drawer (mobile).
+- **Android / Mobile PWA & Remote Server Hosting:** adds `manifest.webmanifest`, `sw.js`, `icon.svg`, and `ADCTOX_HOST` / `ADCTOX_ALLOWED_HOSTS` support in `ml/webapp.py` so the web app can be hosted on a remote Ubuntu server (e.g. `ubuntu-a1-osaka`) and installed on Android/iOS phones while preserving loopback security by default.
+- Models remain at 0.8 (`releases/models/stable4.json`).
+
 ## 0.6.15: clearer evidence review and local review export
 
 - Explicit missing, entered and no-flag lab states; model associations and review order explained beside the results.
