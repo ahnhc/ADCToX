@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.1: Interactive 3D ADC Molecular Structure, Multi-Objective Pareto Optimization, Bilingual Toggle (KO/EN), and Mobile Optimization
+
+- **Interactive 3D ADC Molecular Visualizer:** 3D rotational canvas rendering distinct architectures for all approved ADCs with accurate DAR counts, payload classes (DXd cyan, SN-38 emerald, SG3199 rose, DM1 gold, MMAE violet, MMAF indigo, Calicheamicin crimson), cleavable/non-cleavable linkers, paratope bindings, and continuous 360-degree interactive rotation.
+- **Dynamic Multi-Objective Pareto Frontier:** multi-objective simulation plot comparing Patient Organ Safety Score vs. Antitumor Efficacy & Selectivity across all candidate architectures. Features an animated progressive scan wavefront, 1:1 square aspect ratio without distortion, clean high-contrast daylight background, and AI de novo optimal architecture rationales.
+- **Bilingual Support (English / Korean Toggle):** instantaneous `KO / EN` toggle switching all modes, tables, filter tabs, condition inputs, organ vulnerability meters, biomarker flowsheets, and evidence drawer descriptions between English and clinical Korean oncology terminology.
+- **Mobile Responsive Layout:** 2-tier sticky header, responsive single-column grid adaptation, mobile bottom-sheet drawer (`84vh`), and touch-optimized controls on narrow phone screens (<= 480px).
+- **Clinical Biomarker Flowsheet:** institutional laboratory reference intervals mapping with dynamic spectrum indicators and AI organ vulnerability linkages.
+- Models remain at 0.8 (`releases/models/stable4.json`).
+
 ## 0.7.0: Architectural Daylight WebApp, Active-Organ Matrix, Structure Studio, and Mobile PWA (Ubuntu, macOS and Windows)
 
 - **Visual ADC Matrix (Option A, Active-Organ-Only):** replaces the 5-step wizard wall and 13-cell organ clutter with a unified workspace that boots directly into the visual ADC Matrix. Only the patient's active vulnerable organs (1 to 4 axes) are graphed.

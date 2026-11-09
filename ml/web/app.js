@@ -1,4 +1,4 @@
-/* ADCTOX v0.7.0 Architectural Daylight WebApp
+/* ADCTOX v0.7.1 Architectural Daylight WebApp
    Active-Organ Matrix + 3D Structure Studio + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -151,7 +151,7 @@
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
         h('div', { class: 'g-head' },
-          h('h2', { id: 'g-title', text: 'ADCTOX v0.7.0 Visual Workspace' }),
+          h('h2', { id: 'g-title', text: 'ADCTOX v0.7.1 Visual Workspace' }),
           h('button', { type: 'button', class: 'x-btn', 'aria-label': 'Close', onclick: closeGuide }, svgClose())),
         h('ol', { class: 'g-steps' },
           h('li', null, h('b', { text: '1. ADC Matrix: ' }), 'Top recommended ADCs are highlighted in Spotlight Cards. Lower-ranked drugs recede into monochrome slate rows. Only the patient\'s active organs are graphed.'),
@@ -516,7 +516,7 @@
   }
 
   // ------------------------------------------------------------------ Session State
-  const KEY = 'adctox.web.v070';
+  const KEY = 'adctox.web.v071';
   function defaultState() {
     const p = PRESETS[0];
     return {
@@ -2362,7 +2362,7 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.7.0');
+    verEl.textContent = 'v' + (APP.version || '0.7.1');
 
     restore();
     renderHeaderControls();
