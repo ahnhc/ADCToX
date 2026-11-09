@@ -1,4 +1,4 @@
-# ADCTOX v0.7.2
+# ADCTOX v0.7.3
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](docs/INSTALL.md)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](docs/INSTALL.md)
@@ -11,7 +11,7 @@ ADCTOX links a patient's cancer, comorbidities, and laboratory values to the 13 
 
 ---
 
-## What's New in v0.7.2
+## What's New in v0.7.3
 
 1. **Interactive 3D ADC Molecular Structure Visualizer:** 3D rotational canvas rendering distinct architectures for all approved ADCs with accurate DAR counts, payload classes (DXd cyan, SN-38 emerald, SG3199 rose, DM1 gold, MMAE violet, MMAF indigo, Calicheamicin crimson), cleavable/non-cleavable linkers, paratope bindings, and 360-degree interactive rotation.
 2. **Dynamic Multi-Objective Pareto Frontier Optimization:** Multi-objective simulation plot comparing Patient Organ Safety Score vs. Antitumor Efficacy & Selectivity across all candidate architectures with progressive scan wavefront, 1:1 square aspect ratio without distortion, clean high-contrast daylight background, and AI de novo optimal architecture rationales.
@@ -44,7 +44,7 @@ The installer sets up an isolated Python runtime, downloads the `0.8` from-scrat
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.7.2 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.7.3 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the 5-step Terminal TUI
 ```
 
