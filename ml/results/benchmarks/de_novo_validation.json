@@ -1,0 +1,39 @@
+{
+  "benchmark_1_positive_control": {
+    "passed": true,
+    "target": "HER2",
+    "payload": "Deruxtecan (DXd) (Topoisomerase I Inhibitor)",
+    "linker": "GGFG Gly-Gly-Phe-Gly Tetrapeptide",
+    "dar": 4,
+    "details": "Correctly reconstructed standard cleavable Topo I / tubulin ADC architecture for low-risk HER2 tumor."
+  },
+  "benchmark_2_counterfactual_avoidance": {
+    "passed": true,
+    "iterations": 100,
+    "bystander_rejection_rate": 1.0,
+    "dxd_rejection_rate": 1.0,
+    "details": "100% of iterations successfully rejected cell-permeable cleavable bystander linkers and switched to non-cleavable SMCC / safe payloads under severe ILD."
+  },
+  "benchmark_3_ddi_bypass": {
+    "passed": true,
+    "concomitant": [
+      "ketoconazole",
+      "clarithromycin"
+    ],
+    "selected_payload": "Immune-Stimulating Di-GMP Agonist (Immune Agonist (ISAC Payload))",
+    "details": "Successfully identified CYP3A4 blockade and steered away from MMAE/MMAF to non-CYP cleared payloads."
+  },
+  "benchmark_4_chemical_sanity": {
+    "passed": true,
+    "payloads_evaluated": 6,
+    "mean_sa_score": 3.683333333333333,
+    "mean_qed": 0.5683333333333332,
+    "details": "All candidate payloads meet medicinal chemistry drug-likeness (QED >= 0.50) and synthesis accessibility standards (SAScore <= 4.0)."
+  },
+  "benchmark_5_gtex_safety_margin": {
+    "passed": true,
+    "min_log2_margin": 2.7194478329081764,
+    "mean_log2_margin": 4.440798290792991,
+    "details": "Tumor-to-normal tissue expression ratio exceeds log2FC 2.0 threshold across all clinical indications (mean log2FC = 4.44)."
+  }
+}
