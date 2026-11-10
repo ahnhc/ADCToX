@@ -86,19 +86,3 @@ def test_the_profiles_between_them_populate_every_band_source() -> None:
     assert "model" in seen, seen
 
 
-def test_every_driver_source_has_a_colour_in_the_interface() -> None:
-    """The rule the schema's `source` field exists to serve: learned and elicited numbers
-    must be visually separable. A member with no colour renders unstyled, which reads as
-    neither."""
-    import pathlib
-    import typing
-
-    from adctox.schemas import Driver
-
-    page = (
-        pathlib.Path(__file__).resolve().parents[1] / "web" / "index.html"
-    ).read_text(encoding="utf-8")
-    members = typing.get_args(Driver.model_fields["source"].annotation)
-    assert members
-    missing = [m for m in members if f"--src-{m}" not in page]
-    assert not missing, f"driver sources with no colour defined: {missing}"

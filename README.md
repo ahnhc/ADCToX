@@ -1,8 +1,8 @@
 # ADCTOX v0.7.9
 
-[![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](docs/INSTALL.md)
-[![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](docs/INSTALL.md)
-[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](docs/INSTALL.md)
+[![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
+[![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Ubuntu terminal](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/terminal.yml)
 [![One-line install](https://github.com/ahnhc/ADCToX/actions/workflows/install.yml/badge.svg)](https://github.com/ahnhc/ADCToX/actions/workflows/install.yml)
 
@@ -101,7 +101,7 @@ Patient Input ──▶ MONDO Concept Link ──▶ 13-Organ Judge (x2te) ─�
 
 ## Documentation & Licenses
 
-- [Installation & Platform Guide](docs/INSTALL.md)
+- [Installation & Platform Guide](#one-line-installation-ubuntu-macos-windows)
 - [From-Scratch Organ Judge (`x2te`) Architecture](ml/docs/scratch_model.md)
 - [Reproducing the Gemma Benchmark](ml/docs/reproduce.md)
 - [Module Reference](ml/README.md)

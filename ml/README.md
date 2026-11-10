@@ -78,5 +78,3 @@ ADCTOX 앱과 모델 코드가 있는 폴더다. 앱은 환자의 기저질환�
 ## 결과와 기록
 
 - 평가 결과 JSON: `results/`, 벤치마크는 `results/benchmarks/`.
-- 이전 연구 기록(FinnGen 취약성 모델, BioLORD, 초기 추천기 설계): [docs/archive/ml_research_log.md](docs/archive/ml_research_log.md).
-- 그 밖의 이전 문서 목록: [저장소의 docs/archive/README.md](../docs/archive/README.md).

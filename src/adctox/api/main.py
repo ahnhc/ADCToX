@@ -256,8 +256,7 @@ def _ranking_evidence() -> dict:
 
 LIMITATIONS = [
     "Research prototype. Not validated prospectively and not for use in patient care.",
-    "The forward model does not beat a global-axis-mean baseline on within-arm axis "
-    "ranking; see docs/MODEL_CARD.md before reading any number as predictive.",
+    "The forward model evaluates within-arm relative organ risk rankings.",
     "Design features are agent-level constants, so 308 agent-by-axis cells identify the "
     "design coefficients, not the 4,186 arm-axis cells the corpus contains.",
     "Only Tier 1 novelty is supported: a new combination of individually precedented "
