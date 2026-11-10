@@ -1,4 +1,4 @@
-/* ADCTOX v0.7.6 Architectural Daylight WebApp
+/* ADCTOX v0.7.7 Architectural Daylight WebApp
    Active-Organ Matrix + 3D Structure Studio + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -151,31 +151,39 @@
   function openGuide() {
     if (guide) closeGuide();
     const isKo = S.lang === 'ko';
-    const ver = (APP && APP.version) ? APP.version : '0.7.6';
+    const ver = (APP && APP.version) ? APP.version : '0.7.7';
+    const stepItems = isKo
+      ? [
+          ['ADC 매트릭스', '환자의 암종, 기저질환, 검진 수치를 기반으로 FDA 승인 ADC 약물의 적합도를 평가합니다. 상단 활성 취약 장기는 위험도(%) 내림차순으로 정렬되며, 특정 장기를 클릭하면 해당 장기 보호를 우선 반영해 순위를 재산출합니다.'],
+          ['구조 스튜디오', '표적 항원, 화학 링커, 세포독성 페이로드, DAR, Fc 엔지니어링(LALA-PG)을 조합하여 [ADC 수동 설계] 또는 [ADC 자동 설계]로 환자 맞춤형 접합체를 설계합니다.'],
+          ['환자 정보', '한글 또는 영문으로 질환을 검색하고 검진 정보를 입력하여 AI 질환-장기 취약도 연계 결과를 확인합니다.'],
+        ]
+      : [
+          ['ADC Matrix', 'Ranks FDA-approved ADCs from patient comorbidities and lab values. Active vulnerable organs sort by severity (% descending); click any organ to prioritize its protection.'],
+          ['Structure Studio', 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) via Manual ADC Design or Auto-design ADC to evaluate patient-tailored conjugates.'],
+          ['Patient Info', 'Search conditions in English or Korean, enter lab values, and review AI condition-organ associations.'],
+        ];
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
         h('div', { class: 'g-head' },
-          h('h2', { id: 'g-title', text: isKo ? `ADCTOX v${ver} 작동 원리 및 워크스페이스 안내` : `ADCTOX v${ver} Visual Workspace` }),
+          h('h2', { id: 'g-title', text: isKo ? `ADCTOX v${ver} 워크스페이스 안내` : `ADCTOX v${ver} Workspace Guide` }),
           h('button', { type: 'button', class: 'x-btn', 'aria-label': 'Close', onclick: closeGuide }, svgClose())),
-        h('ol', { class: 'g-steps' },
-          h('li', null, h('b', { text: isKo ? '1. ADC 매트릭스: ' : '1. ADC Matrix: ' }),
-            isKo
-              ? '환자의 암종, 기저질환, 검진 수치를 기반으로 FDA 승인 ADC 약물의 적합도를 평가합니다. 상단 활성 취약 장기는 위험도(%) 내림차순으로 정렬되며, 특정 장기를 클릭하면 해당 장기 보호를 최우선으로 반영해 순위를 재산출합니다.'
-              : 'Ranks FDA-approved ADCs from patient comorbidities and lab values. Active vulnerable organs sort by severity (% descending); click any organ to prioritize its protection.'),
-          h('li', null, h('b', { text: isKo ? '2. 구조 스튜디오: ' : '2. Structure Studio: ' }),
-            isKo
-              ? '표적 항원, 화학 링커, 세포독성 페이로드, DAR, Fc 엔지니어링(LALA-PG)을 조합하여 [ADC 수동 설계] 또는 [ADC 자동 설계]로 환자 맞춤형 최적 접합체를 도출합니다.'
-              : 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) via Manual ADC Design or Auto-design ADC to identify patient-tailored conjugates.'),
-          h('li', null, h('b', { text: isKo ? '3. 환자 정보: ' : '3. Patient Info: ' }),
-            isKo
-              ? '한글 또는 영문으로 질환을 검색하고 검진 정보를 입력하여 AI 질환-장기 취약도 연계 결과를 확인합니다.'
-              : 'Search conditions in English or Korean, enter lab values, and review AI condition-organ associations.')),
+        h('div', { class: 'g-steps-list' },
+          stepItems.map(([title, desc], idx) => h('div', { class: 'g-step-item' },
+            h('span', { class: 'g-step-num', text: String(idx + 1) }),
+            h('div', { class: 'g-step-body' },
+              h('b', { text: title }),
+              h('span', { text: desc }))))),
         h('h3', { text: isKo ? '시각 지표 안내' : 'Visual Encodings' }),
         h('div', { class: 'g-keys' },
-          h('span', { class: 'sp-status-badge clear', text: isKo ? '표준 용량 투여' : 'Standard' }), isKo ? '입력된 환자 프로필 기준 용량 제한 없음' : 'No drug use restriction triggered for entered profile',
-          h('span', { class: 'sp-status-badge monitor', text: isKo ? '모니터링 / 용량 조절' : 'Monitor / Adjust' }), isKo ? '밀접 모니터링 또는 용량 감량 권고' : 'Close clinical monitoring or dose modification advised',
-          h('span', { class: 'sp-status-badge avoid', text: isKo ? '투여 주의 / 금기' : 'Avoid' }), isKo ? '투여 회피 또는 금기 권고' : 'Advises against use or contraindicated',
-          h('span', { class: 'sp-match-tag', text: isKo ? '치료군 vs 대조군' : 'Treatment vs Control' }), isKo ? '등록 임상시험 치료군 대 대조군 이상사례 발생률 비교' : 'Clinical trial treatment group vs control group comparison'),
+          h('span', { class: 'sp-status-badge clear', text: isKo ? '표준 용량 투여' : 'Standard' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '입력된 환자 프로필 기준 용량 제한 없음' : 'No drug use restriction triggered for entered profile' }),
+          h('span', { class: 'sp-status-badge monitor', text: isKo ? '모니터링 / 용량 조절' : 'Monitor / Adjust' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '밀접 모니터링 또는 용량 감량 권고' : 'Close clinical monitoring or dose modification advised' }),
+          h('span', { class: 'sp-status-badge avoid', text: isKo ? '투여 주의 / 금기' : 'Avoid' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '투여 회피 또는 금기 권고' : 'Advises against use or contraindicated' }),
+          h('span', { class: 'sp-match-tag', text: isKo ? '치료군 vs 대조군' : 'Treatment vs Control' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '등록 임상시험 치료군 대 대조군 이상사례 발생률 비교' : 'Clinical trial treatment group vs control group comparison' })),
         h('div', { class: 'g-foot' },
           h('button', { type: 'button', class: 'ok', text: isKo ? '닫기' : 'Close', onclick: closeGuide }))));
     document.body.append(guide);
@@ -372,7 +380,7 @@
 
   const TXT = {
     ko: {
-      modes: ['1. ADC 매트릭스', '2. 구조 스튜디오', '3. 환자 정보'],
+      modes: ['ADC 매트릭스', '구조 스튜디오', '환자 정보'],
       brandTag: '임상 ADC 의사결정 및 3D 구조 스튜디오',
       newPatient: '새 환자 입력',
       newPatientTitle: '입력된 질환을 초기화하고 새 환자 입력을 시작합니다',
@@ -426,10 +434,11 @@
       optimalCand: '이 환자에게 추천하는 설계:',
       bestDesign: '환자 맞춤 추천 설계',
       clickAutoOpt: 'ADC 자동 설계를 누르면 이 환자에게 맞는 조합을 찾습니다',
-      explainTitle: '점은 어떻게 계산했나요?',
+      explainTitle: '점수 계산식',
       explainBody: [
-        '가로축 안전도 (0~100): 환자의 취약 장기별 기저 위험도에 페이로드 장기 독성 계수, 표적 항원의 정상 조직 발현량(nTPM), 혈중 약물 부하(DAR·링커 안정도·소수성 응집 계수), FcγR 비특이 흡수 감쇠율을 결합해 장기별 손상 확률을 산출한 뒤, 최대 위험 장기 수치(55%)와 전체 활성 장기 평균 수치(45%)의 가중합을 100점에서 차감합니다.',
-        '세로축 효능 (0~100): 암종-표적 항원 적응증 일치도, 표적의 종양 대 정상조직 선택도(log2FC), 페이로드 세포독성 포텐셜, 혈장 내 링커 보존율 및 종양 내 방출 효율, 페이로드별 최적 DAR 전달 곡선, 링커-페이로드 화학적 상보성 및 주변 암세포 동반 사멸(Bystander effect) 계수를 결합해 산출합니다.',
+        '안전도 (X, 0~100) = 100 − (0.55 × 최대 취약장기 위험도 + 0.45 × 평균 취약장기 위험도) × 100',
+        '장기 위험도 p(o) = 1 − exp(−0.48 × [페이로드 장기독성 + 0.6 × 정상조직 표적발현] × 약물부하[DAR·링커안정도·응집도] × Fc계수 × 환자장기가중치)',
+        '항암 효능 (Y, 0~100) = 100 × 적응증일치도 × 표적선택도^0.35 × 페이로드효력^0.50 × 링커보존율^0.55 × 방출효율^0.48 × DAR전달곡선^0.52 × 화학적상보성^0.32 × 동반사멸계수',
       ],
       shCompat: '접합 반응성 호환도',
       shCompatDirect: '직접 결합 가능',
@@ -496,7 +505,7 @@
       compEfficacy: '예상 항암 효능',
     },
     en: {
-      modes: ['1. ADC Matrix', '2. Structure Studio', '3. Patient Info'],
+      modes: ['ADC Matrix', 'Structure Studio', 'Patient Info'],
       brandTag: 'Clinical ADC Decision & Structure Studio',
       newPatient: 'New Patient',
       newPatientTitle: 'Clear entered conditions and start custom patient input',
@@ -550,10 +559,11 @@
       optimalCand: 'Recommended design for this patient:',
       bestDesign: 'Recommended for this patient',
       clickAutoOpt: 'Press Auto-design ADC to find the best combination for this patient',
-      explainTitle: 'How was each dot calculated?',
+      explainTitle: 'Scoring Formula',
       explainBody: [
-        'Safety Score (X-axis, 0–100): Combines patient organ vulnerability with payload organ toxicity, normal-tissue target expression (nTPM), systemic drug load (DAR, linker stability, and hydrophobic aggregation), and FcγR uptake attenuation to compute per-organ hazard, then subtracts the weighted sum of peak organ risk (55%) and mean active-organ risk (45%) from 100.',
-        'Efficacy Score (Y-axis, 0–100): Integrates tumor–target indication match, tumor-to-normal target selectivity (log2FC), payload potency, linker plasma retention and intratumoral release efficiency, payload-specific DAR delivery scaling, linker–payload chemical compatibility, and bystander killing.',
+        'Safety (X, 0–100) = 100 − (0.55 × Peak Organ Risk + 0.45 × Mean Organ Risk) × 100',
+        'Organ Risk p(o) = 1 − exp(−0.48 × [Payload Organ Tox + 0.6 × Normal Target Expr] × Drug Load[DAR, Stability, Aggregation] × Fc Factor × Patient Organ Weight)',
+        'Efficacy (Y, 0–100) = 100 × Indication Match × Selectivity^0.35 × Potency^0.50 × Linker Retention^0.55 × Release^0.48 × DAR Curve^0.52 × Compatibility^0.32 × Bystander',
       ],
       shCompat: 'Conjugation Compatibility',
       shCompatDirect: 'Direct Coupling',
@@ -639,6 +649,7 @@
       first: null,
       prioOrgan: null,
       studioDesignMode: 'idle',
+      studioHistory: [],
       analysis: null,
       result: null,
       sel: 0,
@@ -688,31 +699,107 @@
     return [...new Set(out)];
   }
 
+  const CANCER_ORGAN_RULES = [
+    { re: /leukemia|myeloid|lymphoid|aml|all|cll|cml|myeloma|lymphoma|dlbcl|hodgkin|myelodysplastic|waldenstrom|백혈병|골수종|림프종|골수이형성/i,
+      organs: [['haematologic', 0.84], ['infectious_immune', 0.68]] },
+    { re: /lung|nsclc|sclc|bronch|pulmonary|pleural|mesothelioma|폐암|기관지암|흉막/i,
+      organs: [['pulmonary', 0.82]] },
+    { re: /breast|mammary|tnbc|유방암|삼중음성/i,
+      organs: [['cardiovascular', 0.64], ['pulmonary', 0.58], ['haematologic', 0.54]] },
+    { re: /liver|hepatocellular|hcc|cholangio|biliary|gallbladder|간암|간세포암|담도암|담관암|담낭암/i,
+      organs: [['hepatic', 0.84], ['gastrointestinal', 0.60]] },
+    { re: /gastric|stomach|colorectal|colon|rectal|esophageal|intestinal|duodenal|위암|대장암|결장암|직장암|식도암|장암/i,
+      organs: [['gastrointestinal', 0.78], ['haematologic', 0.54]] },
+    { re: /pancrea|췌장암/i,
+      organs: [['gastrointestinal', 0.74], ['hepatic', 0.68], ['metabolic_endocrine', 0.60]] },
+    { re: /renal|kidney|urothelial|bladder|ureter|신장암|신세포암|방광암|요로상피암/i,
+      organs: [['renal', 0.78], ['dermatologic', 0.52]] },
+    { re: /brain|glioma|glioblastoma|astrocytoma|meningioma|cns|neuroblastoma|뇌종양|교모세포종|신경모세포종/i,
+      organs: [['neurologic', 0.82]] },
+    { re: /ovarian|fallopian|peritoneal|cervical|endometrial|uterine|난소암|나팔관암|복막암|자궁경부암|자궁내막암|자궁암/i,
+      organs: [['haematologic', 0.62], ['gastrointestinal', 0.58], ['ocular', 0.52]] },
+    { re: /prostate|testicular|전립선암|고환암/i,
+      organs: [['haematologic', 0.58], ['renal', 0.55]] },
+    { re: /melanoma|cutaneous|skin cancer|basal cell|squamous cell skin|흑색종|피부암/i,
+      organs: [['dermatologic', 0.76]] },
+    { re: /thyroid|adrenal|neuroendocrine|갑상선암|부신암|신경내분비/i,
+      organs: [['metabolic_endocrine', 0.72]] },
+    { re: /head and neck|nasopharyngeal|oropharyngeal|laryngeal|oral|두경부암|비인두암|후두암|구강암/i,
+      organs: [['gastrointestinal', 0.66], ['pulmonary', 0.58]] },
+    { re: /sarcoma|bone|osteosarcoma|육종|골육종/i,
+      organs: [['musculoskeletal', 0.74], ['haematologic', 0.60]] },
+  ];
+
+  function mergeOrganScore(map, organ, score, condKey) {
+    if (!organ) return;
+    const prev = map.get(organ);
+    if (!prev) {
+      map.set(organ, { organ, score: Math.min(0.96, score), condKey: condKey || null });
+    } else {
+      // Probabilistic compounding when multiple conditions burden the same organ
+      const hi = Math.max(prev.score, score);
+      const lo = Math.min(prev.score, score);
+      const combined = Math.min(0.96, 1 - (1 - hi) * (1 - 0.32 * lo));
+      map.set(organ, {
+        organ,
+        score: combined,
+        condKey: score >= prev.score ? (condKey || prev.condKey) : prev.condKey,
+      });
+    }
+  }
+
+  function inferConditionOrgansFallback(text, condKey, map) {
+    const s = String(text || '').trim();
+    if (!s) return;
+    for (const rule of CANCER_ORGAN_RULES) {
+      if (rule.re.test(s)) {
+        for (const [org, sc] of rule.organs) {
+          mergeOrganScore(map, org, sc, condKey);
+        }
+      }
+    }
+  }
+
   function activeOrgansWithScores() {
     const map = new Map();
     if (S.analysis && S.analysis.state === 'done') {
       for (const r of S.analysis.reports || []) {
-        if (r.source === 'Cancer') continue;
         const used = r.organs || [];
         const pMap = r.p || {};
-        for (const o of used) {
-          const prev = map.get(o) || { organ: o, score: 0.78, condKey: r.condition };
-          const sc = typeof pMap[o] === 'number' && pMap[o] > 0 ? pMap[o] : 0.85;
-          if (sc >= prev.score) map.set(o, { organ: o, score: sc, condKey: r.condition });
+        if (used.length) {
+          for (const o of used) {
+            const sc = typeof pMap[o] === 'number' && pMap[o] > 0 ? pMap[o] : 0.85;
+            mergeOrganScore(map, o, sc, r.condition);
+          }
+        } else if (r.source === 'Cancer' || (r.cancers && r.cancers.length)) {
+          const searchTxt = [r.condition, r.name, r.shown].concat(r.cancers || []).join(' ');
+          inferConditionOrgansFallback(searchTxt, r.condition, map);
         }
       }
     }
+    const P = (S.result && S.result.data && S.result.data.patient) || {};
+    if (P.organ_levels && typeof P.organ_levels === 'object') {
+      for (const [org, lvl] of Object.entries(P.organ_levels)) {
+        const sc = typeof lvl === 'number' ? lvl : 0.80;
+        mergeOrganScore(map, org, sc, null);
+      }
+    }
+    for (const c of (P.cancers || [])) {
+      const searchTxt = [c.condition, c.name].concat(c.cancers || []).join(' ');
+      inferConditionOrgansFallback(searchTxt, c.condition, map);
+    }
     for (const c of S.conds) {
-      if (c.kind === 'reg' && REG[c.value]) {
+      if (c.kind === 'reg' && REG[c.value] && (REG[c.value].organs || []).length) {
         for (const o of REG[c.value].organs || []) {
-          if (!map.has(o)) map.set(o, { organ: o, score: 0.88, condKey: c.value });
+          mergeOrganScore(map, o, 0.88, c.value);
         }
+      } else {
+        inferConditionOrgansFallback(`${c.label || ''} ${c.value || ''}`, c.value || c.label, map);
       }
     }
     for (const fl of (S.labs && S.labs.flags) || []) {
       if (String(S.raw[fl.key] || '').trim()) {
-        const prev = map.get(fl.organ);
-        if (!prev) map.set(fl.organ, { organ: fl.organ, score: 0.82, condKey: null });
+        mergeOrganScore(map, fl.organ, 0.82, null);
       }
     }
     return AX.filter((a) => map.has(a)).map((a) => map.get(a)).sort((a, b) => b.score - a.score);
@@ -849,6 +936,7 @@
     S.first = null;
     S.prioOrgan = null;
     S.studioDesignMode = 'idle';
+    S.studioHistory = [];
     S.analysis = null;
     S.result = null;
     S.sel = 0;
@@ -1201,7 +1289,7 @@
       const prioOrg = S.prioOrgan || (S.first && activeOrgans.find((x) => x.condKey === S.first)?.organ) || null;
       if (prioOrg) {
         const pLabel = S.lang === 'ko' ? (ORGAN_KO[prioOrg] || SHORT[prioOrg] || prioOrg) : (SHORT[prioOrg] || prioOrg);
-        horizonSubEl.textContent = S.lang === 'ko' ? `★ [${pLabel}] 최우선 보호 적용됨 (클릭 시 해제)` : `★ Prioritizing [${pLabel}] (click to clear)`;
+        horizonSubEl.textContent = S.lang === 'ko' ? `${pLabel} 우선 평가 적용 중 (재클릭 시 해제)` : `Prioritizing ${pLabel} (click to clear)`;
         horizonSubEl.classList.add('prio-sub-active');
       } else {
         horizonSubEl.textContent = S.lang === 'ko' ? '클릭 시 해당 장기 우선 평가' : 'Select organ to prioritize';
@@ -1221,7 +1309,7 @@
             type: 'button',
             class: 'organ-meter-btn' + (isPrio ? ' prio-active' : ''),
             'aria-pressed': isPrio ? 'true' : 'false',
-            title: S.lang === 'ko' ? `${orgLabel} (${pct}%) — 클릭하여 최우선 보호 장기로 설정/해제` : `Prioritize ${orgLabel} (${pct}%)`,
+            title: S.lang === 'ko' ? `${orgLabel} (${pct}%) 우선 평가 토글` : `Toggle priority for ${orgLabel} (${pct}%)`,
             onclick: async () => {
               const turningOff = isPrio;
               S.prioOrgan = turningOff ? null : item.organ;
@@ -1237,9 +1325,7 @@
             },
           },
           h('div', { class: 'om-top' },
-            h('span', { class: 'om-name-wrap' },
-              h('span', { class: 'om-name', text: orgLabel }),
-              isPrio ? h('span', { class: 'om-prio-badge', text: S.lang === 'ko' ? '★ 우선 1위' : '★ Priority #1' }) : null),
+            h('span', { class: 'om-name', text: orgLabel }),
             h('span', { class: 'om-val', text: `${pct}%` })),
           h('div', { class: 'om-track' },
             h('i', { class: 'om-fill', style: `width:${pct}%` })));
@@ -1603,7 +1689,15 @@
     const fcSilenced = Boolean(spec.fc);
 
     const real = organsInput || activeOrgansWithScores();
-    const organs = real.length ? real : FALLBACK_ORGANS;
+    const baseOrgans = real.length ? real.slice() : FALLBACK_ORGANS.slice();
+    // Ensure target-expressing normal organs are also represented so switching Target visibly shifts organ safety
+    const organSet = new Set(baseOrgans.map((o) => o.organ));
+    for (const tis of (tgt.tissues || [])) {
+      if (!organSet.has(tis.organ)) {
+        baseOrgans.push({ organ: tis.organ, score: 0.42, condKey: null, baselineTissue: true });
+        organSet.add(tis.organ);
+      }
+    }
     const isCompat = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
 
     // Chemical linker-payload pairing affinity (clinically validated pair = 1.0)
@@ -1617,18 +1711,20 @@
 
     // Systemic drug load reaching normal organs
     const load = Math.pow(dar / 4, 0.78) * (1 + (1 - lnk.stability / 100) * 1.35) * aggPenalty * (1 + (1 - pairAffinity) * 0.35);
-    const organRisks = organs.map((ao) => {
+    const allOrganRisks = baseOrgans.map((ao) => {
       const payloadTox = (pld.organs[ao.organ] != null ? pld.organs[ao.organ] : 22) / 100;
       const expr = ((tgt.tissues.find((x) => x.organ === ao.organ) || { tpm: 8 }).tpm) / 100;
       const fc = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? 0.74 : 1;
       const prioMult = (S.prioOrgan && S.prioOrgan === ao.organ) ? 1.45 : 1.0;
-      const w = (0.6 + 0.4 * Math.min(1, ao.score || 0.8)) * prioMult;
-      const x = (payloadTox + 0.6 * expr) * load * fc * w;
-      return { organ: ao.organ, p: 1 - Math.exp(-0.48 * x) };
+      const w = (ao.baselineTissue ? 0.48 : (0.6 + 0.4 * Math.min(1, ao.score || 0.8))) * prioMult;
+      const x = (payloadTox + 0.65 * expr) * load * fc * w;
+      return { organ: ao.organ, p: 1 - Math.exp(-0.48 * x), baselineTissue: Boolean(ao.baselineTissue) };
     });
-    const meanRisk = organRisks.reduce((a, r) => a + r.p, 0) / organRisks.length;
-    const worstRisk = Math.max(...organRisks.map((r) => r.p));
-    const safetyScore = Math.max(1, Math.min(99, Math.round(100 * (1 - (0.55 * worstRisk + 0.45 * meanRisk)))));
+    const organRisks = real.length ? allOrganRisks.filter((r) => !r.baselineTissue) : allOrganRisks.slice(0, 4);
+    const meanRisk = allOrganRisks.reduce((a, r) => a + r.p, 0) / allOrganRisks.length;
+    const worstRisk = Math.max(...allOrganRisks.map((r) => r.p));
+    const safetyRaw = Math.max(1, Math.min(99, 100 * (1 - (0.55 * worstRisk + 0.45 * meanRisk))));
+    const safetyScore = Math.round(safetyRaw);
 
     // Efficacy: indication match, tumor selectivity, payload potency, linker retention/release, payload-specific DAR curve, bystander killing
     const bystander = lnk.cleavable && pld.perm;
@@ -1642,9 +1738,10 @@
     const loadTerm = (1 - Math.exp(-dar / 3.2)) * Math.exp(-0.035 * darDeviation * darDeviation) * (darExcess > 0 ? Math.max(0.45, 1 - darExcess * hydroFactor * 0.12) : 1);
     const eff = Math.pow(targetTerm, 0.35) * Math.pow(pld.potency / 100, 0.5) * Math.pow(delivered, 0.55) *
       Math.pow(release, 0.48) * Math.pow(loadTerm, 0.52) * Math.pow(pairAffinity, 0.32) * indFactor * (bystander ? 1.08 : 1) * (isCompat ? 1 : 0.52);
-    const efficacyScore = Math.max(1, Math.min(99, Math.round(eff * 100)));
+    const efficacyRaw = Math.max(1, Math.min(99, eff * 100));
+    const efficacyScore = Math.round(efficacyRaw);
 
-    return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, isCompat, organRisks, meanRisk, bystander };
+    return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, safetyRaw, efficacyRaw, isCompat, organRisks, meanRisk, bystander };
   }
 
   function evaluateAllStudioCandidates() {
@@ -1746,6 +1843,7 @@
               hideMicroPopover();
               onPick(val);
               if (S.studioDesignMode === 'auto') S.studioDesignMode = 'manual';
+              if (S.studioDesignMode === 'manual') pushManualHistory();
               save();
               renderControls();
               renderStudioCanvas(false);
@@ -1812,10 +1910,20 @@
       if (popoverEl) { popoverEl.remove(); popoverEl = null; }
     }
 
+    function pushManualHistory() {
+      if (!Array.isArray(S.studioHistory)) S.studioHistory = [];
+      const curSpec = Object.assign({}, S.studio);
+      const key = `${curSpec.target}|${curSpec.linker}|${curSpec.payload}|${curSpec.dar}|${curSpec.fc}`;
+      S.studioHistory = S.studioHistory.filter((item) => `${item.target}|${item.linker}|${item.payload}|${item.dar}|${item.fc}` !== key);
+      S.studioHistory.push(curSpec);
+      if (S.studioHistory.length > 6) S.studioHistory.shift();
+    }
+
     function runManualSimulation() {
       if (isOptimizing) return;
       hideMicroPopover();
       S.studioDesignMode = 'manual';
+      pushManualHistory();
       save();
       renderControls();
       renderStudioCanvas(false);
@@ -2019,23 +2127,53 @@
       const duration = (animate && !still()) ? 4200 : 0;
       let completed = false;
 
-      function drawCalloutLabel(text, dotX, dotY, preferAbove, offsetX, offsetY, plotW, plotH, dpr, color) {
+      // Compute Pareto frontier points (non-dominated compatible candidates)
+      const compatCands = cands.filter((c) => c.isCompat).slice().sort((a, b) => (b.safetyRaw - a.safetyRaw) || (b.efficacyRaw - a.efficacyRaw));
+      const paretoFront = [];
+      let maxEffSeen = -1;
+      for (const c of compatCands) {
+        if (c.efficacyRaw > maxEffSeen + 0.2) {
+          paretoFront.push(c);
+          maxEffSeen = c.efficacyRaw;
+        }
+      }
+
+      function drawCalloutLabel(text, dotX, dotY, preferAbove, offsetX, offsetY, plotW, plotH, dpr, color, avoidBox) {
         ctx.font = `bold ${10 * dpr}px sans-serif`;
         const textW = ctx.measureText(text).width;
+        const boxH = 14 * dpr;
         const gap = 9 * dpr;
         let tx = dotX + gap;
         if (tx + textW > offsetX + plotW - 6 * dpr) {
           tx = dotX - gap - textW;
         }
         tx = Math.max(offsetX + 6 * dpr, Math.min(offsetX + plotW - textW - 6 * dpr, tx));
-        let ty = preferAbove ? (dotY - 8 * dpr) : (dotY + 15 * dpr);
-        if (ty - 10 * dpr < offsetY + 4 * dpr) ty = dotY + 15 * dpr;
-        if (ty > offsetY + plotH - 6 * dpr) ty = dotY - 8 * dpr;
+        let ty = preferAbove ? (dotY - 9 * dpr) : (dotY + 16 * dpr);
+        if (ty - 11 * dpr < offsetY + 4 * dpr) ty = dotY + 16 * dpr;
+        if (ty > offsetY + plotH - 6 * dpr) ty = dotY - 9 * dpr;
+
+        const box = { x: tx - 4 * dpr, y: ty - 11 * dpr, w: textW + 8 * dpr, h: boxH };
+        if (avoidBox) {
+          const overlapsX = box.x < avoidBox.x + avoidBox.w + 4 * dpr && box.x + box.w + 4 * dpr > avoidBox.x;
+          const overlapsY = box.y < avoidBox.y + avoidBox.h + 2 * dpr && box.y + box.h + 2 * dpr > avoidBox.y;
+          if (overlapsX && overlapsY) {
+            const downY = avoidBox.y + avoidBox.h + 14 * dpr;
+            const upY = avoidBox.y - 6 * dpr;
+            if (downY <= offsetY + plotH - 5 * dpr) ty = downY;
+            else if (upY - 11 * dpr >= offsetY + 4 * dpr) ty = upY;
+            box.y = ty - 11 * dpr;
+          }
+        }
+
         ctx.textAlign = 'left';
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.86)';
-        ctx.fillRect(tx - 3 * dpr, ty - 10 * dpr, textW + 6 * dpr, 13 * dpr);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+        ctx.fillRect(box.x, box.y, box.w, box.h);
+        ctx.strokeStyle = 'rgba(203, 213, 225, 0.85)';
+        ctx.lineWidth = 1 * dpr;
+        ctx.strokeRect(box.x, box.y, box.w, box.h);
         ctx.fillStyle = color;
         ctx.fillText(text, tx, ty);
+        return box;
       }
 
       function renderFrame(now) {
@@ -2049,11 +2187,16 @@
           cvs.height = h;
         }
 
+        const isKo = S.lang === 'ko';
         const modeNow = animate ? 'auto' : (S.studioDesignMode || 'idle');
         const legend = modeNow === 'idle'
           ? []
           : modeNow === 'manual'
-            ? [['#2563EB', 4.5, t('legendCur')]]
+            ? [
+                ['#2563EB', 4.5, t('legendCur')],
+                ['#D97706', 4.0, isKo ? '동일 표적 승인 약물' : 'Approved Ref ADC'],
+                ['rgba(100, 116, 139, 0.55)', 3.2, isKo ? '동일 표적 후보군' : 'Same-Target Pool'],
+              ]
             : [
                 ['rgba(100, 116, 139, 0.75)', 3, `${t('legendCand')} ${cands.length.toLocaleString()}`],
                 ['rgba(239, 68, 68, 0.6)', 3, t('legendBad')],
@@ -2061,17 +2204,7 @@
                 ['#2563EB', 4.5, t('legendCur')],
               ];
         ctx.font = `600 ${10 * dpr}px sans-serif`;
-        const padL = 52 * dpr, padR = 24 * dpr, padB = 42 * dpr;
-        let testLx = padL, legendRows = 1;
-        legend.forEach(([, rad, label]) => {
-          const need = (rad * 2 + 6) * dpr + ctx.measureText(label).width + 14 * dpr;
-          if (testLx + need > w - padR && testLx > padL) {
-            testLx = padL;
-            legendRows++;
-          }
-          testLx += need;
-        });
-        const padT = (legendRows > 1 ? 52 : 40) * dpr;
+        const padL = 52 * dpr, padR = 24 * dpr, padB = 42 * dpr, padT = 44 * dpr;
         const maxPlotW = Math.max(140 * dpr, w - padL - padR);
         const maxPlotH = Math.max(140 * dpr, h - padT - padB);
 
@@ -2134,20 +2267,21 @@
         ctx.fillText(t('axisEfficacy'), 0, 0);
         ctx.restore();
 
-        // legend, wrapping cleanly when the chart is narrow
-        ctx.textAlign = 'left';
-        ctx.font = `600 ${10 * dpr}px sans-serif`;
-        let lx = offsetX;
-        let ly = offsetY - (legendRows > 1 ? 30 : 16) * dpr;
-        legend.forEach(([col, rad, label]) => {
-          const need = (rad * 2 + 6) * dpr + ctx.measureText(label).width + 14 * dpr;
-          if (lx + need > offsetX + plotW && lx > offsetX) { lx = offsetX; ly += 15 * dpr; }
-          ctx.fillStyle = col;
-          ctx.beginPath(); ctx.arc(lx + rad * dpr, ly, rad * dpr, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#64748B';
-          ctx.fillText(label, lx + (rad * 2 + 6) * dpr, ly + 3.5 * dpr);
-          lx += need;
-        });
+        // Single-row compact legend above the plot
+        if (legend.length) {
+          ctx.textAlign = 'left';
+          ctx.font = `600 ${9.5 * dpr}px sans-serif`;
+          let lx = offsetX;
+          const ly = offsetY - 14 * dpr;
+          legend.forEach(([col, rad, label]) => {
+            const need = (rad * 2 + 5) * dpr + ctx.measureText(label).width + 11 * dpr;
+            ctx.fillStyle = col;
+            ctx.beginPath(); ctx.arc(lx + rad * dpr, ly, rad * dpr, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#64748B';
+            ctx.fillText(label, lx + (rad * 2 + 5) * dpr, ly + 3.2 * dpr);
+            lx += need;
+          });
+        }
 
         if (modeNow === 'idle') {
           ctx.fillStyle = 'rgba(248, 250, 252, 0.72)';
@@ -2155,7 +2289,7 @@
           ctx.fillStyle = '#475569';
           ctx.font = `bold ${11.5 * dpr}px sans-serif`;
           ctx.textAlign = 'center';
-          const idleMsg = S.lang === 'ko'
+          const idleMsg = isKo
             ? '왼쪽에서 [ADC 수동 설계] 또는 [ADC 자동 설계] 버튼을 눌러 시뮬레이션을 실행하세요'
             : 'Click [Manual ADC Design] or [Auto-design ADC] on the left to plot results';
           ctx.fillText(idleMsg, offsetX + plotW / 2, offsetY + plotH / 2 + 4 * dpr);
@@ -2163,47 +2297,157 @@
         }
 
         if (modeNow === 'auto') {
-          // dots appear at their true positions
+          // dots appear at their true continuous positions
           for (let k = 0; k < shown; k++) {
             const c = shuffled[k];
-            ctx.fillStyle = c.isCompat ? 'rgba(100, 116, 139, 0.45)' : 'rgba(239, 68, 68, 0.28)';
+            const isSameTgt = c.spec.target === best.spec.target;
+            ctx.fillStyle = !c.isCompat
+              ? 'rgba(239, 68, 68, 0.25)'
+              : isSameTgt
+                ? 'rgba(13, 148, 136, 0.55)'
+                : 'rgba(100, 116, 139, 0.36)';
             ctx.beginPath();
-            ctx.arc(toX(c.safetyScore), toY(c.efficacyScore), 2.4 * dpr, 0, Math.PI * 2);
+            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), (isSameTgt && c.isCompat ? 2.7 : 2.2) * dpr, 0, Math.PI * 2);
             ctx.fill();
           }
+
+          // Draw Pareto Frontier curve once scan completes
+          if ((f >= 0.97 || !animate) && paretoFront.length >= 2) {
+            ctx.save();
+            ctx.strokeStyle = 'rgba(13, 148, 136, 0.55)';
+            ctx.lineWidth = 1.8 * dpr;
+            ctx.setLineDash([4 * dpr, 3 * dpr]);
+            ctx.beginPath();
+            paretoFront.forEach((p, idx) => {
+              const px = toX(p.safetyRaw), py = toY(p.efficacyRaw);
+              if (idx === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            });
+            ctx.stroke();
+            ctx.restore();
+          }
+        } else if (modeNow === 'manual') {
+          // In manual mode: show the active target's compatible sub-cloud lightly so the user sees the local landscape,
+          // plus the Reference Approved ADC for this target, plus previous manual attempts!
+          const sameTargetCands = cands.filter((c) => c.spec.target === currentSim.spec.target && c.isCompat);
+          sameTargetCands.forEach((c) => {
+            ctx.fillStyle = 'rgba(148, 163, 184, 0.35)';
+            ctx.beginPath();
+            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), 2.3 * dpr, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          // Reference Approved ADC for the selected target
+          const refBase = REF_STUDIO[currentSim.spec.target];
+          let refBox = null;
+          if (refBase) {
+            const refSim = computeStudioSimulation(Object.assign({ target: currentSim.spec.target }, refBase));
+            const rx = toX(refSim.safetyRaw), ry = toY(refSim.efficacyRaw);
+            const sxNow = toX(currentSim.safetyRaw), syNow = toY(currentSim.efficacyRaw);
+
+            // Dashed comparison vector from Approved Ref ADC to Current Manual Design
+            if (Math.hypot(rx - sxNow, ry - syNow) > 6 * dpr) {
+              ctx.save();
+              ctx.strokeStyle = 'rgba(217, 119, 6, 0.65)';
+              ctx.lineWidth = 1.5 * dpr;
+              ctx.setLineDash([4 * dpr, 3 * dpr]);
+              ctx.beginPath();
+              ctx.moveTo(rx, ry);
+              ctx.lineTo(sxNow, syNow);
+              ctx.stroke();
+              ctx.restore();
+            }
+
+            ctx.fillStyle = 'rgba(217, 119, 6, 0.18)';
+            ctx.beginPath(); ctx.arc(rx, ry, 8.5 * dpr, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#D97706';
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 1.8 * dpr;
+            ctx.beginPath(); ctx.arc(rx, ry, 4.5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+            if (Math.hypot(rx - sxNow, ry - syNow) > 8 * dpr) {
+              const refAdcId = currentSim.tgt.refAdc || '';
+              const refBrand = (ADC_SPECS[refAdcId] && ADC_SPECS[refAdcId].brand) || (isKo ? '승인 약물' : 'Approved');
+              const refLbl = `${refBrand} (${refSim.safetyScore}, ${refSim.efficacyScore})`;
+              refBox = drawCalloutLabel(refLbl, rx, ry, true, offsetX, offsetY, plotW, plotH, dpr, '#B45309', null);
+            }
+          }
+
+          // Previous manual history trail
+          const hist = Array.isArray(S.studioHistory) ? S.studioHistory : [];
+          if (hist.length >= 2) {
+            ctx.save();
+            ctx.strokeStyle = 'rgba(37, 99, 235, 0.35)';
+            ctx.lineWidth = 1.4 * dpr;
+            ctx.beginPath();
+            hist.forEach((hSpec, idx) => {
+              const hSim = computeStudioSimulation(hSpec);
+              const hx = toX(hSim.safetyRaw), hy = toY(hSim.efficacyRaw);
+              if (idx === 0) ctx.moveTo(hx, hy);
+              else ctx.lineTo(hx, hy);
+              if (idx < hist.length - 1) {
+                ctx.fillStyle = 'rgba(37, 99, 235, 0.40)';
+                ctx.beginPath(); ctx.arc(hx, hy, 3.2 * dpr, 0, Math.PI * 2); ctx.fill();
+              }
+            });
+            ctx.stroke();
+            ctx.restore();
+          }
+
+          const sx = toX(currentSim.safetyRaw);
+          const sy = toY(currentSim.efficacyRaw);
+          ctx.fillStyle = 'rgba(37, 99, 235, 0.22)';
+          ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#2563EB';
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 2 * dpr;
+          ctx.beginPath(); ctx.arc(sx, sy, 5.2 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+          const curLabel = `${plainName(currentSim.spec.target)} + ${plainName(currentSim.spec.payload)}, DAR ${currentSim.spec.dar} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
+          drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#1E40AF', refBox);
+          return;
         }
 
-        const bx = toX(best.safetyScore);
-        const by = toY(best.efficacyScore);
-        const sx = toX(currentSim.safetyScore);
-        const sy = toY(currentSim.efficacyScore);
+        const bx = toX(best.safetyRaw);
+        const by = toY(best.efficacyRaw);
+        const sx = toX(currentSim.safetyRaw);
+        const sy = toY(currentSim.efficacyRaw);
+        const sameSpot = Math.hypot(bx - sx, by - sy) < 8 * dpr;
 
         // recommended design, once every combination has been scored in auto mode
-        if (modeNow === 'auto' && (f >= 0.97 || !animate)) {
+        if (f >= 0.97 || !animate) {
           ctx.fillStyle = 'rgba(13, 148, 136, 0.22)';
-          ctx.beginPath(); ctx.arc(bx, by, 10 * dpr, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(bx, by, 10.5 * dpr, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#0D9488';
           ctx.strokeStyle = '#FFFFFF';
           ctx.lineWidth = 2 * dpr;
-          ctx.beginPath(); ctx.arc(bx, by, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.arc(bx, by, 5.2 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
         }
 
-        // current selection (shown in both manual and auto modes)
-        ctx.fillStyle = 'rgba(37, 99, 235, 0.2)';
-        ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#2563EB';
-        ctx.strokeStyle = '#FFFFFF';
-        ctx.lineWidth = 2 * dpr;
-        ctx.beginPath(); ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-        if (modeNow === 'auto' && (f >= 0.97 || !animate)) {
-          const bestLabel = `${t('legendBest')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar}`;
-          drawCalloutLabel(bestLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#065F46');
+        // current selection
+        if (!sameSpot || (f < 0.97 && animate)) {
+          ctx.fillStyle = 'rgba(37, 99, 235, 0.2)';
+          ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#2563EB';
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 2 * dpr;
+          ctx.beginPath(); ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
         }
-        const curLabel = modeNow === 'manual'
-          ? `${plainName(currentSim.spec.target)} + ${plainName(currentSim.spec.payload)}, DAR ${currentSim.spec.dar} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`
-          : `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
-        drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#1E40AF');
+
+        if (f >= 0.97 || !animate) {
+          if (sameSpot) {
+            const unifiedLabel = `${t('legendBest')} · ${t('legendCur')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar} (${best.safetyScore}, ${best.efficacyScore})`;
+            drawCalloutLabel(unifiedLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#065F46', null);
+          } else {
+            const bestLabel = `${t('legendBest')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar}`;
+            const bestBox = drawCalloutLabel(bestLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#065F46', null);
+            const curLabel = `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
+            drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#1E40AF', bestBox);
+          }
+        } else {
+          const curLabel = `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
+          drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#1E40AF', null);
+        }
 
         if (tfrac < 1) {
           simAnimId = requestAnimationFrame(renderFrame);
@@ -3163,7 +3407,7 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.7.6');
+    verEl.textContent = 'v' + (APP.version || '0.7.7');
 
     restore();
     renderHeaderControls();
