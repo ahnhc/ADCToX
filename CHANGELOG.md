@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.5: Bilingual layout refinement, horizontal bar alignment, and responsive design chart
+
+- **Bilingual (KO/EN) & docked drawer layout:** widened organ/biomarker label columns, enforced single-line pills and badges, and added responsive grid breakpoints when the side drawer opens so text never overlaps or clips.
+- **Horizontal bar alignment & cleaner 3D viewer:** aligned horizontal bars across spotlight cards, cohort matrix rows, and studio panels onto shared baselines, and removed the 3D rotation overlay hint.
+- **Responsive Patient-Tailored ADC Design chart:** attached a `ResizeObserver` and dynamic frame sizing to `.sim-canvas` and `.adc-3d-canvas` so opening/closing the side drawer or switching tabs redraws at native resolution without distortion.
+- **Concise scoring explanation:** focused the scoring explanation strictly on the mathematical formulation for safety and efficacy.
+
 ## 0.7.4: Patient-tailored ADC design, clinical trial comparison, and UI refinement
 
 - **Removed demo presets:** boots into a clean custom patient input state with a `New Patient` reset button.

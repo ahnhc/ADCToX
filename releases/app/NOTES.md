@@ -1,7 +1,8 @@
-ADCToX 0.7.4: patient-tailored ADC design, clinical trial comparison, and UI refinement
+ADCToX 0.7.5: bilingual layout refinement, bar alignment, and responsive design chart
 
-- Clean patient input without demo presets, plus a live stage-by-stage progress bar above the condition search box.
-- Clearer clinical wording for drug use restrictions, vulnerable organ warnings, and treatment vs. control clinical trial comparisons without raw fraction clutter.
-- Bright white 3D molecular structure viewer, non-linear pharmacological scoring model for Patient-Tailored ADC Design, variable-speed Auto-design ADC button fill, full-width comparison cards, and 3-part medical mechanism explanations.
+- Verified KO/EN layout and docked-drawer responsiveness across all three workspace modes so labels, badges, and studio pills never wrap awkwardly or collide.
+- Aligned horizontal comparison bars across spotlight cards, matrix rows, and studio panels, and removed the 3D rotation overlay hint.
+- Fixed the Patient-Tailored ADC Design scatter plot (`ResizeObserver` + dynamic DPR sizing) so opening/closing the side drawer or switching tabs never distorts the chart.
+- Streamlined the scoring explanation to focus directly on the safety and efficacy calculation formulas.
 
 Apps at 0.7.3+ update automatically; older apps need `adctox --update-app` once. Models remain at 0.8.

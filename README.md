@@ -1,4 +1,4 @@
-# ADCTOX v0.7.4
+# ADCTOX v0.7.5
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](docs/INSTALL.md)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](docs/INSTALL.md)
@@ -11,7 +11,7 @@ ADCTOX links a patient's cancer, comorbidities, and laboratory values to the 13 
 
 ---
 
-## What's New in v0.7.4
+## What's New in v0.7.5
 
 1. **Patient-Tailored ADC Design (`환자 맞춤형 ADC 설계`):** Non-linear pharmacological saturation scoring model for realistic 2D candidate dispersion, expandable scoring methodology, and variable-speed left-to-right progress animation on the `ADC 자동 설계` (Auto-design ADC) button.
 2. **Full-Width Comparison & 3-Part Medical Mechanisms:** Side-by-side parameter comparison cards without text truncation, plus dynamic 3-part medical mechanism explanations (`기존 약물의 문제` / `발생 기전` / `이 설계의 대응`) computed from selected DAR, Fc silencing (`LALA-PG`), linker stability, and payload.
@@ -44,7 +44,7 @@ The installer sets up an isolated Python runtime, downloads the `0.8` from-scrat
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.7.4 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.7.5 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the 5-step Terminal TUI
 ```
 

@@ -323,7 +323,6 @@
         '점 하나는 표적, 링커, 페이로드, DAR, Fc의 조합 하나입니다. 가능한 조합 전부를 같은 식으로 계산해 찍었습니다.',
         '가로축 안전도: 입력한 환자의 취약 장기마다 페이로드의 장기 독성, 표적의 정상 장기 발현량, 약물 부하(DAR와 링커 안정도), Fc 침묵화 여부를 곱해 독성 위험을 구하고, 가장 위험한 장기를 더 무겁게 반영해 100점에서 뺍니다.',
         '세로축 효능: 표적의 종양 선택도, 페이로드 효력, 링커가 혈장에서 버티고 종양에서 풀리는 정도, DAR, 주변 암세포 동반 사멸 효과를 곱해 계산합니다.',
-        '문헌 속 수치로 만든 규칙 기반 점수라서 임상 결과를 예측하는 값은 아닙니다. 조합을 비교하는 용도로만 사용하세요.',
       ],
       shCompat: '접합 반응성 호환도',
       shCompatDirect: '직접 결합 가능',
@@ -366,7 +365,6 @@
       preCheckTitle: '투여 전 권장 검사',
       missingInputTitle: '미입력 검사 항목',
       enterLabBtn: '검사 수치 입력하기',
-      rotateHint: '드래그하여 회전',
       treatmentArm: '치료군',
       controlArm: '대조군',
       trialContext: '이상사례 발생률 비교',
@@ -449,7 +447,6 @@
         'Each dot is one combination of target, linker, payload, DAR and Fc. Every possible combination was scored with the same formula.',
         'Safety (x): for each of the patient\'s vulnerable organs, payload organ toxicity, normal-tissue expression of the target, drug load (DAR and linker stability) and Fc silencing are multiplied into a toxicity risk. The most at-risk organ is weighted more, and the result is subtracted from 100.',
         'Efficacy (y): tumor selectivity of the target, payload potency, how well the linker survives in plasma and releases in the tumor, DAR and bystander killing are multiplied.',
-        'These are rule-based scores built from published figures. They do not predict clinical outcomes; use them only to compare combinations.',
       ],
       shCompat: 'Conjugation Compatibility',
       shCompatDirect: 'Direct Coupling',
@@ -458,7 +455,7 @@
       shSelect: 'Tumor / Normal Selectivity',
       shSelectDesc: 'Fold-change in target expression on tumor vs. healthy normal organs.',
       shBystander: 'Bystander Tumor Killing',
-      shBystanderActive: 'Active Bystander Diffusion',
+      shBystanderActive: 'Active Bystander',
       shBystanderAuto: 'Localized Killing Only',
       shBystanderDesc: 'Penetrates and kills adjacent antigen-negative tumor cells to counter heterogeneity.',
       shStability: 'Plasma Linker Stability',
@@ -492,7 +489,6 @@
       preCheckTitle: 'Pre-treatment checks',
       missingInputTitle: 'Missing inputs',
       enterLabBtn: 'Enter lab values',
-      rotateHint: 'Drag to rotate 3D structure',
       treatmentArm: 'Treatment Arm',
       controlArm: 'Comparator Arm',
       trialContext: 'Adverse event comparison',
@@ -665,6 +661,9 @@
     save();
     renderHeaderControls();
     renderActiveMode(false);
+    if (S.mode === 1 && S.drawer && drawer && drawer.classList.contains('open')) {
+      fillStudioCompareDrawer(computeStudioSimulation(), evaluateAllStudioCandidates());
+    }
   }
 
   function renderHeaderControls() {
@@ -1065,9 +1064,6 @@
       class: 'dual-bar-group',
       title: tip,
     },
-    h('div', { class: 'dual-bar-title' },
-      h('span', { text: ev.term || '' }),
-      h('span', { class: 'dim', text: trial.trial || '' })),
     h('div', { class: 'dual-bar-row' },
       h('span', { class: 'db-tag', text: txLabel }),
       h('span', { class: 'db-track' }, h('i', { class: 'db-fill-adc', style: `width:${Math.min(100, (adcPct / scaleMax) * 100).toFixed(1)}%` })),
@@ -1075,7 +1071,10 @@
     cmpPct !== null ? h('div', { class: 'dual-bar-row' },
       h('span', { class: 'db-tag', text: ctrlLabel }),
       h('span', { class: 'db-track' }, h('i', { class: 'db-fill-cmp', style: `width:${Math.min(100, (cmpPct / scaleMax) * 100).toFixed(1)}%` })),
-      h('span', { class: 'db-pct cmp', text: `${cmpPct.toFixed(1)}%` })) : null);
+      h('span', { class: 'db-pct cmp', text: `${cmpPct.toFixed(1)}%` })) : null,
+    h('div', { class: 'dual-bar-title' },
+      h('span', { text: ev.term || '' }),
+      h('span', { class: 'dim', text: trial.trial || '' })));
   }
 
   // ------------------------------------------------------------------ Mode 0: Visual ADC Matrix
@@ -1283,6 +1282,7 @@
 
   // ------------------------------------------------------------------ Mode 1: Structure & Combination Studio
   let simAnimId = 0;
+  let studioChartRO = null;
 
   // The score model behind the dots. Both scores are smooth, bounded transforms of published properties (no hard caps),
   // so combinations spread out instead of piling up on a line.
@@ -1536,14 +1536,12 @@
 
       const rBox = h('div', { class: 'sim-rationale-box' },
         h('div', { class: 'srb-title' },
-          h('div', { style: 'display:flex;align-items:center;gap:10px;flex-wrap:wrap' },
-            h('span', { text: isOptimal ? t('optimalLocked') : `${t('optimalCand')} ${plainName(evalSpace.best.spec.target)} + ${plainName(evalSpace.best.spec.payload)}, DAR ${evalSpace.best.spec.dar}` }),
-            h('button', {
-              type: 'button', class: 'btn-compare-pop',
-              text: t('viewCompareBtn'),
-              onclick: () => openStudioCompareDrawer(sim, evalSpace),
-            })),
-          h('span', { style: 'font-size:11px;color:var(--dim);font-weight:600', text: isOptimal ? t('bestDesign') : t('clickAutoOpt') })),
+          h('span', { class: 'srb-main-text', text: isOptimal ? t('optimalLocked') : `${t('optimalCand')} ${plainName(evalSpace.best.spec.target)} + ${plainName(evalSpace.best.spec.payload)}, DAR ${evalSpace.best.spec.dar}` }),
+          h('button', {
+            type: 'button', class: 'btn-compare-pop',
+            text: t('viewCompareBtn'),
+            onclick: () => openStudioCompareDrawer(sim, evalSpace),
+          })),
         h('div', { class: 'srb-steps' },
           activeRationale.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
             h('b', { text: `${title}: ${choice}` }),
@@ -1638,25 +1636,14 @@
     }
 
     function initDesignChart(cvs, currentSim, evalSpace, animate, onProgress, onComplete) {
-      const rect = cvs.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      const w = cvs.width = (rect.width || 600) * dpr;
-      const h = cvs.height = (rect.height || 380) * dpr;
       const ctx = cvs.getContext('2d');
       if (!ctx) return;
-      const isKo = S.lang === 'ko';
 
       cancelAnimationFrame(simAnimId);
-      const padL = 52 * dpr, padR = 24 * dpr, padT = 44 * dpr, padB = 44 * dpr;
-      const maxPlotW = w - padL - padR;
-      const maxPlotH = h - padT - padB;
-
-      // square plot box so the two axes are never stretched differently
-      const plotSize = Math.max(160 * dpr, Math.min(maxPlotW, maxPlotH));
-      const plotW = plotSize;
-      const plotH = plotSize;
-      const offsetX = padL + (maxPlotW - plotW) / 2;
-      const offsetY = padT + (maxPlotH - plotH) / 2;
+      if (studioChartRO) {
+        studioChartRO.disconnect();
+        studioChartRO = null;
+      }
 
       const cands = evalSpace.cands;
       const best = evalSpace.best;
@@ -1671,9 +1658,6 @@
       const spanX = Math.max(10, maxX - minX);
       const spanY = Math.max(10, maxY - minY);
 
-      const toX = (val) => offsetX + ((Math.max(minX, Math.min(maxX, val)) - minX) / spanX) * plotW;
-      const toY = (val) => offsetY + (1 - (Math.max(minY, Math.min(maxY, val)) - minY) / spanY) * plotH;
-
       // fixed pseudo-random order, so the dots appear scattered rather than sweeping across
       const shuffled = cands.slice().map((c, i) => ({
         c,
@@ -1682,12 +1666,73 @@
 
       const startTime = performance.now();
       const duration = (animate && !still()) ? 4200 : 0;
+      let completed = false;
+
+      function drawCalloutLabel(text, dotX, dotY, preferAbove, offsetX, offsetY, plotW, plotH, dpr, color) {
+        ctx.font = `bold ${10 * dpr}px sans-serif`;
+        const textW = ctx.measureText(text).width;
+        const gap = 9 * dpr;
+        let tx = dotX + gap;
+        if (tx + textW > offsetX + plotW - 6 * dpr) {
+          tx = dotX - gap - textW;
+        }
+        tx = Math.max(offsetX + 6 * dpr, Math.min(offsetX + plotW - textW - 6 * dpr, tx));
+        let ty = preferAbove ? (dotY - 8 * dpr) : (dotY + 15 * dpr);
+        if (ty - 10 * dpr < offsetY + 4 * dpr) ty = dotY + 15 * dpr;
+        if (ty > offsetY + plotH - 6 * dpr) ty = dotY - 8 * dpr;
+        ctx.textAlign = 'left';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.86)';
+        ctx.fillRect(tx - 3 * dpr, ty - 10 * dpr, textW + 6 * dpr, 13 * dpr);
+        ctx.fillStyle = color;
+        ctx.fillText(text, tx, ty);
+      }
 
       function renderFrame(now) {
+        if (!cvs.isConnected) return;
+        const rect = cvs.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        const w = Math.max(260 * dpr, Math.round((rect.width || 600) * dpr));
+        const h = Math.max(240 * dpr, Math.round((rect.height || 380) * dpr));
+        if (cvs.width !== w || cvs.height !== h) {
+          cvs.width = w;
+          cvs.height = h;
+        }
+
+        const legend = [
+          ['rgba(100, 116, 139, 0.75)', 3, `${t('legendCand')} ${cands.length.toLocaleString()}`],
+          ['rgba(239, 68, 68, 0.6)', 3, t('legendBad')],
+          ['#0D9488', 4.5, t('legendBest')],
+          ['#2563EB', 4.5, t('legendCur')],
+        ];
+        ctx.font = `600 ${10 * dpr}px sans-serif`;
+        const padL = 52 * dpr, padR = 24 * dpr, padB = 42 * dpr;
+        let testLx = padL, legendRows = 1;
+        legend.forEach(([, rad, label]) => {
+          const need = (rad * 2 + 6) * dpr + ctx.measureText(label).width + 14 * dpr;
+          if (testLx + need > w - padR && testLx > padL) {
+            testLx = padL;
+            legendRows++;
+          }
+          testLx += need;
+        });
+        const padT = (legendRows > 1 ? 52 : 40) * dpr;
+        const maxPlotW = Math.max(140 * dpr, w - padL - padR);
+        const maxPlotH = Math.max(140 * dpr, h - padT - padB);
+
+        // square plot box so the two axes are never stretched differently
+        const plotSize = Math.max(140 * dpr, Math.min(maxPlotW, maxPlotH));
+        const plotW = plotSize;
+        const plotH = plotSize;
+        const offsetX = padL + (maxPlotW - plotW) / 2;
+        const offsetY = padT + (maxPlotH - plotH) / 2;
+
+        const toX = (val) => offsetX + ((Math.max(minX, Math.min(maxX, val)) - minX) / spanX) * plotW;
+        const toY = (val) => offsetY + (1 - (Math.max(minY, Math.min(maxY, val)) - minY) / spanY) * plotH;
+
         const tfrac = duration > 0 ? Math.min(1, (now - startTime) / duration) : 1;
         const f = duration > 0 ? pace(tfrac) : 1;
         const shown = Math.floor(cands.length * f);
-        if (animate && onProgress) onProgress(f, shown);
+        if (animate && onProgress && !completed) onProgress(f, shown);
 
         ctx.fillStyle = '#FFFFFF';
         ctx.fillRect(0, 0, w, h);
@@ -1726,27 +1771,21 @@
         ctx.font = `bold ${11 * dpr}px sans-serif`;
         ctx.fillStyle = '#1E293B';
         ctx.textAlign = 'center';
-        ctx.fillText(t('axisSafety'), offsetX + plotW / 2, offsetY + plotH + 32 * dpr);
+        ctx.fillText(t('axisSafety'), offsetX + plotW / 2, offsetY + plotH + 31 * dpr);
         ctx.save();
         ctx.translate(offsetX - 34 * dpr, offsetY + plotH / 2);
         ctx.rotate(-Math.PI / 2);
         ctx.fillText(t('axisEfficacy'), 0, 0);
         ctx.restore();
 
-        // legend, wrapping to a second line when the chart is narrow
+        // legend, wrapping cleanly when the chart is narrow
         ctx.textAlign = 'left';
         ctx.font = `600 ${10 * dpr}px sans-serif`;
-        const legend = [
-          ['rgba(100, 116, 139, 0.75)', 3, `${t('legendCand')} ${cands.length.toLocaleString()}`],
-          ['rgba(239, 68, 68, 0.6)', 3, t('legendBad')],
-          ['#0D9488', 4.5, t('legendBest')],
-          ['#2563EB', 4.5, t('legendCur')],
-        ];
         let lx = offsetX;
-        let ly = offsetY - 28 * dpr;
+        let ly = offsetY - (legendRows > 1 ? 30 : 16) * dpr;
         legend.forEach(([col, rad, label]) => {
-          const need = (rad * 2 + 6) * dpr + ctx.measureText(label).width + 16 * dpr;
-          if (lx + need > w - padR && lx > offsetX) { lx = offsetX; ly += 15 * dpr; }
+          const need = (rad * 2 + 6) * dpr + ctx.measureText(label).width + 14 * dpr;
+          if (lx + need > offsetX + plotW && lx > offsetX) { lx = offsetX; ly += 15 * dpr; }
           ctx.fillStyle = col;
           ctx.beginPath(); ctx.arc(lx + rad * dpr, ly, rad * dpr, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#64748B';
@@ -1754,7 +1793,7 @@
           lx += need;
         });
 
-        // dots appear at their true positions, a few more every frame as the combinations are scored
+        // dots appear at their true positions
         for (let k = 0; k < shown; k++) {
           const c = shuffled[k];
           ctx.fillStyle = c.isCompat ? 'rgba(100, 116, 139, 0.45)' : 'rgba(239, 68, 68, 0.28)';
@@ -1763,27 +1802,22 @@
           ctx.fill();
         }
 
+        const bx = toX(best.safetyScore);
+        const by = toY(best.efficacyScore);
+        const sx = toX(currentSim.safetyScore);
+        const sy = toY(currentSim.efficacyScore);
+
         // recommended design, once every combination has been scored
         if (f >= 0.97 || !animate) {
-          const bx = toX(best.safetyScore);
-          const by = toY(best.efficacyScore);
           ctx.fillStyle = 'rgba(13, 148, 136, 0.22)';
           ctx.beginPath(); ctx.arc(bx, by, 10 * dpr, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#0D9488';
           ctx.strokeStyle = '#FFFFFF';
           ctx.lineWidth = 2 * dpr;
           ctx.beginPath(); ctx.arc(bx, by, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-          ctx.font = `bold ${10 * dpr}px sans-serif`;
-          ctx.fillStyle = '#065F46';
-          const alignRight = bx > offsetX + plotW - 150 * dpr;
-          ctx.textAlign = alignRight ? 'right' : 'left';
-          ctx.fillText(`${t('legendBest')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar}`, bx + (alignRight ? -9 * dpr : 9 * dpr), by - 7 * dpr);
         }
 
         // current selection
-        const sx = toX(currentSim.safetyScore);
-        const sy = toY(currentSim.efficacyScore);
         ctx.fillStyle = 'rgba(37, 99, 235, 0.2)';
         ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = '#2563EB';
@@ -1791,17 +1825,27 @@
         ctx.lineWidth = 2 * dpr;
         ctx.beginPath(); ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
-        ctx.font = `bold ${10 * dpr}px sans-serif`;
-        ctx.fillStyle = '#1E40AF';
-        const curAlignRight = sx > offsetX + plotW - 130 * dpr;
-        ctx.textAlign = curAlignRight ? 'right' : 'left';
-        ctx.fillText(`${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`, sx + (curAlignRight ? -9 * dpr : 9 * dpr), sy + 15 * dpr);
+        if (f >= 0.97 || !animate) {
+          const bestLabel = `${t('legendBest')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar}`;
+          drawCalloutLabel(bestLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#065F46');
+        }
+        const curLabel = `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
+        drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#1E40AF');
 
         if (tfrac < 1) {
           simAnimId = requestAnimationFrame(renderFrame);
-        } else if (animate && onComplete) {
+        } else if (animate && onComplete && !completed) {
+          completed = true;
           onComplete();
         }
+      }
+
+      if (typeof ResizeObserver !== 'undefined' && cvs.parentElement) {
+        studioChartRO = new ResizeObserver(() => {
+          if (!cvs.isConnected) return;
+          renderFrame(performance.now());
+        });
+        studioChartRO.observe(cvs.parentElement);
       }
 
       if (duration > 0) {
@@ -1830,12 +1874,12 @@
     const BIO_FIELDS = [
       { key: 'bilirubin', name: 'Total Bilirubin', unit: 'mg/dL', refLow: 0.2, refHigh: 1.2, organ: 'hepatic', defaultVal: '1.2' },
       { key: 'creatinine', name: 'Serum Creatinine', unit: 'mg/dL', refLow: 0.6, refHigh: 1.2, organ: 'renal', defaultVal: '1.0' },
-      { key: 'ast', name: 'Aspartate Aminotransferase (AST)', unit: 'U/L', refLow: 10, refHigh: 40, organ: 'hepatic', defaultVal: '28' },
-      { key: 'alt', name: 'Alanine Aminotransferase (ALT)', unit: 'U/L', refLow: 7, refHigh: 56, organ: 'hepatic', defaultVal: '32' },
+      { key: 'ast', name: 'AST (Aminotransferase)', unit: 'U/L', refLow: 10, refHigh: 40, organ: 'hepatic', defaultVal: '28' },
+      { key: 'alt', name: 'ALT (Aminotransferase)', unit: 'U/L', refLow: 7, refHigh: 56, organ: 'hepatic', defaultVal: '32' },
       { key: 'platelets', name: 'Platelet Count', unit: 'x10³/µL', refLow: 150, refHigh: 450, organ: 'haematologic', defaultVal: '220' },
-      { key: 'anc', name: 'Absolute Neutrophil Count (ANC)', unit: 'x10³/µL', refLow: 1.5, refHigh: 8.0, organ: 'haematologic', defaultVal: '3.5' },
+      { key: 'anc', name: 'Neutrophil Count (ANC)', unit: 'x10³/µL', refLow: 1.5, refHigh: 8.0, organ: 'haematologic', defaultVal: '3.5' },
       { key: 'hb', name: 'Hemoglobin (Hb)', unit: 'g/dL', refLow: 12.0, refHigh: 17.5, organ: 'haematologic', defaultVal: '13.8' },
-      { key: 'lvef', name: 'Left Ventricular Ejection Fraction (LVEF)', unit: '%', refLow: 50, refHigh: 75, organ: 'cardiovascular', defaultVal: '60' },
+      { key: 'lvef', name: 'Ejection Fraction (LVEF)', unit: '%', refLow: 50, refHigh: 75, organ: 'cardiovascular', defaultVal: '60' },
     ];
 
     function renderFlowsheet() {
@@ -1954,8 +1998,8 @@
   let adcAnimId = 0;
   function init3dAdcCanvas(cvs, adcRow) {
     const rect = cvs.getBoundingClientRect();
-    const w = cvs.width = (rect.width || 400) * (window.devicePixelRatio || 1);
-    const h = cvs.height = (rect.height || 240) * (window.devicePixelRatio || 1);
+    let w = cvs.width = (rect.width || 400) * (window.devicePixelRatio || 1);
+    let h = cvs.height = (rect.height || 240) * (window.devicePixelRatio || 1);
     const ctx = cvs.getContext('2d');
     if (!ctx) return;
 
@@ -2057,6 +2101,15 @@
 
     function render3d() {
       if (!cvs.isConnected) return;
+      const curRect = cvs.getBoundingClientRect();
+      if (curRect.width > 20 && curRect.height > 20) {
+        const nw = Math.round(curRect.width * dpr);
+        const nh = Math.round(curRect.height * dpr);
+        if (cvs.width !== nw || cvs.height !== nh) {
+          w = cvs.width = nw;
+          h = cvs.height = nh;
+        }
+      }
       if (!isDragging) rotY += 0.006;
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, w, h);
@@ -2323,9 +2376,7 @@
     ].filter(([, v]) => v) : ((d.payload && d.payload.rows) || [])).map(([k, v]) => [isKo ? (KV_KO[k] || k) : k, isKo && /^(yes|no)$/i.test(String(v)) ? (/^yes$/i.test(String(v)) ? '있음' : '없음') : v]);
 
     const cvs3d = h('canvas', { class: 'adc-3d-canvas' });
-    const wrap3d = h('div', { class: 'adc-3d-wrap' },
-      cvs3d,
-      h('span', { class: 'adc-3d-hint', text: t('rotateHint') }));
+    const wrap3d = h('div', { class: 'adc-3d-wrap' }, cvs3d);
 
     const secStructure3d = section(null,
       wrap3d,
@@ -2568,9 +2619,7 @@
 
     // 4. Molecular structure of both
     const cvs3d = h('canvas', { class: 'adc-3d-canvas' });
-    const wrap3d = h('div', { class: 'adc-3d-wrap' },
-      cvs3d,
-      h('span', { class: 'adc-3d-hint', text: t('rotateHint') }));
+    const wrap3d = h('div', { class: 'adc-3d-wrap' }, cvs3d);
 
     const designConstruct = {
       name: designName,
@@ -2742,7 +2791,7 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.7.4');
+    verEl.textContent = 'v' + (APP.version || '0.7.5');
 
     restore();
     renderHeaderControls();
