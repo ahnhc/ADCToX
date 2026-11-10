@@ -146,7 +146,7 @@ def _trial(RC, row):
     t = next((t for t in T["trials"] if set(t["cancers"]) & set(row.get("cancers", []))), T["trials"][0])
     none = "none reported" if not t["threshold"] else f"none at or above {t['threshold']:g}%, none serious"
     organs = []
-    for a in RC.patient_organs(row):
+    for a in (RC.patient_organs(row) or list(dict.fromkeys((row.get('boxed') or []) + (row.get('warn') or []))) or RC.AXES):
         o = t["organs"].get(a, {})
         evs = o.get("warned") or [e for e in (o.get("any"), o.get("serious")) if e]
         if len(evs) == 2 and evs[0]["term"] == evs[1]["term"]: evs = evs[:1]
