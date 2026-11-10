@@ -242,12 +242,12 @@ class App:
             try: yield RC
             finally: RC.CHOICE, RC.PRIORITY, RC.FIRST = keep
 
-    def conditions(self, body):
+    def conditions(self, body, allow_empty=False):
         """registry ids in registry order, then typed texts in the order given: the order form.run hands to recommend"""
         conds = body.get("conditions")
         if not isinstance(conds, list) or not all(isinstance(c, str) for c in conds): raise _Error(400, "conditions: a list of registry ids and typed texts is expected")
         texts = list(dict.fromkeys(" ".join(self.RC.nfc(c).split()) for c in conds if c.strip()))
-        if not texts: raise _Error(400, "Add at least one condition")
+        if not texts and not allow_empty: raise _Error(400, "Add at least one condition")
         return [i for i in self.RC._reg if i in texts] + [c for c in texts if c not in self.RC._reg]
 
     def choice(self, body, conds):
@@ -423,7 +423,7 @@ class App:
     def recommend(self, body):
         """form.run steps 3 and 4: the condition weighed first, then the result screen's rows and their panels"""
         import labs as LB
-        conds = self.conditions(body); choice = self.choice(body, conds)
+        conds = self.conditions(body, allow_empty=True); choice = self.choice(body, conds)
         raw, errors = _parse_raw(body.get("raw"))
         if errors: raise _Error(400, next(iter(errors.values())), errors=errors)
         first = body.get("first")
