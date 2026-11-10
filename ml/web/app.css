@@ -2542,3 +2542,167 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
   border-color: var(--ink-hi);
   color: #FFFFFF;
 }
+
+/* v0.7.8 Interactive Formula Tuner, Flowsheet Reference Ticks & Uniform Guide Badges */
+.sim-canvas-status.is-warn {
+  color: var(--amber);
+}
+.sim-need-patient-banner {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: rgba(255, 251, 235, 0.96);
+  border: 1px solid rgba(217, 119, 6, 0.45);
+  box-shadow: var(--shadow-sm);
+  font-size: 12px;
+  font-weight: 700;
+  color: #92400E;
+  white-space: nowrap;
+}
+.btn-goto-patient {
+  padding: 5px 11px;
+  border-radius: 6px;
+  border: 1px solid #D97706;
+  background: #D97706;
+  color: #FFFFFF;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-goto-patient:hover {
+  background: #B45309;
+}
+.sim-eq-lines {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  margin-bottom: 10px;
+}
+.sim-param-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.sim-param-hint {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--dim);
+}
+.sim-param-reset {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  color: var(--ink-hi);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 140ms var(--ease);
+}
+.sim-param-reset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.sim-param-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+.sim-param-card {
+  padding: 8px 10px;
+  border-radius: 7px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sim-param-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+.sim-param-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-hi);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sim-param-num {
+  width: 56px;
+  height: 24px;
+  padding: 0 4px;
+  border-radius: 5px;
+  border: 1px solid var(--line-2);
+  background: var(--page);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: right;
+}
+.sim-param-range {
+  width: 100%;
+  height: 5px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  margin: 0;
+}
+
+.bio-spectrum-wrap {
+  position: relative;
+  height: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bio-spectrum-ticks {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  margin-top: 2px;
+}
+.bio-tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--dim);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.sp-status-badge.trial-cmp {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.g-keys .sp-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 136px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+}

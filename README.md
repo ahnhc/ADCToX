@@ -1,4 +1,4 @@
-# ADCTOX v0.7.7
+# ADCTOX v0.7.8
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](docs/INSTALL.md)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](docs/INSTALL.md)
@@ -11,9 +11,9 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
 
 ---
 
-## Key Capabilities in v0.7.7
+## Key Capabilities in v0.7.8
 
-1. **Coupled Patient-to-Conjugate Design Engine (`Structure Studio`):**
+1. **Coupled Patient-to-Conjugate Design Engine (`De Novo ADC Design`):**
    - Evaluates `2,592` candidate architectures (`8 Targets × 6 Linkers × 6 Payloads × 3 DARs × 3 Fc Variants`) conditioned directly on the patient's active organ vulnerability vector (`S.result`) and priority organ weighting (`S.prioOrgan`).
    - Supports both **`ADC 자동 설계` (`Auto-design ADC`)** (full-space multi-objective Pareto frontier search with collision-free callout geometry) and **`ADC 수동 설계` (`Manual ADC Design`)** (target-conditioned candidate distribution, FDA reference drug comparison vector, and interactive parameter trajectory tracking).
    - Models linker-payload chemical pairing affinity, payload-specific DAR hydrophobic clearance thresholds (`optDar`, `maxSafeDar`), FcγRIIa/FcRn engineering (`LALA-PG`, `YTE`), and tumor-indication target expression matching.
@@ -51,7 +51,7 @@ The installer sets up an isolated Python runtime, downloads the `0.8` from-scrat
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.7.7 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.7.8 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the 5-step Terminal TUI
 ```
 

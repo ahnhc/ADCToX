@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.8: Workflow-ordered tabs (Patient Info -> ADC Matrix -> De Novo ADC Design), interactive formula tuner, and aligned biomarker reference bars
+
+- **Reordered workspace tabs & default English UI:** ordered top navigation as `1. Patient Info` (`환자 정보`), `2. ADC Matrix` (`ADC 매트릭스`), and `3. De Novo ADC Design` (`ADC 신규 설계`), and set the default startup language to English (`en`).
+- **Patient-profile simulation guard:** prevented `Auto-design ADC` and `Manual ADC Design` from running on fallback organs when no patient conditions or lab values are entered, displaying an inline prompt with a direct link to `1. Patient Info`.
+- **Interactive Scoring Formula (`점수 계산식`) parameter tuner:** added live slider and numeric controls for all 12 PK/PD safety and efficacy coefficients with real-time formula and chart updates and a `Reset Defaults` (`기본값 복원`) action.
+- **Unified biomarker reference range bars:** mapped each lab field's gray reference zone, boundary ticks, and live value marker onto a shared physiological scale with immediate `oninput` updates.
+- **Guide modal & spotlight card polish:** equalized all 4 visual indicator badge boxes in the `?` guide modal and removed the redundant spotlight card click hint.
+
 ## 0.7.7: Dynamic Pareto/manual design visualization, malignancy organ mapping, and UI layout polish
 
 - **Collision-free Patient-Tailored ADC Design chart:** fixed top plot-area padding (`padT = 42 * dpr`), unified overlapping `Best` and `Selected` callout labels into a single pill, and added bounding-box collision resolution when distinct.
