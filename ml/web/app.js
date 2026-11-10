@@ -1,4 +1,4 @@
-/* ADCTOX v0.7.4 Architectural Daylight WebApp
+/* ADCTOX v0.7.6 Architectural Daylight WebApp
    Active-Organ Matrix + 3D Structure Studio + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -150,23 +150,34 @@
   }
   function openGuide() {
     if (guide) closeGuide();
+    const isKo = S.lang === 'ko';
+    const ver = (APP && APP.version) ? APP.version : '0.7.6';
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
         h('div', { class: 'g-head' },
-          h('h2', { id: 'g-title', text: 'ADCTOX v0.7.4 Visual Workspace' }),
+          h('h2', { id: 'g-title', text: isKo ? `ADCTOX v${ver} 작동 원리 및 워크스페이스 안내` : `ADCTOX v${ver} Visual Workspace` }),
           h('button', { type: 'button', class: 'x-btn', 'aria-label': 'Close', onclick: closeGuide }, svgClose())),
         h('ol', { class: 'g-steps' },
-          h('li', null, h('b', { text: '1. ADC Matrix: ' }), 'Top recommended ADCs are highlighted in Spotlight Cards. Lower-ranked drugs recede into monochrome slate rows. Only the patient\'s active organs are graphed.'),
-          h('li', null, h('b', { text: '2. Structure Studio: ' }), 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) to inspect chemical compatibility, normal tissue expression, and organ risk.'),
-          h('li', null, h('b', { text: '3. Patient Info: ' }), 'Search conditions in English or Korean, inspect clinical biomarker flowsheets, and review AI condition-organ associations.')),
-        h('h3', { text: 'Visual Encodings' }),
+          h('li', null, h('b', { text: isKo ? '1. ADC 매트릭스: ' : '1. ADC Matrix: ' }),
+            isKo
+              ? '환자의 암종, 기저질환, 검진 수치를 기반으로 FDA 승인 ADC 약물의 적합도를 평가합니다. 상단 활성 취약 장기는 위험도(%) 내림차순으로 정렬되며, 특정 장기를 클릭하면 해당 장기 보호를 최우선으로 반영해 순위를 재산출합니다.'
+              : 'Ranks FDA-approved ADCs from patient comorbidities and lab values. Active vulnerable organs sort by severity (% descending); click any organ to prioritize its protection.'),
+          h('li', null, h('b', { text: isKo ? '2. 구조 스튜디오: ' : '2. Structure Studio: ' }),
+            isKo
+              ? '표적 항원, 화학 링커, 세포독성 페이로드, DAR, Fc 엔지니어링(LALA-PG)을 조합하여 [ADC 수동 설계] 또는 [ADC 자동 설계]로 환자 맞춤형 최적 접합체를 도출합니다.'
+              : 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) via Manual ADC Design or Auto-design ADC to identify patient-tailored conjugates.'),
+          h('li', null, h('b', { text: isKo ? '3. 환자 정보: ' : '3. Patient Info: ' }),
+            isKo
+              ? '한글 또는 영문으로 질환을 검색하고 검진 정보를 입력하여 AI 질환-장기 취약도 연계 결과를 확인합니다.'
+              : 'Search conditions in English or Korean, enter lab values, and review AI condition-organ associations.')),
+        h('h3', { text: isKo ? '시각 지표 안내' : 'Visual Encodings' }),
         h('div', { class: 'g-keys' },
-          h('span', { class: 'sp-status-badge clear', text: 'Standard' }), 'No drug use restriction triggered for entered profile',
-          h('span', { class: 'sp-status-badge monitor', text: 'Monitor / Adjust' }), 'Close clinical monitoring or dose modification advised',
-          h('span', { class: 'sp-status-badge avoid', text: 'Avoid' }), 'Advises against use or contraindicated',
-          h('span', { class: 'sp-match-tag', text: 'Treatment vs Control' }), 'Clinical trial treatment group vs control group comparison'),
+          h('span', { class: 'sp-status-badge clear', text: isKo ? '표준 용량 투여' : 'Standard' }), isKo ? '입력된 환자 프로필 기준 용량 제한 없음' : 'No drug use restriction triggered for entered profile',
+          h('span', { class: 'sp-status-badge monitor', text: isKo ? '모니터링 / 용량 조절' : 'Monitor / Adjust' }), isKo ? '밀접 모니터링 또는 용량 감량 권고' : 'Close clinical monitoring or dose modification advised',
+          h('span', { class: 'sp-status-badge avoid', text: isKo ? '투여 주의 / 금기' : 'Avoid' }), isKo ? '투여 회피 또는 금기 권고' : 'Advises against use or contraindicated',
+          h('span', { class: 'sp-match-tag', text: isKo ? '치료군 vs 대조군' : 'Treatment vs Control' }), isKo ? '등록 임상시험 치료군 대 대조군 이상사례 발생률 비교' : 'Clinical trial treatment group vs control group comparison'),
         h('div', { class: 'g-foot' },
-          h('button', { type: 'button', class: 'ok', text: 'Close', onclick: closeGuide }))));
+          h('button', { type: 'button', class: 'ok', text: isKo ? '닫기' : 'Close', onclick: closeGuide }))));
     document.body.append(guide);
   }
 
@@ -177,54 +188,150 @@
 
   // ------------------------------------------------------------------ Structure Studio Knowledge Base
   const STUDIO_TARGETS = [
-    { id: 'HER2 (ERBB2)', gene: 'ERBB2', refAdc: 'trastuzumab-deruxtecan', selectivity: 4.8, tissues: [
-      { organ: 'pulmonary', name: 'Lung alveolar', tpm: 48 },
-      { organ: 'cardiovascular', name: 'Cardiomyocyte', tpm: 36 },
-      { organ: 'gastrointestinal', name: 'GI mucosa', tpm: 42 },
-    ], popover: 'Receptor tyrosine kinase amplified in breast/gastric cancers. Normal expression in lung alveolar cells and cardiomyocytes.' },
-    { id: 'TROP2 (TACSTD2)', gene: 'TACSTD2', refAdc: 'sacituzumab-govitecan', selectivity: 4.1, tissues: [
-      { organ: 'gastrointestinal', name: 'Colonic epithelium', tpm: 68 },
-      { organ: 'dermatologic', name: 'Stratified skin', tpm: 62 },
-      { organ: 'pulmonary', name: 'Bronchial epithelium', tpm: 39 },
-    ], popover: 'Transmembrane glycoprotein highly expressed across epithelial carcinomas; baseline normal expression in GI mucosa and skin keratinocytes.' },
-    { id: 'Nectin-4', gene: 'NECTIN4', refAdc: 'enfortumab-vedotin', selectivity: 3.7, tissues: [
-      { organ: 'dermatologic', name: 'Epidermal keratinocyte', tpm: 84 },
-      { organ: 'metabolic_endocrine', name: 'Salivary / Sweat gland', tpm: 45 },
-      { organ: 'ocular', name: 'Corneal epithelium', tpm: 34 },
-    ], popover: 'Cell adhesion molecule enriched in urothelial carcinomas; high skin expression explains severe rash / SJS-TEN adverse events.' },
-    { id: 'CD79b', gene: 'CD79B', refAdc: 'polatuzumab-vedotin', selectivity: 5.4, tissues: [
-      { organ: 'haematologic', name: 'B-lineage lymphoid', tpm: 72 },
-      { organ: 'infectious_immune', name: 'Spleen / Lymph node', tpm: 58 },
-      { organ: 'hepatic', name: 'Hepatic sinusoid', tpm: 12 },
-    ], popover: 'B-cell antigen receptor signaling component restricted to B-cells; exceptionally high tumor-to-normal selectivity outside lymphoid compartments.' },
-    { id: 'BCMA (TNFRSF17)', gene: 'TNFRSF17', refAdc: 'belantamab-mafodotin', selectivity: 5.8, tissues: [
-      { organ: 'haematologic', name: 'Plasma cell niche', tpm: 66 },
-      { organ: 'ocular', name: 'Corneal macropinocytosis', tpm: 49 },
-      { organ: 'renal', name: 'Renal tubular', tpm: 14 },
-    ], popover: 'B-cell maturation antigen expressed on mature plasma cells; corneal toxicity occurs via off-target macropinocytosis rather than on-target binding.' },
-    { id: 'FRalpha (FOLR1)', gene: 'FOLR1', refAdc: 'mirvetuximab-soravtansine', selectivity: 4.5, tissues: [
-      { organ: 'ocular', name: 'Ocular epithelium', tpm: 54 },
-      { organ: 'pulmonary', name: 'Type II pneumocyte', tpm: 44 },
-      { organ: 'renal', name: 'Proximal kidney tubule', tpm: 51 },
-    ], popover: 'Folate receptor alpha overexpressed in platinum-resistant ovarian cancer; polarized apical expression in kidney tubules and corneal epithelial cells.' },
+    { id: 'HER2 (ERBB2)', gene: 'ERBB2', refAdc: 'trastuzumab-deruxtecan', selectivity: 4.8,
+      tumorKeys: ['breast', 'gastric', 'stomach', 'nsclc', 'lung', 'colorectal', 'colon', 'bladder', 'urothelial', '유방', '위암', '폐암', '대장', '방광'],
+      tissues: [
+        { organ: 'pulmonary', name: 'Lung alveolar', tpm: 48 },
+        { organ: 'cardiovascular', name: 'Cardiomyocyte', tpm: 36 },
+        { organ: 'gastrointestinal', name: 'GI mucosa', tpm: 42 },
+      ],
+      popover: 'Receptor tyrosine kinase amplified in breast, gastric, and NSCLC tumors. Baseline expression in lung alveolar epithelium and cardiomyocytes requires monitoring for ILD and LVEF decline.',
+      popover_ko: '유방암·위암·비소세포폐암에서 증폭되는 수용체 티로신 키나아제입니다. 폐포 상피세포와 심근세포에 기저 발현이 존재하여 간질성 폐질환(ILD) 및 좌심실 구혈률(LVEF) 감시가 필요합니다.' },
+    { id: 'TROP2 (TACSTD2)', gene: 'TACSTD2', refAdc: 'sacituzumab-govitecan', selectivity: 4.4,
+      tumorKeys: ['breast', 'tnbc', 'nsclc', 'lung', 'urothelial', 'bladder', 'cervical', 'endometrial', 'ovarian', '유방', '삼중음성', '폐암', '요로상피', '방광', '자궁', '난소'],
+      tissues: [
+        { organ: 'gastrointestinal', name: 'Colonic epithelium', tpm: 68 },
+        { organ: 'dermatologic', name: 'Stratified skin', tpm: 62 },
+        { organ: 'pulmonary', name: 'Bronchial epithelium', tpm: 39 },
+      ],
+      popover: 'Transmembrane glycoprotein broadly overexpressed across epithelial carcinomas; baseline expression in GI mucosa and stratified skin keratinocytes mediates mucosal and cutaneous sensitivity.',
+      popover_ko: '상피성 고형암 전반에 과발현되는 막관통 당단백질입니다. 대장 점막 및 피부 각질형성세포에 기저 발현이 있어 구내염·설사 및 피부 발진 민감도와 연관됩니다.' },
+    { id: 'Nectin-4', gene: 'NECTIN4', refAdc: 'enfortumab-vedotin', selectivity: 4.3,
+      tumorKeys: ['urothelial', 'bladder', 'breast', 'nsclc', 'cervical', '요로상피', '방광', '유방', '자궁경부'],
+      tissues: [
+        { organ: 'dermatologic', name: 'Epidermal keratinocyte', tpm: 84 },
+        { organ: 'metabolic_endocrine', name: 'Salivary / Sweat gland', tpm: 45 },
+        { organ: 'ocular', name: 'Corneal epithelium', tpm: 34 },
+      ],
+      popover: 'Cell adhesion molecule highly enriched in urothelial carcinoma; strong physiological expression in epidermal keratinocytes and sweat glands mediates on-target cutaneous toxicity.',
+      popover_ko: '요로상피암(방광암)에서 고밀도로 발현되는 세포 접착 분자입니다. 정상 표피 각질세포와 땀샘에도 발현량이 높아 표적 매개 피부 발진·건조증에 대한 관리가 중요합니다.' },
+    { id: 'CD79b', gene: 'CD79B', refAdc: 'polatuzumab-vedotin', selectivity: 5.4,
+      tumorKeys: ['lymphoma', 'dlbcl', 'b-cell', 'leukemia', '림프종', '백혈병', '미만성'],
+      tissues: [
+        { organ: 'haematologic', name: 'B-lineage lymphoid', tpm: 72 },
+        { organ: 'infectious_immune', name: 'Spleen / Lymph node', tpm: 58 },
+        { organ: 'hepatic', name: 'Hepatic sinusoid', tpm: 12 },
+      ],
+      popover: 'B-cell receptor signaling subunit restricted to B-lineage lymphomas; rapidly internalized upon cross-linking with high selectivity outside lymphoid and marrow compartments.',
+      popover_ko: 'B세포 계열 림프종에 선택적으로 발현되는 B세포 수용체 신호전달 소단위입니다. 결합 시 신속히 내재화되며 골수·림프 조직 외 고형 장기 발현은 매우 낮습니다.' },
+    { id: 'BCMA (TNFRSF17)', gene: 'TNFRSF17', refAdc: 'belantamab-mafodotin', selectivity: 5.8,
+      tumorKeys: ['myeloma', 'plasma', '골수종', '형질세포'],
+      tissues: [
+        { organ: 'haematologic', name: 'Plasma cell niche', tpm: 66 },
+        { organ: 'ocular', name: 'Corneal macropinocytosis', tpm: 49 },
+        { organ: 'renal', name: 'Renal tubular', tpm: 14 },
+      ],
+      popover: 'Lineage-restricted receptor on mature plasma cells in multiple myeloma; corneal epithelial changes arise via off-target macropinocytosis of the conjugate.',
+      popover_ko: '다발성 골수종 형질세포에 특이적으로 발현되는 성숙 항원입니다. 정상 고형 장기 발현은 극히 낮으나 각막 상피의 비특이적 거대음세포작용(macropinocytosis)을 통한 안구 독성이 주요 감시 대상입니다.' },
+    { id: 'FRalpha (FOLR1)', gene: 'FOLR1', refAdc: 'mirvetuximab-soravtansine', selectivity: 4.6,
+      tumorKeys: ['ovarian', 'endometrial', 'fallopian', 'peritoneal', 'nsclc', '난소', '자궁내막', '나팔관', '복막'],
+      tissues: [
+        { organ: 'ocular', name: 'Ocular epithelium', tpm: 54 },
+        { organ: 'pulmonary', name: 'Type II pneumocyte', tpm: 44 },
+        { organ: 'renal', name: 'Proximal kidney tubule', tpm: 51 },
+      ],
+      popover: 'GPI-anchored folate receptor overexpressed in ovarian and endometrial carcinomas; apical expression in corneal epithelium and renal tubules requires ocular prophylaxis.',
+      popover_ko: '난소암·자궁내막암에서 과발현되는 엽산 수용체 알파입니다. 각막 상피와 신장 근위세뇨관에 기저 발현이 있어 점안제 예방 등 안과적 관리가 권장됩니다.' },
   ];
 
   const STUDIO_LINKERS = [
-    { id: 'Tetrapeptide GGFG', cleavable: true, stability: 88, handle: 'amine_hydroxyl', note: 'Cathepsin B/L-cleavable tetrapeptide; self-immolative aminomethylene releases hydroxy/amine payload', note_ko: '카텝신 B/L 특이 절단형 4펩타이드; 자가 절단 아미노메틸렌으로 하이드록시/아민 페이로드 유리', popover: 'Enzymatically cleaved in lysosomes by cathepsins. High plasma stability (88%) prevents premature extracellular payload shedding.', popover_ko: '리소좀 효소(카텝신)에 의해서만 특이적으로 절단되며 높은 혈장 안정도(88%)로 체내 조기 유출을 방지합니다.' },
-    { id: 'Val-Cit PABC', cleavable: true, stability: 76, handle: 'amine', note: 'Cathepsin B-cleavable dipeptide with para-aminobenzyl carbamate spacer for secondary/primary amines', note_ko: '카텝신 B 특이 절단형 디펩타이드; PABC 스페이서로 아민 페이로드 결합', popover: 'Validated dipeptide linker. Readily cleaved inside endosomes; moderate plasma carboxylesterase cleavage in rodents.', popover_ko: '엔도솜 내에서 신속히 절단되는 검증된 디펩타이드 링커입니다.' },
-    { id: 'Hydrolyzable CL2A', cleavable: true, stability: 54, handle: 'hydroxyl', note: 'pH-sensitive carbonate linker; systemic and intratumoral hydrolysis releases SN-38', note_ko: 'pH 감응성 탄산염 링커; 종양 산성 미세환경에서 가수분해 방출', popover: 'Short PEGylated carbonate linker. pH-sensitive hydrolysis allows gradual release in acidic tumor microenvironments.', popover_ko: '산성 종양 미세환경에서 서서히 가수분해되어 지속 방출 효과를 냅니다.' },
-    { id: 'Non-cleavable mc', cleavable: false, stability: 96, handle: 'amine', note: 'Maleimidocaproyl thioether; requires complete lysosomal proteolysis to release Cys-mc-payload', note_ko: '안정형 티오에테르 링커; 항체 완전 분해 시에만 페이로드 방출', popover: 'Ultra-stable thioether bond. Payload remains attached to cysteine; lacks membrane diffusion, preventing bystander toxicity.', popover_ko: '순환 혈액 내에서 극도로 안정하여 비표적 장기 노출을 최소화합니다.' },
-    { id: 'Disulfide SPDB', cleavable: true, stability: 68, handle: 'thiol', note: 'Sterically hindered disulfide cleaved by intracellular glutathione for thiol maytansinoids', note_ko: '입체 장애 이황화결합 링커; 세포 내 글루타티온 농도에 의해 절단', popover: 'Hindered disulfide linker cleaved selectively by high intracellular glutathione concentrations.', popover_ko: '암세포 내 높은 글루타티온 농도에 의해 선택적으로 분해됩니다.' },
-    { id: 'Acid Hydrazone', cleavable: true, stability: 48, handle: 'ketone', note: 'Acid-labile AcBut hydrazone hydrolyzed in endosomes/lysosomes (pH 4.5-5.0)', note_ko: '산 감응성 하이드라존 링커; 엔도솜/리소좀 내 산성 조건에서 가수분해', popover: 'Legacy acid-labile linker. Hydrolyzed in acidic lysosomes; higher spontaneous systemic release rate.', popover_ko: '리소좀 산성 환경에서 가수분해되는 초기 세대 링커입니다.' },
+    { id: 'Tetrapeptide GGFG', cleavable: true, stability: 88, hydro: 0.20, handle: 'amine_hydroxyl',
+      prefPayloads: { 'DXd ( Topo I )': 1.0, 'SN-38 ( Topo I )': 0.72, 'MMAE ( Auristatin )': 0.65, 'MMAF ( Auristatin )': 0.55, 'SG3199 ( PBD Dimer )': 0.60 },
+      note: 'Cathepsin B/L-cleavable tetrapeptide; self-immolative aminomethylene releases hydroxy/amine payload',
+      note_ko: '카텝신 B/L 특이 절단형 4펩타이드; 자가 절단 아미노메틸렌으로 하이드록시/아민 페이로드 유리',
+      popover: 'Hydrophilic glycine-phenylalanine tetrapeptide cleaved selectively by lysosomal cathepsins B/L. High plasma stability (88%) and low hydrophobicity enable homogeneous DAR 8 loading without hepatic aggregation.',
+      popover_ko: '리소좀 효소(카텝신 B/L)에 의해 선택적으로 절단되는 친수성 테트라펩타이드 링커입니다. 높은 혈장 안정도(88%)와 낮은 소수성으로 DAR 8 고밀도 접합 시에도 간 응집과 체내 조기 유출을 억제합니다.' },
+    { id: 'Val-Cit PABC', cleavable: true, stability: 76, hydro: 0.58, handle: 'amine',
+      prefPayloads: { 'MMAE ( Auristatin )': 1.0, 'SG3199 ( PBD Dimer )': 0.94, 'DXd ( Topo I )': 0.70, 'MMAF ( Auristatin )': 0.68 },
+      note: 'Cathepsin B-cleavable dipeptide with para-aminobenzyl carbamate spacer for secondary/primary amines',
+      note_ko: '카텝신 B 특이 절단형 디펩타이드; PABC 스페이서로 아민 페이로드 결합',
+      popover: 'Gold-standard cathepsin B-cleavable dipeptide linker with self-immolative PABC spacer. Releases membrane-permeable amine payloads (MMAE, PBD) cleanly inside tumor lysosomes, optimal at DAR 2–4.',
+      popover_ko: '카텝신 B 절단 후 자가소멸 스페이서(PABC)를 통해 유리 약물을 방출하는 표준 디펩타이드 링커입니다. 아민계 페이로드(MMAE, PBD) 방출 효율이 뛰어나며 DAR 2~4 구간에서 최적의 혈중 안정성을 보입니다.' },
+    { id: 'Hydrolyzable CL2A', cleavable: true, stability: 54, hydro: 0.32, handle: 'hydroxyl',
+      prefPayloads: { 'SN-38 ( Topo I )': 1.0, 'DXd ( Topo I )': 0.78 },
+      note: 'pH-sensitive carbonate linker; systemic and intratumoral hydrolysis releases SN-38',
+      note_ko: 'pH 감응성 탄산염 링커; 종양 산성 미세환경에서 가수분해 방출',
+      popover: 'PEGylated pH-sensitive carbonate linker engineered for camptothecins (SN-38). Gradual hydrolysis in the acidic tumor microenvironment and lysosomes drives strong bystander killing at DAR 7.6–8.',
+      popover_ko: 'PEG 사슬이 도입된 pH 감응성 탄산염 링커로 SN-38 전달에 최적화되어 있습니다. 산성 종양 미세환경과 리소좀에서 약물을 방출해 이질적 종양에서도 강력한 주변 암세포 동반 사멸 효과를 냅니다.' },
+    { id: 'Non-cleavable mc', cleavable: false, stability: 96, hydro: 0.42, handle: 'amine',
+      prefPayloads: { 'MMAF ( Auristatin )': 1.0, 'MMAE ( Auristatin )': 0.52, 'DXd ( Topo I )': 0.48 },
+      note: 'Maleimidocaproyl thioether; requires complete lysosomal proteolysis to release Cys-mc-payload',
+      note_ko: '안정형 티오에테르 링커; 항체 완전 분해 시에만 페이로드 방출',
+      popover: 'Ultra-stable thioether bond (96% plasma stability) requiring full lysosomal antibody proteolysis. Releases charged Cys-mc-MMAF that stays trapped inside target cells, minimizing systemic bystander toxicity.',
+      popover_ko: '혈중 안정도가 96%에 달하는 비절단형 티오에테르 링커로 항체가 리소좀에서 완전 분해될 때만 약물이 방출됩니다. 전하를 띤 아미노산 결합체(Cys-mc-MMAF)를 형성해 전신 누출과 비표적 장기 손상을 최소화합니다.' },
+    { id: 'Disulfide SPDB', cleavable: true, stability: 68, hydro: 0.52, handle: 'thiol',
+      prefPayloads: { 'DM4 / DM1 ( Maytansinoid )': 1.0 },
+      note: 'Sterically hindered disulfide cleaved by intracellular glutathione for thiol maytansinoids',
+      note_ko: '입체 장애 이황화결합 링커; 세포 내 글루타티온 농도에 의해 절단',
+      popover: 'Sterically hindered disulfide bond stable in oxidized plasma but reduced by high intracellular glutathione (GSH) in tumor cells to release thiol maytansinoids (DM4/DM1).',
+      popover_ko: '혈중 산화 환경에서는 안정하고 암세포 내 고농도 글루타티온(GSH)에 의해 선택적으로 환원 절단되는 입체장애 이황화 링커입니다. 티올기(-SH)를 가진 메이탄시노이드(DM4/DM1)와 화학적 짝을 이룹니다.' },
+    { id: 'Acid Hydrazone', cleavable: true, stability: 48, hydro: 0.55, handle: 'ketone',
+      prefPayloads: {},
+      note: 'Acid-labile AcBut hydrazone hydrolyzed in endosomes/lysosomes (pH 4.5-5.0)',
+      note_ko: '산 감응성 하이드라존 링커; 엔도솜/리소좀 내 산성 조건에서 가수분해',
+      popover: 'First-generation acid-labile hydrazone linker hydrolyzed at endosomal/lysosomal pH (4.5–5.0); requires a ketone handle (e.g., calicheamicin derivatives) and exhibits higher systemic deconjugation.',
+      popover_ko: '엔도솜·리소좀 산성 환경(pH 4.5~5.0)에서 가수분해되는 1세대 산 감응성 하이드라존 링커입니다. 케톤 작용기 페이로드가 필요하며 혈중 자발적 가수분해율이 상대적으로 높습니다.' },
   ];
 
   const STUDIO_PAYLOADS = [
-    { id: 'DXd ( Topo I )', cls: 'Topoisomerase I inhibitor', perm: true, handle: 'amine_hydroxyl', potency: 92, organs: { pulmonary: 82, haematologic: 68, gastrointestinal: 64, cardiovascular: 38 }, popover: 'Exatecan derivative with ~10x higher potency than SN-38. High membrane permeability drives potent bystander killing of neighboring antigen-negative tumor cells.' },
-    { id: 'SN-38 ( Topo I )', cls: 'Topoisomerase I inhibitor (UGT1A1)', perm: true, handle: 'hydroxyl', potency: 78, organs: { haematologic: 86, gastrointestinal: 84, hepatic: 44 }, popover: 'Active metabolite of irinotecan. Hepatic clearance via UGT1A1 glucuronidation; neutropenia and severe diarrhea are primary toxicities.' },
-    { id: 'MMAE ( Auristatin )', cls: 'Microtubule inhibitor (Auristatin)', perm: true, handle: 'amine', potency: 90, organs: { neurologic: 84, haematologic: 76, dermatologic: 66, hepatic: 52 }, popover: 'Synthetic dolastatin 10 antimitotic. Highly lipophilic and neutral at physiologic pH; strong bystander activity with dose-limiting peripheral neuropathy.' },
-    { id: 'MMAF ( Auristatin )', cls: 'Charged Auristatin (low permeability)', perm: false, handle: 'amine', potency: 86, organs: { ocular: 92, haematologic: 64, renal: 28 }, popover: 'Carboxy-terminal phenylalanine confers negative charge, blocking passive membrane diffusion. Minimizes systemic bystander damage while accumulating in corneal epithelium.' },
-    { id: 'DM4 / DM1 ( Maytansinoid )', cls: 'Microtubule inhibitor (Maytansinoid)', perm: true, handle: 'thiol', potency: 84, organs: { ocular: 74, hepatic: 72, neurologic: 62, haematologic: 58 }, popover: 'Thiol-containing tubulin inhibitor. Metabolized primarily via hepatic CYP3A4; associated with reversible transaminase elevations and thrombocytopenia.' },
-    { id: 'SG3199 ( PBD Dimer )', cls: 'DNA minor-groove crosslinker', perm: true, handle: 'amine', potency: 98, organs: { haematologic: 92, hepatic: 78, pulmonary: 68, dermatologic: 62 }, popover: 'Ultra-potent DNA alkylator binding minor groove without distorting helix. Active against non-dividing cells; dose-limiting delayed myelosuppression and fluid retention.' },
+    { id: 'DXd ( Topo I )', cls: 'Topoisomerase I inhibitor', perm: true, handle: 'amine_hydroxyl', potency: 92, optDar: 8, maxSafeDar: 8, hydro: 0.28,
+      organs: { pulmonary: 82, haematologic: 68, gastrointestinal: 64, cardiovascular: 38, hepatic: 30 },
+      popover: 'Membrane-permeable exatecan derivative (~10x higher Topo I potency than SN-38) with a short systemic half-life (~1.6 h). Supports homogeneous DAR 8 loading; alveolar macrophage uptake makes ILD the primary risk.',
+      popover_ko: 'SN-38 대비 약 10배 높은 효력을 지닌 막 투과성 토포이소머라제 I 저해제입니다. 혈중 반감기가 짧아 전신 축적이 적고 DAR 8 고밀도 접합이 가능하나, 폐포 대식세포 흡수에 따른 간질성 폐질환(ILD) 주의가 필요합니다.' },
+    { id: 'SN-38 ( Topo I )', cls: 'Topoisomerase I inhibitor (UGT1A1)', perm: true, handle: 'hydroxyl', potency: 82, optDar: 7.6, maxSafeDar: 8, hydro: 0.34,
+      organs: { haematologic: 86, gastrointestinal: 84, hepatic: 44, pulmonary: 22 },
+      popover: 'Active metabolite of irinotecan detoxified via hepatic UGT1A1 glucuronidation. Effective at high DAR (7.6–8) with CL2A linker; primary dose-limiting toxicities are neutropenia and secretory diarrhea.',
+      popover_ko: '이리노테칸의 활성 대사체로 간의 UGT1A1 효소에 의해 해독됩니다. CL2A 링커와 결합해 높은 DAR(7.6~8)에서 강력한 항암 효능을 발휘하며, 주요 감시 독성은 호중구감소증과 중증 설사입니다.' },
+    { id: 'MMAE ( Auristatin )', cls: 'Microtubule inhibitor (Auristatin)', perm: true, handle: 'amine', potency: 90, optDar: 4, maxSafeDar: 4, hydro: 0.82,
+      organs: { neurologic: 84, haematologic: 76, dermatologic: 66, hepatic: 52 },
+      popover: 'Potent lipophilic tubulin polymerization inhibitor with strong bystander killing. Optimal at DAR 3.5–4; loading above DAR 4 accelerates hepatic Kupffer-cell clearance and cumulative peripheral neuropathy.',
+      popover_ko: '세포막 투과성과 주변 암세포 동반 사멸 효과가 우수한 미세소관 중합 저해제입니다. DAR 3.5~4에서 치료 지수가 최적이며, DAR 4 초과 시 소수성 응집으로 간 조기 포획과 말초신경병증 위험이 급증합니다.' },
+    { id: 'MMAF ( Auristatin )', cls: 'Charged Auristatin (low permeability)', perm: false, handle: 'amine', potency: 86, optDar: 4, maxSafeDar: 4, hydro: 0.50,
+      organs: { ocular: 92, haematologic: 64, renal: 28, hepatic: 32, neurologic: 20 },
+      popover: 'C-terminal charged phenylalanine auristatin unable to diffuse across cell membranes after release. Spares peripheral nerves and marrow compared to MMAE, but concentrates in corneal epithelium via macropinocytosis.',
+      popover_ko: '말단 음전하로 인해 세포 밖 수동 확산이 차단된 오리스타틴 유도체입니다. MMAE 대비 말초신경병증과 골수 억제는 현저히 낮으나, 각막 상피 내 축적에 따른 각막병증 관리가 핵심입니다.' },
+    { id: 'DM4 / DM1 ( Maytansinoid )', cls: 'Microtubule inhibitor (Maytansinoid)', perm: true, handle: 'thiol', potency: 85, optDar: 3.5, maxSafeDar: 4, hydro: 0.68,
+      organs: { ocular: 74, hepatic: 72, neurologic: 62, haematologic: 58 },
+      popover: 'Thiol-bearing maytansinoid tubulin inhibitor conjugated at DAR 3.5–4. Intracellular reduction yields S-methyl-DM4 with bystander activity; associated with reversible corneal keratopathy and transaminase elevation.',
+      popover_ko: '티올(-SH) 결합 부위를 지닌 메이탄시노이드계 미세소관 저해제로 주로 DAR 3.5~4에서 사용됩니다. 간 CYP3A4 대사 및 거핵구 영향으로 간효소(AST/ALT) 상승, 혈소판감소증, 가역적 각막병증과 연관됩니다.' },
+    { id: 'SG3199 ( PBD Dimer )', cls: 'DNA minor-groove crosslinker', perm: true, handle: 'amine', potency: 98, optDar: 2, maxSafeDar: 2, hydro: 1.15,
+      organs: { haematologic: 92, hepatic: 78, pulmonary: 68, dermatologic: 62, renal: 54 },
+      popover: 'Picomolar-potency pyrrolobenzodiazepine interstrand DNA crosslinker active against both dividing and quiescent tumor cells. Strictly restricted to DAR 2 due to delayed myelosuppression and capillary leak.',
+      popover_ko: '피코몰(pM) 농도에서 비분열 암세포까지 사멸시키는 초고효능 DNA 작은홈 가교제입니다. 지연성 골수 억제 및 체액 저류·간 동모양혈관 독성을 예방하기 위해 임상적으로 DAR 2 저밀도 접합에 한해 사용됩니다.' },
+  ];
+
+  const STUDIO_DAR_ITEMS = [
+    { id: '2', popover: 'DAR 2: Site-specific low drug loading. Minimizes hydrophobic aggregation and preserves antibody half-life; mandatory for ultra-potent DNA crosslinkers (PBD dimers) or fragile multi-organ cohorts.',
+      popover_ko: 'DAR 2: 항체 1분자당 약물 2개를 결합한 저밀도 정밀 설계입니다. 소수성 응집을 최소화하고 혈중 반감기를 길게 유지하며, 초고효능 페이로드(PBD 이합체)나 다장기 취약 환자의 안전역 확보에 필수적입니다.' },
+    { id: '3.5', popover: 'DAR 3.5: Validated average loading for Polivy (CD79b-MMAE), Kadcyla (HER2-DM1), and Elahere (FRα-DM4). Balances intracellular payload delivery against hepatic sinusoidal uptake.',
+      popover_ko: 'DAR 3.5: 폴라이비(Polivy), 캐싸일라(Kadcyla), 엘라히어(Elahere) 등 승인 ADC에서 검증된 접합비입니다. 세포 내 약물 전달량과 간 쿠퍼세포 비특이 포획 사이의 균형이 우수합니다.' },
+    { id: '4', popover: 'DAR 4: Standard interchain cysteine conjugation (Padcev, Blenrep, Dato-DXd). Optimal therapeutic index for hydrophobic auristatins (MMAE/MMAF) without triggering rapid clearance.',
+      popover_ko: 'DAR 4: 사슬 간 시스테인 결합을 통한 표준 접합비(파드셉, 블렌렙, 다토포타맙 데룩스테칸 등)입니다. 소수성 오리스타틴 계열에서 간 조기 배설 없이 높은 치료 지수를 달성합니다.' },
+    { id: '6', popover: 'DAR 6: Intermediate-high loading. Increases cytotoxic payload concentration per internalized receptor in tumors with moderate antigen density; requires moderately hydrophilic linkers.',
+      popover_ko: 'DAR 6: 중등도 항원 발현 종양에서도 내재화당 충분한 약물 농도를 확보하기 위한 중고밀도 설계입니다. 혈중 응집 방지를 위해 친수성 스페이서 또는 안정형 링커가 권장됩니다.' },
+    { id: '7.6', popover: 'DAR 7.6: High-density loading validated in Trodelvy (sacituzumab govitecan, CL2A-SN-38). Delivers high payload copy numbers per receptor when paired with PEGylated linkers.',
+      popover_ko: 'DAR 7.6: 트로델비(Trodelvy, CL2A-SN-38)에 적용된 고밀도 접합비입니다. PEG가 도입된 친수성 링커와 결합해 수용체 1개당 약물 전달 효율을 극대화합니다.' },
+    { id: '8', popover: 'DAR 8: Homogeneous full interchain cysteine loading (Enhertu, GGFG-DXd). Maximizes efficacy in heterogeneous or low-antigen tumors, but causes severe hepatic aggregation if used with hydrophobic payloads.',
+      popover_ko: 'DAR 8: 8개 사슬 간 시스테인 전체에 약물을 균일하게 결합한 최대 밀도 설계(엔허투 등)입니다. 친수성 링커(GGFG)+Topo I 페이로드에서는 최고의 약효를 내지만, 소수성 약물에 적용 시 급격한 간 응집·독성을 유발합니다.' },
+  ];
+
+  const STUDIO_FC_ITEMS = [
+    { key: 'wt', isSilenced: false,
+      popover: 'Wild-Type IgG1: Retains FcγRIIIa binding on NK cells and macrophages to support ADCC effector killing, but permits FcγR-mediated non-specific uptake into alveolar macrophages, liver, and bone marrow.',
+      popover_ko: '야생형 IgG1: NK세포·대식세포의 Fcγ 수용체 결합력을 유지해 항체 의존성 세포독성(ADCC)을 돕지만, 폐포 대식세포·간·골수로의 FcγR 매개 비특이적 유입이 함께 일어날 수 있습니다.' },
+    { key: 'sil', isSilenced: true,
+      popover: 'Fc-Silenced (LALA-PG): L234A/L235A/P329G mutation ablates FcγR and C1q complement binding while preserving FcRn half-life recycling, blocking macrophage uptake in lung, liver, and marrow.',
+      popover_ko: 'Fc 침묵화 (LALA-PG): FcRn 반감기 유지 기능은 보존하면서 대식세포 FcγR 및 보체 결합만 선택적으로 제거한 변이입니다. 폐포 대식세포·간·안구로의 비특이 흡수를 차단해 취약 장기 안전도를 높입니다.' },
   ];
 
   // ------------------------------------------------------------------ Internationalization (i18n)
@@ -297,6 +404,7 @@
       exportSummary: '요약 내보내기',
       match: '일치',
       archTitle: '접합체 구조 설계',
+      manualOpt: 'ADC 수동 설계',
       autoOpt: 'ADC 자동 설계',
       scanning: '최적화 탐색 중...',
       scanSpace: '설계 조합 탐색 중...',
@@ -320,9 +428,8 @@
       clickAutoOpt: 'ADC 자동 설계를 누르면 이 환자에게 맞는 조합을 찾습니다',
       explainTitle: '점은 어떻게 계산했나요?',
       explainBody: [
-        '점 하나는 표적, 링커, 페이로드, DAR, Fc의 조합 하나입니다. 가능한 조합 전부를 같은 식으로 계산해 찍었습니다.',
-        '가로축 안전도: 입력한 환자의 취약 장기마다 페이로드의 장기 독성, 표적의 정상 장기 발현량, 약물 부하(DAR와 링커 안정도), Fc 침묵화 여부를 곱해 독성 위험을 구하고, 가장 위험한 장기를 더 무겁게 반영해 100점에서 뺍니다.',
-        '세로축 효능: 표적의 종양 선택도, 페이로드 효력, 링커가 혈장에서 버티고 종양에서 풀리는 정도, DAR, 주변 암세포 동반 사멸 효과를 곱해 계산합니다.',
+        '가로축 안전도 (0~100): 환자의 취약 장기별 기저 위험도에 페이로드 장기 독성 계수, 표적 항원의 정상 조직 발현량(nTPM), 혈중 약물 부하(DAR·링커 안정도·소수성 응집 계수), FcγR 비특이 흡수 감쇠율을 결합해 장기별 손상 확률을 산출한 뒤, 최대 위험 장기 수치(55%)와 전체 활성 장기 평균 수치(45%)의 가중합을 100점에서 차감합니다.',
+        '세로축 효능 (0~100): 암종-표적 항원 적응증 일치도, 표적의 종양 대 정상조직 선택도(log2FC), 페이로드 세포독성 포텐셜, 혈장 내 링커 보존율 및 종양 내 방출 효율, 페이로드별 최적 DAR 전달 곡선, 링커-페이로드 화학적 상보성 및 주변 암세포 동반 사멸(Bystander effect) 계수를 결합해 산출합니다.',
       ],
       shCompat: '접합 반응성 호환도',
       shCompatDirect: '직접 결합 가능',
@@ -342,8 +449,8 @@
       gtexNote: '단백질이 정상 장기에서 많이 발현될수록 암세포가 아닌 정상 조직도 함께 손상될 위험이 커집니다. 숫자는 발현량(nTPM)이며 낮을수록 안전합니다.',
       fcLalaNote: 'Fc 침묵화(LALA-PG)로 대식세포의 FcγR 결합이 줄어 폐, 간, 안구 등으로의 비특이 흡수가 감소했습니다.',
       fcWtNote: '야생형 IgG1은 대식세포의 FcγR에 결합하므로 폐, 간, 안구로의 비특이 흡수가 일어날 수 있습니다.',
-      flowTitle: '정량적 임상 바이오마커 플로우시트',
-      flowSub: '기관 기준 참고치 대비 수치 매핑 및 독성 플래그 분석',
+      flowTitle: '검진 정보',
+      flowSub: '',
       refRange: '참고치',
       notEntered: '미입력',
       elevated: '수치 상승',
@@ -421,6 +528,7 @@
       exportSummary: 'Export Summary',
       match: 'Match',
       archTitle: 'Conjugate Architecture',
+      manualOpt: 'Manual ADC Design',
       autoOpt: 'Auto-design ADC',
       scanning: 'Optimizing...',
       scanSpace: 'Scanning candidate space...',
@@ -444,9 +552,8 @@
       clickAutoOpt: 'Press Auto-design ADC to find the best combination for this patient',
       explainTitle: 'How was each dot calculated?',
       explainBody: [
-        'Each dot is one combination of target, linker, payload, DAR and Fc. Every possible combination was scored with the same formula.',
-        'Safety (x): for each of the patient\'s vulnerable organs, payload organ toxicity, normal-tissue expression of the target, drug load (DAR and linker stability) and Fc silencing are multiplied into a toxicity risk. The most at-risk organ is weighted more, and the result is subtracted from 100.',
-        'Efficacy (y): tumor selectivity of the target, payload potency, how well the linker survives in plasma and releases in the tumor, DAR and bystander killing are multiplied.',
+        'Safety Score (X-axis, 0–100): Combines patient organ vulnerability with payload organ toxicity, normal-tissue target expression (nTPM), systemic drug load (DAR, linker stability, and hydrophobic aggregation), and FcγR uptake attenuation to compute per-organ hazard, then subtracts the weighted sum of peak organ risk (55%) and mean active-organ risk (45%) from 100.',
+        'Efficacy Score (Y-axis, 0–100): Integrates tumor–target indication match, tumor-to-normal target selectivity (log2FC), payload potency, linker plasma retention and intratumoral release efficiency, payload-specific DAR delivery scaling, linker–payload chemical compatibility, and bystander killing.',
       ],
       shCompat: 'Conjugation Compatibility',
       shCompatDirect: 'Direct Coupling',
@@ -466,8 +573,8 @@
       gtexNote: 'The more this protein is expressed in normal organs, the more healthy tissue can be hit together with the tumor. Numbers are expression levels (nTPM); lower is safer.',
       fcLalaNote: 'Fc silencing (LALA-PG) reduces FcγR binding on macrophages, lowering non-specific uptake in lung, liver and eye.',
       fcWtNote: 'Wild-type IgG1 binds FcγR on macrophages, so non-specific uptake in lung, liver and eye can occur.',
-      flowTitle: 'Clinical Biomarker Flowsheet',
-      flowSub: 'Values mapped against institutional reference intervals',
+      flowTitle: 'Lab Values',
+      flowSub: '',
       refRange: 'Ref',
       notEntered: 'Not entered',
       elevated: 'Elevated',
@@ -530,6 +637,8 @@
       labs: null,
       meanings: {},
       first: null,
+      prioOrgan: null,
+      studioDesignMode: 'idle',
       analysis: null,
       result: null,
       sel: 0,
@@ -606,7 +715,7 @@
         if (!prev) map.set(fl.organ, { organ: fl.organ, score: 0.82, condKey: null });
       }
     }
-    return AX.filter((a) => map.has(a)).map((a) => map.get(a));
+    return AX.filter((a) => map.has(a)).map((a) => map.get(a)).sort((a, b) => b.score - a.score);
   }
 
   // ------------------------------------------------------------------ Page Shell & Navigation
@@ -626,10 +735,54 @@
       onclick: () => toggleLanguage(),
     });
 
+  function svgBrandLogo() {
+    const parser = new DOMParser();
+    const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 218 42" width="182" height="35" fill="none" class="adctox-pictorial-logo" aria-hidden="true">
+      <g transform="translate(2, 2)">
+        <path d="M11 3 H23 M14 3 V11 L4 33 C3.2 34.6 4.4 36 6.2 36 H27.8 C29.6 36 30.8 34.6 30 33 L20 11 V3" stroke="#0891B2" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7.2 26.5 H26.8 L29.2 32.5 C29.6 33.4 29 34.4 27.8 34.4 H6.2 C5 34.4 4.4 33.4 4.8 32.5 L7.2 26.5 Z" fill="#F59E0B"/>
+        <circle cx="14" cy="21" r="1.7" fill="#F59E0B"/>
+        <circle cx="19.5" cy="17.5" r="1.4" fill="#FBBF24"/>
+        <circle cx="16.5" cy="13.5" r="1.2" fill="#FDE68A"/>
+      </g>
+      <g transform="translate(38, 2)">
+        <path d="M4 4 H16 C23.5 4 28 9.5 28 19.5 C28 29.5 23.5 35 16 35 H4 Z" stroke="#0891B2" stroke-width="3.4" stroke-linejoin="round" fill="rgba(8,145,178,0.08)"/>
+        <path d="M10 10 V29" stroke="#0891B2" stroke-width="2.2" stroke-linecap="round" opacity="0.45"/>
+      </g>
+      <g transform="translate(72, 2)">
+        <path d="M26 9.5 C23.2 5.8 19.2 4 14.5 4 C7.2 4 3 9.8 3 19.5 C3 29.2 7.2 35 14.5 35 C19.2 35 23.2 33.2 26 29.5" stroke="#0891B2" stroke-width="3.6" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(106, 2)">
+        <path d="M3 4 H29 M16 4 V10 M9 10 H23" stroke="#E11D48" stroke-width="3.0" stroke-linecap="round"/>
+        <rect x="10" y="10" width="12" height="19" rx="1.8" stroke="#E11D48" stroke-width="2.6" fill="rgba(225,29,72,0.06)"/>
+        <rect x="11.6" y="16.5" width="8.8" height="11.2" fill="#F59E0B"/>
+        <path d="M10 14.5 H14.5 M10 19 H15.5 M10 23.5 H14.5" stroke="#E11D48" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M13.5 29 H18.5 L17.2 32.5 H14.8 Z" fill="#E11D48"/>
+        <path d="M16 32.5 V37.5" stroke="#E11D48" stroke-width="2.2" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(141, 2)">
+        <path d="M14 7 C14 7 4 19.2 4 26.2 C4 31.8 8.5 35.8 14 35.8 C19.5 35.8 24 31.8 24 26.2 C24 19.2 14 7 14 7 Z" fill="#E11D48"/>
+        <ellipse cx="10.2" cy="24.5" rx="2.2" ry="3.4" transform="rotate(-18 10.2 24.5)" fill="#FFE4E6"/>
+      </g>
+      <g transform="translate(174, 2)">
+        <path d="M6 7 L30 32" stroke="#E11D48" stroke-width="4.2" stroke-linecap="round"/>
+        <circle cx="4.8" cy="8.2" r="2.9" fill="#E11D48"/>
+        <circle cx="8.2" cy="4.8" r="2.9" fill="#E11D48"/>
+        <circle cx="28.8" cy="33.8" r="2.9" fill="#E11D48"/>
+        <circle cx="32.2" cy="30.4" r="2.9" fill="#E11D48"/>
+        <path d="M30 7 L6 32" stroke="#E11D48" stroke-width="4.2" stroke-linecap="round"/>
+        <circle cx="28.8" cy="4.8" r="2.9" fill="#E11D48"/>
+        <circle cx="32.2" cy="8.2" r="2.9" fill="#E11D48"/>
+        <circle cx="4.8" cy="30.4" r="2.9" fill="#E11D48"/>
+        <circle cx="8.2" cy="33.8" r="2.9" fill="#E11D48"/>
+      </g>
+    </svg>`;
+    return parser.parseFromString(svgStr, 'image/svg+xml').documentElement;
+  }
     const brandWrap = h('div', { class: 'brand-wrap' },
-      h('div', { class: 'brand' },
-        h('span', { class: 'brand-bars', 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
-        'ADCToX'),
+      h('div', { class: 'brand', title: 'ADCToX — Antibody-Drug Conjugate Toxicity & Design' },
+        h('span', { class: 'brand-logo-svg' }, svgBrandLogo()),
+        h('span', { class: 'sr-only', text: 'ADCToX' })),
       verEl);
 
     top = h('header', { class: 'top' },
@@ -694,6 +847,8 @@
     S.raw = {};
     S.meanings = {};
     S.first = null;
+    S.prioOrgan = null;
+    S.studioDesignMode = 'idle';
     S.analysis = null;
     S.result = null;
     S.sel = 0;
@@ -708,11 +863,16 @@
   const PROG = { pct: 0, text: '', on: false, hide: 0 };
   let progNode = null;
   function paintProgress() {
-    if (!progNode) return;
-    progNode.classList.toggle('on', PROG.on);
-    progNode.querySelector('.mp-fill').style.width = PROG.pct + '%';
-    progNode.querySelector('.mp-text').textContent = PROG.on ? `${PROG.text} ${Math.round(PROG.pct)}%` : '';
-    progNode.setAttribute('aria-valuenow', String(Math.round(PROG.pct)));
+    const nodes = document.querySelectorAll('.model-progress');
+    const list = nodes.length ? [...nodes] : (progNode ? [progNode] : []);
+    list.forEach((node) => {
+      node.classList.toggle('on', PROG.on);
+      const fill = node.querySelector('.mp-fill');
+      if (fill) fill.style.width = PROG.pct + '%';
+      const txt = node.querySelector('.mp-text');
+      if (txt) txt.textContent = PROG.on ? `${PROG.text} ${Math.round(PROG.pct)}%` : '';
+      node.setAttribute('aria-valuenow', String(Math.round(PROG.pct)));
+    });
   }
   function buildProgressBar() {
     progNode = h('div', { class: 'model-progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': '0', 'aria-label': 'Analysis progress' },
@@ -722,15 +882,33 @@
     return progNode;
   }
   const PROG_TEXT = {
-    ko: { start: '환자 정보 확인 중', labs: '검사 수치 해석 중', rank: '약물 순위 계산 중', queued: '질환 분석 대기 중', running: '질환 분석 시작', judging: '질환별 취약 장기 판정 중', done: '분석 완료' },
-    en: { start: 'Reading patient information', labs: 'Interpreting lab values', rank: 'Ranking drugs', queued: 'Analysis queued', running: 'Analysis started', judging: 'Judging vulnerable organs', done: 'Analysis complete' },
+    ko: {
+      searching: '미등록 질환 의미 매핑 및 AI 모델 탐색 중',
+      start: '환자 정보 확인 중',
+      labs: '검사 수치 해석 중',
+      rank: '약물 순위 계산 중',
+      queued: '백그라운드 질환-장기 모델 대기 중',
+      running: '백그라운드 질환-장기 독성 모델 추론 중',
+      judging: '질환별 취약 장기 정밀 판정 중',
+      done: '분석 완료',
+    },
+    en: {
+      searching: 'Mapping condition via clinical AI model',
+      start: 'Reading patient information',
+      labs: 'Interpreting lab values',
+      rank: 'Ranking drugs',
+      queued: 'Background condition-organ model queued',
+      running: 'Running condition-organ toxicity model',
+      judging: 'Judging vulnerable organs',
+      done: 'Analysis complete',
+    },
   };
   function setProgress(pct, key) {
     clearTimeout(PROG.hide);
     if (!PROG.on) PROG.pct = 0;
     PROG.on = true;
     PROG.pct = Math.max(PROG.pct, pct);
-    PROG.text = (PROG_TEXT[S.lang === 'ko' ? 'ko' : 'en'])[key] || '';
+    if (key) PROG.text = (PROG_TEXT[S.lang === 'ko' ? 'ko' : 'en'])[key] || key;
     paintProgress();
   }
   function endProgress() {
@@ -753,12 +931,27 @@
 
     try {
       const labRaw = (S.labs && S.labs.raw) || rawValues();
-      const recRes = await API.recommend({
-        conditions: condList(),
-        raw: labRaw,
-        choice: allChoice(),
-        first: S.first,
-      });
+      let recRes;
+      try {
+        recRes = await API.recommend({
+          conditions: condList(),
+          raw: labRaw,
+          choice: allChoice(),
+          first: S.first,
+        });
+      } catch (errFirst) {
+        if (S.first) {
+          S.first = null;
+          recRes = await API.recommend({
+            conditions: condList(),
+            raw: labRaw,
+            choice: allChoice(),
+            first: null,
+          });
+        } else {
+          throw errFirst;
+        }
+      }
       if (seq !== syncSeq) return;
       S.result = { sig: resultSig(), data: recRes };
       save();
@@ -790,8 +983,16 @@
           if (S.mode === 0 || S.mode === 2) renderActiveMode(false);
           return;
         }
-        if (r.step === 'judging') setProgress(85, 'judging');
-        else if (r.state === 'running') setProgress(72, 'running');
+        if (r.step === 'judging') {
+          const nextP = Math.min(96, Math.max(82, PROG.pct + 1.4));
+          setProgress(nextP, 'judging');
+        } else if (r.state === 'running') {
+          const nextP = Math.min(84, Math.max(64, PROG.pct + 1.6));
+          setProgress(nextP, 'running');
+        } else {
+          const nextP = Math.min(68, Math.max(58, PROG.pct + 0.8));
+          setProgress(nextP, 'queued');
+        }
       }
     } catch (e) { /* background optional */ }
   }
@@ -880,15 +1081,30 @@
       sugg.hidden = !show;
       input.setAttribute('aria-expanded', show ? 'true' : 'false');
       if (!show) return;
+      const isKo = S.lang === 'ko';
       st.items.slice(0, 7).forEach((it, i) => {
+        const isActive = i === st.cur;
         const li = h('li', {
-          class: 'opt', role: 'option', 'aria-selected': i === st.cur ? 'true' : 'false',
+          class: 'opt' + (isActive ? ' is-active' : ''),
+          role: 'option',
+          'aria-selected': isActive ? 'true' : 'false',
         },
         h('span', { class: 'nm' },
-          h('span', { class: 'main', text: it.kind === 'raw' ? `+ Add "${it.text}"` : it.s.text }),
-          it.s && it.s.sub ? h('span', { class: 'sub', text: it.s.sub }) : null));
+          h('span', { class: 'opt-dot', 'aria-hidden': 'true' }),
+          h('span', { class: 'main', text: it.kind === 'raw' ? (isKo ? `+ "${it.text}" 직접 추가 (AI 모델 분석)` : `+ Add "${it.text}" (AI Model)`) : it.s.text }),
+          it.s && it.s.sub ? h('span', { class: 'sub', text: it.s.sub }) : null),
+        h('span', { class: 'opt-pick-pill', text: isKo ? '선택 ↵' : 'Select ↵' }));
+        li.addEventListener('mouseenter', () => {
+          st.cur = i;
+          [...sugg.children].forEach((elChild, idx) => {
+            const act = idx === i;
+            elChild.classList.toggle('is-active', act);
+            elChild.setAttribute('aria-selected', act ? 'true' : 'false');
+          });
+        });
         li.addEventListener('mousedown', (e) => {
           e.preventDefault();
+          li.classList.add('is-picking');
           pickItem(it);
         });
         sugg.append(li);
@@ -909,7 +1125,7 @@
       const seq = ++st.seq;
       if (!q) { st.items = []; renderSugg(); return; }
       try {
-        const r = await API.suggest(q, pickedList());
+        const r = await API.suggest(q, pickedList(), false);
         if (seq !== st.seq) return;
         const out = [];
         for (const s of r.names || []) out.push({ kind: 's', s });
@@ -918,6 +1134,32 @@
         st.items = out;
         st.cur = 0;
         renderSugg();
+
+        // If fast dictionary lookup did not find a direct match, run AI semantic suggest with live top progress bar
+        if (out.length <= 1 && q.length >= 2) {
+          PROG.on = false;
+          setProgress(22, 'searching');
+          const progTimer = setInterval(() => {
+            if (seq !== st.seq || !PROG.on) { clearInterval(progTimer); return; }
+            setProgress(Math.min(88, PROG.pct + 12), 'searching');
+          }, 180);
+          try {
+            const aiRes = await API.suggest(q, pickedList(), true);
+            clearInterval(progTimer);
+            if (seq !== st.seq) return;
+            const aiOut = [];
+            for (const s of aiRes.names || []) aiOut.push({ kind: 's', s });
+            for (const s of aiRes.symptoms || []) aiOut.push({ kind: 'sym', s });
+            aiOut.push({ kind: 'raw', text: q });
+            st.items = aiOut;
+            st.cur = 0;
+            renderSugg();
+            endProgress();
+          } catch (eAi) {
+            clearInterval(progTimer);
+            endProgress();
+          }
+        }
       } catch (e) {
         st.items = [{ kind: 'raw', text: q }];
         st.cur = 0;
@@ -953,32 +1195,61 @@
 
     const activeOrgans = activeOrgansWithScores();
     const organsGrid = h('div', { class: 'active-organs-grid' });
-    if (activeOrgans.length) {
-      activeOrgans.forEach((item) => {
-        const pct = Math.round(Math.max(15, Math.min(100, item.score * 100)));
-        const isPrio = item.condKey && S.first === item.condKey;
-        const orgLabel = S.lang === 'ko' ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ);
-        const btn = h('button', {
-          type: 'button', class: 'organ-meter-btn' + (isPrio ? ' prio-active' : ''),
-          title: item.condKey ? (S.lang === 'ko' ? `${orgLabel} 안전성 우선 평가` : 'Prioritize ' + orgLabel) : orgLabel,
-          onclick: async () => {
-            if (!item.condKey) return;
-            S.first = S.first === item.condKey ? null : item.condKey;
-            save();
-            await refreshBackendData();
-            if (onChanged) onChanged();
-          },
-        },
-        h('div', { class: 'om-top' },
-          h('span', { class: 'om-name', text: orgLabel }),
-          h('span', { class: 'om-val', text: isPrio ? (S.lang === 'ko' ? '우선 1위' : 'Priority 1') : `${pct}%` })),
-        h('div', { class: 'om-track' },
-          h('i', { class: 'om-fill', style: `width:${pct}%` })));
-        organsGrid.append(btn);
-      });
-    } else {
-      organsGrid.append(h('span', { class: 'dim', text: t('noActiveOrgans') }));
+    const horizonSubEl = h('span', { class: 'horizon-sub' });
+
+    function updateHorizonSub() {
+      const prioOrg = S.prioOrgan || (S.first && activeOrgans.find((x) => x.condKey === S.first)?.organ) || null;
+      if (prioOrg) {
+        const pLabel = S.lang === 'ko' ? (ORGAN_KO[prioOrg] || SHORT[prioOrg] || prioOrg) : (SHORT[prioOrg] || prioOrg);
+        horizonSubEl.textContent = S.lang === 'ko' ? `★ [${pLabel}] 최우선 보호 적용됨 (클릭 시 해제)` : `★ Prioritizing [${pLabel}] (click to clear)`;
+        horizonSubEl.classList.add('prio-sub-active');
+      } else {
+        horizonSubEl.textContent = S.lang === 'ko' ? '클릭 시 해당 장기 우선 평가' : 'Select organ to prioritize';
+        horizonSubEl.classList.remove('prio-sub-active');
+      }
     }
+
+    function renderOrgansGrid() {
+      clear(organsGrid);
+      updateHorizonSub();
+      if (activeOrgans.length) {
+        activeOrgans.forEach((item) => {
+          const pct = Math.round(Math.max(15, Math.min(100, item.score * 100)));
+          const isPrio = (S.prioOrgan === item.organ) || (!S.prioOrgan && item.condKey && S.first === item.condKey);
+          const orgLabel = S.lang === 'ko' ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ);
+          const btn = h('button', {
+            type: 'button',
+            class: 'organ-meter-btn' + (isPrio ? ' prio-active' : ''),
+            'aria-pressed': isPrio ? 'true' : 'false',
+            title: S.lang === 'ko' ? `${orgLabel} (${pct}%) — 클릭하여 최우선 보호 장기로 설정/해제` : `Prioritize ${orgLabel} (${pct}%)`,
+            onclick: async () => {
+              const turningOff = isPrio;
+              S.prioOrgan = turningOff ? null : item.organ;
+              if (item.condKey && condList().length >= 2) {
+                S.first = turningOff ? null : item.condKey;
+              } else {
+                S.first = null;
+              }
+              save();
+              renderOrgansGrid();
+              await refreshBackendData();
+              if (onChanged) onChanged();
+            },
+          },
+          h('div', { class: 'om-top' },
+            h('span', { class: 'om-name-wrap' },
+              h('span', { class: 'om-name', text: orgLabel }),
+              isPrio ? h('span', { class: 'om-prio-badge', text: S.lang === 'ko' ? '★ 우선 1위' : '★ Priority #1' }) : null),
+            h('span', { class: 'om-val', text: `${pct}%` })),
+          h('div', { class: 'om-track' },
+            h('i', { class: 'om-fill', style: `width:${pct}%` })));
+          organsGrid.append(btn);
+        });
+      } else {
+        organsGrid.append(h('span', { class: 'dim', text: t('noActiveOrgans') }));
+      }
+    }
+    renderOrgansGrid();
 
     return h('section', { class: 'workspace-bar', 'aria-label': 'Patient and active organ profile' },
       h('div', { class: 'wb-left' },
@@ -992,7 +1263,7 @@
       h('div', { class: 'wb-right' },
         h('div', { class: 'horizon-head' },
           h('span', { class: 'horizon-label', text: `${t('activeOrgans')} (${activeOrgans.length})` }),
-          h('span', { class: 'horizon-sub', text: S.first ? (S.lang === 'ko' ? '우선순위 적용됨' : 'Priority Active') : (S.lang === 'ko' ? '클릭 시 해당 장기 우선 평가' : 'Select organ to prioritize') })),
+          horizonSubEl),
         organsGrid));
   }
 
@@ -1094,8 +1365,17 @@
       const P = res.patient || {};
       shownPatient = P;
       const hasCancer = !!(P.cancers || []).length;
-      const rows = res.rows;
       const activeOrgans = activeOrgansWithScores();
+      let rows = res.rows.slice();
+      if (S.prioOrgan) {
+        const pk = S.prioOrgan;
+        const penOf = (r) => {
+          const os = organStatusForRow(r, pk);
+          return os.cls === 'boxed' ? 2 : (os.cls === 'warn' ? 1 : 0);
+        };
+        rows.sort((a, b) => (penOf(a) - penOf(b)) || (a.rank - b.rank));
+        rows = rows.map((r, idx) => Object.assign({}, r, { rank: idx + 1 }));
+      }
 
       const topCandidates = rows.filter((r) => (hasCancer ? r.indicated === true : true) && r.status !== 'Avoid');
       const spotlightRows = (topCandidates.length ? topCandidates : rows).slice(0, 2);
@@ -1128,8 +1408,7 @@
         h('div', { class: 'sp-head' },
           h('div', { class: 'sp-title-group' },
             h('div', { class: 'sp-rank-row' },
-              h('span', { class: 'sp-rank', text: `TOP #${row.rank}` }),
-              hasCancer && row.indicated ? h('span', { class: 'sp-match-tag', text: (row.cancers && row.cancers[0]) || 'Indicated' }) : null),
+              h('span', { class: 'sp-rank', text: `TOP #${row.rank}` })),
             h('h2', { class: 'sp-name', text: row.name }),
             pills.length ? h('div', { class: 'sp-arch' }, pills.map((p) => h('span', { class: 'arch-pill', text: p }))) : null),
           h('span', { class: 'sp-status-badge ' + st.tone, text: st.full })),
@@ -1302,6 +1581,19 @@
   };
   const plainName = (id) => String(id || '').replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
 
+  function patientCancerMatchesTarget(tgt) {
+    const P = (S.result && S.result.data && S.result.data.patient) || {};
+    const cancerTexts = []
+      .concat((P.cancers || []).map((c) => `${c.condition || ''} ${c.label || ''}`))
+      .concat(S.conds.map((c) => `${c.label || ''} ${c.value || ''}`))
+      .join(' ')
+      .toLowerCase();
+    if (!cancerTexts.trim()) return null;
+    const hasAnyTumorKeyword = /cancer|carcinoma|tumor|lymphoma|myeloma|leukemia|sarcoma|암|종양|림프종|골수종|백혈병/.test(cancerTexts);
+    if (!hasAnyTumorKeyword) return null;
+    return (tgt.tumorKeys || []).some((k) => cancerTexts.includes(k.toLowerCase()));
+  }
+
   function computeStudioSimulation(specInput, organsInput) {
     const spec = specInput || S.studio;
     const tgt = STUDIO_TARGETS.find((x) => x.id === spec.target) || STUDIO_TARGETS[0];
@@ -1314,29 +1606,42 @@
     const organs = real.length ? real : FALLBACK_ORGANS;
     const isCompat = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
 
-    // Safety: per organ, payload toxicity plus the target's expression in that organ, multiplied by the drug load that
-    // reaches the blood (DAR, extra for aggregation above DAR 4, extra for a linker that lets payload go early).
-    const load = (dar / 4) * (1 + (1 - lnk.stability / 100) * 1.5) * (dar > 4 ? 1 + (dar - 4) * 0.06 : 1);
+    // Chemical linker-payload pairing affinity (clinically validated pair = 1.0)
+    const pairAffinity = isCompat ? ((lnk.prefPayloads && lnk.prefPayloads[pld.id]) || 0.72) : 0.35;
+
+    // Payload-specific DAR ceiling & hydrophobic Kupffer-cell aggregation penalty
+    const maxSafeDar = pld.maxSafeDar || 4;
+    const darExcess = Math.max(0, dar - maxSafeDar);
+    const hydroFactor = (pld.hydro || 0.5) * (0.6 + (lnk.hydro || 0.4) * 0.8);
+    const aggPenalty = 1 + darExcess * hydroFactor * 0.22;
+
+    // Systemic drug load reaching normal organs
+    const load = Math.pow(dar / 4, 0.78) * (1 + (1 - lnk.stability / 100) * 1.35) * aggPenalty * (1 + (1 - pairAffinity) * 0.35);
     const organRisks = organs.map((ao) => {
       const payloadTox = (pld.organs[ao.organ] != null ? pld.organs[ao.organ] : 22) / 100;
       const expr = ((tgt.tissues.find((x) => x.organ === ao.organ) || { tpm: 8 }).tpm) / 100;
-      const fc = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? 0.75 : 1;
-      const w = 0.6 + 0.4 * Math.min(1, ao.score || 0.8);
+      const fc = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? 0.74 : 1;
+      const prioMult = (S.prioOrgan && S.prioOrgan === ao.organ) ? 1.45 : 1.0;
+      const w = (0.6 + 0.4 * Math.min(1, ao.score || 0.8)) * prioMult;
       const x = (payloadTox + 0.6 * expr) * load * fc * w;
-      return { organ: ao.organ, p: 1 - Math.exp(-0.5 * x) };
+      return { organ: ao.organ, p: 1 - Math.exp(-0.48 * x) };
     });
     const meanRisk = organRisks.reduce((a, r) => a + r.p, 0) / organRisks.length;
     const worstRisk = Math.max(...organRisks.map((r) => r.p));
-    const safetyScore = Math.max(1, Math.min(99, Math.round(100 * (1 - (0.5 * worstRisk + 0.5 * meanRisk)))));
+    const safetyScore = Math.max(1, Math.min(99, Math.round(100 * (1 - (0.55 * worstRisk + 0.45 * meanRisk)))));
 
-    // Efficacy: selectivity, payload potency, how much drug survives to the tumor and is released there, DAR, bystander killing.
+    // Efficacy: indication match, tumor selectivity, payload potency, linker retention/release, payload-specific DAR curve, bystander killing
     const bystander = lnk.cleavable && pld.perm;
+    const indMatch = patientCancerMatchesTarget(tgt);
+    const indFactor = indMatch === null ? 1.0 : (indMatch ? 1.08 : 0.72);
     const targetTerm = 1 - Math.exp(-tgt.selectivity / 3);
-    const delivered = 0.5 + 0.5 * lnk.stability / 100;
-    const release = lnk.cleavable ? 1 : 0.78;
-    const loadTerm = (1 - Math.exp(-dar / 3.5)) * (dar > 4 ? 1 - (dar - 4) * 0.04 : 1);
-    const eff = Math.pow(targetTerm, 0.35) * Math.pow(pld.potency / 100, 0.5) * Math.pow(delivered, 0.6) *
-      Math.pow(release, 0.5) * Math.pow(loadTerm, 0.5) * (bystander ? 1.1 : 1) * (isCompat ? 1 : 0.55);
+    const delivered = 0.52 + 0.48 * (lnk.stability / 100);
+    const release = lnk.cleavable ? 1 : (pld.perm === false ? 0.94 : 0.74);
+    const optDar = pld.optDar || 4;
+    const darDeviation = Math.abs(dar - optDar);
+    const loadTerm = (1 - Math.exp(-dar / 3.2)) * Math.exp(-0.035 * darDeviation * darDeviation) * (darExcess > 0 ? Math.max(0.45, 1 - darExcess * hydroFactor * 0.12) : 1);
+    const eff = Math.pow(targetTerm, 0.35) * Math.pow(pld.potency / 100, 0.5) * Math.pow(delivered, 0.55) *
+      Math.pow(release, 0.48) * Math.pow(loadTerm, 0.52) * Math.pow(pairAffinity, 0.32) * indFactor * (bystander ? 1.08 : 1) * (isCompat ? 1 : 0.52);
     const efficacyScore = Math.max(1, Math.min(99, Math.round(eff * 100)));
 
     return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, isCompat, organRisks, meanRisk, bystander };
@@ -1438,8 +1743,15 @@
             },
             onmouseleave: () => hideMicroPopover(),
             onclick: () => {
-              onPick(val); save(); renderControls(); renderStudioCanvas();
-              openStudioCompareDrawer(computeStudioSimulation(), evaluateAllStudioCandidates());
+              hideMicroPopover();
+              onPick(val);
+              if (S.studioDesignMode === 'auto') S.studioDesignMode = 'manual';
+              save();
+              renderControls();
+              renderStudioCanvas(false);
+              if (S.studioDesignMode !== 'idle') {
+                openStudioCompareDrawer(computeStudioSimulation(), evaluateAllStudioCandidates());
+              }
             },
           });
           pills.append(b);
@@ -1447,19 +1759,36 @@
         return h('div', { class: 'studio-group' }, h('span', { class: 'studio-label', text: label }), pills);
       };
 
+      const fcItems = STUDIO_FC_ITEMS.map((item) => ({
+        id: item.isSilenced ? t('silFc') : t('wtFc'),
+        popover: item.popover,
+        popover_ko: item.popover_ko,
+      }));
+
+      const manualBtn = h('button', {
+        type: 'button',
+        class: 'btn-manual-design' + (S.studioDesignMode === 'manual' ? ' is-active' : ''),
+        text: t('manualOpt'),
+        onclick: () => runManualSimulation(),
+      });
+
       optBtn = h('button', {
-        type: 'button', class: 'btn-optimize' + (isOptimizing ? ' is-running' : ''), text: t('autoOpt'),
+        type: 'button',
+        class: 'btn-optimize' + (isOptimizing ? ' is-running' : '') + (S.studioDesignMode === 'auto' && !isOptimizing ? ' is-optimal' : ''),
+        text: t('autoOpt'),
         'aria-busy': isOptimizing ? 'true' : 'false',
         onclick: () => runOptimizationSimulation(),
       });
+
+      const actionBtnRow = h('div', { class: 'studio-btn-row' }, manualBtn, optBtn);
 
       controls.append(
         makeGroup(t('tgtTitle'), STUDIO_TARGETS, S.studio.target, (v) => { S.studio.target = v; autoRationale = null; }),
         makeGroup(t('lnkTitle'), STUDIO_LINKERS, S.studio.linker, (v) => { S.studio.linker = v; autoRationale = null; }),
         makeGroup(t('pldTitle'), STUDIO_PAYLOADS, S.studio.payload, (v) => { S.studio.payload = v; autoRationale = null; }),
-        makeGroup(t('darTitle'), ['2', '3.5', '4', '6', '7.6', '8'], String(S.studio.dar), (v) => { S.studio.dar = parseFloat(v); autoRationale = null; }, true),
-        makeGroup(t('fcTitle'), [t('wtFc'), t('silFc')], S.studio.fc ? t('silFc') : t('wtFc'), (v) => { S.studio.fc = v.includes('LALA') || v.includes('침묵'); autoRationale = null; }),
-        optBtn
+        makeGroup(t('darTitle'), STUDIO_DAR_ITEMS, String(S.studio.dar), (v) => { S.studio.dar = parseFloat(v); autoRationale = null; }, true),
+        makeGroup(t('fcTitle'), fcItems, S.studio.fc ? t('silFc') : t('wtFc'), (v) => { S.studio.fc = v.includes('LALA') || v.includes('침묵'); autoRationale = null; }),
+        actionBtnRow
       );
     }
 
@@ -1467,15 +1796,37 @@
     function showMicroPopover(targetBtn, text) {
       hideMicroPopover();
       popoverEl = h('div', { class: 'micro-popover', text });
-      targetBtn.append(popoverEl);
+      document.body.append(popoverEl);
+      const r = targetBtn.getBoundingClientRect();
+      const pw = popoverEl.offsetWidth || 270;
+      const ph = popoverEl.offsetHeight || 72;
+      const margin = 10;
+      let left = r.left + r.width / 2 - pw / 2;
+      left = Math.max(margin, Math.min(window.innerWidth - pw - margin, left));
+      let top = r.top - ph - 8;
+      if (top < margin) top = r.bottom + 8;
+      popoverEl.style.left = Math.round(left) + 'px';
+      popoverEl.style.top = Math.round(top) + 'px';
     }
     function hideMicroPopover() {
       if (popoverEl) { popoverEl.remove(); popoverEl = null; }
     }
 
+    function runManualSimulation() {
+      if (isOptimizing) return;
+      hideMicroPopover();
+      S.studioDesignMode = 'manual';
+      save();
+      renderControls();
+      renderStudioCanvas(false);
+    }
+
     function runOptimizationSimulation() {
       if (isOptimizing) return;
+      hideMicroPopover();
       isOptimizing = true;
+      S.studioDesignMode = 'auto';
+      save();
       closeDrawer();
       renderControls();
       renderStudioCanvas(true);
@@ -1503,9 +1854,12 @@
       // 1. The chart of every design combination for this patient
       const simWrap = h('section', { class: 'sim-canvas-panel panel' });
       const total = evalSpace.cands.length;
+      const designMode = S.studioDesignMode || 'idle';
       const initialStatus = animateScan
         ? (isKo ? `설계 조합 0 / ${total.toLocaleString()}개 계산 중` : `Scoring 0 / ${total.toLocaleString()} combinations`)
-        : (isKo ? `안전도 ${sim.safetyScore}점 / 항암 효능 ${sim.efficacyScore}점` : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`);
+        : designMode === 'idle'
+          ? (isKo ? '설계 대기 중 (수동 설계 또는 자동 설계를 실행하세요)' : 'Ready (Click Manual ADC Design or Auto-design ADC)')
+          : (isKo ? `안전도 ${sim.safetyScore}점 / 항암 효능 ${sim.efficacyScore}점` : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`);
 
       const simStatusEl = h('span', { class: 'sim-canvas-status', text: initialStatus });
       const simHead = h('div', { class: 'sim-canvas-head' },
@@ -1516,13 +1870,10 @@
       const cvs = h('canvas', { class: 'sim-canvas' });
       chartWrap.append(cvs);
 
-      const caption = h('p', { class: 'sim-caption', text: isKo
-        ? `점 하나는 표적, 링커, 페이로드, DAR, Fc의 조합 하나입니다. 총 ${total.toLocaleString()}개를 같은 식으로 계산했고, 오른쪽 위에 있을수록 안전하면서 강력한 설계입니다.`
-        : `Each dot is one combination of target, linker, payload, DAR and Fc. All ${total.toLocaleString()} were scored with the same formula; the closer to the top right, the safer and stronger the design.` });
       const explain = h('details', { class: 'sim-explain' },
         h('summary', { text: t('explainTitle') }),
-        t('explainBody').slice(1).map((line) => h('p', { text: line })));
-      simWrap.append(simHead, chartWrap, caption, explain);
+        t('explainBody').map((line) => h('p', { text: line })));
+      simWrap.append(simHead, chartWrap, explain);
 
       // Recommended design and why
       const activeRationale = autoRationale || buildAutoOptimizeRationales(evalSpace.best);
@@ -1546,7 +1897,7 @@
           activeRationale.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
             h('b', { text: `${title}: ${choice}` }),
             h('span', { text: desc })))));
-      simWrap.append(rBox);
+      if (designMode !== 'idle') simWrap.append(rBox);
 
       // 2. Metrics strip
       const hero = h('div', { class: 'studio-hero panel' },
@@ -1698,12 +2049,17 @@
           cvs.height = h;
         }
 
-        const legend = [
-          ['rgba(100, 116, 139, 0.75)', 3, `${t('legendCand')} ${cands.length.toLocaleString()}`],
-          ['rgba(239, 68, 68, 0.6)', 3, t('legendBad')],
-          ['#0D9488', 4.5, t('legendBest')],
-          ['#2563EB', 4.5, t('legendCur')],
-        ];
+        const modeNow = animate ? 'auto' : (S.studioDesignMode || 'idle');
+        const legend = modeNow === 'idle'
+          ? []
+          : modeNow === 'manual'
+            ? [['#2563EB', 4.5, t('legendCur')]]
+            : [
+                ['rgba(100, 116, 139, 0.75)', 3, `${t('legendCand')} ${cands.length.toLocaleString()}`],
+                ['rgba(239, 68, 68, 0.6)', 3, t('legendBad')],
+                ['#0D9488', 4.5, t('legendBest')],
+                ['#2563EB', 4.5, t('legendCur')],
+              ];
         ctx.font = `600 ${10 * dpr}px sans-serif`;
         const padL = 52 * dpr, padR = 24 * dpr, padB = 42 * dpr;
         let testLx = padL, legendRows = 1;
@@ -1793,13 +2149,28 @@
           lx += need;
         });
 
-        // dots appear at their true positions
-        for (let k = 0; k < shown; k++) {
-          const c = shuffled[k];
-          ctx.fillStyle = c.isCompat ? 'rgba(100, 116, 139, 0.45)' : 'rgba(239, 68, 68, 0.28)';
-          ctx.beginPath();
-          ctx.arc(toX(c.safetyScore), toY(c.efficacyScore), 2.4 * dpr, 0, Math.PI * 2);
-          ctx.fill();
+        if (modeNow === 'idle') {
+          ctx.fillStyle = 'rgba(248, 250, 252, 0.72)';
+          ctx.fillRect(offsetX + 1 * dpr, offsetY + 1 * dpr, plotW - 2 * dpr, plotH - 2 * dpr);
+          ctx.fillStyle = '#475569';
+          ctx.font = `bold ${11.5 * dpr}px sans-serif`;
+          ctx.textAlign = 'center';
+          const idleMsg = S.lang === 'ko'
+            ? '왼쪽에서 [ADC 수동 설계] 또는 [ADC 자동 설계] 버튼을 눌러 시뮬레이션을 실행하세요'
+            : 'Click [Manual ADC Design] or [Auto-design ADC] on the left to plot results';
+          ctx.fillText(idleMsg, offsetX + plotW / 2, offsetY + plotH / 2 + 4 * dpr);
+          return;
+        }
+
+        if (modeNow === 'auto') {
+          // dots appear at their true positions
+          for (let k = 0; k < shown; k++) {
+            const c = shuffled[k];
+            ctx.fillStyle = c.isCompat ? 'rgba(100, 116, 139, 0.45)' : 'rgba(239, 68, 68, 0.28)';
+            ctx.beginPath();
+            ctx.arc(toX(c.safetyScore), toY(c.efficacyScore), 2.4 * dpr, 0, Math.PI * 2);
+            ctx.fill();
+          }
         }
 
         const bx = toX(best.safetyScore);
@@ -1807,8 +2178,8 @@
         const sx = toX(currentSim.safetyScore);
         const sy = toY(currentSim.efficacyScore);
 
-        // recommended design, once every combination has been scored
-        if (f >= 0.97 || !animate) {
+        // recommended design, once every combination has been scored in auto mode
+        if (modeNow === 'auto' && (f >= 0.97 || !animate)) {
           ctx.fillStyle = 'rgba(13, 148, 136, 0.22)';
           ctx.beginPath(); ctx.arc(bx, by, 10 * dpr, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#0D9488';
@@ -1817,7 +2188,7 @@
           ctx.beginPath(); ctx.arc(bx, by, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
         }
 
-        // current selection
+        // current selection (shown in both manual and auto modes)
         ctx.fillStyle = 'rgba(37, 99, 235, 0.2)';
         ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = '#2563EB';
@@ -1825,11 +2196,13 @@
         ctx.lineWidth = 2 * dpr;
         ctx.beginPath(); ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
-        if (f >= 0.97 || !animate) {
+        if (modeNow === 'auto' && (f >= 0.97 || !animate)) {
           const bestLabel = `${t('legendBest')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar}`;
           drawCalloutLabel(bestLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#065F46');
         }
-        const curLabel = `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
+        const curLabel = modeNow === 'manual'
+          ? `${plainName(currentSim.spec.target)} + ${plainName(currentSim.spec.payload)}, DAR ${currentSim.spec.dar} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`
+          : `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
         drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#1E40AF');
 
         if (tfrac < 1) {
@@ -1892,8 +2265,7 @@
 
       leftPanel.append(
         h('div', { class: 'flowsheet-head' },
-          h('h2', { class: 'flowsheet-title', text: t('flowTitle') }),
-          h('span', { class: 'flowsheet-sub', text: t('flowSub') })));
+          h('h2', { class: 'flowsheet-title', text: t('flowTitle') })));
 
       const groupEl = h('div', { class: 'lab-card-group' });
       BIO_FIELDS.forEach((bf) => {
@@ -2791,7 +3163,7 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.7.5');
+    verEl.textContent = 'v' + (APP.version || '0.7.6');
 
     restore();
     renderHeaderControls();

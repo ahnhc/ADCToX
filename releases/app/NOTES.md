@@ -1,8 +1,11 @@
-ADCToX 0.7.5: bilingual layout refinement, bar alignment, and responsive design chart
+# ADCTOX 0.7.6 Release Notes
 
-- Verified KO/EN layout and docked-drawer responsiveness across all three workspace modes so labels, badges, and studio pills never wrap awkwardly or collide.
-- Aligned horizontal comparison bars across spotlight cards, matrix rows, and studio panels, and removed the 3D rotation overlay hint.
-- Fixed the Patient-Tailored ADC Design scatter plot (`ResizeObserver` + dynamic DPR sizing) so opening/closing the side drawer or switching tabs never distorts the chart.
-- Streamlined the scoring explanation to focus directly on the safety and efficacy calculation formulas.
-
-Apps at 0.7.3+ update automatically; older apps need `adctox --update-app` once. Models remain at 0.8.
+- **Pictorial Brand Logo (`ADC` + `ToX`)**: Replaced the generic 3-bar header icon with an inline SVG vector rendition of the original ADCToX pictorial emblem (Erlenmeyer flask `A` with golden conjugate & bubbles + `D` + `C` in cyan, paired with syringe `T` + toxic droplet `o` + crossed bones `X` in crimson).
+- **Patient-Tailored ADC Design (`Mode 1`) Upgrade**:
+  - Added **`ADC 수동 설계` (`Manual ADC Design`)** alongside **`ADC 자동 설계` (`Auto-design ADC`)** and initialized the coordinate plane in an explicit ready state so candidate dots are plotted only after manual or automated design execution.
+  - Upgraded the in-silico pharmacological scoring model with linker–payload chemical pairing affinity, payload-specific DAR hydrophobic aggregation ceilings (`optDar`, `maxSafeDar`, `hydro`), and tumor-indication target matching.
+  - Fixed `.micro-popover` clipping by mounting tooltips to `document.body` with viewport-clamped fixed coordinates and full Korean/English descriptions across all 5 design groups (`Target`, `Linker`, `Payload`, `DAR`, `Fc`).
+- **Workspace & Clinical UX Refinements**:
+  - Active vulnerable organs now sort by severity (`%` descending) and visually highlight (`★ 우선 1위` / `★ Priority #1`) when clicked to prioritize protection of that organ across drug ranking and construct simulation.
+  - Added interactive hover/selection animations on condition autocomplete options and continuous top progress bar feedback during semantic mapping and background model inference.
+  - Simplified the Mode 2 header to **`검진 정보` (`Lab Values`)** and streamlined the Mode 0 `#1` spotlight badge.
