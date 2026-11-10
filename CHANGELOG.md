@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.9: Two-pathway mechanistic PK/PD Formula Studio, 4 clinical presets, fixed 0-100 coordinate cluster dynamics, and repository cleanup
+
+- **Two-Pathway Mechanistic PK/PD Scoring:** Separated organ hazard into Off-Target Systemic & FcγR clearance (plasma linker deconjugation $\beta_{\text{leak}}$, hydrophobic DAR Kupffer aggregation $\gamma_{\text{agg}}$, and LALA-PG Fc$\gamma$R silencing $\phi_{\text{Fc}}$) vs. On-Target / Off-Tumor tissue expression (GTEx $\alpha_{\text{on}}$), coupled with convex multi-mechanism antitumor efficacy.
+- **Clinical Scenario Presets:** Added 4 one-click clinical scenario presets (`Balanced TI`, `Organ-Sparing Safety`, `Heterogeneous Solid Tumor`, `High-Selectivity / Hepatic-Sparing`) with 8 interactive parameter sliders in `점수 계산식` (`Scoring Formula`).
+- **Fixed-Frame Cluster Dynamics:** Mapped all 2,592 construct candidates onto a fixed `0–100` clinical coordinate space with real-time cluster geometry shifts and Pareto frontier updates.
+- **Repository & Release Cleanup:** Streamlined the repository for v0.7.9 by removing legacy report drafts, obsolete UI prototypes, and superseded test artifacts.
+
 ## 0.7.8: Workflow-ordered tabs (Patient Info -> ADC Matrix -> De Novo ADC Design), interactive formula tuner, and aligned biomarker reference bars
 
 - **Reordered workspace tabs & default English UI:** ordered top navigation as `1. Patient Info` (`환자 정보`), `2. ADC Matrix` (`ADC 매트릭스`), and `3. De Novo ADC Design` (`ADC 신규 설계`), and set the default startup language to English (`en`).

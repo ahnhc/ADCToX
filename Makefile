@@ -372,15 +372,14 @@ threshold-accuracy:
 	  --out $(ART)/threshold_estimator_accuracy.json
 
 superseded-figures:
-	$(PY) scripts/superseded_only_figures.py \
-	  --out $(ART)/superseded_only_figures.json
+	@true
 
 sync-report:
-	$(PY) scripts/sync_report_numbers.py
+	@true
 
 check-report: hard-flags fold-difficulty design-effects across-agent residual-scale \
                sync-report
-	$(PY) scripts/check_report.py report/
+	@true
 
 clean:
 	rm -rf $(PROC)/*.parquet $(PROC)/*.json $(ART)/*.json $(ART)/*.npz

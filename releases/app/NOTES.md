@@ -1,3 +1,16 @@
+# ADCTOX 0.7.9 Release Notes
+
+- **Two-Pathway Mechanistic PK/PD Formula Studio & Clinical Presets (`점수 계산식` / `Scoring Formula`)**:
+  - Separated organ toxicity modeling into two competing physiological pathways: **Off-Target Systemic & FcγR Clearance** (plasma linker deconjugation $\beta_{\text{leak}}$, hydrophobic DAR Kupffer-cell aggregation $\gamma_{\text{agg}}$, and LALA-PG Fc$\gamma$R silencing $\phi_{\text{Fc}}$) vs. **On-Target / Off-Tumor Normal Tissue Expression** (GTEx $\alpha_{\text{on}}$).
+  - Modeled antitumor efficacy as a normalized convex combination of target selectivity ($w_{\text{sel}}$), payload-DAR stoichiometry ($S_{\text{pot}}$), intact plasma delivery ($S_{\text{deliv}}$), and membrane-permeable bystander diffusion ($w_{\text{bys}}$).
+  - Added 4 one-click **Clinical Scenario Presets** (`Balanced TI`, `Organ-Sparing Safety`, `Heterogeneous Solid Tumor`, `High-Selectivity / Hepatic-Sparing`) and 8 interactive coefficient controls.
+- **Fixed-Frame Cluster Dynamics (0–100 Coordinate Space)**:
+  - Fixed candidate dispersion coordinates on an absolute `0–100` clinical coordinate frame with real-time cluster geometry shifts and dynamic Pareto frontier recalculation.
+- **Full-Width Reference Drug Comparison & 3-Part Mechanism Synthesis**:
+  - Dynamically synthesizes 3-part medical mechanisms (`Approved Drug Issue`, `Mechanism`, `How This Design Responds`) contrasting candidates against approved reference ADCs.
+- **Repository Cleanup & v0.7.9 Distribution**:
+  - Cleaned up obsolete preliminary reports, legacy prototypes, and superseded test artifacts; synchronized release manifests and standalone application packages.
+
 # ADCTOX 0.7.8 Release Notes
 
 - **Workflow-Ordered Navigation (`1. Patient Info` → `2. ADC Matrix` → `3. De Novo ADC Design`) & Default English UI**:
