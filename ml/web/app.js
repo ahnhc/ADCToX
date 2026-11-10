@@ -1,4 +1,4 @@
-/* ADCTOX v0.7.3 Architectural Daylight WebApp
+/* ADCTOX v0.7.4 Architectural Daylight WebApp
    Active-Organ Matrix + 3D Structure Studio + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -96,23 +96,20 @@
 
   // ------------------------------------------------------------------ Tooltips & Guide
   const TIPS = {
-    'Regimen Fit': ['FDA label dosing and eligibility rules for this patient profile.', [
-      ['1 bar', 'Standard dosing: no label restriction triggered'],
+    'Drug Fit': ['Dosing and eligibility guidance for this patient profile.', [
+      ['1 bar', 'Standard dosing: no use restriction triggered'],
       ['2 bars', 'Monitor or Dose Adjust: check organ lab thresholds'],
-      ['3 bars', 'Avoid or Contraindicated: label advises against use'],
+      ['3 bars', 'Avoid or Contraindicated: use not advised'],
     ]],
-    'Active Organ Profile': ['Warnings on the patient\'s active vulnerable organs only.', [
-      ['Emerald bar', 'Clear: no boxed or Section 5 warning on this organ'],
-      ['Amber bar', 'Section 5 Warning on this organ'],
-      ['Crimson bar', 'Boxed Warning on this organ'],
+    'Vulnerable Organs': ['Possible effects on the patient\'s vulnerable organs.', [
+      ['Emerald bar', 'Clear: no warning on this organ'],
+      ['Amber bar', 'Caution on this organ'],
+      ['Crimson bar', 'Major warning on this organ'],
     ]],
-    'Pivotal Trial vs Control': ['Study-group adverse event incidence in pivotal registration trial.', [
-      ['ADC', 'Treatment arm incidence (events / sample size)'],
-      ['CMP', 'Comparator arm incidence (events / sample size)'],
+    'Clinical Trial Cases': ['Adverse event incidence in registration clinical trials.', [
+      ['Tx', 'Treatment group incidence (%)'],
+      ['Ctrl', 'Control group incidence (%)'],
     ]],
-    'Label restriction': ['FDA label rules evaluated against entered conditions and labs.', []],
-    'Indication': ['Approved oncology indications on the FDA label.', []],
-    'Payload and linker': ['4-part antibody-drug conjugate architecture (Section 12.1).', []],
   };
 
   const tipBox = h('div', { class: 'tipbox', role: 'tooltip', id: 'tipbox', hidden: true });
@@ -156,76 +153,27 @@
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
         h('div', { class: 'g-head' },
-          h('h2', { id: 'g-title', text: 'ADCTOX v0.7.3 Visual Workspace' }),
+          h('h2', { id: 'g-title', text: 'ADCTOX v0.7.4 Visual Workspace' }),
           h('button', { type: 'button', class: 'x-btn', 'aria-label': 'Close', onclick: closeGuide }, svgClose())),
         h('ol', { class: 'g-steps' },
           h('li', null, h('b', { text: '1. ADC Matrix: ' }), 'Top recommended ADCs are highlighted in Spotlight Cards. Lower-ranked drugs recede into monochrome slate rows. Only the patient\'s active organs are graphed.'),
-          h('li', null, h('b', { text: '2. Structure Studio: ' }), 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) to inspect chemical compatibility, GTEx tissue selectivity, and organ burden.'),
-          h('li', null, h('b', { text: '3. Patient and Labs: ' }), 'Search conditions in English or Korean, inspect clinical biomarker flowsheets, and review AI condition-organ associations.')),
+          h('li', null, h('b', { text: '2. Structure Studio: ' }), 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) to inspect chemical compatibility, normal tissue expression, and organ risk.'),
+          h('li', null, h('b', { text: '3. Patient Info: ' }), 'Search conditions in English or Korean, inspect clinical biomarker flowsheets, and review AI condition-organ associations.')),
         h('h3', { text: 'Visual Encodings' }),
         h('div', { class: 'g-keys' },
-          h('span', { class: 'sp-status-badge clear', text: 'Standard' }), 'No FDA label restriction triggered for entered profile',
+          h('span', { class: 'sp-status-badge clear', text: 'Standard' }), 'No drug use restriction triggered for entered profile',
           h('span', { class: 'sp-status-badge monitor', text: 'Monitor / Adjust' }), 'Close clinical monitoring or dose modification advised',
-          h('span', { class: 'sp-status-badge avoid', text: 'Avoid' }), 'FDA label advises against use or contraindicated',
-          h('span', { class: 'sp-match-tag', text: 'ADC vs CMP' }), 'Pivotal trial treatment arm vs comparator arm incidence'),
+          h('span', { class: 'sp-status-badge avoid', text: 'Avoid' }), 'Advises against use or contraindicated',
+          h('span', { class: 'sp-match-tag', text: 'Treatment vs Control' }), 'Clinical trial treatment group vs control group comparison'),
         h('div', { class: 'g-foot' },
           h('button', { type: 'button', class: 'ok', text: 'Close', onclick: closeGuide }))));
     document.body.append(guide);
   }
 
-  // ------------------------------------------------------------------ App Data & Clinical Presets
+  // ------------------------------------------------------------------ App Data
   let APP = null, AX = [], SHORT = {}, REG = {}, REG_I = {}, FIELDS = [], MECH = {};
   const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'ink', no_statement: 'ink', reduce_dose: 'amber', monitor: 'amber', no_adjustment: 'green' };
   const MODES = ['ADC Matrix', 'Structure Studio', 'Patient and Labs'];
-
-  const PRESETS = [
-    {
-      id: 'her2-ild',
-      title: 'HER2+ Breast / ILD and Heart Failure',
-      desc: 'Pulmonary and cardiac vulnerability with elevated baseline bilirubin and creatinine',
-      conds: [
-        { kind: 'mondo', value: 'MONDO:0006244', label: 'HER2 positive breast carcinoma', mondo: 'MONDO:0006244' },
-        { kind: 'reg', value: 'interstitial_lung_disease', label: 'Interstitial lung disease (ILD)', mondo: 'MONDO:0015925' },
-        { kind: 'reg', value: 'heart_failure', label: 'Heart failure', mondo: 'MONDO:0005252' },
-      ],
-      raw: { bilirubin: '2.0', creatinine: '1.4', age: '68', sex: 'F', weight: '55' },
-      studio: { target: 'HER2 (ERBB2)', linker: 'Tetrapeptide GGFG', payload: 'DXd ( Topo I )', dar: 8, fc: false },
-    },
-    {
-      id: 'dlbcl-cirr',
-      title: 'DLBCL / Hepatic Cirrhosis',
-      desc: 'Hepatic impairment and pre-existing peripheral neuropathy requiring careful payload selection',
-      conds: [
-        { kind: 'mondo', value: 'MONDO:0018905', label: 'diffuse large B-cell lymphoma', mondo: 'MONDO:0018905' },
-        { kind: 'reg', value: 'cirrhosis', label: 'Cirrhosis', mondo: 'MONDO:0005155' },
-        { kind: 'reg', value: 'peripheral_neuropathy', label: 'Peripheral neuropathy', mondo: 'MONDO:0005244' },
-      ],
-      raw: { bilirubin: '2.4', ast: '95', age: '64', sex: 'M', weight: '72', child_pugh: 'B' },
-      studio: { target: 'CD79b', linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 3.5, fc: false },
-    },
-    {
-      id: 'tnbc-ckd',
-      title: 'TNBC / Stage 3 CKD and Cytopenia',
-      desc: 'Renal clearance constraint and borderline cytopenias prior to systemic ADC initiation',
-      conds: [
-        { kind: 'mondo', value: 'MONDO:0005494', label: 'triple-negative breast carcinoma', mondo: 'MONDO:0005494' },
-        { kind: 'reg', value: 'ckd_stage_3', label: 'Chronic kidney disease stage 3', mondo: 'MONDO:0005300' },
-      ],
-      raw: { creatinine: '1.8', hb: '9.4', anc: '1.3', age: '61', sex: 'F', weight: '58' },
-      studio: { target: 'TROP2 (TACSTD2)', linker: 'Hydrolyzable CL2A', payload: 'SN-38 ( Topo I )', dar: 7.6, fc: false },
-    },
-    {
-      id: 'myeloma-eye',
-      title: 'Multiple Myeloma / Ocular Keratopathy',
-      desc: 'Corneal epithelial vulnerability assessing ocular toxicity risk of auristatin/maytansinoid ADCs',
-      conds: [
-        { kind: 'mondo', value: 'MONDO:0009693', label: 'plasma cell myeloma', mondo: 'MONDO:0009693' },
-        { kind: 'reg', value: 'dry_eye', label: 'Dry eye syndrome', mondo: 'MONDO:0021107' },
-      ],
-      raw: { creatinine: '1.2', age: '70', sex: 'M', weight: '68' },
-      studio: { target: 'BCMA (TNFRSF17)', linker: 'Non-cleavable mc', payload: 'MMAF ( Auristatin )', dar: 4, fc: true },
-    },
-  ];
 
   // ------------------------------------------------------------------ Structure Studio Knowledge Base
   const STUDIO_TARGETS = [
@@ -296,6 +244,14 @@
     otologic: '이비인후',
   };
 
+  // an organ shown in the page's language: ORGAN_KO is keyed by organ id, the label rows carry the short English name
+  const organKo = (x) => {
+    if (S.lang !== 'ko') return SHORT[x] || x;
+    if (ORGAN_KO[x]) return ORGAN_KO[x];
+    const key = Object.keys(SHORT).find((k) => SHORT[k] === x);
+    return (key && ORGAN_KO[key]) || SHORT[x] || x;
+  };
+
   const LAB_KO = {
     bilirubin: '총 빌리루빈',
     creatinine: '혈청 크레아티닌',
@@ -311,8 +267,6 @@
     ko: {
       modes: ['1. ADC 매트릭스', '2. 구조 스튜디오', '3. 환자 정보'],
       brandTag: '임상 ADC 의사결정 및 3D 구조 스튜디오',
-      quickDemo: '데모 증례:',
-      customPatient: '개별 환자 입력',
       newPatient: '새 환자 입력',
       newPatientTitle: '입력된 질환을 초기화하고 새 환자 입력을 시작합니다',
       addCondPh: '암종 또는 기저질환 입력 (예: 유방암, 간질성 폐질환, 간경변, 당뇨병)...',
@@ -324,63 +278,71 @@
       secConstruct: 'ADC 약물 / 구조',
       secFit: '약물 적합도',
       secOrgans: '환자 취약 장기',
-      secTrial: '허가 임상 부작용 발생률',
+      secTrial: '임상시험 사례',
       matrixHead: 'FDA 승인 ADC 약물 치료군 순위',
-      matrixSub: '환자의 취약 장기 및 라벨 주의사항을 종합한 임상 권고',
+      matrixSub: '환자의 취약 장기와 약물별 주의사항을 종합한 권고',
       rankBest: '1위 최적 적합',
       rankCand: '후보',
       fitStd: '표준 용량 투여',
       fitAdj: '모니터링 / 용량 조절',
       fitAvoid: '투여 주의 / 금기',
-      tuneStudio: '구조 스튜디오에서 설계 ->',
+      tuneStudio: '구조 스튜디오에서 설계 ↗',
       allGrade: '전체',
       grade3: '3등급 이상',
       primaryRec: '최우선 추천 약물',
-      primaryHint: '카드를 클릭하면 3D 구조 및 FDA 임상 근거를 확인합니다',
+      primaryHint: '카드를 클릭하면 분자 구조와 임상시험 근거를 확인합니다',
       filterAll: '전체 승인 ADC',
       filterMatch: '암종 일치',
-      filterRestricted: '라벨 주의/금기',
+      filterRestricted: '약물 사용 제한',
       exportSummary: '요약 내보내기',
       match: '일치',
-      archTitle: '접합체 구조 설계 (Architecture)',
-      autoOpt: '자동 최적화 (Auto Optimize)',
+      archTitle: '접합체 구조 설계',
+      autoOpt: 'ADC 자동 설계',
       scanning: '최적화 탐색 중...',
-      scanSpace: '다목적 파레토 최적화 탐색 중...',
-      tgtTitle: '1. 표적 항원 (Target mAb)',
-      lnkTitle: '2. 화학 링커 (Chemical Linker)',
-      pldTitle: '3. 세포독성 페이로드 (Cytotoxic Payload)',
-      darTitle: '4. 약물-항체 접합비 (DAR)',
+      scanSpace: '설계 조합 탐색 중...',
+      tgtTitle: '1. 표적 항원',
+      lnkTitle: '2. 화학 링커',
+      pldTitle: '3. 세포독성 페이로드',
+      darTitle: '4. 약물-항체 접합비 DAR',
       fcTitle: '5. Fc 엔지니어링',
-      wtFc: '야생형 IgG1 (Wild-type)',
+      wtFc: '야생형 IgG1',
       silFc: 'Fc 침묵화 (LALA-PG)',
-      paretoTitle: '다목적 파레토 최적 경계선 (환자 장기 안전성 vs. 항암 효능)',
-      paretoSafetyX: '환자 장기 안전성 점수 (0 - 100)',
-      paretoEfficacyY: '항암 효능 및 선택도 (0 - 100)',
-      legendCand: '후보군 공간',
-      legendPareto: '파레토 최적 경계선',
+      designTitle: '환자 맞춤형 ADC 설계',
+      axisSafety: '예상 장기 안전도 (높을수록 안전)',
+      axisEfficacy: '예상 항암 효능 (높을수록 강력)',
+      legendCand: '설계 조합',
+      legendBad: '접합 불가 조합',
       legendCur: '현재 선택',
-      optimalLocked: 'AI 최적 설계 조합 잠금 완료',
-      optimalCand: 'AI 추천 최적 조합:',
-      peakPareto: '파레토 최적점',
-      clickAutoOpt: '자동 최적화를 클릭하면 스캔 후 적용됩니다',
+      legendBest: '추천 설계',
+      optimalLocked: '현재 설계가 이 환자에게 가장 균형 잡힌 조합입니다',
+      optimalCand: '이 환자에게 추천하는 설계:',
+      bestDesign: '환자 맞춤 추천 설계',
+      clickAutoOpt: 'ADC 자동 설계를 누르면 이 환자에게 맞는 조합을 찾습니다',
+      explainTitle: '점은 어떻게 계산했나요?',
+      explainBody: [
+        '점 하나는 표적, 링커, 페이로드, DAR, Fc의 조합 하나입니다. 가능한 조합 전부를 같은 식으로 계산해 찍었습니다.',
+        '가로축 안전도: 입력한 환자의 취약 장기마다 페이로드의 장기 독성, 표적의 정상 장기 발현량, 약물 부하(DAR와 링커 안정도), Fc 침묵화 여부를 곱해 독성 위험을 구하고, 가장 위험한 장기를 더 무겁게 반영해 100점에서 뺍니다.',
+        '세로축 효능: 표적의 종양 선택도, 페이로드 효력, 링커가 혈장에서 버티고 종양에서 풀리는 정도, DAR, 주변 암세포 동반 사멸 효과를 곱해 계산합니다.',
+        '문헌 속 수치로 만든 규칙 기반 점수라서 임상 결과를 예측하는 값은 아닙니다. 조합을 비교하는 용도로만 사용하세요.',
+      ],
       shCompat: '접합 반응성 호환도',
       shCompatDirect: '직접 결합 가능',
       shCompatSpacer: '링커 스페이서 필요',
       shCompatDesc: '링커의 반응성 작용기와 페이로드 결합 부위의 화학적 짝맞춤입니다.',
       shSelect: '종양 대 정상조직 선택도',
       shSelectDesc: '정상 조직 대비 암세포의 표적 항원 발현비(log2FC)로, 높을수록 정상 장기 손상이 적습니다.',
-      shBystander: '주변 암세포 동반 사멸 (Bystander)',
-      shBystanderActive: '인접 세포 동반 사멸 (활성)',
-      shBystanderAuto: '표적 세포만 국소 사멸 (비활성)',
+      shBystander: '주변 암세포 동반 사멸',
+      shBystanderActive: '동반 사멸 가능',
+      shBystanderAuto: '표적 세포만 사멸',
       shBystanderDesc: '표적 단백질이 없는 인접 암세포까지 침투하여 함께 사멸시키는 효과입니다.',
       shStability: '혈장 내 링커 안정도',
       shStabilityIntact: '유지',
       shStabilityDesc: '혈액 순환 중 페이로드가 조기 유리되지 않고 종양까지 온전하게 전달되는 비율입니다.',
-      simOrganTitle: '환자 취약 장기 모의 독성 지수',
-      gtexTitle: '정상 조직 안전 기준치',
-      gtexNote: '건강한 정상 장기 발현 수치(nTPM)로, 수치가 낮고 녹색일수록 표적 비특이 독성(Off-tumor) 위험이 적습니다.',
-      fcLalaNote: 'LALA-PG Fc 침묵화: 대식세포 FcgammaR 흡수 억제 및 비표적 면역독성 저감',
-      fcWtNote: '야생형 IgG1: 표준 FcgammaR 매개 대식세포 흡수 및 면역 이펙터 기능',
+      simOrganTitle: '취약 장기별 예상 독성 위험',
+      gtexTitle: '정상 장기의 표적 발현량',
+      gtexNote: '단백질이 정상 장기에서 많이 발현될수록 암세포가 아닌 정상 조직도 함께 손상될 위험이 커집니다. 숫자는 발현량(nTPM)이며 낮을수록 안전합니다.',
+      fcLalaNote: 'Fc 침묵화(LALA-PG)로 대식세포의 FcγR 결합이 줄어 폐, 간, 안구 등으로의 비특이 흡수가 감소했습니다.',
+      fcWtNote: '야생형 IgG1은 대식세포의 FcγR에 결합하므로 폐, 간, 안구로의 비특이 흡수가 일어날 수 있습니다.',
       flowTitle: '정량적 임상 바이오마커 플로우시트',
       flowSub: '기관 기준 참고치 대비 수치 매핑 및 독성 플래그 분석',
       refRange: '참고치',
@@ -395,44 +357,42 @@
       noActiveTriggers: '활성화된 장기 독성 요인 없음',
       drTitle: '임상 근거 및 구조 상세',
       tabPatient: '환자 적합도',
-      tabStudy: '허가 임상시험',
-      tabStructure: '3D 분자 구조',
-      labelRestriction: 'FDA 라벨 사용 제한',
-      noLabelRestriction: '입력된 환자 수치에 해당하는 라벨 제한 사항이 없습니다.',
-      patientWarnTitle: '환자 취약 장기 관련 경고',
-      noPatientWarn: '환자의 취약 장기와 관련된 Boxed Warning 또는 주의사항이 없습니다.',
+      tabStudy: '임상시험 사례',
+      tabStructure: '분자 구조',
+      labelRestriction: '약물 사용 제한 여부',
+      noLabelRestriction: '입력된 환자의 수치를 고려하였을 때, 약물 사용에 제한 사항은 없습니다.',
+      patientWarnTitle: '취약 장기 영향 가능성',
+      noPatientWarn: '환자의 취약 장기를 고려하였을 때, 약물 사용에 제한 사항은 없습니다.',
       preCheckTitle: '투여 전 권장 검사',
       missingInputTitle: '미입력 검사 항목',
       enterLabBtn: '검사 수치 입력하기',
-      rotateHint: '드래그하여 3D 구조 회전',
+      rotateHint: '드래그하여 회전',
       treatmentArm: '치료군',
       controlArm: '대조군',
-      trialContext: '임상시험 상세 및 이상사례 발생률',
-      struct3dTitle: '3D 접합체 분자 구조 (대화형)',
+      trialContext: '이상사례 발생률 비교',
+      struct3dTitle: '분자 구조',
       appliesToAll: '모든 환자에게 적용',
       singleArmTrial: '단일군 임상시험 (대조군 없음)',
-      compareTitle: '신규 최적 설계 vs. 기존 승인 ADC 비교',
+      compareTitle: '맞춤 설계 vs. 기존 승인 약물 비교',
       tabCompare: '설계 비교',
-      tabStruct3d: '3D 분자 구조',
-      tabRefStudy: '기존 허가 임상',
-      deNovoCol: '신규 최적 설계 (De Novo ADC)',
-      refCol: '기존 승인 약물 (Approved Benchmark)',
+      tabStruct3d: '분자 구조',
+      tabRefStudy: '임상시험 사례',
+      deNovoCol: '이 환자 맞춤 설계',
+      refCol: '기존 승인 약물',
       clinicalDiff: '임상적 차이 및 개선 이점',
-      deRiskTitle: '기존 약물 부작용 대비 임상 개선 기전 (Clinical De-Risking)',
+      deRiskTitle: '기존 약물 부작용 대비 임상 개선 기전',
       viewCompareBtn: '기존 승인 ADC와 비교 ↗',
       compTarget: '표적 항원',
       compLinker: '화학 링커',
       compPayload: '세포독성 페이로드',
-      compDar: '약물-항체 접합비 (DAR)',
+      compDar: '약물-항체 접합비 DAR',
       compFc: 'Fc 엔지니어링',
-      compSafety: '장기 안전성 점수',
-      compEfficacy: '항암 효능 점수',
+      compSafety: '예상 장기 안전도',
+      compEfficacy: '예상 항암 효능',
     },
     en: {
       modes: ['1. ADC Matrix', '2. Structure Studio', '3. Patient Info'],
       brandTag: 'Clinical ADC Decision & Structure Studio',
-      quickDemo: 'Quick Demo:',
-      customPatient: 'Custom Patient',
       newPatient: 'New Patient',
       newPatientTitle: 'Clear entered conditions and start custom patient input',
       addCondPh: 'Enter cancer or comorbidity (e.g., breast cancer, ILD, cirrhosis)...',
@@ -444,26 +404,26 @@
       secConstruct: 'ADC Regimen / Construct',
       secFit: 'Drug Fit',
       secOrgans: 'Vulnerable Organs',
-      secTrial: 'Pivotal Trial AE Rate',
+      secTrial: 'Clinical Trial Cases',
       matrixHead: 'Ranked FDA-Approved ADC Regimens',
-      matrixSub: 'Synthesized from FDA label warnings, active organs, and pivotal trials',
+      matrixSub: 'Synthesized from drug warnings, active organs, and clinical trials',
       rankBest: '#1 Best Fit',
       rankCand: 'Candidate',
       fitStd: 'Standard dosing',
       fitAdj: 'Monitor / Adjust',
       fitAvoid: 'Avoid / Contraindicated',
-      tuneStudio: 'Tune in Structure Studio ->',
+      tuneStudio: 'Tune in Structure Studio ↗',
       allGrade: 'All Gr',
       grade3: 'Gr >=3',
       primaryRec: 'Primary Recommendation',
-      primaryHint: 'Click card for 3D architecture and FDA trial evidence',
+      primaryHint: 'Click a card for the molecular structure and clinical trial evidence',
       filterAll: 'All Approved ADCs',
       filterMatch: 'Cancer Match',
-      filterRestricted: 'Label Restrictions',
+      filterRestricted: 'Use Restrictions',
       exportSummary: 'Export Summary',
       match: 'Match',
       archTitle: 'Conjugate Architecture',
-      autoOpt: 'Auto Optimize',
+      autoOpt: 'Auto-design ADC',
       scanning: 'Optimizing...',
       scanSpace: 'Scanning candidate space...',
       tgtTitle: '1. Target Antigen (mAb)',
@@ -473,16 +433,24 @@
       fcTitle: '5. Fc Engineering',
       wtFc: 'Wild-type IgG1',
       silFc: 'Fc-Silenced (LALA-PG)',
-      paretoTitle: 'Multi-Objective Pareto Frontier (Patient Organ Safety vs. Antitumor Efficacy)',
-      paretoSafetyX: 'Patient Organ Safety Score (0 - 100)',
-      paretoEfficacyY: 'Antitumor Efficacy & Selectivity (0 - 100)',
-      legendCand: 'Candidate Space',
-      legendPareto: 'Pareto Frontier',
-      legendCur: 'Current Selection',
-      optimalLocked: 'AI De Novo Optimal ADC Architecture Locked',
-      optimalCand: 'AI Recommended Optimum:',
-      peakPareto: 'Pareto Frontier Peak',
-      clickAutoOpt: 'Click Auto Optimize to scan and apply',
+      designTitle: 'Patient-Tailored ADC Design',
+      axisSafety: 'Expected organ safety (higher is safer)',
+      axisEfficacy: 'Expected antitumor efficacy (higher is stronger)',
+      legendCand: 'Design combinations',
+      legendBad: 'Cannot be conjugated',
+      legendCur: 'Current selection',
+      legendBest: 'Recommended design',
+      optimalLocked: 'The current design is the most balanced choice for this patient',
+      optimalCand: 'Recommended design for this patient:',
+      bestDesign: 'Recommended for this patient',
+      clickAutoOpt: 'Press Auto-design ADC to find the best combination for this patient',
+      explainTitle: 'How was each dot calculated?',
+      explainBody: [
+        'Each dot is one combination of target, linker, payload, DAR and Fc. Every possible combination was scored with the same formula.',
+        'Safety (x): for each of the patient\'s vulnerable organs, payload organ toxicity, normal-tissue expression of the target, drug load (DAR and linker stability) and Fc silencing are multiplied into a toxicity risk. The most at-risk organ is weighted more, and the result is subtracted from 100.',
+        'Efficacy (y): tumor selectivity of the target, payload potency, how well the linker survives in plasma and releases in the tumor, DAR and bystander killing are multiplied.',
+        'These are rule-based scores built from published figures. They do not predict clinical outcomes; use them only to compare combinations.',
+      ],
       shCompat: 'Conjugation Compatibility',
       shCompatDirect: 'Direct Coupling',
       shCompatSpacer: 'Linker Spacer Needed',
@@ -496,11 +464,11 @@
       shStability: 'Plasma Linker Stability',
       shStabilityIntact: 'Intact',
       shStabilityDesc: 'Resistance to premature systemic payload deconjugation in circulation.',
-      simOrganTitle: 'Simulated Patient Organ Toxicity Index',
-      gtexTitle: 'Normal Tissue Safety Baseline',
-      gtexNote: 'Normal tissue expression level (nTPM). Lower values (green) represent reduced on-target off-tumor toxicity risk.',
-      fcLalaNote: 'LALA-PG Fc-silencing active: FcgammaR macrophage uptake attenuated.',
-      fcWtNote: 'Wild-type IgG1: standard immune effector and macrophage uptake.',
+      simOrganTitle: 'Expected toxicity risk by vulnerable organ',
+      gtexTitle: 'Target expression in normal organs',
+      gtexNote: 'The more this protein is expressed in normal organs, the more healthy tissue can be hit together with the tumor. Numbers are expression levels (nTPM); lower is safer.',
+      fcLalaNote: 'Fc silencing (LALA-PG) reduces FcγR binding on macrophages, lowering non-specific uptake in lung, liver and eye.',
+      fcWtNote: 'Wild-type IgG1 binds FcγR on macrophages, so non-specific uptake in lung, liver and eye can occur.',
       flowTitle: 'Clinical Biomarker Flowsheet',
       flowSub: 'Values mapped against institutional reference intervals',
       refRange: 'Ref',
@@ -515,38 +483,38 @@
       noActiveTriggers: 'No active organ toxicity triggers detected.',
       drTitle: 'Clinical Evidence and Structure',
       tabPatient: 'Patient & Label Fit',
-      tabStudy: 'Pivotal Trials',
-      tabStructure: 'Structure 3D',
-      labelRestriction: 'Label restriction',
-      noLabelRestriction: 'No label restriction triggered for entered values.',
-      patientWarnTitle: "Warnings on the patient's organs",
-      noPatientWarn: "No boxed or Section 5 warnings on patient's active organs.",
+      tabStudy: 'Trial Cases',
+      tabStructure: 'Molecular Structure',
+      labelRestriction: 'Restrictions on using this drug',
+      noLabelRestriction: 'Given the entered patient values, there are no restrictions on using this drug.',
+      patientWarnTitle: 'Possible effects on vulnerable organs',
+      noPatientWarn: "Given the patient's vulnerable organs, there are no restrictions on using this drug.",
       preCheckTitle: 'Pre-treatment checks',
       missingInputTitle: 'Missing inputs',
       enterLabBtn: 'Enter lab values',
       rotateHint: 'Drag to rotate 3D structure',
       treatmentArm: 'Treatment Arm',
       controlArm: 'Comparator Arm',
-      trialContext: 'Trial context and adverse events',
-      struct3dTitle: '3D Conjugate Architecture (Interactive)',
+      trialContext: 'Adverse event comparison',
+      struct3dTitle: 'Molecular Structure',
       appliesToAll: 'Applies to all patients',
       singleArmTrial: 'Single-arm trial',
-      compareTitle: 'De Novo Design vs. Approved ADC Benchmark',
+      compareTitle: 'Tailored Design vs. Approved Drug',
       tabCompare: 'Compare',
-      tabStruct3d: '3D Structure',
-      tabRefStudy: 'Pivotal Trial',
-      deNovoCol: 'De Novo Design (Optimal)',
-      refCol: 'Approved Benchmark',
+      tabStruct3d: 'Molecular Structure',
+      tabRefStudy: 'Trial Cases',
+      deNovoCol: 'Tailored Design',
+      refCol: 'Approved Drug',
       clinicalDiff: 'Clinical Difference & Advantage',
-      deRiskTitle: 'Clinical De-Risking vs. Approved Drug Warnings',
+      deRiskTitle: 'How this design lowers the approved drug\'s side effects',
       viewCompareBtn: 'Compare with Approved ADC ↗',
       compTarget: 'Target Antigen',
       compLinker: 'Chemical Linker',
       compPayload: 'Cytotoxic Payload',
       compDar: 'DAR',
       compFc: 'Fc Engineering',
-      compSafety: 'Simulated Safety Score',
-      compEfficacy: 'Antitumor Efficacy Score',
+      compSafety: 'Expected organ safety score',
+      compEfficacy: 'Expected antitumor efficacy score',
     },
   };
   function t(k) {
@@ -555,15 +523,14 @@
   }
 
   // ------------------------------------------------------------------ Session State
-  const KEY = 'adctox.web.v071';
+  const KEY = 'adctox.web.v074';
   function defaultState() {
-    const p = PRESETS[0];
     return {
       mode: 0,
       lang: 'ko',
-      presetId: p.id,
-      conds: p.conds.map((c) => Object.assign({}, c)),
-      raw: Object.assign({}, p.raw),
+      presetId: null,
+      conds: [],
+      raw: {},
       labs: null,
       meanings: {},
       first: null,
@@ -573,7 +540,7 @@
       reviewAdc: null,
       drawer: false,
       drawerTab: 'Patient',
-      studio: Object.assign({}, p.studio),
+      studio: { target: 'HER2 (ERBB2)', linker: 'Tetrapeptide GGFG', payload: 'DXd ( Topo I )', dar: 4, fc: false },
     };
   }
   let S = defaultState();
@@ -583,7 +550,7 @@
   function restore() {
     try {
       const d = JSON.parse(sessionStorage.getItem(KEY) || 'null');
-      if (d && typeof d === 'object' && Array.isArray(d.conds) && d.conds.length) {
+      if (d && typeof d === 'object' && Array.isArray(d.conds)) {
         S = Object.assign(defaultState(), d);
         if (d.lang) S.lang = d.lang;
       }
@@ -715,50 +682,11 @@
     });
 
     clear(scenarioDropdown);
-    const activePreset = PRESETS.find((p) => p.id === S.presetId) || PRESETS[0];
-    const trigger = h('button', {
-      type: 'button', class: 'scenario-btn', 'aria-haspopup': 'true', 'aria-expanded': 'false',
-      title: 'Load quick clinical demo cases. You can freely edit or clear conditions anytime.',
-      onclick: () => {
-        const exp = menu.hidden;
-        menu.hidden = !exp;
-        trigger.setAttribute('aria-expanded', String(exp));
-      },
-    },
-    h('span', { class: 'dim', text: t('quickDemo') }),
-    h('strong', { class: 'scenario-current', text: S.presetId ? activePreset.title.split('/')[0].trim() : t('customPatient') }),
-    sv('svg', { class: 'chevron', width: '10', height: '6', viewBox: '0 0 10 6', stroke: 'currentColor', 'stroke-width': '1.5', fill: 'none' },
-      sv('path', { d: 'M1 1L5 5L9 1' })));
-
-    const resetBtn = h('button', {
+    scenarioDropdown.append(h('button', {
       type: 'button', class: 'reset-patient-btn', text: t('newPatient'),
       title: t('newPatientTitle'),
       onclick: () => resetPatient(),
-    });
-
-    const menu = h('div', { class: 'scenario-menu panel', hidden: true });
-    PRESETS.forEach((p) => {
-      const item = h('button', {
-        type: 'button', class: 'scenario-item' + (p.id === S.presetId ? ' active' : ''),
-        onclick: () => {
-          menu.hidden = true;
-          trigger.setAttribute('aria-expanded', 'false');
-          applyPreset(p);
-        },
-      },
-      h('span', { class: 'sc-title', text: p.title }),
-      h('span', { class: 'sc-desc', text: p.desc }));
-      menu.append(item);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!scenarioDropdown.contains(e.target)) {
-        menu.hidden = true;
-        trigger.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    scenarioDropdown.append(trigger, resetBtn, menu);
+    }));
   }
 
   function resetPatient() {
@@ -775,32 +703,54 @@
     refreshBackendData().then(() => renderActiveMode(true));
   }
 
-  async function applyPreset(p) {
-    S.presetId = p.id;
-    S.conds = p.conds.map((c) => Object.assign({}, c));
-    S.raw = Object.assign({}, p.raw);
-    S.meanings = {};
-    S.first = null;
-    S.analysis = null;
-    S.result = null;
-    S.sel = 0;
-    if (p.studio) S.studio = Object.assign({}, p.studio);
-    save();
-    closeDrawer(true);
-    renderHeaderControls();
-    await refreshBackendData();
-    switchMode(S.mode, true);
+  // ------------------------------------------------------------------ Background Data Sync
+  // The bar above the condition box follows the real steps of the work: lab values read, drugs ranked, then the analysis
+  // job on the server (queued, running, the organ judge, done). It moves only when one of those steps reports in.
+  const PROG = { pct: 0, text: '', on: false, hide: 0 };
+  let progNode = null;
+  function paintProgress() {
+    if (!progNode) return;
+    progNode.classList.toggle('on', PROG.on);
+    progNode.querySelector('.mp-fill').style.width = PROG.pct + '%';
+    progNode.querySelector('.mp-text').textContent = PROG.on ? `${PROG.text} ${Math.round(PROG.pct)}%` : '';
+    progNode.setAttribute('aria-valuenow', String(Math.round(PROG.pct)));
+  }
+  function buildProgressBar() {
+    progNode = h('div', { class: 'model-progress', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': '0', 'aria-label': 'Analysis progress' },
+      h('div', { class: 'mp-track' }, h('i', { class: 'mp-fill' })),
+      h('span', { class: 'mp-text' }));
+    paintProgress();
+    return progNode;
+  }
+  const PROG_TEXT = {
+    ko: { start: '환자 정보 확인 중', labs: '검사 수치 해석 중', rank: '약물 순위 계산 중', queued: '질환 분석 대기 중', running: '질환 분석 시작', judging: '질환별 취약 장기 판정 중', done: '분석 완료' },
+    en: { start: 'Reading patient information', labs: 'Interpreting lab values', rank: 'Ranking drugs', queued: 'Analysis queued', running: 'Analysis started', judging: 'Judging vulnerable organs', done: 'Analysis complete' },
+  };
+  function setProgress(pct, key) {
+    clearTimeout(PROG.hide);
+    if (!PROG.on) PROG.pct = 0;
+    PROG.on = true;
+    PROG.pct = Math.max(PROG.pct, pct);
+    PROG.text = (PROG_TEXT[S.lang === 'ko' ? 'ko' : 'en'])[key] || '';
+    paintProgress();
+  }
+  function endProgress() {
+    if (!PROG.on) return;
+    setProgress(100, 'done');
+    PROG.hide = setTimeout(() => { PROG.on = false; paintProgress(); PROG.pct = 0; }, 900);
   }
 
-  // ------------------------------------------------------------------ Background Data Sync
   let syncSeq = 0;
   async function refreshBackendData() {
     const seq = ++syncSeq;
+    PROG.on = false;
+    setProgress(4, 'start');
     try {
       const labsRes = await API.labs(rawValues());
       if (seq !== syncSeq) return;
       S.labs = labsRes;
     } catch (e) { /* keep existing */ }
+    setProgress(25, 'labs');
 
     try {
       const labRaw = (S.labs && S.labs.raw) || rawValues();
@@ -814,8 +764,9 @@
       S.result = { sig: resultSig(), data: recRes };
       save();
     } catch (e) { /* ignore */ }
+    setProgress(55, 'rank');
 
-    runBackgroundAnalysis(seq);
+    runBackgroundAnalysis(seq).then(() => { if (seq === syncSeq) endProgress(); });
   }
 
   async function runBackgroundAnalysis(seq) {
@@ -825,8 +776,9 @@
     try {
       const start = await API.analyze(condList(), pickChoice());
       if (seq !== syncSeq) return;
+      setProgress(60, 'queued');
       const job = start.job;
-      for (let k = 0; k < 80; k++) {
+      for (let k = 0; k < 600; k++) {
         await sleep(200);
         if (seq !== syncSeq) return;
         const r = await API.job(job);
@@ -839,6 +791,8 @@
           if (S.mode === 0 || S.mode === 2) renderActiveMode(false);
           return;
         }
+        if (r.step === 'judging') setProgress(85, 'judging');
+        else if (r.state === 'running') setProgress(72, 'running');
       }
     } catch (e) { /* background optional */ }
   }
@@ -1029,6 +983,7 @@
 
     return h('section', { class: 'workspace-bar', 'aria-label': 'Patient and active organ profile' },
       h('div', { class: 'wb-left' },
+        buildProgressBar(),
         h('div', { class: 'wb-search-row' },
           h('div', { class: 'wb-input-wrap' },
             svgSearch(),
@@ -1075,9 +1030,9 @@
     const detail = row.detail || {};
     const allWarnings = [].concat(detail.warnings || [], detail.other_warnings || []);
     const found = allWarnings.find((w) => w.organ === organ);
-    if (!found) return { cls: 'clear', tag: isKo ? '허용' : 'Clear', title: isKo ? (orgName + ' 라벨 경고 없음') : ('No label warning on ' + (SHORT[organ] || organ)) };
-    if (String(found.mark || '').trim() === '!!') return { cls: 'boxed', tag: isKo ? '경고' : 'Warning', title: (isKo ? 'Boxed 경고: ' : 'Boxed Warning: ') + (found.text || '') };
-    return { cls: 'warn', tag: isKo ? '주의' : 'Caution', title: (isKo ? 'Section 5 주의: ' : 'Section 5 Warning: ') + (found.text || '') };
+    if (!found) return { cls: 'clear', tag: isKo ? '허용' : 'Clear', title: isKo ? (orgName + ' 특이 주의사항 없음') : ('No warning on ' + (SHORT[organ] || organ)) };
+    if (String(found.mark || '').trim() === '!!') return { cls: 'boxed', tag: isKo ? '경고' : 'Warning', title: (isKo ? '중증 주의사항: ' : 'Major warning: ') + (found.text || '') };
+    return { cls: 'warn', tag: isKo ? '주의' : 'Caution', title: (isKo ? '주의사항: ' : 'Caution: ') + (found.text || '') };
   }
 
   function primaryTrialEvent(row, activeOrgans) {
@@ -1094,14 +1049,17 @@
   }
 
   function buildDualBar(trialHit) {
-    if (!trialHit || !trialHit.trial || !trialHit.ev) return h('span', { class: 'dim', style: 'font-size:11px', text: S.lang === 'ko' ? '단일군 임상 (대조군 없음)' : 'Single-arm trial' });
+    const isKo = S.lang === 'ko';
+    if (!trialHit || !trialHit.trial || !trialHit.ev) return h('span', { class: 'dim', style: 'font-size:11px', text: isKo ? '단일군 임상 (대조군 없음)' : 'Single-arm trial' });
     const { trial, ev } = trialHit;
     const adcPct = (100 * (ev.a || 0)) / Math.max(1, ev.n || 1);
     const cmpPct = ev.comp && ev.comp[1] ? (100 * ev.comp[0]) / Math.max(1, ev.comp[1]) : null;
     const scaleMax = Math.max(25, adcPct, cmpPct || 0);
-    const compLabel = (trial.comparator && trial.comparator.regimen) || (S.lang === 'ko' ? '대조군' : 'Control');
-    const tip = `${trial.trial || ''}: ${ev.term || ''}\nADC (${trial.regimen || ''}): ${ev.a || 0}/${ev.n || 0} (${ev.pct || ''})` +
-      (ev.comp ? `\n${S.lang === 'ko' ? '대조군' : 'Control'} (${compLabel}): ${ev.comp[0]}/${ev.comp[1]} (${ev.comp_pct || ''})` : '');
+    const compLabel = (trial.comparator && trial.comparator.regimen) || (isKo ? '대조군' : 'Control');
+    const txLabel = isKo ? '치료군' : 'Tx';
+    const ctrlLabel = isKo ? '대조군' : 'Ctrl';
+    const tip = `${trial.trial || ''}: ${ev.term || ''}\n${isKo ? '치료군' : 'Treatment'} (${trial.regimen || ''}): ${adcPct.toFixed(1)}%` +
+      (cmpPct !== null ? `\n${isKo ? '대조군' : 'Control'} (${compLabel}): ${cmpPct.toFixed(1)}%` : '');
 
     return h('div', {
       class: 'dual-bar-group',
@@ -1111,13 +1069,13 @@
       h('span', { text: ev.term || '' }),
       h('span', { class: 'dim', text: trial.trial || '' })),
     h('div', { class: 'dual-bar-row' },
-      h('span', { class: 'db-tag', text: 'ADC' }),
+      h('span', { class: 'db-tag', text: txLabel }),
       h('span', { class: 'db-track' }, h('i', { class: 'db-fill-adc', style: `width:${Math.min(100, (adcPct / scaleMax) * 100).toFixed(1)}%` })),
-      h('span', { class: 'db-pct', text: ev.pct || '' })),
+      h('span', { class: 'db-pct', text: `${adcPct.toFixed(1)}%` })),
     cmpPct !== null ? h('div', { class: 'dual-bar-row' },
-      h('span', { class: 'db-tag', text: 'CMP' }),
+      h('span', { class: 'db-tag', text: ctrlLabel }),
       h('span', { class: 'db-track' }, h('i', { class: 'db-fill-cmp', style: `width:${Math.min(100, (cmpPct / scaleMax) * 100).toFixed(1)}%` })),
-      h('span', { class: 'db-pct cmp', text: ev.comp_pct || '' })) : null);
+      h('span', { class: 'db-pct cmp', text: `${cmpPct.toFixed(1)}%` })) : null);
   }
 
   // ------------------------------------------------------------------ Mode 0: Visual ADC Matrix
@@ -1323,10 +1281,28 @@
     return box;
   }
 
-  // ------------------------------------------------------------------ Mode 1: Structure & Combination Studio (with Pareto Scan Simulation)
+  // ------------------------------------------------------------------ Mode 1: Structure & Combination Studio
   let simAnimId = 0;
 
-  function computeStudioSimulation(specInput) {
+  // The score model behind the dots. Both scores are smooth, bounded transforms of published properties (no hard caps),
+  // so combinations spread out instead of piling up on a line.
+  const FC_SENSITIVE = ['pulmonary', 'haematologic', 'ocular', 'hepatic'];
+  const FALLBACK_ORGANS = [
+    { organ: 'pulmonary', score: 0.8 }, { organ: 'hepatic', score: 0.8 },
+    { organ: 'haematologic', score: 0.8 }, { organ: 'cardiovascular', score: 0.7 },
+  ];
+  // the approved drug of each target, written in the studio's own parts so it is scored by the same formula
+  const REF_STUDIO = {
+    'HER2 (ERBB2)': { linker: 'Tetrapeptide GGFG', payload: 'DXd ( Topo I )', dar: 8, fc: false },
+    'TROP2 (TACSTD2)': { linker: 'Hydrolyzable CL2A', payload: 'SN-38 ( Topo I )', dar: 7.6, fc: false },
+    'Nectin-4': { linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 4, fc: false },
+    'CD79b': { linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 3.5, fc: false },
+    'BCMA (TNFRSF17)': { linker: 'Non-cleavable mc', payload: 'MMAF ( Auristatin )', dar: 4, fc: false },
+    'FRalpha (FOLR1)': { linker: 'Disulfide SPDB', payload: 'DM4 / DM1 ( Maytansinoid )', dar: 3.5, fc: false },
+  };
+  const plainName = (id) => String(id || '').replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+
+  function computeStudioSimulation(specInput, organsInput) {
     const spec = specInput || S.studio;
     const tgt = STUDIO_TARGETS.find((x) => x.id === spec.target) || STUDIO_TARGETS[0];
     const lnk = STUDIO_LINKERS.find((x) => x.id === spec.linker) || STUDIO_LINKERS[0];
@@ -1334,90 +1310,85 @@
     const dar = Number(spec.dar) || 4;
     const fcSilenced = Boolean(spec.fc);
 
-    const activeOrgs = activeOrgansWithScores();
+    const real = organsInput || activeOrgansWithScores();
+    const organs = real.length ? real : FALLBACK_ORGANS;
     const isCompat = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
-    const aggPenalty = dar > 4 ? (dar - 4) * 3.5 : 0;
 
-    let totalOrganTox = 0;
-    activeOrgs.forEach((ao) => {
-      const basePld = pld.organs[ao.organ] || 35;
-      const onTarget = (tgt.tissues.find((t) => t.organ === ao.organ) || { tpm: 15 }).tpm * 0.4;
-      const darFactor = 0.75 + (dar / 8) * 0.45;
-      const fcFactor = fcSilenced && ['pulmonary', 'haematologic', 'ocular', 'hepatic'].includes(ao.organ) ? 0.78 : 1.0;
-      totalOrganTox += (basePld * 0.6 + onTarget) * darFactor * fcFactor * (ao.score || 0.8);
+    // Safety: per organ, payload toxicity plus the target's expression in that organ, multiplied by the drug load that
+    // reaches the blood (DAR, extra for aggregation above DAR 4, extra for a linker that lets payload go early).
+    const load = (dar / 4) * (1 + (1 - lnk.stability / 100) * 1.5) * (dar > 4 ? 1 + (dar - 4) * 0.06 : 1);
+    const organRisks = organs.map((ao) => {
+      const payloadTox = (pld.organs[ao.organ] != null ? pld.organs[ao.organ] : 22) / 100;
+      const expr = ((tgt.tissues.find((x) => x.organ === ao.organ) || { tpm: 8 }).tpm) / 100;
+      const fc = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? 0.75 : 1;
+      const w = 0.6 + 0.4 * Math.min(1, ao.score || 0.8);
+      const x = (payloadTox + 0.6 * expr) * load * fc * w;
+      return { organ: ao.organ, p: 1 - Math.exp(-0.5 * x) };
     });
-    const meanTox = activeOrgs.length ? totalOrganTox / activeOrgs.length : 38;
-    const safetyScore = Math.max(10, Math.min(96, Math.round(100 - meanTox * 0.85 + (lnk.stability - 70) * 0.35 + (fcSilenced ? 6 : 0) - aggPenalty * 0.5)));
+    const meanRisk = organRisks.reduce((a, r) => a + r.p, 0) / organRisks.length;
+    const worstRisk = Math.max(...organRisks.map((r) => r.p));
+    const safetyScore = Math.max(1, Math.min(99, Math.round(100 * (1 - (0.5 * worstRisk + 0.5 * meanRisk)))));
 
+    // Efficacy: selectivity, payload potency, how much drug survives to the tumor and is released there, DAR, bystander killing.
     const bystander = lnk.cleavable && pld.perm;
-    const efficacyScore = Math.max(15, Math.min(98, Math.round(
-      tgt.selectivity * 9.8 +
-      pld.potency * 0.35 +
-      (dar >= 4 ? 14 : dar * 3) +
-      (bystander ? 7 : 0) +
-      (isCompat ? 4 : -8)
-    )));
+    const targetTerm = 1 - Math.exp(-tgt.selectivity / 3);
+    const delivered = 0.5 + 0.5 * lnk.stability / 100;
+    const release = lnk.cleavable ? 1 : 0.78;
+    const loadTerm = (1 - Math.exp(-dar / 3.5)) * (dar > 4 ? 1 - (dar - 4) * 0.04 : 1);
+    const eff = Math.pow(targetTerm, 0.35) * Math.pow(pld.potency / 100, 0.5) * Math.pow(delivered, 0.6) *
+      Math.pow(release, 0.5) * Math.pow(loadTerm, 0.5) * (bystander ? 1.1 : 1) * (isCompat ? 1 : 0.55);
+    const efficacyScore = Math.max(1, Math.min(99, Math.round(eff * 100)));
 
-    return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, isCompat, meanTox, bystander };
+    return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, isCompat, organRisks, meanRisk, bystander };
   }
 
   function evaluateAllStudioCandidates() {
+    const real = activeOrgansWithScores();
     const cands = [];
     const dars = [2, 3.5, 4, 6, 7.6, 8];
-    const fcs = [false, true];
     STUDIO_TARGETS.forEach((t) => {
       STUDIO_LINKERS.forEach((l) => {
         STUDIO_PAYLOADS.forEach((p) => {
           dars.forEach((d) => {
-            fcs.forEach((fc) => {
-              cands.push(computeStudioSimulation({ target: t.id, linker: l.id, payload: p.id, dar: d, fc }));
+            [false, true].forEach((fc) => {
+              cands.push(computeStudioSimulation({ target: t.id, linker: l.id, payload: p.id, dar: d, fc }, real));
             });
           });
         });
       });
     });
 
-    const pareto = [];
+    // the more vulnerable organs the patient has, the more the pick leans to safety
+    const wSafety = 0.5 + 0.04 * Math.min(real.length, 6);
+    let best = null;
+    let top = -1;
     cands.forEach((c) => {
-      const dominated = cands.some((o) =>
-        o.safetyScore >= c.safetyScore && o.efficacyScore >= c.efficacyScore &&
-        (o.safetyScore > c.safetyScore || o.efficacyScore > c.efficacyScore)
-      );
-      if (!dominated) {
-        if (!pareto.some((p) => p.safetyScore === c.safetyScore && p.efficacyScore === c.efficacyScore)) {
-          pareto.push(c);
-        }
-      }
+      if (!c.isCompat) return;
+      const util = wSafety * c.safetyScore + (1 - wSafety) * c.efficacyScore;
+      if (util > top) { top = util; best = c; }
     });
-    pareto.sort((a, b) => a.safetyScore - b.safetyScore || a.efficacyScore - b.efficacyScore);
-
-    let best = pareto[0] || cands[0];
-    let maxUtil = -1;
-    pareto.forEach((p) => {
-      const util = p.safetyScore * 0.55 + p.efficacyScore * 0.45;
-      if (util > maxUtil) { maxUtil = util; best = p; }
-    });
-
-    return { cands, pareto, best };
+    return { cands, best: best || cands[0] };
   }
 
   function buildAutoOptimizeRationales(bestSim) {
     const s = bestSim.spec;
     const isKo = S.lang === 'ko';
     const activeOrgs = activeOrgansWithScores().map((o) => (isKo && ORGAN_KO[o.organ] ? ORGAN_KO[o.organ] : SHORT[o.organ] || o.organ));
+    const tgtName = plainName(s.target);
+    const plName = plainName(s.payload);
     if (isKo) {
       return [
-        ['1. 표적 항원', `${s.target} (선택도 +${bestSim.tgt.selectivity.toFixed(1)} log2FC)`, '정상 장기 발현을 최소화하고 종양 암세포에 고선택적으로 결합합니다.'],
-        ['2. 화학 링커', `${s.linker} (혈장 안정도 ${bestSim.lnk.stability}%)`, `${activeOrgs.join(', ') || '주요 취약 장기'}에서 비특이적 유출을 방지하고 종양 내에서만 절단됩니다.`],
-        ['3. 세포독성 페이로드', `${s.payload} (${bestSim.pld.family || bestSim.pld.cls})`, '환자 활성 취약 장기 독성 병목을 회피하면서 높은 항암 살상력을 발휘합니다.'],
-        ['4. 접합비 및 Fc 설계', `DAR ${s.dar} + ${s.fc ? 'Fc 침묵화 (LALA-PG)' : '야생형 IgG1 (Wild-type)'}`, `환자 장기 안전성(${bestSim.safetyScore}점)과 종양 효능(${bestSim.efficacyScore}점)의 파레토 최적 균형점입니다.`],
+        ['1. 표적 항원', `${tgtName}, 선택도 +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, '정상 장기에는 적고 종양에 많은 표적이라 정상 조직 손상을 줄입니다.'],
+        ['2. 화학 링커', `${s.linker}, 혈장 안정도 ${bestSim.lnk.stability}%`, `${activeOrgs.join(', ') || '주요 장기'}로 약물이 미리 새어 나가는 것을 줄이고 종양 안에서 풀리도록 합니다.`],
+        ['3. 세포독성 페이로드', `${plName}, ${bestSim.pld.cls}`, '이 환자의 취약 장기에 대한 독성이 상대적으로 낮으면서 항암 효력은 유지합니다.'],
+        ['4. 접합비와 Fc', `DAR ${s.dar}, ${s.fc ? 'Fc 침묵화' : '야생형 IgG1'}`, `예상 장기 안전도 ${bestSim.safetyScore}점, 예상 항암 효능 ${bestSim.efficacyScore}점으로 두 지표의 균형이 가장 좋은 조합입니다.`],
       ];
     }
     return [
-      ['1. Target Antigen', `${s.target} (Selectivity +${bestSim.tgt.selectivity.toFixed(1)} log2FC)`, 'Maximizes tumor selectivity margin while minimizing healthy normal tissue binding.'],
-      ['2. Chemical Linker', `${s.linker} (Plasma Stability ${bestSim.lnk.stability}%)`, `Prevents premature systemic shedding on ${activeOrgs.join(', ') || 'vulnerable organs'} with lysosomal payload release.`],
-      ['3. Cytotoxic Payload', `${s.payload} (${bestSim.pld.family || bestSim.pld.cls})`, 'Evades dose-limiting toxicity bottlenecks on active organs while preserving high potency.'],
-      ['4. DAR & Fc Engineering', `DAR ${s.dar} + ${s.fc ? 'Fc-Silenced (LALA-PG)' : 'Wild-type IgG1'}`, `Optimal Pareto frontier balance: Safety ${bestSim.safetyScore}/100 and Efficacy ${bestSim.efficacyScore}/100.`],
+      ['1. Target antigen', `${tgtName}, selectivity +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, 'Low in normal organs and high in the tumor, so healthy tissue is spared.'],
+      ['2. Chemical linker', `${s.linker}, plasma stability ${bestSim.lnk.stability}%`, `Keeps drug from leaking into ${activeOrgs.join(', ') || 'major organs'} and releases it inside the tumor.`],
+      ['3. Cytotoxic payload', `${plName}, ${bestSim.pld.cls}`, 'Relatively low toxicity on this patient\'s vulnerable organs while keeping antitumor potency.'],
+      ['4. DAR and Fc', `DAR ${s.dar}, ${s.fc ? 'Fc silenced' : 'wild-type IgG1'}`, `Expected organ safety ${bestSim.safetyScore} and antitumor efficacy ${bestSim.efficacyScore}: the best balance of the two.`],
     ];
   }
 
@@ -1434,17 +1405,22 @@
     let autoRationale = null;
     let optBtn = null;
 
+    // A pace that speeds up, stalls and speeds up again like real work, instead of one constant crawl.
+    const PACE = [[0, 0], [0.1, 0.06], [0.24, 0.31], [0.36, 0.38], [0.58, 0.77], [0.7, 0.81], [0.88, 0.97], [1, 1]];
+    function pace(f) {
+      for (let i = 1; i < PACE.length; i++) {
+        if (f <= PACE[i][0]) {
+          const [t0, p0] = PACE[i - 1];
+          const [t1, p1] = PACE[i];
+          const u = (f - t0) / (t1 - t0);
+          return p0 + (p1 - p0) * (u * u * (3 - 2 * u));
+        }
+      }
+      return 1;
+    }
+
     function renderControls() {
       clear(controls);
-      const evalSpace = evaluateAllStudioCandidates();
-      const isOptimal = (
-        S.studio.target === evalSpace.best.spec.target &&
-        S.studio.linker === evalSpace.best.spec.linker &&
-        S.studio.payload === evalSpace.best.spec.payload &&
-        Number(S.studio.dar) === Number(evalSpace.best.spec.dar) &&
-        Boolean(S.studio.fc) === Boolean(evalSpace.best.spec.fc)
-      );
-
       const headAction = h('div', { class: 'studio-head-action' },
         h('span', { class: 'sec-kicker', text: t('archTitle') }));
       controls.append(headAction);
@@ -1472,20 +1448,9 @@
       };
 
       optBtn = h('button', {
-        type: 'button',
-        class: 'btn-optimize' + (isOptimal ? ' is-optimal' : ''),
-        text: isOptimizing
-          ? (S.lang === 'ko' ? '최적화 탐색 중...' : 'Optimizing...')
-          : isOptimal
-            ? (S.lang === 'ko' ? '최적화 완료 (기존 승인약물 비교)' : 'Optimized (Compare Benchmark)')
-            : t('autoOpt'),
-        onclick: () => {
-          if (isOptimal) {
-            openStudioCompareDrawer(computeStudioSimulation(), evalSpace);
-          } else {
-            runOptimizationSimulation();
-          }
-        },
+        type: 'button', class: 'btn-optimize' + (isOptimizing ? ' is-running' : ''), text: t('autoOpt'),
+        'aria-busy': isOptimizing ? 'true' : 'false',
+        onclick: () => runOptimizationSimulation(),
       });
 
       controls.append(
@@ -1511,40 +1476,55 @@
     function runOptimizationSimulation() {
       if (isOptimizing) return;
       isOptimizing = true;
+      closeDrawer();
       renderControls();
       renderStudioCanvas(true);
     }
 
+    const riskLevel = (pct) => {
+      const ko = S.lang === 'ko';
+      return pct >= 60 ? (ko ? '높음' : 'High') : pct >= 35 ? (ko ? '보통' : 'Moderate') : (ko ? '낮음' : 'Low');
+    };
+    const riskColor = (pct) => (pct >= 60 ? 'var(--red)' : pct >= 35 ? 'var(--amber)' : 'var(--emerald)');
+
     function renderStudioCanvas(animateScan) {
       clear(canvas);
+      const isKo = S.lang === 'ko';
       const sim = computeStudioSimulation();
       const evalSpace = evaluateAllStudioCandidates();
       const tgt = sim.tgt;
       const lnk = sim.lnk;
-      const pld = sim.pld;
       const dar = sim.dar;
       const fcSilenced = sim.fcSilenced;
       const handleMatch = sim.isCompat;
       const bystander = sim.bystander;
       const stabilityScore = Math.max(25, Math.min(98, Math.round(lnk.stability - (dar > 4 ? (dar - 4) * 2.5 : 0))));
 
-      // 1. Pareto Frontier Architecture Simulator Canvas
+      // 1. The chart of every design combination for this patient
       const simWrap = h('section', { class: 'sim-canvas-panel panel' });
+      const total = evalSpace.cands.length;
       const initialStatus = animateScan
-        ? (S.lang === 'ko' ? '최적화 탐색 중... 0%' : 'Optimizing... 0%')
-        : (S.lang === 'ko' ? `안전성 ${sim.safetyScore}점 / 항암효능 ${sim.efficacyScore}점` : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`);
+        ? (isKo ? `설계 조합 0 / ${total.toLocaleString()}개 계산 중` : `Scoring 0 / ${total.toLocaleString()} combinations`)
+        : (isKo ? `안전도 ${sim.safetyScore}점 / 항암 효능 ${sim.efficacyScore}점` : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`);
 
       const simStatusEl = h('span', { class: 'sim-canvas-status', text: initialStatus });
       const simHead = h('div', { class: 'sim-canvas-head' },
-        h('span', { class: 'sim-canvas-title', text: t('paretoTitle') }),
+        h('span', { class: 'sim-canvas-title', text: t('designTitle') }),
         simStatusEl);
 
       const chartWrap = h('div', { class: 'sim-chart-wrap' });
       const cvs = h('canvas', { class: 'sim-canvas' });
       chartWrap.append(cvs);
-      simWrap.append(simHead, chartWrap);
 
-      // AI De Novo Design Rationale Box
+      const caption = h('p', { class: 'sim-caption', text: isKo
+        ? `점 하나는 표적, 링커, 페이로드, DAR, Fc의 조합 하나입니다. 총 ${total.toLocaleString()}개를 같은 식으로 계산했고, 오른쪽 위에 있을수록 안전하면서 강력한 설계입니다.`
+        : `Each dot is one combination of target, linker, payload, DAR and Fc. All ${total.toLocaleString()} were scored with the same formula; the closer to the top right, the safer and stronger the design.` });
+      const explain = h('details', { class: 'sim-explain' },
+        h('summary', { text: t('explainTitle') }),
+        t('explainBody').slice(1).map((line) => h('p', { text: line })));
+      simWrap.append(simHead, chartWrap, caption, explain);
+
+      // Recommended design and why
       const activeRationale = autoRationale || buildAutoOptimizeRationales(evalSpace.best);
       const isOptimal = (
         S.studio.target === evalSpace.best.spec.target &&
@@ -1557,20 +1537,20 @@
       const rBox = h('div', { class: 'sim-rationale-box' },
         h('div', { class: 'srb-title' },
           h('div', { style: 'display:flex;align-items:center;gap:10px;flex-wrap:wrap' },
-            h('span', { text: isOptimal ? t('optimalLocked') : `${t('optimalCand')} ${evalSpace.best.spec.target} + ${evalSpace.best.spec.payload} (DAR ${evalSpace.best.spec.dar})` }),
+            h('span', { text: isOptimal ? t('optimalLocked') : `${t('optimalCand')} ${plainName(evalSpace.best.spec.target)} + ${plainName(evalSpace.best.spec.payload)}, DAR ${evalSpace.best.spec.dar}` }),
             h('button', {
               type: 'button', class: 'btn-compare-pop',
               text: t('viewCompareBtn'),
               onclick: () => openStudioCompareDrawer(sim, evalSpace),
             })),
-          h('span', { style: 'font-size:11px;color:var(--dim);font-weight:600', text: isOptimal ? t('peakPareto') : t('clickAutoOpt') })),
+          h('span', { style: 'font-size:11px;color:var(--dim);font-weight:600', text: isOptimal ? t('bestDesign') : t('clickAutoOpt') })),
         h('div', { class: 'srb-steps' },
           activeRationale.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
             h('b', { text: `${title}: ${choice}` }),
             h('span', { text: desc })))));
       simWrap.append(rBox);
 
-      // 2. Metrics Strip with 1-line explanations
+      // 2. Metrics strip
       const hero = h('div', { class: 'studio-hero panel' },
         h('div', { class: 'sh-metric' },
           h('span', { class: 'sh-kicker', text: t('shCompat') }),
@@ -1593,93 +1573,85 @@
           h('div', { class: 'sh-bar' }, h('i', { style: `width:${stabilityScore}%;background:var(--emerald)` })),
           h('span', { class: 'sh-desc', text: t('shStabilityDesc') })));
 
-      // 3. Organ & Tissue Expression Grid
-      const activeOrgans = activeOrgansWithScores();
-      const organsToShow = activeOrgans.length ? activeOrgans : [
-        { organ: 'pulmonary', score: 0.85 }, { organ: 'hepatic', score: 0.78 },
-        { organ: 'haematologic', score: 0.72 }, { organ: 'cardiovascular', score: 0.65 },
-      ];
-
+      // 3. Organ risk and normal-tissue expression
       const organRows = h('div', { class: 'expr-list' });
-      organsToShow.forEach((item) => {
-        const basePld = pld.organs[item.organ] || 32;
-        const onTarget = (tgt.tissues.find((t) => t.organ === item.organ) || { tpm: 15 }).tpm * 0.45;
-        const darFactor = 0.75 + (dar / 8) * 0.42;
-        const fcFactor = fcSilenced && ['pulmonary', 'haematologic', 'ocular', 'hepatic'].includes(item.organ) ? 0.82 : 1.0;
-        const burden = Math.min(98, Math.round((basePld * 0.65 + onTarget) * darFactor * fcFactor));
-        const color = burden >= 75 ? 'var(--red)' : burden >= 52 ? 'var(--amber)' : 'var(--emerald)';
-
+      sim.organRisks.forEach((item) => {
+        const pct = Math.round(item.p * 100);
+        const color = riskColor(pct);
         organRows.append(h('div', { class: 'expr-row' },
-          h('span', { class: 'ex-name', text: S.lang === 'ko' ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ) }),
-          h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${burden}%;background:${color}` })),
-          h('span', { class: 'ex-val', style: `color:${color}`, text: `${burden} idx` })));
+          h('span', { class: 'ex-name', text: organKo(item.organ) }),
+          h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${Math.max(4, pct)}%;background:${color}` })),
+          h('span', { class: 'ex-val', style: `color:${color}`, text: `${riskLevel(pct)} ${pct}%` })));
       });
 
       const gtexRows = h('div', { class: 'expr-list' });
-      tgt.tissues.forEach((t) => {
-        const val = t.tpm;
+      tgt.tissues.forEach((tis) => {
+        const val = tis.tpm;
         const color = val > 50 ? 'var(--red)' : val >= 25 ? 'var(--amber)' : 'var(--emerald)';
-        const tag = val > 50 ? (S.lang === 'ko' ? '주의' : 'High') : val >= 25 ? (S.lang === 'ko' ? '보통' : 'Moderate') : (S.lang === 'ko' ? '안전' : 'Safe');
+        const level = val > 50 ? (isKo ? '높음' : 'High') : val >= 25 ? (isKo ? '보통' : 'Moderate') : (isKo ? '낮음' : 'Low');
         gtexRows.append(h('div', { class: 'expr-row' },
-          h('span', { class: 'ex-name', text: S.lang === 'ko' ? (ORGAN_KO[t.organ] || SHORT[t.organ] || t.organ) : (SHORT[t.organ] || t.organ) }),
+          h('span', { class: 'ex-name', text: organKo(tis.organ) }),
           h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${Math.min(100, val * 1.5)}%;background:${color}` })),
-          h('span', { class: 'ex-val', style: `color:${color}`, text: `${val} nTPM (${tag})` })));
+          h('span', { class: 'ex-val', style: `color:${color}`, text: `${level} ${val}` })));
       });
 
       const grid2 = h('div', { class: 'studio-grid-2' },
         h('section', { class: 'studio-card panel' },
           h('h3', { text: t('simOrganTitle') }),
           organRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:12px', text: fcSilenced ? t('fcLalaNote') : t('fcWtNote') })),
+          h('p', { class: 'dim', style: 'margin:12px 0 0', text: isKo
+            ? `이 설계가 환자의 취약 장기에 독성을 일으킬 가능성을 모델로 환산한 값입니다. 막대가 짧고 녹색일수록 안전합니다. ${fcSilenced ? t('fcLalaNote') : t('fcWtNote')}`
+            : `Modeled chance that this design harms each vulnerable organ; a shorter green bar is safer. ${fcSilenced ? t('fcLalaNote') : t('fcWtNote')}` })),
         h('section', { class: 'studio-card panel' },
-          h('h3', { text: `${t('gtexTitle')} (${tgt.gene})` }),
+          h('h3', { text: t('gtexTitle') }),
           gtexRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0;font-size:12px', text: t('gtexNote') })));
+          h('p', { class: 'dim', style: 'margin:12px 0 0', text: `${tgt.gene} ${t('gtexNote')}` })));
 
       canvas.append(simWrap, hero, grid2);
 
-      const optBtn = controls.querySelector('.btn-optimize');
-
-      setTimeout(() => initParetoCanvas(cvs, sim, evalSpace, animateScan,
-        (pct) => {
-          simStatusEl.textContent = S.lang === 'ko' ? `최적화 탐색 중... ${pct}%` : `Optimizing... ${pct}%`;
-          if (optBtn) optBtn.textContent = S.lang === 'ko' ? `최적화 중... ${pct}%` : `Optimizing... ${pct}%`;
+      setTimeout(() => initDesignChart(cvs, sim, evalSpace, animateScan,
+        (f, shown) => {
+          simStatusEl.textContent = isKo
+            ? `설계 조합 ${shown.toLocaleString()} / ${total.toLocaleString()}개 계산 중`
+            : `Scoring ${shown.toLocaleString()} / ${total.toLocaleString()} combinations`;
+          if (optBtn) optBtn.style.setProperty('--p', (f * 100).toFixed(1) + '%');
         },
         () => {
-          if (optBtn) optBtn.textContent = S.lang === 'ko' ? '최적화 완료 (100%)' : 'Optimized (100%)';
+          if (!animateScan) return;
+          if (optBtn) optBtn.style.setProperty('--p', '100%');
           setTimeout(() => {
             isOptimizing = false;
-            if (animateScan) {
-              const best = evalSpace.best;
-              S.studio.target = best.spec.target;
-              S.studio.linker = best.spec.linker;
-              S.studio.payload = best.spec.payload;
-              S.studio.dar = best.spec.dar;
-              S.studio.fc = best.spec.fc;
-              autoRationale = buildAutoOptimizeRationales(best);
-              save();
-              renderControls();
-              renderStudioCanvas(false);
-              openStudioCompareDrawer(best, evalSpace);
-            }
-          }, 1200);
+            const best = evalSpace.best;
+            S.studio.target = best.spec.target;
+            S.studio.linker = best.spec.linker;
+            S.studio.payload = best.spec.payload;
+            S.studio.dar = best.spec.dar;
+            S.studio.fc = best.spec.fc;
+            autoRationale = buildAutoOptimizeRationales(best);
+            save();
+            if (S.mode !== 1) return;
+            renderControls();
+            renderStudioCanvas(false);
+            setTimeout(() => { if (S.mode === 1) openStudioCompareDrawer(best, evalSpace); }, 600);
+          }, 700);
         }), 0);
     }
 
-    function initParetoCanvas(cvs, currentSim, evalSpace, animate, onProgress, onComplete) {
+    function initDesignChart(cvs, currentSim, evalSpace, animate, onProgress, onComplete) {
       const rect = cvs.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       const w = cvs.width = (rect.width || 600) * dpr;
       const h = cvs.height = (rect.height || 380) * dpr;
       const ctx = cvs.getContext('2d');
       if (!ctx) return;
+      const isKo = S.lang === 'ko';
 
       cancelAnimationFrame(simAnimId);
-      const padL = 52 * dpr, padR = 24 * dpr, padT = 32 * dpr, padB = 44 * dpr;
+      const padL = 52 * dpr, padR = 24 * dpr, padT = 44 * dpr, padB = 44 * dpr;
       const maxPlotW = w - padL - padR;
       const maxPlotH = h - padT - padB;
 
-      // 1:1 aspect ratio square plot box (never distorted!)
+      // square plot box so the two axes are never stretched differently
       const plotSize = Math.max(160 * dpr, Math.min(maxPlotW, maxPlotH));
       const plotW = plotSize;
       const plotH = plotSize;
@@ -1687,60 +1659,46 @@
       const offsetY = padT + (maxPlotH - plotH) / 2;
 
       const cands = evalSpace.cands;
-      const pareto = evalSpace.pareto;
       const best = evalSpace.best;
 
-      // Dynamic auto-scaling bounds to spread candidates across canvas
+      // the axes zoom to where the dots are, so the crowded corner is easy to read
       const safeties = cands.map((c) => c.safetyScore);
       const efficacies = cands.map((c) => c.efficacyScore);
-      const minSafetyVal = Math.min(...safeties);
-      const minEfficacyVal = Math.min(...efficacies);
-      const minX = Math.max(0, Math.floor((minSafetyVal - 4) / 10) * 10);
-      const maxX = 100;
-      const minY = Math.max(0, Math.floor((minEfficacyVal - 4) / 10) * 10);
-      const maxY = 100;
+      const minX = Math.max(0, Math.floor((Math.min(...safeties) - 4) / 10) * 10);
+      const maxX = Math.min(100, Math.ceil((Math.max(...safeties) + 4) / 10) * 10);
+      const minY = Math.max(0, Math.floor((Math.min(...efficacies) - 4) / 10) * 10);
+      const maxY = Math.min(100, Math.ceil((Math.max(...efficacies) + 4) / 10) * 10);
       const spanX = Math.max(10, maxX - minX);
       const spanY = Math.max(10, maxY - minY);
 
       const toX = (val) => offsetX + ((Math.max(minX, Math.min(maxX, val)) - minX) / spanX) * plotW;
       const toY = (val) => offsetY + (1 - (Math.max(minY, Math.min(maxY, val)) - minY) / spanY) * plotH;
 
-      // Deterministic pseudo-random shuffle for progressive sampling dots
+      // fixed pseudo-random order, so the dots appear scattered rather than sweeping across
       const shuffled = cands.slice().map((c, i) => ({
         c,
         sortKey: Math.sin(i * 12345.67) * 10000 - Math.floor(Math.sin(i * 12345.67) * 10000),
       })).sort((a, b) => a.sortKey - b.sortKey).map((item) => item.c);
 
-      let startTime = performance.now();
-      const duration = (animate && !still()) ? 3500 : 0;
+      const startTime = performance.now();
+      const duration = (animate && !still()) ? 4200 : 0;
 
       function renderFrame(now) {
-        const elapsed = now - startTime;
-        const progress = duration > 0 ? Math.min(1, elapsed / duration) : 1;
-        const pct = Math.min(100, Math.floor(progress * 100));
-        if (animate && onProgress) onProgress(pct);
+        const tfrac = duration > 0 ? Math.min(1, (now - startTime) / duration) : 1;
+        const f = duration > 0 ? pace(tfrac) : 1;
+        const shown = Math.floor(cands.length * f);
+        if (animate && onProgress) onProgress(f, shown);
 
-        // Clean white background
         ctx.fillStyle = '#FFFFFF';
         ctx.fillRect(0, 0, w, h);
 
-        // Optimal quadrant subtle tint
-        const qX = toX(Math.max(minX, 70));
-        const qY = toY(100);
-        const qW = toX(100) - qX;
-        const qH = toY(Math.max(minY, 80)) - qY;
-        ctx.fillStyle = 'rgba(16, 185, 129, 0.05)';
-        ctx.fillRect(qX, qY, qW, qH);
-
-        // Plot bounding box
         ctx.strokeStyle = '#CBD5E1';
         ctx.lineWidth = 1 * dpr;
         ctx.strokeRect(offsetX, offsetY, plotW, plotH);
 
-        // Numeric Grid lines & ticks
         ctx.strokeStyle = '#F1F5F9';
         ctx.lineWidth = 1 * dpr;
-        ctx.font = `600 ${9 * dpr}px monospace`;
+        ctx.font = `600 ${10 * dpr}px sans-serif`;
         ctx.fillStyle = '#64748B';
 
         const stepX = spanX <= 40 ? 10 : 20;
@@ -1748,7 +1706,6 @@
         const xTicks = [];
         for (let v = minX; v <= maxX; v += stepX) xTicks.push(v);
         if (xTicks[xTicks.length - 1] !== maxX) xTicks.push(maxX);
-
         const yTicks = [];
         for (let v = minY; v <= maxY; v += stepY) yTicks.push(v);
         if (yTicks[yTicks.length - 1] !== maxY) yTicks.push(maxY);
@@ -1759,7 +1716,6 @@
           ctx.textAlign = 'center';
           ctx.fillText(String(v), gx, offsetY + plotH + 14 * dpr);
         });
-
         yTicks.forEach((v) => {
           const gy = toY(v);
           ctx.beginPath(); ctx.moveTo(offsetX, gy); ctx.lineTo(offsetX + plotW, gy); ctx.stroke();
@@ -1767,101 +1723,52 @@
           ctx.fillText(String(v), offsetX - 7 * dpr, gy + 3 * dpr);
         });
 
-        // Axis Titles (clean labels with no arrow)
         ctx.font = `bold ${11 * dpr}px sans-serif`;
         ctx.fillStyle = '#1E293B';
         ctx.textAlign = 'center';
-        ctx.fillText(t('paretoSafetyX'), offsetX + plotW / 2, offsetY + plotH + 32 * dpr);
-
+        ctx.fillText(t('axisSafety'), offsetX + plotW / 2, offsetY + plotH + 32 * dpr);
         ctx.save();
-        ctx.translate(offsetX - 28 * dpr, offsetY + plotH / 2);
+        ctx.translate(offsetX - 34 * dpr, offsetY + plotH / 2);
         ctx.rotate(-Math.PI / 2);
-        ctx.fillText(t('paretoEfficacyY'), 0, 0);
+        ctx.fillText(t('axisEfficacy'), 0, 0);
         ctx.restore();
 
-        // Legend at top
+        // legend, wrapping to a second line when the chart is narrow
         ctx.textAlign = 'left';
         ctx.font = `600 ${10 * dpr}px sans-serif`;
-        ctx.fillStyle = '#64748B';
-        ctx.beginPath(); ctx.arc(offsetX + 4 * dpr, offsetY - 14 * dpr, 3 * dpr, 0, Math.PI * 2); ctx.fill();
-        ctx.fillText(`${t('legendCand')} (${cands.length})`, offsetX + 11 * dpr, offsetY - 11 * dpr);
+        const legend = [
+          ['rgba(100, 116, 139, 0.75)', 3, `${t('legendCand')} ${cands.length.toLocaleString()}`],
+          ['rgba(239, 68, 68, 0.6)', 3, t('legendBad')],
+          ['#0D9488', 4.5, t('legendBest')],
+          ['#2563EB', 4.5, t('legendCur')],
+        ];
+        let lx = offsetX;
+        let ly = offsetY - 28 * dpr;
+        legend.forEach(([col, rad, label]) => {
+          const need = (rad * 2 + 6) * dpr + ctx.measureText(label).width + 16 * dpr;
+          if (lx + need > w - padR && lx > offsetX) { lx = offsetX; ly += 15 * dpr; }
+          ctx.fillStyle = col;
+          ctx.beginPath(); ctx.arc(lx + rad * dpr, ly, rad * dpr, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#64748B';
+          ctx.fillText(label, lx + (rad * 2 + 6) * dpr, ly + 3.5 * dpr);
+          lx += need;
+        });
 
-        ctx.strokeStyle = '#0D9488';
-        ctx.lineWidth = 2 * dpr;
-        ctx.beginPath(); ctx.moveTo(offsetX + 130 * dpr, offsetY - 14 * dpr); ctx.lineTo(offsetX + 146 * dpr, offsetY - 14 * dpr); ctx.stroke();
-        ctx.fillStyle = '#0D9488';
-        ctx.fillText(t('legendPareto'), offsetX + 152 * dpr, offsetY - 11 * dpr);
-
-        ctx.fillStyle = '#2563EB';
-        ctx.beginPath(); ctx.arc(offsetX + 242 * dpr, offsetY - 14 * dpr, 4 * dpr, 0, Math.PI * 2); ctx.fill();
-        ctx.fillText(t('legendCur'), offsetX + 250 * dpr, offsetY - 11 * dpr);
-
-        // Progressive dot sampling: plot dots progressively at their true positions
-        const visibleCount = Math.floor(cands.length * progress);
-        for (let k = 0; k < visibleCount; k++) {
+        // dots appear at their true positions, a few more every frame as the combinations are scored
+        for (let k = 0; k < shown; k++) {
           const c = shuffled[k];
-          const cx = toX(c.safetyScore);
-          const cy = toY(c.efficacyScore);
           ctx.fillStyle = c.isCompat ? 'rgba(100, 116, 139, 0.45)' : 'rgba(239, 68, 68, 0.28)';
           ctx.beginPath();
-          ctx.arc(cx, cy, 2.4 * dpr, 0, Math.PI * 2);
+          ctx.arc(toX(c.safetyScore), toY(c.efficacyScore), 2.4 * dpr, 0, Math.PI * 2);
           ctx.fill();
         }
 
-        // Progressive Pareto curve
-        if (progress >= 0.25) {
-          const curveFactor = Math.min(1, (progress - 0.25) / 0.75);
-          const visParetoCount = Math.max(1, Math.floor(pareto.length * curveFactor));
-          const visPareto = pareto.slice(0, visParetoCount);
-
-          if (visPareto.length >= 1) {
-            ctx.beginPath();
-            visPareto.forEach((p, idx) => {
-              const px = toX(p.safetyScore);
-              const py = toY(p.efficacyScore);
-              if (idx === 0) ctx.moveTo(px, py);
-              else ctx.lineTo(px, py);
-            });
-            const lastP = visPareto[visPareto.length - 1];
-            const firstP = visPareto[0];
-            ctx.lineTo(toX(lastP.safetyScore), offsetY + plotH);
-            ctx.lineTo(toX(firstP.safetyScore), offsetY + plotH);
-            ctx.closePath();
-            const aGrad = ctx.createLinearGradient(0, offsetY, 0, offsetY + plotH);
-            aGrad.addColorStop(0, 'rgba(13, 148, 136, 0.14)');
-            aGrad.addColorStop(1, 'rgba(13, 148, 136, 0.01)');
-            ctx.fillStyle = aGrad;
-            ctx.fill();
-
-            ctx.beginPath();
-            visPareto.forEach((p, idx) => {
-              const px = toX(p.safetyScore);
-              const py = toY(p.efficacyScore);
-              if (idx === 0) ctx.moveTo(px, py);
-              else ctx.lineTo(px, py);
-            });
-            ctx.strokeStyle = '#0D9488';
-            ctx.lineWidth = 2.4 * dpr;
-            ctx.stroke();
-
-            visPareto.forEach((p) => {
-              const px = toX(p.safetyScore);
-              const py = toY(p.efficacyScore);
-              ctx.fillStyle = '#FFFFFF';
-              ctx.strokeStyle = '#0D9488';
-              ctx.lineWidth = 1.8 * dpr;
-              ctx.beginPath(); ctx.arc(px, py, 3.4 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-            });
-          }
-        }
-
-        // Highlight optimal best candidate once reached or when static
-        if (progress >= 0.95 || !animate) {
+        // recommended design, once every combination has been scored
+        if (f >= 0.97 || !animate) {
           const bx = toX(best.safetyScore);
           const by = toY(best.efficacyScore);
           ctx.fillStyle = 'rgba(13, 148, 136, 0.22)';
           ctx.beginPath(); ctx.arc(bx, by, 10 * dpr, 0, Math.PI * 2); ctx.fill();
-
           ctx.fillStyle = '#0D9488';
           ctx.strokeStyle = '#FFFFFF';
           ctx.lineWidth = 2 * dpr;
@@ -1869,18 +1776,16 @@
 
           ctx.font = `bold ${10 * dpr}px sans-serif`;
           ctx.fillStyle = '#065F46';
-          const alignRight = bx > offsetX + plotW - 130 * dpr;
+          const alignRight = bx > offsetX + plotW - 150 * dpr;
           ctx.textAlign = alignRight ? 'right' : 'left';
-          ctx.fillText(`${S.lang === 'ko' ? '최적설계' : 'Optimal'}: ${best.spec.target.split(' ')[0]} + ${best.spec.payload.split(' ')[0]} (DAR ${best.spec.dar})`, bx + (alignRight ? -8 * dpr : 8 * dpr), by - 6 * dpr);
+          ctx.fillText(`${t('legendBest')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar}`, bx + (alignRight ? -9 * dpr : 9 * dpr), by - 7 * dpr);
         }
 
-        // Current active selection marker
-        const curSim = animate && progress >= 0.98 ? best : currentSim;
-        const sx = toX(curSim.safetyScore);
-        const sy = toY(curSim.efficacyScore);
+        // current selection
+        const sx = toX(currentSim.safetyScore);
+        const sy = toY(currentSim.efficacyScore);
         ctx.fillStyle = 'rgba(37, 99, 235, 0.2)';
         ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
-
         ctx.fillStyle = '#2563EB';
         ctx.strokeStyle = '#FFFFFF';
         ctx.lineWidth = 2 * dpr;
@@ -1888,13 +1793,13 @@
 
         ctx.font = `bold ${10 * dpr}px sans-serif`;
         ctx.fillStyle = '#1E40AF';
-        const curAlignRight = sx > offsetX + plotW - 120 * dpr;
+        const curAlignRight = sx > offsetX + plotW - 130 * dpr;
         ctx.textAlign = curAlignRight ? 'right' : 'left';
-        ctx.fillText(`${S.lang === 'ko' ? '현재선택' : 'Current'} (${curSim.safetyScore}, ${curSim.efficacyScore})`, sx + (curAlignRight ? -8 * dpr : 8 * dpr), sy + 14 * dpr);
+        ctx.fillText(`${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`, sx + (curAlignRight ? -9 * dpr : 9 * dpr), sy + 15 * dpr);
 
-        if (progress < 1) {
+        if (tfrac < 1) {
           simAnimId = requestAnimationFrame(renderFrame);
-        } else if (onComplete) {
+        } else if (animate && onComplete) {
           onComplete();
         }
       }
@@ -2153,10 +2058,11 @@
     function render3d() {
       if (!cvs.isConnected) return;
       if (!isDragging) rotY += 0.006;
-      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, w, h);
 
-      // Grid backdrop
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      // Subtle bright grid backdrop
+      ctx.strokeStyle = 'rgba(15, 23, 42, 0.06)';
       ctx.lineWidth = 1 * dpr;
       for (let y = h * 0.15; y < h; y += h * 0.2) {
         ctx.beginPath(); ctx.moveTo(w * 0.08, y); ctx.lineTo(w * 0.92, y); ctx.stroke();
@@ -2172,8 +2078,8 @@
       });
 
       // Draw antibody backbone lines by fixed node ID
-      ctx.strokeStyle = 'rgba(148, 163, 184, 0.5)';
-      ctx.lineWidth = 2.4 * dpr;
+      ctx.strokeStyle = 'rgba(71, 85, 105, 0.55)';
+      ctx.lineWidth = 2.6 * dpr;
       const pFc2 = projMap['fc2'], pFc1 = projMap['fc1'], pH = projMap['hinge'];
       const pL1 = projMap['fab_l1'], pL2 = projMap['fab_l2'], pParaL = projMap['para_l'];
       const pR1 = projMap['fab_r1'], pR2 = projMap['fab_r2'], pParaR = projMap['para_r'];
@@ -2188,8 +2094,8 @@
       }
 
       // Draw linker tether lines from conjugation anchors to payload spheres
-      ctx.strokeStyle = isCleavable ? '#F59E0B' : '#94A3B8';
-      ctx.lineWidth = isCleavable ? 1.6 * dpr : 2.2 * dpr;
+      ctx.strokeStyle = isCleavable ? '#D97706' : '#64748B';
+      ctx.lineWidth = isCleavable ? 1.8 * dpr : 2.2 * dpr;
       for (let k = 0; k < darCount; k++) {
         const pNode = projMap['pld_' + k];
         if (pNode && pNode.anchor && projMap[pNode.anchor]) {
@@ -2208,16 +2114,16 @@
       projList.forEach((p) => {
         if (p.glow) {
           ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r * 1.6, 0, Math.PI * 2);
-          ctx.fillStyle = payloadColor + '33';
+          ctx.arc(p.x, p.y, p.r * 1.65, 0, Math.PI * 2);
+          ctx.fillStyle = payloadColor + '28';
           ctx.fill();
         }
         ctx.beginPath();
         ctx.arc(p.x, p.y, Math.max(1, p.r), 0, Math.PI * 2);
         ctx.fillStyle = p.col;
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-        ctx.lineWidth = 0.9 * dpr;
+        ctx.strokeStyle = 'rgba(15, 23, 42, 0.22)';
+        ctx.lineWidth = 1.0 * dpr;
         ctx.stroke();
       });
 
@@ -2228,6 +2134,7 @@
   }
 
   function build3dLegend(row) {
+    const isKo = S.lang === 'ko';
     const adcId = (row && (row.adc || row.id)) || '';
     const m = (row && MECH[adcId]) || {};
     const spec = ADC_SPECS[adcId] || {};
@@ -2239,9 +2146,9 @@
     const isCleavable = row && row.linkerType ? row.linkerType === 'cleavable' : (spec.linkerType !== 'non-cleavable' && m.linker_cleavable !== 'False');
 
     const items = [
-      ['#334155', 'IgG1 Backbone'],
-      [paratopeColor, `Paratope (${target})`],
-      [isCleavable ? '#F59E0B' : '#94A3B8', `Linker (${isCleavable ? 'Cleavable' : 'Direct'})`],
+      ['#334155', isKo ? '항체 골격 (IgG1)' : 'IgG1 Backbone'],
+      [paratopeColor, isKo ? `항원 결합부 (${target})` : `Paratope (${target})`],
+      [isCleavable ? '#D97706' : '#64748B', isKo ? `링커 (${isCleavable ? '절단형' : '비절단형'})` : `Linker (${isCleavable ? 'Cleavable' : 'Non-cleavable'})`],
       [payloadColor, `${payload} (x${darCount})`],
     ];
 
@@ -2280,82 +2187,147 @@
     return h('section', { class: 'dsec' }, title ? tipped(h('h3', { class: 'h2', text: title })) : null, kids);
   }
 
+  // ------------------------------------------------------------------ Clinical trial cases
+  // Per adverse event: the treatment group beside the control group, and how much lower or higher the treatment group was.
+  // Raw counts are not shown; the point is how this drug did against the earlier regimen.
+  function trialCaseBlock(tr, fallbackText, heading) {
+    const isKo = S.lang === 'ko';
+    if (!tr) return h('p', { class: 'dim', text: fallbackText });
+    const compReg = tr.comparator && tr.comparator.regimen;
+    const mineOrgans = new Set(activeOrgansWithScores().map((o) => o.organ));
+    const events = [];
+    for (const o of tr.organs || []) {
+      for (const e of o.events || []) {
+        const a = (100 * (e.a || 0)) / Math.max(1, e.n || 1);
+        const c = e.comp && e.comp[1] ? (100 * e.comp[0]) / Math.max(1, e.comp[1]) : null;
+        events.push({ organ: o.organ, term: e.term || '', a, c, mine: mineOrgans.has(o.organ) });
+      }
+    }
+    events.sort((x, y) => (Number(y.mine) - Number(x.mine)) || ((x.c === null ? 1e9 : x.a - x.c) - (y.c === null ? 1e9 : y.a - y.c)));
+
+    const cmp = events.filter((e) => e.c !== null);
+    const lower = cmp.filter((e) => e.a < e.c - 0.5).length;
+    const higher = cmp.filter((e) => e.a > e.c + 0.5).length;
+    let verdict;
+    let tone = 'good';
+    if (!cmp.length) {
+      tone = 'neutral';
+      verdict = isKo ? '대조군이 없는 시험이라 비교 결과는 없습니다. 치료군에서 나타난 이상사례 발생률만 보여 드립니다.' : 'This trial had no control group, so there is no comparison. Only the rates in the treatment group are shown.';
+    } else {
+      const head = isKo ? `대조군과 비교할 수 있는 이상사례 ${cmp.length}개 중 ` : `Of ${cmp.length} adverse events that can be compared with the control group, `;
+      if (lower === cmp.length) verdict = head + (isKo ? '모두 치료군에서 더 적게 나타났습니다.' : 'all were less frequent in the treatment group.');
+      else if (higher === cmp.length) { tone = 'bad'; verdict = head + (isKo ? '모두 치료군에서 더 많이 나타났습니다.' : 'all were more frequent in the treatment group.'); }
+      else {
+        if (higher > lower) tone = 'bad';
+        verdict = head + (isKo ? `${lower}개는 더 적게, ${higher}개는 더 많이, 나머지는 비슷하게 나타났습니다.` : `${lower} were less frequent, ${higher} more frequent, and the rest similar.`);
+      }
+    }
+
+    const info = [
+      [isKo ? '대상 환자' : 'Patients', tr.population || ''],
+      [isKo ? '치료군' : 'Treatment group', tr.regimen || ''],
+      [isKo ? '대조군' : 'Control group', compReg || (isKo ? '없음' : 'None')],
+    ].filter(([, v]) => v);
+
+    const card = h('div', { class: 'trial-summary-card' },
+      h('p', { class: 'tc-name', text: `${heading ? heading + ' ' : ''}${tr.trial}${tr.phase ? (isKo ? ` 임상 ${tr.phase}상` : ` Phase ${tr.phase}`) : ''}` }),
+      h('div', { class: 'kv3 tc-info' }, info.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])),
+      /^NCT\d{8}$/.test(tr.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + tr.nct, target: '_blank', rel: 'noopener noreferrer', text: `ClinicalTrials.gov ${tr.nct} ↗` }) : null);
+
+    const diffChip = (e) => {
+      if (e.c === null) return h('span', { class: 'tc-diff neutral', text: isKo ? '대조군 없음' : 'No control' });
+      const d = e.a - e.c;
+      if (Math.abs(d) <= 0.5) return h('span', { class: 'tc-diff neutral', text: isKo ? '대조군과 비슷' : 'Similar to control' });
+      return d < 0
+        ? h('span', { class: 'tc-diff good', text: isKo ? `대조군보다 ${(-d).toFixed(1)}%p 낮음` : `${(-d).toFixed(1)} pts lower than control` })
+        : h('span', { class: 'tc-diff bad', text: isKo ? `대조군보다 ${d.toFixed(1)}%p 높음` : `${d.toFixed(1)} pts higher than control` });
+    };
+    const barRow = (label, pct, scale, cls) => h('div', { class: 'tc-row' },
+      h('span', { class: 'tc-label', text: label }),
+      h('span', { class: 'tc-track' }, h('i', { class: cls, style: `width:${Math.max(2, Math.min(100, (pct / scale) * 100)).toFixed(1)}%` })),
+      h('span', { class: 'tc-pct', text: `${pct.toFixed(1)}%` }));
+
+    const list = events.slice(0, 10).map((e) => {
+      const scale = Math.max(10, e.a, e.c || 0);
+      return h('div', { class: 'tc-event' },
+        h('div', { class: 'tc-head' },
+          h('span', { class: 'tc-term', text: e.term }),
+          e.mine ? h('span', { class: 'tc-mine', text: organKo(e.organ) }) : null,
+          diffChip(e)),
+        barRow(isKo ? '치료군' : 'Treatment', e.a, scale, 'tc-fill-tx'),
+        e.c !== null ? barRow(isKo ? '대조군' : 'Control', e.c, scale, 'tc-fill-cmp') : null);
+    });
+
+    return h('div', { class: 'tc-wrap' }, card, h('p', { class: 'tc-verdict ' + tone, text: verdict }), list);
+  }
+
+  const KV_KO = {
+    'Target Antigen': '표적 항원', 'Antibody Backbone': '항체', 'Chemical Linker': '링커', 'Cytotoxic Payload': '페이로드',
+    'Payload Class': '페이로드 계열', 'Average DAR': '평균 DAR', Payload: '페이로드', Action: '작용 방식', Linker: '링커',
+    'Bystander effect': '주변 암세포 사멸', Target: '표적',
+  };
+
   function fillDrawer(row) {
     if (!row) return;
+    const isKo = S.lang === 'ko';
     const d = row.detail || {};
     drawerTitle.textContent = row.name;
     clear(drawerBody);
     drawerBody.scrollTop = 0;
 
-    // 1. Label Restriction
-    const rs = d.reasons || [];
+    // 1. Can the drug be used for this patient
+    const CODE_KO = { contraindicated: '사용 금지', avoid: '사용 주의', reduce_dose: '용량 감량', monitor: '경과 관찰', insufficient_data: '판단 자료 부족' };
+    const rs = (d.reasons || []).filter((r) => r.code !== 'no_adjustment' && r.code !== 'no_statement');
     const ruleText = (r) => {
       const b = String(r.basis || '').replace(/^if /, '');
       return b === '-' ? t('appliesToAll') : b;
     };
     const secRestriction = section(t('labelRestriction'), rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
       h('div', { class: 'rh' },
-        h('span', { class: 'k', text: S.lang === 'ko' ? (ORGAN_KO[r.organ] || SHORT[r.organ] || r.organ) : (SHORT[r.organ] || r.organ) }),
-        h('span', { class: `s t-${TONE[r.code] || 'dim'}`, text: r.status })),
+        h('span', { class: 'k', text: organKo(r.organ) }),
+        h('span', { class: `s t-${TONE[r.code] || 'dim'}`, text: isKo ? (CODE_KO[r.code] || r.status) : r.status })),
       h('div', { class: 'pl' },
-        r.patient ? [h('span', { class: 'pk', text: S.lang === 'ko' ? '환자 상태' : 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
-        h('span', { class: 'pk', text: S.lang === 'ko' ? 'FDA 기준' : 'FDA Rule' }), h('span', { class: 'lv2', text: ruleText(r) })))))
+        r.patient ? [h('span', { class: 'pk', text: isKo ? '환자 수치' : 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
+        h('span', { class: 'pk', text: isKo ? '적용 기준' : 'Criterion' }), h('span', { class: 'lv2', text: ruleText(r) })))))
       : h('p', { class: 'dim', text: t('noLabelRestriction') }));
 
-    // 2. Warnings on Patient's Active Organs
+    // 2. Effects on the patient's vulnerable organs
     const ws = d.warnings || [];
-    const secPatientWarn = section(t('patientWarnTitle'), ws.length ? h('div', { class: 'wl' }, ws.map((w) => [
-      h('span', { class: 'k', text: S.lang === 'ko' ? (ORGAN_KO[w.organ] || SHORT[w.organ] || w.organ) : (SHORT[w.organ] || w.organ) }),
-      h('span', { class: 'm ' + ((w.mark || '').trim() === '!!' ? 't-red' : 't-amber'), text: (w.mark || '').trim() }),
-      h('span', { text: (w.text || '').replace(/;\s*/g, ', ') }),
-    ])) : h('p', { class: 'dim', text: t('noPatientWarn') }));
+    const secPatientWarn = section(t('patientWarnTitle'), ws.length ? h('div', { class: 'wl' }, ws.map((w) => {
+      const strong = (w.mark || '').trim() === '!!';
+      return [
+        h('span', { class: 'k', text: organKo(w.organ) }),
+        h('span', { class: 'm ' + (strong ? 't-red' : 't-amber'), text: strong ? (isKo ? '경고' : 'Warning') : (isKo ? '주의' : 'Caution') }),
+        h('span', { text: (w.text || '').replace(/;\s*/g, ', ') }),
+      ];
+    })) : h('p', { class: 'dim', text: t('noPatientWarn') }));
 
     const secChecks = (d.checks || []).length ? section(t('preCheckTitle'), h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))) : null;
     const secMissing = (d.missing || []).length ? section(t('missingInputTitle'),
       h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: m }))),
       h('button', { type: 'button', class: 'review-link', text: t('enterLabBtn'), onclick: () => { closeDrawer(); switchMode(2); } })) : null;
 
-    // 3. Pivotal Trial Study Tab
+    // 3. Clinical trial cases
     const tr = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
-    const compReg = (tr && tr.comparator && tr.comparator.regimen) || (S.lang === 'ko' ? '대조군' : 'Control');
-    const compN = tr && tr.comparator && tr.comparator.n ? ` (n=${tr.comparator.n})` : '';
-    const trialSummaryCard = tr ? h('div', { class: 'trial-summary-card' },
-      h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:14px;color:var(--ink-hi)', text: `${tr.trial}${tr.phase ? ' (Phase ' + tr.phase + ' Registration Trial)' : ''}` }),
-      h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: tr.population || 'Patient cohort not specified' }),
-      h('p', { style: 'margin:0 0 4px;font-size:12px;font-weight:600', text: `${t('treatmentArm')}: ${tr.regimen || ''} (n=${tr.n || 0})` }),
-      tr.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `${t('controlArm')}: ${compReg}${compN}` }) : null,
-      /^NCT\d{8}$/.test(tr.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + tr.nct, target: '_blank', rel: 'noopener noreferrer', text: `ClinicalTrials.gov ${tr.nct} ↗` }) : null
-    ) : h('p', { class: 'dim', text: (d.trial && d.trial.no_results) || t('singleArmTrial') });
+    const secStudy = section(t('trialContext'), trialCaseBlock(tr, (d.trial && d.trial.no_results) || t('singleArmTrial')));
 
-    const trialEvents = [];
-    for (const o of (tr && tr.organs) || []) {
-      for (const e of o.events || []) {
-        trialEvents.push(h('div', { class: 'trial-event' },
-          buildDualBar({ trial: tr, organ: o.organ, ev: e }),
-          h('div', { class: 'event-values', style: 'margin-top:6px' },
-            h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' ' + t('treatmentArm')),
-            e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' ' + t('controlArm')) : null)));
-      }
-    }
-    const secStudy = section(t('trialContext'), trialSummaryCard, ...trialEvents);
-
-    // 4. Structure 3D Tab
+    // 4. Molecular structure
     const m = MECH[row.adc];
-    const kvRows = m ? [
+    const kvRows = (m ? [
       ['Target Antigen', m.target],
       ['Antibody Backbone', m.antibody],
       ['Chemical Linker', m.linker],
       ['Cytotoxic Payload', m.payload],
       ['Payload Class', m.payload_class],
       ['Average DAR', m.dar],
-    ].filter(([, v]) => v) : ((d.payload && d.payload.rows) || []);
+    ].filter(([, v]) => v) : ((d.payload && d.payload.rows) || [])).map(([k, v]) => [isKo ? (KV_KO[k] || k) : k, isKo && /^(yes|no)$/i.test(String(v)) ? (/^yes$/i.test(String(v)) ? '있음' : '없음') : v]);
 
     const cvs3d = h('canvas', { class: 'adc-3d-canvas' });
     const wrap3d = h('div', { class: 'adc-3d-wrap' },
       cvs3d,
       h('span', { class: 'adc-3d-hint', text: t('rotateHint') }));
 
-    const secStructure3d = section(t('struct3dTitle'),
+    const secStructure3d = section(null,
       wrap3d,
       build3dLegend(row),
       kvRows.length ? h('div', { class: 'kv3' }, kvRows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : null,
@@ -2365,13 +2337,10 @@
         onclick: () => { closeDrawer(); switchMode(1); },
       }));
 
-    const secInd = section('FDA Approved Indications',
-      d.indication ? h('ul', { class: 'ind' }, d.indication.split(/;\s*/).filter(Boolean).map((x) => h('li', { text: x }))) : null);
-
     const tabDefs = [
       { id: 'Patient', label: t('tabPatient'), secs: [secRestriction, secPatientWarn, secChecks, secMissing].filter(Boolean) },
       { id: 'Study', label: t('tabStudy'), secs: [secStudy].filter(Boolean) },
-      { id: 'Structure', label: t('tabStructure'), secs: [secStructure3d, secInd].filter(Boolean) },
+      { id: 'Structure', label: t('tabStructure'), secs: [secStructure3d].filter(Boolean) },
     ];
 
     const nav = h('div', { class: 'evidence-tabs', role: 'group', 'aria-label': 'Evidence tabs' });
@@ -2401,128 +2370,98 @@
     switchTab(initialTab);
   }
 
-  const CLINICAL_DERISK_DB = {
-    'HER2 (ERBB2)': {
-      ko: [
-        {
-          title: '간질성 폐질환(ILD) 및 폐렴 완화 (Boxed Warning 극복)',
-          desc: '엔허투(Enhertu)의 가장 치명적인 부작용인 ILD(발생률 ~10-15%, 5등급 사망 사례 보고)는 높은 DAR 8과 미침묵 Fc의 폐포 대식세포 비특이적 흡수가 주요 기전입니다. 본 신규 설계는 DAR 3.5~4 최적화와 LALA-PG Fc 침묵화를 적용하여 대식세포 비특이 섭취를 차단하고 폐 독성을 획기적으로 낮춥니다.',
-        },
-        {
-          title: '심실 박출률(LVEF) 감소 및 심근 독성 예방',
-          desc: 'HER2 심근 미세 발현에 따른 표적 의존성 및 비표적 페이로드 노출을 혈장 고안정성 GGFG 링커(88% 유지)를 통해 차단하여 심부전 위험을 예방합니다.',
-        },
-      ],
-      en: [
-        {
-          title: 'Interstitial Lung Disease (ILD) / Pneumonitis Mitigation',
-          desc: 'Enhertu boxed warning ILD (10-15% incidence with fatal cases) is driven by high DAR 8 aggregation and Fc-gamma receptor uptake by alveolar macrophages. De Novo DAR optimization and LALA-PG Fc silencing suppress macrophage uptake while preserving active bystander tumor killing.',
-        },
-        {
-          title: 'Cardiotoxicity / LVEF Ejection Fraction Protection',
-          desc: 'Restricts off-target systemic free DXd exposure on cardiac myocytes via 88% intact tetrapeptide plasma linker stability.',
-        },
-      ],
-    },
-    'TROP2 (TACSTD2)': {
-      ko: [
-        {
-          title: '중증 호중구감소증 및 골수억제 완화 (Boxed Warning 극복)',
-          desc: '트로델비(Trodelvy)의 3/4등급 호중구감소증(51%)은 pH-민감성 CL2A 링커의 빠른 혈장 가수분해(체내 조기 해리)로 인한 유리 SN-38 노출 때문입니다. 신규 설계의 GGFG 링커는 혈장 안정도 88%로 순환 중 누출을 막고 종양 리소좀 내에서만 선택 분해됩니다.',
-        },
-        {
-          title: '중증 설사 및 위장관 독성 감소',
-          desc: '혈중 비특이적 유리 페이로드 방출을 최소화하여 장점막 상피세포 파괴와 조기 분비성 설사 위험을 대폭 줄였습니다.',
-        },
-      ],
-      en: [
-        {
-          title: 'Severe Neutropenia & Myelosuppression Mitigation',
-          desc: 'Trodelvy boxed warning neutropenia (grade 3/4 ~51%) stems from premature CL2A linker hydrolysis releasing free SN-38 in circulation. De Novo stable GGFG tetrapeptide linker (88% intact) prevents premature shedding.',
-        },
-        {
-          title: 'Severe Diarrhea & GI Mucosal Sparing',
-          desc: 'Minimizes circulating free topoisomerase-1 inhibitor exposure, sparing intestinal epithelium and reducing severe diarrhea.',
-        },
-      ],
-    },
-    'Nectin-4': {
-      ko: [
-        {
-          title: '중증 피부 부작용(SCAR, SJS/TEN) 완화',
-          desc: '패드셉(Padcev)의 박스 경고인 스티븐스-존슨 증후군(SJS/TEN) 등 치명적 표피 괴사는 높은 유리 MMAE 피부 축적에서 기인합니다. 최적화된 효소 절단 제어와 제어된 접합비로 표피 세포 독성을 경감합니다.',
-        },
-        {
-          title: '고혈당증 및 말초신경병증 감소',
-          desc: '정상 췌장/말초신경으로의 비표적 축적을 억제하여 전신 부작용 프로파일을 개선했습니다.',
-        },
-      ],
-      en: [
-        {
-          title: 'Severe Cutaneous Adverse Reactions (SCAR) / SJS Mitigation',
-          desc: 'Padcev boxed warning for SJS/TEN and severe skin reactions is attenuated by reducing circulating free auristatin burden.',
-        },
-        {
-          title: 'Peripheral Neuropathy Reduction',
-          desc: 'Reduces cumulative axonal microtubule disruption by tuning payload burden.',
-        },
-      ],
-    },
-    'CD79b': {
-      ko: [
-        {
-          title: '말초 감각 및 운동 신경병증(Peripheral Neuropathy) 완화',
-          desc: '폴라이비(Polivy)의 주된 용량 제한 독성인 말초신경병증을 DAR 조절과 미세소관 억제제 누출 방지를 통해 완화합니다.',
-        },
-        {
-          title: '혈소판감소증 및 혈액학적 안전성 확보',
-          desc: '골수 조혈모세포에 대한 비표적 세포독성을 억제하여 혈구 수치 급감 위험을 방지합니다.',
-        },
-      ],
-      en: [
-        {
-          title: 'Peripheral Neuropathy De-Risking',
-          desc: 'Polivy dose-limiting peripheral neuropathy is mitigated through optimized payload conjugation ratio and stable cleavage kinetics.',
-        },
-        {
-          title: 'Hematologic Stability',
-          desc: 'Prevents bone marrow suppression and severe thrombocytopenia in vulnerable patients.',
-        },
-      ],
-    },
-    'BCMA (TNFRSF17)': {
-      ko: [
-        {
-          title: '각막 미세낭종 상피 각막병증(Ocular Keratopathy) 회피 (Boxed Warning 극복)',
-          desc: '블렌렙(Blenrep)의 시력 손상 박스 경고는 비절단성 mc 링커와 야생형 Fc가 각막 상피세포에 대식작용으로 유입되어 발생합니다. LALA-PG Fc 침묵화와 절단성 링커 설계를 통해 각막 세포 축적을 원천 차단합니다.',
-        },
-      ],
-      en: [
-        {
-          title: 'Corneal Microcystic Epithelial Keratopathy Mitigation',
-          desc: 'Blenrep boxed warning for visual acuity loss is driven by non-cleavable MMAF macropinocytosis in corneal epithelium. Fc silencing and enzymatic linker prevent ocular tissue entrapment.',
-        },
-      ],
-    },
-    'FRalpha (FOLR1)': {
-      ko: [
-        {
-          title: '각막 독성 및 간질성 폐렴 발생 억제',
-          desc: '엘라히어(Elahere)의 메이탄시노이드 DM4 각막 침착 및 폐 독성을 정밀 절단성 링커와 최적화된 DAR 설계를 통해 완화합니다.',
-        },
-      ],
-      en: [
-        {
-          title: 'Ocular Keratopathy & Pneumonitis De-Risking',
-          desc: 'Prevents corneal epithelial deposition of maytansinoid payload and suppresses pulmonary macrophage inflammation.',
-        },
-      ],
-    },
+  // ------------------------------------------------------------------ Why this design has fewer side effects than the approved drug
+  // Each entry: the approved drug's problem, the biology behind it, and the "kinds" that decide how this design answers it.
+  // The answer is written from the parts the user actually chose, not from a fixed text.
+  const DERISK = {
+    'HER2 (ERBB2)': [
+      { ko: ['간질성 폐질환(ILD, 폐렴)', '엔허투는 임상시험에서 ILD와 폐렴이 약 10~15%에서 보고되었고 일부는 치명적이었습니다.', 'DXd는 세포막을 잘 통과하는 약물이고, DAR 8은 항체 한 개에 약물 8개가 붙어 물에 잘 섞이지 않아 응집되기 쉽습니다. 응집된 ADC와 Fc 부위는 폐포 대식세포의 FcγR에 붙어 비특이적으로 흡수되고, 대식세포 안에서 풀려난 DXd가 폐포 상피를 손상시키며 염증을 일으킵니다.'],
+        en: ['Interstitial lung disease (pneumonitis)', 'Enhertu caused ILD or pneumonitis in about 10 to 15 percent of patients in trials, some fatal.', 'DXd crosses cell membranes easily, and DAR 8 puts eight drugs on one antibody, which makes it water-repellent and prone to clumping. Clumped ADC and the Fc region bind FcγR on alveolar macrophages and are taken up non-specifically; the DXd released inside them injures the alveolar lining and triggers inflammation.'],
+        kinds: ['fc', 'dar', 'pay:pulmonary'] },
+      { ko: ['심장 기능 저하(LVEF 감소)', '트라스투주맙 계열 항체는 좌심실 박출률을 떨어뜨릴 수 있습니다.', 'HER2는 심근세포에도 있어 심근의 생존 신호에 관여합니다. 항체가 이 신호를 막거나, 혈액 속에서 미리 떨어져 나온 페이로드가 심근에 닿으면 심근세포가 손상됩니다.'],
+        en: ['Reduced heart function (LVEF drop)', 'Trastuzumab-type antibodies can lower left ventricular ejection fraction.', 'HER2 is also on heart muscle cells and supports their survival signaling. The antibody can block that signal, and payload that falls off in the blood can reach the heart muscle and damage it.'],
+        kinds: ['target', 'linker', 'pay:cardiovascular'] },
+    ],
+    'TROP2 (TACSTD2)': [
+      { ko: ['중증 호중구감소증', '트로델비는 3등급 이상 호중구감소증이 환자의 약 절반(51%)에서 나타났습니다.', 'CL2A 링커는 pH에 민감한 결합이라 혈액 속에서도 서서히 끊어집니다. 떨어져 나온 SN-38이 골수에서 호중구가 되는 전구세포를 직접 공격해 백혈구 수치가 떨어집니다.'],
+        en: ['Severe neutropenia', 'Trodelvy caused grade 3 or higher neutropenia in about half of patients (51 percent).', 'The CL2A linker is pH-sensitive and slowly breaks even in the blood. The SN-38 that comes off attacks neutrophil precursor cells in bone marrow, so white cell counts fall.'],
+        kinds: ['linker', 'pay:haematologic', 'dar'] },
+      { ko: ['중증 설사', '3등급 이상 설사가 약 10%에서 보고되었습니다.', 'SN-38은 장 점막 상피세포에도 독성이 있고, 간에서 UGT1A1이 해독하지 못한 SN-38은 담즙을 따라 장으로 나와 점막을 손상시킵니다.'],
+        en: ['Severe diarrhea', 'Grade 3 or higher diarrhea was reported in about 10 percent of patients.', 'SN-38 is toxic to the cells lining the gut, and SN-38 that the liver enzyme UGT1A1 does not detoxify is excreted in bile into the intestine, where it injures the lining.'],
+        kinds: ['linker', 'pay:gastrointestinal'] },
+    ],
+    'Nectin-4': [
+      { ko: ['중증 피부 반응', '파드셉은 스티븐스-존슨 증후군, 독성표피괴사융해증(SJS/TEN) 같은 중증 피부 반응에 대한 경고가 있습니다.', 'Nectin-4는 정상 피부의 표피 각질세포에 많이 발현합니다. 약물이 표적을 따라 피부에 모이면 MMAE가 각질세포를 죽여 피부가 벗겨집니다.'],
+        en: ['Severe skin reactions', 'Padcev carries a warning for severe skin reactions such as Stevens-Johnson syndrome and toxic epidermal necrolysis.', 'Nectin-4 is abundant on keratinocytes in normal skin. When the drug gathers in skin by following its target, MMAE kills keratinocytes and the skin peels.'],
+        kinds: ['target', 'pay:dermatologic', 'linker'] },
+      { ko: ['말초신경병증', '손발 저림과 근력 저하 같은 말초 감각 및 운동 신경병증이 흔하게 나타납니다.', 'MMAE는 미세소관을 억제하는 약물이라, 분열하지 않는 신경 축삭 안의 물질 수송까지 방해합니다. 혈액 속으로 새어 나온 MMAE가 많을수록 신경 손상이 쌓입니다.'],
+        en: ['Peripheral neuropathy', 'Numbness, tingling and weakness in the hands and feet are common.', 'MMAE blocks microtubules, which also carry cargo along non-dividing nerve axons. The more MMAE leaks into the blood, the more nerve damage builds up.'],
+        kinds: ['linker', 'pay:neurologic', 'dar'] },
+    ],
+    'CD79b': [
+      { ko: ['말초신경병증', '말초신경병증은 폴라이비의 용량을 제한하는 대표적인 독성입니다.', 'MMAE는 미세소관을 억제하는 약물이라, 분열하지 않는 신경 축삭 안의 물질 수송까지 방해합니다. 혈액 속으로 새어 나온 MMAE가 많을수록 신경 손상이 쌓입니다.'],
+        en: ['Peripheral neuropathy', 'Neuropathy is the main dose-limiting toxicity of Polivy.', 'MMAE blocks microtubules, which also carry cargo along non-dividing nerve axons. The more MMAE leaks into the blood, the more nerve damage builds up.'],
+        kinds: ['linker', 'pay:neurologic', 'dar'] },
+      { ko: ['호중구와 혈소판 감소', '호중구감소증과 혈소판감소증이 흔하게 나타납니다.', 'CD79b는 B세포에 있지만 MMAE는 분열이 빠른 모든 세포를 공격합니다. 혈액 속에서 풀려난 MMAE는 골수의 조혈 전구세포 분열을 막아 혈구 수가 줄어듭니다.'],
+        en: ['Low neutrophils and platelets', 'Neutropenia and thrombocytopenia are common.', 'CD79b sits on B cells, but MMAE attacks any fast-dividing cell. MMAE freed in the blood stops hematopoietic precursors in bone marrow from dividing, so blood counts fall.'],
+        kinds: ['linker', 'pay:haematologic', 'dar'] },
+    ],
+    'BCMA (TNFRSF17)': [
+      { ko: ['각막 병증(시력 저하)', '블렌렙은 각막 상피 병증이 환자의 약 70% 이상에서 보고되어 별도의 안과 관리가 필요합니다.', '각막 상피세포는 거대음세포작용으로 혈액 속 ADC를 비특이적으로 삼킵니다. 비절단형 링커는 세포 안에서 항체가 완전히 분해될 때까지 MMAF를 붙들고 있어, 분해 산물이 각막 상피에 쌓이며 미세낭종이 생깁니다.'],
+        en: ['Corneal damage (vision loss)', 'Blenrep caused corneal epithelial changes in roughly 70 percent or more of patients and needs eye monitoring.', 'Corneal epithelial cells take up ADC from the blood non-specifically by macropinocytosis. A non-cleavable linker holds MMAF until the antibody is fully broken down, so the breakdown product piles up in the corneal lining and forms microcysts.'],
+        kinds: ['fc', 'linker', 'pay:ocular'] },
+    ],
+    'FRalpha (FOLR1)': [
+      { ko: ['각막 병증(시력 저하)', '엘라히어는 각막 병증과 시력 저하에 대한 경고가 있습니다.', '엽산 수용체 알파는 각막 상피에도 있고, 메이탄시노이드(DM4)는 각막 상피세포의 분열을 막아 상피가 손상됩니다.'],
+        en: ['Corneal damage (vision loss)', 'Elahere carries a warning for corneal disease and vision loss.', 'Folate receptor alpha is also present in the corneal lining, and the maytansinoid DM4 stops corneal epithelial cells from dividing, so the lining is damaged.'],
+        kinds: ['target', 'pay:ocular', 'linker'] },
+      { ko: ['간질성 폐질환', '드물지만 간질성 폐질환이 보고되었습니다.', 'ADC가 폐포 대식세포에 비특이적으로 흡수되면 폐 안에서 페이로드가 풀려나 염증이 생깁니다.'],
+        en: ['Interstitial lung disease', 'Interstitial lung disease was reported, though rarely.', 'When ADC is taken up non-specifically by alveolar macrophages, the payload is released inside the lung and causes inflammation.'],
+        kinds: ['fc', 'pay:pulmonary'] },
+    ],
   };
 
-  function fillStudioCompareDrawer(simInput, evalSpaceInput) {
+  // one sentence per kind: tone better / same / worse than the approved drug, for the parts the user chose
+  function deriskAnswer(kind, sim, refSim, isKo) {
+    const L = (ko, en) => (isKo ? ko : en);
+    if (kind === 'fc') {
+      if (sim.fcSilenced) return { tone: 'better', text: L('Fc 침묵화(LALA-PG)로 대식세포의 FcγR 결합이 거의 사라져 비특이 흡수 경로가 막혀 있습니다.', 'Fc silencing (LALA-PG) removes most FcγR binding on macrophages, so the non-specific uptake route is blocked.') };
+      return { tone: 'same', text: L('Fc가 야생형이라 대식세포를 통한 비특이 흡수 경로가 기존 약물처럼 남아 있습니다.', 'The Fc is wild-type, so the macrophage uptake route remains, as in the approved drug.') };
+    }
+    if (kind === 'dar') {
+      if (sim.dar < refSim.dar) return { tone: 'better', text: L(`DAR이 ${refSim.dar}에서 ${sim.dar}로 낮아 약물 부하와 응집 위험이 줄었습니다.`, `DAR is lower, ${refSim.dar} to ${sim.dar}, so drug load and clumping risk are reduced.`) };
+      if (sim.dar > refSim.dar) return { tone: 'worse', text: L(`DAR이 ${refSim.dar}에서 ${sim.dar}로 높아져 약물 부하와 응집 위험이 커졌습니다.`, `DAR is higher, ${refSim.dar} to ${sim.dar}, so drug load and clumping risk are greater.`) };
+      return { tone: 'same', text: L(`DAR ${sim.dar}로 기존 약물과 같아 약물 부하는 줄지 않았습니다.`, `DAR ${sim.dar} is the same as the approved drug, so drug load is not reduced.`) };
+    }
+    if (kind === 'linker') {
+      const a = refSim.lnk.stability;
+      const b = sim.lnk.stability;
+      if (sim.lnk.id === refSim.lnk.id) return { tone: 'same', text: L(`같은 링커라서 혈장 안정도(${b}%)가 기존 약물과 같습니다.`, `Same linker, so plasma stability (${b}%) is the same as the approved drug.`) };
+      if (!sim.lnk.cleavable && refSim.lnk.cleavable) return { tone: b > a ? 'better' : 'worse', text: L(`비절단형 링커로 혈장 안정도가 ${a}%에서 ${b}%로 바뀌어 혈액 속 조기 방출이 줄지만, 항체가 완전히 분해되어야 약물이 풀립니다.`, `A non-cleavable linker changes plasma stability from ${a}% to ${b}%, so early release in blood drops, but the antibody must be fully broken down to free the drug.`) };
+      if (b > a) return { tone: 'better', text: L(`링커 혈장 안정도가 ${a}%에서 ${b}%로 높아져 혈액 속에서 미리 떨어져 나가는 약물이 줄었습니다.`, `Plasma stability rises from ${a}% to ${b}%, so less drug falls off in the blood.`) };
+      if (b < a) return { tone: 'worse', text: L(`링커 혈장 안정도가 ${a}%에서 ${b}%로 낮아 혈액 속 조기 방출이 늘 수 있습니다.`, `Plasma stability falls from ${a}% to ${b}%, so early release in the blood may increase.`) };
+      return { tone: 'same', text: L(`링커 혈장 안정도는 ${b}%로 기존과 같습니다.`, `Plasma stability is ${b}%, the same as before.`) };
+    }
+    if (kind === 'target') {
+      return { tone: 'same', text: L('표적이 기존 약물과 같아서 정상 장기에 표적이 있어서 생기는 독성은 그대로입니다.', 'The target is the same as the approved drug, so toxicity caused by the target being present in normal organs stays.') };
+    }
+    if (kind.startsWith('pay:')) {
+      const organ = kind.slice(4);
+      const mine = sim.pld.organs[organ] != null ? sim.pld.organs[organ] : 22;
+      const ref = refSim.pld.organs[organ] != null ? refSim.pld.organs[organ] : 22;
+      const name = organKo(organ);
+      if (sim.pld.id === refSim.pld.id) return { tone: 'same', text: L(`같은 페이로드라서 ${name}에 대한 독성도 같습니다.`, `Same payload, so its toxicity on ${name} is the same.`) };
+      if (mine < ref - 8) return { tone: 'better', text: L(`${plainName(sim.pld.id)}는 ${name}에 대한 독성이 ${plainName(refSim.pld.id)}보다 낮습니다.`, `${plainName(sim.pld.id)} is less toxic to ${name} than ${plainName(refSim.pld.id)}.`) };
+      if (mine > ref + 8) return { tone: 'worse', text: L(`${plainName(sim.pld.id)}는 ${name}에 대한 독성이 ${plainName(refSim.pld.id)}보다 높습니다.`, `${plainName(sim.pld.id)} is more toxic to ${name} than ${plainName(refSim.pld.id)}.`) };
+      return { tone: 'same', text: L(`${name}에 대한 페이로드 독성은 기존 약물과 비슷합니다.`, `Payload toxicity on ${name} is similar to the approved drug.`) };
+    }
+    return { tone: 'same', text: '' };
+  }
+
+  function fillStudioCompareDrawer(simInput) {
     const sim = simInput || computeStudioSimulation();
     const isKo = S.lang === 'ko';
+    const L = (ko, en) => (isKo ? ko : en);
 
     const tgt = sim.tgt || STUDIO_TARGETS[0];
     const lnk = sim.lnk || STUDIO_LINKERS[0];
@@ -2534,119 +2473,110 @@
     const refSpec = ADC_SPECS[refAdcId] || {};
     const refMech = MECH[refAdcId] || {};
     const refRow = (S.result && S.result.data && S.result.data.rows && S.result.data.rows.find((r) => r.adc === refAdcId)) || null;
-
     const refBrand = (refRow && refRow.brand) || refSpec.brand || refMech.brand || refAdcId;
     const refName = (refRow && refRow.name) || (refSpec.brand ? `${refSpec.brand} (${refAdcId})` : refAdcId);
-    const deNovoName = `De Novo ${tgt.gene || tgt.id.split(' ')[0]}-${pld.id.split(' ')[0]}`;
-    const deNovoSub = `DAR ${dar} / ${fcSilenced ? (isKo ? 'Fc 침묵화 (LALA-PG)' : 'Fc-Silenced (LALA-PG)') : (isKo ? '야생형 IgG1' : 'Wild-type IgG1')}`;
+    // the approved drug scored by the same formula on the same patient
+    const refSim = computeStudioSimulation(Object.assign({ target: tgt.id }, REF_STUDIO[tgt.id] || { linker: lnk.id, payload: pld.id, dar: 4, fc: false }), sim.organRisks ? sim.organRisks.map((r) => ({ organ: r.organ, score: 0.8 })) : null);
 
-    drawerTitle.textContent = isKo
-      ? `신규 최적설계 vs 기존 승인 약물 (${refBrand})`
-      : `De Novo Design vs Approved (${refBrand})`;
+    const tgtName = plainName(tgt.id);
+    const designName = `${tgtName}-${plainName(pld.id)}`;
+    const designSub = `${lnk.id}, DAR ${dar}, ${fcSilenced ? L('Fc 침묵화', 'Fc silenced') : L('야생형 IgG1', 'wild-type IgG1')}`;
+
+    // no title: the two cards below already say what is being compared
+    drawerTitle.textContent = '';
     clear(drawerBody);
     drawerBody.scrollTop = 0;
 
-    // 1. Hero Comparison Cards
+    // 1. The two designs side by side
     const secCompareHero = h('div', { class: 'compare-hero' },
       h('div', { class: 'compare-hero-col denovo' },
-        h('span', { class: 'ch-badge', text: isKo ? 'AI 신규 최적 설계' : 'AI De Novo Design' }),
-        h('span', { class: 'ch-name', text: deNovoName }),
-        h('span', { class: 'ch-sub', text: deNovoSub }),
-        h('span', { class: 'ch-score', text: isKo ? `안전성 ${sim.safetyScore}점 / 효능 ${sim.efficacyScore}점` : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}` })),
+        h('span', { class: 'ch-badge', text: L('이 환자 맞춤 설계', 'Tailored to this patient') }),
+        h('span', { class: 'ch-name', text: designName }),
+        h('span', { class: 'ch-sub', text: designSub }),
+        h('span', { class: 'ch-score', text: L(`안전도 ${sim.safetyScore}점 / 효능 ${sim.efficacyScore}점`, `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`) })),
       h('div', { class: 'compare-hero-col' },
-        h('span', { class: 'ch-badge', text: isKo ? '기존 FDA 승인 벤치마크' : 'Approved FDA Benchmark' }),
+        h('span', { class: 'ch-badge', text: L('기존 승인 약물', 'Approved drug') }),
         h('span', { class: 'ch-name', text: refBrand || refName }),
-        h('span', { class: 'ch-sub', text: `${refSpec.linker || refMech.linker || 'Linker'} / DAR ${refSpec.dar || refMech.dar || 4}` }),
-        h('span', { class: 'ch-score', style: 'color:var(--dim)', text: refMech.boxed_warnings ? (isKo ? `주요 경고: ${refMech.boxed_warnings}` : `Boxed: ${refMech.boxed_warnings}`) : (isKo ? 'FDA 허가 임상 승인' : 'Standard of Care') })));
+        h('span', { class: 'ch-sub', text: `${refSpec.linker || refSim.lnk.id}, DAR ${refSim.dar}, ${L('야생형 IgG1', 'wild-type IgG1')}` }),
+        h('span', { class: 'ch-score', style: 'color:var(--dim)', text: L(`안전도 ${refSim.safetyScore}점 / 효능 ${refSim.efficacyScore}점`, `Safety ${refSim.safetyScore} / Efficacy ${refSim.efficacyScore}`) })));
 
-    // 2. Structured Side-by-side Spec Table
-    const tableRows = [
-      [
-        t('compTarget'),
-        `${tgt.id} (선택도 +${tgt.selectivity.toFixed(1)} log2FC)`,
-        refSpec.target || refMech.target || tgt.id,
-        isKo ? '정상조직 비특이 결합 최소화' : 'Maximizes tumor selectivity margin',
-      ],
-      [
-        t('compLinker'),
-        `${lnk.id} (${lnk.cleavable ? (isKo ? '효소절단형' : 'Cleavable') : (isKo ? '비절단형' : 'Non-cleavable')}, 안정도 ${lnk.stability}%)`,
-        refSpec.linker || refMech.linker || 'Standard Linker',
-        isKo ? '혈장 내 조기 분해 누출 방지 (88% 유지)' : 'High plasma stability prevents shedding',
-      ],
-      [
-        t('compPayload'),
-        `${pld.id} (${pld.family || pld.cls})`,
-        refSpec.payload || refMech.payload || 'Cytotoxin',
-        isKo ? (sim.bystander ? '활성 동반 사멸로 인접 암세포 침투' : '강력한 세포독성') : 'Potent tumoricidal bystander killing',
-      ],
-      [
-        t('compDar'),
-        `DAR ${dar}`,
-        `DAR ${refSpec.dar || refMech.dar || 4}`,
-        isKo ? '친수성 최적화로 간/폐 대식세포 급속 소실 방지' : 'Balanced DAR avoids aggregation and rapid clearance',
-      ],
-      [
-        t('compFc'),
-        fcSilenced ? (isKo ? 'Fc 침묵화 (LALA-PG)' : 'Fc-Silenced (LALA-PG)') : (isKo ? '야생형 IgG1 (Wild-type)' : 'Wild-type IgG1'),
-        isKo ? '야생형 IgG1 (Wild-type)' : 'Wild-type IgG1',
-        isKo ? 'FcγR 매개 폐포/각막 대식세포 침착 억제' : 'Abolishes Fc-gamma-R macrophage uptake',
-      ],
-      [
-        t('compSafety'),
-        `${sim.safetyScore} / 100`,
-        `~${Math.max(25, Math.min(80, sim.safetyScore - 18))} / 100`,
-        isKo ? '환자 취약 활성 장기 독성 위험 대폭 경감' : 'Significant organ toxicity reduction',
-      ],
-      [
-        t('compEfficacy'),
-        `${sim.efficacyScore} / 100`,
-        `~${Math.max(30, Math.min(95, sim.efficacyScore - 5))} / 100`,
-        isKo ? '종양 내 유효 농도 유지 및 지속 사멸' : 'High tumor potency maintained',
-      ],
+    // 2. Part by part, with what it means clinically
+    const burden = (p) => sim.organRisks.reduce((a, r) => a + (p.organs[r.organ] != null ? p.organs[r.organ] : 22), 0) / Math.max(1, sim.organRisks.length);
+    const dSafety = sim.safetyScore - refSim.safetyScore;
+    const dEff = sim.efficacyScore - refSim.efficacyScore;
+    const toneOf = (d) => (d >= 3 ? 'better' : d <= -3 ? 'worse' : 'same');
+
+    const linkerGain = deriskAnswer('linker', sim, refSim, isKo);
+    const darGain = deriskAnswer('dar', sim, refSim, isKo);
+    const fcGain = sim.fcSilenced
+      ? { tone: 'better', text: L('Fc 침묵화로 대식세포 FcγR을 통한 비특이 흡수가 줄어, 폐, 간, 안구 독성 위험이 낮아집니다.', 'Fc silencing lowers non-specific uptake through macrophage FcγR, reducing lung, liver and eye toxicity risk.') }
+      : { tone: 'same', text: L('기존 약물과 같은 야생형 IgG1이라 차이가 없습니다.', 'Same wild-type IgG1 as the approved drug, so no difference.') };
+    let payGain;
+    if (pld.id === refSim.pld.id) payGain = { tone: 'same', text: L('같은 페이로드를 사용하므로 항암 효력과 독성 특성이 같습니다.', 'The same payload is used, so potency and toxicity profile are the same.') };
+    else {
+      const a = burden(refSim.pld);
+      const b = burden(pld);
+      const pct = a ? Math.round(Math.abs(1 - b / a) * 100) : 0;
+      const tox = b < a - 3 ? L(`환자의 취약 장기에 대한 독성이 약 ${pct}% 낮고`, `toxicity on the patient's vulnerable organs is about ${pct}% lower, `)
+        : b > a + 3 ? L(`환자의 취약 장기에 대한 독성이 약 ${pct}% 높고`, `toxicity on the patient's vulnerable organs is about ${pct}% higher, `)
+          : L('환자의 취약 장기에 대한 독성은 비슷하고', 'toxicity on the patient\'s vulnerable organs is similar, ');
+      const pot = pld.potency > refSim.pld.potency + 3 ? L(' 항암 효력은 더 강합니다.', 'and potency is stronger.')
+        : pld.potency < refSim.pld.potency - 3 ? L(' 항암 효력은 더 약합니다.', 'and potency is weaker.') : L(' 항암 효력은 비슷합니다.', 'and potency is similar.');
+      payGain = { tone: b < a - 3 ? 'better' : b > a + 3 ? 'worse' : 'same', text: tox + pot };
+    }
+
+    const rows = [
+      [t('compTarget'), tgtName, plainName(refSim.tgt.id),
+        { tone: 'same', text: L(`같은 ${tgtName} 표적이라 종양 선택도(+${tgt.selectivity.toFixed(1)} log2FC)는 같습니다. 차이는 아래 항목에서 생깁니다.`, `Same ${tgtName} target, so tumor selectivity (+${tgt.selectivity.toFixed(1)} log2FC) is the same. The differences come from the parts below.`) }],
+      [t('compLinker'), `${lnk.id}, ${lnk.cleavable ? L('절단형', 'cleavable') : L('비절단형', 'non-cleavable')}`, refSpec.linker || refSim.lnk.id, linkerGain],
+      [t('compPayload'), plainName(pld.id), plainName(refSim.pld.id), payGain],
+      [t('compDar'), `DAR ${dar}`, `DAR ${refSim.dar}`, darGain],
+      [t('compFc'), fcSilenced ? L('Fc 침묵화 (LALA-PG)', 'Fc silenced (LALA-PG)') : L('야생형 IgG1', 'Wild-type IgG1'), L('야생형 IgG1', 'Wild-type IgG1'), fcGain],
+      [t('compSafety'), L(`${sim.safetyScore}점`, `${sim.safetyScore}`), L(`${refSim.safetyScore}점`, `${refSim.safetyScore}`),
+        { tone: toneOf(dSafety), text: dSafety >= 3 ? L(`같은 환자 기준으로 기존 약물보다 ${dSafety}점 높아, 취약 장기 독성 위험이 낮습니다.`, `${dSafety} points higher than the approved drug for this patient, so risk to vulnerable organs is lower.`)
+          : dSafety <= -3 ? L(`기존 약물보다 ${-dSafety}점 낮습니다. 효능을 위해 안전도를 일부 양보한 조합입니다.`, `${-dSafety} points lower than the approved drug; some safety is traded for efficacy.`) : L('기존 약물과 비슷한 수준입니다.', 'Similar to the approved drug.') }],
+      [t('compEfficacy'), L(`${sim.efficacyScore}점`, `${sim.efficacyScore}`), L(`${refSim.efficacyScore}점`, `${refSim.efficacyScore}`),
+        { tone: toneOf(dEff), text: dEff >= 3 ? L(`기존 약물보다 ${dEff}점 높아, 종양에 더 강하게 작용할 것으로 예상됩니다.`, `${dEff} points higher than the approved drug, so a stronger effect on the tumor is expected.`)
+          : dEff <= -3 ? L(`기존 약물보다 ${-dEff}점 낮아 항암 효능은 다소 떨어질 수 있습니다.`, `${-dEff} points lower than the approved drug, so antitumor effect may be somewhat weaker.`) : L('기존 약물과 비슷한 수준입니다.', 'Similar to the approved drug.') }],
     ];
 
-    const tblEl = h('table', { class: 'compare-table' },
-      h('thead', null,
-        h('tr', null,
-          h('th', { class: 'c-param', text: isKo ? '비교 항목' : 'Parameter' }),
-          h('th', { class: 'c-denovo', text: isKo ? '신규 최적 설계 (De Novo)' : 'De Novo Design' }),
-          h('th', { class: 'c-ref', text: isKo ? `기존 승인 (${refBrand || 'Benchmark'})` : `Approved (${refBrand || 'Ref'})` }),
-          h('th', { class: 'c-diff', text: isKo ? '임상 개선 이점' : 'Clinical Advantage' }))),
-      h('tbody', null,
-        tableRows.map(([param, denovo, refVal, diff]) => h('tr', null,
-          h('td', { class: 'c-param', text: param }),
-          h('td', { class: 'c-denovo', text: denovo }),
-          h('td', { class: 'c-ref', text: refVal }),
-          h('td', { class: 'c-diff', text: diff })))));
+    const chipText = { better: L('개선', 'Better'), same: L('동일', 'Same'), worse: L('감소', 'Trade-off') };
+    const cmpList = h('div', { class: 'cmp-list' }, rows.map(([param, mine, ref, gain]) => h('div', { class: 'cmp-item' },
+      h('div', { class: 'cmp-param', text: param }),
+      h('div', { class: 'cmp-pair' },
+        h('div', { class: 'cmp-side mine' }, h('span', { class: 'cmp-tag', text: L('맞춤 설계', 'Tailored') }), h('span', { class: 'cmp-val', text: mine })),
+        h('div', { class: 'cmp-side' }, h('span', { class: 'cmp-tag', text: refBrand }), h('span', { class: 'cmp-val', text: ref }))),
+      h('div', { class: 'cmp-gain ' + gain.tone },
+        h('span', { class: 'cmp-chip ' + gain.tone, text: chipText[gain.tone] }),
+        h('span', { class: 'cmp-gain-text', text: gain.text })))));
 
-    const secCompareTable = section(isKo ? '주요 제원 및 임상 개선점 비교' : 'Specification & Clinical Advantage', tblEl);
+    const secCompareTable = section(L('설계 비교와 임상 개선 이점', 'Comparison and clinical advantage'), cmpList);
 
-    // 3. Clinical De-risking Points
-    const deriskItems = (CLINICAL_DERISK_DB[tgt.id] && CLINICAL_DERISK_DB[tgt.id][isKo ? 'ko' : 'en']) || [
-      {
-        title: isKo ? '표적 장기 안전성 최적화' : 'Organ Safety Optimization',
-        desc: isKo ? '최적화된 링커 안정도와 DAR 제어로 비특이적 전신 독성을 최소화합니다.' : 'Minimizes off-target toxicity through tuned DAR and linker chemistry.',
-      },
-    ];
+    // 3. Why the approved drug's side effects are lower with this design
+    const deriskDefs = DERISK[tgt.id] || [];
+    const deRiskEl = h('div', { class: 'derisk-list' }, deriskDefs.map((def) => {
+      const [title, problem, cause] = def[isKo ? 'ko' : 'en'];
+      const answers = def.kinds.map((k) => deriskAnswer(k, sim, refSim, isKo)).filter((a) => a.text);
+      return h('div', { class: 'derisk-item' },
+        h('b', { text: title }),
+        h('div', { class: 'dr-block' }, h('span', { class: 'dr-label', text: L(`${refBrand}의 문제`, `Problem with ${refBrand}`) }), h('span', { text: problem })),
+        h('div', { class: 'dr-block' }, h('span', { class: 'dr-label', text: L('발생 기전', 'Why it happens') }), h('span', { text: cause })),
+        h('div', { class: 'dr-block' }, h('span', { class: 'dr-label', text: L('이 설계의 대응', 'What this design does') }),
+          h('ul', { class: 'dr-answers' }, answers.map((a) => h('li', null, h('span', { class: 'cmp-chip ' + a.tone, text: chipText[a.tone] }), h('span', { text: a.text }))))));
+    }));
+    const secDeRisk = deriskDefs.length ? section(t('deRiskTitle'), deRiskEl) : null;
 
-    const deRiskEl = h('div', { class: 'derisk-list' },
-      deriskItems.map((item) => h('div', { class: 'derisk-item' },
-        h('b', { text: item.title }),
-        h('span', { text: item.desc }))));
-
-    const secDeRisk = section(t('deRiskTitle'), deRiskEl);
-
-    // 4. 3D Structure Tab
+    // 4. Molecular structure of both
     const cvs3d = h('canvas', { class: 'adc-3d-canvas' });
     const wrap3d = h('div', { class: 'adc-3d-wrap' },
       cvs3d,
       h('span', { class: 'adc-3d-hint', text: t('rotateHint') }));
 
-    const deNovoConstruct = {
-      name: deNovoName,
-      brand: isKo ? 'AI 최적설계' : 'AI De Novo',
+    const designConstruct = {
+      name: designName,
+      brand: '',
       target: tgt.gene || tgt.id,
-      payload: pld.id,
+      payload: plainName(pld.id),
       linker: lnk.id,
       dar: dar,
       darCount: Math.max(1, Math.min(8, Math.round(dar))),
@@ -2655,20 +2585,20 @@
       paratopeColor: '#38BDF8',
     };
 
-    let active3dModel = deNovoConstruct;
+    let active3dModel = designConstruct;
     const legend3dBox = h('div');
     const updateLegend = (model) => {
       clear(legend3dBox);
       legend3dBox.append(build3dLegend(model));
     };
-    updateLegend(deNovoConstruct);
+    updateLegend(designConstruct);
 
-    const btnToggleDeNovo = h('button', {
+    const btnToggleDesign = h('button', {
       type: 'button', class: 'st-pill', 'aria-pressed': 'true',
-      text: isKo ? '신규 De Novo 설계 구조' : 'De Novo Construct',
+      text: L('맞춤 설계 구조', 'Tailored design'),
       onclick: () => {
-        active3dModel = deNovoConstruct;
-        btnToggleDeNovo.setAttribute('aria-pressed', 'true');
+        active3dModel = designConstruct;
+        btnToggleDesign.setAttribute('aria-pressed', 'true');
         btnToggleRef.setAttribute('aria-pressed', 'false');
         updateLegend(active3dModel);
         init3dAdcCanvas(cvs3d, active3dModel);
@@ -2677,55 +2607,34 @@
 
     const btnToggleRef = h('button', {
       type: 'button', class: 'st-pill', 'aria-pressed': 'false',
-      text: isKo ? `기존 승인약물 구조 (${refBrand})` : `Approved ADC (${refBrand})`,
+      text: L(`${refBrand} 구조`, `${refBrand} structure`),
       onclick: () => {
         active3dModel = refRow || { adc: refAdcId, name: refName, brand: refBrand };
-        btnToggleDeNovo.setAttribute('aria-pressed', 'false');
+        btnToggleDesign.setAttribute('aria-pressed', 'false');
         btnToggleRef.setAttribute('aria-pressed', 'true');
         updateLegend(active3dModel);
         init3dAdcCanvas(cvs3d, active3dModel);
       },
     });
 
-    const switcher3d = h('div', { class: 'studio-pills', style: 'margin-bottom:12px' }, btnToggleDeNovo, btnToggleRef);
+    const switcher3d = h('div', { class: 'studio-pills', style: 'margin-bottom:12px' }, btnToggleDesign, btnToggleRef);
 
-    const sec3D = section(t('tabStruct3d'),
+    const sec3D = section(null,
       switcher3d,
       wrap3d,
       legend3dBox,
       h('div', { class: 'kv3', style: 'margin-top:12px' }, [
-        [isKo ? '표적 항원' : 'Target', tgt.id],
-        [isKo ? '접합비 (DAR)' : 'Conjugation (DAR)', `DAR ${dar}`],
-        [isKo ? '화학 링커' : 'Linker Chemistry', `${lnk.id} (${lnk.cleavable ? 'Cleavable' : 'Direct'})`],
-        [isKo ? '세포독성 페이로드' : 'Cytotoxic Payload', `${pld.id} (${pld.family || pld.cls})`],
-        [isKo ? 'Fc 침묵화 엔지니어링' : 'Fc Engineering', fcSilenced ? (isKo ? 'LALA-PG (폐/각막 대식세포 흡수 차단)' : 'LALA-PG (Fc-gamma-R Silenced)') : (isKo ? '야생형 IgG1' : 'Wild-type IgG1')],
+        [L('표적 항원', 'Target'), tgtName],
+        [L('접합비 DAR', 'DAR'), `DAR ${dar}`],
+        [L('화학 링커', 'Linker'), `${lnk.id}, ${lnk.cleavable ? L('절단형', 'cleavable') : L('비절단형', 'non-cleavable')}`],
+        [L('세포독성 페이로드', 'Payload'), `${plainName(pld.id)}, ${pld.cls}`],
+        [L('Fc', 'Fc'), fcSilenced ? L('LALA-PG로 침묵화해 대식세포 흡수를 줄임', 'Silenced with LALA-PG to cut macrophage uptake') : L('야생형 IgG1', 'Wild-type IgG1')],
       ].map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])));
 
-    // 5. Pivotal Trial Study Tab
+    // 5. Clinical trial cases of the approved drug
     const tr = refRow && refRow.detail && refRow.detail.trial && refRow.detail.trial.trial && !refRow.detail.trial.no_results ? refRow.detail.trial : null;
-    const compReg = (tr && tr.comparator && tr.comparator.regimen) || (isKo ? '대조군' : 'Control');
-    const compN = tr && tr.comparator && tr.comparator.n ? ` (n=${tr.comparator.n})` : '';
-    const trialSummaryCard = tr ? h('div', { class: 'trial-summary-card' },
-      h('p', { style: 'margin:0 0 6px;font-weight:800;font-size:14px;color:var(--ink-hi)', text: `${refBrand} - ${tr.trial}${tr.phase ? ' (Phase ' + tr.phase + ' Registration Trial)' : ''}` }),
-      h('p', { class: 'dim', style: 'margin:0 0 6px;font-size:12px', text: tr.population || 'Patient cohort not specified' }),
-      h('p', { style: 'margin:0 0 4px;font-size:12px;font-weight:600', text: `${t('treatmentArm')}: ${tr.regimen || ''} (n=${tr.n || 0})` }),
-      tr.comparator ? h('p', { class: 'dim', style: 'margin:0 0 8px;font-size:12px', text: `${t('controlArm')}: ${compReg}${compN}` }) : null,
-      /^NCT\d{8}$/.test(tr.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + tr.nct, target: '_blank', rel: 'noopener noreferrer', text: `ClinicalTrials.gov ${tr.nct} ↗` }) : null
-    ) : h('p', { class: 'dim', text: isKo ? `기존 승인 약물 (${refBrand}) 허가 임상시험 정보` : `Approved benchmark trial information for ${refBrand}` });
+    const secRefStudy = section(null, trialCaseBlock(tr, L(`${refBrand}의 임상시험 정보가 없습니다.`, `No clinical trial information for ${refBrand}.`), refBrand));
 
-    const trialEvents = [];
-    for (const o of (tr && tr.organs) || []) {
-      for (const e of o.events || []) {
-        trialEvents.push(h('div', { class: 'trial-event' },
-          buildDualBar({ trial: tr, organ: o.organ, ev: e }),
-          h('div', { class: 'event-values', style: 'margin-top:6px' },
-            h('span', null, h('b', { text: `${e.a}/${e.n}` }), ' ' + t('treatmentArm')),
-            e.comp ? h('span', null, h('b', { text: `${e.comp[0]}/${e.comp[1]}` }), ' ' + t('controlArm')) : null)));
-      }
-    }
-    const secRefStudy = section(t('tabRefStudy'), trialSummaryCard, ...trialEvents);
-
-    // Tab switcher
     const tabDefs = [
       { id: 'Compare', label: t('tabCompare'), secs: [secCompareHero, secCompareTable, secDeRisk].filter(Boolean) },
       { id: 'Structure', label: t('tabStruct3d'), secs: [sec3D].filter(Boolean) },
@@ -2757,10 +2666,10 @@
     switchCompareTab('Compare');
   }
 
-  function openStudioCompareDrawer(simInput, evalSpaceInput) {
+
+  function openStudioCompareDrawer(simInput) {
     const sim = simInput || computeStudioSimulation();
-    const evalSpace = evalSpaceInput || evaluateAllStudioCandidates();
-    fillStudioCompareDrawer(sim, evalSpace);
+    fillStudioCompareDrawer(sim);
     showDrawer();
   }
 
@@ -2833,7 +2742,7 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.7.3');
+    verEl.textContent = 'v' + (APP.version || '0.7.4');
 
     restore();
     renderHeaderControls();
