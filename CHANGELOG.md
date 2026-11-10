@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.4: Patient-tailored ADC design, clinical trial comparison, and UI refinement
+
+- **Removed demo presets:** boots into a clean custom patient input state with a `New Patient` reset button.
+- **Live model progress bar:** thin progress bar above the condition input tracks actual backend stages (`labs`, `recommend`, `queued`, `running`, `judging`, `done`).
+- **Clear clinical language:** replaced raw regulatory jargon with clear patient-centered headings and explanations (`약물 사용 제한 여부`, `취약 장기 영향 가능성`, `임상시험 사례`, `분자 구조`).
+- **Clinical trial comparison (`임상시험 사례`):** replaced raw `ADC`/`CMP` fraction counts with treatment vs. control percentage bars, per-event difference badges, and an overall trial summary verdict.
+- **Bright 3D molecular canvas:** updated the 3D conjugate structure viewer to a bright white background in both the ADC Matrix drawer and the Structure Studio comparison drawer, and removed the redundant indications list from the Structure tab.
+- **Patient-Tailored ADC Design (`환자 맞춤형 ADC 설계`):** replaced linear clamped scoring with a non-linear pharmacological saturation model for realistic 2D candidate dispersion, added an expandable scoring explanation, and updated the `ADC 자동 설계` button with variable-speed left-to-right progress fill.
+- **Full-width comparison & medical mechanisms:** redesigned the comparison drawer with full-width side-by-side parameter cards so clinical advantages never truncate, and added 3-part medical mechanism explanations (`기존 약물의 문제`, `발생 기전`, `이 설계의 대응`) dynamically computed from the selected DAR, Fc silencing, linker stability, and payload.
+
 ## 0.7.3: Automatic app updates
 
 - An installed app checks the published release at every start (5 minute cache) and every 10 minutes while running, downloads and verifies the newer release and switches to it. `ADCTOX_NO_AUTO_UPDATE=1` turns it off; `ADCTOX_AUTO_RESTART=1` restarts a running server at once.
