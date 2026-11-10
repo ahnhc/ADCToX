@@ -37,11 +37,14 @@ sudo apt install python3-venv
 
 Windows에서는 바로가기, `adctox` 명령, 또는 zip의 `ADCTOX.bat`이 브라우저 화면을 연다. 터미널 화면은 `adctox-cli` 명령이나 `ADCTOX-cli.bat`으로 연다.
 
-화면이 없는 서버에서는 포트를 정해 켜고(`ADCTOX_PORT`, 기본은 빈 포트를 고른다) 내 컴퓨터에서 SSH 터널로 연다.
+화면이 없는 서버에서는 포트를 정해 켜고(`ADCTOX_PORT`, 기본은 빈 포트를 고른다) 내 컴퓨터에서 SSH 터널로 열거나, 원격 호스트 허용 옵션(`ADCTOX_HOST`, `ADCTOX_ALLOWED_HOSTS`)과 자동 재시작(`ADCTOX_AUTO_RESTART=1`)을 켜서 서빙한다.
 
 ```bash
-ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox              # 서버에서
+ADCTOX_NO_BROWSER=1 ADCTOX_PORT=8765 adctox              # 서버에서 (SSH 터널용)
 ssh -L 8765:127.0.0.1:8765 <사용자>@<서버>               # 내 컴퓨터에서, 그다음 http://localhost:8765
+
+# 원격 브라우저 / 모바일 PWA / Cloudflare 터널 서빙 (새 릴리스 감지 시 자동 업데이트 및 재시작)
+ADCTOX_NO_BROWSER=1 ADCTOX_AUTO_RESTART=1 ADCTOX_HOST=0.0.0.0 ADCTOX_PORT=8765 ADCTOX_ALLOWED_HOSTS="*" adctox
 ```
 
 ## 설치 위치
@@ -77,9 +80,12 @@ ADCTOX_INSTALL_DIR="$HOME/apps/adctox" ADCTOX_BIN_DIR="$HOME/.local/bin" bash /t
 
 ## 업데이트
 
+설치된 앱(0.7.3 이상)은 시작할 때와 실행 중 10분마다 공개된 새 버전을 확인해 자동으로 다운로드하고 전환한다(`ADCTOX_NO_AUTO_UPDATE=1`로 끌 수 있으며, `ADCTOX_AUTO_RESTART=1`을 지정하면 실행 중인 서버가 즉시 새 버전으로 재시작한다). 수동으로 앱 코드를 업데이트하려면 `adctox --update-app`을 실행하거나 설치 명령을 다시 실행한다.
+
 모델 업데이트는 터미널 명령으로 한다. 다운로드가 끝나면 다음 실행부터 새 모델을 쓴다.
 
 ```bash
+adctox --update-app
 adctox --check-models
 adctox --update-models
 adctox --model-version
@@ -88,7 +94,7 @@ adctox --rollback-models
 
 업데이트는 변경된 파일을 통째로 받는 방식이다. 동일한 encoder와 index는 재사용하지만 변경된 가중치 파일 내부의 byte patch를 받는 것은 아니다. 연결이 끊기거나 검증에 실패하면 현재 모델을 계속 선택한다. 받은 파일은 다음 시도에서 검증 후 재사용된다. 중단된 파일의 부분 다운로드 재개는 현재 지원하지 않는다.
 
-앱 코드는 `adctox --update-app`으로 업데이트하거나 설치 명령을 다시 실행한다. 모델 업데이트만으로는 Python 의존성을 변경하지 않는다. 새로운 모델 구조가 runtime API를 바꾸면 먼저 앱 업데이트를 요구한다.
+모델 업데이트만으로는 Python 의존성을 변경하지 않는다. 새로운 모델 구조가 runtime API를 바꾸면 먼저 앱 업데이트를 요구한다.
 
 `ADC_MODEL_DIR`은 개발자가 특정 모델 디렉터리를 직접 고정하는 기존 옵션이다. 이 옵션을 설정한 상태에서는 기본 설치 경로의 새 모델보다 지정한 경로가 우선하므로 일반 사용에서는 설정하지 않는다.
 

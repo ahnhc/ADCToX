@@ -13,11 +13,11 @@ ADCTOX links a patient's cancer, comorbidities, and laboratory values to the 13 
 
 ## What's New in v0.7.4
 
-1. **Interactive 3D ADC Molecular Structure Visualizer:** 3D rotational canvas rendering distinct architectures for all approved ADCs with accurate DAR counts, payload classes (DXd cyan, SN-38 emerald, SG3199 rose, DM1 gold, MMAE violet, MMAF indigo, Calicheamicin crimson), cleavable/non-cleavable linkers, paratope bindings, and 360-degree interactive rotation.
-2. **Dynamic Multi-Objective Pareto Frontier Optimization:** Multi-objective simulation plot comparing Patient Organ Safety Score vs. Antitumor Efficacy & Selectivity across all candidate architectures with progressive scan wavefront, 1:1 square aspect ratio without distortion, clean high-contrast daylight background, and AI de novo optimal architecture rationales.
-3. **Bilingual Support (English / Korean Toggle):** Instantaneous `KO / EN` toggle switching all modes, tables, filter tabs, condition inputs, organ vulnerability meters, biomarker flowsheets, and evidence drawer descriptions between English and clinical Korean oncology terminology.
-4. **Mobile Responsive Layout:** 2-tier sticky header, responsive single-column grid adaptation, mobile bottom-sheet drawer (`84vh`), and touch-optimized controls on narrow phone screens (<= 480px).
-5. **Clinical Biomarker Flowsheet:** Institutional laboratory reference intervals mapping with dynamic spectrum indicators and AI organ vulnerability linkages.
+1. **Patient-Tailored ADC Design (`환자 맞춤형 ADC 설계`):** Non-linear pharmacological saturation scoring model for realistic 2D candidate dispersion, expandable scoring methodology, and variable-speed left-to-right progress animation on the `ADC 자동 설계` (Auto-design ADC) button.
+2. **Full-Width Comparison & 3-Part Medical Mechanisms:** Side-by-side parameter comparison cards without text truncation, plus dynamic 3-part medical mechanism explanations (`기존 약물의 문제` / `발생 기전` / `이 설계의 대응`) computed from selected DAR, Fc silencing (`LALA-PG`), linker stability, and payload.
+3. **Clinical Trial Case Comparison (`임상시험 사례`):** Treatment vs. control arm percentage bars, per-event difference badges, and overall trial summary verdicts replacing raw fraction counts, alongside clear patient-centered headings (`약물 사용 제한 여부`, `취약 장기 영향 가능성`, `임상시험 사례`, `분자 구조`).
+4. **Live Model Progress & Clean Patient Workspace:** Boot directly into a clean custom patient input state with a `New Patient` reset button and a live stage-by-stage progress bar (`labs`, `recommend`, `queued`, `running`, `judging`, `done`) above the condition search input.
+5. **Interactive 3D Molecular Structure, Pareto Frontier & Bilingual Mobile PWA:** Bright white 3D rotational conjugate canvas with true DAR and payload classes, 1:1 multi-objective Pareto simulation, instantaneous `KO / EN` toggle, clinical biomarker flowsheet, and mobile bottom-sheet layout (`<= 480px`).
 
 ---
 
@@ -50,19 +50,21 @@ adctox-cli           # Opens the 5-step Terminal TUI
 
 ### Hosting on an Ubuntu Server (`ubuntu-a1-osaka`) for Phone / PWA Access
 
-To host ADCTOX on a remote Linux server and access it directly from an Android or iOS phone browser (or install it to the home screen as a PWA):
+To host ADCTOX on a remote Linux server (or behind a Cloudflare Tunnel) and access it directly from an Android or iOS phone browser, with automatic background release updates and live restart (`ADCTOX_AUTO_RESTART=1`):
 
 ```bash
-ADCTOX_NO_BROWSER=1 ADCTOX_HOST=0.0.0.0 ADCTOX_PORT=8765 ADCTOX_ALLOWED_HOSTS="*" adctox
+ADCTOX_NO_BROWSER=1 ADCTOX_AUTO_RESTART=1 ADCTOX_HOST=0.0.0.0 ADCTOX_PORT=8765 ADCTOX_ALLOWED_HOSTS="*" adctox
 ```
 
 Or behind a reverse proxy / specific domain:
 
 ```bash
-ADCTOX_NO_BROWSER=1 ADCTOX_HOST=0.0.0.0 ADCTOX_PORT=8765 ADCTOX_ALLOWED_HOSTS="ubuntu-a1-osaka,adc.example.com" adctox
+ADCTOX_NO_BROWSER=1 ADCTOX_AUTO_RESTART=1 ADCTOX_HOST=0.0.0.0 ADCTOX_PORT=8765 ADCTOX_ALLOWED_HOSTS="ubuntu-a1-osaka,adc.example.com" adctox
 ```
 
 ### Live Over-the-Air Updates
+
+Installed apps (v0.7.3+) automatically check for newer GitHub releases at startup and every 10 minutes while running (`ADCTOX_NO_AUTO_UPDATE=1` disables this; `ADCTOX_AUTO_RESTART=1` restarts the server automatically upon switching). You can also trigger updates manually:
 
 ```bash
 adctox --update-app      # Update the application to the latest release
