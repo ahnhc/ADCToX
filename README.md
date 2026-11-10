@@ -1,4 +1,4 @@
-# ADCTOX v0.7.8
+# ADCTOX v0.7.9
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](docs/INSTALL.md)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](docs/INSTALL.md)
@@ -11,20 +11,20 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
 
 ---
 
-## Key Capabilities in v0.7.8
+## Key Capabilities in v0.7.9
 
-1. **Coupled Patient-to-Conjugate Design Engine (`De Novo ADC Design`):**
-   - Evaluates `2,592` candidate architectures (`8 Targets × 6 Linkers × 6 Payloads × 3 DARs × 3 Fc Variants`) conditioned directly on the patient's active organ vulnerability vector (`S.result`) and priority organ weighting (`S.prioOrgan`).
-   - Supports both **`ADC 자동 설계` (`Auto-design ADC`)** (full-space multi-objective Pareto frontier search with collision-free callout geometry) and **`ADC 수동 설계` (`Manual ADC Design`)** (target-conditioned candidate distribution, FDA reference drug comparison vector, and interactive parameter trajectory tracking).
-   - Models linker-payload chemical pairing affinity, payload-specific DAR hydrophobic clearance thresholds (`optDar`, `maxSafeDar`), FcγRIIa/FcRn engineering (`LALA-PG`, `YTE`), and tumor-indication target expression matching.
-2. **Malignancy & Multi-Comorbidity Organ Vulnerability Inference:**
-   - Combines `x2te` 13-organ neural predictions with hematologic/solid-tumor pathophysiological organ reserve rules and probabilistic score compounding (`1 - Π(1 - s_i)`), sorted in descending severity order with one-click priority organ targeting.
+1. **Streamlined 3-Stage Clinical Workflow (`1. Patient Info` → `2. ADC Matrix` → `3. De Novo ADC Design`):**
+   - **Stage 1 (`Patient Info`):** Bilingual (`EN / KO`) free-text condition & malignancy entry with live AI organ-mapping status, active organ vulnerability badges, and an 8-biomarker laboratory flowsheet with reference-range tick indicators (`Bilirubin`, `Creatinine`, `AST`, `ALT`, `Platelets`, `ANC`, `Hb`, `LVEF`).
+   - **Stage 2 (`ADC Matrix`):** Evaluates all 15 FDA-approved ADCs against patient-specific organ vulnerabilities, DailyMed SPL Boxed Warnings, Section 5 Warnings, Cockcroft–Gault `CLcr` / `×ULN` hepatic thresholds, and 32 ClinicalTrials.gov pivotal trial comparator arms.
+   - **Stage 3 (`De Novo ADC Design`):** Evaluates `2,592` candidate architectures (`6 Targets × 6 Linkers × 6 Payloads × 6 DARs × 2 Fc Variants`) conditioned on the patient's active organ vulnerability vector and priority organ selection.
+2. **Two-Pathway Mechanistic PK/PD Formula Studio & Clinical Presets (`점수 계산식` / `Scoring Formula`):**
+   - Models organ hazard via two competing physiological pathways: **Off-Target Systemic & FcγR Pathway** (plasma linker deconjugation $\beta_{\text{leak}}$, hydrophobic DAR Kupffer-cell aggregation $\gamma_{\text{agg}}$, and LALA-PG Fc$\gamma$R silencing protection $\phi_{\text{Fc}}$) vs. **On-Target / Off-Tumor Pathway** (GTEx normal tissue expression $\alpha_{\text{on}}$).
+   - Models antitumor efficacy via a normalized convex combination of TCGA/GTEx target selectivity ($w_{\text{sel}}$), payload-DAR stoichiometry ($S_{\text{pot}}$), intact plasma delivery ($S_{\text{deliv}}$), and membrane-permeable bystander diffusion ($w_{\text{bys}}$).
+   - Includes 4 one-click **Clinical Scenario Presets** (`Balanced TI`, `Organ-Sparing Safety`, `Heterogeneous Solid Tumor`, `High-Selectivity / Hepatic-Sparing`) and 8 interactive parameter controls that shift candidate cluster geometry and Pareto-optimal construct selection in real time on a fixed `0–100` clinical coordinate frame.
 3. **Full-Width Clinical Comparison & 3-Part Mechanism Synthesis:**
-   - Side-by-side parameter comparison against the closest FDA-approved reference ADC (`ENHERTU`, `TRODELVY`, `PADCEV`, `POLIVY`, `BLENREP`, `ELAHERE`), synthesizing dynamic 3-part clinical mechanisms (`기존 약물의 문제` / `발생 기전` / `이 설계의 대응`).
-4. **Pivotal Clinical Trial Case Comparison (`임상시험 사례`):**
-   - Treatment vs. control arm incidence bars across 32 ClinicalTrials.gov pivotal studies, per-event risk difference badges, and automated trial safety verdicts alongside DailyMed Boxed Warnings, Section 5 Warnings, and Cockcroft–Gault `CLcr` / `×ULN` hepatic thresholds.
-5. **Interactive 3D Molecular Canvas & Bilingual Workspace (`KO / EN`):**
-   - Real-time 3D conjugate structure renderer reflecting exact DAR stoichiometry and payload classes, viewport-clamped bilingual hover descriptions, streamlined top navigation, and responsive desktop/mobile layout.
+   - Side-by-side parameter comparison against the closest FDA-approved reference ADC (`ENHERTU`, `TRODELVY`, `PADCEV`, `POLIVY`, `BLENREP`, `ELAHERE`), synthesizing dynamic 3-part clinical mechanisms (`Approved Drug Issue` / `Mechanism` / `How This Design Responds`).
+4. **Interactive 3D Molecular Canvas & Bilingual Workspace (`EN / KO`):**
+   - Real-time 3D conjugate structure renderer reflecting exact DAR stoichiometry and payload classes, viewport-clamped bilingual hover descriptions, and responsive desktop/mobile layout.
 
 ---
 
@@ -51,7 +51,7 @@ The installer sets up an isolated Python runtime, downloads the `0.8` from-scrat
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.7.8 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.7.9 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the 5-step Terminal TUI
 ```
 
@@ -89,7 +89,7 @@ Patient Input ──▶ MONDO Concept Link ──▶ 13-Organ Judge (x2te) ─�
 - **Trained From Random Weights (`ScratchJudge/`):** A 110M-parameter BERT encoder pretrained from scratch on PubMed abstracts (86%), UMLS level-0 terms and definitions (12%), MONDO/HPO ontologies (1%), and drug labels/clinical trials (0.5%), distilled against 22,638 triple-annotated MONDO disease-organ profiles.
 - **Ontology Evidence Reading:** For unseen diseases, the model reads MONDO definitions, parent hierarchies, and HPO phenotypes, raising unseen-disease macro-F1 from `0.694` to `0.778` (overall test macro-F1 `0.723` across 3 seeds vs `0.711` for fine-tuned Gemma 4 E2B).
 - **Exact FDA Label & Trial Arithmetic:** Unrounded Cockcroft–Gault `CLcr` and laboratory `×ULN` ratios (`Bilirubin`, `AST`, `ALT`) are matched directly against DailyMed label rules alongside adverse event counts from 32 ClinicalTrials.gov pivotal studies.
-- **Patient-Conditioned 5-Axis Conjugate Scoring:** Combines Hill-type DAR receptor saturation, linker-modulated bystander killing, tumor-indication target expression matching, non-linear multi-organ toxicity amplification, and payload-specific DAR hydrophobic clearance penalties.
+- **Two-Pathway Mechanistic PK/PD Conjugate Scoring:** Separates antigen-independent off-target toxicity (linker plasma instability, DAR-dependent hydrophobic Kupffer-cell aggregation, and FcγR-mediated macrophage uptake) from antigen-dependent on-target normal tissue expression (GTEx), coupled with convex multi-mechanism efficacy optimization.
 
 | Test Macro-F1 (3-seed mean) | Unseen Diseases (296) | Known Diseases, New Phrasing (168) | Mean |
 |---|---|---|---|

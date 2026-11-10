@@ -1,4 +1,4 @@
-/* ADCTOX v0.7.8 Architectural Daylight WebApp
+/* ADCTOX v0.7.9 Architectural Daylight WebApp
    Active-Organ Matrix + 3D Structure Studio + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -151,7 +151,7 @@
   function openGuide() {
     if (guide) closeGuide();
     const isKo = S.lang === 'ko';
-    const ver = (APP && APP.version) ? APP.version : '0.7.8';
+    const ver = (APP && APP.version) ? APP.version : '0.7.9';
     const stepItems = isKo
       ? [
           ['환자 정보', '한글 또는 영문으로 암종, 기저질환을 검색하고 검진 정보를 입력하여 AI 질환-장기 취약도 연계 결과를 확인합니다.'],
@@ -638,21 +638,43 @@
   }
 
   // ------------------------------------------------------------------ Session State
-  const KEY = 'adctox.web.v078';
+  const KEY = 'adctox.web.v079';
   const DEFAULT_SIM_WEIGHTS = {
-    wPeak: 0.55,
-    kRisk: 0.48,
-    wExpr: 0.65,
-    darLoadExp: 0.78,
-    fcSilencedMult: 0.74,
-    prioMult: 1.45,
-    expSelect: 0.35,
-    expPotency: 0.50,
-    expRetention: 0.55,
-    expRelease: 0.48,
-    expDarCurve: 0.52,
-    bystanderMult: 1.08,
+    wSafety: 0.56,
+    wPeak: 0.58,
+    wExpr: 0.38,
+    leakSens: 1.00,
+    hydroSens: 1.00,
+    fcProtect: 0.34,
+    wSelect: 0.30,
+    wBystander: 0.28,
   };
+  const SIM_WEIGHT_PRESETS = [
+    {
+      id: 'balanced',
+      ko: '기본 균형 (Balanced TI)',
+      en: 'Balanced TI (Default)',
+      weights: { wSafety: 0.56, wPeak: 0.58, wExpr: 0.38, leakSens: 1.00, hydroSens: 1.00, fcProtect: 0.34, wSelect: 0.30, wBystander: 0.28 },
+    },
+    {
+      id: 'organ_sparing',
+      ko: '다장기 보호 최우선',
+      en: 'Organ-Sparing Safety',
+      weights: { wSafety: 0.78, wPeak: 0.80, wExpr: 0.52, leakSens: 1.45, hydroSens: 1.55, fcProtect: 0.52, wSelect: 0.38, wBystander: 0.14 },
+    },
+    {
+      id: 'bystander_tumor',
+      ko: '이질성 고형암 동반사멸',
+      en: 'Heterogeneous Solid Tumor',
+      weights: { wSafety: 0.42, wPeak: 0.45, wExpr: 0.28, leakSens: 0.75, hydroSens: 0.80, fcProtect: 0.28, wSelect: 0.22, wBystander: 0.54 },
+    },
+    {
+      id: 'high_selectivity',
+      ko: '고선택성 표적 / 간-골수 보호',
+      en: 'High-Selectivity / Hepatic-Sparing',
+      weights: { wSafety: 0.66, wPeak: 0.68, wExpr: 0.72, leakSens: 1.25, hydroSens: 1.75, fcProtect: 0.44, wSelect: 0.52, wBystander: 0.18 },
+    },
+  ];
   function defaultState() {
     return {
       mode: 0,
@@ -668,6 +690,7 @@
       studioNeedInputWarn: false,
       studioHistory: [],
       simWeights: Object.assign({}, DEFAULT_SIM_WEIGHTS),
+      simPreset: 'balanced',
       formulaOpen: false,
       analysis: null,
       result: null,
@@ -1716,11 +1739,10 @@
 
     const real = organsInput || activeOrgansWithScores();
     const baseOrgans = real.slice();
-    // Ensure target-expressing normal organs are also represented so switching Target visibly shifts organ safety
     const organSet = new Set(baseOrgans.map((o) => o.organ));
     for (const tis of (tgt.tissues || [])) {
       if (!organSet.has(tis.organ)) {
-        baseOrgans.push({ organ: tis.organ, score: 0.42, condKey: null, baselineTissue: true });
+        baseOrgans.push({ organ: tis.organ, score: 0.44, condKey: null, baselineTissue: true });
         organSet.add(tis.organ);
       }
     }
@@ -1729,49 +1751,77 @@
     // Chemical linker-payload pairing affinity (clinically validated pair = 1.0)
     const pairAffinity = isCompat ? ((lnk.prefPayloads && lnk.prefPayloads[pld.id]) || 0.72) : 0.35;
 
-    // Payload-specific DAR ceiling & hydrophobic Kupffer-cell aggregation penalty
+    // 1. Two-Pathway Mechanistic Organ Hazard:
+    //    (a) Off-Target (Antigen-Independent): Plasma linker deconjugation + Hydrophobic DAR Kupffer aggregation + FcgammaR uptake
+    //    (b) On-Target / Off-Tumor (Antigen-Dependent): Normal tissue GTEx expression * receptor-mediated payload internalization
     const maxSafeDar = pld.maxSafeDar || 4;
     const darExcess = Math.max(0, dar - maxSafeDar);
-    const hydroFactor = (pld.hydro || 0.5) * (0.6 + (lnk.hydro || 0.4) * 0.8);
-    const aggPenalty = 1 + darExcess * hydroFactor * 0.22;
+    const hydroFactor = (pld.hydro || 0.5) * (0.55 + (lnk.hydro || 0.4) * 0.9);
+    const leakMult = 1 + W.leakSens * 2.15 * Math.pow(1 - lnk.stability / 100, 1.15);
+    const aggMult = 1 + W.hydroSens * (0.38 * darExcess * hydroFactor + 0.09 * Math.pow(dar / 4, 1.75) * hydroFactor);
+    const darScale = Math.pow(dar / 4, 0.72);
+    const chemPenalty = 1 + (1 - pairAffinity) * 0.42;
+    const wOnTarget = Math.max(0.10, Math.min(0.85, W.wExpr));
 
-    // Systemic drug load reaching normal organs
-    const load = Math.pow(dar / 4, W.darLoadExp) * (1 + (1 - lnk.stability / 100) * 1.35) * aggPenalty * (1 + (1 - pairAffinity) * 0.35);
     const allOrganRisks = baseOrgans.map((ao) => {
-      const payloadTox = (pld.organs[ao.organ] != null ? pld.organs[ao.organ] : 22) / 100;
-      const expr = ((tgt.tissues.find((x) => x.organ === ao.organ) || { tpm: 8 }).tpm) / 100;
-      const fc = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? W.fcSilencedMult : 1;
-      const prioMult = (S.prioOrgan && S.prioOrgan === ao.organ) ? W.prioMult : 1.0;
-      const w = (ao.baselineTissue ? 0.48 : (0.6 + 0.4 * Math.min(1, ao.score || 0.8))) * prioMult;
-      const x = (payloadTox + W.wExpr * expr) * load * fc * w;
-      return { organ: ao.organ, p: 1 - Math.exp(-W.kRisk * x), baselineTissue: Boolean(ao.baselineTissue) };
+      const payloadTox = (pld.organs[ao.organ] != null ? pld.organs[ao.organ] : 20) / 100;
+      const expr = ((tgt.tissues.find((x) => x.organ === ao.organ) || { tpm: 6 }).tpm) / 100;
+      const fcMult = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? Math.max(0.25, 1 - W.fcProtect) : 1.0;
+      const prioMult = (S.prioOrgan && S.prioOrgan === ao.organ) ? 1.45 : 1.0;
+      const vulnWeight = (ao.baselineTissue ? 0.46 : (0.58 + 0.42 * Math.min(1, ao.score || 0.8))) * prioMult;
+
+      const offTargetHazard = payloadTox * darScale * leakMult * aggMult * fcMult;
+      const onTargetHazard = expr * (0.45 + 0.55 * payloadTox) * (dar / 4) * (0.75 + 0.25 * fcMult);
+      const combinedHazard = ((1 - wOnTarget) * offTargetHazard + wOnTarget * 1.65 * onTargetHazard) * chemPenalty * vulnWeight;
+      return { organ: ao.organ, p: 1 - Math.exp(-0.56 * combinedHazard), baselineTissue: Boolean(ao.baselineTissue) };
     });
+
     const organRisks = real.length ? allOrganRisks.filter((r) => !r.baselineTissue) : allOrganRisks;
     const meanRisk = allOrganRisks.length ? allOrganRisks.reduce((a, r) => a + r.p, 0) / allOrganRisks.length : 0;
     const worstRisk = allOrganRisks.length ? Math.max(...allOrganRisks.map((r) => r.p)) : 0;
-    const wPeak = Math.max(0.1, Math.min(0.9, W.wPeak));
-    const safetyRaw = Math.max(1, Math.min(99, 100 * (1 - (wPeak * worstRisk + (1 - wPeak) * meanRisk))));
+    const wPeak = Math.max(0.15, Math.min(0.90, W.wPeak));
+    const safetyRaw = Math.max(2, Math.min(98, 100 * (1 - (wPeak * worstRisk + (1 - wPeak) * meanRisk))));
     const safetyScore = Math.round(safetyRaw);
 
-    // Efficacy: indication match, tumor selectivity, payload potency, linker retention/release, payload-specific DAR curve, bystander killing
+    // 2. Competing Multi-Mechanism Antitumor Efficacy (Normalized Convex Combination + Biophysical Couplings)
     const bystander = lnk.cleavable && pld.perm;
     const indMatch = patientCancerMatchesTarget(tgt);
-    const indFactor = indMatch === null ? 1.0 : (indMatch ? 1.08 : 0.72);
-    const targetTerm = 1 - Math.exp(-tgt.selectivity / 3);
-    const delivered = 0.52 + 0.48 * (lnk.stability / 100);
-    const release = lnk.cleavable ? 1 : (pld.perm === false ? 0.94 : 0.74);
+    const indFactor = indMatch === null ? 1.0 : (indMatch ? 1.06 : 0.68);
+
+    // Normalized sub-scores in [0, 1] that compete when weights change:
+    // S_select: tumor-to-normal expression margin (TCGA vs GTEx log2FC)
+    const sSelect = Math.max(0.18, Math.min(0.98, (tgt.selectivity - 2.4) / 3.6));
+    // S_pot: intrinsic payload cytotoxicity & optimal DAR stoichiometry minus hydrophobic hepatic clearance loss
     const optDar = pld.optDar || 4;
     const darDeviation = Math.abs(dar - optDar);
-    const loadTerm = (1 - Math.exp(-dar / 3.2)) * Math.exp(-0.035 * darDeviation * darDeviation) * (darExcess > 0 ? Math.max(0.45, 1 - darExcess * hydroFactor * 0.12) : 1);
-    const eff = Math.pow(targetTerm, W.expSelect) * Math.pow(pld.potency / 100, W.expPotency) * Math.pow(delivered, W.expRetention) *
-      Math.pow(release, W.expRelease) * Math.pow(loadTerm, W.expDarCurve) * Math.pow(pairAffinity, 0.32) * indFactor * (bystander ? W.bystanderMult : 1) * (isCompat ? 1 : 0.52);
-    const efficacyRaw = Math.max(1, Math.min(99, eff * 100));
+    const pkClearanceLoss = Math.max(0.32, 1 - W.hydroSens * (0.14 * darExcess * hydroFactor + 0.04 * Math.max(0, dar - 4) * hydroFactor));
+    const sPotency = Math.max(0.15, Math.min(0.99, Math.pow(pld.potency / 100, 1.35) * (1 - Math.exp(-dar / 2.8)) * Math.exp(-0.045 * darDeviation * darDeviation) * pkClearanceLoss));
+    // S_deliv: intact plasma delivery to tumor + intracellular lysosomal cleavage efficiency
+    const plasmaIntact = Math.max(0.20, 1 - W.leakSens * 0.68 * (1 - lnk.stability / 100));
+    const releaseEff = lnk.cleavable ? 0.96 : (pld.perm === false ? 0.90 : 0.62);
+    const sDeliv = Math.max(0.15, Math.min(0.98, plasmaIntact * releaseEff));
+    // S_bys: bystander killing diffusion across antigen-heterogeneous tumor beds
+    const sBystander = bystander ? (0.84 + 0.14 * (dar / 8)) : (lnk.cleavable ? 0.42 : (pld.perm ? 0.34 : 0.14));
+
+    const rawWSelect = Math.max(0.05, W.wSelect);
+    const rawWBys = Math.max(0.05, W.wBystander);
+    const rawWCore = Math.max(0.20, 1.0 - 0.55 * (rawWSelect + rawWBys));
+    const wSum = rawWSelect + rawWBys + rawWCore;
+    const nwSel = rawWSelect / wSum;
+    const nwBys = rawWBys / wSum;
+    const nwPot = (rawWCore * 0.56) / wSum;
+    const nwDel = (rawWCore * 0.44) / wSum;
+
+    const convexEff = nwSel * sSelect + nwPot * sPotency + nwDel * sDeliv + nwBys * sBystander;
+    const eff = convexEff * Math.pow(pairAffinity, 0.36) * indFactor * (isCompat ? 1.0 : 0.48);
+    const efficacyRaw = Math.max(2, Math.min(98, eff * 100));
     const efficacyScore = Math.round(efficacyRaw);
 
-    return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, safetyRaw, efficacyRaw, isCompat, organRisks, meanRisk, bystander };
+    return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, safetyRaw, efficacyRaw, isCompat, organRisks, meanRisk, bystander, nwSel, nwPot, nwDel, nwBys };
   }
 
   function evaluateAllStudioCandidates() {
+    const W = Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {});
     const real = activeOrgansWithScores();
     const cands = [];
     const dars = [2, 3.5, 4, 6, 7.6, 8];
@@ -1787,16 +1837,18 @@
       });
     });
 
-    // the more vulnerable organs the patient has, the more the pick leans to safety
-    const wSafety = 0.5 + 0.04 * Math.min(real.length, 6);
+    // User-tunable Therapeutic Index Safety Priority (lambda_safe), lightly modulated by multi-organ burden
+    const organShift = real.length > 2 ? Math.min(0.08, (real.length - 2) * 0.02) : 0;
+    const wSafety = Math.max(0.15, Math.min(0.88, W.wSafety + organShift));
     let best = null;
     let top = -1;
     cands.forEach((c) => {
       if (!c.isCompat) return;
-      const util = wSafety * c.safetyScore + (1 - wSafety) * c.efficacyScore;
+      const util = wSafety * c.safetyRaw + (1 - wSafety) * c.efficacyRaw;
+      c.utilScore = util;
       if (util > top) { top = util; best = c; }
     });
-    return { cands, best: best || cands[0] };
+    return { cands, best: best || cands[0], wSafety };
   }
 
   function buildAutoOptimizeRationales(bestSim) {
@@ -2048,43 +2100,180 @@
           })));
       }
 
-      const W = Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {});
-      const eqBox = h('div', { class: 'sim-eq-lines' });
-      function updateFormulaLines() {
+      const eqGrid = h('div', { class: 'sim-eq-grid' });
+      const summaryMeta = h('span', { class: 'sim-summary-meta' });
+      const rBox = h('div', { class: 'sim-rationale-box' });
+      const organRows = h('div', { class: 'expr-list' });
+
+      function updateOrganRowsDom(curSim) {
+        clear(organRows);
+        curSim.organRisks.forEach((item) => {
+          const pct = Math.round(item.p * 100);
+          const color = riskColor(pct);
+          organRows.append(h('div', { class: 'expr-row' },
+            h('span', { class: 'ex-name', text: organKo(item.organ) }),
+            h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${Math.max(4, pct)}%;background:${color}` })),
+            h('span', { class: 'ex-val', style: `color:${color}`, text: `${riskLevel(pct)} ${pct}%` })));
+        });
+      }
+
+      function updateRationaleDom(curSim, curSpace) {
+        clear(rBox);
+        const bestC = curSpace.best;
+        const activeRat = buildAutoOptimizeRationales(bestC);
+        const isOpt = (
+          S.studio.target === bestC.spec.target &&
+          S.studio.linker === bestC.spec.linker &&
+          S.studio.payload === bestC.spec.payload &&
+          Number(S.studio.dar) === Number(bestC.spec.dar) &&
+          Boolean(S.studio.fc) === Boolean(bestC.spec.fc)
+        );
+        rBox.append(
+          h('div', { class: 'srb-title' },
+            h('span', { class: 'srb-main-text', text: isOpt ? t('optimalLocked') : `${t('optimalCand')} ${plainName(bestC.spec.target)} + ${plainName(bestC.spec.payload)}, DAR ${bestC.spec.dar}` }),
+            h('button', {
+              type: 'button', class: 'btn-compare-pop',
+              text: t('viewCompareBtn'),
+              onclick: () => openStudioCompareDrawer(curSim, curSpace),
+            })),
+          h('div', { class: 'srb-steps' },
+            activeRat.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
+              h('b', { text: `${title}: ${choice}` }),
+              h('span', { text: desc }))))
+        );
+      }
+
+      function updateFormulaLines(curSim, curSpace) {
         const w = Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {});
+        const sNow = curSim || sim;
+        const spNow = curSpace || evalSpace;
+        const wSafeEff = spNow.wSafety != null ? spNow.wSafety : w.wSafety;
+        const wEffComp = Math.max(0, 1 - wSafeEff);
         const wMean = Math.max(0, 1 - w.wPeak);
-        const lines = isKo
+        const wOff = Math.max(0, 1 - w.wExpr);
+        const utilVal = (wSafeEff * sNow.safetyRaw + wEffComp * sNow.efficacyRaw).toFixed(1);
+
+        const activePresetObj = SIM_WEIGHT_PRESETS.find((p) => p.id === S.simPreset);
+        const presetLabel = activePresetObj ? (isKo ? activePresetObj.ko : activePresetObj.en) : (isKo ? '사용자 정의 계수' : 'Custom Weights');
+        summaryMeta.textContent = isKo
+          ? `${presetLabel} | 치료지수 U = ${utilVal}`
+          : `${presetLabel} | Utility U = ${utilVal}`;
+
+        clear(eqGrid);
+        const cards = isKo
           ? [
-              `안전도 (X, 0~100) = 100 − (${w.wPeak.toFixed(2)} × 최대 위험장기 + ${wMean.toFixed(2)} × 평균 위험장기) × 100`,
-              `장기 위험도 p(o) = 1 − exp(−${w.kRisk.toFixed(2)} × [페이로드독성 + ${w.wExpr.toFixed(2)} × 정상조직발현] × (DAR/4)^${w.darLoadExp.toFixed(2)} × 누출계수 × Fc[${w.fcSilencedMult.toFixed(2)}] × 장기가중치[우선:${w.prioMult.toFixed(2)}])`,
-              `항암 효능 (Y, 0~100) = 100 × 적응증 × 선택도^${w.expSelect.toFixed(2)} × 효력^${w.expPotency.toFixed(2)} × 보존율^${w.expRetention.toFixed(2)} × 방출^${w.expRelease.toFixed(2)} × DAR곡선^${w.expDarCurve.toFixed(2)} × 동반사멸[${w.bystanderMult.toFixed(2)}]`,
+              {
+                tag: '1. 치료지수 목적함수 (Therapeutic Index)',
+                sym: 'U_TI',
+                eq: `U = ${wSafeEff.toFixed(2)} * X_safe + ${wEffComp.toFixed(2)} * Y_eff`,
+                desc: `파레토 프론티어 상에서 장기 보존 안전도(X)와 항암 효능(Y)의 최적 균형점(Best = ${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar})을 결정합니다.`,
+              },
+              {
+                tag: '2. 이중 경로 장기 안전도 (Two-Pathway PK/PD Safety)',
+                sym: 'X_safe',
+                eq: `X = 100 * [1 - (${w.wPeak.toFixed(2)} * p_max + ${wMean.toFixed(2)} * p_mean)],  p(o) = 1 - exp(-0.56 * H_o)`,
+                desc: `H_o = V_o * [${wOff.toFixed(2)} * OffTarget(누출:${w.leakSens.toFixed(2)}, 응집:${w.hydroSens.toFixed(2)}, Fc보호:${Math.round(w.fcProtect * 100)}%) + ${w.wExpr.toFixed(2)} * OnTarget(GTEx * DAR/4)]`,
+              },
+              {
+                tag: '3. 다중 기전 항암 효능 (Normalized Convex Efficacy)',
+                sym: 'Y_eff',
+                eq: `Y = 100 * Ind * Pair * [${(sNow.nwSel || 0.25).toFixed(2)}*S_sel + ${(sNow.nwPot || 0.30).toFixed(2)}*S_pot + ${(sNow.nwDel || 0.23).toFixed(2)}*S_deliv + ${(sNow.nwBys || 0.22).toFixed(2)}*S_bys]`,
+                desc: '종양 발현 선택도(S_sel), 페이로드-DAR 세포독성(S_pot), 혈장 전달률(S_deliv), 주변세포 동반사멸(S_bys)의 정규화 볼록 결합입니다.',
+              },
             ]
           : [
-              `Safety (X, 0–100) = 100 − (${w.wPeak.toFixed(2)} × Peak Organ Risk + ${wMean.toFixed(2)} × Mean Organ Risk) × 100`,
-              `Organ Risk p(o) = 1 − exp(−${w.kRisk.toFixed(2)} × [Payload Tox + ${w.wExpr.toFixed(2)} × Normal Expr] × (DAR/4)^${w.darLoadExp.toFixed(2)} × Leak × Fc[${w.fcSilencedMult.toFixed(2)}] × OrganWt[Prio:${w.prioMult.toFixed(2)}])`,
-              `Efficacy (Y, 0–100) = 100 × Ind × Selectivity^${w.expSelect.toFixed(2)} × Potency^${w.expPotency.toFixed(2)} × Retention^${w.expRetention.toFixed(2)} × Release^${w.expRelease.toFixed(2)} × DAR^${w.expDarCurve.toFixed(2)} × Bystander[${w.bystanderMult.toFixed(2)}]`,
+              {
+                tag: '1. Therapeutic Index Utility Objective',
+                sym: 'U_TI',
+                eq: `U = ${wSafeEff.toFixed(2)} * X_safe + ${wEffComp.toFixed(2)} * Y_eff`,
+                desc: `Selects the Pareto-optimal construct (Best = ${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar}) balancing organ safety and antitumor potency.`,
+              },
+              {
+                tag: '2. Two-Pathway Organ Safety (Off-Target vs. On-Target)',
+                sym: 'X_safe',
+                eq: `X = 100 * [1 - (${w.wPeak.toFixed(2)} * p_max + ${wMean.toFixed(2)} * p_mean)],  p(o) = 1 - exp(-0.56 * H_o)`,
+                desc: `H_o = V_o * [${wOff.toFixed(2)} * OffTarget(Leak:${w.leakSens.toFixed(2)}, Agg:${w.hydroSens.toFixed(2)}, Fc:${Math.round(w.fcProtect * 100)}%) + ${w.wExpr.toFixed(2)} * OnTarget(GTEx * DAR/4)]`,
+              },
+              {
+                tag: '3. Multi-Mechanism Antitumor Efficacy (Convex Combination)',
+                sym: 'Y_eff',
+                eq: `Y = 100 * Ind * Pair * [${(sNow.nwSel || 0.25).toFixed(2)}*S_sel + ${(sNow.nwPot || 0.30).toFixed(2)}*S_pot + ${(sNow.nwDel || 0.23).toFixed(2)}*S_deliv + ${(sNow.nwBys || 0.22).toFixed(2)}*S_bys]`,
+                desc: 'Normalized convex combination of TCGA/GTEx selectivity (S_sel), payload-DAR potency (S_pot), intact delivery (S_deliv), and bystander diffusion (S_bys).',
+              },
             ];
-        clear(eqBox);
-        lines.forEach((ln) => eqBox.append(h('p', { text: ln })));
+
+        cards.forEach((c) => {
+          eqGrid.append(h('div', { class: 'sim-eq-card' },
+            h('div', { class: 'sim-eq-card-head' },
+              h('span', { class: 'sim-eq-tag', text: c.tag }),
+              h('code', { class: 'sim-eq-sym', text: c.sym })),
+            h('div', { class: 'sim-eq-math', text: c.eq }),
+            h('div', { class: 'sim-eq-desc', text: c.desc })));
+        });
       }
-      updateFormulaLines();
+      updateFormulaLines(sim, evalSpace);
 
       const PARAM_DEFS = [
-        { key: 'wPeak', min: 0.20, max: 0.85, step: 0.05, ko: '최대 위험장기 비중 (w_peak)', en: 'Peak Organ Weight (w_peak)' },
-        { key: 'kRisk', min: 0.20, max: 0.90, step: 0.02, ko: '장기 위험 포화 계수 (k)', en: 'Risk Saturation Slope (k)' },
-        { key: 'wExpr', min: 0.20, max: 1.20, step: 0.05, ko: '정상조직 발현 가중치', en: 'Normal Expr Weight' },
-        { key: 'darLoadExp', min: 0.40, max: 1.20, step: 0.02, ko: '전신 독성 DAR 지수', en: 'Toxicity DAR Exponent' },
-        { key: 'fcSilencedMult', min: 0.50, max: 1.00, step: 0.02, ko: 'Fc 침묵화(LALA-PG) 계수', en: 'Fc-Silenced Factor' },
-        { key: 'prioMult', min: 1.00, max: 2.00, step: 0.05, ko: '우선 보호장기 가중 배수', en: 'Priority Organ Multiplier' },
-        { key: 'expSelect', min: 0.15, max: 0.70, step: 0.05, ko: '표적 선택도 지수', en: 'Target Selectivity Exp' },
-        { key: 'expPotency', min: 0.20, max: 0.85, step: 0.05, ko: '페이로드 효력 지수', en: 'Payload Potency Exp' },
-        { key: 'expRetention', min: 0.20, max: 0.85, step: 0.05, ko: '링커 혈장보존 지수', en: 'Linker Retention Exp' },
-        { key: 'expRelease', min: 0.20, max: 0.85, step: 0.04, ko: '세포내 방출효율 지수', en: 'Payload Release Exp' },
-        { key: 'expDarCurve', min: 0.20, max: 0.85, step: 0.04, ko: 'DAR 전달곡선 지수', en: 'DAR Delivery Exp' },
-        { key: 'bystanderMult', min: 1.00, max: 1.25, step: 0.02, ko: '동반사멸(Bystander) 배수', en: 'Bystander Multiplier' },
+        { key: 'wSafety', sym: 'λ_safe', col: 'left', min: 0.15, max: 0.85, step: 0.02,
+          ko: '치료지수 안전도 가중치', en: 'TI Safety Priority',
+          subKo: '파레토 최적 조합 선택 시 안전도(X) 대 효능(Y) 비중', subEn: 'Pareto trade-off weight between Organ Safety and Efficacy' },
+        { key: 'wPeak', sym: 'ω_peak', col: 'left', min: 0.15, max: 0.90, step: 0.05,
+          ko: '최대 위험장기 집중도', en: 'Worst-Organ Dominance',
+          subKo: '단일 치명적 취약장기(Peak) 대 다장기 평균 위험 비중', subEn: 'Peak vulnerable organ hazard vs. multi-organ mean risk' },
+        { key: 'wExpr', sym: 'α_on', col: 'left', min: 0.10, max: 0.85, step: 0.05,
+          ko: '온타깃 정상조직 발현 비중', en: 'On-Target GTEx Weight',
+          subKo: '정상 상피 항원 발현(GTEx) 대 비표적 페이로드 독성 비율', subEn: 'Antigen-mediated normal tissue toxicity vs. off-target payload risk' },
+        { key: 'leakSens', sym: 'β_leak', col: 'left', min: 0.20, max: 2.20, step: 0.05,
+          ko: '링커 조기절단 민감도', en: 'Linker Instability Penalty',
+          subKo: '혈중 비특이 가수분해 및 유리 페이로드 전신 누출 페널티', subEn: 'Systemic free-payload leakage from plasma linker deconjugation' },
+        { key: 'hydroSens', sym: 'γ_agg', col: 'right', min: 0.20, max: 2.20, step: 0.05,
+          ko: '소수성 고DAR 응집 페널티', en: 'Hydrophobic DAR Penalty',
+          subKo: '고밀도 접합 시 간 쿠퍼세포 포획 및 약동학 청소 손실', subEn: 'Hepatic Kupffer-cell uptake and PK clearance at high DAR' },
+        { key: 'fcProtect', sym: 'φ_Fc', col: 'right', min: 0.05, max: 0.65, step: 0.02,
+          ko: 'Fc 침묵화(LALA-PG) 보호율', en: 'Fc-Silencing Protection',
+          subKo: '폐포 대식세포, 간, 골수의 FcγR 비특이 흡수 차단율', subEn: 'Attenuation of FcγR macrophage uptake in lung, liver, and marrow' },
+        { key: 'wSelect', sym: 'w_sel', col: 'right', min: 0.10, max: 0.70, step: 0.02,
+          ko: '항원 종양선택도 효능 비중', en: 'Target Selectivity Weight',
+          subKo: 'TCGA 종양 과발현 배수(log2FC)의 항암 효능 기여도', subEn: 'Contribution of tumor-to-normal log2FC margin to efficacy' },
+        { key: 'wBystander', sym: 'w_bys', col: 'right', min: 0.05, max: 0.65, step: 0.02,
+          ko: '주변세포 동반사멸 비중', en: 'Bystander Killing Weight',
+          subKo: '절단형 링커 + 막투과성 약물의 이질성 종양 확산 효과', subEn: 'Membrane-permeable payload diffusion in heterogeneous tumors' },
       ];
 
-      const paramGrid = h('div', { class: 'sim-param-grid' });
+      const colLeft = h('div', { class: 'sim-param-col' },
+        h('div', { class: 'sim-col-header', text: isKo ? 'I. 치료지수 및 전신 독성 경로 계수' : 'I. Therapeutic Index & Toxicity Pathway Weights' }));
+      const colRight = h('div', { class: 'sim-param-col' },
+        h('div', { class: 'sim-col-header', text: isKo ? 'II. 접합 생물물리 및 항암 효능 계수' : 'II. Conjugation Biophysics & Antitumor Efficacy Weights' }));
+
+      const inputRefs = {};
+      function syncSliderFill(rangeEl, val, min, max) {
+        const pct = Math.max(0, Math.min(100, ((val - min) / Math.max(0.0001, max - min)) * 100));
+        rangeEl.style.setProperty('--pct', `${pct.toFixed(1)}%`);
+      }
+
+      function refreshLiveFormulaState() {
+        let newSpace = evaluateAllStudioCandidates();
+        if (S.studioDesignMode === 'auto' && hasPatientProfile()) {
+          const b = newSpace.best;
+          S.studio.target = b.spec.target;
+          S.studio.linker = b.spec.linker;
+          S.studio.payload = b.spec.payload;
+          S.studio.dar = b.spec.dar;
+          S.studio.fc = b.spec.fc;
+          renderControls();
+        }
+        const newSim = computeStudioSimulation();
+        updateFormulaLines(newSim, newSpace);
+        updateOrganRowsDom(newSim);
+        updateRationaleDom(newSim, newSpace);
+        if (S.studioDesignMode !== 'idle' && hasPatientProfile()) {
+          simStatusEl.textContent = isKo
+            ? `안전도 ${newSim.safetyScore}점 / 항암 효능 ${newSim.efficacyScore}점`
+            : `Safety ${newSim.safetyScore} / Efficacy ${newSim.efficacyScore}`;
+        }
+        initDesignChart(cvs, newSim, newSpace, false);
+      }
+
       PARAM_DEFS.forEach((pd) => {
         const curVal = Number((S.simWeights && S.simWeights[pd.key]) ?? DEFAULT_SIM_WEIGHTS[pd.key]);
         const numInput = h('input', {
@@ -2103,81 +2292,106 @@
           step: String(pd.step),
           value: String(curVal),
         });
+        syncSliderFill(rangeInput, curVal, pd.min, pd.max);
+        inputRefs[pd.key] = { numInput, rangeInput, pd };
+
         function applyWeight(rawV) {
           const parsed = parseFloat(rawV);
           if (isNaN(parsed)) return;
           const clamped = Math.max(pd.min, Math.min(pd.max, Math.round(parsed * 100) / 100));
           if (!S.simWeights) S.simWeights = Object.assign({}, DEFAULT_SIM_WEIGHTS);
           S.simWeights[pd.key] = clamped;
+          S.simPreset = 'custom';
+          presetBtns.forEach((b) => b.classList.toggle('is-active', false));
           numInput.value = clamped.toFixed(2);
           rangeInput.value = String(clamped);
+          syncSliderFill(rangeInput, clamped, pd.min, pd.max);
           save();
-          updateFormulaLines();
-          const newSim = computeStudioSimulation();
-          const newSpace = evaluateAllStudioCandidates();
-          if (S.studioDesignMode !== 'idle' && hasPatientProfile()) {
-            simStatusEl.textContent = isKo
-              ? `안전도 ${newSim.safetyScore}점 / 항암 효능 ${newSim.efficacyScore}점`
-              : `Safety ${newSim.safetyScore} / Efficacy ${newSim.efficacyScore}`;
-          }
-          initDesignChart(cvs, newSim, newSpace, false);
+          refreshLiveFormulaState();
         }
         rangeInput.addEventListener('input', (e) => applyWeight(e.target.value));
         numInput.addEventListener('change', (e) => applyWeight(e.target.value));
-        paramGrid.append(h('div', { class: 'sim-param-card' },
+
+        const card = h('div', { class: 'sim-param-card' },
           h('div', { class: 'sim-param-top' },
-            h('span', { class: 'sim-param-label', text: isKo ? pd.ko : pd.en }),
+            h('div', { class: 'sim-param-title-wrap' },
+              h('code', { class: 'sim-param-sym', text: pd.sym }),
+              h('span', { class: 'sim-param-label', text: isKo ? pd.ko : pd.en })),
             numInput),
-          rangeInput));
+          h('div', { class: 'sim-param-sub', text: isKo ? pd.subKo : pd.subEn }),
+          rangeInput);
+
+        if (pd.col === 'left') colLeft.append(card);
+        else colRight.append(card);
+      });
+
+      const presetBtns = [];
+      const presetGroup = h('div', { class: 'sim-preset-group' });
+      SIM_WEIGHT_PRESETS.forEach((pr) => {
+        const pb = h('button', {
+          type: 'button',
+          class: 'sim-preset-btn' + ((S.simPreset || 'balanced') === pr.id ? ' is-active' : ''),
+          text: isKo ? pr.ko : pr.en,
+          onclick: () => {
+            S.simPreset = pr.id;
+            S.simWeights = Object.assign({}, DEFAULT_SIM_WEIGHTS, pr.weights);
+            presetBtns.forEach((b) => b.classList.toggle('is-active', b === pb));
+            Object.keys(inputRefs).forEach((k) => {
+              const ref = inputRefs[k];
+              const v = S.simWeights[k];
+              ref.numInput.value = v.toFixed(2);
+              ref.rangeInput.value = String(v);
+              syncSliderFill(ref.rangeInput, v, ref.pd.min, ref.pd.max);
+            });
+            save();
+            refreshLiveFormulaState();
+          },
+        });
+        presetBtns.push(pb);
+        presetGroup.append(pb);
       });
 
       const explainToolbar = h('div', { class: 'sim-param-toolbar' },
-        h('span', { class: 'sim-param-hint', text: isKo ? '계산식 세부 계수 조정 (조정 즉시 그래프에 반영됩니다)' : 'Adjust formula coefficients (updates chart in real time)' }),
+        h('div', { class: 'sim-preset-wrap' },
+          h('span', { class: 'sim-param-hint', text: isKo ? '임상 시나리오 프리셋' : 'Clinical Scenario Presets' }),
+          presetGroup),
         h('button', {
           type: 'button',
           class: 'sim-param-reset',
           text: isKo ? '기본값 복원' : 'Reset Defaults',
           onclick: () => {
+            S.simPreset = 'balanced';
             S.simWeights = Object.assign({}, DEFAULT_SIM_WEIGHTS);
-            S.formulaOpen = true;
+            presetBtns.forEach((b, idx) => b.classList.toggle('is-active', idx === 0));
+            Object.keys(inputRefs).forEach((k) => {
+              const ref = inputRefs[k];
+              const v = S.simWeights[k];
+              ref.numInput.value = v.toFixed(2);
+              ref.rangeInput.value = String(v);
+              syncSliderFill(ref.rangeInput, v, ref.pd.min, ref.pd.max);
+            });
             save();
-            renderStudioCanvas(false);
+            refreshLiveFormulaState();
           },
         }));
+
+      const paramColumns = h('div', { class: 'sim-param-columns' }, colLeft, colRight);
 
       const explain = h('details', {
         class: 'sim-explain',
         open: S.formulaOpen ? '' : null,
         ontoggle: (e) => { S.formulaOpen = e.currentTarget.open; save(); },
       },
-      h('summary', { text: t('explainTitle') }),
-      eqBox,
+      h('summary', null,
+        h('span', { class: 'sim-summary-title', text: t('explainTitle') }),
+        summaryMeta),
       explainToolbar,
-      paramGrid);
+      eqGrid,
+      paramColumns);
       simWrap.append(simHead, chartWrap, explain);
 
       // Recommended design and why
-      const activeRationale = autoRationale || buildAutoOptimizeRationales(evalSpace.best);
-      const isOptimal = (
-        S.studio.target === evalSpace.best.spec.target &&
-        S.studio.linker === evalSpace.best.spec.linker &&
-        S.studio.payload === evalSpace.best.spec.payload &&
-        Number(S.studio.dar) === Number(evalSpace.best.spec.dar) &&
-        Boolean(S.studio.fc) === Boolean(evalSpace.best.spec.fc)
-      );
-
-      const rBox = h('div', { class: 'sim-rationale-box' },
-        h('div', { class: 'srb-title' },
-          h('span', { class: 'srb-main-text', text: isOptimal ? t('optimalLocked') : `${t('optimalCand')} ${plainName(evalSpace.best.spec.target)} + ${plainName(evalSpace.best.spec.payload)}, DAR ${evalSpace.best.spec.dar}` }),
-          h('button', {
-            type: 'button', class: 'btn-compare-pop',
-            text: t('viewCompareBtn'),
-            onclick: () => openStudioCompareDrawer(sim, evalSpace),
-          })),
-        h('div', { class: 'srb-steps' },
-          activeRationale.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
-            h('b', { text: `${title}: ${choice}` }),
-            h('span', { text: desc })))));
+      updateRationaleDom(sim, evalSpace);
       if (designMode !== 'idle') simWrap.append(rBox);
 
       // 2. Metrics strip
@@ -2204,15 +2418,7 @@
           h('span', { class: 'sh-desc', text: t('shStabilityDesc') })));
 
       // 3. Organ risk and normal-tissue expression
-      const organRows = h('div', { class: 'expr-list' });
-      sim.organRisks.forEach((item) => {
-        const pct = Math.round(item.p * 100);
-        const color = riskColor(pct);
-        organRows.append(h('div', { class: 'expr-row' },
-          h('span', { class: 'ex-name', text: organKo(item.organ) }),
-          h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${Math.max(4, pct)}%;background:${color}` })),
-          h('span', { class: 'ex-val', style: `color:${color}`, text: `${riskLevel(pct)} ${pct}%` })));
-      });
+      updateOrganRowsDom(sim);
 
       const gtexRows = h('div', { class: 'expr-list' });
       tgt.tissues.forEach((tis) => {
@@ -2280,15 +2486,13 @@
       const cands = evalSpace.cands;
       const best = evalSpace.best;
 
-      // the axes zoom to where the dots are, so the crowded corner is easy to read
-      const safeties = cands.map((c) => c.safetyScore);
-      const efficacies = cands.map((c) => c.efficacyScore);
-      const minX = Math.max(0, Math.floor((Math.min(...safeties) - 4) / 10) * 10);
-      const maxX = Math.min(100, Math.ceil((Math.max(...safeties) + 4) / 10) * 10);
-      const minY = Math.max(0, Math.floor((Math.min(...efficacies) - 4) / 10) * 10);
-      const maxY = Math.min(100, Math.ceil((Math.max(...efficacies) + 4) / 10) * 10);
-      const spanX = Math.max(10, maxX - minX);
-      const spanY = Math.max(10, maxY - minY);
+      // Fixed 0-100 clinical coordinate frame so parameter adjustments visibly translate and separate candidate clusters
+      const minX = 0;
+      const maxX = 100;
+      const minY = 0;
+      const maxY = 100;
+      const spanX = 100;
+      const spanY = 100;
 
       // fixed pseudo-random order, so the dots appear scattered rather than sweeping across
       const shuffled = cands.slice().map((c, i) => ({
@@ -3618,7 +3822,7 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.7.8');
+    verEl.textContent = 'v' + (APP.version || '0.7.9');
 
     restore();
     renderHeaderControls();
