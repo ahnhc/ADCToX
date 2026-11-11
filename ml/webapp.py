@@ -266,7 +266,7 @@ class App:
             info = adc_updates.current_info(); models = info.get("model_version") if info else None
         except Exception:
             models = None
-        kind = {"sex": "sex", "child_pugh": "child_pugh", "ugt1a1": "yn"}
+        kind = {"sex": "sex", "child_pugh": "child_pugh", "ugt1a1": "yn", "esrd": "yn"}
         rule = {}                                   # the organ flag a value is checked against (labs.FLAGS): the page marks ✓ when it is not met
         for k, _, _, why in LB.FLAGS: rule.setdefault(k, why)
         fields = [dict(key=k, label=label, unit=unit, group=g, kind=kind.get(k, "number"), range=list(LB.RANGE[k]) if k in LB.RANGE else None, uln=LB.ULN.get(k),
@@ -354,7 +354,7 @@ class App:
         raw, errors = _parse_raw(body.get("raw"))
         lab, _, notes = LB.derive(raw); uln = LB.uln_of(raw)
         flags = [dict(key=k, organ=organ, why=why) for k, test, organ, why in LB.FLAGS if raw.get(k) is not None and test(raw[k], uln.get(k))]
-        source = None if "crcl" not in lab else "eGFR" if any(n.startswith("CLcr ≈ eGFR") for n in notes) else "Cockcroft-Gault"
+        source = None if "crcl" not in lab else "entered" if raw.get("crcl") is not None else "eGFR" if any(n.startswith("CLcr ≈ eGFR") for n in notes) else "Cockcroft-Gault"
         short = lambda k: "bili" if k == "bilirubin" else k                       # bili / ast / alt: the names the label rules read
         derived = dict(crcl=lab.get("crcl"), crcl_source=source, **{f"{short(k)}_xuln": float(LB._xuln(raw[k], u)) if k in raw else None for k, u in uln.items()},
                        shown=dict({"crcl": LB.shown("crcl", lab["crcl"])} if "crcl" in lab else {},

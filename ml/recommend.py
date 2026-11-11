@@ -983,7 +983,7 @@ DOMAIN_VALUES = {"renal": ("crcl", "esrd"), "hepatic": ("bili", "ast", "alt", "c
 
 # lab-report values already shown through a restriction input (CLcr, x ULN, ...), so not listed again
 _SHOWN_AS = {"bilirubin": "bili", "ast": "ast", "alt": "alt", "platelet": "platelets", "anc": "anc", "hba1c": "hba1c", "lvef": "lvef",
-             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "age": "crcl", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl",
+             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "crcl": "crcl", "esrd": "esrd", "age": "crcl", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl",
              "uln_bilirubin": "bili", "uln_ast": "ast", "uln_alt": "alt"}
 
 

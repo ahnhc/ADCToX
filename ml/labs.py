@@ -14,7 +14,7 @@ from fractions import Fraction
 
 # key, label, unit, group; ULN defaults are common adult reference upper limits; uln_bilirubin, uln_ast, uln_alt are the lab's own
 FIELDS = [("age", "Age", "years", "Basic"), ("sex", "Sex", "M/F", "Basic"), ("weight", "Weight", "kg", "Basic"),
-          ("creatinine", "Creatinine", "mg/dL", "Kidney"), ("egfr", "eGFR", "mL/min/1.73m²", "Kidney"),
+          ("crcl", "CLcr", "mL/min", "Kidney"), ("creatinine", "Creatinine", "mg/dL", "Kidney"), ("egfr", "eGFR", "mL/min/1.73m²", "Kidney"), ("esrd", "Dialysis/ESRD", "y/n", "Kidney"),
           ("bilirubin", "Bilirubin", "mg/dL", "Liver"), ("ast", "AST", "U/L", "Liver"), ("alt", "ALT", "U/L", "Liver"),
           ("uln_bilirubin", "Bilirubin ULN", "mg/dL", "Liver"), ("uln_ast", "AST ULN", "U/L", "Liver"), ("uln_alt", "ALT ULN", "U/L", "Liver"),
           ("albumin", "Albumin", "g/dL", "Liver"), ("ggt", "GGT", "U/L", "Liver"), ("child_pugh", "Child-Pugh", "A/B/C", "Liver"),
@@ -23,7 +23,7 @@ FIELDS = [("age", "Age", "years", "Basic"), ("sex", "Sex", "M/F", "Basic"), ("we
           ("amylase", "Amylase", "U/L", "Pancreas"), ("lipase", "Lipase", "U/L", "Pancreas"),
           ("tsh", "TSH", "µIU/mL", "Thyroid"),
           ("lvef", "LVEF", "%", "Cardio"), ("ugt1a1", "UGT1A1*28 homozygous", "y/n", "Genotype")]
-RANGE = {"age": (1, 120), "weight": (1, 400), "creatinine": (0.05, 30), "egfr": (1, 200), "bilirubin": (0.01, 50), "ast": (1, 10000),
+RANGE = {"age": (1, 120), "weight": (1, 400), "crcl": (1, 250), "creatinine": (0.05, 30), "egfr": (1, 200), "bilirubin": (0.01, 50), "ast": (1, 10000),
          "alt": (1, 10000), "albumin": (0.5, 7), "ggt": (1, 10000), "hb": (1, 25), "platelet": (1, 2000), "anc": (0.01, 100),
          "hba1c": (2, 25), "glucose": (10, 2000), "amylase": (1, 10000), "lipase": (1, 10000), "tsh": (0.001, 500), "lvef": (5, 90),
          "uln_bilirubin": (0.1, 10), "uln_ast": (1, 500), "uln_alt": (1, 500)}
@@ -56,7 +56,7 @@ def parse(key, text):
     if key == "child_pugh":
         if t.upper() in ("A", "B", "C"): return t.upper()
         raise ValueError("A, B or C")
-    if key == "ugt1a1":
+    if key in ("ugt1a1", "esrd"):
         if t.lower()[:1] in ("y", "n"): return t.lower()[:1] == "y"
         raise ValueError("y or n")
     try: v = float(t.replace(",", "") if re.fullmatch(r"\d{1,3}(,\d{3})+", t) else t)       # 0,8 is a decimal comma, not 8
@@ -102,7 +102,10 @@ def uln_text(key, raw):
 def derive(raw):
     """raw {key: value} -> (restriction inputs for ml/restrictions.Patient, [(organ, why)], [note lines])."""
     u = uln_of(raw); lab, flags, notes = {}, [], []
-    if all(raw.get(k) is not None for k in ("age", "weight", "creatinine", "sex")) and raw["creatinine"] > 0 and raw["age"] < 140:
+    if raw.get("crcl") is not None:
+        lab["crcl"] = float(raw["crcl"])
+        notes.append(f"CLcr {shown('crcl', lab['crcl'])} mL/min")
+    elif all(raw.get(k) is not None for k in ("age", "weight", "creatinine", "sex")) and raw["creatinine"] > 0 and raw["age"] < 140:
         lab["crcl"] = cockcroft_gault(raw["age"], raw["weight"], raw["creatinine"], raw["sex"])
         notes.append(f"CLcr {shown('crcl', lab['crcl'])} mL/min (Cockcroft-Gault)")
     elif raw.get("egfr") is not None:
@@ -111,7 +114,7 @@ def derive(raw):
         notes.append("Creatinine needs age, sex and weight for CLcr (or enter eGFR)")
     for k, dst in (("bilirubin", "bili"), ("ast", "ast"), ("alt", "alt")):
         if raw.get(k) is not None: lab[dst] = float(_xuln(raw[k], u[k]))     # not rounded (3.601 / 1.2 is above 3 x ULN)
-    for k, dst in (("platelet", "platelets"), ("anc", "anc"), ("hba1c", "hba1c"), ("lvef", "lvef"), ("child_pugh", "child_pugh"), ("ugt1a1", "ugt1a1_28_homozygous")):
+    for k, dst in (("platelet", "platelets"), ("anc", "anc"), ("hba1c", "hba1c"), ("lvef", "lvef"), ("child_pugh", "child_pugh"), ("ugt1a1", "ugt1a1_28_homozygous"), ("esrd", "esrd")):
         if raw.get(k) is not None: lab[dst] = raw[k]
     for k, test, organ, why in FLAGS:
         if raw.get(k) is not None and test(raw[k], u.get(k)): flags.append((organ, why))

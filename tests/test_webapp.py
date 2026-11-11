@@ -613,3 +613,19 @@ def test_a_decomposed_hangul_paste_is_the_same_condition(server, monkeypatch):
     assert names and names[0]["mondo"] == RC.cancer_alias("폐암")
     status, d = call(server, "POST", "/api/recommend", {"conditions": [nfd, "cirrhosis"], "choice": {nfd: None}, "raw": {}})
     assert status == 200 and d["patient"]["cancers"] == [] and "폐암" in d["patient"]["unmapped"]         # 'not sure' on the pasted text is kept
+
+
+def test_direct_crcl_and_esrd_resolve_missing_renal_inputs(server):
+    status, before = call(server, "POST", "/api/recommend", {"conditions": ["ckd_stage_3"], "raw": {}})
+    assert status == 200
+    before_missing = {m for r in before["rows"] for m in r["detail"]["missing"]}
+    assert "CLcr (Creatinine + age, sex, weight, or eGFR)" in before_missing and "Dialysis/ESRD" in before_missing
+    status, lab_res = call(server, "POST", "/api/labs", {"raw": {"crcl": "12", "esrd": "n", "platelet": "180"}})
+    assert status == 200 and lab_res["errors"] == {}
+    assert lab_res["derived"]["crcl"] == 12.0 and lab_res["derived"]["crcl_source"] == "entered"
+    assert lab_res["raw"]["esrd"] is False and lab_res["raw"]["platelet"] == 180.0
+    status, after = call(server, "POST", "/api/recommend", {"conditions": ["ckd_stage_3"], "raw": {"crcl": "12", "esrd": "n"}})
+    assert status == 200
+    renal_missing = [m for r in after["rows"] for m in r["detail"]["missing"] if "CLcr" in m or "Dialysis" in m]
+    assert renal_missing == []
+

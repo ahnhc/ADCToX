@@ -1,3 +1,15 @@
+# ADCTOX 0.8.1 Release Notes
+
+- **Streamlined Patient Info & Complete Lab/Clinical Input Coverage (`1. Patient Info`)**:
+  - Replaced the always-open lab flowsheet and removed the duplicate `AI Organ Vulnerability Linkage` card in favor of a calm, collapsible `Lab & Clinical Info` (`검진 정보`) panel.
+  - Added full input support for `CLcr`, `Dialysis/ESRD`, `eGFR`, Cockcroft-Gault (`Creatinine + Age, Sex, Weight`), `Child-Pugh`, `Platelets`, `ANC`, `LVEF`, `HbA1c`, and `UGT1A1*28`, matching every item surfaced under `Missing Lab & Clinical Info` (`미입력 검진 정보`) in `ADC Matrix`.
+- **Navigation Grouping, Drawer Ordering & Header/Footer Polish**:
+  - Highlighted the clinician workflow (`1. Patient Info` + `2. ADC Matrix`) with a unified enclosing frame when active while keeping `3. De Novo ADC Design` separate, and routed `New Patient` (`새 환자 입력`) back to `1. Patient Info`.
+  - Reordered `ADC Matrix` drawer tabs (`Patient & Label Fit` -> `Molecular Structure` -> `Prior Trial Cases`), updated reference trial labels, matched header `?` button sizing, and simplified footer and guide headers (`ADCTOX`, `ADCTOX Guide`).
+- **De Novo ADC Design Formula & Layout Clarity (`3. De Novo ADC Design`)**:
+  - Stacked the 3 neural scoring equations (`U_TI`, `X_safe`, `Y_eff`) vertically with clean mathematical typography and unified Korean/English font rendering.
+  - Consolidated clinical scenario presets into 3 intuitive modes (`Balanced`, `Organ Protection Priority`, `Antitumor Efficacy Priority`) and formatted auto-design rationale steps in a 2x2 desktop / 1-column mobile grid.
+
 # ADCTOX 0.8.0 Release Notes
 
 - **5-Fold Multimodal Neural Surrogate (`ADC-SurrogateNet-v2`)**:

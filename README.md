@@ -1,9 +1,9 @@
-# ADCTOX v0.8.0
+# ADCTOX v0.8.1
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
-[![App Version](https://img.shields.io/badge/version-v0.8.0-10B981)](#)
+[![App Version](https://img.shields.io/badge/version-v0.8.1-10B981)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live%20Platform-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
@@ -16,7 +16,7 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
 
 ---
 
-## Key Capabilities in v0.8.0
+## Key Capabilities in v0.8.1
 
 1. **Streamlined 3-Stage Clinical Workflow (`1. Patient Info` -> `2. ADC Matrix` -> `3. De Novo ADC Design`):**
    - **Stage 1 (`Patient Info`):** Bilingual (`EN / KO`) free-text condition and malignancy entry with real-time AI organ vulnerability mapping, active organ burden indicators, and an 8-biomarker laboratory flowsheet (`Bilirubin`, `Creatinine`, `AST`, `ALT`, `Platelets`, `ANC`, `Hb`, `LVEF`) with physiological reference ranges.
@@ -107,7 +107,7 @@ The installer configures an isolated Python environment, downloads the `0.8` fro
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.8.0 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.8.1 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the Terminal TUI
 ```
 

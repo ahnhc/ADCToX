@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.1: Collapsible Lab & Clinical Info panel, complete renal/hepatic/genotype input parity, clinician workflow grouping, and Studio equation clarity
+
+- **Calm Patient Info & Collapsible Lab Panel (`1. Patient Info`):** Removed the redundant `AI Organ Vulnerability Linkage` panel and turned `Lab & Clinical Info` (`검진 정보`) into an optional collapsible accordion below the condition search and active vulnerable organs bar.
+- **Full Missing-Input Parity (`CLcr`, `Dialysis/ESRD`, `Child-Pugh`, `Platelets`, `HbA1c`, `UGT1A1*28`):** Added direct `CLcr` (`mL/min`), `Dialysis/ESRD` (`y/n`), inline Cockcroft-Gault calculator (`Age`, `Sex`, `Weight`), `eGFR`, `Child-Pugh` (`A`/`B`/`C`), `HbA1c`, and `UGT1A1*28` controls alongside fixed `platelet` binding so every item reported under `미입력 검진 정보` in `ADC Matrix` can be entered directly in `Patient Info`.
+- **Clinician vs. De Novo Navigation Grouping & Reset Flow:** Grouped `1. Patient Info` and `2. ADC Matrix` inside a clinician-workflow frame when active while keeping `3. De Novo ADC Design` distinct; aligned header `?` button dimensions, simplified footer and guide titles (`ADCTOX`, `ADCTOX 안내`), and updated `New Patient` (`새 환자 입력`) to return directly to `1. Patient Info`.
+- **Evidence Drawer & De Novo Studio Refinements:** Reordered `ADC Matrix` drawer tabs to `Patient & Label Fit / Molecular Structure / Prior Trial Cases`, renamed reference study tabs cleanly, formatted the 3 neural scoring equations (`U_TI`, `X_safe`, `Y_eff`) in a single-column vertical layout with unified typography, streamlined clinical presets to 3 options (`Balanced`, `Organ Protection Priority`, `Antitumor Efficacy Priority`), and arranged auto-design rationale cards in a balanced 2x2 grid on desktop (`1fr` on mobile).
+
 ## 0.8.0: 5-Fold Multimodal Neural Surrogate (`ADC-SurrogateNet-v2`), ESM-2 & AlphaFold 3D biophysics integration, and official clinical validation
 
 - **5-Fold Multimodal Neural Surrogate Engine (`ADC-SurrogateNet-v2`):** Replaced rule-based scoring with a deep multimodal ensemble neural network (`ml/preclinical/train_surrogate_nn.py`, `ml/data/surrogate_designer.json`, `ml/web/surrogate_2592.js`). Integrated ESM-2 650M antibody embeddings, AlphaFold 3D structure solvent accessibility & pLDDT, ChemBERTa-2 LoRA molecular embeddings, Boltzmann 3D conformer ensembles, reaction SMARTS, and GTEx v8 / Tabula Sapiens normal tissue expression.

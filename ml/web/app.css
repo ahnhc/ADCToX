@@ -49,7 +49,7 @@
   --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
   --shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
   --sans: "Manrope", "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --mono: "Manrope", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --mono: "Manrope", "Pretendard Variable", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --top: 56px;
   --bar: 38px;
   --dw: clamp(480px, 42vw, 720px);
@@ -164,11 +164,27 @@ kbd {
   padding: 3px;
   background: var(--panel-2);
   border: 1px solid var(--line);
-  border-radius: 9px;
+  border-radius: 10px;
+}
+.crumb-clinician-group,
+.crumb-research-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  transition: border-color 180ms var(--ease), background-color 180ms var(--ease), box-shadow 180ms var(--ease);
+}
+.crumb-clinician-group.is-clinician-active {
+  border-color: rgba(37, 99, 235, 0.36);
+  background: rgba(255, 255, 255, 0.52);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
 }
 .crumb {
   position: relative;
   min-width: 0;
+  display: inline-flex;
 }
 .crumb .cb {
   display: inline-flex;
@@ -327,16 +343,17 @@ kbd {
 }
 
 .help {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 7px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-2);
   background: var(--panel);
-  color: var(--ink-2);
-  font: 700 12px var(--sans);
+  color: var(--ink-hi);
+  font: 700 13px var(--sans);
   display: inline-grid;
   place-items: center;
-  transition: all 160ms var(--ease);
+  cursor: pointer;
+  transition: all 150ms var(--ease);
 }
 .help:hover {
   border-color: var(--accent);
@@ -1358,7 +1375,7 @@ kbd {
 }
 .srb-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 .srb-step {
@@ -1438,23 +1455,38 @@ kbd {
   white-space: nowrap;
 }
 
-/* ---------------------------------------------------------------- Mode 2: Patient & Labs (Biomarker Flowsheet) */
-.flowsheet-wrap {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 1fr);
-  gap: 22px;
-  align-items: start;
+/* ---------------------------------------------------------------- Mode 2: Patient & Labs (Collapsible Biomarker Flowsheet) */
+.flowsheet-collapsible {
+  overflow: hidden;
+  transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
 }
-.flowsheet-panel {
-  padding: 22px;
-}
-.flowsheet-head {
+.flowsheet-toggle-bar {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 18px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
+  gap: 14px;
+  padding: 15px 20px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease);
+}
+.flowsheet-toggle-bar:hover {
+  background: rgba(241, 245, 249, 0.55);
+}
+.flowsheet-toggle-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.flowsheet-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .flowsheet-title {
   font-size: 14px;
@@ -1462,22 +1494,188 @@ kbd {
   color: var(--ink-hi);
   margin: 0;
 }
+.flowsheet-opt-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dim);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+.flowsheet-count-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 1px 8px;
+  border-radius: 999px;
+}
 .flowsheet-sub {
   font-size: 12px;
   color: var(--dim);
+  line-height: 1.4;
+}
+.flowsheet-toggle-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 7px;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-2);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 150ms var(--ease);
+}
+.flowsheet-toggle-bar:hover .flowsheet-toggle-action {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.flowsheet-body {
+  padding: 18px 20px 20px;
+  border-top: 1px solid var(--line);
+  background: var(--page);
+}
+.lab-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.lab-section-card {
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+.lab-sec-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+.lab-sec-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--ink-hi);
+  margin: 0;
+}
+.cg-derived-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--emerald);
+  background: var(--emerald-soft);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 .lab-card-group {
   display: flex;
   flex-direction: column;
-  gap: 18px;
 }
-.lab-category-title {
+.bio-discrete-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.lab-card-group > :first-child {
+  border-top: 0;
+}
+.bio-seg-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px;
+  border-radius: 7px;
+  background: var(--page);
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.bio-seg-btn {
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 0;
+  background: transparent;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink-2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 140ms var(--ease);
+}
+.bio-seg-btn:hover {
+  color: var(--ink-hi);
+}
+.bio-seg-btn.is-selected {
+  background: var(--panel);
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+.bio-seg-btn.is-selected.is-flagged {
+  color: var(--amber);
+}
+.cg-inline-box {
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--page);
+  border: 1px dashed var(--line-2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cg-inline-caption {
   font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-weight: 600;
   color: var(--dim);
-  margin: 8px 0 4px;
+}
+.cg-inline-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.cg-mini-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cg-mini-field label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.cg-mini-field input,
+.cg-mini-field select {
+  width: 100%;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-hi);
+}
+.cg-mini-field input:focus,
+.cg-mini-field select:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 /* Visual Biomarker Spectrum Row */
@@ -2269,7 +2467,7 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
   .docked .spotlight-grid { grid-template-columns: 1fr; }
   .docked .studio-wrap { grid-template-columns: 1fr; }
   .docked .studio-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .docked .flowsheet-wrap { grid-template-columns: 1fr; }
+  .docked .lab-sections-grid { grid-template-columns: 1fr; }
   .docked .review-grid-head, .docked .review-row {
     grid-template-columns: 34px minmax(165px, 1.35fr) minmax(96px, 0.8fr) minmax(160px, 1.15fr) minmax(160px, 1.15fr);
     gap: 10px;
@@ -2282,11 +2480,14 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
   }
   .docked .review-grid-head > span:nth-child(5), .docked .review-row > .trial-cell { display: none; }
 }
+@media (max-width: 1040px) {
+  .lab-sections-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 960px) {
   .workspace-bar { grid-template-columns: 1fr; }
   .wb-right { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 12px; }
   .studio-wrap { grid-template-columns: 1fr; }
-  .flowsheet-wrap { grid-template-columns: 1fr; }
+  .docked .srb-steps { grid-template-columns: 1fr; }
   .review-grid-head, .review-row {
     grid-template-columns: 34px minmax(140px, 1.4fr) minmax(100px, 0.9fr) minmax(120px, 1fr);
   }
@@ -2302,6 +2503,8 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
   }
   .crumbs { grid-column: 1 / -1; grid-row: 2; justify-self: stretch; overflow-x: auto; scrollbar-width: none; }
   .crumbs ol { width: 100%; justify-content: space-between; }
+  .crumb-clinician-group { flex: 2; }
+  .crumb-research-group { flex: 1; }
   .crumb { flex: 1; }
   .crumb .cb { width: 100%; justify-content: center; padding: 6px 8px; font-size: 12px; }
   .scenario-dropdown { display: none; }
@@ -2319,6 +2522,9 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
     gap: 6px;
   }
   .bio-spectrum-wrap { grid-column: 1 / -1; }
+  .flowsheet-toggle-bar { flex-direction: column; align-items: flex-start; padding: 14px 16px; }
+  .flowsheet-body { padding: 14px 16px; }
+  .bio-discrete-row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .studio-pills.grid-6 { grid-template-columns: repeat(3, 1fr); }
   .sim-chart-wrap { height: 310px; }
   .studio-hero { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 14px; }
@@ -2347,6 +2553,7 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
   .brand { font-size: 16px; }
   .top .right { gap: 4px; }
   .lang-btn { height: 28px; padding: 0 6px; font-size: 11px; }
+  .help { width: 28px; height: 28px; font-size: 12px; }
   .spotlight-grid { grid-template-columns: 1fr; }
   .review-filters { flex-wrap: wrap; }
   .review-grid-head, .review-row {
@@ -2620,13 +2827,13 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
   transform: rotate(90deg);
 }
 .sim-summary-meta {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   font-weight: 700;
   color: var(--accent);
   background: var(--accent-soft);
   border: 1px solid rgba(37, 99, 235, 0.18);
-  padding: 3px 9px;
+  padding: 3px 10px;
   border-radius: 999px;
   white-space: nowrap;
 }
@@ -2703,58 +2910,99 @@ button.ok { padding: 6px 14px; border-radius: 7px; border: 0; background: var(--
 }
 .sim-eq-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
-  margin-bottom: 12px;
-}
-@media (max-width: 1100px) {
-  .sim-eq-grid { grid-template-columns: 1fr; }
+  margin-bottom: 14px;
 }
 .sim-eq-card {
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 12px 14px;
+  border-radius: 9px;
   background: var(--panel);
   border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 .sim-eq-card-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .sim-eq-tag {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: var(--ink-hi);
 }
 .sim-eq-sym {
-  font-family: var(--mono);
-  font-size: 10.5px;
+  font-family: var(--sans);
+  font-size: 11px;
   font-weight: 700;
   color: var(--accent);
   background: var(--accent-soft);
-  padding: 1px 6px;
-  border-radius: 4px;
-}
-.sim-eq-math {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--ink-hi);
-  padding: 5px 8px;
-  border-radius: 5px;
-  background: var(--page);
-  border: 1px solid var(--line);
-  overflow-x: auto;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  padding: 2px 8px;
+  border-radius: 999px;
   white-space: nowrap;
 }
-.sim-eq-desc {
-  font-size: 11px;
+.sim-eq-math {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-hi);
+  padding: 9px 12px;
+  border-radius: 7px;
+  background: var(--page);
+  border: 1px solid var(--line);
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-x: auto;
+}
+.sim-eq-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0;
+  white-space: normal;
+}
+.sim-eq-math .eq-v {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--ink-hi);
+  letter-spacing: 0.01em;
+}
+.sim-eq-math sub {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--ink-2);
+  margin-left: 1px;
+  vertical-align: -0.22em;
+}
+.sim-eq-math .eq-num {
+  font-family: var(--mono);
+  font-weight: 800;
+  color: var(--accent);
+}
+.sim-eq-math .eq-op {
   color: var(--dim);
-  line-height: 1.42;
+  padding: 0 5px;
+  font-weight: 600;
+}
+.sim-eq-math .eq-fn {
+  font-family: var(--sans);
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.sim-eq-desc {
+  font-size: 11.5px;
+  color: var(--dim);
+  line-height: 1.45;
   word-break: keep-all;
 }
 .sim-param-columns {
