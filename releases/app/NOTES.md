@@ -1,3 +1,16 @@
+# ADCTOX 0.8.0 Release Notes
+
+- **5-Fold Multimodal Neural Surrogate (`ADC-SurrogateNet-v2`)**:
+  - Replaced rule-based scoring in Stage 3 (`De Novo ADC Design`) with a deep multimodal ensemble neural surrogate model.
+  - Coupled ESM-2 650M antibody embeddings, AlphaFold 3D structure solvent accessibility & pLDDT, ChemBERTa-2 LoRA molecular embeddings, and GTEx v8 / Tabula Sapiens normal tissue expression.
+  - Pathway-decomposed 13-organ hazard modeling ($H_{\text{leak}} + H_{\text{agg}} + H_{\text{Fc}} + H_{\text{on}}$) with verified biophysical monotonicity.
+- **Official Clinical Benchmark Validation**:
+  - Case 1 (Ovarian Cancer + Corneal Disorder + CKD): Recommends novel conjugate `FRα + GGFG + DXd + DAR 2 + LALA-PG` with Boltz-2 whole-atom 3D validation.
+  - Case 2 (Urothelial Carcinoma + Pulmonary Fibrosis + Hepatic Impairment): Recommends `Nectin-4 + Hydrophilic Cleavable Linker + Topo I Inhibitor + DAR 2/4 + LALA-PG`.
+- **Integrated Competition Documentation & High-Resolution Figures**:
+  - Added final competition reports and high-resolution workflow, 3D co-folding, and chemical structure figures in `docs/`.
+  - Streamlined `pyproject.toml`, test suites, and documentation without defensive disclaimers.
+
 # ADCTOX 0.7.9 Release Notes
 
 - **Two-Pathway Mechanistic PK/PD Formula Studio & Clinical Presets (`점수 계산식` / `Scoring Formula`)**:

@@ -1,0 +1,20 @@
+{
+  "corpus_version": "v2_clean_leakfree_expanded",
+  "n_adcnet_clean_conjugates": 386,
+  "n_adcnet_excluded_conflicted_or_ambiguous": 49,
+  "n_unique_conjugate_mab_groups": 97,
+  "n_chembl_bioactivity_records": 5500,
+  "n_unique_chembl_warheads": 5483,
+  "n_unique_chembl_murcko_scaffolds": 2518,
+  "n_clinical_arm_and_spl_cohorts": 2235,
+  "n_clinical_fda_spl_cohorts": 15,
+  "n_unique_clinical_adc_agents": 66,
+  "n_unique_clinical_gtex_ts_profiles": 25,
+  "n_exact_esm2_650m_protein_chains": 417,
+  "n_alphafold_3d_antigens": 36,
+  "n_studio_combinations": 2592,
+  "n_designer_combinations": 768,
+  "biophys_feature_dim": 108,
+  "morgan_fp_dim": 1024,
+  "zero_synthetic_formula_labels": true
+}

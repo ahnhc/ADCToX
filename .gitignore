@@ -56,4 +56,8 @@ ml/results/sweep/logs_*/
 ml/results/reproduce/logs_*/
 models/
 artifacts/surrogate_abc_distillation.json
-ml/data/surrogate_2592.json
+
+# Raw multimodal caches and corpora (>10MB)
+ml/data/*.pkl
+ml/data/alphafold/
+ml/data/chembl/

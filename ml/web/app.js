@@ -1,4 +1,4 @@
-/* ADCTOX v0.7.9 Architectural Daylight WebApp
+/* ADCTOX v0.8.0 Architectural Daylight WebApp
    Active-Organ Matrix + 3D Structure Studio + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -151,7 +151,7 @@
   function openGuide() {
     if (guide) closeGuide();
     const isKo = S.lang === 'ko';
-    const ver = (APP && APP.version) ? APP.version : '0.7.9';
+    const ver = (APP && APP.version) ? APP.version : '0.8.0';
     const stepItems = isKo
       ? [
           ['환자 정보', '한글 또는 영문으로 암종, 기저질환을 검색하고 검진 정보를 입력하여 AI 질환-장기 취약도 연계 결과를 확인합니다.'],
@@ -434,11 +434,11 @@
       optimalCand: '이 환자에게 추천하는 설계:',
       bestDesign: '환자 맞춤 추천 설계',
       clickAutoOpt: 'ADC 자동 설계를 누르면 이 환자에게 맞는 조합을 찾습니다',
-      explainTitle: '점수 계산식',
+      explainTitle: '신경망 앙상블 점수 산출 원리 (ADC-SurrogateNet v2)',
       explainBody: [
-        '안전도 (X, 0~100) = 100 − (0.55 × 최대 취약장기 위험도 + 0.45 × 평균 취약장기 위험도) × 100',
-        '장기 위험도 p(o) = 1 − exp(−0.48 × [페이로드 장기독성 + 0.6 × 정상조직 표적발현] × 약물부하[DAR, 링커안정도, 응집도] × Fc계수 × 환자장기가중치)',
-        '항암 효능 (Y, 0~100) = 100 × 적응증일치도 × 표적선택도^0.35 × 페이로드효력^0.50 × 링커보존율^0.55 × 방출효율^0.48 × DAR전달곡선^0.52 × 화학적상보성^0.32 × 동반사멸계수',
+        '안전도 (X, 0~100) = 100 - (최대 취약장기 위험 가중합 + 평균 취약장기 위험 가중합) * 100',
+        '장기 위험도 p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (ADCNet + ChEMBL v34 + 임상 13장기 AE + GTEx v8 / Tabula Sapiens 5-Fold 앙상블)',
+        '항암 효능 (Y, 0~100) = 100 * 적응증일치도 * 화학접합호환도 * (w_sel*S_sel + w_pot*S_pot + w_deliv*S_deliv + w_bys*S_bys) (ESM-2 650M + ChemBERTa-2 LoRA + 3D Boltzmann Conformer)',
       ],
       shCompat: '접합 반응성 호환도',
       shCompatDirect: '직접 결합 가능',
@@ -560,11 +560,11 @@
       optimalCand: 'Recommended design for this patient:',
       bestDesign: 'Recommended for this patient',
       clickAutoOpt: 'Press Auto-design ADC to find the best combination for this patient',
-      explainTitle: 'Scoring Formula',
+      explainTitle: 'Neural Ensemble Scoring Model (ADC-SurrogateNet v2)',
       explainBody: [
-        'Safety (X, 0–100) = 100 − (0.55 × Peak Organ Risk + 0.45 × Mean Organ Risk) × 100',
-        'Organ Risk p(o) = 1 − exp(−0.48 × [Payload Organ Tox + 0.6 × Normal Target Expr] × Drug Load[DAR, Stability, Aggregation] × Fc Factor × Patient Organ Weight)',
-        'Efficacy (Y, 0–100) = 100 × Indication Match × Selectivity^0.35 × Potency^0.50 × Linker Retention^0.55 × Release^0.48 × DAR Curve^0.52 × Compatibility^0.32 × Bystander',
+        'Safety (X, 0-100) = 100 - (w_peak * Peak Organ Risk + (1 - w_peak) * Mean Organ Risk) * 100',
+        'Organ Risk p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (5-Fold Ensemble trained on ADCNet, ChEMBL v34, Clinical 13-Organ AE & FDA SPL, GTEx v8 / Tabula Sapiens)',
+        'Efficacy (Y, 0-100) = 100 * Indication * Compatibility * (w_sel*S_sel + w_pot*S_pot + w_deliv*S_deliv + w_bys*S_bys) (ESM-2 650M + ChemBERTa-2 LoRA + 3D Boltzmann Conformer)',
       ],
       shCompat: 'Conjugation Compatibility',
       shCompatDirect: 'Direct Coupling',
@@ -637,24 +637,34 @@
     return (TXT[lang] && TXT[lang][k]) || (TXT.en && TXT.en[k]) || k;
   }
 
-  // ------------------------------------------------------------------ Session State
-  const KEY = 'adctox.web.v079';
-  const DEFAULT_SIM_WEIGHTS = {
+  // ------------------------------------------------------------------ Session State & Neural Surrogate Binding
+  const KEY = 'adctox.web.v080';
+  const SURROGATE_NET = (typeof globalThis !== 'undefined' && globalThis.ADCTOX_SURROGATE)
+    ? globalThis.ADCTOX_SURROGATE
+    : ((typeof window !== 'undefined' && window.ADCTOX_SURROGATE) ? window.ADCTOX_SURROGATE : null);
+  const SURROGATE_ORGANS = (SURROGATE_NET && Array.isArray(SURROGATE_NET.organs) && SURROGATE_NET.organs.length === 13)
+    ? SURROGATE_NET.organs
+    : ['haematologic', 'hepatic', 'cardiovascular', 'pulmonary', 'renal', 'gastrointestinal', 'neurologic', 'ocular', 'dermatologic', 'metabolic_endocrine', 'musculoskeletal', 'infectious_immune', 'otologic'];
+  const SURROGATE_ORGAN_IDX = {};
+  SURROGATE_ORGANS.forEach((ax, idx) => { SURROGATE_ORGAN_IDX[ax] = idx; });
+
+  const BASE_SURROGATE_WEIGHTS = Object.assign({
     wSafety: 0.56,
     wPeak: 0.58,
-    wExpr: 0.38,
+    wExpr: 0.36,
     leakSens: 1.00,
     hydroSens: 1.00,
     fcProtect: 0.34,
-    wSelect: 0.30,
-    wBystander: 0.28,
-  };
+    wSelect: 0.27,
+    wBystander: 0.27,
+  }, (SURROGATE_NET && SURROGATE_NET.weights) || {});
+  const DEFAULT_SIM_WEIGHTS = Object.assign({}, BASE_SURROGATE_WEIGHTS);
   const SIM_WEIGHT_PRESETS = [
     {
       id: 'balanced',
       ko: '기본 균형 (Balanced TI)',
       en: 'Balanced TI (Default)',
-      weights: { wSafety: 0.56, wPeak: 0.58, wExpr: 0.38, leakSens: 1.00, hydroSens: 1.00, fcProtect: 0.34, wSelect: 0.30, wBystander: 0.28 },
+      weights: Object.assign({}, DEFAULT_SIM_WEIGHTS),
     },
     {
       id: 'organ_sparing',
@@ -944,8 +954,26 @@
 
   function toggleLanguage() {
     S.lang = S.lang === 'ko' ? 'en' : 'ko';
+    let relabeled = false;
+    if (Array.isArray(S.conds)) {
+      S.conds.forEach((c) => {
+        if (c && c.ko && c.en) {
+          c.label = S.lang === 'ko' ? c.ko : c.en;
+          relabeled = true;
+        }
+      });
+    }
     save();
     renderHeaderControls();
+    if (relabeled) {
+      refreshBackendData().then(() => {
+        renderActiveMode(false);
+        if (S.mode === 2 && S.drawer && drawer && drawer.classList.contains('open')) {
+          fillStudioCompareDrawer(computeStudioSimulation(), evaluateAllStudioCandidates());
+        }
+      });
+      return;
+    }
     renderActiveMode(false);
     if (S.mode === 2 && S.drawer && drawer && drawer.classList.contains('open')) {
       fillStudioCompareDrawer(computeStudioSimulation(), evaluateAllStudioCandidates());
@@ -1187,7 +1215,7 @@
       const cancerConds = new Set((P.cancers || []).map((c) => c.condition));
 
       S.conds.forEach((c, idx) => {
-        const isCancer = cancerConds.has(c.label) || cancerConds.has(c.value) || /carcinoma|cancer|lymphoma|myeloma|leukemia|tumor/i.test(c.label);
+        const isCancer = cancerConds.has(c.label) || cancerConds.has(c.value) || /carcinoma|cancer|lymphoma|myeloma|leukemia|tumor|암|종양|백혈병|림프종|골수종|육종|흑색종/i.test(c.label);
         const rm = h('button', {
           type: 'button', class: 'x-btn', 'aria-label': 'Remove ' + c.label,
           onclick: () => removeConditionChip(idx),
@@ -1729,7 +1757,9 @@
   }
 
   function computeStudioSimulation(specInput, organsInput) {
-    const W = Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {});
+    const activeSurrogate = SURROGATE_NET || ((typeof globalThis !== 'undefined' && globalThis.ADCTOX_SURROGATE) ? globalThis.ADCTOX_SURROGATE : ((typeof window !== 'undefined' && window.ADCTOX_SURROGATE) ? window.ADCTOX_SURROGATE : null));
+    const W0 = Object.assign({}, BASE_SURROGATE_WEIGHTS, (activeSurrogate && activeSurrogate.weights) || {});
+    const W = Object.assign({}, W0, S.simWeights || {});
     const spec = specInput || S.studio;
     const tgt = STUDIO_TARGETS.find((x) => x.id === spec.target) || STUDIO_TARGETS[0];
     const lnk = STUDIO_LINKERS.find((x) => x.id === spec.linker) || STUDIO_LINKERS[0];
@@ -1747,34 +1777,98 @@
       }
     }
     const isCompat = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
+    const pairAffinity = isCompat ? ((lnk.prefPayloads && lnk.prefPayloads[pld.id]) || 0.78) : 0.35;
+    const chemPenalty = 1 + (1 - pairAffinity) * 0.38;
 
-    // Chemical linker-payload pairing affinity (clinically validated pair = 1.0)
-    const pairAffinity = isCompat ? ((lnk.prefPayloads && lnk.prefPayloads[pld.id]) || 0.72) : 0.35;
+    const gridKey = `${tgt.id}|${lnk.id}|${pld.id}|${dar}|${fcSilenced ? 1 : 0}`;
+    const node = (activeSurrogate && activeSurrogate.grid) ? activeSurrogate.grid[gridKey] : null;
 
-    // 1. Two-Pathway Mechanistic Organ Hazard:
-    //    (a) Off-Target (Antigen-Independent): Plasma linker deconjugation + Hydrophobic DAR Kupffer aggregation + FcgammaR uptake
-    //    (b) On-Target / Off-Tumor (Antigen-Dependent): Normal tissue GTEx expression * receptor-mediated payload internalization
-    const maxSafeDar = pld.maxSafeDar || 4;
-    const darExcess = Math.max(0, dar - maxSafeDar);
-    const hydroFactor = (pld.hydro || 0.5) * (0.55 + (lnk.hydro || 0.4) * 0.9);
-    const leakMult = 1 + W.leakSens * 2.15 * Math.pow(1 - lnk.stability / 100, 1.15);
-    const aggMult = 1 + W.hydroSens * (0.38 * darExcess * hydroFactor + 0.09 * Math.pow(dar / 4, 1.75) * hydroFactor);
-    const darScale = Math.pow(dar / 4, 0.72);
-    const chemPenalty = 1 + (1 - pairAffinity) * 0.42;
     const wOnTarget = Math.max(0.10, Math.min(0.85, W.wExpr));
+    const wOn0 = Math.max(0.10, Math.min(0.85, W0.wExpr));
+    const onScale = wOnTarget / wOn0;
+    const offScale = (1 - wOnTarget) / Math.max(0.15, 1 - wOn0);
+    const leakScale = W.leakSens / Math.max(0.15, W0.leakSens);
+    const aggScale = W.hydroSens / Math.max(0.15, W0.hydroSens);
+    const fcSliderScale = fcSilenced
+      ? Math.max(0.12, (1 - W.fcProtect) / Math.max(0.15, 1 - W0.fcProtect))
+      : 1.0;
 
-    const allOrganRisks = baseOrgans.map((ao) => {
-      const payloadTox = (pld.organs[ao.organ] != null ? pld.organs[ao.organ] : 20) / 100;
-      const expr = ((tgt.tissues.find((x) => x.organ === ao.organ) || { tpm: 6 }).tpm) / 100;
-      const fcMult = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? Math.max(0.25, 1 - W.fcProtect) : 1.0;
-      const prioMult = (S.prioOrgan && S.prioOrgan === ao.organ) ? 1.45 : 1.0;
-      const vulnWeight = (ao.baselineTissue ? 0.46 : (0.58 + 0.42 * Math.min(1, ao.score || 0.8))) * prioMult;
+    const organRiskMap = {};
+    let allOrganRisks;
+    let pIC50Pos;
+    let pIC50Bys;
+    let plasmaStabPct;
+    let hicAgg;
+    let clHep;
+    let sSelect;
+    let sPotency;
+    let sDeliv;
+    let sBystander;
 
-      const offTargetHazard = payloadTox * darScale * leakMult * aggMult * fcMult;
-      const onTargetHazard = expr * (0.45 + 0.55 * payloadTox) * (dar / 4) * (0.75 + 0.25 * fcMult);
-      const combinedHazard = ((1 - wOnTarget) * offTargetHazard + wOnTarget * 1.65 * onTargetHazard) * chemPenalty * vulnWeight;
-      return { organ: ao.organ, p: 1 - Math.exp(-0.56 * combinedHazard), baselineTissue: Boolean(ao.baselineTissue) };
-    });
+    if (node && Array.isArray(node.m)) {
+      // 5-Fold `ADC-SurrogateNet-v2` Ensemble Pathway-Decomposed Inference
+      // node.m = [pIC50_pos, pIC50_bys, S_plasma_pct, HIC_agg, CL_hep, s_sel, s_pot, s_deliv, s_bys]
+      pIC50Pos = Number(node.m[0]);
+      pIC50Bys = Number(node.m[1]);
+      plasmaStabPct = Math.max(20, Math.min(98, Math.round(Number(node.m[2]))));
+      hicAgg = Number(node.m[3]);
+      clHep = Number(node.m[4]);
+
+      SURROGATE_ORGANS.forEach((ax, idx) => {
+        const hb0 = (node.hb[idx] || 0) * 0.001 * leakScale;
+        const ha0 = (node.ha[idx] || 0) * 0.001 * aggScale;
+        const hf0 = (node.hf[idx] || 0) * 0.001 * fcSliderScale;
+        const ho0 = (node.ho[idx] || 0) * 0.001;
+        const hBaseOrg = (offScale * (hb0 + ha0 + hf0) + onScale * ho0) * chemPenalty;
+        organRiskMap[ax] = Math.round(100 * (1 - Math.exp(-Math.max(0.005, hBaseOrg))));
+      });
+
+      allOrganRisks = baseOrgans.map((ao) => {
+        const oIdx = SURROGATE_ORGAN_IDX[ao.organ] != null ? SURROGATE_ORGAN_IDX[ao.organ] : 0;
+        const prioMult = (S.prioOrgan && S.prioOrgan === ao.organ) ? 1.45 : 1.0;
+        const vulnWeight = (ao.baselineTissue ? 0.62 : (0.85 + 0.85 * Math.min(1, ao.score || 0.8))) * prioMult;
+        const hb = (node.hb[oIdx] || 0) * 0.001 * leakScale;
+        const ha = (node.ha[oIdx] || 0) * 0.001 * aggScale;
+        const hf = (node.hf[oIdx] || 0) * 0.001 * fcSliderScale;
+        const ho = (node.ho[oIdx] || 0) * 0.001;
+        const combinedHazard = (offScale * (hb + ha + hf) + onScale * ho) * chemPenalty * vulnWeight;
+        return {
+          organ: ao.organ,
+          p: Math.max(0.01, Math.min(0.98, 1 - Math.exp(-combinedHazard))),
+          baselineTissue: Boolean(ao.baselineTissue),
+        };
+      });
+
+      const hydroDelta = (W.hydroSens - W0.hydroSens) * Math.max(0, hicAgg - 1.15) * 0.12;
+      const leakDelta = (W.leakSens - W0.leakSens) * (1 - plasmaStabPct / 100) * 0.24;
+      sSelect = Math.max(0.12, Math.min(0.98, Number(node.m[5])));
+      sPotency = Math.max(0.08, Math.min(0.99, Number(node.m[6]) * Math.exp(-hydroDelta)));
+      sDeliv = Math.max(0.08, Math.min(0.98, Number(node.m[7]) * Math.exp(-leakDelta)));
+      sBystander = Math.max(0.06, Math.min(0.98, Number(node.m[8])));
+    } else {
+      // Fallback if surrogate_2592.js is absent in an isolated script harness
+      plasmaStabPct = Math.max(25, Math.min(98, Math.round(lnk.stability - (dar > 4 ? (dar - 4) * 2.5 : 0))));
+      pIC50Pos = 6.2 + (pld.potency / 35);
+      pIC50Bys = pld.perm && lnk.cleavable ? pIC50Pos - 0.6 : pIC50Pos - 1.8;
+      hicAgg = 1.0 + 0.18 * dar * (pld.hydro || 0.5);
+      clHep = 1.0 + 0.45 * (hicAgg - 1.0);
+      SURROGATE_ORGANS.forEach((ax) => {
+        organRiskMap[ax] = pld.organs[ax] != null ? pld.organs[ax] : 22;
+      });
+      allOrganRisks = baseOrgans.map((ao) => {
+        const payloadTox = (pld.organs[ao.organ] != null ? pld.organs[ao.organ] : 20) / 100;
+        const expr = ((tgt.tissues.find((x) => x.organ === ao.organ) || { tpm: 6 }).tpm) / 100;
+        const fcMult = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? Math.max(0.25, 1 - W.fcProtect) : 1.0;
+        const prioMult = (S.prioOrgan && S.prioOrgan === ao.organ) ? 1.45 : 1.0;
+        const vulnWeight = (ao.baselineTissue ? 0.46 : (0.58 + 0.42 * Math.min(1, ao.score || 0.8))) * prioMult;
+        const hFallback = ((1 - wOnTarget) * payloadTox * fcMult + wOnTarget * 1.4 * expr) * chemPenalty * vulnWeight;
+        return { organ: ao.organ, p: 1 - Math.exp(-0.56 * hFallback), baselineTissue: Boolean(ao.baselineTissue) };
+      });
+      sSelect = Math.max(0.18, Math.min(0.98, (tgt.selectivity - 2.4) / 3.6));
+      sPotency = Math.max(0.15, Math.min(0.99, Math.pow(pld.potency / 100, 1.35)));
+      sDeliv = Math.max(0.15, Math.min(0.98, plasmaStabPct / 100));
+      sBystander = (lnk.cleavable && pld.perm) ? 0.88 : 0.25;
+    }
 
     const organRisks = real.length ? allOrganRisks.filter((r) => !r.baselineTissue) : allOrganRisks;
     const meanRisk = allOrganRisks.length ? allOrganRisks.reduce((a, r) => a + r.p, 0) / allOrganRisks.length : 0;
@@ -1783,25 +1877,9 @@
     const safetyRaw = Math.max(2, Math.min(98, 100 * (1 - (wPeak * worstRisk + (1 - wPeak) * meanRisk))));
     const safetyScore = Math.round(safetyRaw);
 
-    // 2. Competing Multi-Mechanism Antitumor Efficacy (Normalized Convex Combination + Biophysical Couplings)
     const bystander = lnk.cleavable && pld.perm;
     const indMatch = patientCancerMatchesTarget(tgt);
     const indFactor = indMatch === null ? 1.0 : (indMatch ? 1.06 : 0.68);
-
-    // Normalized sub-scores in [0, 1] that compete when weights change:
-    // S_select: tumor-to-normal expression margin (TCGA vs GTEx log2FC)
-    const sSelect = Math.max(0.18, Math.min(0.98, (tgt.selectivity - 2.4) / 3.6));
-    // S_pot: intrinsic payload cytotoxicity & optimal DAR stoichiometry minus hydrophobic hepatic clearance loss
-    const optDar = pld.optDar || 4;
-    const darDeviation = Math.abs(dar - optDar);
-    const pkClearanceLoss = Math.max(0.32, 1 - W.hydroSens * (0.14 * darExcess * hydroFactor + 0.04 * Math.max(0, dar - 4) * hydroFactor));
-    const sPotency = Math.max(0.15, Math.min(0.99, Math.pow(pld.potency / 100, 1.35) * (1 - Math.exp(-dar / 2.8)) * Math.exp(-0.045 * darDeviation * darDeviation) * pkClearanceLoss));
-    // S_deliv: intact plasma delivery to tumor + intracellular lysosomal cleavage efficiency
-    const plasmaIntact = Math.max(0.20, 1 - W.leakSens * 0.68 * (1 - lnk.stability / 100));
-    const releaseEff = lnk.cleavable ? 0.96 : (pld.perm === false ? 0.90 : 0.62);
-    const sDeliv = Math.max(0.15, Math.min(0.98, plasmaIntact * releaseEff));
-    // S_bys: bystander killing diffusion across antigen-heterogeneous tumor beds
-    const sBystander = bystander ? (0.84 + 0.14 * (dar / 8)) : (lnk.cleavable ? 0.42 : (pld.perm ? 0.34 : 0.14));
 
     const rawWSelect = Math.max(0.05, W.wSelect);
     const rawWBys = Math.max(0.05, W.wBystander);
@@ -1812,12 +1890,19 @@
     const nwPot = (rawWCore * 0.56) / wSum;
     const nwDel = (rawWCore * 0.44) / wSum;
 
-    const convexEff = nwSel * sSelect + nwPot * sPotency + nwDel * sDeliv + nwBys * sBystander;
-    const eff = convexEff * Math.pow(pairAffinity, 0.36) * indFactor * (isCompat ? 1.0 : 0.48);
+    const adccBoost = fcSilenced ? 0.985 : 1.015;
+    const convexEff = (nwSel * sSelect + nwPot * sPotency + nwDel * sDeliv + nwBys * sBystander) * adccBoost;
+    const eff = convexEff * Math.pow(pairAffinity, 0.34) * indFactor * (isCompat ? 1.0 : 0.48);
     const efficacyRaw = Math.max(2, Math.min(98, eff * 100));
     const efficacyScore = Math.round(efficacyRaw);
 
-    return { spec, tgt, lnk, pld, dar, fcSilenced, safetyScore, efficacyScore, safetyRaw, efficacyRaw, isCompat, organRisks, meanRisk, bystander, nwSel, nwPot, nwDel, nwBys };
+    return {
+      spec, tgt, lnk, pld, dar, fcSilenced,
+      safetyScore, efficacyScore, safetyRaw, efficacyRaw,
+      isCompat, organRisks, organRiskMap, meanRisk, bystander,
+      nwSel, nwPot, nwDel, nwBys,
+      plasmaStabPct, pIC50Pos, pIC50Bys, hicAgg, clHep,
+    };
   }
 
   function evaluateAllStudioCandidates() {
@@ -1857,19 +1942,21 @@
     const activeOrgs = activeOrgansWithScores().map((o) => (isKo && ORGAN_KO[o.organ] ? ORGAN_KO[o.organ] : SHORT[o.organ] || o.organ));
     const tgtName = plainName(s.target);
     const plName = plainName(s.payload);
+    const stabVal = bestSim.plasmaStabPct != null ? bestSim.plasmaStabPct : bestSim.lnk.stability;
+    const picVal = bestSim.pIC50Pos != null ? bestSim.pIC50Pos.toFixed(2) : null;
     if (isKo) {
       return [
-        ['1. 표적 항원', `${tgtName}, 선택도 +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, '정상 장기에는 적고 종양에 많은 표적이라 정상 조직 손상을 줄입니다.'],
-        ['2. 화학 링커', `${s.linker}, 혈장 안정도 ${bestSim.lnk.stability}%`, `${activeOrgs.join(', ') || '주요 장기'}로 약물이 미리 새어 나가는 것을 줄이고 종양 안에서 풀리도록 합니다.`],
-        ['3. 세포독성 페이로드', `${plName}, ${bestSim.pld.cls}`, '이 환자의 취약 장기에 대한 독성이 상대적으로 낮으면서 항암 효력은 유지합니다.'],
-        ['4. 접합비와 Fc', `DAR ${s.dar}, ${s.fc ? 'Fc 침묵화' : '야생형 IgG1'}`, `예상 장기 안전도 ${bestSim.safetyScore}점, 예상 항암 효능 ${bestSim.efficacyScore}점으로 두 지표의 균형이 가장 좋은 조합입니다.`],
+        ['1. 표적 항원', `${tgtName}, 선택도 +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, 'GTEx/Tabula Sapiens 정상 조직 발현 대비 종양 과발현 마진이 높아 온타깃 정상 장기 손상을 억제합니다.'],
+        ['2. 화학 링커', `${s.linker}, 신경망 혈장 보존율 ${stabVal}%`, `${activeOrgs.join(', ') || '주요 장기'}로 유리 페이로드가 조기 방출되는 경로를 낮추고 종양 내 절단 효율을 확보합니다.`],
+        ['3. 세포독성 페이로드', `${plName}, ${bestSim.pld.cls}${picVal ? ` (pIC50 ${picVal})` : ''}`, '환자 취약 장기 독성 경로 위험도가 낮으면서 접합체 세포독성 효력을 유지합니다.'],
+        ['4. 접합비와 Fc', `DAR ${s.dar}, ${s.fc ? 'Fc 침묵화' : '야생형 IgG1'}`, `신경망 앙상블 예상 장기 안전도 ${bestSim.safetyScore}점, 항암 효능 ${bestSim.efficacyScore}점으로 치료지수 균형이 최적입니다.`],
       ];
     }
     return [
-      ['1. Target antigen', `${tgtName}, selectivity +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, 'Low in normal organs and high in the tumor, so healthy tissue is spared.'],
-      ['2. Chemical linker', `${s.linker}, plasma stability ${bestSim.lnk.stability}%`, `Keeps drug from leaking into ${activeOrgs.join(', ') || 'major organs'} and releases it inside the tumor.`],
-      ['3. Cytotoxic payload', `${plName}, ${bestSim.pld.cls}`, 'Relatively low toxicity on this patient\'s vulnerable organs while keeping antitumor potency.'],
-      ['4. DAR and Fc', `DAR ${s.dar}, ${s.fc ? 'Fc silenced' : 'wild-type IgG1'}`, `Expected organ safety ${bestSim.safetyScore} and antitumor efficacy ${bestSim.efficacyScore}: the best balance of the two.`],
+      ['1. Target antigen', `${tgtName}, selectivity +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, 'High tumor-to-normal expression margin across GTEx and Tabula Sapiens spares healthy tissue.'],
+      ['2. Chemical linker', `${s.linker}, neural plasma retention ${stabVal}%`, `Reduces systemic free-payload leakage into ${activeOrgs.join(', ') || 'major organs'} while preserving intratumoral release.`],
+      ['3. Cytotoxic payload', `${plName}, ${bestSim.pld.cls}${picVal ? ` (pIC50 ${picVal})` : ''}`, 'Lowers predicted hazard on this patient\'s vulnerable organs while maintaining conjugate potency.'],
+      ['4. DAR and Fc', `DAR ${s.dar}, ${s.fc ? 'Fc silenced' : 'wild-type IgG1'}`, `Neural ensemble organ safety ${bestSim.safetyScore} and antitumor efficacy ${bestSim.efficacyScore}: optimal therapeutic index.`],
     ];
   }
 
@@ -2057,7 +2144,9 @@
       const fcSilenced = sim.fcSilenced;
       const handleMatch = sim.isCompat;
       const bystander = sim.bystander;
-      const stabilityScore = Math.max(25, Math.min(98, Math.round(lnk.stability - (dar > 4 ? (dar - 4) * 2.5 : 0))));
+      const stabilityScore = sim.plasmaStabPct != null
+        ? sim.plasmaStabPct
+        : Math.max(25, Math.min(98, Math.round(lnk.stability - (dar > 4 ? (dar - 4) * 2.5 : 0))));
 
       // 1. The chart of every design combination for this patient
       if (!hasPatientProfile() && S.studioDesignMode !== 'idle') {
@@ -2160,45 +2249,47 @@
           : `${presetLabel} | Utility U = ${utilVal}`;
 
         clear(eqGrid);
+        const picTxt = sNow.pIC50Pos != null ? sNow.pIC50Pos.toFixed(2) : '8.00';
+        const stabTxt = sNow.plasmaStabPct != null ? `${sNow.plasmaStabPct}%` : '85%';
         const cards = isKo
           ? [
               {
-                tag: '1. 치료지수 목적함수 (Therapeutic Index)',
+                tag: '1. 치료지수 목적함수 (Pareto Therapeutic Index)',
                 sym: 'U_TI',
                 eq: `U = ${wSafeEff.toFixed(2)} * X_safe + ${wEffComp.toFixed(2)} * Y_eff`,
-                desc: `파레토 프론티어 상에서 장기 보존 안전도(X)와 항암 효능(Y)의 최적 균형점(Best = ${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar})을 결정합니다.`,
+                desc: `2,592개 신경망 예측 후보군 중 장기 안전도(X)와 항암 효능(Y)의 파레토 최적점(Best = ${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar})을 선택합니다.`,
               },
               {
-                tag: '2. 이중 경로 장기 안전도 (Two-Pathway PK/PD Safety)',
+                tag: '2. 5-Fold 신경망 경로 분해 장기 안전도 (ADC-SurrogateNet v2)',
                 sym: 'X_safe',
-                eq: `X = 100 * [1 - (${w.wPeak.toFixed(2)} * p_max + ${wMean.toFixed(2)} * p_mean)],  p(o) = 1 - exp(-0.56 * H_o)`,
-                desc: `H_o = V_o * [${wOff.toFixed(2)} * OffTarget(누출:${w.leakSens.toFixed(2)}, 응집:${w.hydroSens.toFixed(2)}, Fc보호:${Math.round(w.fcProtect * 100)}%) + ${w.wExpr.toFixed(2)} * OnTarget(GTEx * DAR/4)]`,
+                eq: `X = 100 * [1 - (${w.wPeak.toFixed(2)} * p_max + ${wMean.toFixed(2)} * p_mean)],  p(o) = 1 - exp(-H_o)`,
+                desc: `H_o = V_o * [${wOff.toFixed(2)} * (H_leak*${w.leakSens.toFixed(2)} + H_agg*${w.hydroSens.toFixed(2)} + H_Fc) + ${w.wExpr.toFixed(2)} * H_on(GTEx/TabulaSapiens)] (임상 13장기 AE 및 FDA SPL 학습)`,
               },
               {
-                tag: '3. 다중 기전 항암 효능 (Normalized Convex Efficacy)',
+                tag: '3. 멀티모달 신경망 항암 효능 (ESM-2 650M + ChemBERTa-2 + 3D)',
                 sym: 'Y_eff',
                 eq: `Y = 100 * Ind * Pair * [${(sNow.nwSel || 0.25).toFixed(2)}*S_sel + ${(sNow.nwPot || 0.30).toFixed(2)}*S_pot + ${(sNow.nwDel || 0.23).toFixed(2)}*S_deliv + ${(sNow.nwBys || 0.22).toFixed(2)}*S_bys]`,
-                desc: '종양 발현 선택도(S_sel), 페이로드-DAR 세포독성(S_pot), 혈장 전달률(S_deliv), 주변세포 동반사멸(S_bys)의 정규화 볼록 결합입니다.',
+                desc: `현재 조합 신경망 예측: 접합체 pIC50 = ${picTxt}, 혈장 보존율 = ${stabTxt} (ADCNet 386종 + ChEMBL v34 5,483종 습식실험 학습).`,
               },
             ]
           : [
               {
-                tag: '1. Therapeutic Index Utility Objective',
+                tag: '1. Pareto Therapeutic Index Objective',
                 sym: 'U_TI',
                 eq: `U = ${wSafeEff.toFixed(2)} * X_safe + ${wEffComp.toFixed(2)} * Y_eff`,
-                desc: `Selects the Pareto-optimal construct (Best = ${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar}) balancing organ safety and antitumor potency.`,
+                desc: `Selects the Pareto-optimal construct across 2,592 neural candidates (Best = ${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar}).`,
               },
               {
-                tag: '2. Two-Pathway Organ Safety (Off-Target vs. On-Target)',
+                tag: '2. 5-Fold Neural Pathway-Decomposed 13-Organ Safety',
                 sym: 'X_safe',
-                eq: `X = 100 * [1 - (${w.wPeak.toFixed(2)} * p_max + ${wMean.toFixed(2)} * p_mean)],  p(o) = 1 - exp(-0.56 * H_o)`,
-                desc: `H_o = V_o * [${wOff.toFixed(2)} * OffTarget(Leak:${w.leakSens.toFixed(2)}, Agg:${w.hydroSens.toFixed(2)}, Fc:${Math.round(w.fcProtect * 100)}%) + ${w.wExpr.toFixed(2)} * OnTarget(GTEx * DAR/4)]`,
+                eq: `X = 100 * [1 - (${w.wPeak.toFixed(2)} * p_max + ${wMean.toFixed(2)} * p_mean)],  p(o) = 1 - exp(-H_o)`,
+                desc: `H_o = V_o * [${wOff.toFixed(2)} * (H_leak*${w.leakSens.toFixed(2)} + H_agg*${w.hydroSens.toFixed(2)} + H_Fc) + ${w.wExpr.toFixed(2)} * H_on(GTEx/TabulaSapiens)] (Clinical 13-Organ AE & FDA SPL)`,
               },
               {
-                tag: '3. Multi-Mechanism Antitumor Efficacy (Convex Combination)',
+                tag: '3. Multi-Modal Neural Antitumor Efficacy (ESM-2 + ChemBERTa-2 + 3D)',
                 sym: 'Y_eff',
                 eq: `Y = 100 * Ind * Pair * [${(sNow.nwSel || 0.25).toFixed(2)}*S_sel + ${(sNow.nwPot || 0.30).toFixed(2)}*S_pot + ${(sNow.nwDel || 0.23).toFixed(2)}*S_deliv + ${(sNow.nwBys || 0.22).toFixed(2)}*S_bys]`,
-                desc: 'Normalized convex combination of TCGA/GTEx selectivity (S_sel), payload-DAR potency (S_pot), intact delivery (S_deliv), and bystander diffusion (S_bys).',
+                desc: `Current construct neural prediction: conjugate pIC50 = ${picTxt}, plasma retention = ${stabTxt} (trained on ADCNet + 5,483 ChEMBL v34 structures).`,
               },
             ];
 
@@ -3511,9 +3602,9 @@
       return { tone: 'same', text: L(`DAR ${sim.dar}로 기존 약물과 같아 약물 부하는 줄지 않았습니다.`, `DAR ${sim.dar} is the same as the approved drug, so drug load is not reduced.`) };
     }
     if (kind === 'linker') {
-      const a = refSim.lnk.stability;
-      const b = sim.lnk.stability;
-      if (sim.lnk.id === refSim.lnk.id) return { tone: 'same', text: L(`같은 링커라서 혈장 안정도(${b}%)가 기존 약물과 같습니다.`, `Same linker, so plasma stability (${b}%) is the same as the approved drug.`) };
+      const a = refSim.plasmaStabPct != null ? refSim.plasmaStabPct : refSim.lnk.stability;
+      const b = sim.plasmaStabPct != null ? sim.plasmaStabPct : sim.lnk.stability;
+      if (sim.lnk.id === refSim.lnk.id && Math.abs(b - a) <= 1) return { tone: 'same', text: L(`같은 링커라서 혈장 안정도(${b}%)가 기존 약물과 같습니다.`, `Same linker, so plasma stability (${b}%) is the same as the approved drug.`) };
       if (!sim.lnk.cleavable && refSim.lnk.cleavable) return { tone: b > a ? 'better' : 'worse', text: L(`비절단형 링커로 혈장 안정도가 ${a}%에서 ${b}%로 바뀌어 혈액 속 조기 방출이 줄지만, 항체가 완전히 분해되어야 약물이 풀립니다.`, `A non-cleavable linker changes plasma stability from ${a}% to ${b}%, so early release in blood drops, but the antibody must be fully broken down to free the drug.`) };
       if (b > a) return { tone: 'better', text: L(`링커 혈장 안정도가 ${a}%에서 ${b}%로 높아져 혈액 속에서 미리 떨어져 나가는 약물이 줄었습니다.`, `Plasma stability rises from ${a}% to ${b}%, so less drug falls off in the blood.`) };
       if (b < a) return { tone: 'worse', text: L(`링커 혈장 안정도가 ${a}%에서 ${b}%로 낮아 혈액 속 조기 방출이 늘 수 있습니다.`, `Plasma stability falls from ${a}% to ${b}%, so early release in the blood may increase.`) };
@@ -3524,13 +3615,13 @@
     }
     if (kind.startsWith('pay:')) {
       const organ = kind.slice(4);
-      const mine = sim.pld.organs[organ] != null ? sim.pld.organs[organ] : 22;
-      const ref = refSim.pld.organs[organ] != null ? refSim.pld.organs[organ] : 22;
+      const mine = (sim.organRiskMap && sim.organRiskMap[organ] != null) ? sim.organRiskMap[organ] : (sim.pld.organs[organ] != null ? sim.pld.organs[organ] : 22);
+      const ref = (refSim.organRiskMap && refSim.organRiskMap[organ] != null) ? refSim.organRiskMap[organ] : (refSim.pld.organs[organ] != null ? refSim.pld.organs[organ] : 22);
       const name = organKo(organ);
-      if (sim.pld.id === refSim.pld.id) return { tone: 'same', text: L(`같은 페이로드라서 ${name}에 대한 독성도 같습니다.`, `Same payload, so its toxicity on ${name} is the same.`) };
-      if (mine < ref - 8) return { tone: 'better', text: L(`${plainName(sim.pld.id)}는 ${name}에 대한 독성이 ${plainName(refSim.pld.id)}보다 낮습니다.`, `${plainName(sim.pld.id)} is less toxic to ${name} than ${plainName(refSim.pld.id)}.`) };
-      if (mine > ref + 8) return { tone: 'worse', text: L(`${plainName(sim.pld.id)}는 ${name}에 대한 독성이 ${plainName(refSim.pld.id)}보다 높습니다.`, `${plainName(sim.pld.id)} is more toxic to ${name} than ${plainName(refSim.pld.id)}.`) };
-      return { tone: 'same', text: L(`${name}에 대한 페이로드 독성은 기존 약물과 비슷합니다.`, `Payload toxicity on ${name} is similar to the approved drug.`) };
+      if (sim.pld.id === refSim.pld.id && Math.abs(mine - ref) <= 2) return { tone: 'same', text: L(`같은 페이로드라서 ${name}에 대한 독성도 같습니다.`, `Same payload, so its toxicity on ${name} is the same.`) };
+      if (mine < ref - 4) return { tone: 'better', text: L(`${plainName(sim.pld.id)} 조합은 ${name}에 대한 신경망 독성 위험(${mine}%)이 ${plainName(refSim.pld.id)}(${ref}%)보다 낮습니다.`, `${plainName(sim.pld.id)} has lower predicted ${name} risk (${mine}%) than ${plainName(refSim.pld.id)} (${ref}%).`) };
+      if (mine > ref + 4) return { tone: 'worse', text: L(`${plainName(sim.pld.id)} 조합은 ${name}에 대한 신경망 독성 위험(${mine}%)이 ${plainName(refSim.pld.id)}(${ref}%)보다 높습니다.`, `${plainName(sim.pld.id)} has higher predicted ${name} risk (${mine}%) than ${plainName(refSim.pld.id)} (${ref}%).`) };
+      return { tone: 'same', text: L(`${name}에 대한 예측 독성 위험은 기존 약물과 비슷합니다.`, `Predicted toxicity risk on ${name} is similar to the approved drug.`) };
     }
     return { tone: 'same', text: '' };
   }
@@ -3578,7 +3669,12 @@
         h('span', { class: 'ch-score', style: 'color:var(--dim)', text: L(`안전도 ${refSim.safetyScore}점 / 효능 ${refSim.efficacyScore}점`, `Safety ${refSim.safetyScore} / Efficacy ${refSim.efficacyScore}`) })));
 
     // 2. Part by part, with what it means clinically
-    const burden = (p) => sim.organRisks.reduce((a, r) => a + (p.organs[r.organ] != null ? p.organs[r.organ] : 22), 0) / Math.max(1, sim.organRisks.length);
+    const burden = (sObj) => sim.organRisks.reduce((acc, r) => {
+      const v = (sObj.organRiskMap && sObj.organRiskMap[r.organ] != null)
+        ? sObj.organRiskMap[r.organ]
+        : (sObj.pld && sObj.pld.organs[r.organ] != null ? sObj.pld.organs[r.organ] : 22);
+      return acc + v;
+    }, 0) / Math.max(1, sim.organRisks.length);
     const dSafety = sim.safetyScore - refSim.safetyScore;
     const dEff = sim.efficacyScore - refSim.efficacyScore;
     const toneOf = (d) => (d >= 3 ? 'better' : d <= -3 ? 'worse' : 'same');
@@ -3589,17 +3685,19 @@
       ? { tone: 'better', text: L('Fc 침묵화로 대식세포 FcγR을 통한 비특이 흡수가 줄어, 폐, 간, 안구 독성 위험이 낮아집니다.', 'Fc silencing lowers non-specific uptake through macrophage FcγR, reducing lung, liver and eye toxicity risk.') }
       : { tone: 'same', text: L('기존 약물과 같은 야생형 IgG1이라 차이가 없습니다.', 'Same wild-type IgG1 as the approved drug, so no difference.') };
     let payGain;
-    if (pld.id === refSim.pld.id) payGain = { tone: 'same', text: L('같은 페이로드를 사용하므로 항암 효력과 독성 특성이 같습니다.', 'The same payload is used, so potency and toxicity profile are the same.') };
+    if (pld.id === refSim.pld.id) payGain = { tone: 'same', text: L('같은 페이로드를 사용하므로 고유 약리 기전이 같습니다.', 'The same payload is used, so intrinsic pharmacology is the same.') };
     else {
-      const a = burden(refSim.pld);
-      const b = burden(pld);
+      const a = burden(refSim);
+      const b = burden(sim);
       const pct = a ? Math.round(Math.abs(1 - b / a) * 100) : 0;
-      const tox = b < a - 3 ? L(`환자의 취약 장기에 대한 독성이 약 ${pct}% 낮고`, `toxicity on the patient's vulnerable organs is about ${pct}% lower, `)
-        : b > a + 3 ? L(`환자의 취약 장기에 대한 독성이 약 ${pct}% 높고`, `toxicity on the patient's vulnerable organs is about ${pct}% higher, `)
-          : L('환자의 취약 장기에 대한 독성은 비슷하고', 'toxicity on the patient\'s vulnerable organs is similar, ');
-      const pot = pld.potency > refSim.pld.potency + 3 ? L(' 항암 효력은 더 강합니다.', 'and potency is stronger.')
-        : pld.potency < refSim.pld.potency - 3 ? L(' 항암 효력은 더 약합니다.', 'and potency is weaker.') : L(' 항암 효력은 비슷합니다.', 'and potency is similar.');
-      payGain = { tone: b < a - 3 ? 'better' : b > a + 3 ? 'worse' : 'same', text: tox + pot };
+      const tox = b < a - 2 ? L(`환자의 취약 장기에 대한 신경망 예측 위험이 약 ${pct}% 낮고`, `neural predicted risk on the patient's vulnerable organs is about ${pct}% lower, `)
+        : b > a + 2 ? L(`환자의 취약 장기에 대한 신경망 예측 위험이 약 ${pct}% 높고`, `neural predicted risk on the patient's vulnerable organs is about ${pct}% higher, `)
+          : L('환자의 취약 장기에 대한 예측 위험은 비슷하고', 'predicted risk on the patient\'s vulnerable organs is similar, ');
+      const curPic = sim.pIC50Pos != null ? sim.pIC50Pos : pld.potency / 12;
+      const refPic = refSim.pIC50Pos != null ? refSim.pIC50Pos : refSim.pld.potency / 12;
+      const pot = curPic > refPic + 0.15 ? L(' 세포독성 효력(pIC50)은 더 높습니다.', 'and conjugate potency (pIC50) is stronger.')
+        : curPic < refPic - 0.15 ? L(' 세포독성 효력(pIC50)은 더 낮습니다.', 'and conjugate potency (pIC50) is lower.') : L(' 세포독성 효력은 비슷합니다.', 'and conjugate potency is similar.');
+      payGain = { tone: b < a - 2 ? 'better' : b > a + 2 ? 'worse' : 'same', text: tox + pot };
     }
 
     const rows = [

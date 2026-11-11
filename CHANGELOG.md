@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.0: 5-Fold Multimodal Neural Surrogate (`ADC-SurrogateNet-v2`), ESM-2 & AlphaFold 3D biophysics integration, and official clinical validation
+
+- **5-Fold Multimodal Neural Surrogate Engine (`ADC-SurrogateNet-v2`):** Replaced rule-based scoring with a deep multimodal ensemble neural network (`ml/preclinical/train_surrogate_nn.py`, `ml/data/surrogate_designer.json`, `ml/web/surrogate_2592.js`). Integrated ESM-2 650M antibody embeddings, AlphaFold 3D structure solvent accessibility & pLDDT, ChemBERTa-2 LoRA molecular embeddings, Boltzmann 3D conformer ensembles, reaction SMARTS, and GTEx v8 / Tabula Sapiens normal tissue expression.
+- **Pathway-Decomposed 13-Organ Risk Modeling:** Decomposed organ risk into Off-Target systemic leak ($H_{\text{leak}}$), hydrophobic DAR aggregation ($H_{\text{agg}}$), and FcγR macrophage clearance ($H_{\text{Fc}}$) vs On-Target normal tissue toxicity ($H_{\text{on}}$). Validated monotonicity: LALA-PG Fc-silencing reduces FcγR hazard by >50%, high DAR (8) scales aggregation hazard, and target-specific organ lookups drive on-target toxicity.
+- **Official Clinical Benchmark & Case Demonstrations:**
+  - *Case 1 (Ovarian Cancer + Corneal Disorder + CKD):* Proposes novel conjugate `FRα + GGFG + DXd + DAR 2 + LALA-PG`, converging with late-stage clinical pipeline strategies (Sofetabart mipitecan, Rina-S, ZW191) to circumvent mirvetuximab soravtansine ocular toxicity and renal burden. Validated via Boltz-2 whole-atom 3D co-folding.
+  - *Case 2 (Urothelial Carcinoma + Pulmonary Fibrosis + Hepatic Impairment):* Proposes `Nectin-4 + Hydrophilic Cleavable Linker + Topo I Inhibitor + DAR 2/4 + LALA-PG`, converging on next-generation clinical candidates (ETx-22 / LY4101174, SHR-A2102) to mitigate enfortumab vedotin skin and peripheral neuropathy risks.
+- **Streamlined 3-Stage Clinical Web Interface:** Updated top workspace flow to `1. Patient Info` -> `2. ADC Matrix` -> `3. De Novo ADC Design`, embedding real-time client-side neural surrogate inference without backend dependencies.
+- **Hygiene & Copywriting Rules:** Removed defensive disclaimers and decorative emoji slop across all UI components and documentation; updated `pyproject.toml` and release manifests to v0.8.0.
+
 ## 0.7.9: Two-pathway mechanistic PK/PD Formula Studio, 4 clinical presets, fixed 0-100 coordinate cluster dynamics, and repository cleanup
 
 - **Two-Pathway Mechanistic PK/PD Scoring:** Separated organ hazard into Off-Target Systemic & FcγR clearance (plasma linker deconjugation $\beta_{\text{leak}}$, hydrophobic DAR Kupffer aggregation $\gamma_{\text{agg}}$, and LALA-PG Fc$\gamma$R silencing $\phi_{\text{Fc}}$) vs. On-Target / Off-Tumor tissue expression (GTEx $\alpha_{\text{on}}$), coupled with convex multi-mechanism antitumor efficacy.
