@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.6: Multiline layout for vulnerable organ warnings in drug detail drawer
+
+- **Vulnerable Organ Warning Multiline Display:** Restructured `.wl` from a rigid 3-column grid (`64px 24px minmax(0, 1fr)`) to a clean 2-line stacked layout (`.wr`), placing the organ name and Warning/Caution status badge on the header row (`.wh`) and displaying the full description text on its own line (`.wt`) below.
+- **Word Wrapping & Overlap Elimination:** Resolved text collision where English status badges ("Caution" / "Warning") overlapped with warning descriptions (`Cautilncreased...`), allowing long descriptions to wrap naturally across multiple lines with generous line-height (`1.55`).
+
 ## 0.8.5: Clean Deep Research UI and streamlined telemetry
 
 - **Streamlined Deep Research Menu:** Renamed `Deep Research (GPU)` to `Deep Research`, removed subtitle and queue metadata lines, leaving a clean toggle switch and custom SMILES input.

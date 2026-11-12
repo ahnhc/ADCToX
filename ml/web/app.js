@@ -6363,11 +6363,11 @@
     const ws = d.warnings || [];
     const secPatientWarn = section(t('patientWarnTitle'), ws.length ? h('div', { class: 'wl' }, ws.map((w) => {
       const strong = (w.mark || '').trim() === '!!';
-      return [
-        h('span', { class: 'k', text: organKo(w.organ) }),
-        h('span', { class: 'm ' + (strong ? 't-red' : 't-amber'), text: strong ? (isKo ? '경고' : 'Warning') : (isKo ? '주의' : 'Caution') }),
-        h('span', { text: (w.text || '').replace(/;\s*/g, ', ') }),
-      ];
+      return h('div', { class: 'wr' },
+        h('div', { class: 'wh' },
+          h('span', { class: 'k', text: organKo(w.organ) }),
+          h('span', { class: 'm ' + (strong ? 't-red' : 't-amber'), text: strong ? (isKo ? '경고' : 'Warning') : (isKo ? '주의' : 'Caution') })),
+        h('div', { class: 'wt', text: (w.text || '').replace(/;\s*/g, ', ') }));
     })) : h('p', { class: 'dim', text: t('noPatientWarn') }));
 
     const secChecks = (d.checks || []).length ? section(t('preCheckTitle'), h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))) : null;
