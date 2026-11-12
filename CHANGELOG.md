@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.8: Refine layout ergonomics and version indicator
+
+- **Patient Info Flowsheet Cleanup:** Removed helper subtitle below optional laboratory inputs for a cleaner presentation.
+- **Header & Status Bar Versioning:** Removed version badge from top brand header; displayed clean numeric version (`0.8.8`) in bottom right status bar.
+- **De Novo Studio Empty State & Auto-Design Ergonomics:** Formatted idle canvas warning text into two balanced lines; adjusted auto-design required-patient alert and button into a compact multi-line card that stays within the chart viewport.
+- **Conjugate Architecture Category Tabs:** Positioned `All 36` as the default first category tab, with a clean single-row horizontal scrolling layout.
+
 ## 0.8.7: Comparative ranking rationale in ADC Matrix detail drawer
 
 - **Head-to-Head Ranking Rationale (`Patient & Label Fit` / `환자 적합도`):** Added a deterministic `Ranking rationale` (`순위 산정 근거`) section at the top of the Stage 2 drug detail drawer (`buildRankingRationale` in `ml/web/app.js`), summarizing the selected ADC's standing and explaining why `#1` outranks `#2`–`#3` alternatives (or why a lower-ranked candidate fell behind `#1` and its preceding rank).

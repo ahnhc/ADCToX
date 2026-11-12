@@ -2316,7 +2316,7 @@
       tabStudy: '기존 임상시험 사례',
       tabStructure: '분자 구조',
       rankRationaleTitle: '순위 산정 근거',
-      noRankDiff: '암종·기저질환·검진 수치가 입력되지 않아 승인된 15개 ADC가 동일 순위(#1)로 표시됩니다.',
+      noRankDiff: '암종, 기저질환, 검진 수치가 입력되지 않아 승인된 15개 ADC가 동일 순위(#1)로 표시됩니다.',
       labelRestriction: '약물 사용 제한 여부',
       noLabelRestriction: '입력된 환자의 수치를 고려하였을 때, 약물 사용에 제한 사항은 없습니다.',
       patientWarnTitle: '취약 장기 영향 가능성',
@@ -2554,7 +2554,7 @@
       deepResearchOn: false,
       deepMenuOpen: false,
       customPayloadSmiles: '',
-      tgtCat: 'rec',
+      tgtCat: 'all',
       tgtQuery: '',
       lnkCat: 'all',
       pldCat: 'all',
@@ -2734,7 +2734,7 @@
   }
 
   // ------------------------------------------------------------------ Page Shell & Navigation
-  let top, crumbsOl, verEl, scenarioDropdown, layout, stageBox, bar, barKeys, drawer, drawerTitle, drawerBody;
+  let top, crumbsOl, verEl, scenarioDropdown, layout, stageBox, bar, barKeys, barVer, drawer, drawerTitle, drawerBody;
   let crumbRefs = null;
   let resetPatientBtn = null;
   let langBtn = null;
@@ -2798,8 +2798,7 @@
     const brandWrap = h('div', { class: 'brand-wrap' },
       h('div', { class: 'brand', title: 'ADCToX — Antibody-Drug Conjugate Toxicity & Design' },
         h('span', { class: 'brand-logo-svg' }, svgBrandLogo()),
-        h('span', { class: 'sr-only', text: 'ADCToX' })),
-      verEl);
+        h('span', { class: 'sr-only', text: 'ADCToX' })));
 
     top = h('header', { class: 'top' },
       brandWrap,
@@ -2811,10 +2810,10 @@
 
     stageBox = h('main', { class: 'stage' });
     layout = h('div', { class: 'layout' }, stageBox);
-    barKeys = h('div', { class: 'keys', 'aria-hidden': 'true' });
+    barVer = h('span', { class: 'bar-ver', text: '' });
     bar = h('footer', { class: 'bar' },
       h('span', { text: t('footerText') }),
-      barKeys);
+      barVer);
 
     drawerTitle = h('h2', { id: 'dr-title' });
     drawerBody = h('div', { class: 'dr-body' });
@@ -4149,7 +4148,7 @@
         ));
         return hits.length ? hits : STUDIO_TARGETS;
       }
-      const cat = S.tgtCat || 'rec';
+      const cat = S.tgtCat || 'all';
       if (cat === 'all') return STUDIO_TARGETS;
       if (cat !== 'rec') {
         const list = STUDIO_TARGETS.filter((it) => it.group === cat);
@@ -4279,13 +4278,13 @@
         },
       });
       const tgtCatBar = makeCatTabs([
+        ['all', '전체 36', 'All 36'],
         ['rec', '주요/일치', 'Key/Match'],
         ['breast_gyn', '유방/부인', 'Breast/Gyn'],
         ['lung_gi', '폐/소화기', 'Lung/GI'],
         ['gu_solid', '비뇨/고형', 'GU/Solid'],
         ['heme', '혈액암', 'Heme'],
-        ['all', '전체 36', 'All 36'],
-      ], S.tgtQuery ? '' : (S.tgtCat || 'rec'), (id) => { S.tgtCat = id; S.tgtQuery = ''; });
+      ], S.tgtQuery ? '' : (S.tgtCat || 'all'), (id) => { S.tgtCat = id; S.tgtQuery = ''; });
 
       const tgtGroup = h('div', { class: 'studio-group' },
         h('span', { class: 'studio-label', text: t('tgtTitle') }),
@@ -4664,11 +4663,10 @@
       chartWrap.append(cvs);
       if (S.studioNeedInputWarn && !hasPatientProfile()) {
         chartWrap.append(h('div', { class: 'sim-need-patient-banner' },
-          h('span', {
-            text: isKo
-              ? '환자 맞춤형 설계를 실행하려면 먼저 암종, 기저질환 또는 검진 수치를 입력해야 합니다.'
-              : 'Enter patient conditions or lab values first to run patient-tailored ADC design.',
-          }),
+          h('span', null,
+            isKo ? '환자 맞춤형 설계를 실행하려면 먼저' : 'To run patient-tailored ADC design,',
+            h('br'),
+            isKo ? '암종, 기저질환 또는 검진 수치를 입력해야 합니다.' : 'enter conditions or lab values first.'),
           h('button', {
             type: 'button',
             class: 'btn-goto-patient',
@@ -5342,16 +5340,20 @@
           ctx.fillStyle = 'rgba(248, 250, 252, 0.72)';
           ctx.fillRect(offsetX + 1 * dpr, offsetY + 1 * dpr, plotW - 2 * dpr, plotH - 2 * dpr);
           ctx.fillStyle = '#475569';
-          ctx.font = `bold ${11.5 * dpr}px sans-serif`;
+          ctx.font = `bold ${11 * dpr}px sans-serif`;
           ctx.textAlign = 'center';
-          const idleMsg = !hasPatientProfile()
+          const lines = !hasPatientProfile()
             ? (isKo
-                ? '먼저 암종, 기저질환 또는 검진 정보를 입력한 뒤 설계를 실행하세요'
-                : 'Enter patient conditions or lab values first, then run design simulation')
+                ? ['먼저 암종, 기저질환 또는 검진 정보를', '입력한 뒤 설계를 실행하세요']
+                : ['Enter patient conditions or lab values first,', 'then run design simulation'])
             : (isKo
-                ? '왼쪽에서 [ADC 수동 설계] 또는 [ADC 자동 설계] 버튼을 눌러 시뮬레이션을 실행하세요'
-                : 'Click [Manual ADC Design] or [Auto-design ADC] on the left to plot results');
-          ctx.fillText(idleMsg, offsetX + plotW / 2, offsetY + plotH / 2 + 4 * dpr);
+                ? ['[ADC 수동 설계] 또는 [ADC 자동 설계] 버튼을 눌러', '시뮬레이션을 실행하세요']
+                : ['Click [Manual ADC Design] or [Auto-design ADC]', 'to run simulation']);
+          const lineH = 16 * dpr;
+          const startY = offsetY + plotH / 2 - ((lines.length - 1) * lineH) / 2;
+          lines.forEach((l, idx) => {
+            ctx.fillText(l, offsetX + plotW / 2, startY + idx * lineH);
+          });
           return;
         }
 
@@ -5977,8 +5979,7 @@
         h('div', { class: 'flowsheet-title-row' },
           h('h2', { class: 'flowsheet-title', text: t('flowTitle') }),
           h('span', { class: 'flowsheet-opt-badge', text: t('flowOptTag') }),
-          countBadge),
-        h('span', { class: 'flowsheet-sub', text: t('flowSub') })),
+          countBadge)),
       h('span', { class: 'flowsheet-toggle-action', text: isOpen ? t('flowCollapse') : t('flowExpand') }));
 
       panelWrap.append(toggleBtn);
@@ -6441,7 +6442,7 @@
             : `${refEn(better, true)} requires ${topRestrictionDesc(better)}, a less restrictive FDA label tier than ${refPossEn(worse)} ${descW}.`);
         return {
           key: `tier:${tB}:${tW}`,
-          factor: isKo ? '라벨 용량·사용 제한' : 'Label use restriction',
+          factor: isKo ? '라벨 용량/사용 제한' : 'Label use restriction',
           text: body,
           needsLabelPrioNote: warnSumB > warnSumW,
         };
@@ -6500,10 +6501,10 @@
             factor: isKo ? '취약 장기 주의' : 'Vulnerable-organ caution',
             text: bWarn.length === 0
               ? (isKo
-                ? `적응증·사용 제한·경고 수준이 동일하며, ${refKo(better)}은 환자 취약 장기에 주의사항이 없는 반면 ${refKo(worse)}은 ${diffOrgs} 주의사항이 있습니다.`
+                ? `적응증, 사용 제한, 경고 수준이 동일하며, ${refKo(better)}은 환자 취약 장기에 주의사항이 없는 반면 ${refKo(worse)}은 ${diffOrgs} 주의사항이 있습니다.`
                 : `With identical restriction tier and major warnings, ${refEn(better, false)} is clear on vulnerable organs whereas ${refEn(worse, false)} carries caution(s) on ${diffOrgs}.`)
               : (isKo
-                ? `적응증·사용 제한·경고 수준이 동일하며, 환자 취약 장기 주의사항이 ${bWarn.length}건(${orgNames(bWarn)})으로 ${refKo(worse)}의 ${wWarn.length}건(${orgNames(wWarn)})보다 적습니다.`
+                ? `적응증, 사용 제한, 경고 수준이 동일하며, 환자 취약 장기 주의사항이 ${bWarn.length}건(${orgNames(bWarn)})으로 ${refKo(worse)}의 ${wWarn.length}건(${orgNames(wWarn)})보다 적습니다.`
                 : `With identical restriction tier and major warnings, ${refEn(better, false)} carries fewer cautions on vulnerable organs (${bWarn.length}: ${orgNames(bWarn)}) than ${refEn(worse, false)} (${wWarn.length}: ${orgNames(wWarn)}).`),
           };
         }
@@ -6521,7 +6522,7 @@
         key: 'overall',
         factor: isKo ? '종합 적합도' : 'Overall label fit',
         text: isKo
-          ? `${refKo(better)}은 적응증·라벨 사용 제한·취약 장기 경고 기준에서 ${refKo(worse)}보다 우선 순위로 산정되었습니다.`
+          ? `${refKo(better)}은 적응증, 라벨 사용 제한, 취약 장기 경고 기준에서 ${refKo(worse)}보다 우선 순위로 산정되었습니다.`
           : `${refEn(better, true)} ranks ahead of ${refEn(worse, false)} across cancer indication, FDA label restrictions, and vulnerable-organ warnings.`,
       };
     }
@@ -6545,7 +6546,7 @@
     const nWarn = (row.warn || []).length;
     if (nBox > 0 && nWarn > 0) {
       standingParts.push(isKo
-        ? `취약 장기 경고 ${nBox}건·주의 ${nWarn}건`
+        ? `취약 장기 경고 ${nBox}건, 주의 ${nWarn}건`
         : `${nBox} ${nBox === 1 ? 'warning' : 'warnings'}, ${nWarn} ${nWarn === 1 ? 'caution' : 'cautions'} on vulnerable organs`);
     } else if (nBox > 0) {
       standingParts.push(isKo
@@ -6556,7 +6557,7 @@
         ? `취약 장기 주의 ${nWarn}건`
         : `${nWarn} ${nWarn === 1 ? 'caution' : 'cautions'} on vulnerable organs`);
     } else if (hasRecOrgans) {
-      standingParts.push(isKo ? '취약 장기 경고·주의 없음' : 'Clear on vulnerable organs');
+      standingParts.push(isKo ? '취약 장기 경고/주의 없음' : 'Clear on vulnerable organs');
     }
 
     let tieNoteEl = null;
@@ -6567,7 +6568,7 @@
       tieNoteEl = h('p', {
         class: 'rr-tie-note',
         text: isKo
-          ? `동순위: ${peersText} (적응증·사용 제한·취약 장기 경고 수준 동일)`
+          ? `동순위: ${peersText} (적응증, 사용 제한, 취약 장기 경고 수준 동일)`
           : `Tied at #${row.rank}: ${peersText} (matching indication, label tier, and organ profile)`,
       });
     }
@@ -6613,7 +6614,7 @@
       if (it.diff.needsLabelPrioNote && !prioNoteShown) {
         prioNoteShown = true;
         bodyText += isKo
-          ? ' 라벨의 용량·사용 제한 단계가 일반 장기 주의사항보다 우선 반영됩니다.'
+          ? ' 라벨의 용량/사용 제한 단계가 일반 장기 주의사항보다 우선 반영됩니다.'
           : ' FDA label dosing restrictions take priority over general organ cautions.';
       }
       return h('div', { class: 'rr-cmp' },
@@ -6633,7 +6634,7 @@
     return h('div', { class: 'rr-box' },
       h('div', { class: 'rr-summary' },
         h('span', { class: 'rr-rank-pill' + (row.rank === 1 ? ' is-top' : ''), text: rankLabel }),
-        h('span', { class: 'rr-standing', text: standingParts.join(' · ') })),
+        h('span', { class: 'rr-standing', text: standingParts.join(' | ') })),
       tieNoteEl,
       cmpCards.length ? h('div', { class: 'rr-cmp-list' }, cmpCards) : null);
   }
@@ -7175,7 +7176,8 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.8.7');
+    const cleanVer = String(APP.version || '0.8.8').replace(/^v/i, '');
+    if (barVer) barVer.textContent = cleanVer;
 
     if (API.studioCatalog) {
       try {

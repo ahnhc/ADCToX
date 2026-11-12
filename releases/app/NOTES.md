@@ -1,3 +1,15 @@
+# ADCTOX 0.8.8 Release Notes
+
+- **Patient Info Flowsheet Cleanup**:
+  - Removed helper subtitle below optional laboratory inputs for a cleaner presentation.
+- **Header & Status Bar Versioning**:
+  - Removed version badge from top brand header; displayed clean numeric version (`0.8.8`) in bottom right status bar.
+- **De Novo Studio Empty State & Auto-Design Ergonomics**:
+  - Formatted idle canvas warning text into two balanced lines.
+  - Adjusted auto-design required-patient alert and button into a compact multi-line card that stays within the chart viewport.
+- **Conjugate Architecture Category Tabs**:
+  - Positioned `All 36` as the default first category tab, with a clean single-row horizontal scrolling layout.
+
 # ADCTOX 0.8.5 Release Notes
 
 - **Clean Deep Research UI & Telemetry**:

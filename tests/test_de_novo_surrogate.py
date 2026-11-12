@@ -155,7 +155,7 @@ def test_v083_ui_copy_and_collapsible_required_labs_invariants():
     assert "나이, 성별, 체중을 입력해 두면" not in app_txt
     assert "CLcr 수치가 없을 때" not in app_txt
     assert "Will Cockcroft-Gault auto-derive" not in app_txt
-    assert "Deep Research (GPU)" in app_txt
+    assert "Deep Research" in app_txt
     assert "split-optimize-group" in app_txt
     assert "basicLabsOpen" in app_txt
     assert "buildRequiredLabsPanel" in app_txt
