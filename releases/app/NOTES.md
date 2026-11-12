@@ -1,3 +1,13 @@
+# ADCTOX 0.8.9 Release Notes
+
+- **Default Expanded Required Flowsheet**:
+  - Configured the required flowsheet (`1. Patient Info`) to expand by default on initial launch and patient reset.
+- **Harmonized Flowsheet Card Heights & Concise Organ Labels**:
+  - Balanced left and right card heights symmetrically in baseline laboratory grid (`align-items: stretch` with `flex: 1` row distribution).
+  - Renamed baseline section headers to concise standard organ names (`신장`, `간`, `혈액 및 골수` / `Renal`, `Hepatic`, `Hematology`).
+- **De Novo Studio Copy Consistency**:
+  - Updated candidate construct legend and scan progress to `설계 가능 조합` (`Viable design combinations`).
+
 # ADCTOX 0.8.8 Release Notes
 
 - **Patient Info Flowsheet Cleanup**:

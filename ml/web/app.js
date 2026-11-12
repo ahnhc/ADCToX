@@ -2259,7 +2259,7 @@
       designTitle: '환자 맞춤형 ADC 설계',
       axisSafety: '예상 장기 안전도 (높을수록 안전)',
       axisEfficacy: '예상 항암 효능 (높을수록 강력)',
-      legendCand: '설계 조합',
+      legendCand: '설계 가능 조합',
       legendBad: '접합 불가 조합',
       legendCur: '현재 선택',
       legendBest: '추천 설계',
@@ -2398,7 +2398,7 @@
       designTitle: 'Patient-Tailored ADC Design',
       axisSafety: 'Expected organ safety (higher is safer)',
       axisEfficacy: 'Expected antitumor efficacy (higher is stronger)',
-      legendCand: 'Design combinations',
+      legendCand: 'Viable design combinations',
       legendBad: 'Cannot be conjugated',
       legendCur: 'Current selection',
       legendBest: 'Recommended design',
@@ -2543,7 +2543,7 @@
       conds: [],
       raw: {},
       labs: null,
-      basicLabsOpen: false,
+      basicLabsOpen: true,
       labsOpen: false,
       meanings: {},
       first: null,
@@ -2894,7 +2894,7 @@
   function resetPatient() {
     closeDrawer(true);
     S.mode = 0;
-    S.basicLabsOpen = false;
+    S.basicLabsOpen = true;
     S.labsOpen = false;
     S.deepMenuOpen = false;
     S.presetId = null;
@@ -4641,7 +4641,7 @@
       const initialStatus = animateScan
         ? (isDeepResult
             ? (isKo ? `ADCSurrogateNet v2 (${evalSpace.deepResearch.device_label}) 검증 중...` : `Verifying on ${evalSpace.deepResearch.device_label}...`)
-            : (isKo ? `설계 조합 0 / ${total.toLocaleString()}개 행렬 연산 중` : `Scoring 0 / ${total.toLocaleString()} combinations`))
+            : (isKo ? `설계 가능 조합 0 / ${total.toLocaleString()}개 행렬 연산 중` : `Scoring 0 / ${total.toLocaleString()} combinations`))
         : !hasPatientProfile()
           ? (isKo ? '환자 정보 미입력 (질환 또는 검진 수치를 먼저 입력하세요)' : 'Patient info required (Enter conditions or lab values first)')
           : designMode === 'idle'
@@ -5121,10 +5121,10 @@
         (f, shownTotal) => {
           simStatusEl.textContent = isDeepResult
             ? (isKo
-                ? `설계 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 정밀 평가 중`
+                ? `설계 가능 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 정밀 평가 중`
                 : `Evaluating ${shownTotal.toLocaleString()} / ${total.toLocaleString()} combinations`)
             : (isKo
-                ? `설계 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 계산 중`
+                ? `설계 가능 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 계산 중`
                 : `Scoring ${shownTotal.toLocaleString()} / ${total.toLocaleString()} combinations`);
           if (optBtn) optBtn.style.setProperty('--p', (f * 100).toFixed(1) + '%');
         },
@@ -5581,8 +5581,8 @@
     const REQ_LAB_SECTIONS = [
       {
         id: 'renal_req',
-        ko: '신장 기능 선별',
-        en: 'Renal Baseline',
+        ko: '신장',
+        en: 'Renal',
         showDerivedCrcl: true,
         numeric: [
           { key: 'creatinine', name: 'Serum Creatinine', unit: 'mg/dL', refLow: 0.6, refHigh: 1.2, scaleMin: 0, scaleMax: 3.5 },
@@ -5603,8 +5603,8 @@
       },
       {
         id: 'hepatic_req',
-        ko: '간 기능 선별',
-        en: 'Hepatic Baseline',
+        ko: '간',
+        en: 'Hepatic',
         numeric: [
           { key: 'bilirubin', name: 'Total Bilirubin', unit: 'mg/dL', refLow: 0.2, refHigh: 1.2, scaleMin: 0, scaleMax: 3.0 },
           { key: 'ast', name: 'AST (Aminotransferase)', unit: 'U/L', refLow: 10, refHigh: 40, scaleMin: 0, scaleMax: 120 },
@@ -5614,8 +5614,8 @@
       },
       {
         id: 'blood_req',
-        ko: '혈액 및 골수 선별',
-        en: 'Hematology (CBC)',
+        ko: '혈액 및 골수',
+        en: 'Hematology',
         numeric: [
           { key: 'platelet', name: 'Platelets', unit: 'x10³/µL', refLow: 150, refHigh: 450, scaleMin: 0, scaleMax: 600 },
           { key: 'anc', name: 'ANC (Neutrophils)', unit: 'x10³/µL', refLow: 1.5, refHigh: 8.0, scaleMin: 0, scaleMax: 12.0 },

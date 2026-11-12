@@ -1634,7 +1634,7 @@ kbd {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 .lab-section-card {
   padding: 16px 18px;
@@ -1643,6 +1643,8 @@ kbd {
   border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
 }
 .lab-sec-head {
   display: flex;
@@ -1652,6 +1654,8 @@ kbd {
   padding-bottom: 10px;
   margin-bottom: 4px;
   border-bottom: 1px solid var(--line);
+  min-height: 28px;
+  box-sizing: border-box;
 }
 .lab-sec-title {
   font-size: 12.5px;
@@ -1671,6 +1675,11 @@ kbd {
 .lab-card-group {
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+.lab-card-group > .bio-row,
+.lab-card-group > .bio-discrete-row {
+  flex: 1;
 }
 .bio-discrete-row {
   display: flex;

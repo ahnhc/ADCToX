@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.9: Flowsheet default state, equalized card heights, and copy alignment
+
+- **Default Expanded Required Flowsheet:** Set the required baseline flowsheet (`1. 환자 정보`) to be expanded by default on application launch and reset.
+- **Harmonized Flowsheet Card Heights & Concise Organ Labels:** Aligned baseline section grid card heights symmetrically (`align-items: stretch` with `flex: 1` rows) to eliminate height discrepancies between left and right columns; simplified section headers to standard organ names (`신장`, `간`, `혈액 및 골수`).
+- **De Novo Studio Copy Consistency:** Updated patient-tailored ADC combination chart candidate legend and progress indicators to `설계 가능 조합` (`Viable design combinations`).
+
 ## 0.8.8: Refine layout ergonomics and version indicator
 
 - **Patient Info Flowsheet Cleanup:** Removed helper subtitle below optional laboratory inputs for a cleaner presentation.
