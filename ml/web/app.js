@@ -160,12 +160,12 @@
       ? [
           ['환자 정보', '한글 또는 영문으로 암종과 기저질환을 검색하고 활성 취약 장기를 확인합니다. 검진 정보의 [필수 입력]과 [선택 입력] 토글을 펼쳐 환자 수치를 입력할 수 있습니다.'],
           ['ADC 매트릭스', '입력된 환자의 암종, 기저질환, 검진 수치를 기반으로 FDA 승인 ADC 약물의 적합도를 평가합니다. 상단 활성 취약 장기는 위험도(%) 내림차순으로 정렬되며, 특정 장기를 클릭하면 해당 장기 보호를 우선 반영해 순위를 재산출합니다.'],
-          ['ADC 신규 설계', '36종 표적 항원, 16종 링커, 20종 페이로드, 8단계 DAR, 4종 항체 골격(368,640개 조합)에서 [ADC 자동 설계]로 초대규모 행렬 탐색을 수행하거나, 우측 화살표 메뉴에서 [Deep Research (GPU)]를 켜 ADCSurrogateNet v2를 실시간 구동합니다.'],
+          ['ADC 신규 설계', '36종 표적 항원, 16종 링커, 20종 페이로드, 8단계 DAR, 4종 항체 골격(368,640개 조합)에서 [ADC 자동 설계]로 초대규모 행렬 탐색을 수행하거나, 우측 화살표 메뉴에서 [Deep Research]를 켜 ADCSurrogateNet v2를 실시간 구동합니다.'],
         ]
       : [
           ['Patient Info', 'Search cancers or comorbidities in English or Korean and review active vulnerable organs. Toggle Required or Optional lab sections below to enter patient biomarkers.'],
           ['ADC Matrix', 'Ranks FDA-approved ADCs from patient comorbidities and lab values. Active vulnerable organs sort by severity (% descending); click any organ to prioritize its protection.'],
-          ['De Novo ADC Design', 'Explore 368,640 constructs (36 targets, 16 linkers, 20 payloads, 8 DARs, 4 Fc formats) via server matrix Auto-design or toggle Deep Research (GPU) from the split-button menu for live 5-fold ADCSurrogateNet v2 inference.'],
+          ['De Novo ADC Design', 'Explore 368,640 constructs (36 targets, 16 linkers, 20 payloads, 8 DARs, 4 Fc formats) via server matrix Auto-design or toggle Deep Research from the split-button menu for live 5-fold ADCSurrogateNet v2 inference.'],
         ];
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
@@ -2252,7 +2252,7 @@
       fcTitle: '5. 항체 골격 및 Fc 엔지니어링 (4)',
       wtFc: '야생형 IgG1',
       silFc: 'Fc 침묵화 (LALA-PG)',
-      deepTitle: 'Deep Research (GPU)',
+      deepTitle: 'Deep Research',
       deepSub: 'ADCSurrogateNet v2 5-Fold 실시간 구동',
       deepRunBtn: 'Deep Research 설계',
       deepBusyBtn: 'GPU 대기 중 (4/4)',
@@ -2389,7 +2389,7 @@
       fcTitle: '5. Antibody & Fc Format (4)',
       wtFc: 'Wild-type IgG1',
       silFc: 'Fc-Silenced (LALA-PG)',
-      deepTitle: 'Deep Research (GPU)',
+      deepTitle: 'Deep Research',
       deepSub: 'Live 5-Fold ADCSurrogateNet v2',
       deepRunBtn: 'Deep Research',
       deepBusyBtn: 'GPUs Busy (4/4)',
@@ -4334,7 +4334,7 @@
           labelFn: (it) => (isKo ? it.ko : it.en),
         }));
 
-      // Manual + Split Auto-Optimize / Deep Research (GPU) Action Row
+      // Manual + Split Auto-Optimize / Deep Research Action Row
       const manualBtn = h('button', {
         type: 'button',
         class: 'btn-manual-design' + (S.studioDesignMode === 'manual' ? ' is-active' : ''),
@@ -4378,9 +4378,9 @@
       const caretBtn = h('button', {
         type: 'button',
         class: caretClass,
-        'aria-label': 'Deep Research (GPU)',
+        'aria-label': 'Deep Research',
         'aria-expanded': S.deepMenuOpen ? 'true' : 'false',
-        title: 'Deep Research (GPU)',
+        title: 'Deep Research',
         onclick: (e) => {
           e.stopPropagation();
           S.deepMenuOpen = !S.deepMenuOpen;
@@ -4415,13 +4415,7 @@
           },
         },
         h('div', { class: 'drp-toggle-copy' },
-          h('span', { class: 'drp-title', text: t('deepTitle') }),
-          h('span', {
-            class: 'drp-sub',
-            text: slotsBusy
-              ? (isKo ? '현재 4개 슬롯 모두 연산 중 — 빈 슬롯 발생 시 자동 활성화' : 'All 4 slots in use — re-enables automatically when free')
-              : t('deepSub'),
-          })),
+          h('span', { class: 'drp-title', text: t('deepTitle') })),
         h('span', { class: 'drp-switch-pill' }, h('i', { class: 'drp-switch-knob' })));
 
         const slotMetaLabel = backendIsCuda
@@ -4460,8 +4454,6 @@
           onclick: (e) => e.stopPropagation(),
         },
         toggleBtn,
-        h('div', { class: 'drp-slots-head', text: slotMetaLabel }),
-        slotsGrid,
         smilesRow);
 
         splitWrap.append(popover);
@@ -4559,8 +4551,8 @@
         const statusBanner = canvas.querySelector('.sim-canvas-status');
         if (statusBanner) {
           statusBanner.textContent = isKo
-            ? 'ADCSurrogateNet v2 5-Fold 실시간 신경망 추론 중...'
-            : 'Running live 5-Fold ADCSurrogateNet v2 inference...';
+            ? 'Deep Research 연산 중...'
+            : 'Running Deep Research...';
         }
         setTimeout(() => pollGpuStatus(false), 75);
         try {
@@ -4643,8 +4635,8 @@
           : designMode === 'idle'
             ? (isKo ? '설계 대기 중 (수동 설계 또는 자동 설계를 실행하세요)' : 'Ready (Click Manual ADC Design or Auto-design ADC)')
             : (isKo
-                ? `안전도 ${sim.safetyScore}점 / 항암 효능 ${sim.efficacyScore}점${isDeepResult ? `  |  ${evalSpace.deepResearch.device_label}` : ''}`
-                : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}${isDeepResult ? `  |  ${evalSpace.deepResearch.device_label}` : ''}`);
+                ? `안전도 ${sim.safetyScore}점 / 항암 효능 ${sim.efficacyScore}점`
+                : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`);
 
       const simStatusEl = h('span', {
         class: 'sim-canvas-status' + (S.studioNeedInputWarn && !hasPatientProfile() ? ' is-warn' : ''),
@@ -4684,12 +4676,12 @@
 
         deepStrip = h('div', { class: 'deep-telemetry-strip' },
           h('div', { class: 'dts-head' },
-            h('span', { class: 'dts-tag', text: `Deep Research  |  ${dr.device_label}` }),
+            h('span', { class: 'dts-tag', text: 'Deep Research' }),
             h('span', {
               class: 'dts-meta',
               text: isKo
-                ? `5-Fold 실시간 추론 (${dr.neural_forward_passes}회 패스, ${Math.round(dr.elapsed_ms)} ms)  |  최적 용량 ${dr.optimal_dose_mgkg} mg/kg`
-                : `Live 5-Fold (${dr.neural_forward_passes} passes, ${Math.round(dr.elapsed_ms)} ms)  |  Optimal Dose ${dr.optimal_dose_mgkg} mg/kg`,
+                ? `최적 권장 용량 ${dr.optimal_dose_mgkg} mg/kg`
+                : `Optimal Dose ${dr.optimal_dose_mgkg} mg/kg`,
             })),
           h('div', { class: 'dts-body' },
             h('div', { class: 'dts-sigma-group' },
@@ -5118,8 +5110,8 @@
         (f, shownTotal) => {
           simStatusEl.textContent = isDeepResult
             ? (isKo
-                ? `ADCSurrogateNet v2 (${evalSpace.deepResearch.device_label}) ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 정밀 평가`
-                : `ADCSurrogateNet v2 (${evalSpace.deepResearch.device_label}) ${shownTotal.toLocaleString()} / ${total.toLocaleString()}`)
+                ? `설계 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 정밀 평가 중`
+                : `Evaluating ${shownTotal.toLocaleString()} / ${total.toLocaleString()} combinations`)
             : (isKo
                 ? `설계 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 계산 중`
                 : `Scoring ${shownTotal.toLocaleString()} / ${total.toLocaleString()} combinations`);
@@ -6877,7 +6869,7 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.8.3');
+    verEl.textContent = 'v' + (APP.version || '0.8.5');
 
     if (API.studioCatalog) {
       try {

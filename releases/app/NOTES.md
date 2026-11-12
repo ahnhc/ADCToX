@@ -1,3 +1,9 @@
+# ADCTOX 0.8.5 Release Notes
+
+- **Clean Deep Research UI & Telemetry**:
+  - Simplified split-button menu and popover: renamed `Deep Research (GPU)` to `Deep Research`, removed subtitle and queue metadata lines, leaving a clean toggle switch and custom SMILES input.
+  - Streamlined chart head and telemetry strip: removed internal server/device strings (`| CPU Server #0`) and status details, focusing on optimal clinical dose and key metrics.
+
 # ADCTOX 0.8.4 Release Notes
 
 - **Fix Standalone Bundle `__file__` Execution Context**:
