@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.7: Comparative ranking rationale in ADC Matrix detail drawer
+
+- **Head-to-Head Ranking Rationale (`Patient & Label Fit` / `환자 적합도`):** Added a deterministic `Ranking rationale` (`순위 산정 근거`) section at the top of the Stage 2 drug detail drawer (`buildRankingRationale` in `ml/web/app.js`), summarizing the selected ADC's standing and explaining why `#1` outranks `#2`–`#3` alternatives (or why a lower-ranked candidate fell behind `#1` and its preceding rank).
+- **Full Lexicographic Rule Parity (`EN / KO`):** Evaluates user-prioritized organs, FDA cancer indication match, DailyMed label dosing restriction tiers (citing exact `CLcr`, `×ULN`, or `LVEF` thresholds and patient values), confirmed vs. conditional restriction status, and vulnerable-organ warnings/cautions, while preserving tied ranks during priority-organ re-sorting.
+
 ## 0.8.6: Multiline layout for vulnerable organ warnings in drug detail drawer
 
 - **Vulnerable Organ Warning Multiline Display:** Restructured `.wl` from a rigid 3-column grid (`64px 24px minmax(0, 1fr)`) to a clean 2-line stacked layout (`.wr`), placing the organ name and Warning/Caution status badge on the header row (`.wh`) and displaying the full description text on its own line (`.wt`) below.

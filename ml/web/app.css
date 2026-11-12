@@ -2039,6 +2039,110 @@ kbd {
   overflow-wrap: break-word;
 }
 
+/* Comparative Ranking Rationale Inside Drawer */
+.rr-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rr-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rr-rank-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 5px;
+  color: var(--ink-hi);
+  background: var(--page);
+  border: 1px solid var(--line-2);
+}
+.rr-rank-pill.is-top {
+  color: var(--emerald);
+  background: var(--emerald-soft);
+  border-color: rgba(13, 148, 136, 0.28);
+}
+.rr-standing {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+.rr-tie-note {
+  margin: 0;
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.45;
+}
+.rr-cmp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2px;
+}
+.rr-cmp {
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: var(--page);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.rr-cmp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+.rr-cmp-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+.rr-dir {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2.5px 6px;
+  border-radius: 4px;
+}
+.rr-dir.ahead {
+  color: var(--emerald);
+  background: rgba(13, 148, 136, 0.11);
+}
+.rr-dir.behind {
+  color: var(--ink-2);
+  background: rgba(71, 85, 105, 0.11);
+}
+.rr-vs {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-hi);
+}
+.rr-factor {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dim);
+}
+.rr-cmp-body {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 /* 3D ADC Structure Canvas Inside Drawer */
 .adc-3d-wrap {
   width: 100%;

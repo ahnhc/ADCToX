@@ -2315,6 +2315,8 @@
       tabPatient: '환자 적합도',
       tabStudy: '기존 임상시험 사례',
       tabStructure: '분자 구조',
+      rankRationaleTitle: '순위 산정 근거',
+      noRankDiff: '암종·기저질환·검진 수치가 입력되지 않아 승인된 15개 ADC가 동일 순위(#1)로 표시됩니다.',
       labelRestriction: '약물 사용 제한 여부',
       noLabelRestriction: '입력된 환자의 수치를 고려하였을 때, 약물 사용에 제한 사항은 없습니다.',
       patientWarnTitle: '취약 장기 영향 가능성',
@@ -2452,6 +2454,8 @@
       tabPatient: 'Patient & Label Fit',
       tabStudy: 'Prior Trial Cases',
       tabStructure: 'Molecular Structure',
+      rankRationaleTitle: 'Ranking rationale',
+      noRankDiff: 'No cancer, comorbidity, or lab value is entered yet, so all 15 approved ADCs share rank #1.',
       labelRestriction: 'Restrictions on using this drug',
       noLabelRestriction: 'Given the entered patient values, there are no restrictions on using this drug.',
       patientWarnTitle: 'Possible effects on vulnerable organs',
@@ -3444,8 +3448,17 @@
           const os = organStatusForRow(r, pk);
           return os.cls === 'boxed' ? 2 : (os.cls === 'warn' ? 1 : 0);
         };
-        rows.sort((a, b) => (penOf(a) - penOf(b)) || (a.rank - b.rank));
-        rows = rows.map((r, idx) => Object.assign({}, r, { rank: idx + 1 }));
+        rows = rows.map((r) => Object.assign({}, r, { _origRank: r.rank, _prioPen: penOf(r) }));
+        rows.sort((a, b) => (a._prioPen - b._prioPen) || (a._origRank - b._origRank));
+        let curRank = 0;
+        for (let idx = 0; idx < rows.length; idx++) {
+          const prev = idx > 0 ? rows[idx - 1] : null;
+          const same = !!(prev && prev._prioPen === rows[idx]._prioPen && prev._origRank === rows[idx]._origRank);
+          if (!same) curRank += 1;
+          rows[idx].rank = curRank;
+          rows[idx].tie = same;
+          if (same && prev) prev.tie = true;
+        }
       }
 
       const topCandidates = rows.filter((r) => (hasCancer ? r.indicated === true : true) && r.status !== 'Avoid');
@@ -3588,7 +3601,7 @@
           card.setAttribute('aria-selected', k === i ? 'true' : 'false');
         });
         if (focusRow && trs[i]) trs[i].focus({ preventScroll: false });
-        if (S.drawer && rows[i]) fillDrawer(rows[i]);
+        if (S.drawer && rows[i]) fillDrawer(rows[i], rows, hasCancer);
       }
 
       resultKeys = (e) => {
@@ -3607,7 +3620,7 @@
       openDrawer = () => {
         if (S.sel < 0 && rows.length) S.sel = 0;
         if (rows[S.sel]) {
-          fillDrawer(rows[S.sel]);
+          fillDrawer(rows[S.sel], rows, hasCancer);
           showDrawer();
         }
       };
@@ -6335,13 +6348,306 @@
     'Bystander effect': '주변 암세포 사멸', Target: '표적',
   };
 
-  function fillDrawer(row) {
+  function buildRankingRationale(row, allRows, hasCancer) {
+    const isKo = S.lang === 'ko';
+    const resData = (S.result && S.result.data) || {};
+    const list = Array.isArray(allRows) && allRows.length ? allRows : (Array.isArray(resData.rows) ? resData.rows : [row]);
+    const cancerActive = typeof hasCancer === 'boolean' ? hasCancer : !!((resData.patient && resData.patient.cancers) || []).length;
+
+    if (list.length > 1 && list.every((r) => r.rank === 1)) {
+      return h('p', { class: 'dim', text: t('noRankDiff') });
+    }
+
+    const CODE_KO = {
+      contraindicated: '사용 금지',
+      avoid: '사용 주의',
+      reduce_dose: '용량 감량',
+      monitor: '경과 관찰',
+      insufficient_data: '판단 자료 부족',
+      no_statement: '라벨 언급 없음',
+    };
+    const fmtPatientSide = (txt) => {
+      const s = String(txt || '').trim();
+      if (!s) return '';
+      return isKo ? s.replace(/\bnot entered\b/gi, '미입력') : s;
+    };
+    const describeRule = (reason, fallbackRow) => {
+      if (!reason) return statusInfo(fallbackRow).full;
+      const org = organKo(reason.organ);
+      const st = isKo
+        ? (CODE_KO[reason.code] || reason.status)
+        : (reason.code === 'no_statement' ? 'No label guidance' : reason.status);
+      const rawBasis = String(reason.basis || '').replace(/^if\s+/i, '').trim();
+      const hasBasis = rawBasis && rawBasis !== '-' && !/^label says nothing/i.test(rawBasis);
+      const pat = fmtPatientSide(reason.patient);
+      if (!hasBasis) return `${org} ${st}`;
+      return isKo
+        ? `${org} ${st}(기준: ${rawBasis}${pat ? `, 환자: ${pat}` : ''})`
+        : `${org} ${st} (${rawBasis}${pat ? `; patient ${pat}` : ''})`;
+    };
+    const topRestrictionDesc = (r) => {
+      const reasons = ((r.detail && r.detail.reasons) || []).filter((x) => x.code !== 'no_adjustment');
+      return describeRule(reasons[0] || null, r);
+    };
+    const confirmedRestrictionDesc = (r) => {
+      const sureReasons = ((r.detail && r.detail.reasons) || []).filter((x) => x.code !== 'no_adjustment' && x.sure);
+      if (!sureReasons.length) return isKo ? '확정 제한 없음(표준 용량)' : 'no confirmed restriction (standard dosing)';
+      return describeRule(sureReasons[0], r);
+    };
+    const orgNames = (axes) => (axes || []).map((a) => organKo(a)).join(', ');
+    const refKo = (r) => (r.adc === row.adc ? '이 약물' : `#${r.rank} 약물`);
+    const refEn = (r, cap) => (r.adc === row.adc ? (cap ? 'This drug' : 'this drug') : `#${r.rank}`);
+    const refPossEn = (r) => (r.adc === row.adc ? "this drug's" : `#${r.rank}'s`);
+
+    function explainPairDiff(better, worse) {
+      if (S.prioOrgan) {
+        const pk = S.prioOrgan;
+        const osB = organStatusForRow(better, pk);
+        const osW = organStatusForRow(worse, pk);
+        const penB = osB.cls === 'boxed' ? 2 : (osB.cls === 'warn' ? 1 : 0);
+        const penW = osW.cls === 'boxed' ? 2 : (osW.cls === 'warn' ? 1 : 0);
+        if (penB < penW) {
+          const org = organKo(pk);
+          return {
+            key: `prio:${pk}`,
+            factor: isKo ? '우선 보호 장기' : 'Priority organ',
+            text: isKo
+              ? `선택한 우선 보호 장기(${org})에서 ${refKo(better)}은 '${osB.tag}'인 반면, ${refKo(worse)}은 '${osW.tag}'에 해당합니다.`
+              : `On prioritized organ ${org}, ${refEn(better, false)} is ${osB.tag} whereas ${refEn(worse, false)} carries ${osW.tag}.`,
+          };
+        }
+      }
+      if (cancerActive && Boolean(better.indicated) && !Boolean(worse.indicated)) {
+        return {
+          key: 'indication',
+          factor: isKo ? '암종 적응증' : 'Cancer indication',
+          text: isKo
+            ? `${refKo(better)}은 입력된 암종에 FDA 승인 적응증이 일치하는 반면, ${refKo(worse)}은 타 암종 승인 약물입니다.`
+            : `${refEn(better, true)} holds FDA approval matching the entered cancer, whereas ${refEn(worse, false)} is approved for other malignancies.`,
+        };
+      }
+      const tB = Math.max(0, Number(better.tier ?? 0));
+      const tW = Math.max(0, Number(worse.tier ?? 0));
+      const warnSumB = ((better.boxed || []).length + (better.warn || []).length);
+      const warnSumW = ((worse.boxed || []).length + (worse.warn || []).length);
+      if (tB < tW) {
+        const descW = topRestrictionDesc(worse);
+        const body = tB === 0
+          ? (isKo
+            ? `${refKo(better)}은 입력된 환자 수치에서 사용 제한이 없는 표준 용량 투여 대상인 반면, ${refKo(worse)}은 ${descW}에 해당합니다.`
+            : `${refEn(better, true)} qualifies for standard dosing with no label restriction, whereas ${refEn(worse, false)} triggers ${descW}.`)
+          : (isKo
+            ? `${refKo(better)}은 ${topRestrictionDesc(better)} 단계로, ${refKo(worse)}의 ${descW}보다 라벨 사용 제한 수준이 낮습니다.`
+            : `${refEn(better, true)} requires ${topRestrictionDesc(better)}, a less restrictive FDA label tier than ${refPossEn(worse)} ${descW}.`);
+        return {
+          key: `tier:${tB}:${tW}`,
+          factor: isKo ? '라벨 용량·사용 제한' : 'Label use restriction',
+          text: body,
+          needsLabelPrioNote: warnSumB > warnSumW,
+        };
+      }
+      const kB = Math.max(0, Number(better.known ?? 0));
+      const kW = Math.max(0, Number(worse.known ?? 0));
+      if (tB === tW && tB > 0 && kB < kW) {
+        const confB = confirmedRestrictionDesc(better);
+        const confW = confirmedRestrictionDesc(worse);
+        return {
+          key: `known:${tB}:${kB}:${kW}`,
+          factor: isKo ? '제한 확정 여부' : 'Confirmed vs conditional',
+          text: isKo
+            ? `최대 가능 제한 단계(${statusInfo(better).full})는 동일하나, 입력된 수치 기준 ${refKo(better)}은 '${confB}'인 반면 ${refKo(worse)}은 '${confW}'에 해당합니다.`
+            : `Both share the same potential label tier (${statusInfo(better).full}), but on entered values ${refEn(better, false)} has ${confB} versus ${confW} for ${refEn(worse, false)}.`,
+        };
+      }
+      const bBox = better.boxed || [];
+      const wBox = worse.boxed || [];
+      const onlyWBox = wBox.filter((o) => !bBox.includes(o));
+      const onlyBBox = bBox.filter((o) => !wBox.includes(o));
+      if (bBox.length !== wBox.length || onlyWBox.length > 0 || onlyBBox.length > 0) {
+        if (bBox.length < wBox.length) {
+          const diffOrgs = orgNames(onlyWBox.length ? onlyWBox : wBox);
+          return {
+            key: `boxed:${bBox.length}:${wBox.length}`,
+            factor: isKo ? '취약 장기 경고' : 'Vulnerable-organ warning',
+            text: bBox.length === 0
+              ? (isKo
+                ? `적응증과 사용 제한 단계가 동일하며, ${refKo(better)}은 환자 취약 장기에 경고가 없는 반면 ${refKo(worse)}은 ${diffOrgs} 경고가 있습니다.`
+                : `With matching indication and restriction tier, ${refEn(better, false)} has no major warning on vulnerable organs whereas ${refEn(worse, false)} carries a major warning on ${diffOrgs}.`)
+              : (isKo
+                ? `적응증과 사용 제한 단계가 동일하며, 환자 취약 장기 경고가 ${bBox.length}건(${orgNames(bBox)})으로 ${refKo(worse)}의 ${wBox.length}건(${orgNames(wBox)})보다 적습니다.`
+                : `With matching indication and restriction tier, ${refEn(better, false)} has fewer major warnings on vulnerable organs (${bBox.length}: ${orgNames(bBox)}) than ${refEn(worse, false)} (${wBox.length}: ${orgNames(wBox)}).`),
+          };
+        }
+        if (onlyWBox.length > 0) {
+          return {
+            key: `boxed-prio:${onlyWBox.join(',')}`,
+            factor: isKo ? '고위험 장기 보호' : 'Higher-priority organ',
+            text: isKo
+              ? `${refKo(better)}은 우선순위가 더 높은 취약 장기(${orgNames(onlyWBox)})의 경고를 피하는 반면, ${refKo(worse)}은 해당 장기에 경고가 있습니다.`
+              : `${refEn(better, true)} avoids major warnings on higher-priority vulnerable organ(s) (${orgNames(onlyWBox)}) affected by ${refEn(worse, false)}.`,
+          };
+        }
+      }
+      const bWarn = better.warn || [];
+      const wWarn = worse.warn || [];
+      const onlyWWarn = wWarn.filter((o) => !bWarn.includes(o));
+      const onlyBWarn = bWarn.filter((o) => !wWarn.includes(o));
+      if (bWarn.length !== wWarn.length || onlyWWarn.length > 0 || onlyBWarn.length > 0) {
+        if (bWarn.length < wWarn.length) {
+          const diffOrgs = orgNames(onlyWWarn.length ? onlyWWarn : wWarn);
+          return {
+            key: `warn:${bWarn.length}:${wWarn.length}`,
+            factor: isKo ? '취약 장기 주의' : 'Vulnerable-organ caution',
+            text: bWarn.length === 0
+              ? (isKo
+                ? `적응증·사용 제한·경고 수준이 동일하며, ${refKo(better)}은 환자 취약 장기에 주의사항이 없는 반면 ${refKo(worse)}은 ${diffOrgs} 주의사항이 있습니다.`
+                : `With identical restriction tier and major warnings, ${refEn(better, false)} is clear on vulnerable organs whereas ${refEn(worse, false)} carries caution(s) on ${diffOrgs}.`)
+              : (isKo
+                ? `적응증·사용 제한·경고 수준이 동일하며, 환자 취약 장기 주의사항이 ${bWarn.length}건(${orgNames(bWarn)})으로 ${refKo(worse)}의 ${wWarn.length}건(${orgNames(wWarn)})보다 적습니다.`
+                : `With identical restriction tier and major warnings, ${refEn(better, false)} carries fewer cautions on vulnerable organs (${bWarn.length}: ${orgNames(bWarn)}) than ${refEn(worse, false)} (${wWarn.length}: ${orgNames(wWarn)}).`),
+          };
+        }
+        if (onlyWWarn.length > 0) {
+          return {
+            key: `warn-prio:${onlyWWarn.join(',')}`,
+            factor: isKo ? '고위험 장기 보호' : 'Higher-priority organ',
+            text: isKo
+              ? `${refKo(better)}은 우선순위가 더 높은 취약 장기(${orgNames(onlyWWarn)})의 주의사항을 피하는 반면, ${refKo(worse)}은 해당 장기에 주의사항이 있습니다.`
+              : `${refEn(better, true)} avoids cautions on higher-priority vulnerable organ(s) (${orgNames(onlyWWarn)}) affected by ${refEn(worse, false)}.`,
+          };
+        }
+      }
+      return {
+        key: 'overall',
+        factor: isKo ? '종합 적합도' : 'Overall label fit',
+        text: isKo
+          ? `${refKo(better)}은 적응증·라벨 사용 제한·취약 장기 경고 기준에서 ${refKo(worse)}보다 우선 순위로 산정되었습니다.`
+          : `${refEn(better, true)} ranks ahead of ${refEn(worse, false)} across cancer indication, FDA label restrictions, and vulnerable-organ warnings.`,
+      };
+    }
+
+    // Current standing summary
+    const tiedPeers = list.filter((r) => r.adc !== row.adc && r.rank === row.rank);
+    const isTied = tiedPeers.length > 0 || Boolean(row.tie);
+    const rankLabel = isTied
+      ? (isKo ? `공동 #${row.rank}` : `Tied #${row.rank}`)
+      : `#${row.rank}`;
+
+    const standingParts = [];
+    if (cancerActive) {
+      standingParts.push(row.indicated ? (isKo ? '암종 일치' : 'Cancer match') : (isKo ? '타 암종 적응증' : 'Other cancer indication'));
+    }
+    standingParts.push(statusInfo(row).full);
+
+    const hasRecOrgans = list.some((r) => (r.boxed && r.boxed.length) || (r.warn && r.warn.length))
+      || !!(resData.patient && Object.keys(resData.patient.organs || {}).length);
+    const nBox = (row.boxed || []).length;
+    const nWarn = (row.warn || []).length;
+    if (nBox > 0 && nWarn > 0) {
+      standingParts.push(isKo
+        ? `취약 장기 경고 ${nBox}건·주의 ${nWarn}건`
+        : `${nBox} ${nBox === 1 ? 'warning' : 'warnings'}, ${nWarn} ${nWarn === 1 ? 'caution' : 'cautions'} on vulnerable organs`);
+    } else if (nBox > 0) {
+      standingParts.push(isKo
+        ? `취약 장기 경고 ${nBox}건`
+        : `${nBox} ${nBox === 1 ? 'warning' : 'warnings'} on vulnerable organs`);
+    } else if (nWarn > 0) {
+      standingParts.push(isKo
+        ? `취약 장기 주의 ${nWarn}건`
+        : `${nWarn} ${nWarn === 1 ? 'caution' : 'cautions'} on vulnerable organs`);
+    } else if (hasRecOrgans) {
+      standingParts.push(isKo ? '취약 장기 경고·주의 없음' : 'Clear on vulnerable organs');
+    }
+
+    let tieNoteEl = null;
+    if (tiedPeers.length > 0) {
+      const peersText = tiedPeers.length <= 2
+        ? tiedPeers.map((p) => p.name).join(', ')
+        : (isKo ? `${tiedPeers[0].name} 외 ${tiedPeers.length - 1}종` : `${tiedPeers[0].name} + ${tiedPeers.length - 1} more`);
+      tieNoteEl = h('p', {
+        class: 'rr-tie-note',
+        text: isKo
+          ? `동순위: ${peersText} (적응증·사용 제한·취약 장기 경고 수준 동일)`
+          : `Tied at #${row.rank}: ${peersText} (matching indication, label tier, and organ profile)`,
+      });
+    }
+
+    // Select up to 2 head-to-head comparison targets
+    const higher = list.filter((r) => r.rank < row.rank);
+    const lower = list.filter((r) => r.rank > row.rank);
+    const rawPairs = [];
+    if (row.rank === 1) {
+      if (lower.length) {
+        const firstLow = lower[0];
+        rawPairs.push({ other: firstLow, focusIsBetter: true });
+        const secondLow = lower.find((r) => r.rank > firstLow.rank) || null;
+        if (secondLow) rawPairs.push({ other: secondLow, focusIsBetter: true });
+      }
+    } else if (higher.length === 1 || row.rank === 2) {
+      if (higher.length) rawPairs.push({ other: higher[0], focusIsBetter: false });
+      if (lower.length) rawPairs.push({ other: lower[0], focusIsBetter: true });
+    } else if (higher.length) {
+      const top1 = higher[0];
+      rawPairs.push({ other: top1, focusIsBetter: false });
+      const prevRankRow = higher[higher.length - 1];
+      if (prevRankRow && prevRankRow.rank !== top1.rank) {
+        rawPairs.push({ other: prevRankRow, focusIsBetter: false });
+      } else {
+        const altHigh = higher.slice(1).find((r) => r.rank !== top1.rank);
+        if (altHigh) rawPairs.push({ other: altHigh, focusIsBetter: false });
+      }
+    }
+
+    let items = rawPairs.map((p) => {
+      const better = p.focusIsBetter ? row : p.other;
+      const worse = p.focusIsBetter ? p.other : row;
+      return { other: p.other, focusIsBetter: p.focusIsBetter, diff: explainPairDiff(better, worse) };
+    });
+    if (items.length > 1 && items[0].diff.key === 'indication' && items[1].diff.key === 'indication') {
+      items = [items[0]];
+    }
+
+    let prioNoteShown = false;
+    const cmpCards = items.map((it) => {
+      let bodyText = it.diff.text;
+      if (it.diff.needsLabelPrioNote && !prioNoteShown) {
+        prioNoteShown = true;
+        bodyText += isKo
+          ? ' 라벨의 용량·사용 제한 단계가 일반 장기 주의사항보다 우선 반영됩니다.'
+          : ' FDA label dosing restrictions take priority over general organ cautions.';
+      }
+      return h('div', { class: 'rr-cmp' },
+        h('div', { class: 'rr-cmp-head' },
+          h('div', { class: 'rr-cmp-left' },
+            h('span', {
+              class: 'rr-dir ' + (it.focusIsBetter ? 'ahead' : 'behind'),
+              text: it.focusIsBetter
+                ? (isKo ? '우위 요인' : 'Ranks ahead')
+                : (isKo ? '선순위 비교' : 'Ranked behind'),
+            }),
+            h('span', { class: 'rr-vs', text: `vs #${it.other.rank} ${it.other.name}` })),
+          h('span', { class: 'rr-factor', text: it.diff.factor })),
+        h('p', { class: 'rr-cmp-body', text: bodyText }));
+    });
+
+    return h('div', { class: 'rr-box' },
+      h('div', { class: 'rr-summary' },
+        h('span', { class: 'rr-rank-pill' + (row.rank === 1 ? ' is-top' : ''), text: rankLabel }),
+        h('span', { class: 'rr-standing', text: standingParts.join(' · ') })),
+      tieNoteEl,
+      cmpCards.length ? h('div', { class: 'rr-cmp-list' }, cmpCards) : null);
+  }
+
+  function fillDrawer(row, allRows, hasCancer) {
     if (!row) return;
     const isKo = S.lang === 'ko';
     const d = row.detail || {};
     drawerTitle.textContent = row.name;
     clear(drawerBody);
     drawerBody.scrollTop = 0;
+
+    // 0. Comparative ranking rationale
+    const secRankRationale = section(t('rankRationaleTitle'), buildRankingRationale(row, allRows, hasCancer));
 
     // 1. Can the drug be used for this patient
     const CODE_KO = { contraindicated: '사용 금지', avoid: '사용 주의', reduce_dose: '용량 감량', monitor: '경과 관찰', insufficient_data: '판단 자료 부족' };
@@ -6403,7 +6709,7 @@
       }));
 
     const tabDefs = [
-      { id: 'Patient', label: t('tabPatient'), secs: [secRestriction, secPatientWarn, secChecks, secMissing].filter(Boolean) },
+      { id: 'Patient', label: t('tabPatient'), secs: [secRankRationale, secRestriction, secPatientWarn, secChecks, secMissing].filter(Boolean) },
       { id: 'Structure', label: t('tabStructure'), secs: [secStructure3d].filter(Boolean) },
       { id: 'Study', label: t('tabStudy'), secs: [secStudy].filter(Boolean) },
     ];
@@ -6869,7 +7175,7 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.8.5');
+    verEl.textContent = 'v' + (APP.version || '0.8.7');
 
     if (API.studioCatalog) {
       try {

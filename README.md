@@ -1,9 +1,9 @@
-# ADCTOX v0.8.5
+# ADCTOX v0.8.7
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
-[![App Version](https://img.shields.io/badge/version-v0.8.5-10B981)](#)
+[![App Version](https://img.shields.io/badge/version-v0.8.7-10B981)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live%20Platform-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
@@ -18,11 +18,11 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
 
 ---
 
-## Key Capabilities in v0.8.5
+## Key Capabilities in v0.8.7
 
 1. **Streamlined 3-Stage Clinical Workflow (`1. Patient Info` -> `2. ADC Matrix` -> `3. De Novo ADC Design`):**
    - **Stage 1 (`Patient Info`):** Bilingual (`EN / KO`) free-text condition and malignancy entry with real-time AI organ vulnerability mapping, active organ burden indicators, a collapsible 11-item required baseline flowsheet (`Age`, `Sex`, `Weight`, `Creatinine`, `Dialysis/ESRD`, `Bilirubin`, `AST`, `ALT`, `Platelets`, `ANC`, `Hb`), and a collapsible optional biomarker panel (`CLcr`, `eGFR`, `Child-Pugh`, `LVEF`, `HbA1c`, `UGT1A1*28`).
-   - **Stage 2 (`ADC Matrix`):** Evaluates all 15 FDA-approved ADCs against patient-specific organ vulnerabilities, DailyMed SPL Boxed Warnings, Section 5 Warnings, Cockcroft–Gault `CLcr` / `×ULN` hepatic thresholds, and 32 ClinicalTrials.gov pivotal trial comparator arms.
+   - **Stage 2 (`ADC Matrix`):** Evaluates all 15 FDA-approved ADCs against patient-specific organ vulnerabilities, DailyMed SPL Boxed Warnings, Section 5 Warnings, Cockcroft–Gault `CLcr` / `×ULN` hepatic thresholds, and 32 ClinicalTrials.gov pivotal trial comparator arms, with head-to-head ranking rationale in the `Patient & Label Fit` drawer.
    - **Stage 3 (`De Novo ADC Design`):** Explores `368,640` candidate architectures (`36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc Formats`) via categorized/searchable controls, running ultra-fast vectorized 5-fold Python matrix search by default (`Mode 2`) or live 5-fold `ADC-SurrogateNet-v2` forward execution via the clean `Deep Research` toggle (`Mode 3` live inference with 4-point dose-response curves and optimal clinical dose recommendation).
 
 2. **Multimodal Neural Surrogate Engine (`ADC-SurrogateNet-v2`):**
@@ -109,7 +109,7 @@ The installer configures an isolated Python environment, downloads the `0.8` fro
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.8.5 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.8.7 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the Terminal TUI
 ```
 
