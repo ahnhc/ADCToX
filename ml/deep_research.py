@@ -1091,7 +1091,8 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                     "baselineTissue": bool(ao["baselineTissue"]),
                 }
             )
-        shown_org_risks_b = [r for r in organ_risks_b if not r["baselineTissue"]] if real_organs else organ_risks_b
+        shown_org_risks_b = [r for r in organ_risks_b if not r["baselineTissue"]] if real_organs else list(organ_risks_b)
+        shown_org_risks_b.sort(key=lambda r: (0 if (prio_organ and r["organ"] == prio_organ) else 1, -float(r["p"])))
 
         best_live = {
             "spec": {
@@ -1152,6 +1153,10 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             {"concNm": c_nm, "killPct": round(float(mean_conc4[cur_b_idx, c_i]) * 100.0, 1), "stdPct": round(float(std_conc4[cur_b_idx, c_i]) * 100.0, 1)}
             for c_i, c_nm in enumerate((1, 10, 100, 1000))
         ]
+
+        if b_ti != mat_res["best"]["indices"][0]:
+            ref_probe = SM.evaluate_studio_matrix({**body, "spec": best_live["spec"]})
+            mat_res["ref_best"] = ref_probe["ref_current"]
 
         elapsed_ms = round((time.perf_counter() - t0) * 1000.0, 2)
         mat_res["schema"] = "ADCToX-DeepResearch-v083"

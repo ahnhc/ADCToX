@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0: Calm research software UI redesign and P0/P1 clinical & studio consistency fixes
+
+- **Research Software Design System (EN / KO):** Redesigned Patient Profile, Compare ADCs, ADC Design, detail/comparison drawers, and guide modal around neutral white surfaces, 1px crisp borders, high-contrast typography, #111111 primary CTAs, restrained #0F766E selection accents, and source/provenance badges (FDA SPL, Observed Cohort %, Model 0-100).
+- **Approved Reference Construct Isolation (P0):** Expanded REF_ADC_ARCH and ADC_SPECS to all 15 FDA-approved ADCs (	elisotuzumab-vedotin, pivekimab-sunirine included) and isolated each reference drug's native target antigen (Nectin-4 for PADCEV, BCMA for BLENREP) so de novo target edits never overwrite approved reference specifications or scores.
+- **Persistent Comparison Context & Explicit Input States (P0):** Preserved Cancer Match filter, selected drug row, and active drawer/comparison tabs across organ priority toggles and re-evaluations; differentiated unentered, partial, evaluating, and complete profile states so empty profiles display unranked (—) candidates without premature #1 recommendations.
+- **Construct Handoff, Priority-Organ Trials & Stale Evaluation Sync (P1):** Wired Load Structure in ADC Design in approved drug drawers to populate that drug's exact target, linker, payload, DAR, and Fc format into ADC Design; sorted pivotal trial adverse events and organ warnings to prioritize user-selected organs; enlarged the central design coordinate plot (470px), surfaced explicit 3-way cards (Current, Selected Optimal, Approved Reference), moved equations/weights/custom SMILES to Advanced, and synchronized screen-consistent summary exports (
+eview.js).
+
 ## 0.8.9: Flowsheet default state, equalized card heights, and copy alignment
 
 - **Default Expanded Required Flowsheet:** Set the required baseline flowsheet (`1. 환자 정보`) to be expanded by default on application launch and reset.

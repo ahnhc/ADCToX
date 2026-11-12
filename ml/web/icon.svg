@@ -1,18 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  <rect width="128" height="128" rx="26" fill="#0F172A"/>
-  <!-- Erlenmeyer Flask (ADC) -->
-  <g transform="translate(14, 18) scale(1.35)">
-    <path d="M11 3 H23 M14 3 V11 L4 33 C3.2 34.6 4.4 36 6.2 36 H27.8 C29.6 36 30.8 34.6 30 33 L20 11 V3" stroke="#22D3EE" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M7.2 26.5 H26.8 L29.2 32.5 C29.6 33.4 29 34.4 27.8 34.4 H6.2 C5 34.4 4.4 33.4 4.8 32.5 L7.2 26.5 Z" fill="#F59E0B"/>
-    <circle cx="14" cy="21" r="1.8" fill="#F59E0B"/>
-    <circle cx="19.5" cy="17.5" r="1.5" fill="#FBBF24"/>
-  </g>
-  <!-- Syringe + Crossbones (ToX) -->
-  <g transform="translate(64, 18) scale(1.35)">
-    <path d="M3 4 H29 M16 4 V10 M9 10 H23" stroke="#FB7185" stroke-width="3.0" stroke-linecap="round"/>
-    <rect x="10" y="10" width="12" height="19" rx="1.8" stroke="#FB7185" stroke-width="2.6"/>
-    <rect x="11.6" y="16.5" width="8.8" height="11.2" fill="#F59E0B"/>
-    <path d="M16 32.5 V37.5" stroke="#FB7185" stroke-width="2.2" stroke-linecap="round"/>
-  </g>
-  <text x="64" y="106" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="22" fill="#F8FAFC" letter-spacing="1">ADCToX</text>
+  <rect width="128" height="128" rx="28" fill="#111111"/>
+  <path d="M34 62L49 26H59L74 62H64.5L61.3 53.6H46.7L43.5 62H34ZM49.6 46H58.4L54 34.2L49.6 46Z" fill="#FFFFFF"/>
+  <circle cx="84" cy="34" r="7" fill="#0D9488"/>
+  <line x1="73" y1="42" x2="79" y2="38" stroke="#0D9488" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="64" y="98" text-anchor="middle" font-family="Manrope, Inter, system-ui, sans-serif" font-weight="800" font-size="22" fill="#FFFFFF" letter-spacing="-0.5">ADCToX</text>
 </svg>

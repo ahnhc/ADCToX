@@ -15,7 +15,7 @@ resolution-markers = [
 
 [[package]]
 name = "adctox"
-version = "0.8.9"
+version = "0.9.0"
 source = { editable = "." }
 dependencies = [
     { name = "httpx" },

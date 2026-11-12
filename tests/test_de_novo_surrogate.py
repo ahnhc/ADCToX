@@ -164,3 +164,90 @@ def test_v083_ui_copy_and_collapsible_required_labs_invariants():
     assert "BCMA (TNFRSF17)" in app_txt
     assert "ROR1" in app_txt
 
+
+def test_v090_approved_ref_adc_native_target_isolation():
+    import studio_matrix as SM
+
+    assert len(SM.REF_ADC_ARCH) == 15
+
+    # P0-1 regression: Integrin beta-6 de novo construct compares against PADCEV (enfortumab-vedotin),
+    # whose true approved target MUST remain Nectin-4 (never overwritten with Integrin beta-6).
+    res_itgb6 = SM.evaluate_studio_matrix(
+        {
+            "spec": {
+                "target": "Integrin beta-6 (ITGB6)",
+                "linker": "Val-Cit PABC",
+                "payload": "MMAE ( Auristatin )",
+                "dar": 4,
+                "fcFormat": "igg1_wt",
+            },
+            "organs": [{"organ": "dermatologic", "score": 0.70}, {"organ": "pulmonary", "score": 0.90}],
+            "prioOrgan": "pulmonary",
+        }
+    )
+    assert res_itgb6["current"]["spec"]["target"] == "Integrin beta-6 (ITGB6)"
+    assert res_itgb6["ref_current"]["spec"]["target"] == "Nectin-4"
+    assert res_itgb6["current"]["organRisks"][0]["organ"] == "pulmonary"
+
+    # P0-1 regression: ENPP3 de novo construct compares against BLENREP (belantamab-mafodotin),
+    # whose true approved target MUST remain BCMA (TNFRSF17) (never overwritten with ENPP3).
+    res_enpp3 = SM.evaluate_studio_matrix(
+        {
+            "spec": {
+                "target": "ENPP3",
+                "linker": "Non-cleavable mc",
+                "payload": "MMAF ( Auristatin )",
+                "dar": 4,
+                "fcFormat": "igg1_wt",
+            }
+        }
+    )
+    assert res_enpp3["current"]["spec"]["target"] == "ENPP3"
+    assert res_enpp3["ref_current"]["spec"]["target"] == "BCMA (TNFRSF17)"
+
+    # Expanded 15-ADC reference coverage: c-MET -> telisotuzumab-vedotin, CD123 -> pivekimab-sunirine
+    res_cmet = SM.evaluate_studio_matrix(
+        {
+            "spec": {
+                "target": "c-MET (MET)",
+                "linker": "Val-Cit PABC",
+                "payload": "MMAE ( Auristatin )",
+                "dar": 3.5,
+                "fcFormat": "igg1_wt",
+            }
+        }
+    )
+    assert res_cmet["ref_current"]["spec"]["target"] == "c-MET (MET)"
+    assert res_cmet["ref_current"]["spec"]["dar"] == 3.5
+
+    res_cd123 = SM.evaluate_studio_matrix(
+        {
+            "spec": {
+                "target": "CD123 (IL3RA)",
+                "linker": "Val-Ala PABC",
+                "payload": "DGN549 Sunirine ( IGN )",
+                "dar": 2,
+                "fcFormat": "igg1_wt",
+            }
+        }
+    )
+    assert res_cd123["ref_current"]["spec"]["target"] == "CD123 (IL3RA)"
+    assert res_cd123["ref_current"]["spec"]["payload"] == "DGN549 Sunirine ( IGN )"
+
+    # Explicit refAdcId override (e.g., loading KADCYLA / trastuzumab-emtansine into Studio)
+    res_kadcyla = SM.evaluate_studio_matrix(
+        {
+            "spec": {
+                "target": "HER2 (ERBB2)",
+                "linker": "Non-cleavable SMCC",
+                "payload": "DM1 Mertansine ( Maytansinoid )",
+                "dar": 3.5,
+                "fcFormat": "igg1_wt",
+            },
+            "refAdcId": "trastuzumab-emtansine",
+        }
+    )
+    assert res_kadcyla["ref_current"]["spec"]["linker"] == "Non-cleavable SMCC"
+    assert res_kadcyla["ref_current"]["spec"]["dar"] == 3.5
+
+

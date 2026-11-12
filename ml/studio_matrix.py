@@ -61,17 +61,21 @@ FC_ADCC_BOOST: Dict[str, float] = {
 }
 
 REF_ADC_ARCH: Dict[str, Dict[str, Any]] = {
-    "trastuzumab-deruxtecan": {"linker": "Tetrapeptide GGFG", "payload": "DXd ( Topo I )", "dar": 8.0, "fcFormat": "igg1_wt"},
-    "sacituzumab-govitecan": {"linker": "Hydrolyzable CL2A", "payload": "SN-38 ( Topo I )", "dar": 7.6, "fcFormat": "igg1_wt"},
-    "mirvetuximab-soravtansine": {"linker": "Sulfo-SPDB", "payload": "DM4 / DM1 ( Maytansinoid )", "dar": 3.5, "fcFormat": "igg1_wt"},
-    "tisotumab-vedotin": {"linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 4.0, "fcFormat": "igg1_wt"},
-    "enfortumab-vedotin": {"linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 4.0, "fcFormat": "igg1_wt"},
-    "polatuzumab-vedotin": {"linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 3.5, "fcFormat": "igg1_wt"},
-    "brentuximab-vedotin": {"linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 4.0, "fcFormat": "igg1_wt"},
-    "loncastuximab-tesirine": {"linker": "PEG8-Val-Ala PABC", "payload": "SG3199 ( PBD Dimer )", "dar": 2.0, "fcFormat": "igg1_wt"},
-    "belantamab-mafodotin": {"linker": "Non-cleavable mc", "payload": "MMAF ( Auristatin )", "dar": 4.0, "fcFormat": "igg1_wt"},
-    "inotuzumab-ozogamicin": {"linker": "Acid Hydrazone", "payload": "Calicheamicin ( Enediyne )", "dar": 6.0, "fcFormat": "igg4_s228p"},
-    "gemtuzumab-ozogamicin": {"linker": "Acid Hydrazone", "payload": "Calicheamicin ( Enediyne )", "dar": 2.0, "fcFormat": "igg4_s228p"},
+    "trastuzumab-deruxtecan": {"target": "HER2 (ERBB2)", "linker": "Tetrapeptide GGFG", "payload": "DXd ( Topo I )", "dar": 8.0, "fcFormat": "igg1_wt"},
+    "trastuzumab-emtansine": {"target": "HER2 (ERBB2)", "linker": "Non-cleavable SMCC", "payload": "DM1 Mertansine ( Maytansinoid )", "dar": 3.5, "fcFormat": "igg1_wt"},
+    "sacituzumab-govitecan": {"target": "TROP2 (TACSTD2)", "linker": "Hydrolyzable CL2A", "payload": "SN-38 ( Topo I )", "dar": 7.6, "fcFormat": "igg1_wt"},
+    "datopotamab-deruxtecan": {"target": "TROP2 (TACSTD2)", "linker": "Tetrapeptide GGFG", "payload": "DXd ( Topo I )", "dar": 4.0, "fcFormat": "igg1_wt"},
+    "mirvetuximab-soravtansine": {"target": "FRalpha (FOLR1)", "linker": "Sulfo-SPDB", "payload": "DM4 / DM1 ( Maytansinoid )", "dar": 3.5, "fcFormat": "igg1_wt"},
+    "tisotumab-vedotin": {"target": "Tissue Factor (F3)", "linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 4.0, "fcFormat": "igg1_wt"},
+    "enfortumab-vedotin": {"target": "Nectin-4", "linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 4.0, "fcFormat": "igg1_wt"},
+    "telisotuzumab-vedotin": {"target": "c-MET (MET)", "linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 3.5, "fcFormat": "igg1_wt"},
+    "polatuzumab-vedotin": {"target": "CD79b", "linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 3.5, "fcFormat": "igg1_wt"},
+    "brentuximab-vedotin": {"target": "CD30 (TNFRSF8)", "linker": "Val-Cit PABC", "payload": "MMAE ( Auristatin )", "dar": 4.0, "fcFormat": "igg1_wt"},
+    "loncastuximab-tesirine": {"target": "CD19", "linker": "PEG8-Val-Ala PABC", "payload": "SG3199 ( PBD Dimer )", "dar": 2.0, "fcFormat": "igg1_wt"},
+    "belantamab-mafodotin": {"target": "BCMA (TNFRSF17)", "linker": "Non-cleavable mc", "payload": "MMAF ( Auristatin )", "dar": 4.0, "fcFormat": "igg1_wt"},
+    "inotuzumab-ozogamicin": {"target": "CD22", "linker": "Acid Hydrazone", "payload": "Calicheamicin ( Enediyne )", "dar": 6.0, "fcFormat": "igg4_s228p"},
+    "gemtuzumab-ozogamicin": {"target": "CD33", "linker": "Acid Hydrazone", "payload": "Calicheamicin ( Enediyne )", "dar": 2.0, "fcFormat": "igg4_s228p"},
+    "pivekimab-sunirine": {"target": "CD123 (IL3RA)", "linker": "Val-Ala PABC", "payload": "DGN549 Sunirine ( IGN )", "dar": 2.0, "fcFormat": "igg1_wt"},
 }
 
 TUMOR_KEYWORD_RE = re.compile(r"cancer|carcinoma|tumor|lymphoma|myeloma|leukemia|sarcoma|glioma|glioblastoma|melanoma|mesothelioma|암|종양|림프종|골수종|백혈병|육종|흑색종|중피종|세포종")
@@ -344,7 +348,8 @@ def _single_construct_detail(
             }
         )
 
-    shown_organ_risks = [r for r in all_organ_risks if not r["baselineTissue"]] if real_organs else all_organ_risks
+    shown_organ_risks = [r for r in all_organ_risks if not r["baselineTissue"]] if real_organs else list(all_organ_risks)
+    shown_organ_risks.sort(key=lambda r: (0 if (prio_organ and r["organ"] == prio_organ) else 1, -float(r["p"])))
     mean_risk = sum(r["p"] for r in all_organ_risks) / max(1, len(all_organ_risks))
 
     safety_raw = round(float(safety_mat[tf_idx, lpd_idx]), 2)
@@ -600,12 +605,18 @@ def evaluate_studio_matrix(body: Optional[Dict[str, Any]] = None, return_top_ind
     best_detail["utilScore"] = round(float(util_mat[best_tf, best_lpd]), 2)
     best_detail["rationales"] = build_rationales(best_detail, st, real_organs)
 
-    # Approved reference ADC simulations for current target and best target
-    def _ref_for_target(ti_val: int) -> Dict[str, Any]:
+    # Approved reference ADC simulations preserving each approved drug's native target & architecture
+    ref_override_raw = str(body.get("refAdcId") or "").strip()
+
+    def _ref_for_target(ti_val: int, allow_override: bool = False) -> Dict[str, Any]:
         t_obj = st["targets"][ti_val]
         ref_id = t_obj.get("refAdc", "trastuzumab-deruxtecan")
-        arch = REF_ADC_ARCH.get(ref_id, REF_ADC_ARCH["trastuzumab-deruxtecan"])
-        r_ti, r_li, r_pi, r_di, r_fi = resolve_spec_indices({"target": t_obj["id"], **arch}, st)
+        if allow_override and ref_override_raw in REF_ADC_ARCH:
+            ov_arch = REF_ADC_ARCH[ref_override_raw]
+            if ov_arch.get("target") == t_obj["id"]:
+                ref_id = ref_override_raw
+        arch = dict(REF_ADC_ARCH.get(ref_id, REF_ADC_ARCH["trastuzumab-deruxtecan"]))
+        r_ti, r_li, r_pi, r_di, r_fi = resolve_spec_indices(arch, st)
         det = _single_construct_detail(
             st, r_ti, r_li, r_pi, r_di, r_fi,
             safety_mat, efficacy_mat, real_organs, prio_organ,
@@ -614,8 +625,8 @@ def evaluate_studio_matrix(body: Optional[Dict[str, Any]] = None, return_top_ind
         det["refAdcId"] = ref_id
         return det
 
-    ref_current = _ref_for_target(cur_ti)
-    ref_best = ref_current if best_ti == cur_ti else _ref_for_target(best_ti)
+    ref_current = _ref_for_target(cur_ti, allow_override=True)
+    ref_best = _ref_for_target(best_ti, allow_override=(best_ti == cur_ti))
 
     # 6. Exact non-dominated Pareto Frontier across all compatible constructs in 368,640!
     compat_mask_flat = np.broadcast_to(st["compat_lpd"][None, :], (st["n_tf"], st["n_lpd"])).ravel()

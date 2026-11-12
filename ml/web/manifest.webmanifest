@@ -1,13 +1,13 @@
 {
-  "name": "ADCTOX Clinical & De Novo ADC Design",
-  "short_name": "ADCTOX",
-  "description": "Visual ADC clinical evaluation, organ vulnerability analysis, and combination structure studio.",
+  "name": "ADCToX",
+  "short_name": "ADCToX",
+  "description": "ADC clinical evaluation, organ vulnerability analysis, and de novo conjugate design.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#F8FAFC",
-  "theme_color": "#F8FAFC",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "icons": [
     {
       "src": "/static/icon.svg",

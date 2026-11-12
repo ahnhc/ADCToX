@@ -1,3 +1,14 @@
+# ADCToX 0.9.0 Release Notes
+
+- **Calm Research Software UI Redesign (EN / KO)**:
+  - Unified all three workspace modes (Patient Profile, Compare ADCs, ADC Design), drawers, and guide dialogs with neutral white surfaces, crisp 1px borders, #111111 primary action buttons, and inline metric provenance tags (FDA SPL, Observed Cohort %, Model 0-100).
+  - Added one-click virtual clinical sample cases, enlarged the central ADC Design coordinate plot, introduced a 3-way construct comparison strip (Current Design, Selected Optimal, Approved Reference), and organized equations, weights, and custom SMILES under Advanced.
+- **Functional Accuracy & State Consistency Fixes (P0 / P1)**:
+  - Isolated native target antigens and architectures across all 15 FDA-approved reference ADCs so de novo target changes never overwrite approved drug specifications (e.g., Nectin-4 for PADCEV, BCMA for BLENREP).
+  - Preserved Cancer Match filters, selected rows, and open drawer tabs across organ priority changes and recalculations.
+  - Distinguished empty, partial, running, and completed profile states; unentered profiles remain unranked (—) without #1 recommendation banners.
+  - Connected Load Structure in ADC Design to transfer the selected approved drug's exact construct, prioritized selected-organ trial rates and warnings, indicated pending recalculation states, and aligned exported .txt summaries with screen state.
+
 # ADCTOX 0.8.9 Release Notes
 
 - **Default Expanded Required Flowsheet**:
