@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.8.5: Clean Deep Research UI and streamlined telemetry
+
+- **Streamlined Deep Research Menu:** Renamed `Deep Research (GPU)` to `Deep Research`, removed subtitle and queue metadata lines, leaving a clean toggle switch and custom SMILES input.
+- **Refined Chart and Telemetry Copy:** Removed internal device labels (`| CPU Server #0`) and verbose forward-pass counters from the chart header and telemetry strip, focusing on optimal clinical dose (`mg/kg`) and key predictive metrics.
+- **Single-File Standalone Execution Parity:** Injected `__file__` metadata and in-memory data lookups into `build_portable.py`, `studio_matrix.py`, and `deep_research.py` for bulletproof standalone server execution.
+
+## 0.8.4: Standalone portable single-file bundle __file__ execution fix
+
+- **Injected Loader Metadata:** Added `module.__file__` injection to `_Here.exec_module` within the single-file distribution bundle (`dist/releases/app/adc_recommender_full.py`), preventing `NameError: name '__file__' is not defined`.
+- **In-Memory SVD & Cache Priority:** Guarded filesystem path fallbacks in `ml/studio_matrix.py` and `ml/deep_research.py` to prioritize embedded `_portable_data()`, ensuring flawless operation on remote servers without physical source checkouts.
+- **Test Suite Offset Synchronization:** Updated `tests/test_doctor_review.py` keyboard navigation offsets to account for newly added baseline clinical inputs (`CLcr`, `ESRD`).
+
 ## 0.8.3: 368,640-combination 36-target De Novo Studio, vectorized server matrix engine, split-button `Deep Research (GPU)` 4-slot queue, and collapsible 11-item required baseline labs
 
 - **Expanded 36-Target De Novo Design Space (`368,640` Combinations):** Upgraded `3. De Novo ADC Design` (`접합체 구조 설계`) from `2,592` combinations to all `36` trained target antigens, `16` chemical linkers, `20` cytotoxic payloads, `8` DAR values (`1, 2, 3.5, 4, 5, 6, 7.6, 8`), and `4` antibody/Fc formats (`IgG1 Wild-Type`, `IgG1 LALA-PG`, `IgG4 S228P`, `IgG2 Low-Fc`), with inline target/gene search and clinical category filter tabs.
