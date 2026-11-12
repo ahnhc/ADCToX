@@ -169,13 +169,16 @@ def main():
                 cancer_mondo=json.load(open(R / "data/curated/competition/cancer_mondo.json", encoding="utf-8")),
                 subtypes=json.load(open(R / "data/curated/disease_linking/subtype_general.json", encoding="utf-8")),
                 trial_ae=json.load(open(R / "data/curated/competition/trial_ae.json", encoding="utf-8")),
+                studio_catalog_368k=json.load(open(R / "ml/data/studio_catalog_368k.json", encoding="utf-8")),
+                studio_368k_svd_b64=base64.b64encode((R / "ml/data/studio_368k_svd.npz").read_bytes()).decode(),
+                deep_research_cache_b64=base64.b64encode((R / "ml/data/deep_research_cache.npz").read_bytes()).decode(),
                 web=__import__("webapp").web_files(R / "ml/web"))
     assert {"index.html", "app.js", "app.css"} <= set(data["web"]), f"adctox --web needs its page in ml/web/: found {sorted(data['web'])}"
     print("page: " + ", ".join(f"{name} {(len(base64.b64decode(text)) if name.endswith(('.woff2', '.ttf', '.otf')) else len(text.encode())) / 1024:.1f} KB" for name, text in data["web"].items()))
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
-    src = {m: (R / "ml" / f"{m}.py").read_text() for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "subtypes", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "webapp")}
+    src = {m: (R / "ml" / f"{m}.py").read_text(encoding="utf-8") for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "subtypes", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "studio_matrix", "deep_research", "webapp")}
     local = {q.stem for q in (R / "ml").glob("*.py")}                      # the screen modules import only embedded modules (0.4.0: motion)
-    for m in ("form", "tui", "term", "motion", "webapp"):
+    for m in ("form", "tui", "term", "motion", "studio_matrix", "deep_research", "webapp"):
         for name in set(re.findall(r"^\s*(?:import|from)\s+(\w+)", src[m], re.M)):
             assert name not in local or name in src, f"{m} imports ml/{name}.py, which the portable build does not embed"
 

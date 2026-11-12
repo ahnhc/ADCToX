@@ -452,10 +452,34 @@ class App:
                                      unmapped=[c for c, how in notes if "not understood" in how],
                                      cancers=[dict(condition=c, name=n, cancers=list(cs)) for c, (n, cs) in RC.patient_cancers(notes).items()]))
 
+    # ------------------------------------------------------------------ Studio (Mode 2 Matrix 368k & Mode 3 Deep Research)
+    def studio_catalog(self):
+        import studio_matrix as SM
+        return SM.catalog_info()
+
+    def studio_gpu_status(self):
+        import deep_research as DR
+        return DR.get_gpu_status()
+
+    def studio_evaluate(self, body):
+        import studio_matrix as SM
+        return SM.evaluate_studio_matrix(body)
+
+    def studio_deep_research(self, body):
+        import deep_research as DR
+        try:
+            res = DR.run_deep_research(body)
+            res["gpu_status"] = DR.get_gpu_status()
+            return res
+        except DR.AllGPUSlotsBusyError as e:
+            raise _Error(429, str(e), code="all_gpu_slots_busy", gpu_status=e.status_payload) from None
+
     # ------------------------------------------------------------------ routes
     def get(self, path, query):
         if path == "/api/app": return self.app()
         if path == "/api/suggest": return self.suggest(query.get("q", [""])[0], query.get("picked", []), query.get("ai", ["0"])[0] == "1")
+        if path == "/api/studio/catalog": return self.studio_catalog()
+        if path == "/api/studio/gpu-status": return self.studio_gpu_status()
         m = re.fullmatch(r"/api/analyze/(\w+)", path)
         if m: return self.job(m.group(1))
         m = re.fullmatch(r"/(?:static/)?([\w.-]+)", path)          # a page file, at /static/<name> or /<name>
@@ -466,7 +490,13 @@ class App:
         return TYPES[suffix], base64.b64decode(files[name]) if suffix in BINARY else files[name]
 
     def post(self, path, body):
-        routes = {"/api/labs": self.labs, "/api/analyze": self.analyze, "/api/recommend": self.recommend}
+        routes = {
+            "/api/labs": self.labs,
+            "/api/analyze": self.analyze,
+            "/api/recommend": self.recommend,
+            "/api/studio/evaluate": self.studio_evaluate,
+            "/api/studio/deep-research": self.studio_deep_research,
+        }
         if path not in routes: raise _Error(404, "not found")
         return routes[path](body)
 

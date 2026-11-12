@@ -110,3 +110,57 @@ def test_web_studio_wiring_has_neural_surrogate():
     assert "/static/surrogate_2592.js" in sw_txt
     assert "ADCTOX_SURROGATE" in app_txt
     assert "\u00b7" not in app_txt
+
+
+def test_studio_368k_catalog_and_svd_matrix_engine():
+    import studio_matrix as SM
+
+    cat = SM.catalog_info()
+    assert len(cat["targets"]) == 36
+    assert len(cat["linkers"]) == 16
+    assert len(cat["payloads"]) == 20
+    assert len(cat["dars"]) == 8
+    assert len(cat["fc_formats"]) == 4
+    assert cat["total_combinations"] == 368640
+    assert all(isinstance(p.get("organs"), dict) and len(p["organs"]) >= 3 for p in cat["payloads"])
+
+    res = SM.evaluate_studio_matrix(
+        {
+            "spec": {
+                "target": "CLDN18.2 (CLDN18)",
+                "linker": "Tetrapeptide GGFG",
+                "payload": "DXd ( Topo I )",
+                "dar": 6,
+                "fc": True,
+                "fcFormat": "igg1_lalapg",
+            },
+            "organs": [{"organ": "pulmonary", "score": 0.92}, {"organ": "hepatic", "score": 0.75}],
+            "prioOrgan": "pulmonary",
+            "cancerText": "gastric adenocarcinoma",
+        }
+    )
+    assert res["mode"] == "matrix_368k"
+    assert res["total_combinations"] == 368640
+    assert res["compatible_combinations"] > 100000
+    assert 2 <= res["current"]["safetyScore"] <= 98
+    assert 2 <= res["best"]["efficacyScore"] <= 98
+    assert len(res["pareto_front"]) >= 2
+    assert len(res["cloud"]) > 500
+    assert len(res["same_target_cloud"]) > 50
+
+
+def test_v083_ui_copy_and_collapsible_required_labs_invariants():
+    app_txt = (ML_DIR / "web" / "app.js").read_text(encoding="utf-8")
+    assert "\u00b7" not in app_txt
+    assert "나이, 성별, 체중을 입력해 두면" not in app_txt
+    assert "CLcr 수치가 없을 때" not in app_txt
+    assert "Will Cockcroft-Gault auto-derive" not in app_txt
+    assert "Deep Research (GPU)" in app_txt
+    assert "split-optimize-group" in app_txt
+    assert "basicLabsOpen" in app_txt
+    assert "buildRequiredLabsPanel" in app_txt
+    assert "CLDN18.2 (CLDN18)" in app_txt
+    assert "DLL3" in app_txt
+    assert "BCMA (TNFRSF17)" in app_txt
+    assert "ROR1" in app_txt
+

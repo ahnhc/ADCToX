@@ -362,6 +362,77 @@ class ADCSurrogateNetV2(nn.Module):
             "h_combo": h_combo,
         }
 
+    def forward_preencoded(
+        self,
+        t_heavy: torch.Tensor,
+        t_light: torch.Tensor,
+        t_antigen: torch.Tensor,
+        t_linker: torch.Tensor,
+        t_payload: torch.Tensor,
+        payload_fp: torch.Tensor,
+        biophys_raw: torch.Tensor,
+        biophys_norm: torch.Tensor,
+    ) -> Dict[str, torch.Tensor]:
+        """Exact fast path with pre-encoded unique protein/SMILES modality tokens and fused Any+Grade3 hazard evaluation."""
+        bsz = biophys_norm.shape[0]
+        t_biophys = self.biophys_enc(biophys_norm)
+        tokens = torch.stack([t_heavy, t_light, t_antigen, t_linker, t_payload, t_biophys], dim=1)
+        fused = self.fusion_norm(self.fusion_transformer(tokens + self.modality_emb))
+
+        z_global = fused.mean(dim=1)
+        z_linker = fused[:, 3, :]
+        z_payload = fused[:, 4, :]
+        z_biophys = fused[:, 5, :]
+        z_joint = torch.cat([z_global, z_payload, z_biophys], dim=-1)
+
+        raw_c = self.head_conc_monotonic(torch.cat([z_joint, biophys_norm], dim=-1))
+        z_1000 = raw_c[:, 0]
+        z_100 = z_1000 - F.softplus(raw_c[:, 1])
+        z_10 = z_100 - F.softplus(raw_c[:, 2])
+        z_1 = z_10 - F.softplus(raw_c[:, 3])
+        prob_conc4 = torch.sigmoid(torch.stack([z_1, z_10, z_100, z_1000], dim=-1))
+
+        pic_in = torch.cat([z_payload, z_biophys, payload_fp, biophys_norm], dim=-1)
+        pred_pic50 = 3.8 + 8.4 * torch.sigmoid(self.head_pic50(pic_in).squeeze(-1))
+
+        base_org = torch.cat([z_global, z_payload, z_linker, z_biophys, biophys_norm], dim=-1)
+        zeros = torch.zeros((bsz, 1), dtype=base_org.dtype, device=base_org.device)
+        ones = torch.ones((bsz, 1), dtype=base_org.dtype, device=base_org.device)
+        org_in_2x = torch.cat([torch.cat([base_org, zeros], dim=-1), torch.cat([base_org, ones], dim=-1)], dim=0)
+        pos_2x = F.softplus(self.head_organ_pathways(org_in_2x).view(bsz * 2, 5, 13))
+        pos_any, pos_g3 = pos_2x[:bsz], pos_2x[bsz:]
+
+        unintact = (1.0 - biophys_raw[:, 40]).clamp(0.02, 0.95).unsqueeze(-1)
+        dar_scale = (biophys_raw[:, 73] * 2.0).clamp(0.25, 2.5).unsqueeze(-1)
+        agg_prop = (0.18 + biophys_raw[:, 75] + biophys_raw[:, 76]).clamp(0.10, 3.0).unsqueeze(-1)
+        fc_act = biophys_raw[:, 63].clamp(0.05, 1.0).unsqueeze(-1)
+        expr_13 = (0.55 * biophys_raw[:, 82:95] + 0.45 * biophys_raw[:, 95:108]).clamp(0.02, 1.4)
+        dose_mult = (0.42 + 0.95 * biophys_raw[:, 77]).clamp(0.22, 2.4).unsqueeze(-1)
+        combo_flag = (1.0 - biophys_raw[:, 80]).clamp(0.0, 1.0).unsqueeze(-1)
+
+        def _gate(pos_p: torch.Tensor):
+            hb = pos_p[:, 0, :] * (0.38 + 0.92 * unintact) * dar_scale * dose_mult
+            ha = pos_p[:, 1, :] * agg_prop * dose_mult
+            hf = pos_p[:, 2, :] * fc_act * (0.55 + 0.45 * dar_scale) * dose_mult
+            ho = pos_p[:, 3, :] * (0.15 + 1.85 * expr_13) * dar_scale * dose_mult
+            hc = pos_p[:, 4, :] * combo_flag
+            tot = (hb + ha + hf + ho + hc).clamp(min=1e-5, max=6.0)
+            return hb, ha, hf, ho, (1.0 - torch.exp(-tot)).clamp(1e-4, 0.999)
+
+        hb0, ha0, hf0, ho0, org_any = _gate(pos_any)
+        hb1, ha1, hf1, ho1, org_g3 = _gate(pos_g3)
+
+        return {
+            "prob_conc4": prob_conc4,
+            "pred_pic50": pred_pic50,
+            "org_any": org_any,
+            "org_g3": org_g3,
+            "h_base": 0.45 * hb0 + 0.55 * hb1,
+            "h_agg": 0.45 * ha0 + 0.55 * ha1,
+            "h_fc": 0.45 * hf0 + 0.55 * hf1,
+            "h_on": 0.45 * ho0 + 0.55 * ho1,
+        }
+
 
 # ==============================================================================
 # 3. Leak-Free 5-Fold Group / Scaffold Split Builder
@@ -936,7 +1007,7 @@ def main():
     mp.set_start_method("spawn", force=True)
     t_start = time.time()
 
-    repo_root = Path("/home/hyeongchanahn/CONI/adctox")
+    repo_root = Path(__file__).resolve().parents[2]
     data_dir = repo_root / "ml" / "data"
     model_dir = repo_root / "models" / "surrogate_c"
     model_dir.mkdir(parents=True, exist_ok=True)

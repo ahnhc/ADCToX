@@ -1,5 +1,5 @@
-/* ADCTOX v0.8.1 Architectural Daylight WebApp
-   Active-Organ Matrix + 3D Structure Studio + Biomarker Flowsheet
+/* ADCTOX v0.8.3 Architectural Daylight WebApp
+   Active-Organ Matrix + 368,640-Construct Studio + Deep Research (GPU/CPU) + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
   'use strict';
@@ -22,7 +22,7 @@
     });
     try {
       try { res = await send(); } catch (e) {
-        if (url === '/api/analyze') throw e;
+        if (url === '/api/analyze' || url === '/api/studio/deep-research') throw e;
         await new Promise((go) => setTimeout(go, 200));
         try { res = await send(); } catch (e2) { await new Promise((go) => setTimeout(go, 500)); res = await send(); }
       }
@@ -48,6 +48,10 @@
     analyze: (conditions, choice) => call('POST', '/api/analyze', { conditions, choice }),
     job: (id) => call('GET', '/api/analyze/' + encodeURIComponent(id)),
     recommend: (body) => call('POST', '/api/recommend', body),
+    studioCatalog: () => call('GET', '/api/studio/catalog'),
+    studioGpuStatus: () => call('GET', '/api/studio/gpu-status'),
+    studioEvaluate: (body) => call('POST', '/api/studio/evaluate', body),
+    studioDeepResearch: (body) => call('POST', '/api/studio/deep-research', body),
   };
 
   // ------------------------------------------------------------------ DOM Helpers
@@ -151,17 +155,17 @@
   function openGuide() {
     if (guide) closeGuide();
     const isKo = S.lang === 'ko';
-    const ver = (APP && APP.version) ? APP.version : '0.8.0';
+    const ver = (APP && APP.version) ? APP.version : '0.8.3';
     const stepItems = isKo
       ? [
-          ['환자 정보', '한글 또는 영문으로 암종, 기저질환을 검색하고 활성 취약 장기를 확인합니다. 혈액검사 수치나 신장, 간 기능 지표가 있을 때는 아래 검진 정보를 펼쳐 추가로 입력할 수 있습니다.'],
+          ['환자 정보', '한글 또는 영문으로 암종과 기저질환을 검색하고 활성 취약 장기를 확인합니다. 검진 정보의 [필수 입력]과 [선택 입력] 토글을 펼쳐 환자 수치를 입력할 수 있습니다.'],
           ['ADC 매트릭스', '입력된 환자의 암종, 기저질환, 검진 수치를 기반으로 FDA 승인 ADC 약물의 적합도를 평가합니다. 상단 활성 취약 장기는 위험도(%) 내림차순으로 정렬되며, 특정 장기를 클릭하면 해당 장기 보호를 우선 반영해 순위를 재산출합니다.'],
-          ['ADC 신규 설계', '표적 항원, 화학 링커, 세포독성 페이로드, DAR, Fc 엔지니어링(LALA-PG)을 조합하여 [ADC 수동 설계] 또는 [ADC 자동 설계]로 환자 맞춤형 접합체를 설계합니다.'],
+          ['ADC 신규 설계', '36종 표적 항원, 16종 링커, 20종 페이로드, 8단계 DAR, 4종 항체 골격(368,640개 조합)에서 [ADC 자동 설계]로 초대규모 행렬 탐색을 수행하거나, 우측 화살표 메뉴에서 [Deep Research (GPU)]를 켜 ADCSurrogateNet v2를 실시간 구동합니다.'],
         ]
       : [
-          ['Patient Info', 'Search cancers or comorbidities in English or Korean and review active vulnerable organs. Expand optional lab & clinical inputs below when available.'],
+          ['Patient Info', 'Search cancers or comorbidities in English or Korean and review active vulnerable organs. Toggle Required or Optional lab sections below to enter patient biomarkers.'],
           ['ADC Matrix', 'Ranks FDA-approved ADCs from patient comorbidities and lab values. Active vulnerable organs sort by severity (% descending); click any organ to prioritize its protection.'],
-          ['De Novo ADC Design', 'Combine Target Antigen, Linker, Payload, DAR, and Fc-Silencing (LALA-PG) via Manual ADC Design or Auto-design ADC to evaluate patient-tailored conjugates.'],
+          ['De Novo ADC Design', 'Explore 368,640 constructs (36 targets, 16 linkers, 20 payloads, 8 DARs, 4 Fc formats) via server matrix Auto-design or toggle Deep Research (GPU) from the split-button menu for live 5-fold ADCSurrogateNet v2 inference.'],
         ];
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } },
       h('div', { class: 'guide', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
@@ -195,151 +199,1949 @@
   const MODES = ['Patient Info', 'ADC Matrix', 'De Novo ADC Design'];
 
   // ------------------------------------------------------------------ Structure Studio Knowledge Base
-  const STUDIO_TARGETS = [
-    { id: 'HER2 (ERBB2)', gene: 'ERBB2', refAdc: 'trastuzumab-deruxtecan', selectivity: 4.8,
-      tumorKeys: ['breast', 'gastric', 'stomach', 'nsclc', 'lung', 'colorectal', 'colon', 'bladder', 'urothelial', '유방', '위암', '폐암', '대장', '방광'],
-      tissues: [
-        { organ: 'pulmonary', name: 'Lung alveolar', tpm: 48 },
-        { organ: 'cardiovascular', name: 'Cardiomyocyte', tpm: 36 },
-        { organ: 'gastrointestinal', name: 'GI mucosa', tpm: 42 },
+  let STUDIO_TARGETS = [
+    {
+      "id": "HER2 (ERBB2)",
+      "gene": "ERBB2",
+      "group": "breast_gyn",
+      "refAdc": "trastuzumab-deruxtecan",
+      "selectivity": 4.9,
+      "tumor_tpm": 280.0,
+      "tumorKeys": [
+        "breast",
+        "gastric",
+        "stomach",
+        "nsclc",
+        "lung",
+        "colorectal",
+        "colon",
+        "bladder",
+        "urothelial",
+        "biliary",
+        "유방",
+        "위암",
+        "폐암",
+        "대장",
+        "방광",
+        "담도"
       ],
-      popover: 'Receptor tyrosine kinase amplified in breast, gastric, and NSCLC tumors. Baseline expression in lung alveolar epithelium and cardiomyocytes requires monitoring for ILD and LVEF decline.',
-      popover_ko: '유방암, 위암, 비소세포폐암에서 증폭되는 수용체 티로신 키나아제입니다. 폐포 상피세포와 심근세포에 기저 발현이 존재하여 간질성 폐질환(ILD) 및 좌심실 구혈률(LVEF) 감시가 필요합니다.' },
-    { id: 'TROP2 (TACSTD2)', gene: 'TACSTD2', refAdc: 'sacituzumab-govitecan', selectivity: 4.4,
-      tumorKeys: ['breast', 'tnbc', 'nsclc', 'lung', 'urothelial', 'bladder', 'cervical', 'endometrial', 'ovarian', '유방', '삼중음성', '폐암', '요로상피', '방광', '자궁', '난소'],
-      tissues: [
-        { organ: 'gastrointestinal', name: 'Colonic epithelium', tpm: 68 },
-        { organ: 'dermatologic', name: 'Stratified skin', tpm: 62 },
-        { organ: 'pulmonary', name: 'Bronchial epithelium', tpm: 39 },
+      "tissues": [
+        {
+          "organ": "pulmonary",
+          "tpm": 48
+        },
+        {
+          "organ": "cardiovascular",
+          "tpm": 36
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 42
+        }
       ],
-      popover: 'Transmembrane glycoprotein broadly overexpressed across epithelial carcinomas; baseline expression in GI mucosa and stratified skin keratinocytes mediates mucosal and cutaneous sensitivity.',
-      popover_ko: '상피성 고형암 전반에 과발현되는 막관통 당단백질입니다. 대장 점막 및 피부 각질형성세포에 기저 발현이 있어 구내염, 설사 및 피부 발진 민감도와 연관됩니다.' },
-    { id: 'Nectin-4', gene: 'NECTIN4', refAdc: 'enfortumab-vedotin', selectivity: 4.3,
-      tumorKeys: ['urothelial', 'bladder', 'breast', 'nsclc', 'cervical', '요로상피', '방광', '유방', '자궁경부'],
-      tissues: [
-        { organ: 'dermatologic', name: 'Epidermal keratinocyte', tpm: 84 },
-        { organ: 'metabolic_endocrine', name: 'Salivary / Sweat gland', tpm: 45 },
-        { organ: 'ocular', name: 'Corneal epithelium', tpm: 34 },
+      "popover": "Receptor tyrosine kinase amplified in breast, gastric, and NSCLC tumors. Baseline expression in lung alveolar epithelium and cardiomyocytes requires monitoring for ILD and LVEF decline.",
+      "popover_ko": "유방암, 위암, 비소세포폐암에서 증폭되는 수용체 티로신 키나아제입니다. 폐포 상피세포와 심근세포에 기저 발현이 존재하여 간질성 폐질환(ILD) 및 좌심실 구혈률(LVEF) 감시가 필요합니다."
+    },
+    {
+      "id": "TROP2 (TACSTD2)",
+      "gene": "TACSTD2",
+      "group": "breast_gyn",
+      "refAdc": "sacituzumab-govitecan",
+      "selectivity": 4.4,
+      "tumor_tpm": 310.0,
+      "tumorKeys": [
+        "breast",
+        "tnbc",
+        "nsclc",
+        "lung",
+        "urothelial",
+        "bladder",
+        "cervical",
+        "endometrial",
+        "ovarian",
+        "유방",
+        "삼중음성",
+        "폐암",
+        "요로상피",
+        "방광",
+        "자궁",
+        "난소"
       ],
-      popover: 'Cell adhesion molecule highly enriched in urothelial carcinoma; strong physiological expression in epidermal keratinocytes and sweat glands mediates on-target cutaneous toxicity.',
-      popover_ko: '요로상피암(방광암)에서 고밀도로 발현되는 세포 접착 분자입니다. 정상 표피 각질세포와 땀샘에도 발현량이 높아 표적 매개 피부 발진, 건조증에 대한 관리가 중요합니다.' },
-    { id: 'CD79b', gene: 'CD79B', refAdc: 'polatuzumab-vedotin', selectivity: 5.4,
-      tumorKeys: ['lymphoma', 'dlbcl', 'b-cell', 'leukemia', '림프종', '백혈병', '미만성'],
-      tissues: [
-        { organ: 'haematologic', name: 'B-lineage lymphoid', tpm: 72 },
-        { organ: 'infectious_immune', name: 'Spleen / Lymph node', tpm: 58 },
-        { organ: 'hepatic', name: 'Hepatic sinusoid', tpm: 12 },
+      "tissues": [
+        {
+          "organ": "gastrointestinal",
+          "tpm": 68
+        },
+        {
+          "organ": "dermatologic",
+          "tpm": 62
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 39
+        }
       ],
-      popover: 'B-cell receptor signaling subunit restricted to B-lineage lymphomas; rapidly internalized upon cross-linking with high selectivity outside lymphoid and marrow compartments.',
-      popover_ko: 'B세포 계열 림프종에 선택적으로 발현되는 B세포 수용체 신호전달 소단위입니다. 결합 시 신속히 내재화되며 골수, 림프 조직 외 고형 장기 발현은 매우 낮습니다.' },
-    { id: 'BCMA (TNFRSF17)', gene: 'TNFRSF17', refAdc: 'belantamab-mafodotin', selectivity: 5.8,
-      tumorKeys: ['myeloma', 'plasma', '골수종', '형질세포'],
-      tissues: [
-        { organ: 'haematologic', name: 'Plasma cell niche', tpm: 66 },
-        { organ: 'ocular', name: 'Corneal macropinocytosis', tpm: 49 },
-        { organ: 'renal', name: 'Renal tubular', tpm: 14 },
+      "popover": "Transmembrane glycoprotein broadly overexpressed across epithelial carcinomas; baseline expression in GI mucosa and stratified skin keratinocytes mediates mucosal and cutaneous sensitivity.",
+      "popover_ko": "상피성 고형암 전반에 과발현되는 막관통 당단백질입니다. 대장 점막 및 피부 각질형성세포에 기저 발현이 있어 구내염, 설사 및 피부 발진 민감도와 연관됩니다."
+    },
+    {
+      "id": "FRalpha (FOLR1)",
+      "gene": "FOLR1",
+      "group": "breast_gyn",
+      "refAdc": "mirvetuximab-soravtansine",
+      "selectivity": 4.6,
+      "tumor_tpm": 210.0,
+      "tumorKeys": [
+        "ovarian",
+        "endometrial",
+        "fallopian",
+        "peritoneal",
+        "nsclc",
+        "난소",
+        "자궁내막",
+        "나팔관",
+        "복막"
       ],
-      popover: 'Lineage-restricted receptor on mature plasma cells in multiple myeloma; corneal epithelial changes arise via off-target macropinocytosis of the conjugate.',
-      popover_ko: '다발성 골수종 형질세포에 특이적으로 발현되는 성숙 항원입니다. 정상 고형 장기 발현은 극히 낮으나 각막 상피의 비특이적 거대음세포작용(macropinocytosis)을 통한 안구 독성이 주요 감시 대상입니다.' },
-    { id: 'FRalpha (FOLR1)', gene: 'FOLR1', refAdc: 'mirvetuximab-soravtansine', selectivity: 4.6,
-      tumorKeys: ['ovarian', 'endometrial', 'fallopian', 'peritoneal', 'nsclc', '난소', '자궁내막', '나팔관', '복막'],
-      tissues: [
-        { organ: 'ocular', name: 'Ocular epithelium', tpm: 54 },
-        { organ: 'pulmonary', name: 'Type II pneumocyte', tpm: 44 },
-        { organ: 'renal', name: 'Proximal kidney tubule', tpm: 51 },
+      "tissues": [
+        {
+          "organ": "ocular",
+          "tpm": 54
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 44
+        },
+        {
+          "organ": "renal",
+          "tpm": 51
+        }
       ],
-      popover: 'GPI-anchored folate receptor overexpressed in ovarian and endometrial carcinomas; apical expression in corneal epithelium and renal tubules requires ocular prophylaxis.',
-      popover_ko: '난소암, 자궁내막암에서 과발현되는 엽산 수용체 알파입니다. 각막 상피와 신장 근위세뇨관에 기저 발현이 있어 점안제 예방 등 안과적 관리가 권장됩니다.' },
+      "popover": "GPI-anchored folate receptor overexpressed in ovarian and endometrial carcinomas; apical expression in corneal epithelium and renal tubules requires ocular monitoring.",
+      "popover_ko": "난소암, 자궁내막암에서 과발현되는 엽산 수용체 알파입니다. 각막 상피와 신장 근위세뇨관에 기저 발현이 있어 점안제 예방 등 안과적 관리가 권장됩니다."
+    },
+    {
+      "id": "Tissue Factor (F3)",
+      "gene": "F3",
+      "group": "breast_gyn",
+      "refAdc": "tisotumab-vedotin",
+      "selectivity": 4.2,
+      "tumor_tpm": 195.0,
+      "tumorKeys": [
+        "cervical",
+        "ovarian",
+        "head and neck",
+        "pancreatic",
+        "자궁경부",
+        "난소",
+        "두경부",
+        "췌장"
+      ],
+      "tissues": [
+        {
+          "organ": "ocular",
+          "tpm": 58
+        },
+        {
+          "organ": "dermatologic",
+          "tpm": 46
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 35
+        }
+      ],
+      "popover": "Coagulation initiator receptor highly expressed in cervical and squamous carcinomas; conjunctival and mucosal expression drives ocular surface and epistaxis risk.",
+      "popover_ko": "자궁경부암 및 편평상피암에서 고발현되는 응고 개시 수용체입니다. 결막 및 비강 점막 상피 발현으로 인해 결막염, 안구건조 및 비출혈 관리가 중요합니다."
+    },
+    {
+      "id": "HER3 (ERBB3)",
+      "gene": "ERBB3",
+      "group": "breast_gyn",
+      "refAdc": "trastuzumab-deruxtecan",
+      "selectivity": 4.5,
+      "tumor_tpm": 230.0,
+      "tumorKeys": [
+        "breast",
+        "nsclc",
+        "lung",
+        "egfr",
+        "colorectal",
+        "ovarian",
+        "유방",
+        "폐암",
+        "대장",
+        "난소"
+      ],
+      "tissues": [
+        {
+          "organ": "gastrointestinal",
+          "tpm": 48
+        },
+        {
+          "organ": "dermatologic",
+          "tpm": 36
+        },
+        {
+          "organ": "hepatic",
+          "tpm": 28
+        }
+      ],
+      "popover": "Pseudokinase receptor driving EGFR-TKI resistance in NSCLC and luminal/HER2 breast cancers (Patritumab deruxtecan target) with rapid clathrin internalization.",
+      "popover_ko": "EGFR 표적치료 내성 비소세포폐암과 유방암에서 과발현되는 수용체(파트리투맙 데룩스테칸 표적)로, 내재화 속도가 빠르고 심근 기저 발현이 HER2보다 낮습니다."
+    },
+    {
+      "id": "LIV-1 (SLC39A6)",
+      "gene": "SLC39A6",
+      "group": "breast_gyn",
+      "refAdc": "sacituzumab-govitecan",
+      "selectivity": 4.7,
+      "tumor_tpm": 245.0,
+      "tumorKeys": [
+        "breast",
+        "tnbc",
+        "prostate",
+        "melanoma",
+        "cervical",
+        "유방",
+        "삼중음성",
+        "전립선",
+        "흑색종"
+      ],
+      "tissues": [
+        {
+          "organ": "metabolic_endocrine",
+          "tpm": 42
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 22
+        },
+        {
+          "organ": "dermatologic",
+          "tpm": 18
+        }
+      ],
+      "popover": "Zinc transporter protein enriched across hormone-positive and triple-negative breast cancers (Ladiratuzumab target) with low visceral organ expression.",
+      "popover_ko": "호르몬 양성 및 삼중음성 유방암 전반에 고발현되는 아연 수송체 막단백질(라디라투주맙 표적)로, 주요 실질 장기 내 기저 발현이 낮습니다."
+    },
+    {
+      "id": "NaPi2b (SLC34A2)",
+      "gene": "SLC34A2",
+      "group": "breast_gyn",
+      "refAdc": "mirvetuximab-soravtansine",
+      "selectivity": 3.8,
+      "tumor_tpm": 265.0,
+      "tumorKeys": [
+        "ovarian",
+        "nsclc",
+        "lung",
+        "endometrial",
+        "thyroid",
+        "난소",
+        "폐암",
+        "자궁내막",
+        "갑상선"
+      ],
+      "tissues": [
+        {
+          "organ": "pulmonary",
+          "tpm": 88
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 24
+        },
+        {
+          "organ": "renal",
+          "tpm": 18
+        }
+      ],
+      "popover": "Sodium-dependent phosphate transporter overexpressed in high-grade serous ovarian cancer and NSCLC; physiological surfactant pneumocyte expression warrants pulmonary caution.",
+      "popover_ko": "고등급 장액성 난소암과 비소세포폐암에서 발현되는 인산 수송체입니다. 정상 제2형 폐포 상피세포의 발현량이 높아 폐 독성 회피 설계가 필수적입니다."
+    },
+    {
+      "id": "EGFR",
+      "gene": "EGFR",
+      "group": "lung_gi",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 3.9,
+      "tumor_tpm": 290.0,
+      "tumorKeys": [
+        "nsclc",
+        "lung",
+        "head and neck",
+        "colorectal",
+        "colon",
+        "glioblastoma",
+        "glioma",
+        "폐암",
+        "두경부",
+        "대장",
+        "교모세포종",
+        "뇌종양"
+      ],
+      "tissues": [
+        {
+          "organ": "dermatologic",
+          "tpm": 92
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 54
+        },
+        {
+          "organ": "ocular",
+          "tpm": 45
+        }
+      ],
+      "popover": "Epidermal growth factor receptor amplified in NSCLC, HNSCC, colorectal, and glioblastoma; abundant basal keratinocyte and corneal expression drives rash and keratitis.",
+      "popover_ko": "비소세포폐암, 두경부암, 대장암, 교모세포종에서 증폭되는 표피성장인자 수용체입니다. 피부 기저 각질세포와 각막 상피 발현이 높아 피부 및 안구 독성 제어가 핵심입니다."
+    },
+    {
+      "id": "c-MET (MET)",
+      "gene": "MET",
+      "group": "lung_gi",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 4.4,
+      "tumor_tpm": 215.0,
+      "tumorKeys": [
+        "nsclc",
+        "lung",
+        "gastric",
+        "stomach",
+        "colorectal",
+        "colon",
+        "renal",
+        "hepatocellular",
+        "liver",
+        "폐암",
+        "위암",
+        "대장",
+        "신장암",
+        "간암"
+      ],
+      "tissues": [
+        {
+          "organ": "hepatic",
+          "tpm": 46
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 38
+        },
+        {
+          "organ": "renal",
+          "tpm": 34
+        }
+      ],
+      "popover": "Hepatocyte growth factor receptor overexpressed in MET-amplified NSCLC, gastric, and colorectal cancers (Telisotuzumab vedotin target).",
+      "popover_ko": "비소세포폐암, 위암, 대장암에서 증폭되는 간세포성장인자 수용체(텔리소투주맙 베도틴 표적)로, 간세포 및 위장관 상피 기저 발현을 고려해 설계합니다."
+    },
+    {
+      "id": "CEACAM5",
+      "gene": "CEACAM5",
+      "group": "lung_gi",
+      "refAdc": "sacituzumab-govitecan",
+      "selectivity": 4.8,
+      "tumor_tpm": 350.0,
+      "tumorKeys": [
+        "colorectal",
+        "colon",
+        "rectal",
+        "gastric",
+        "stomach",
+        "nsclc",
+        "lung",
+        "pancreatic",
+        "대장",
+        "결장",
+        "직장",
+        "위암",
+        "폐암",
+        "췌장"
+      ],
+      "tissues": [
+        {
+          "organ": "gastrointestinal",
+          "tpm": 86
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 18
+        },
+        {
+          "organ": "hepatic",
+          "tpm": 8
+        }
+      ],
+      "popover": "Carcinoembryonic antigen densely expressed on colorectal, gastric, pancreatic, and non-squamous NSCLC tumors (Tusamitamab / Precemtabart target).",
+      "popover_ko": "대장암, 위암, 췌장암, 비편평 비소세포폐암에서 고밀도로 발현되는 암배아항원(투사미타맙, 프레셈타바트 표적)입니다. 정상 대장 점막 외 전신 장기 발현이 낮습니다."
+    },
+    {
+      "id": "CLDN18.2 (CLDN18)",
+      "gene": "CLDN18",
+      "group": "lung_gi",
+      "refAdc": "trastuzumab-deruxtecan",
+      "selectivity": 5.1,
+      "tumor_tpm": 260.0,
+      "tumorKeys": [
+        "gastric",
+        "stomach",
+        "esophageal",
+        "pancreatic",
+        "biliary",
+        "cholangio",
+        "위암",
+        "식도암",
+        "췌장",
+        "담도",
+        "담관"
+      ],
+      "tissues": [
+        {
+          "organ": "gastrointestinal",
+          "tpm": 90
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 22
+        },
+        {
+          "organ": "hepatic",
+          "tpm": 4
+        }
+      ],
+      "popover": "Tight-junction isoform buried in healthy gastric pits but exposed on gastric, GEJ, and pancreatic adenocarcinoma surfaces, yielding high tumor selectivity outside gastric mucosa.",
+      "popover_ko": "정상 위 점막에서는 세포 간 밀착연접 내부에 숨겨져 있다가 위암, 식도위접합부암, 췌장암에서 표면으로 노출되는 고선택성 표적입니다."
+    },
+    {
+      "id": "B7-H3 (CD276)",
+      "gene": "CD276",
+      "group": "lung_gi",
+      "refAdc": "trastuzumab-deruxtecan",
+      "selectivity": 5.2,
+      "tumor_tpm": 240.0,
+      "tumorKeys": [
+        "sclc",
+        "nsclc",
+        "lung",
+        "prostate",
+        "esophageal",
+        "head and neck",
+        "sarcoma",
+        "neuroblastoma",
+        "폐암",
+        "소세포",
+        "전립선",
+        "식도암",
+        "육종",
+        "두경부"
+      ],
+      "tissues": [
+        {
+          "organ": "metabolic_endocrine",
+          "tpm": 18
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 16
+        },
+        {
+          "organ": "cardiovascular",
+          "tpm": 14
+        }
+      ],
+      "popover": "Immune checkpoint ligand overexpressed across SCLC, prostate, esophageal, and pediatric solid tumors (Ifinatamab deruxtecan target) with restricted normal organ translation.",
+      "popover_ko": "소세포폐암, 전립선암, 식도암, 육종 등 고형암 전반에 과발현되는 면역관문 단백질(이피나타맙 데룩스테칸 표적)로 정상 장기 발현이 낮아 치료지수가 넓습니다."
+    },
+    {
+      "id": "DLL3",
+      "gene": "DLL3",
+      "group": "lung_gi",
+      "refAdc": "loncastuximab-tesirine",
+      "selectivity": 5.9,
+      "tumor_tpm": 185.0,
+      "tumorKeys": [
+        "sclc",
+        "neuroendocrine",
+        "lung",
+        "prostate",
+        "glioma",
+        "소세포폐암",
+        "폐암",
+        "신경내분비"
+      ],
+      "tissues": [
+        {
+          "organ": "neurologic",
+          "tpm": 22
+        },
+        {
+          "organ": "metabolic_endocrine",
+          "tpm": 11
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 4
+        }
+      ],
+      "popover": "Inhibitory Notch ligand selectively expressed on small-cell lung cancer (SCLC) and neuroendocrine carcinomas with virtually absent surface expression in adult normal organs.",
+      "popover_ko": "소세포폐암(SCLC) 및 신경내분비 종양 표면에 특이적으로 발현되는 Notch 리간드로, 성인 정상 조직의 세포막 표면 발현이 극히 낮습니다."
+    },
+    {
+      "id": "Mesothelin (MSLN)",
+      "gene": "MSLN",
+      "group": "lung_gi",
+      "refAdc": "mirvetuximab-soravtansine",
+      "selectivity": 4.5,
+      "tumor_tpm": 255.0,
+      "tumorKeys": [
+        "mesothelioma",
+        "ovarian",
+        "pancreatic",
+        "nsclc",
+        "lung",
+        "중피종",
+        "흉막",
+        "난소",
+        "췌장",
+        "폐암"
+      ],
+      "tissues": [
+        {
+          "organ": "pulmonary",
+          "tpm": 48
+        },
+        {
+          "organ": "cardiovascular",
+          "tpm": 30
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 14
+        }
+      ],
+      "popover": "GPI-anchored glycoprotein overexpressed in mesothelioma, pancreatic, and ovarian cancers (Anetumab target); normal expression is confined to pleural/pericardial/peritoneal serosa.",
+      "popover_ko": "악성 중피종, 췌장암, 난소암에서 과발현되는 막단백질(아네투맙 표적)입니다. 정상 발현이 흉막, 심낭, 복막 중피세포에 국한되어 장막염 감시가 필요합니다."
+    },
+    {
+      "id": "EpCAM",
+      "gene": "EPCAM",
+      "group": "lung_gi",
+      "refAdc": "sacituzumab-govitecan",
+      "selectivity": 3.7,
+      "tumor_tpm": 330.0,
+      "tumorKeys": [
+        "colorectal",
+        "colon",
+        "gastric",
+        "breast",
+        "pancreatic",
+        "ovarian",
+        "대장",
+        "위암",
+        "유방",
+        "췌장",
+        "난소"
+      ],
+      "tissues": [
+        {
+          "organ": "gastrointestinal",
+          "tpm": 94
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 46
+        },
+        {
+          "organ": "renal",
+          "tpm": 38
+        }
+      ],
+      "popover": "Pan-epithelial cell adhesion molecule with very high copy density across GI and breast carcinomas; basolateral expression in normal gut and biliary epithelium requires stable linkers.",
+      "popover_ko": "위장관암, 유방암 등 상피성 암종에서 매우 높은 밀도로 발현되나 정상 장 점막 및 담관 상피에도 발현되어 고안정성 링커 조합이 요구됩니다."
+    },
+    {
+      "id": "FGFR2",
+      "gene": "FGFR2",
+      "group": "lung_gi",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 4.3,
+      "tumor_tpm": 205.0,
+      "tumorKeys": [
+        "gastric",
+        "stomach",
+        "cholangio",
+        "biliary",
+        "breast",
+        "endometrial",
+        "위암",
+        "담관",
+        "담도",
+        "유방",
+        "자궁내막"
+      ],
+      "tissues": [
+        {
+          "organ": "dermatologic",
+          "tpm": 58
+        },
+        {
+          "organ": "ocular",
+          "tpm": 46
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 36
+        }
+      ],
+      "popover": "Fibroblast growth factor receptor 2b/2 amplified in diffuse gastric cancer and intrahepatic cholangiocarcinoma (Aprutumab target); corneal and nail-bed expression warrants ocular care.",
+      "popover_ko": "미만성 위암과 담관암에서 유전자 증폭이 흔한 수용체(아프루투맙 표적)이며, 각막 및 피부 부속기 기저 발현을 고려해야 합니다."
+    },
+    {
+      "id": "Integrin beta-6 (ITGB6)",
+      "gene": "ITGB6",
+      "group": "lung_gi",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 4.8,
+      "tumor_tpm": 225.0,
+      "tumorKeys": [
+        "nsclc",
+        "lung",
+        "head and neck",
+        "esophageal",
+        "pancreatic",
+        "breast",
+        "폐암",
+        "두경부",
+        "식도암",
+        "췌장",
+        "유방"
+      ],
+      "tissues": [
+        {
+          "organ": "pulmonary",
+          "tpm": 36
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 28
+        },
+        {
+          "organ": "dermatologic",
+          "tpm": 24
+        }
+      ],
+      "popover": "Epithelial-restricted alpha-v-beta-6 integrin upregulated during carcinoma invasion in NSCLC, HNSCC, and esophageal cancer (Sigvotatug vedotin target).",
+      "popover_ko": "비소세포폐암, 두경부암, 식도암의 침윤 과정에서 특이적으로 유도되는 인테그린(시그보타투그 베도틴 표적)으로 정상 성체 조직 발현이 낮습니다."
+    },
+    {
+      "id": "Nectin-4",
+      "gene": "NECTIN4",
+      "group": "gu_solid",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 4.3,
+      "tumor_tpm": 190.0,
+      "tumorKeys": [
+        "urothelial",
+        "bladder",
+        "breast",
+        "nsclc",
+        "cervical",
+        "요로상피",
+        "방광",
+        "유방",
+        "자궁경부"
+      ],
+      "tissues": [
+        {
+          "organ": "dermatologic",
+          "tpm": 84
+        },
+        {
+          "organ": "metabolic_endocrine",
+          "tpm": 45
+        },
+        {
+          "organ": "ocular",
+          "tpm": 34
+        }
+      ],
+      "popover": "Cell adhesion molecule highly enriched in urothelial carcinoma; physiological expression in epidermal keratinocytes and sweat glands mediates cutaneous toxicity.",
+      "popover_ko": "요로상피암(방광암)에서 고밀도로 발현되는 세포 접착 분자입니다. 정상 표피 각질세포와 땀샘에도 발현량이 높아 표적 매개 피부 발진, 건조증에 대한 관리가 중요합니다."
+    },
+    {
+      "id": "PSMA (FOLH1)",
+      "gene": "FOLH1",
+      "group": "gu_solid",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 5.3,
+      "tumor_tpm": 295.0,
+      "tumorKeys": [
+        "prostate",
+        "renal",
+        "kidney",
+        "전립선",
+        "신장암"
+      ],
+      "tissues": [
+        {
+          "organ": "renal",
+          "tpm": 52
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 28
+        },
+        {
+          "organ": "neurologic",
+          "tpm": 19
+        }
+      ],
+      "popover": "Prostate-specific membrane antigen densely expressed in metastatic castration-resistant prostate cancer and tumor neovasculature, with proximal renal tubule and salivary expression.",
+      "popover_ko": "전이성 거세저항성 전립선암과 종양 신생혈관에 고발현되는 막항원입니다. 신장 근위세뇨관 및 침샘의 기저 발현을 고려해 페이로드를 선택합니다."
+    },
+    {
+      "id": "STEAP1",
+      "gene": "STEAP1",
+      "group": "gu_solid",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 5.4,
+      "tumor_tpm": 240.0,
+      "tumorKeys": [
+        "prostate",
+        "sarcoma",
+        "ewing",
+        "bladder",
+        "전립선",
+        "육종",
+        "방광"
+      ],
+      "tissues": [
+        {
+          "organ": "metabolic_endocrine",
+          "tpm": 25
+        },
+        {
+          "organ": "renal",
+          "tpm": 14
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 12
+        }
+      ],
+      "popover": "Six-transmembrane epithelial antigen of the prostate (Vandortuzumab target) overexpressed in >85% of prostate cancers and Ewing sarcoma with minimal normal visceral expression.",
+      "popover_ko": "전립선암의 85% 이상과 유윙 육종에서 과발현되는 6막관통 단백질(반도르투주맙 표적)로 정상 실질 장기의 기저 발현이 매우 낮습니다."
+    },
+    {
+      "id": "CDH6",
+      "gene": "CDH6",
+      "group": "gu_solid",
+      "refAdc": "trastuzumab-deruxtecan",
+      "selectivity": 5.0,
+      "tumor_tpm": 235.0,
+      "tumorKeys": [
+        "ovarian",
+        "renal",
+        "kidney",
+        "endometrial",
+        "cholangio",
+        "난소",
+        "신장암",
+        "신세포암",
+        "자궁내막"
+      ],
+      "tissues": [
+        {
+          "organ": "renal",
+          "tpm": 68
+        },
+        {
+          "organ": "neurologic",
+          "tpm": 16
+        },
+        {
+          "organ": "cardiovascular",
+          "tpm": 8
+        }
+      ],
+      "popover": "Cadherin-6 cell adhesion receptor overexpressed in ovarian and clear-cell renal cell carcinoma (Raludotatug deruxtecan target); normal expression is mainly renal proximal tubules.",
+      "popover_ko": "난소암 및 투명세포 신세포암에서 고발현되는 카드헤린-6(랄루도타투그 데룩스테칸 표적)로, 정상 조직 발현은 신장 근위세뇨관에 제한됩니다."
+    },
+    {
+      "id": "ENPP3",
+      "gene": "ENPP3",
+      "group": "gu_solid",
+      "refAdc": "belantamab-mafodotin",
+      "selectivity": 5.1,
+      "tumor_tpm": 220.0,
+      "tumorKeys": [
+        "renal",
+        "kidney",
+        "hepatocellular",
+        "liver",
+        "신장암",
+        "신세포암",
+        "간암"
+      ],
+      "tissues": [
+        {
+          "organ": "renal",
+          "tpm": 44
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 32
+        },
+        {
+          "organ": "hepatic",
+          "tpm": 18
+        }
+      ],
+      "popover": "Ectonucleotide pyrophosphatase (CD203c, AGS-16C3F target) expressed in >90% of clear-cell and papillary renal cell carcinomas with low systemic background.",
+      "popover_ko": "투명세포 및 유두상 신세포암의 90% 이상에서 과발현되는 효소 수용체(AGS-16C3F 표적)로 비표적 장기 기저 발현이 낮습니다."
+    },
+    {
+      "id": "AXL",
+      "gene": "AXL",
+      "group": "gu_solid",
+      "refAdc": "tisotumab-vedotin",
+      "selectivity": 4.4,
+      "tumor_tpm": 205.0,
+      "tumorKeys": [
+        "nsclc",
+        "lung",
+        "sarcoma",
+        "melanoma",
+        "pancreatic",
+        "renal",
+        "aml",
+        "폐암",
+        "육종",
+        "흑색종",
+        "췌장",
+        "신장암"
+      ],
+      "tissues": [
+        {
+          "organ": "pulmonary",
+          "tpm": 34
+        },
+        {
+          "organ": "cardiovascular",
+          "tpm": 26
+        },
+        {
+          "organ": "musculoskeletal",
+          "tpm": 22
+        }
+      ],
+      "popover": "TAM-family receptor tyrosine kinase enriched in mesenchymal/EMT drug-resistant NSCLC, sarcoma, and melanoma (Enapotamab / Mecbotamab target).",
+      "popover_ko": "상피-중간엽 전이(EMT) 및 치료 저항성 비소세포폐암, 육종, 흑색종에서 발현이 증가하는 수용체(에나포타맙, 멕보타맙 표적)입니다."
+    },
+    {
+      "id": "PTK7",
+      "gene": "PTK7",
+      "group": "gu_solid",
+      "refAdc": "sacituzumab-govitecan",
+      "selectivity": 4.7,
+      "tumor_tpm": 225.0,
+      "tumorKeys": [
+        "ovarian",
+        "nsclc",
+        "lung",
+        "tnbc",
+        "breast",
+        "esophageal",
+        "난소",
+        "폐암",
+        "유방",
+        "삼중음성",
+        "식도암"
+      ],
+      "tissues": [
+        {
+          "organ": "gastrointestinal",
+          "tpm": 32
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 24
+        },
+        {
+          "organ": "dermatologic",
+          "tpm": 22
+        }
+      ],
+      "popover": "Wnt-pathway pseudokinase receptor enriched on tumor-initiating cells in ovarian cancer, TNBC, and NSCLC (Cofetuzumab pelidotin target).",
+      "popover_ko": "난소암, 삼중음성 유방암, 비소세포폐암의 암줄기세포 분획에서 과발현되는 Wnt 경로 수용체(코페투주맙 표적)입니다."
+    },
+    {
+      "id": "P-Cadherin (CDH3)",
+      "gene": "CDH3",
+      "group": "gu_solid",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 4.3,
+      "tumor_tpm": 240.0,
+      "tumorKeys": [
+        "head and neck",
+        "breast",
+        "tnbc",
+        "pancreatic",
+        "gastric",
+        "colorectal",
+        "두경부",
+        "유방",
+        "삼중음성",
+        "췌장",
+        "위암",
+        "대장"
+      ],
+      "tissues": [
+        {
+          "organ": "dermatologic",
+          "tpm": 64
+        },
+        {
+          "organ": "gastrointestinal",
+          "tpm": 34
+        },
+        {
+          "organ": "ocular",
+          "tpm": 22
+        }
+      ],
+      "popover": "Placental cadherin upregulated in basal-like breast, HNSCC, pancreatic, and gastric carcinomas (PCA062 target); basal epidermal expression parallels Nectin-4.",
+      "popover_ko": "기저유사 유방암, 두경부암, 췌장암, 위암에서 발현되는 태반성 카드헤린으로, 피부 기저층 발현이 있어 피부 독성 감시가 권장됩니다."
+    },
+    {
+      "id": "GPNMB",
+      "gene": "GPNMB",
+      "group": "gu_solid",
+      "refAdc": "enfortumab-vedotin",
+      "selectivity": 4.6,
+      "tumor_tpm": 230.0,
+      "tumorKeys": [
+        "melanoma",
+        "breast",
+        "tnbc",
+        "osteosarcoma",
+        "sarcoma",
+        "glioma",
+        "흑색종",
+        "피부암",
+        "유방",
+        "삼중음성",
+        "골육종",
+        "육종"
+      ],
+      "tissues": [
+        {
+          "organ": "dermatologic",
+          "tpm": 45
+        },
+        {
+          "organ": "musculoskeletal",
+          "tpm": 18
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 16
+        }
+      ],
+      "popover": "Osteoactivin transmembrane glycoprotein overexpressed in melanoma, TNBC, and osteosarcoma (Glembatumumab vedotin target); melanocyte expression links to rash.",
+      "popover_ko": "흑색종, 삼중음성 유방암, 골육종에서 과발현되는 막관통 당단백질(글렘바투무맙 베도틴 표적)로 피부 멜라닌세포 발현과 연관됩니다."
+    },
+    {
+      "id": "ROR1",
+      "gene": "ROR1",
+      "group": "gu_solid",
+      "refAdc": "polatuzumab-vedotin",
+      "selectivity": 5.5,
+      "tumor_tpm": 195.0,
+      "tumorKeys": [
+        "lymphoma",
+        "cll",
+        "leukemia",
+        "tnbc",
+        "breast",
+        "nsclc",
+        "ovarian",
+        "림프종",
+        "백혈병",
+        "유방",
+        "삼중음성",
+        "폐암",
+        "난소"
+      ],
+      "tissues": [
+        {
+          "organ": "cardiovascular",
+          "tpm": 11
+        },
+        {
+          "organ": "neurologic",
+          "tpm": 9
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 8
+        }
+      ],
+      "popover": "Oncofetal receptor expressed across mantle-cell/DLBCL lymphomas, CLL, TNBC, and NSCLC (Zilovertamab vedotin target) with minimal adult tissue expression.",
+      "popover_ko": "외투세포 및 미만성 거대 B세포 림프종과 삼중음성 유방암, 폐암에 발현되는 태아성 종양항원(질로버타맙 베도틴 표적)으로 성인 정상 조직 발현이 매우 낮습니다."
+    },
+    {
+      "id": "CD79b",
+      "gene": "CD79B",
+      "group": "heme",
+      "refAdc": "polatuzumab-vedotin",
+      "selectivity": 5.4,
+      "tumor_tpm": 240.0,
+      "tumorKeys": [
+        "lymphoma",
+        "dlbcl",
+        "b-cell",
+        "leukemia",
+        "림프종",
+        "백혈병",
+        "미만성"
+      ],
+      "tissues": [
+        {
+          "organ": "haematologic",
+          "tpm": 72
+        },
+        {
+          "organ": "infectious_immune",
+          "tpm": 58
+        },
+        {
+          "organ": "hepatic",
+          "tpm": 12
+        }
+      ],
+      "popover": "B-cell receptor signaling subunit restricted to B-lineage lymphomas; rapidly internalized upon cross-linking with high selectivity outside lymphoid compartments.",
+      "popover_ko": "B세포 계열 림프종에 선택적으로 발현되는 B세포 수용체 신호전달 소단위입니다. 결합 시 신속히 내재화되며 골수, 림프 조직 외 고형 장기 발현은 매우 낮습니다."
+    },
+    {
+      "id": "BCMA (TNFRSF17)",
+      "gene": "TNFRSF17",
+      "group": "heme",
+      "refAdc": "belantamab-mafodotin",
+      "selectivity": 5.8,
+      "tumor_tpm": 260.0,
+      "tumorKeys": [
+        "myeloma",
+        "plasma",
+        "waldenstrom",
+        "골수종",
+        "형질세포"
+      ],
+      "tissues": [
+        {
+          "organ": "haematologic",
+          "tpm": 66
+        },
+        {
+          "organ": "ocular",
+          "tpm": 49
+        },
+        {
+          "organ": "renal",
+          "tpm": 14
+        }
+      ],
+      "popover": "Lineage-restricted receptor on mature plasma cells in multiple myeloma; corneal epithelial changes arise via off-target macropinocytosis of charged conjugates.",
+      "popover_ko": "다발성 골수종 형질세포에 특이적으로 발현되는 성숙 항원입니다. 정상 고형 장기 발현은 극히 낮으나 각막 상피의 비특이적 거대음세포작용을 통한 안구 독성이 주요 감시 대상입니다."
+    },
+    {
+      "id": "CD19",
+      "gene": "CD19",
+      "group": "heme",
+      "refAdc": "loncastuximab-tesirine",
+      "selectivity": 5.5,
+      "tumor_tpm": 250.0,
+      "tumorKeys": [
+        "lymphoma",
+        "dlbcl",
+        "all",
+        "cll",
+        "leukemia",
+        "b-cell",
+        "림프종",
+        "백혈병"
+      ],
+      "tissues": [
+        {
+          "organ": "haematologic",
+          "tpm": 68
+        },
+        {
+          "organ": "infectious_immune",
+          "tpm": 62
+        },
+        {
+          "organ": "hepatic",
+          "tpm": 10
+        }
+      ],
+      "popover": "Pan-B-lineage co-receptor expressed from pre-B ALL through DLBCL (Loncastuximab tesirine target) with zero expression on non-hematopoietic solid parenchyma.",
+      "popover_ko": "급성 림프구성 백혈병부터 미만성 거대 B세포 림프종까지 폭넓게 발현되는 B세포 공수용체(론카스툭시맙 테시린 표적)로 비조혈계 고형 장기 발현이 없습니다."
+    },
+    {
+      "id": "CD22",
+      "gene": "CD22",
+      "group": "heme",
+      "refAdc": "inotuzumab-ozogamicin",
+      "selectivity": 5.4,
+      "tumor_tpm": 235.0,
+      "tumorKeys": [
+        "all",
+        "leukemia",
+        "lymphoma",
+        "b-cell",
+        "백혈병",
+        "림프종"
+      ],
+      "tissues": [
+        {
+          "organ": "haematologic",
+          "tpm": 64
+        },
+        {
+          "organ": "infectious_immune",
+          "tpm": 54
+        },
+        {
+          "organ": "hepatic",
+          "tpm": 16
+        }
+      ],
+      "popover": "Sialic-acid binding Ig-like lectin (Siglec-2) rapidly endocytosed on B-cell ALL and NHL blasts (Inotuzumab ozogamicin target); hepatic VOD risk comes from calicheamicin payload.",
+      "popover_ko": "B세포 급성 림프구성 백혈병에서 빠르게 내재화되는 시알산 결합 수용체(이노투주맙 오조가마이신 표적)입니다. 간 정맥폐쇄성 질환 위험은 주로 칼리키아마이신 페이로드에서 기인합니다."
+    },
+    {
+      "id": "CD30 (TNFRSF8)",
+      "gene": "TNFRSF8",
+      "group": "heme",
+      "refAdc": "brentuximab-vedotin",
+      "selectivity": 5.9,
+      "tumor_tpm": 275.0,
+      "tumorKeys": [
+        "hodgkin",
+        "lymphoma",
+        "alcl",
+        "t-cell",
+        "호지킨",
+        "림프종"
+      ],
+      "tissues": [
+        {
+          "organ": "infectious_immune",
+          "tpm": 34
+        },
+        {
+          "organ": "haematologic",
+          "tpm": 28
+        },
+        {
+          "organ": "pulmonary",
+          "tpm": 8
+        }
+      ],
+      "popover": "TNF-receptor family member densely expressed on Hodgkin Reed-Sternberg cells and ALCL (Brentuximab vedotin target), restricted to small activated lymphocyte subsets in health.",
+      "popover_ko": "호지킨 림프종과 역형성 거대세포 림프종에서 선택적으로 고발현되는 수용체(브렌툭시맙 베도틴 표적)로 정상 조직 내 기저 발현이 극히 제한적입니다."
+    },
+    {
+      "id": "CD33",
+      "gene": "CD33",
+      "group": "heme",
+      "refAdc": "gemtuzumab-ozogamicin",
+      "selectivity": 4.9,
+      "tumor_tpm": 245.0,
+      "tumorKeys": [
+        "aml",
+        "myeloid",
+        "leukemia",
+        "myelodysplastic",
+        "백혈병",
+        "골수성",
+        "골수이형성"
+      ],
+      "tissues": [
+        {
+          "organ": "haematologic",
+          "tpm": 78
+        },
+        {
+          "organ": "hepatic",
+          "tpm": 34
+        },
+        {
+          "organ": "infectious_immune",
+          "tpm": 42
+        }
+      ],
+      "popover": "Myeloid Siglec-3 receptor expressed on ~90% of AML blasts (Gemtuzumab ozogamicin target); shared expression on myeloid progenitors and hepatic Kupffer cells drives cytopenia and VOD.",
+      "popover_ko": "급성 골수성 백혈병(AML) 모세포의 약 90%에 발현되는 골수계 항원(겜투주맙 오조가마이신 표적)으로 골수 전구세포와 간 쿠퍼세포 발현에 따른 혈구감소 및 간독성 관리가 핵심입니다."
+    },
+    {
+      "id": "CD123 (IL3RA)",
+      "gene": "IL3RA",
+      "group": "heme",
+      "refAdc": "gemtuzumab-ozogamicin",
+      "selectivity": 5.3,
+      "tumor_tpm": 215.0,
+      "tumorKeys": [
+        "aml",
+        "bpdcen",
+        "myeloid",
+        "leukemia",
+        "myelodysplastic",
+        "백혈병",
+        "골수성",
+        "골수이형성"
+      ],
+      "tissues": [
+        {
+          "organ": "haematologic",
+          "tpm": 58
+        },
+        {
+          "organ": "infectious_immune",
+          "tpm": 36
+        },
+        {
+          "organ": "cardiovascular",
+          "tpm": 18
+        }
+      ],
+      "popover": "Interleukin-3 receptor alpha chain enriched on leukemic stem cells in AML and BPDCN (Pivekimab sunirine target) with lower expression on normal HSCs than CD33.",
+      "popover_ko": "급성 골수성 백혈병 줄기세포와 모세포성 형질세포양 수지상세포 종양에서 과발현되는 수용체(피베키맙 수니린 표적)로 CD33 대비 정상 조혈모세포 발현이 낮습니다."
+    },
+    {
+      "id": "CD70",
+      "gene": "CD70",
+      "group": "heme",
+      "refAdc": "brentuximab-vedotin",
+      "selectivity": 5.6,
+      "tumor_tpm": 230.0,
+      "tumorKeys": [
+        "renal",
+        "kidney",
+        "lymphoma",
+        "aml",
+        "leukemia",
+        "nasopharyngeal",
+        "신장암",
+        "림프종",
+        "백혈병",
+        "비인두암"
+      ],
+      "tissues": [
+        {
+          "organ": "infectious_immune",
+          "tpm": 28
+        },
+        {
+          "organ": "haematologic",
+          "tpm": 22
+        },
+        {
+          "organ": "renal",
+          "tpm": 10
+        }
+      ],
+      "popover": "CD27 ligand transiently expressed only on antigen-activated lymphocytes in health, but constitutively overexpressed in clear-cell RCC, NHL, and AML.",
+      "popover_ko": "정상 상태에서는 활성화된 림프구에만 일시 발현되나 투명세포 신세포암, 림프종, 급성 골수성 백혈병에서 지속적으로 고발현되는 고선택성 표적입니다."
+    },
+    {
+      "id": "CD25 (IL2RA)",
+      "gene": "IL2RA",
+      "group": "heme",
+      "refAdc": "brentuximab-vedotin",
+      "selectivity": 5.4,
+      "tumor_tpm": 220.0,
+      "tumorKeys": [
+        "hodgkin",
+        "lymphoma",
+        "t-cell",
+        "leukemia",
+        "호지킨",
+        "림프종",
+        "백혈병"
+      ],
+      "tissues": [
+        {
+          "organ": "infectious_immune",
+          "tpm": 48
+        },
+        {
+          "organ": "haematologic",
+          "tpm": 35
+        },
+        {
+          "organ": "dermatologic",
+          "tpm": 12
+        }
+      ],
+      "popover": "IL-2 receptor alpha chain expressed on Hodgkin/T-cell lymphomas and intratumoral immunosuppressive Treg cells (Camidanlumab tesirine target).",
+      "popover_ko": "호지킨 및 T세포 림프종 세포와 종양 미세환경 내 면역억제 조절 T세포(Treg)에 고발현되는 수용체(카미단루맙 테시린 표적)입니다."
+    }
   ];
 
-  const STUDIO_LINKERS = [
-    { id: 'Tetrapeptide GGFG', cleavable: true, stability: 88, hydro: 0.20, handle: 'amine_hydroxyl',
-      prefPayloads: { 'DXd ( Topo I )': 1.0, 'SN-38 ( Topo I )': 0.72, 'MMAE ( Auristatin )': 0.65, 'MMAF ( Auristatin )': 0.55, 'SG3199 ( PBD Dimer )': 0.60 },
-      note: 'Cathepsin B/L-cleavable tetrapeptide; self-immolative aminomethylene releases hydroxy/amine payload',
-      note_ko: '카텝신 B/L 특이 절단형 4펩타이드; 자가 절단 아미노메틸렌으로 하이드록시/아민 페이로드 유리',
-      popover: 'Hydrophilic glycine-phenylalanine tetrapeptide cleaved selectively by lysosomal cathepsins B/L. High plasma stability (88%) and low hydrophobicity enable homogeneous DAR 8 loading without hepatic aggregation.',
-      popover_ko: '리소좀 효소(카텝신 B/L)에 의해 선택적으로 절단되는 친수성 테트라펩타이드 링커입니다. 높은 혈장 안정도(88%)와 낮은 소수성으로 DAR 8 고밀도 접합 시에도 간 응집과 체내 조기 유출을 억제합니다.' },
-    { id: 'Val-Cit PABC', cleavable: true, stability: 76, hydro: 0.58, handle: 'amine',
-      prefPayloads: { 'MMAE ( Auristatin )': 1.0, 'SG3199 ( PBD Dimer )': 0.94, 'DXd ( Topo I )': 0.70, 'MMAF ( Auristatin )': 0.68 },
-      note: 'Cathepsin B-cleavable dipeptide with para-aminobenzyl carbamate spacer for secondary/primary amines',
-      note_ko: '카텝신 B 특이 절단형 디펩타이드; PABC 스페이서로 아민 페이로드 결합',
-      popover: 'Gold-standard cathepsin B-cleavable dipeptide linker with self-immolative PABC spacer. Releases membrane-permeable amine payloads (MMAE, PBD) cleanly inside tumor lysosomes, optimal at DAR 2–4.',
-      popover_ko: '카텝신 B 절단 후 자가소멸 스페이서(PABC)를 통해 유리 약물을 방출하는 표준 디펩타이드 링커입니다. 아민계 페이로드(MMAE, PBD) 방출 효율이 뛰어나며 DAR 2~4 구간에서 최적의 혈중 안정성을 보입니다.' },
-    { id: 'Hydrolyzable CL2A', cleavable: true, stability: 54, hydro: 0.32, handle: 'hydroxyl',
-      prefPayloads: { 'SN-38 ( Topo I )': 1.0, 'DXd ( Topo I )': 0.78 },
-      note: 'pH-sensitive carbonate linker; systemic and intratumoral hydrolysis releases SN-38',
-      note_ko: 'pH 감응성 탄산염 링커; 종양 산성 미세환경에서 가수분해 방출',
-      popover: 'PEGylated pH-sensitive carbonate linker engineered for camptothecins (SN-38). Gradual hydrolysis in the acidic tumor microenvironment and lysosomes drives strong bystander killing at DAR 7.6–8.',
-      popover_ko: 'PEG 사슬이 도입된 pH 감응성 탄산염 링커로 SN-38 전달에 최적화되어 있습니다. 산성 종양 미세환경과 리소좀에서 약물을 방출해 이질적 종양에서도 강력한 주변 암세포 동반 사멸 효과를 냅니다.' },
-    { id: 'Non-cleavable mc', cleavable: false, stability: 96, hydro: 0.42, handle: 'amine',
-      prefPayloads: { 'MMAF ( Auristatin )': 1.0, 'MMAE ( Auristatin )': 0.52, 'DXd ( Topo I )': 0.48 },
-      note: 'Maleimidocaproyl thioether; requires complete lysosomal proteolysis to release Cys-mc-payload',
-      note_ko: '안정형 티오에테르 링커; 항체 완전 분해 시에만 페이로드 방출',
-      popover: 'Ultra-stable thioether bond (96% plasma stability) requiring full lysosomal antibody proteolysis. Releases charged Cys-mc-MMAF that stays trapped inside target cells, minimizing systemic bystander toxicity.',
-      popover_ko: '혈중 안정도가 96%에 달하는 비절단형 티오에테르 링커로 항체가 리소좀에서 완전 분해될 때만 약물이 방출됩니다. 전하를 띤 아미노산 결합체(Cys-mc-MMAF)를 형성해 전신 누출과 비표적 장기 손상을 최소화합니다.' },
-    { id: 'Disulfide SPDB', cleavable: true, stability: 68, hydro: 0.52, handle: 'thiol',
-      prefPayloads: { 'DM4 / DM1 ( Maytansinoid )': 1.0 },
-      note: 'Sterically hindered disulfide cleaved by intracellular glutathione for thiol maytansinoids',
-      note_ko: '입체 장애 이황화결합 링커; 세포 내 글루타티온 농도에 의해 절단',
-      popover: 'Sterically hindered disulfide bond stable in oxidized plasma but reduced by high intracellular glutathione (GSH) in tumor cells to release thiol maytansinoids (DM4/DM1).',
-      popover_ko: '혈중 산화 환경에서는 안정하고 암세포 내 고농도 글루타티온(GSH)에 의해 선택적으로 환원 절단되는 입체장애 이황화 링커입니다. 티올기(-SH)를 가진 메이탄시노이드(DM4/DM1)와 화학적 짝을 이룹니다.' },
-    { id: 'Acid Hydrazone', cleavable: true, stability: 48, hydro: 0.55, handle: 'ketone',
-      prefPayloads: {},
-      note: 'Acid-labile AcBut hydrazone hydrolyzed in endosomes/lysosomes (pH 4.5-5.0)',
-      note_ko: '산 감응성 하이드라존 링커; 엔도솜/리소좀 내 산성 조건에서 가수분해',
-      popover: 'First-generation acid-labile hydrazone linker hydrolyzed at endosomal/lysosomal pH (4.5–5.0); requires a ketone handle (e.g., calicheamicin derivatives) and exhibits higher systemic deconjugation.',
-      popover_ko: '엔도솜, 리소좀 산성 환경(pH 4.5~5.0)에서 가수분해되는 1세대 산 감응성 하이드라존 링커입니다. 케톤 작용기 페이로드가 필요하며 혈중 자발적 가수분해율이 상대적으로 높습니다.' },
+  let STUDIO_LINKERS = [
+    {
+      "id": "Tetrapeptide GGFG",
+      "group": "protease",
+      "cleavable": true,
+      "stability": 88,
+      "hydro": 0.2,
+      "handle": "amine_hydroxyl",
+      "popover": "Hydrophilic glycine-phenylalanine tetrapeptide cleaved selectively by lysosomal cathepsins B/L. High plasma stability (88%) and low hydrophobicity enable homogeneous DAR 8 loading.",
+      "popover_ko": "리소좀 효소(카텝신 B/L)에 의해 선택적으로 절단되는 친수성 테트라펩타이드 링커입니다. 높은 혈장 안정도(88%)와 낮은 소수성으로 DAR 8 고밀도 접합에서도 간 응집을 억제합니다."
+    },
+    {
+      "id": "GGFG-Cyclopropyl",
+      "group": "protease",
+      "cleavable": true,
+      "stability": 92,
+      "hydro": 0.24,
+      "handle": "amine_hydroxyl",
+      "popover": "Cyclopropyl-shielded GGFG aminomethylene linker (SHR-A1811 / Rezetecan class) that slows premature plasma esterase/protease cleavage while preserving lysosomal Topo I release.",
+      "popover_ko": "아미노메틸렌 자가절단 부위에 사이클로프로필 입체 보호기를 도입한 차세대 GGFG 링커(SHR-A1811 계열)로 혈중 조기 유출을 더욱 낮춥니다."
+    },
+    {
+      "id": "Val-Cit PABC",
+      "group": "protease",
+      "cleavable": true,
+      "stability": 76,
+      "hydro": 0.58,
+      "handle": "amine",
+      "popover": "Standard cathepsin B-cleavable dipeptide linker with self-immolative 1,6-PABC spacer. Releases amine payloads cleanly inside tumor lysosomes, optimal at DAR 2-4.",
+      "popover_ko": "카텝신 B 절단 후 자가소멸 스페이서(PABC)를 통해 유리 약물을 방출하는 표준 디펩타이드 링커입니다. 아민계 페이로드 방출 효율이 뛰어나며 DAR 2-4 구간에 적합합니다."
+    },
+    {
+      "id": "Val-Ala PABC",
+      "group": "protease",
+      "cleavable": true,
+      "stability": 80,
+      "hydro": 0.44,
+      "handle": "amine",
+      "popover": "Less hydrophobic Val-Ala dipeptide with PABC spacer; reduces high-DAR aggregation relative to Val-Cit while maintaining rapid cathepsin cleavage.",
+      "popover_ko": "Val-Cit 대비 소수성과 응집 경향을 낮춘 Val-Ala 디펩타이드 PABC 링커로 리소좀 카텝신 절단 속도와 용해도의 균형이 우수합니다."
+    },
+    {
+      "id": "Glu-Val-Cit PABC",
+      "group": "protease",
+      "cleavable": true,
+      "stability": 91,
+      "hydro": 0.28,
+      "handle": "amine",
+      "popover": "Anionic Glu-Val-Cit tripeptide PABC linker engineered to block extracellular neutrophil-elastase cleavage in bone marrow and lungs while retaining full lysosomal cathepsin B release.",
+      "popover_ko": "음전하 글루탐산(Glu)을 도입해 골수 및 폐 호중구 엘라스타아제에 의한 세포 외 조기 절단(호중구감소증 유발 경로)을 차단한 고안정성 트리펩타이드 링커입니다."
+    },
+    {
+      "id": "Legumain Asn-Pro-Val",
+      "group": "protease",
+      "cleavable": true,
+      "stability": 93,
+      "hydro": 0.34,
+      "handle": "amine_hydroxyl",
+      "popover": "Tumor-associated legumain (asparaginyl endopeptidase) cleavable tripeptide linker with high stability in normal human plasma and myeloid progenitors.",
+      "popover_ko": "종양 리소좀에 과발현되는 레구메인 효소에 의해서만 절단되는 Asn-Pro-Val 링커로 정상 혈장 및 조혈모세포 내 안정성이 매우 높습니다."
+    },
+    {
+      "id": "PEG8-Val-Ala PABC",
+      "group": "hydrophilic",
+      "cleavable": true,
+      "stability": 84,
+      "hydro": 0.18,
+      "handle": "amine",
+      "popover": "Discrete PEG8-shielded Val-Ala PABC linker (Zynlonta / Tesirine architecture) that masks lipophilic warheads from hepatic Kupffer-cell uptake.",
+      "popover_ko": "단분산 PEG8 친수성 사슬로 소수성 페이로드를 차폐한 Val-Ala PABC 링커(진론타 구조)로 간 쿠퍼세포의 비특이 포획을 줄입니다."
+    },
+    {
+      "id": "Beta-Glucuronide PEG8",
+      "group": "hydrophilic",
+      "cleavable": true,
+      "stability": 90,
+      "hydro": 0.14,
+      "handle": "amine_hydroxyl",
+      "popover": "Polyhydroxylated beta-glucuronide + PEG8 linker cleaved strictly by lysosomal beta-glucuronidase; ultra-low hydrophobicity prevents DAR 8 aggregation.",
+      "popover_ko": "리소좀 베타-글루쿠로니다아제에 의해서만 절단되는 초친수성 글루쿠로나이드-PEG8 링커로 고밀도 DAR 접합에서도 응집과 조기 유출을 크게 낮춥니다."
+    },
+    {
+      "id": "Pyrimidine-TMT PEG8",
+      "group": "hydrophilic",
+      "cleavable": true,
+      "stability": 86,
+      "hydro": 0.22,
+      "handle": "amine_hydroxyl",
+      "popover": "Methylsulfonyl-pyrimidine irreversible thiol conjugation handle with PEG8 spacer (Sacituzumab tirumotecan / SKB264 class), eliminating retro-Michael maleimide deconjugation in plasma.",
+      "popover_ko": "말레이미드의 역-마이클 혈장 탈접합 반응을 원천 차단하는 메틸설포닐 피리미딘 결합부 + PEG8 링커(사시투주맙 티루모테칸 계열)입니다."
+    },
+    {
+      "id": "Pyrophosphate Phos",
+      "group": "hydrophilic",
+      "cleavable": true,
+      "stability": 91,
+      "hydro": 0.1,
+      "handle": "hydroxyl_amine_hydroxyl",
+      "popover": "Di-anionic pyrophosphate diester linker cleaved sequentially by lysosomal acid pyrophosphatase and acid phosphatase; imparts high water solubility.",
+      "popover_ko": "이중 음전하 피로인산 에스테르 링커로 혈중에서는 완전한 수용성을 유지하고 리소좀 산성 포스파타아제에 의해 선택적으로 절단됩니다."
+    },
+    {
+      "id": "Hydrolyzable CL2A",
+      "group": "ph_redox",
+      "cleavable": true,
+      "stability": 54,
+      "hydro": 0.32,
+      "handle": "hydroxyl",
+      "popover": "PEGylated pH-sensitive benzyl carbonate linker engineered for camptothecins (SN-38). Intratumoral extracellular + lysosomal hydrolysis drives broad bystander activity at DAR 7.6-8.",
+      "popover_ko": "PEG 사슬이 도입된 pH 감응성 탄산염 링커(트로델비 구조)로 산성 종양 미세환경과 리소좀에서 약물을 방출해 강한 주변 암세포 사멸 효과를 유도합니다."
+    },
+    {
+      "id": "Disulfide SPDB",
+      "group": "ph_redox",
+      "cleavable": true,
+      "stability": 68,
+      "hydro": 0.52,
+      "handle": "thiol",
+      "popover": "Sterically hindered gem-dimethyl disulfide bond reduced selectively by high intracellular tumor glutathione (GSH) to release thiol maytansinoids.",
+      "popover_ko": "입체장애 이황화 결합으로 혈중 산화 환경에서는 안정하고 암세포 내 고농도 글루타티온(GSH)에 의해 환원되어 티올계 메이탄시노이드를 방출합니다."
+    },
+    {
+      "id": "Sulfo-SPDB",
+      "group": "ph_redox",
+      "cleavable": true,
+      "stability": 74,
+      "hydro": 0.26,
+      "handle": "thiol",
+      "popover": "Charged sulfonated hindered disulfide linker (Mirvetuximab soravtansine / Elahere) that suppresses multidrug-resistance (MDR1) efflux and hepatic aggregation of DM4 conjugates.",
+      "popover_ko": "설폰산 음전하기를 도입한 이황화 링커(엘라히어 구조)로 소수성 응집과 다제내성 수송체(MDR1) 약물 유출을 동시에 억제합니다."
+    },
+    {
+      "id": "Acid Hydrazone",
+      "group": "ph_redox",
+      "cleavable": true,
+      "stability": 48,
+      "hydro": 0.55,
+      "handle": "ketone",
+      "popover": "Acid-labile AcBut hydrazone linker hydrolyzed at endosomal/lysosomal pH 4.5-5.0; pairs with ketone-bearing enediynes (calicheamicin) with higher plasma deconjugation.",
+      "popover_ko": "엔도솜 및 리소좀 산성 환경(pH 4.5-5.0)에서 가수분해되는 하이드라존 링커로 케톤 작용기 페이로드(칼리키아마이신)와 결합합니다."
+    },
+    {
+      "id": "Non-cleavable mc",
+      "group": "non_cleavable",
+      "cleavable": false,
+      "stability": 96,
+      "hydro": 0.42,
+      "handle": "amine",
+      "popover": "Ultra-stable maleimidocaproyl thioether bond (96% plasma stability) requiring complete lysosomal antibody proteolysis to release charged Cys-mc-payload.",
+      "popover_ko": "혈중 안정도 96%의 비절단형 티오에테르 링커로 항체가 리소좀에서 완전 분해될 때만 전하성 아미노산-페이로드 결합체를 방출해 전신 누출을 최소화합니다."
+    },
+    {
+      "id": "Non-cleavable SMCC",
+      "group": "non_cleavable",
+      "cleavable": false,
+      "stability": 95,
+      "hydro": 0.46,
+      "handle": "thiol_amine",
+      "popover": "Rigid cyclohexanecarboxylate thioether linker (Trastuzumab emtansine / Kadcyla architecture) releasing Lys-SMCC-DM1 exclusively after full lysosomal catabolism.",
+      "popover_ko": "사이클로헥산 고리를 포함한 고강성 비절단형 티오에테르 링커(캐싸일라 구조)로 리소좀 내 완전 단백질 분해 후에만 약물이 방출됩니다."
+    }
   ];
 
-  const STUDIO_PAYLOADS = [
-    { id: 'DXd ( Topo I )', cls: 'Topoisomerase I inhibitor', perm: true, handle: 'amine_hydroxyl', potency: 92, optDar: 8, maxSafeDar: 8, hydro: 0.28,
-      organs: { pulmonary: 82, haematologic: 68, gastrointestinal: 64, cardiovascular: 38, hepatic: 30 },
-      popover: 'Membrane-permeable exatecan derivative (~10x higher Topo I potency than SN-38) with a short systemic half-life (~1.6 h). Supports homogeneous DAR 8 loading; alveolar macrophage uptake makes ILD the primary risk.',
-      popover_ko: 'SN-38 대비 약 10배 높은 효력을 지닌 막 투과성 토포이소머라제 I 저해제입니다. 혈중 반감기가 짧아 전신 축적이 적고 DAR 8 고밀도 접합이 가능하나, 폐포 대식세포 흡수에 따른 간질성 폐질환(ILD) 주의가 필요합니다.' },
-    { id: 'SN-38 ( Topo I )', cls: 'Topoisomerase I inhibitor (UGT1A1)', perm: true, handle: 'hydroxyl', potency: 82, optDar: 7.6, maxSafeDar: 8, hydro: 0.34,
-      organs: { haematologic: 86, gastrointestinal: 84, hepatic: 44, pulmonary: 22 },
-      popover: 'Active metabolite of irinotecan detoxified via hepatic UGT1A1 glucuronidation. Effective at high DAR (7.6–8) with CL2A linker; primary dose-limiting toxicities are neutropenia and secretory diarrhea.',
-      popover_ko: '이리노테칸의 활성 대사체로 간의 UGT1A1 효소에 의해 해독됩니다. CL2A 링커와 결합해 높은 DAR(7.6~8)에서 강력한 항암 효능을 발휘하며, 주요 감시 독성은 호중구감소증과 중증 설사입니다.' },
-    { id: 'MMAE ( Auristatin )', cls: 'Microtubule inhibitor (Auristatin)', perm: true, handle: 'amine', potency: 90, optDar: 4, maxSafeDar: 4, hydro: 0.82,
-      organs: { neurologic: 84, haematologic: 76, dermatologic: 66, hepatic: 52 },
-      popover: 'Potent lipophilic tubulin polymerization inhibitor with strong bystander killing. Optimal at DAR 3.5–4; loading above DAR 4 accelerates hepatic Kupffer-cell clearance and cumulative peripheral neuropathy.',
-      popover_ko: '세포막 투과성과 주변 암세포 동반 사멸 효과가 우수한 미세소관 중합 저해제입니다. DAR 3.5~4에서 치료 지수가 최적이며, DAR 4 초과 시 소수성 응집으로 간 조기 포획과 말초신경병증 위험이 급증합니다.' },
-    { id: 'MMAF ( Auristatin )', cls: 'Charged Auristatin (low permeability)', perm: false, handle: 'amine', potency: 86, optDar: 4, maxSafeDar: 4, hydro: 0.50,
-      organs: { ocular: 92, haematologic: 64, renal: 28, hepatic: 32, neurologic: 20 },
-      popover: 'C-terminal charged phenylalanine auristatin unable to diffuse across cell membranes after release. Spares peripheral nerves and marrow compared to MMAE, but concentrates in corneal epithelium via macropinocytosis.',
-      popover_ko: '말단 음전하로 인해 세포 밖 수동 확산이 차단된 오리스타틴 유도체입니다. MMAE 대비 말초신경병증과 골수 억제는 현저히 낮으나, 각막 상피 내 축적에 따른 각막병증 관리가 핵심입니다.' },
-    { id: 'DM4 / DM1 ( Maytansinoid )', cls: 'Microtubule inhibitor (Maytansinoid)', perm: true, handle: 'thiol', potency: 85, optDar: 3.5, maxSafeDar: 4, hydro: 0.68,
-      organs: { ocular: 74, hepatic: 72, neurologic: 62, haematologic: 58 },
-      popover: 'Thiol-bearing maytansinoid tubulin inhibitor conjugated at DAR 3.5–4. Intracellular reduction yields S-methyl-DM4 with bystander activity; associated with reversible corneal keratopathy and transaminase elevation.',
-      popover_ko: '티올(-SH) 결합 부위를 지닌 메이탄시노이드계 미세소관 저해제로 주로 DAR 3.5~4에서 사용됩니다. 간 CYP3A4 대사 및 거핵구 영향으로 간효소(AST/ALT) 상승, 혈소판감소증, 가역적 각막병증과 연관됩니다.' },
-    { id: 'SG3199 ( PBD Dimer )', cls: 'DNA minor-groove crosslinker', perm: true, handle: 'amine', potency: 98, optDar: 2, maxSafeDar: 2, hydro: 1.15,
-      organs: { haematologic: 92, hepatic: 78, pulmonary: 68, dermatologic: 62, renal: 54 },
-      popover: 'Picomolar-potency pyrrolobenzodiazepine interstrand DNA crosslinker active against both dividing and quiescent tumor cells. Strictly restricted to DAR 2 due to delayed myelosuppression and capillary leak.',
-      popover_ko: '피코몰(pM) 농도에서 비분열 암세포까지 사멸시키는 초고효능 DNA 작은홈 가교제입니다. 지연성 골수 억제 및 체액 저류, 간 동모양혈관 독성을 예방하기 위해 임상적으로 DAR 2 저밀도 접합에 한해 사용됩니다.' },
+  let STUDIO_PAYLOADS = [
+    {
+      "id": "DXd ( Topo I )",
+      "group": "topo1",
+      "cls": "Topoisomerase I inhibitor",
+      "perm": true,
+      "handle": "amine_hydroxyl",
+      "potency": 92,
+      "optDar": 8,
+      "maxSafeDar": 8,
+      "hydro": 0.28,
+      "organs": {
+        "pulmonary": 82,
+        "haematologic": 68,
+        "gastrointestinal": 64,
+        "cardiovascular": 38,
+        "hepatic": 30
+      },
+      "popover": "Membrane-permeable exatecan hydroxyacetamide derivative (~10x higher Topo I potency than SN-38) with short systemic half-life (~1.6 h); supports DAR 8 loading.",
+      "popover_ko": "SN-38 대비 약 10배 높은 효력과 짧은 전신 반감기(약 1.6시간)를 지닌 막투과성 토포이소머라제 I 저해제로 DAR 8 고밀도 접합이 가능합니다."
+    },
+    {
+      "id": "Exatecan ( Topo I )",
+      "group": "topo1",
+      "cls": "Topoisomerase I inhibitor (PGP-evading)",
+      "perm": true,
+      "handle": "amine",
+      "potency": 94,
+      "optDar": 6,
+      "maxSafeDar": 8,
+      "hydro": 0.36,
+      "organs": {
+        "haematologic": 78,
+        "gastrointestinal": 68,
+        "pulmonary": 72,
+        "hepatic": 34
+      },
+      "popover": "Unmodified primary-amine exatecan warhead that evades P-gp/BCRP multidrug efflux pumps and delivers potent bystander killing in Topo I-refractory tumors.",
+      "popover_ko": "다제내성 약물유출 펌프(P-gp, BCRP)를 회피하는 1차 아민 엑사테칸 페이로드로 내성 고형암에서 높은 세포독성과 동반 사멸 효능을 보입니다."
+    },
+    {
+      "id": "SN-38 ( Topo I )",
+      "group": "topo1",
+      "cls": "Topoisomerase I inhibitor (UGT1A1)",
+      "perm": true,
+      "handle": "hydroxyl",
+      "potency": 82,
+      "optDar": 7.6,
+      "maxSafeDar": 8,
+      "hydro": 0.34,
+      "organs": {
+        "haematologic": 86,
+        "gastrointestinal": 84,
+        "hepatic": 44,
+        "pulmonary": 22
+      },
+      "popover": "Active metabolite of irinotecan cleared via hepatic UGT1A1 glucuronidation; lower interstitial lung toxicity than DXd, with neutropenia and diarrhea as main DLTs.",
+      "popover_ko": "이리노테칸 활성 대사체로 간 UGT1A1 대사를 거치며, DXd 계열 대비 간질성 폐질환 빈도가 낮고 주요 감시 항목은 호중구감소증과 설사입니다."
+    },
+    {
+      "id": "Belotecan KL610023 ( Topo I )",
+      "group": "topo1",
+      "cls": "Water-soluble Topo I inhibitor",
+      "perm": true,
+      "handle": "amine_hydroxyl",
+      "potency": 89,
+      "optDar": 7.6,
+      "maxSafeDar": 8,
+      "hydro": 0.24,
+      "organs": {
+        "haematologic": 74,
+        "gastrointestinal": 58,
+        "pulmonary": 34,
+        "hepatic": 32
+      },
+      "popover": "Belotecan-derived hydrophilic camptothecin warhead (Sacituzumab tirumotecan / SKB264) supporting homogeneous DAR 7.6-8 with low pulmonary and GI mucosal accumulation.",
+      "popover_ko": "벨로테칸 유래 친수성 캠프토테신 페이로드(사시투주맙 티루모테칸 적용)로 DAR 7.6-8 고밀도 결합에서도 폐 및 장 점막 축적이 적습니다."
+    },
+    {
+      "id": "Rezetecan SHR9265 ( Topo I )",
+      "group": "topo1",
+      "cls": "Cyclopropyl-shielded Topo I inhibitor",
+      "perm": true,
+      "handle": "amine_hydroxyl",
+      "potency": 93,
+      "optDar": 6,
+      "maxSafeDar": 8,
+      "hydro": 0.31,
+      "organs": {
+        "haematologic": 70,
+        "pulmonary": 56,
+        "gastrointestinal": 56,
+        "hepatic": 30
+      },
+      "popover": "Chiral cyclopropyl-hydroxyamide exatecan analog (Trastuzumab rezetecan / SHR-A1811) balancing membrane bystander permeability with reduced alveolar macrophage retention.",
+      "popover_ko": "사이클로프로필 입체 구조를 도입한 엑사테칸 유도체(트라스투주맙 레제테칸 적용)로 주변 암세포 투과도와 폐포 대식세포 안전성 균형을 개선한 약물입니다."
+    },
+    {
+      "id": "AZD8205 Top1i ( Topo I )",
+      "group": "topo1",
+      "cls": "Next-gen Polar Topo I inhibitor",
+      "perm": true,
+      "handle": "amine_hydroxyl",
+      "potency": 90,
+      "optDar": 8,
+      "maxSafeDar": 8,
+      "hydro": 0.22,
+      "organs": {
+        "haematologic": 66,
+        "pulmonary": 48,
+        "gastrointestinal": 52,
+        "renal": 28,
+        "hepatic": 26
+      },
+      "popover": "Polar aminomethyl-camptothecin Topo I payload (AZ14170132 / Puxitatug samrotecan class) designed for rapid renal clearance of free payload and DAR 8 homogeneity.",
+      "popover_ko": "극성 아미노메틸 치환체를 도입해 유리 약물의 신속한 신장 배설과 DAR 8 균일 접합을 구현한 차세대 토포이소머라제 I 저해제입니다."
+    },
+    {
+      "id": "MMAE ( Auristatin )",
+      "group": "tubulin",
+      "cls": "Microtubule inhibitor (Auristatin)",
+      "perm": true,
+      "handle": "amine",
+      "potency": 90,
+      "optDar": 4,
+      "maxSafeDar": 4,
+      "hydro": 0.82,
+      "organs": {
+        "neurologic": 84,
+        "haematologic": 76,
+        "dermatologic": 66,
+        "hepatic": 52
+      },
+      "popover": "Lipophilic tubulin polymerization inhibitor with strong bystander killing; optimal at DAR 3.5-4, whereas higher DAR accelerates Kupffer clearance and neuropathy.",
+      "popover_ko": "막투과성과 동반 사멸 효과가 우수한 미세소관 중합 저해제입니다. DAR 3.5-4에서 치료지수가 최적이며 고DAR에서는 간 포획과 말초신경병증이 증가합니다."
+    },
+    {
+      "id": "MMAF ( Auristatin )",
+      "group": "tubulin",
+      "cls": "Charged Auristatin (low permeability)",
+      "perm": false,
+      "handle": "amine",
+      "potency": 86,
+      "optDar": 4,
+      "maxSafeDar": 6,
+      "hydro": 0.5,
+      "organs": {
+        "ocular": 92,
+        "haematologic": 64,
+        "renal": 28,
+        "hepatic": 32,
+        "neurologic": 20
+      },
+      "popover": "C-terminal carboxylate auristatin trapped inside target cells after release; spares peripheral nerves and marrow vs MMAE, with corneal keratopathy as primary risk.",
+      "popover_ko": "말단 음전하로 세포 밖 수동 확산이 제한된 오리스타틴입니다. MMAE 대비 신경병증과 골수 억제는 낮으나 각막 상피 축적 관리가 중요합니다."
+    },
+    {
+      "id": "AS269 ( Auristatin )",
+      "group": "tubulin",
+      "cls": "Site-specific Non-permeable Auristatin",
+      "perm": false,
+      "handle": "amine_hydroxyl",
+      "potency": 88,
+      "optDar": 2,
+      "maxSafeDar": 4,
+      "hydro": 0.44,
+      "organs": {
+        "ocular": 68,
+        "pulmonary": 52,
+        "haematologic": 28,
+        "neurologic": 18,
+        "hepatic": 34
+      },
+      "popover": "Para-acetylphenylalanine-coupled polar auristatin (ARX788 Amberstatin) yielding ultra-low systemic free payload (<1% deconjugation) and minimal myelosuppression.",
+      "popover_ko": "위치 특이적 결합용 극성 오리스타틴(ARX788 앰버스타틴)으로 혈중 유리 약물 농도가 극히 낮아 골수 억제와 신경 독성이 적습니다."
+    },
+    {
+      "id": "Duostatin-5 ( Auristatin )",
+      "group": "tubulin",
+      "cls": "Morpholine Auristatin",
+      "perm": true,
+      "handle": "amine",
+      "potency": 89,
+      "optDar": 3.5,
+      "maxSafeDar": 4,
+      "hydro": 0.72,
+      "organs": {
+        "neurologic": 68,
+        "haematologic": 66,
+        "ocular": 54,
+        "hepatic": 44
+      },
+      "popover": "C-terminal morpholinamide auristatin balancing moderate bystander permeability with lower lipophilicity than MMAE.",
+      "popover_ko": "말단 모르폴린 구조를 통해 MMAE보다 친유성을 낮추면서 종양 내 동반 사멸 활성을 유지한 오리스타틴 유도체입니다."
+    },
+    {
+      "id": "DM4 / DM1 ( Maytansinoid )",
+      "group": "tubulin",
+      "cls": "Microtubule inhibitor (Maytansinoid)",
+      "perm": true,
+      "handle": "thiol",
+      "potency": 85,
+      "optDar": 3.5,
+      "maxSafeDar": 4,
+      "hydro": 0.68,
+      "organs": {
+        "ocular": 74,
+        "hepatic": 72,
+        "neurologic": 62,
+        "haematologic": 58
+      },
+      "popover": "Sterically hindered thiol maytansinoid (Ravtansine / Soravtansine) yielding S-methyl-DM4 bystander catabolites; linked to reversible keratopathy and transaminase elevation.",
+      "popover_ko": "입체장애 티올기를 지닌 메이탄시노이드(소라브탄신/라브탄신)로 S-메틸 대사체를 통해 동반 사멸을 유도하며 간효소 상승과 가역적 각막병증을 감시합니다."
+    },
+    {
+      "id": "DM1 Mertansine ( Maytansinoid )",
+      "group": "tubulin",
+      "cls": "Thioether Maytansinoid",
+      "perm": false,
+      "handle": "thiol",
+      "potency": 83,
+      "optDar": 3.5,
+      "maxSafeDar": 4,
+      "hydro": 0.62,
+      "organs": {
+        "hepatic": 76,
+        "haematologic": 64,
+        "neurologic": 48,
+        "cardiovascular": 34
+      },
+      "popover": "Mertansine warhead optimized for non-cleavable SMCC conjugation (Kadcyla); releases membrane-impermeable Lys-SMCC-DM1, with thrombocytopenia and AST/ALT rise as main DLTs.",
+      "popover_ko": "비절단형 SMCC 링커(캐싸일라)에 최적화된 메르탄신 페이로드로 막비투과성 대사체를 형성하며 혈소판감소증 및 AST/ALT 상승이 주요 감시 항목입니다."
+    },
+    {
+      "id": "Eribulin ( Halichondrin )",
+      "group": "tubulin",
+      "cls": "Microtubule dynamics inhibitor",
+      "perm": true,
+      "handle": "amine",
+      "potency": 87,
+      "optDar": 4,
+      "maxSafeDar": 6,
+      "hydro": 0.38,
+      "organs": {
+        "haematologic": 72,
+        "pulmonary": 46,
+        "neurologic": 44,
+        "hepatic": 30
+      },
+      "popover": "Macrocyclic halichondrin B analog (Farletuzumab ecteribulin / MORAb-202) that inhibits microtubule plus-end growth with lower hydrophobicity and lower neuropathy than MMAE.",
+      "popover_ko": "할리콘드린 B 거대고리 유도체(파를레투주맙 엑테리불린 적용)로 친수성이 높고 MMAE 대비 말초신경 손상 빈도가 낮습니다."
+    },
+    {
+      "id": "Tubulysin M ( Tubulysin )",
+      "group": "tubulin",
+      "cls": "Vinca-domain Tubulin depolymerizer",
+      "perm": true,
+      "handle": "amine_hydroxyl",
+      "potency": 93,
+      "optDar": 2,
+      "maxSafeDar": 4,
+      "hydro": 0.64,
+      "organs": {
+        "haematologic": 78,
+        "hepatic": 64,
+        "neurologic": 62,
+        "gastrointestinal": 52
+      },
+      "popover": "Sub-nanomolar tetrapeptide tubulin depolymerizer resistant to P-gp efflux pumps; effective at low DAR (2-3.5) in low-antigen-density tumors.",
+      "popover_ko": "P-gp 약물유출 펌프 내성을 극복하는 고효력 튜불리신 페이로드로 저발현 종양에서도 DAR 2-3.5 저밀도 접합으로 강한 세포사멸을 유도합니다."
+    },
+    {
+      "id": "SG3199 ( PBD Dimer )",
+      "group": "dna",
+      "cls": "DNA minor-groove crosslinker",
+      "perm": true,
+      "handle": "amine",
+      "potency": 98,
+      "optDar": 2,
+      "maxSafeDar": 2,
+      "hydro": 1.15,
+      "organs": {
+        "haematologic": 92,
+        "hepatic": 78,
+        "pulmonary": 68,
+        "dermatologic": 62,
+        "renal": 54
+      },
+      "popover": "Picomolar pyrrolobenzodiazepine interstrand DNA crosslinker active against quiescent stem-like cells; restricted to DAR 1-2 due to delayed myelosuppression and edema.",
+      "popover_ko": "비분열 암줄기세포까지 사멸시키는 피코몰 효력의 DNA 가교제(테시린 페이로드)로 지연성 골수 억제 및 부종 예방을 위해 DAR 1-2 저밀도 설계에 사용됩니다."
+    },
+    {
+      "id": "DGN549 Sunirine ( IGN )",
+      "group": "dna",
+      "cls": "Mono-imine DNA alkylator (IGN)",
+      "perm": true,
+      "handle": "amine_thiol",
+      "potency": 95,
+      "optDar": 2,
+      "maxSafeDar": 3.5,
+      "hydro": 0.86,
+      "organs": {
+        "haematologic": 72,
+        "hepatic": 54,
+        "pulmonary": 42,
+        "dermatologic": 46,
+        "renal": 38
+      },
+      "popover": "Indolinobenzodiazepine mono-imine warhead (Pivekimab sunirine) that mono-alkylates DNA without interstrand crosslinking, markedly reducing prolonged marrow aplasia vs PBD dimers.",
+      "popover_ko": "가교 대신 단일 알킬화를 유도하도록 개량된 인돌리노벤조디아제핀(수니린 페이로드)으로 PBD 이합체 대비 장기 지속형 골수 억제와 간독성을 크게 완화합니다."
+    },
+    {
+      "id": "seco-DUBA ( Duocarmycin )",
+      "group": "dna",
+      "cls": "DNA minor-groove AT-alkylator",
+      "perm": true,
+      "handle": "amine_hydroxyl",
+      "potency": 94,
+      "optDar": 2,
+      "maxSafeDar": 4,
+      "hydro": 0.88,
+      "organs": {
+        "ocular": 76,
+        "pulmonary": 64,
+        "haematologic": 58,
+        "dermatologic": 52,
+        "hepatic": 46
+      },
+      "popover": "Seco-duocarmycin hydroxybenzamide-azaindole prodrug (Trastuzumab duocarmazine / SYD985) killing dividing and non-dividing cells via Spiro-cyclopropyldienone DNA alkylation.",
+      "popover_ko": "분열 및 비분열 종양세포의 DNA 작은홈 아데닌을 알킬화하는 듀오카마이신 전구약물(SYD985 페이로드)로 결막 및 폐 독성 감시가 필요합니다."
+    },
+    {
+      "id": "Calicheamicin ( Enediyne )",
+      "group": "dna",
+      "cls": "DNA double-strand cleaver",
+      "perm": true,
+      "handle": "ketone_thiol",
+      "potency": 96,
+      "optDar": 2,
+      "maxSafeDar": 4,
+      "hydro": 0.76,
+      "organs": {
+        "hepatic": 90,
+        "haematologic": 88,
+        "infectious_immune": 64,
+        "gastrointestinal": 48
+      },
+      "popover": "Enediyne diradical DNA double-strand cleaver (Mylotarg / Besponsa); highly potent in acute leukemias, with hepatic sinusoidal obstruction syndrome (VOD/SOS) as key risk.",
+      "popover_ko": "DNA 이중가닥 절단을 유도하는 엔다이인계 고효력 페이로드(마일로탁, 베스폰사)로 급성 백혈병에 효과적이나 간 정맥폐쇄성 질환(VOD) 위험이 높습니다."
+    },
+    {
+      "id": "Filanesib KSPi ( Kinesin )",
+      "group": "targeted",
+      "cls": "Kinesin Spindle Protein (Eg5) inhibitor",
+      "perm": false,
+      "handle": "amine_hydroxyl",
+      "potency": 85,
+      "optDar": 4,
+      "maxSafeDar": 8,
+      "hydro": 0.35,
+      "organs": {
+        "haematologic": 74,
+        "gastrointestinal": 48,
+        "hepatic": 24,
+        "neurologic": 12
+      },
+      "popover": "Mitotic kinesin Eg5 inhibitor (VIP943 class) selective strictly for dividing cells; completely spares post-mitotic peripheral neurons (zero axonal neuropathy) and hepatocytes.",
+      "popover_ko": "세포분열 방추사 키네신(Eg5)만 선택적으로 저해하는 페이로드로 비분열 말초신경 축삭과 간세포를 손상시키지 않아 신경병증을 원천 회피합니다."
+    },
+    {
+      "id": "STING Agonist ( Immune )",
+      "group": "targeted",
+      "cls": "Innate Immune STING Agonist (iADC)",
+      "perm": false,
+      "handle": "amine_hydroxyl",
+      "potency": 81,
+      "optDar": 4,
+      "maxSafeDar": 6,
+      "hydro": 0.16,
+      "organs": {
+        "infectious_immune": 68,
+        "hepatic": 34,
+        "cardiovascular": 32,
+        "haematologic": 28,
+        "neurologic": 12
+      },
+      "popover": "Immunostimulatory STING agonist payload activating intratumoral type-I interferon signaling without direct DNA/tubulin cytotoxicity; avoids classic myelosuppression and neuropathy.",
+      "popover_ko": "종양 미세환경 내 제1형 인터페론 선천면역을 활성화하는 면역자극 페이로드(iADC)로 전통적 세포독성 약물의 골수 억제와 신경독성을 피할 수 있습니다."
+    }
   ];
 
-  const STUDIO_DAR_ITEMS = [
-    { id: '2', popover: 'DAR 2: Site-specific low drug loading. Minimizes hydrophobic aggregation and preserves antibody half-life; mandatory for ultra-potent DNA crosslinkers (PBD dimers) or fragile multi-organ cohorts.',
-      popover_ko: 'DAR 2: 항체 1분자당 약물 2개를 결합한 저밀도 정밀 설계입니다. 소수성 응집을 최소화하고 혈중 반감기를 길게 유지하며, 초고효능 페이로드(PBD 이합체)나 다장기 취약 환자의 안전역 확보에 필수적입니다.' },
-    { id: '3.5', popover: 'DAR 3.5: Validated average loading for Polivy (CD79b-MMAE), Kadcyla (HER2-DM1), and Elahere (FRα-DM4). Balances intracellular payload delivery against hepatic sinusoidal uptake.',
-      popover_ko: 'DAR 3.5: 폴라이비(Polivy), 캐싸일라(Kadcyla), 엘라히어(Elahere) 등 승인 ADC에서 검증된 접합비입니다. 세포 내 약물 전달량과 간 쿠퍼세포 비특이 포획 사이의 균형이 우수합니다.' },
-    { id: '4', popover: 'DAR 4: Standard interchain cysteine conjugation (Padcev, Blenrep, Dato-DXd). Optimal therapeutic index for hydrophobic auristatins (MMAE/MMAF) without triggering rapid clearance.',
-      popover_ko: 'DAR 4: 사슬 간 시스테인 결합을 통한 표준 접합비(파드셉, 블렌렙, 다토포타맙 데룩스테칸 등)입니다. 소수성 오리스타틴 계열에서 간 조기 배설 없이 높은 치료 지수를 달성합니다.' },
-    { id: '6', popover: 'DAR 6: Intermediate-high loading. Increases cytotoxic payload concentration per internalized receptor in tumors with moderate antigen density; requires moderately hydrophilic linkers.',
-      popover_ko: 'DAR 6: 중등도 항원 발현 종양에서도 내재화당 충분한 약물 농도를 확보하기 위한 중고밀도 설계입니다. 혈중 응집 방지를 위해 친수성 스페이서 또는 안정형 링커가 권장됩니다.' },
-    { id: '7.6', popover: 'DAR 7.6: High-density loading validated in Trodelvy (sacituzumab govitecan, CL2A-SN-38). Delivers high payload copy numbers per receptor when paired with PEGylated linkers.',
-      popover_ko: 'DAR 7.6: 트로델비(Trodelvy, CL2A-SN-38)에 적용된 고밀도 접합비입니다. PEG가 도입된 친수성 링커와 결합해 수용체 1개당 약물 전달 효율을 극대화합니다.' },
-    { id: '8', popover: 'DAR 8: Homogeneous full interchain cysteine loading (Enhertu, GGFG-DXd). Maximizes efficacy in heterogeneous or low-antigen tumors, but causes severe hepatic aggregation if used with hydrophobic payloads.',
-      popover_ko: 'DAR 8: 8개 사슬 간 시스테인 전체에 약물을 균일하게 결합한 최대 밀도 설계(엔허투 등)입니다. 친수성 링커(GGFG)+Topo I 페이로드에서는 최고의 약효를 내지만, 소수성 약물에 적용 시 급격한 간 응집, 독성을 유발합니다.' },
+  let STUDIO_DAR_ITEMS = [
+    {
+      "id": "1",
+      "val": 1.0,
+      "popover": "DAR 1: Ultra-low site-specific single-drug loading for picomolar DNA warheads (PBD/IGN/Calicheamicin) or severe multi-organ fragility.",
+      "popover_ko": "DAR 1: 초고효력 DNA 작용 페이로드(PBD, IGN, 칼리키아마이신) 또는 중증 다장기 기능저하 환자의 안전역 확보를 위한 초저밀도 단일 접합 설계입니다."
+    },
+    {
+      "id": "2",
+      "val": 2.0,
+      "popover": "DAR 2: Site-specific low drug loading. Minimizes hydrophobic aggregation and preserves antibody half-life; standard for PBD/IGN/AS269 conjugates.",
+      "popover_ko": "DAR 2: 위치 특이적 저밀도 설계로 소수성 응집을 최소화하고 항체 반감기를 보존하며 고효력 페이로드의 표준 접합비입니다."
+    },
+    {
+      "id": "3.5",
+      "val": 3.5,
+      "popover": "DAR 3.5: Validated clinical loading for Polivy, Kadcyla, and Elahere. Balances intracellular delivery against hepatic sinusoidal uptake.",
+      "popover_ko": "DAR 3.5: 폴라이비, 캐싸일라, 엘라히어 등 승인 약물에서 검증된 접합비로 세포 내 전달량과 간 비특이 포획 사이의 균형이 우수합니다."
+    },
+    {
+      "id": "4",
+      "val": 4.0,
+      "popover": "DAR 4: Standard interchain cysteine/engineered-site loading (Padcev, Blenrep, Dato-DXd). Optimal therapeutic index for auristatins and Topo I.",
+      "popover_ko": "DAR 4: 파드셉, 블렌렙, 다토포타맙 데룩스테칸에 적용된 표준 접합비로 오리스타틴 및 Topo I 계열 전반에서 안정적인 약동학을 보입니다."
+    },
+    {
+      "id": "5",
+      "val": 5.0,
+      "popover": "DAR 5: Intermediate engineered loading boosting receptor-limited tumor killing while keeping HIC retention below hepatic clearance thresholds.",
+      "popover_ko": "DAR 5: 중등도 항원 발현 종양에서 수용체당 약물 전달량을 높이면서도 간 쿠퍼세포 청소 임계치 이하로 소수성을 유지하는 설계입니다."
+    },
+    {
+      "id": "6",
+      "val": 6.0,
+      "popover": "DAR 6: High-intermediate homogeneous loading (Trastuzumab rezetecan / SHR-A1811 class) pairing shielded GGFG/PEG linkers with Topo I warheads.",
+      "popover_ko": "DAR 6: 트라스투주맙 레제테칸(SHR-A1811) 등에 채택된 중고밀도 균일 접합비로 친수성 링커와 결합해 효능과 폐/골수 안전성의 균형을 잡습니다."
+    },
+    {
+      "id": "7.6",
+      "val": 7.6,
+      "popover": "DAR 7.6: High-density loading validated in Trodelvy and SKB264 when paired with PEGylated linkers.",
+      "popover_ko": "DAR 7.6: 트로델비 및 사시투주맙 티루모테칸에 적용된 고밀도 접합비로 PEG 친수성 링커와 결합해 높은 종양 내 농도를 형성합니다."
+    },
+    {
+      "id": "8",
+      "val": 8.0,
+      "popover": "DAR 8: Full interchain cysteine loading (Enhertu). Maximizes efficacy with hydrophilic Topo I linkers, but accelerates hepatic aggregation with lipophilic payloads.",
+      "popover_ko": "DAR 8: 사슬 간 시스테인 8곳 전체에 결합하는 최대 밀도 설계(엔허투)로 친수성 Topo I 조합에서 최고 효능을 내나 소수성 약물에서는 간 응집을 유발합니다."
+    }
   ];
 
-  const STUDIO_FC_ITEMS = [
-    { key: 'wt', isSilenced: false,
-      popover: 'Wild-Type IgG1: Retains FcγRIIIa binding on NK cells and macrophages to support ADCC effector killing, but permits FcγR-mediated non-specific uptake into alveolar macrophages, liver, and bone marrow.',
-      popover_ko: '야생형 IgG1: NK세포, 대식세포의 Fcγ 수용체 결합력을 유지해 항체 의존성 세포독성(ADCC)을 돕지만, 폐포 대식세포, 간, 골수로의 FcγR 매개 비특이적 유입이 함께 일어날 수 있습니다.' },
-    { key: 'sil', isSilenced: true,
-      popover: 'Fc-Silenced (LALA-PG): L234A/L235A/P329G mutation ablates FcγR and C1q complement binding while preserving FcRn half-life recycling, blocking macrophage uptake in lung, liver, and marrow.',
-      popover_ko: 'Fc 침묵화 (LALA-PG): FcRn 반감기 유지 기능은 보존하면서 대식세포 FcγR 및 보체 결합만 선택적으로 제거한 변이입니다. 폐포 대식세포, 간, 안구로의 비특이 흡수를 차단해 취약 장기 안전도를 높입니다.' },
+  let STUDIO_FC_ITEMS = [
+    {
+      "id": "igg1_wt",
+      "ko": "야생형 IgG1",
+      "en": "Wild-type IgG1",
+      "isotype": "IgG1",
+      "isSilenced": false,
+      "fcActivity": 1.0,
+      "adcc": 1.015,
+      "popover": "Wild-Type IgG1: Retains FcgammaRIIIa binding on NK cells and macrophages for ADCC effector support, but permits FcgammaR-mediated uptake in lung, liver, and marrow.",
+      "popover_ko": "야생형 IgG1: NK세포 및 대식세포 Fc감마 수용체 결합으로 항체 의존성 세포독성(ADCC)을 지원하나 폐포 대식세포, 간, 골수로의 비특이 흡수가 동반될 수 있습니다."
+    },
+    {
+      "id": "igg1_lalapg",
+      "ko": "Fc 침묵화 (LALA-PG)",
+      "en": "Fc-Silenced (LALA-PG)",
+      "isotype": "IgG1",
+      "isSilenced": true,
+      "fcActivity": 0.08,
+      "adcc": 0.985,
+      "popover": "Fc-Silenced IgG1 (L234A/L235A/P329G): Ablates FcgammaR and C1q complement binding while preserving FcRn half-life recycling, blocking macrophage uptake in lung, liver, and eye.",
+      "popover_ko": "Fc 침묵화 (LALA-PG): FcRn 반감기 재순환은 유지하면서 대식세포 Fc감마 수용체 및 보체 결합만 제거해 폐, 간, 안구로의 비특이 흡수를 차단합니다."
+    },
+    {
+      "id": "igg4_s228p",
+      "ko": "IgG4 S228P (저효능기)",
+      "en": "IgG4 S228P (Low Effector)",
+      "isotype": "IgG4",
+      "isSilenced": false,
+      "fcActivity": 0.4,
+      "adcc": 0.995,
+      "popover": "Hinge-stabilized IgG4 S228P backbone (used clinically in Mylotarg and Besponsa): markedly lower FcgammaRIIIa & complement activation than WT IgG1 without synthetic CH2 triple mutation.",
+      "popover_ko": "힌지 안정화 IgG4 S228P 골격(마일로탁, 베스폰사 채택): 야생형 IgG1 대비 Fc감마 수용체 및 보체 활성이 현저히 낮아 면역원성 부담 없이 비특이 흡수를 줄입니다."
+    },
+    {
+      "id": "igg2_lowfc",
+      "ko": "IgG2 (비결합 힌지)",
+      "en": "IgG2 (Minimal FcgammaR)",
+      "isotype": "IgG2",
+      "isSilenced": false,
+      "fcActivity": 0.35,
+      "adcc": 0.992,
+      "popover": "Human IgG2 backbone (PVAGP lower hinge): naturally minimal FcgammaRI/IIIa affinity (~0.35x WT) with rigid disulfide hinge geometry that shields conjugation sites.",
+      "popover_ko": "인간 IgG2 골격: 선천적으로 낮은 Fc감마 수용체 결합력(야생형 IgG1의 약 35%)과 견고한 이황화 힌지 구조로 접합 부위를 입체적으로 보호합니다."
+    }
   ];
 
   // ------------------------------------------------------------------ Internationalization (i18n)
@@ -443,13 +2245,17 @@
       autoOpt: 'ADC 자동 설계',
       scanning: '최적화 탐색 중...',
       scanSpace: '설계 조합 탐색 중...',
-      tgtTitle: '1. 표적 항원',
-      lnkTitle: '2. 화학 링커',
-      pldTitle: '3. 세포독성 페이로드',
-      darTitle: '4. 약물-항체 접합비 DAR',
-      fcTitle: '5. Fc 엔지니어링',
+      tgtTitle: '1. 표적 항원 (36)',
+      lnkTitle: '2. 화학 링커 (16)',
+      pldTitle: '3. 세포독성 페이로드 (20)',
+      darTitle: '4. 약물-항체 접합비 DAR (8)',
+      fcTitle: '5. 항체 골격 및 Fc 엔지니어링 (4)',
       wtFc: '야생형 IgG1',
       silFc: 'Fc 침묵화 (LALA-PG)',
+      deepTitle: 'Deep Research (GPU)',
+      deepSub: 'ADCSurrogateNet v2 5-Fold 실시간 구동',
+      deepRunBtn: 'Deep Research 설계',
+      deepBusyBtn: 'GPU 대기 중 (4/4)',
       designTitle: '환자 맞춤형 ADC 설계',
       axisSafety: '예상 장기 안전도 (높을수록 안전)',
       axisEfficacy: '예상 항암 효능 (높을수록 강력)',
@@ -485,11 +2291,15 @@
       gtexNote: '단백질이 정상 장기에서 많이 발현될수록 암세포가 아닌 정상 조직도 함께 손상될 위험이 커집니다. 숫자는 발현량(nTPM)이며 낮을수록 안전합니다.',
       fcLalaNote: 'Fc 침묵화(LALA-PG)로 대식세포의 FcγR 결합이 줄어 폐, 간, 안구 등으로의 비특이 흡수가 감소했습니다.',
       fcWtNote: '야생형 IgG1은 대식세포의 FcγR에 결합하므로 폐, 간, 안구로의 비특이 흡수가 일어날 수 있습니다.',
+      basicTitle: '검진 정보',
+      basicReqTag: '필수 입력',
+      basicExpand: '필수 항목 입력 ▾',
+      basicCollapse: '필수 항목 접기 ▴',
       flowTitle: '검진 정보',
       flowOptTag: '선택 입력',
-      flowSub: '혈액검사 수치나 신장, 간, 심장 기능 지표를 추가로 입력하면 용량 조절 및 금기 기준까지 정밀하게 반영됩니다.',
-      flowExpand: '검진 정보 입력 ▾',
-      flowCollapse: '검진 정보 접기 ▴',
+      flowSub: '직접 측정한 신장 청소율, 간 기능 등급, 심장 구혈률 및 약물유전형 지표',
+      flowExpand: '선택 항목 입력 ▾',
+      flowCollapse: '선택 항목 접기 ▴',
       refRange: '참고치',
       notEntered: '미입력',
       elevated: '수치 상승',
@@ -572,13 +2382,17 @@
       autoOpt: 'Auto-design ADC',
       scanning: 'Optimizing...',
       scanSpace: 'Scanning candidate space...',
-      tgtTitle: '1. Target Antigen (mAb)',
-      lnkTitle: '2. Chemical Linker',
-      pldTitle: '3. Cytotoxic Payload',
-      darTitle: '4. Drug-to-Antibody Ratio (DAR)',
-      fcTitle: '5. Fc Engineering',
+      tgtTitle: '1. Target Antigen (36)',
+      lnkTitle: '2. Chemical Linker (16)',
+      pldTitle: '3. Cytotoxic Payload (20)',
+      darTitle: '4. Drug-to-Antibody Ratio (8)',
+      fcTitle: '5. Antibody & Fc Format (4)',
       wtFc: 'Wild-type IgG1',
       silFc: 'Fc-Silenced (LALA-PG)',
+      deepTitle: 'Deep Research (GPU)',
+      deepSub: 'Live 5-Fold ADCSurrogateNet v2',
+      deepRunBtn: 'Deep Research',
+      deepBusyBtn: 'GPUs Busy (4/4)',
       designTitle: 'Patient-Tailored ADC Design',
       axisSafety: 'Expected organ safety (higher is safer)',
       axisEfficacy: 'Expected antitumor efficacy (higher is stronger)',
@@ -614,11 +2428,15 @@
       gtexNote: 'The more this protein is expressed in normal organs, the more healthy tissue can be hit together with the tumor. Numbers are expression levels (nTPM); lower is safer.',
       fcLalaNote: 'Fc silencing (LALA-PG) reduces FcγR binding on macrophages, lowering non-specific uptake in lung, liver and eye.',
       fcWtNote: 'Wild-type IgG1 binds FcγR on macrophages, so non-specific uptake in lung, liver and eye can occur.',
+      basicTitle: 'Lab & Clinical Info',
+      basicReqTag: 'Required',
+      basicExpand: 'Enter Required Labs ▾',
+      basicCollapse: 'Hide Required Labs ▴',
       flowTitle: 'Lab & Clinical Info',
       flowOptTag: 'Optional',
-      flowSub: 'Expand to enter blood tests or organ function metrics when available for dosing and eligibility checks.',
-      flowExpand: 'Enter Lab & Clinical Info ▾',
-      flowCollapse: 'Hide Lab & Clinical Info ▴',
+      flowSub: 'Direct clearance, Child-Pugh grade, cardiac LVEF, and pharmacogenomic markers',
+      flowExpand: 'Enter Optional Labs ▾',
+      flowCollapse: 'Hide Optional Labs ▴',
       refRange: 'Ref',
       notEntered: 'Not entered',
       elevated: 'Elevated',
@@ -671,7 +2489,8 @@
   }
 
   // ------------------------------------------------------------------ Session State & Neural Surrogate Binding
-  const KEY = 'adctox.web.v081';
+  const KEY = 'adctox.web.v083';
+  const LEGACY_KEY = 'adctox.web.v081';
   const SURROGATE_NET = (typeof globalThis !== 'undefined' && globalThis.ADCTOX_SURROGATE)
     ? globalThis.ADCTOX_SURROGATE
     : ((typeof window !== 'undefined' && window.ADCTOX_SURROGATE) ? window.ADCTOX_SURROGATE : null);
@@ -720,6 +2539,7 @@
       conds: [],
       raw: {},
       labs: null,
+      basicLabsOpen: false,
       labsOpen: false,
       meanings: {},
       first: null,
@@ -727,6 +2547,14 @@
       studioDesignMode: 'idle',
       studioNeedInputWarn: false,
       studioHistory: [],
+      deepResearchOn: false,
+      deepMenuOpen: false,
+      customPayloadSmiles: '',
+      tgtCat: 'rec',
+      tgtQuery: '',
+      lnkCat: 'all',
+      pldCat: 'all',
+      lastRunMode: 'matrix_368k',
       simWeights: Object.assign({}, DEFAULT_SIM_WEIGHTS),
       simPreset: 'balanced',
       formulaOpen: false,
@@ -736,7 +2564,7 @@
       reviewAdc: null,
       drawer: false,
       drawerTab: 'Patient',
-      studio: { target: 'HER2 (ERBB2)', linker: 'Tetrapeptide GGFG', payload: 'DXd ( Topo I )', dar: 4, fc: false },
+      studio: { target: 'HER2 (ERBB2)', linker: 'Tetrapeptide GGFG', payload: 'DXd ( Topo I )', dar: 4, fc: false, fcFormat: 'igg1_wt' },
     };
   }
   let S = defaultState();
@@ -745,9 +2573,14 @@
   }
   function restore() {
     try {
-      const d = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+      const rawJson = sessionStorage.getItem(KEY) || sessionStorage.getItem(LEGACY_KEY) || 'null';
+      const d = JSON.parse(rawJson);
       if (d && typeof d === 'object' && Array.isArray(d.conds)) {
         S = Object.assign(defaultState(), d);
+        S.studio = Object.assign(defaultState().studio, d.studio || {});
+        if (!S.studio.fcFormat) S.studio.fcFormat = S.studio.fc ? 'igg1_lalapg' : 'igg1_wt';
+        S.studio.fc = S.studio.fcFormat !== 'igg1_wt';
+        S.deepMenuOpen = false;
         S.simWeights = Object.assign({}, DEFAULT_SIM_WEIGHTS, d.simWeights || {});
         if (S.simPreset !== 'custom' && !SIM_WEIGHT_PRESETS.some((p) => p.id === S.simPreset)) {
           S.simPreset = 'balanced';
@@ -898,7 +2731,8 @@
 
   // ------------------------------------------------------------------ Page Shell & Navigation
   let top, crumbsOl, verEl, scenarioDropdown, layout, stageBox, bar, barKeys, drawer, drawerTitle, drawerBody;
-
+  let crumbRefs = null;
+  let resetPatientBtn = null;
   let langBtn = null;
   function frame() {
     document.title = 'ADCTOX';
@@ -1018,38 +2852,48 @@
   function renderHeaderControls() {
     if (langBtn) langBtn.textContent = S.lang === 'ko' ? 'KO / EN' : 'EN / KO';
     if (bar && bar.firstElementChild) bar.firstElementChild.textContent = t('footerText');
-    clear(crumbsOl);
     const modeNames = t('modes');
-    const makeCrumbNode = (name, i) => {
+    if (!crumbRefs) {
+      const items = [0, 1, 2].map((i) => {
+        const labelEl = h('span', { class: 'crumb-label', text: modeNames[i] });
+        const btn = h('button', {
+          class: 'cb', type: 'button',
+          onclick: () => switchMode(i),
+        }, h('span', { class: 'step-number', 'aria-hidden': 'true', text: String(i + 1) }), labelEl);
+        const wrap = h('div', { class: 'crumb' }, btn);
+        return { wrap, btn, labelEl };
+      });
+      const clinicianGroup = h('li', { class: 'crumb-clinician-group' }, items[0].wrap, items[1].wrap);
+      const researchGroup = h('li', { class: 'crumb-research-group' }, items[2].wrap);
+      crumbsOl.append(clinicianGroup, researchGroup);
+      crumbRefs = { items, clinicianGroup, researchGroup };
+    }
+    crumbRefs.items.forEach((it, i) => {
       const now = i === S.mode;
-      const btn = h('button', {
-        class: 'cb', type: 'button',
-        'aria-current': now ? 'step' : null,
-        onclick: () => switchMode(i),
-      }, h('span', { class: 'step-number', 'aria-hidden': 'true', text: String(i + 1) }), name);
-      return h('div', { class: 'crumb' + (now ? ' now' : '') }, btn);
-    };
-    const isClinicianMode = S.mode === 0 || S.mode === 1;
-    const clinicianGroup = h('li', {
-      class: 'crumb-clinician-group' + (isClinicianMode ? ' is-clinician-active' : ''),
-    }, makeCrumbNode(modeNames[0], 0), makeCrumbNode(modeNames[1], 1));
-    const researchGroup = h('li', {
-      class: 'crumb-research-group',
-    }, makeCrumbNode(modeNames[2], 2));
-    crumbsOl.append(clinicianGroup, researchGroup);
+      it.labelEl.textContent = modeNames[i];
+      it.wrap.classList.toggle('now', now);
+      if (now) it.btn.setAttribute('aria-current', 'step');
+      else it.btn.removeAttribute('aria-current');
+    });
+    crumbRefs.clinicianGroup.classList.toggle('is-clinician-active', S.mode === 0 || S.mode === 1);
 
-    clear(scenarioDropdown);
-    scenarioDropdown.append(h('button', {
-      type: 'button', class: 'reset-patient-btn', text: t('newPatient'),
-      title: t('newPatientTitle'),
-      onclick: () => resetPatient(),
-    }));
+    if (!resetPatientBtn) {
+      resetPatientBtn = h('button', {
+        type: 'button', class: 'reset-patient-btn',
+        onclick: () => resetPatient(),
+      });
+      scenarioDropdown.append(resetPatientBtn);
+    }
+    resetPatientBtn.textContent = t('newPatient');
+    resetPatientBtn.title = t('newPatientTitle');
   }
 
   function resetPatient() {
     closeDrawer(true);
     S.mode = 0;
+    S.basicLabsOpen = false;
     S.labsOpen = false;
+    S.deepMenuOpen = false;
     S.presetId = null;
     S.conds = [];
     S.raw = {};
@@ -1294,7 +3138,12 @@
           type: 'button', class: 'p-chip lab-chip',
           title: S.lang === 'ko' ? '검진 정보 열기' : 'Open Lab & Clinical Info',
           text: labBadges.join('  /  '),
-          onclick: () => { S.labsOpen = true; save(); switchMode(0); },
+          onclick: () => {
+            S.basicLabsOpen = true;
+            if (S.raw.crcl || S.raw.egfr || S.raw.child_pugh || S.raw.lvef || S.raw.hba1c || S.raw.ugt1a1) S.labsOpen = true;
+            save();
+            switchMode(0);
+          },
         }));
       }
     }
@@ -1782,34 +3631,61 @@
   // ------------------------------------------------------------------ Mode 1: Structure & Combination Studio
   let simAnimId = 0;
   let studioChartRO = null;
+  let studioGpuPollTimer = 0;
+  let studioDocClickHandler = null;
 
-  // The score model behind the dots. Both scores are smooth, bounded transforms of published properties (no hard caps),
-  // so combinations spread out instead of piling up on a line.
   const FC_SENSITIVE = ['pulmonary', 'haematologic', 'ocular', 'hepatic'];
   const FALLBACK_ORGANS = [
     { organ: 'pulmonary', score: 0.8 }, { organ: 'hepatic', score: 0.8 },
     { organ: 'haematologic', score: 0.8 }, { organ: 'cardiovascular', score: 0.7 },
   ];
-  // the approved drug of each target, written in the studio's own parts so it is scored by the same formula
-  const REF_STUDIO = {
-    'HER2 (ERBB2)': { linker: 'Tetrapeptide GGFG', payload: 'DXd ( Topo I )', dar: 8, fc: false },
-    'TROP2 (TACSTD2)': { linker: 'Hydrolyzable CL2A', payload: 'SN-38 ( Topo I )', dar: 7.6, fc: false },
-    'Nectin-4': { linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 4, fc: false },
-    'CD79b': { linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 3.5, fc: false },
-    'BCMA (TNFRSF17)': { linker: 'Non-cleavable mc', payload: 'MMAF ( Auristatin )', dar: 4, fc: false },
-    'FRalpha (FOLR1)': { linker: 'Disulfide SPDB', payload: 'DM4 / DM1 ( Maytansinoid )', dar: 3.5, fc: false },
+
+  const REF_ADC_ARCH = {
+    'trastuzumab-deruxtecan': { linker: 'Tetrapeptide GGFG', payload: 'DXd ( Topo I )', dar: 8, fc: false, fcFormat: 'igg1_wt' },
+    'sacituzumab-govitecan': { linker: 'Hydrolyzable CL2A', payload: 'SN-38 ( Topo I )', dar: 7.6, fc: false, fcFormat: 'igg1_wt' },
+    'mirvetuximab-soravtansine': { linker: 'Sulfo-SPDB', payload: 'DM4 / DM1 ( Maytansinoid )', dar: 3.5, fc: false, fcFormat: 'igg1_wt' },
+    'tisotumab-vedotin': { linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 4, fc: false, fcFormat: 'igg1_wt' },
+    'enfortumab-vedotin': { linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 4, fc: false, fcFormat: 'igg1_wt' },
+    'polatuzumab-vedotin': { linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 3.5, fc: false, fcFormat: 'igg1_wt' },
+    'brentuximab-vedotin': { linker: 'Val-Cit PABC', payload: 'MMAE ( Auristatin )', dar: 4, fc: false, fcFormat: 'igg1_wt' },
+    'loncastuximab-tesirine': { linker: 'PEG8-Val-Ala PABC', payload: 'SG3199 ( PBD Dimer )', dar: 2, fc: false, fcFormat: 'igg1_wt' },
+    'belantamab-mafodotin': { linker: 'Non-cleavable mc', payload: 'MMAF ( Auristatin )', dar: 4, fc: false, fcFormat: 'igg1_wt' },
+    'inotuzumab-ozogamicin': { linker: 'Acid Hydrazone', payload: 'Calicheamicin ( Enediyne )', dar: 6, fc: false, fcFormat: 'igg4_s228p' },
+    'gemtuzumab-ozogamicin': { linker: 'Acid Hydrazone', payload: 'Calicheamicin ( Enediyne )', dar: 3.5, fc: false, fcFormat: 'igg4_s228p' },
   };
+
+  function getRefStudioForTarget(targetId) {
+    const tgt = STUDIO_TARGETS.find((x) => x.id === targetId);
+    const refId = (tgt && tgt.refAdc) || 'trastuzumab-deruxtecan';
+    return REF_ADC_ARCH[refId] || REF_ADC_ARCH['trastuzumab-deruxtecan'];
+  }
+
+  function isPairCompatible(lnk, pld) {
+    if (!lnk || !pld) return false;
+    const lh = String(lnk.handle || '');
+    const ph = String(pld.handle || '');
+    if (lh === ph) return true;
+    for (const tok of ['amine', 'hydroxyl', 'thiol', 'ketone']) {
+      if (lh.includes(tok) && ph.includes(tok)) return true;
+    }
+    return false;
+  }
+
   const plainName = (id) => String(id || '').replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
 
-  function patientCancerMatchesTarget(tgt) {
+  function patientCancerText() {
     const P = (S.result && S.result.data && S.result.data.patient) || {};
-    const cancerTexts = []
+    return []
       .concat((P.cancers || []).map((c) => `${c.condition || ''} ${c.label || ''}`))
       .concat(S.conds.map((c) => `${c.label || ''} ${c.value || ''}`))
       .join(' ')
-      .toLowerCase();
-    if (!cancerTexts.trim()) return null;
-    const hasAnyTumorKeyword = /cancer|carcinoma|tumor|lymphoma|myeloma|leukemia|sarcoma|암|종양|림프종|골수종|백혈병/.test(cancerTexts);
+      .trim();
+  }
+
+  function patientCancerMatchesTarget(tgt) {
+    const cancerTexts = patientCancerText().toLowerCase();
+    if (!cancerTexts) return null;
+    const hasAnyTumorKeyword = /cancer|carcinoma|tumor|lymphoma|myeloma|leukemia|sarcoma|glioma|melanoma|mesothelioma|암|종양|림프종|골수종|백혈병|육종|흑색종|중피종/.test(cancerTexts);
     if (!hasAnyTumorKeyword) return null;
     return (tgt.tumorKeys || []).some((k) => cancerTexts.includes(k.toLowerCase()));
   }
@@ -1818,12 +3694,16 @@
     const activeSurrogate = SURROGATE_NET || ((typeof globalThis !== 'undefined' && globalThis.ADCTOX_SURROGATE) ? globalThis.ADCTOX_SURROGATE : ((typeof window !== 'undefined' && window.ADCTOX_SURROGATE) ? window.ADCTOX_SURROGATE : null));
     const W0 = Object.assign({}, BASE_SURROGATE_WEIGHTS, (activeSurrogate && activeSurrogate.weights) || {});
     const W = Object.assign({}, W0, S.simWeights || {});
-    const spec = specInput || S.studio;
-    const tgt = STUDIO_TARGETS.find((x) => x.id === spec.target) || STUDIO_TARGETS[0];
-    const lnk = STUDIO_LINKERS.find((x) => x.id === spec.linker) || STUDIO_LINKERS[0];
-    const pld = STUDIO_PAYLOADS.find((x) => x.id === spec.payload) || STUDIO_PAYLOADS[0];
-    const dar = Number(spec.dar) || 4;
-    const fcSilenced = Boolean(spec.fc);
+    const rawSpec = specInput || S.studio;
+    const tgt = STUDIO_TARGETS.find((x) => x.id === rawSpec.target) || STUDIO_TARGETS[0];
+    const lnk = STUDIO_LINKERS.find((x) => x.id === rawSpec.linker) || STUDIO_LINKERS[0];
+    const pld = STUDIO_PAYLOADS.find((x) => x.id === rawSpec.payload) || STUDIO_PAYLOADS[0];
+    const dar = Number(rawSpec.dar) || 4;
+    const fcFormat = rawSpec.fcFormat || (rawSpec.fc ? 'igg1_lalapg' : 'igg1_wt');
+    const fcObj = STUDIO_FC_ITEMS.find((x) => x.id === fcFormat) || STUDIO_FC_ITEMS[0];
+    const fcSilenced = fcFormat !== 'igg1_wt';
+    const fcStrength = Math.max(0, Math.min(1, 1 - Number(fcObj && fcObj.fcActivity != null ? fcObj.fcActivity : (fcSilenced ? 0.08 : 1.0))));
+    const spec = Object.assign({}, rawSpec, { target: tgt.id, linker: lnk.id, payload: pld.id, dar, fc: fcSilenced, fcFormat });
 
     const real = organsInput || activeOrgansWithScores();
     const baseOrgans = real.slice();
@@ -1834,11 +3714,11 @@
         organSet.add(tis.organ);
       }
     }
-    const isCompat = lnk.handle === pld.handle || lnk.handle.includes(pld.handle) || pld.handle.includes(lnk.handle);
-    const pairAffinity = isCompat ? ((lnk.prefPayloads && lnk.prefPayloads[pld.id]) || 0.78) : 0.35;
+    const isCompat = isPairCompatible(lnk, pld);
+    const pairAffinity = isCompat ? ((lnk.prefPayloads && lnk.prefPayloads[pld.id]) || 0.84) : 0.35;
     const chemPenalty = 1 + (1 - pairAffinity) * 0.38;
 
-    const gridKey = `${tgt.id}|${lnk.id}|${pld.id}|${dar}|${fcSilenced ? 1 : 0}`;
+    const gridKey = `${tgt.id}|${lnk.id}|${pld.id}|${dar}|${fcFormat === 'igg1_lalapg' ? 1 : 0}`;
     const node = (activeSurrogate && activeSurrogate.grid) ? activeSurrogate.grid[gridKey] : null;
 
     const wOnTarget = Math.max(0.10, Math.min(0.85, W.wExpr));
@@ -1847,9 +3727,8 @@
     const offScale = (1 - wOnTarget) / Math.max(0.15, 1 - wOn0);
     const leakScale = W.leakSens / Math.max(0.15, W0.leakSens);
     const aggScale = W.hydroSens / Math.max(0.15, W0.hydroSens);
-    const fcSliderScale = fcSilenced
-      ? Math.max(0.12, (1 - W.fcProtect) / Math.max(0.15, 1 - W0.fcProtect))
-      : 1.0;
+    const fcSliderRatio = Math.max(0.12, (1 - W.fcProtect) / Math.max(0.15, 1 - W0.fcProtect));
+    const fcSliderScale = 1.0 + fcStrength * (fcSliderRatio - 1.0);
 
     const organRiskMap = {};
     let allOrganRisks;
@@ -1864,8 +3743,6 @@
     let sBystander;
 
     if (node && Array.isArray(node.m)) {
-      // 5-Fold `ADC-SurrogateNet-v2` Ensemble Pathway-Decomposed Inference
-      // node.m = [pIC50_pos, pIC50_bys, S_plasma_pct, HIC_agg, CL_hep, s_sel, s_pot, s_deliv, s_bys]
       pIC50Pos = Number(node.m[0]);
       pIC50Bys = Number(node.m[1]);
       plasmaStabPct = Math.max(20, Math.min(98, Math.round(Number(node.m[2]))));
@@ -1904,26 +3781,27 @@
       sDeliv = Math.max(0.08, Math.min(0.98, Number(node.m[7]) * Math.exp(-leakDelta)));
       sBystander = Math.max(0.06, Math.min(0.98, Number(node.m[8])));
     } else {
-      // Fallback if surrogate_2592.js is absent in an isolated script harness
       plasmaStabPct = Math.max(25, Math.min(98, Math.round(lnk.stability - (dar > 4 ? (dar - 4) * 2.5 : 0))));
-      pIC50Pos = 6.2 + (pld.potency / 35);
+      pIC50Pos = 6.2 + (pld.potency / 35) + Math.log2(Math.max(1, dar)) * 0.18;
       pIC50Bys = pld.perm && lnk.cleavable ? pIC50Pos - 0.6 : pIC50Pos - 1.8;
       hicAgg = 1.0 + 0.18 * dar * (pld.hydro || 0.5);
       clHep = 1.0 + 0.45 * (hicAgg - 1.0);
+      const pldOrgs = pld.organs || {};
       SURROGATE_ORGANS.forEach((ax) => {
-        organRiskMap[ax] = pld.organs[ax] != null ? pld.organs[ax] : 22;
+        organRiskMap[ax] = pldOrgs[ax] != null ? pldOrgs[ax] : 22;
       });
       allOrganRisks = baseOrgans.map((ao) => {
-        const payloadTox = (pld.organs[ao.organ] != null ? pld.organs[ao.organ] : 20) / 100;
-        const expr = ((tgt.tissues.find((x) => x.organ === ao.organ) || { tpm: 6 }).tpm) / 100;
-        const fcMult = fcSilenced && FC_SENSITIVE.includes(ao.organ) ? Math.max(0.25, 1 - W.fcProtect) : 1.0;
+        const payloadTox = (pldOrgs[ao.organ] != null ? pldOrgs[ao.organ] : 20) / 100;
+        const expr = (((tgt.tissues || []).find((x) => x.organ === ao.organ) || { tpm: 6 }).tpm) / 100;
+        const fcMult = fcStrength > 0 && FC_SENSITIVE.includes(ao.organ) ? Math.max(0.25, 1 - fcStrength * W.fcProtect) : 1.0;
         const prioMult = (S.prioOrgan && S.prioOrgan === ao.organ) ? 1.45 : 1.0;
+        const darOver = dar > (pld.maxSafeDar || 6) ? (1 + 0.14 * (dar - (pld.maxSafeDar || 6))) : 1.0;
         const vulnWeight = (ao.baselineTissue ? 0.46 : (0.58 + 0.42 * Math.min(1, ao.score || 0.8))) * prioMult;
-        const hFallback = ((1 - wOnTarget) * payloadTox * fcMult + wOnTarget * 1.4 * expr) * chemPenalty * vulnWeight;
+        const hFallback = ((1 - wOnTarget) * payloadTox * fcMult * darOver + wOnTarget * 1.4 * expr) * chemPenalty * vulnWeight;
         return { organ: ao.organ, p: 1 - Math.exp(-0.56 * hFallback), baselineTissue: Boolean(ao.baselineTissue) };
       });
       sSelect = Math.max(0.18, Math.min(0.98, (tgt.selectivity - 2.4) / 3.6));
-      sPotency = Math.max(0.15, Math.min(0.99, Math.pow(pld.potency / 100, 1.35)));
+      sPotency = Math.max(0.15, Math.min(0.99, Math.pow(pld.potency / 100, 1.35) * (0.82 + 0.04 * Math.min(8, dar))));
       sDeliv = Math.max(0.15, Math.min(0.98, plasmaStabPct / 100));
       sBystander = (lnk.cleavable && pld.perm) ? 0.88 : 0.25;
     }
@@ -1948,14 +3826,14 @@
     const nwPot = (rawWCore * 0.56) / wSum;
     const nwDel = (rawWCore * 0.44) / wSum;
 
-    const adccBoost = fcSilenced ? 0.985 : 1.015;
+    const adccBoost = Number(fcObj && fcObj.adcc != null ? fcObj.adcc : (fcSilenced ? 0.985 : 1.015));
     const convexEff = (nwSel * sSelect + nwPot * sPotency + nwDel * sDeliv + nwBys * sBystander) * adccBoost;
     const eff = convexEff * Math.pow(pairAffinity, 0.34) * indFactor * (isCompat ? 1.0 : 0.48);
     const efficacyRaw = Math.max(2, Math.min(98, eff * 100));
     const efficacyScore = Math.round(efficacyRaw);
 
     return {
-      spec, tgt, lnk, pld, dar, fcSilenced,
+      spec, tgt, lnk, pld, dar, fcSilenced, fcFormat,
       safetyScore, efficacyScore, safetyRaw, efficacyRaw,
       isCompat, organRisks, organRiskMap, meanRisk, bystander,
       nwSel, nwPot, nwDel, nwBys,
@@ -1963,24 +3841,32 @@
     };
   }
 
-  function evaluateAllStudioCandidates() {
+  function evaluateLocalFallbackSpace() {
+    // Offline/mock fallback when running from file://?mock=1 without Python server
     const W = Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {});
     const real = activeOrgansWithScores();
     const cands = [];
+    const curTgt = STUDIO_TARGETS.find((x) => x.id === S.studio.target) || STUDIO_TARGETS[0];
+    const tgtSample = STUDIO_TARGETS.slice(0, 6);
+    if (!tgtSample.some((t) => t.id === curTgt.id)) tgtSample.push(curTgt);
+    const lnkSample = STUDIO_LINKERS.slice(0, 6);
+    const pldSample = STUDIO_PAYLOADS.slice(0, 6);
     const dars = [2, 3.5, 4, 6, 7.6, 8];
-    STUDIO_TARGETS.forEach((t) => {
-      STUDIO_LINKERS.forEach((l) => {
-        STUDIO_PAYLOADS.forEach((p) => {
+    tgtSample.forEach((tObj) => {
+      lnkSample.forEach((lObj) => {
+        pldSample.forEach((pObj) => {
           dars.forEach((d) => {
-            [false, true].forEach((fc) => {
-              cands.push(computeStudioSimulation({ target: t.id, linker: l.id, payload: p.id, dar: d, fc }, real));
+            ['igg1_wt', 'igg1_lalapg'].forEach((fcFmt) => {
+              cands.push(computeStudioSimulation({
+                target: tObj.id, linker: lObj.id, payload: pObj.id,
+                dar: d, fc: fcFmt !== 'igg1_wt', fcFormat: fcFmt,
+              }, real));
             });
           });
         });
       });
     });
 
-    // User-tunable Therapeutic Index Safety Priority (lambda_safe), lightly modulated by multi-organ burden
     const organShift = real.length > 2 ? Math.min(0.08, (real.length - 2) * 0.02) : 0;
     const wSafety = Math.max(0.15, Math.min(0.88, W.wSafety + organShift));
     let best = null;
@@ -1991,7 +3877,73 @@
       c.utilScore = util;
       if (util > top) { top = util; best = c; }
     });
-    return { cands, best: best || cands[0], wSafety };
+    return {
+      isServer: false,
+      mode: 'local_fallback',
+      totalCombinations: STUDIO_TARGETS.length * STUDIO_LINKERS.length * STUDIO_PAYLOADS.length * STUDIO_DAR_ITEMS.length * STUDIO_FC_ITEMS.length,
+      cands,
+      best: best || cands[0],
+      current: computeStudioSimulation(S.studio, real),
+      wSafety,
+    };
+  }
+
+  function hydrateServerDetail(det) {
+    if (!det || !det.spec) return computeStudioSimulation();
+    const spec = det.spec;
+    const tgt = STUDIO_TARGETS.find((x) => x.id === spec.target) || STUDIO_TARGETS[0];
+    const lnk = STUDIO_LINKERS.find((x) => x.id === spec.linker) || STUDIO_LINKERS[0];
+    const basePld = STUDIO_PAYLOADS.find((x) => x.id === spec.payload) || STUDIO_PAYLOADS[0];
+    const pld = spec.customPayloadLabel
+      ? Object.assign({}, basePld, { id: spec.customPayloadLabel, cls: 'Custom SMILES Payload' })
+      : basePld;
+    const dar = Number(spec.dar) || 4;
+    const fcFormat = spec.fcFormat || det.fcFormat || (spec.fc ? 'igg1_lalapg' : 'igg1_wt');
+    const fcSilenced = fcFormat !== 'igg1_wt';
+    return Object.assign({}, det, {
+      spec: Object.assign({}, spec, { dar, fc: fcSilenced, fcFormat }),
+      tgt,
+      lnk,
+      pld,
+      dar,
+      fcSilenced,
+      fcFormat,
+    });
+  }
+
+  function adaptServerSpace(res) {
+    const current = hydrateServerDetail(res.current);
+    const best = hydrateServerDetail(res.best);
+    const refCurrent = res.ref_current ? hydrateServerDetail(res.ref_current) : null;
+    const refBest = res.ref_best ? hydrateServerDetail(res.ref_best) : null;
+    const cloud = (res.cloud || []).map((pt) => ({
+      safetyRaw: pt[0],
+      efficacyRaw: pt[1],
+      isCompat: Boolean(pt[2] & 1),
+      isBestTarget: Boolean(pt[2] & 2),
+      isCurTarget: Boolean(pt[2] & 4),
+    }));
+    const sameTargetCloud = (res.same_target_cloud || []).map((pt) => ({
+      safetyRaw: pt[0],
+      efficacyRaw: pt[1],
+    }));
+    return {
+      isServer: true,
+      mode: res.mode || 'matrix_368k',
+      totalCombinations: Number(res.total_combinations) || 368640,
+      compatibleCombinations: Number(res.compatible_combinations) || 0,
+      wSafety: Number(res.w_safety != null ? res.w_safety : S.simWeights.wSafety),
+      elapsedMs: Number(res.elapsed_ms) || 0,
+      current,
+      best,
+      refCurrent,
+      refBest,
+      paretoFront: res.pareto_front || [],
+      topCandidates: res.top_candidates || [],
+      cloud,
+      sameTargetCloud,
+      deepResearch: res.deep_research || null,
+    };
   }
 
   function buildAutoOptimizeRationales(bestSim) {
@@ -1999,28 +3951,49 @@
     const isKo = S.lang === 'ko';
     const activeOrgs = activeOrgansWithScores().map((o) => (isKo && ORGAN_KO[o.organ] ? ORGAN_KO[o.organ] : SHORT[o.organ] || o.organ));
     const tgtName = plainName(s.target);
-    const plName = plainName(s.payload);
+    const plName = s.customPayloadLabel || plainName(s.payload);
     const stabVal = bestSim.plasmaStabPct != null ? bestSim.plasmaStabPct : bestSim.lnk.stability;
     const picVal = bestSim.pIC50Pos != null ? bestSim.pIC50Pos.toFixed(2) : null;
+    const fcLbl = fcFormatLabel(s.fcFormat, s.fc, isKo);
+    const doseNoteKo = bestSim.optimalDoseMgKg ? ` (${bestSim.optimalDoseMgKg} mg/kg)` : '';
+    const doseNoteEn = bestSim.optimalDoseMgKg ? ` (${bestSim.optimalDoseMgKg} mg/kg)` : '';
     if (isKo) {
       return [
         ['1. 표적 항원', `${tgtName}, 선택도 +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, 'GTEx/Tabula Sapiens 정상 조직 발현 대비 종양 과발현 마진이 높아 온타깃 정상 장기 손상을 억제합니다.'],
         ['2. 화학 링커', `${s.linker}, 신경망 혈장 보존율 ${stabVal}%`, `${activeOrgs.join(', ') || '주요 장기'}로 유리 페이로드가 조기 방출되는 경로를 낮추고 종양 내 절단 효율을 확보합니다.`],
         ['3. 세포독성 페이로드', `${plName}, ${bestSim.pld.cls}${picVal ? ` (pIC50 ${picVal})` : ''}`, '환자 취약 장기 독성 경로 위험도가 낮으면서 접합체 세포독성 효력을 유지합니다.'],
-        ['4. 접합비와 Fc', `DAR ${s.dar}, ${s.fc ? 'Fc 침묵화' : '야생형 IgG1'}`, `예상 장기 안전도 ${bestSim.safetyScore}점, 항암 효능 ${bestSim.efficacyScore}점으로 치료지수 균형이 최적입니다.`],
+        ['4. 접합비와 항체 골격', `DAR ${s.dar}, ${fcLbl}${doseNoteKo}`, `예상 장기 안전도 ${bestSim.safetyScore}점, 항암 효능 ${bestSim.efficacyScore}점으로 치료지수 균형이 최적입니다.`],
       ];
     }
     return [
       ['1. Target antigen', `${tgtName}, selectivity +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, 'High tumor-to-normal expression margin across GTEx and Tabula Sapiens spares healthy tissue.'],
       ['2. Chemical linker', `${s.linker}, neural plasma retention ${stabVal}%`, `Reduces systemic free-payload leakage into ${activeOrgs.join(', ') || 'major organs'} while preserving intratumoral release.`],
       ['3. Cytotoxic payload', `${plName}, ${bestSim.pld.cls}${picVal ? ` (pIC50 ${picVal})` : ''}`, 'Lowers predicted hazard on this patient\'s vulnerable organs while maintaining conjugate potency.'],
-      ['4. DAR and Fc', `DAR ${s.dar}, ${s.fc ? 'Fc silenced' : 'wild-type IgG1'}`, `Neural ensemble organ safety ${bestSim.safetyScore} and antitumor efficacy ${bestSim.efficacyScore}: optimal therapeutic index.`],
+      ['4. DAR and Fc format', `DAR ${s.dar}, ${fcLbl}${doseNoteEn}`, `Neural ensemble organ safety ${bestSim.safetyScore} and antitumor efficacy ${bestSim.efficacyScore}: optimal therapeutic index.`],
     ];
+  }
+
+  function svgChevronDown() {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 12 12');
+    svg.setAttribute('width', '11');
+    svg.setAttribute('height', '11');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    const path = document.createElementNS(ns, 'path');
+    path.setAttribute('d', 'M2.5 4.5L6 8L9.5 4.5');
+    path.setAttribute('stroke', 'currentColor');
+    path.setAttribute('stroke-width', '1.8');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(path);
+    return svg;
   }
 
   function buildStructureStudioMode() {
     const box = h('div', { class: 's-studio' });
-    box.append(buildWorkspaceBar(() => renderStudioCanvas()));
+    box.append(buildWorkspaceBar(() => triggerServerEvaluate(false)));
     const wrap = h('div', { class: 'studio-wrap' });
     const controls = h('aside', { class: 'studio-controls panel', 'aria-label': 'Conjugate Architecture Controls' });
     const canvas = h('div', { class: 'studio-canvas' });
@@ -2028,10 +4001,118 @@
     box.append(wrap);
 
     let isOptimizing = false;
-    let autoRationale = null;
     let optBtn = null;
+    let serverSpace = null;
+    let gpuStatus = {
+      max_slots: 4,
+      active_count: 0,
+      free_count: 4,
+      available: true,
+      next_slot: 0,
+      backend: 'cuda',
+      slots: [0, 1, 2, 3].map((i) => ({ slot: i, busy: false, label: `GPU ${i}` })),
+    };
+    let gpuStatusMsg = '';
+    let evalReqSeq = 0;
+    let sliderDebounceTimer = 0;
 
-    // A pace that speeds up, stalls and speeds up again like real work, instead of one constant crawl.
+    if (studioGpuPollTimer) {
+      clearInterval(studioGpuPollTimer);
+      studioGpuPollTimer = 0;
+    }
+    if (studioDocClickHandler) {
+      document.removeEventListener('pointerdown', studioDocClickHandler);
+      studioDocClickHandler = null;
+    }
+
+    studioDocClickHandler = (ev) => {
+      if (!box.isConnected) {
+        document.removeEventListener('pointerdown', studioDocClickHandler);
+        studioDocClickHandler = null;
+        return;
+      }
+      if (S.deepMenuOpen) {
+        const popWrap = controls.querySelector('.split-optimize-wrap');
+        if (popWrap && !popWrap.contains(ev.target)) {
+          S.deepMenuOpen = false;
+          renderControls();
+        }
+      }
+    };
+    document.addEventListener('pointerdown', studioDocClickHandler);
+
+    async function pollGpuStatus(silent) {
+      if (!API.studioGpuStatus) return gpuStatus;
+      try {
+        const st = await API.studioGpuStatus();
+        if (!st || typeof st !== 'object') return gpuStatus;
+        const prevAvail = Boolean(gpuStatus && gpuStatus.available);
+        const prevActive = Number(gpuStatus && gpuStatus.active_count);
+        gpuStatus = st;
+        if (st.available && gpuStatusMsg) gpuStatusMsg = '';
+        if (!silent || prevAvail !== Boolean(st.available) || prevActive !== Number(st.active_count) || S.deepMenuOpen) {
+          if (box.isConnected) renderControls();
+        }
+      } catch (e) { /* ignore transient poll failure */ }
+      return gpuStatus;
+    }
+
+    studioGpuPollTimer = setInterval(() => {
+      if (!box.isConnected) {
+        clearInterval(studioGpuPollTimer);
+        studioGpuPollTimer = 0;
+        return;
+      }
+      pollGpuStatus(true);
+    }, 2000);
+    pollGpuStatus(true);
+
+    function buildEvalRequestBody() {
+      const fcFmt = S.studio.fcFormat || (S.studio.fc ? 'igg1_lalapg' : 'igg1_wt');
+      return {
+        spec: {
+          target: S.studio.target,
+          linker: S.studio.linker,
+          payload: S.studio.payload,
+          dar: Number(S.studio.dar) || 4,
+          fc: fcFmt !== 'igg1_wt',
+          fcFormat: fcFmt,
+        },
+        organs: activeOrgansWithScores().map((o) => ({ organ: o.organ, score: o.score })),
+        prioOrgan: S.prioOrgan || null,
+        cancerText: patientCancerText(),
+        simWeights: Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {}),
+        customPayloadSmiles: S.deepResearchOn ? String(S.customPayloadSmiles || '').trim() : '',
+      };
+    }
+
+    async function triggerServerEvaluate(openCompareAfter) {
+      const seq = ++evalReqSeq;
+      if (!API.studioEvaluate) {
+        serverSpace = evaluateLocalFallbackSpace();
+        if (box.isConnected) renderStudioCanvas(false);
+        if (openCompareAfter && S.studioDesignMode !== 'idle' && hasPatientProfile()) {
+          openStudioCompareDrawer(serverSpace.current, serverSpace);
+        }
+        return serverSpace;
+      }
+      try {
+        const res = await API.studioEvaluate(buildEvalRequestBody());
+        if (seq !== evalReqSeq || !box.isConnected) return serverSpace;
+        serverSpace = adaptServerSpace(res);
+        renderStudioCanvas(false);
+        if (openCompareAfter && S.studioDesignMode !== 'idle' && hasPatientProfile()) {
+          openStudioCompareDrawer(serverSpace.current, serverSpace);
+        }
+        return serverSpace;
+      } catch (e) {
+        serverSpace = evaluateLocalFallbackSpace();
+        if (box.isConnected) renderStudioCanvas(false);
+        return serverSpace;
+      }
+    }
+
+    // Smooth non-uniform scan pace
     const PACE = [[0, 0], [0.1, 0.06], [0.24, 0.31], [0.36, 0.38], [0.58, 0.77], [0.7, 0.81], [0.88, 0.97], [1, 1]];
     function pace(f) {
       for (let i = 1; i < PACE.length; i++) {
@@ -2045,52 +4126,215 @@
       return 1;
     }
 
+    function filteredTargets() {
+      const q = String(S.tgtQuery || '').trim().toLowerCase();
+      if (q) {
+        const hits = STUDIO_TARGETS.filter((it) => (
+          it.id.toLowerCase().includes(q) ||
+          String(it.gene || '').toLowerCase().includes(q) ||
+          (it.tumorKeys || []).some((k) => k.toLowerCase().includes(q))
+        ));
+        return hits.length ? hits : STUDIO_TARGETS;
+      }
+      const cat = S.tgtCat || 'rec';
+      if (cat === 'all') return STUDIO_TARGETS;
+      if (cat !== 'rec') {
+        const list = STUDIO_TARGETS.filter((it) => it.group === cat);
+        if (!list.some((it) => it.id === S.studio.target)) {
+          const cur = STUDIO_TARGETS.find((it) => it.id === S.studio.target);
+          if (cur) return [cur].concat(list);
+        }
+        return list;
+      }
+      // 'rec': Cancer-matched targets first + flagship clinical targets + active selection
+      const matched = STUDIO_TARGETS.filter((it) => patientCancerMatchesTarget(it) === true);
+      const flagshipIds = [
+        'HER2 (ERBB2)', 'TROP2 (TACSTD2)', 'Nectin-4', 'CLDN18.2 (CLDN18)',
+        'HER3 (ERBB3)', 'FRalpha (FOLR1)', 'B7-H3 (CD276)', 'DLL3',
+        'EGFR', 'c-MET (MET)', 'CD79b', 'BCMA (TNFRSF17)',
+      ];
+      const out = [];
+      const seen = new Set();
+      const pushUnique = (item) => {
+        if (item && !seen.has(item.id)) { seen.add(item.id); out.push(item); }
+      };
+      pushUnique(STUDIO_TARGETS.find((it) => it.id === S.studio.target));
+      matched.forEach(pushUnique);
+      flagshipIds.forEach((id) => pushUnique(STUDIO_TARGETS.find((it) => it.id === id)));
+      return out.slice(0, 14);
+    }
+
+    function filteredLinkers() {
+      const cat = S.lnkCat || 'all';
+      if (cat === 'all') return STUDIO_LINKERS;
+      const list = STUDIO_LINKERS.filter((it) => it.group === cat);
+      const cur = STUDIO_LINKERS.find((it) => it.id === S.studio.linker);
+      if (cur && !list.some((it) => it.id === cur.id)) return [cur].concat(list);
+      return list;
+    }
+
+    function filteredPayloads() {
+      const cat = S.pldCat || 'all';
+      if (cat === 'all') return STUDIO_PAYLOADS;
+      const list = STUDIO_PAYLOADS.filter((it) => it.group === cat);
+      const cur = STUDIO_PAYLOADS.find((it) => it.id === S.studio.payload);
+      if (cur && !list.some((it) => it.id === cur.id)) return [cur].concat(list);
+      return list;
+    }
+
     function renderControls() {
+      const activeSearch = document.activeElement && controls.contains(document.activeElement) && document.activeElement.classList.contains('studio-search-input');
+      const selStart = activeSearch ? document.activeElement.selectionStart : null;
+      const selEnd = activeSearch ? document.activeElement.selectionEnd : null;
+
       clear(controls);
+      const isKo = S.lang === 'ko';
+      const totalCombos = STUDIO_TARGETS.length * STUDIO_LINKERS.length * STUDIO_PAYLOADS.length * STUDIO_DAR_ITEMS.length * STUDIO_FC_ITEMS.length;
+
       const headAction = h('div', { class: 'studio-head-action' },
-        h('span', { class: 'sec-kicker', text: t('archTitle') }));
+        h('span', { class: 'sec-kicker', text: t('archTitle') }),
+        h('span', {
+          class: 'studio-combo-badge',
+          text: isKo ? `${totalCombos.toLocaleString()}개 조합` : `${totalCombos.toLocaleString()} Combos`,
+        }));
       controls.append(headAction);
 
-      const makeGroup = (label, items, current, onPick, isGrid6) => {
-        const pills = h('div', { class: 'studio-pills' + (isGrid6 ? ' grid-6' : '') });
+      const curLnkObj = STUDIO_LINKERS.find((x) => x.id === S.studio.linker) || STUDIO_LINKERS[0];
+      const curPldObj = STUDIO_PAYLOADS.find((x) => x.id === S.studio.payload) || STUDIO_PAYLOADS[0];
+      const curFcFormat = S.studio.fcFormat || (S.studio.fc ? 'igg1_lalapg' : 'igg1_wt');
+
+      const onPartPicked = (mutator) => {
+        hideMicroPopover();
+        mutator();
+        if (!hasPatientProfile()) {
+          S.studioDesignMode = 'idle';
+        } else {
+          if (S.studioDesignMode === 'auto') S.studioDesignMode = 'manual';
+          if (S.studioDesignMode === 'manual') pushManualHistory();
+        }
+        save();
+        renderControls();
+        triggerServerEvaluate(S.studioDesignMode !== 'idle' && hasPatientProfile());
+      };
+
+      const makeCatTabs = (tabs, activeId, onTab) => {
+        const bar = h('div', { class: 'studio-cat-tabs', role: 'tablist' });
+        tabs.forEach(([id, koLbl, enLbl]) => {
+          bar.append(h('button', {
+            type: 'button',
+            class: 'studio-cat-tab' + (activeId === id ? ' is-active' : ''),
+            onclick: () => { onTab(id); save(); renderControls(); },
+            text: isKo ? koLbl : enLbl,
+          }));
+        });
+        return bar;
+      };
+
+      const makePillsList = (items, currentVal, onPick, opts) => {
+        const o = opts || {};
+        const cls = 'studio-pills' + (o.grid4 ? ' grid-4' : '') + (o.scrollable ? ' is-scrollable' : '');
+        const pills = h('div', { class: cls });
         items.forEach((it) => {
           const val = typeof it === 'string' ? it : it.id;
-          const popoverText = typeof it === 'object' ? (S.lang === 'ko' ? (it.popover_ko || it.popover) : it.popover) : null;
+          const labelTxt = o.labelFn ? o.labelFn(it) : val;
+          const popoverText = typeof it === 'object' ? (isKo ? (it.popover_ko || it.popover) : it.popover) : null;
+          const extraCls = o.extraClassFn ? o.extraClassFn(it) : '';
           const b = h('button', {
-            type: 'button', class: 'st-pill', 'aria-pressed': val === current ? 'true' : 'false',
-            text: val,
-            onmouseenter: (e) => {
-              if (popoverText) showMicroPopover(b, popoverText);
-            },
+            type: 'button',
+            class: 'st-pill' + (extraCls ? ' ' + extraCls : ''),
+            'aria-pressed': val === currentVal ? 'true' : 'false',
+            text: labelTxt,
+            onmouseenter: () => { if (popoverText) showMicroPopover(b, popoverText); },
             onmouseleave: () => hideMicroPopover(),
-            onclick: () => {
-              hideMicroPopover();
-              onPick(val);
-              if (!hasPatientProfile()) {
-                S.studioDesignMode = 'idle';
-              } else {
-                if (S.studioDesignMode === 'auto') S.studioDesignMode = 'manual';
-                if (S.studioDesignMode === 'manual') pushManualHistory();
-              }
-              save();
-              renderControls();
-              renderStudioCanvas(false);
-              if (S.studioDesignMode !== 'idle' && hasPatientProfile()) {
-                openStudioCompareDrawer(computeStudioSimulation(), evaluateAllStudioCandidates());
-              }
-            },
+            onclick: () => onPick(val, it),
           });
           pills.append(b);
         });
-        return h('div', { class: 'studio-group' }, h('span', { class: 'studio-label', text: label }), pills);
+        return pills;
       };
 
-      const fcItems = STUDIO_FC_ITEMS.map((item) => ({
-        id: item.isSilenced ? t('silFc') : t('wtFc'),
-        popover: item.popover,
-        popover_ko: item.popover_ko,
-      }));
+      // 1. Target Antigen (36) with category tabs + inline search
+      const tgtSearch = h('input', {
+        type: 'search',
+        class: 'studio-search-input',
+        placeholder: isKo ? '표적 또는 유전자 검색 (예: CLDN18.2, DLL3, HER3)...' : 'Search target or gene (e.g., CLDN18.2, DLL3, HER3)...',
+        value: S.tgtQuery || '',
+        oninput: (e) => {
+          S.tgtQuery = e.target.value;
+          save();
+          renderControls();
+        },
+      });
+      const tgtCatBar = makeCatTabs([
+        ['rec', '주요/일치', 'Key/Match'],
+        ['breast_gyn', '유방/부인', 'Breast/Gyn'],
+        ['lung_gi', '폐/소화기', 'Lung/GI'],
+        ['gu_solid', '비뇨/고형', 'GU/Solid'],
+        ['heme', '혈액암', 'Heme'],
+        ['all', '전체 36', 'All 36'],
+      ], S.tgtQuery ? '' : (S.tgtCat || 'rec'), (id) => { S.tgtCat = id; S.tgtQuery = ''; });
 
+      const tgtGroup = h('div', { class: 'studio-group' },
+        h('span', { class: 'studio-label', text: t('tgtTitle') }),
+        tgtCatBar,
+        tgtSearch,
+        makePillsList(filteredTargets(), S.studio.target, (v) => onPartPicked(() => { S.studio.target = v; }), {
+          scrollable: true,
+          extraClassFn: (it) => (patientCancerMatchesTarget(it) === true ? 'is-cancer-match' : ''),
+        }));
+
+      // 2. Chemical Linker (16)
+      const lnkCatBar = makeCatTabs([
+        ['all', '전체 16', 'All 16'],
+        ['protease', '펩타이드', 'Protease'],
+        ['hydrophilic', '친수성', 'Hydrophilic'],
+        ['ph_redox', 'pH/환원', 'pH/Redox'],
+        ['non_cleavable', '비절단', 'Non-cleav'],
+      ], S.lnkCat || 'all', (id) => { S.lnkCat = id; });
+
+      const lnkGroup = h('div', { class: 'studio-group' },
+        h('span', { class: 'studio-label', text: t('lnkTitle') }),
+        lnkCatBar,
+        makePillsList(filteredLinkers(), S.studio.linker, (v) => onPartPicked(() => { S.studio.linker = v; }), {
+          scrollable: (S.lnkCat || 'all') === 'all',
+          extraClassFn: (it) => (!isPairCompatible(it, curPldObj) ? 'is-incompat' : ''),
+        }));
+
+      // 3. Cytotoxic Payload (20)
+      const pldCatBar = makeCatTabs([
+        ['all', '전체 20', 'All 20'],
+        ['topo1', 'Topo I', 'Topo I'],
+        ['tubulin', '미세소관', 'Tubulin'],
+        ['dna', 'DNA', 'DNA'],
+        ['targeted', '표적/면역', 'Targeted'],
+      ], S.pldCat || 'all', (id) => { S.pldCat = id; });
+
+      const pldGroup = h('div', { class: 'studio-group' },
+        h('span', { class: 'studio-label', text: t('pldTitle') }),
+        pldCatBar,
+        makePillsList(filteredPayloads(), S.studio.payload, (v) => onPartPicked(() => { S.studio.payload = v; }), {
+          scrollable: (S.pldCat || 'all') === 'all',
+          extraClassFn: (it) => (!isPairCompatible(curLnkObj, it) ? 'is-incompat' : ''),
+        }));
+
+      // 4. DAR (8)
+      const darGroup = h('div', { class: 'studio-group' },
+        h('span', { class: 'studio-label', text: t('darTitle') }),
+        makePillsList(STUDIO_DAR_ITEMS, String(S.studio.dar), (v) => onPartPicked(() => { S.studio.dar = parseFloat(v); }), {
+          grid4: true,
+        }));
+
+      // 5. Antibody & Fc Format (4)
+      const fcGroup = h('div', { class: 'studio-group' },
+        h('span', { class: 'studio-label', text: t('fcTitle') }),
+        makePillsList(STUDIO_FC_ITEMS, curFcFormat, (v) => onPartPicked(() => {
+          S.studio.fcFormat = v;
+          S.studio.fc = v !== 'igg1_wt';
+        }), {
+          labelFn: (it) => (isKo ? it.ko : it.en),
+        }));
+
+      // Manual + Split Auto-Optimize / Deep Research (GPU) Action Row
       const manualBtn = h('button', {
         type: 'button',
         class: 'btn-manual-design' + (S.studioDesignMode === 'manual' ? ' is-active' : ''),
@@ -2098,24 +4342,145 @@
         onclick: () => runManualSimulation(),
       });
 
+      const slotsBusy = Boolean(gpuStatus && gpuStatus.available === false);
+      const deepBlocked = Boolean(S.deepResearchOn && slotsBusy && !isOptimizing);
+
+      const mainBtnLabel = deepBlocked
+        ? t('deepBusyBtn')
+        : S.deepResearchOn
+          ? t('deepRunBtn')
+          : t('autoOpt');
+
+      const mainBtnClass = 'btn-optimize split-main'
+        + (isOptimizing ? ' is-running' : '')
+        + (S.deepResearchOn && !deepBlocked && !isOptimizing ? ' is-deep-mode' : '')
+        + (!S.deepResearchOn && S.studioDesignMode === 'auto' && !isOptimizing ? ' is-optimal' : '')
+        + (deepBlocked ? ' is-gpu-busy' : '');
+
       optBtn = h('button', {
         type: 'button',
-        class: 'btn-optimize' + (isOptimizing ? ' is-running' : '') + (S.studioDesignMode === 'auto' && !isOptimizing ? ' is-optimal' : ''),
-        text: t('autoOpt'),
+        class: mainBtnClass,
+        disabled: deepBlocked ? true : false,
+        text: mainBtnLabel,
         'aria-busy': isOptimizing ? 'true' : 'false',
-        onclick: () => runOptimizationSimulation(),
+        onclick: () => {
+          if (deepBlocked) return;
+          runOptimizationSimulation(Boolean(S.deepResearchOn));
+        },
       });
 
-      const actionBtnRow = h('div', { class: 'studio-btn-row' }, manualBtn, optBtn);
+      const caretClass = 'btn-optimize-caret'
+        + (S.deepMenuOpen ? ' is-open' : '')
+        + (S.deepResearchOn && !deepBlocked ? ' is-deep-mode' : '')
+        + (!S.deepResearchOn && S.studioDesignMode === 'auto' && !isOptimizing ? ' is-optimal' : '')
+        + (deepBlocked ? ' is-gpu-busy' : '');
 
-      controls.append(
-        makeGroup(t('tgtTitle'), STUDIO_TARGETS, S.studio.target, (v) => { S.studio.target = v; autoRationale = null; }),
-        makeGroup(t('lnkTitle'), STUDIO_LINKERS, S.studio.linker, (v) => { S.studio.linker = v; autoRationale = null; }),
-        makeGroup(t('pldTitle'), STUDIO_PAYLOADS, S.studio.payload, (v) => { S.studio.payload = v; autoRationale = null; }),
-        makeGroup(t('darTitle'), STUDIO_DAR_ITEMS, String(S.studio.dar), (v) => { S.studio.dar = parseFloat(v); autoRationale = null; }, true),
-        makeGroup(t('fcTitle'), fcItems, S.studio.fc ? t('silFc') : t('wtFc'), (v) => { S.studio.fc = v.includes('LALA') || v.includes('침묵'); autoRationale = null; }),
-        actionBtnRow
-      );
+      const caretBtn = h('button', {
+        type: 'button',
+        class: caretClass,
+        'aria-label': 'Deep Research (GPU)',
+        'aria-expanded': S.deepMenuOpen ? 'true' : 'false',
+        title: 'Deep Research (GPU)',
+        onclick: (e) => {
+          e.stopPropagation();
+          S.deepMenuOpen = !S.deepMenuOpen;
+          if (S.deepMenuOpen) pollGpuStatus(false);
+          renderControls();
+        },
+      }, svgChevronDown());
+
+      const splitGroup = h('div', { class: 'split-optimize-group' }, optBtn, caretBtn);
+      const splitWrap = h('div', { class: 'split-optimize-wrap' }, splitGroup);
+
+      if (S.deepMenuOpen) {
+        const backendIsCuda = !gpuStatus || String(gpuStatus.backend || 'cuda').startsWith('cuda');
+        const activeCnt = Number((gpuStatus && gpuStatus.active_count) || 0);
+        const maxSlots = Number((gpuStatus && gpuStatus.max_slots) || 4);
+        const toggleDisabled = slotsBusy && !S.deepResearchOn;
+
+        const toggleBtn = h('button', {
+          type: 'button',
+          role: 'switch',
+          'aria-checked': S.deepResearchOn ? 'true' : 'false',
+          disabled: toggleDisabled ? true : false,
+          class: 'drp-toggle-btn'
+            + (S.deepResearchOn && !slotsBusy ? ' is-on' : '')
+            + (slotsBusy ? ' is-gpu-busy' : ''),
+          onclick: (e) => {
+            e.stopPropagation();
+            if (toggleDisabled) return;
+            S.deepResearchOn = !S.deepResearchOn;
+            save();
+            renderControls();
+          },
+        },
+        h('div', { class: 'drp-toggle-copy' },
+          h('span', { class: 'drp-title', text: t('deepTitle') }),
+          h('span', {
+            class: 'drp-sub',
+            text: slotsBusy
+              ? (isKo ? '현재 4개 슬롯 모두 연산 중 — 빈 슬롯 발생 시 자동 활성화' : 'All 4 slots in use — re-enables automatically when free')
+              : t('deepSub'),
+          })),
+        h('span', { class: 'drp-switch-pill' }, h('i', { class: 'drp-switch-knob' })));
+
+        const slotMetaLabel = backendIsCuda
+          ? (isKo ? `GPU 순차 할당 (0 → 3)  |  사용 ${activeCnt}/${maxSlots}` : `GPU Queue (0 → 3)  |  In Use ${activeCnt}/${maxSlots}`)
+          : (isKo ? `CPU 서버 연산 모드 (0 → 3)  |  사용 ${activeCnt}/${maxSlots}` : `CPU Server Mode (0 → 3)  |  In Use ${activeCnt}/${maxSlots}`);
+
+        const slotsGrid = h('div', { class: 'drp-slots-grid' });
+        ((gpuStatus && gpuStatus.slots) || [0, 1, 2, 3].map((i) => ({ slot: i, busy: false }))).forEach((sl) => {
+          const prefix = backendIsCuda ? 'GPU' : 'CPU';
+          slotsGrid.append(h('div', {
+            class: 'drp-slot-pill ' + (sl.busy ? 'is-busy' : 'is-free'),
+            title: sl.label || `${prefix} ${sl.slot}`,
+          },
+          h('span', { class: 'drp-slot-id', text: `${prefix} ${sl.slot}` }),
+          h('span', { class: 'drp-slot-st', text: sl.busy ? (isKo ? '사용 중' : 'Busy') : (isKo ? '대기' : 'Free') })));
+        });
+
+        const smilesRow = S.deepResearchOn
+          ? h('div', { class: 'drp-smiles-box' },
+              h('label', {
+                class: 'drp-smiles-label',
+                text: isKo ? '신규 페이로드 SMILES (선택 입력)' : 'Custom Payload SMILES (optional)',
+              }),
+              h('input', {
+                type: 'text',
+                class: 'drp-smiles-input',
+                placeholder: 'CCc1c2c(nc3ccc(O)cc13)-c1cc3c(c(=O)n1C2)COC(=O)C3(O)CC',
+                value: S.customPayloadSmiles || '',
+                onclick: (e) => e.stopPropagation(),
+                oninput: (e) => { S.customPayloadSmiles = e.target.value; save(); },
+              }))
+          : null;
+
+        const popover = h('div', {
+          class: 'deep-research-popover',
+          onclick: (e) => e.stopPropagation(),
+        },
+        toggleBtn,
+        h('div', { class: 'drp-slots-head', text: slotMetaLabel }),
+        slotsGrid,
+        smilesRow);
+
+        splitWrap.append(popover);
+      }
+
+      const actionBtnRow = h('div', { class: 'studio-btn-row' }, manualBtn, splitWrap);
+
+      controls.append(tgtGroup, lnkGroup, pldGroup, darGroup, fcGroup, actionBtnRow);
+      if (gpuStatusMsg) {
+        controls.append(h('div', { class: 'gpu-busy-notice', text: gpuStatusMsg }));
+      }
+
+      if (activeSearch) {
+        const newSearch = controls.querySelector('.studio-search-input');
+        if (newSearch) {
+          newSearch.focus({ preventScroll: true });
+          try { if (selStart !== null) newSearch.setSelectionRange(selStart, selEnd); } catch (e) { /* ignore */ }
+        }
+      }
     }
 
     let popoverEl = null;
@@ -2141,8 +4506,8 @@
     function pushManualHistory() {
       if (!Array.isArray(S.studioHistory)) S.studioHistory = [];
       const curSpec = Object.assign({}, S.studio);
-      const key = `${curSpec.target}|${curSpec.linker}|${curSpec.payload}|${curSpec.dar}|${curSpec.fc}`;
-      S.studioHistory = S.studioHistory.filter((item) => `${item.target}|${item.linker}|${item.payload}|${item.dar}|${item.fc}` !== key);
+      const key = `${curSpec.target}|${curSpec.linker}|${curSpec.payload}|${curSpec.dar}|${curSpec.fcFormat || curSpec.fc}`;
+      S.studioHistory = S.studioHistory.filter((item) => `${item.target}|${item.linker}|${item.payload}|${item.dar}|${item.fcFormat || item.fc}` !== key);
       S.studioHistory.push(curSpec);
       if (S.studioHistory.length > 6) S.studioHistory.shift();
     }
@@ -2162,26 +4527,82 @@
       return false;
     }
 
-    function runManualSimulation() {
+    async function runManualSimulation() {
       if (isOptimizing) return;
       hideMicroPopover();
+      S.deepMenuOpen = false;
       if (!requirePatientProfile()) return;
       S.studioDesignMode = 'manual';
+      S.lastRunMode = 'matrix_368k';
       pushManualHistory();
       save();
       renderControls();
-      renderStudioCanvas(false);
+      await triggerServerEvaluate(false);
     }
 
-    function runOptimizationSimulation() {
+    async function runOptimizationSimulation(useDeepResearch) {
       if (isOptimizing) return;
       hideMicroPopover();
+      S.deepMenuOpen = false;
       if (!requirePatientProfile()) return;
+
       isOptimizing = true;
+      gpuStatusMsg = '';
       S.studioDesignMode = 'auto';
       save();
       closeDrawer();
       renderControls();
+
+      const isKo = S.lang === 'ko';
+      if (useDeepResearch && API.studioDeepResearch) {
+        // Mode 3: Real-time 5-fold ADCSurrogateNet v2 on GPU 0..3 (or CPU server fallback)
+        const statusBanner = canvas.querySelector('.sim-canvas-status');
+        if (statusBanner) {
+          statusBanner.textContent = isKo
+            ? 'ADCSurrogateNet v2 5-Fold 실시간 신경망 추론 중...'
+            : 'Running live 5-Fold ADCSurrogateNet v2 inference...';
+        }
+        setTimeout(() => pollGpuStatus(false), 75);
+        try {
+          const res = await API.studioDeepResearch(buildEvalRequestBody());
+          if (res.gpu_status) gpuStatus = res.gpu_status;
+          serverSpace = adaptServerSpace(res);
+          S.lastRunMode = 'deep_research_v2';
+          if (!box.isConnected) { isOptimizing = false; return; }
+          renderStudioCanvas(true);
+        } catch (err) {
+          isOptimizing = false;
+          if (err && (err.status === 429 || (err.data && err.data.code === 'all_gpu_slots_busy'))) {
+            if (err.data && err.data.gpu_status) gpuStatus = err.data.gpu_status;
+            else gpuStatus = Object.assign({}, gpuStatus, { available: false, active_count: 4, free_count: 0 });
+            gpuStatusMsg = isKo
+              ? '현재 GPU 0-3 슬롯(4개)이 모두 사용 중입니다. 슬롯이 비면 버튼이 자동 활성화됩니다.'
+              : 'All 4 GPU slots (0-3) are currently busy. The button re-enables automatically once a slot opens.';
+            renderControls();
+            renderStudioCanvas(false);
+          } else {
+            gpuStatusMsg = (err && err.message) || 'Deep Research error';
+            renderControls();
+            renderStudioCanvas(false);
+          }
+          pollGpuStatus(false);
+        }
+        return;
+      }
+
+      // Mode 2 (Default): Python Server 368,640 Matrix Search
+      S.lastRunMode = 'matrix_368k';
+      try {
+        if (API.studioEvaluate) {
+          const res = await API.studioEvaluate(buildEvalRequestBody());
+          serverSpace = adaptServerSpace(res);
+        } else {
+          serverSpace = evaluateLocalFallbackSpace();
+        }
+      } catch (e) {
+        serverSpace = evaluateLocalFallbackSpace();
+      }
+      if (!box.isConnected) { isOptimizing = false; return; }
       renderStudioCanvas(true);
     }
 
@@ -2194,8 +4615,8 @@
     function renderStudioCanvas(animateScan) {
       clear(canvas);
       const isKo = S.lang === 'ko';
-      const sim = computeStudioSimulation();
-      const evalSpace = evaluateAllStudioCandidates();
+      const evalSpace = serverSpace || evaluateLocalFallbackSpace();
+      const sim = (evalSpace && evalSpace.current) ? evalSpace.current : computeStudioSimulation();
       const tgt = sim.tgt;
       const lnk = sim.lnk;
       const dar = sim.dar;
@@ -2206,20 +4627,24 @@
         ? sim.plasmaStabPct
         : Math.max(25, Math.min(98, Math.round(lnk.stability - (dar > 4 ? (dar - 4) * 2.5 : 0))));
 
-      // 1. The chart of every design combination for this patient
       if (!hasPatientProfile() && S.studioDesignMode !== 'idle') {
         S.studioDesignMode = 'idle';
       }
       const simWrap = h('section', { class: 'sim-canvas-panel panel' });
-      const total = evalSpace.cands.length;
+      const total = evalSpace.totalCombinations || 368640;
       const designMode = S.studioDesignMode || 'idle';
+      const isDeepResult = evalSpace.mode === 'deep_research_v2' && evalSpace.deepResearch;
       const initialStatus = animateScan
-        ? (isKo ? `설계 조합 0 / ${total.toLocaleString()}개 계산 중` : `Scoring 0 / ${total.toLocaleString()} combinations`)
+        ? (isDeepResult
+            ? (isKo ? `ADCSurrogateNet v2 (${evalSpace.deepResearch.device_label}) 검증 중...` : `Verifying on ${evalSpace.deepResearch.device_label}...`)
+            : (isKo ? `설계 조합 0 / ${total.toLocaleString()}개 행렬 연산 중` : `Scoring 0 / ${total.toLocaleString()} combinations`))
         : !hasPatientProfile()
           ? (isKo ? '환자 정보 미입력 (질환 또는 검진 수치를 먼저 입력하세요)' : 'Patient info required (Enter conditions or lab values first)')
           : designMode === 'idle'
             ? (isKo ? '설계 대기 중 (수동 설계 또는 자동 설계를 실행하세요)' : 'Ready (Click Manual ADC Design or Auto-design ADC)')
-            : (isKo ? `안전도 ${sim.safetyScore}점 / 항암 효능 ${sim.efficacyScore}점` : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`);
+            : (isKo
+                ? `안전도 ${sim.safetyScore}점 / 항암 효능 ${sim.efficacyScore}점${isDeepResult ? `  |  ${evalSpace.deepResearch.device_label}` : ''}`
+                : `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}${isDeepResult ? `  |  ${evalSpace.deepResearch.device_label}` : ''}`);
 
       const simStatusEl = h('span', {
         class: 'sim-canvas-status' + (S.studioNeedInputWarn && !hasPatientProfile() ? ' is-warn' : ''),
@@ -2247,6 +4672,33 @@
           })));
       }
 
+      // Live Deep Research Telemetry Strip (shown when Mode 3 Deep Research was executed)
+      let deepStrip = null;
+      if (designMode !== 'idle' && isDeepResult && !animateScan) {
+        const dr = evalSpace.deepResearch;
+        const bSim = evalSpace.best || sim;
+        const concItems = (bSim.concResponse || []).map((cr) => h('div', { class: 'dts-conc-item' },
+          h('span', { class: 'dts-conc-nm', text: `${cr.concNm} nM` }),
+          h('span', { class: 'dts-conc-bar' }, h('i', { style: `width:${Math.min(100, Math.max(4, cr.killPct))}%` })),
+          h('span', { class: 'dts-conc-val', text: `${cr.killPct.toFixed(0)}%` })));
+
+        deepStrip = h('div', { class: 'deep-telemetry-strip' },
+          h('div', { class: 'dts-head' },
+            h('span', { class: 'dts-tag', text: `Deep Research  |  ${dr.device_label}` }),
+            h('span', {
+              class: 'dts-meta',
+              text: isKo
+                ? `5-Fold 실시간 추론 (${dr.neural_forward_passes}회 패스, ${Math.round(dr.elapsed_ms)} ms)  |  최적 용량 ${dr.optimal_dose_mgkg} mg/kg`
+                : `Live 5-Fold (${dr.neural_forward_passes} passes, ${Math.round(dr.elapsed_ms)} ms)  |  Optimal Dose ${dr.optimal_dose_mgkg} mg/kg`,
+            })),
+          h('div', { class: 'dts-body' },
+            h('div', { class: 'dts-sigma-group' },
+              h('span', { class: 'dts-chip', text: isKo ? `안전도 ${bSim.safetyScore} ± ${(bSim.safetyStd || 0).toFixed(1)}` : `Safety ${bSim.safetyScore} ± ${(bSim.safetyStd || 0).toFixed(1)}` }),
+              h('span', { class: 'dts-chip', text: isKo ? `효능 ${bSim.efficacyScore} ± ${(bSim.efficacyStd || 0).toFixed(1)}` : `Efficacy ${bSim.efficacyScore} ± ${(bSim.efficacyStd || 0).toFixed(1)}` }),
+              h('span', { class: 'dts-chip', text: `pIC50 ${(bSim.pIC50Pos || 8).toFixed(2)} ± ${(bSim.pIC50Std || 0).toFixed(2)}` })),
+            concItems.length ? h('div', { class: 'dts-conc-grid' }, concItems) : null));
+      }
+
       const eqGrid = h('div', { class: 'sim-eq-grid' });
       const summaryMeta = h('span', { class: 'sim-summary-meta' });
       const rBox = h('div', { class: 'sim-rationale-box' });
@@ -2254,13 +4706,14 @@
 
       function updateOrganRowsDom(curSim) {
         clear(organRows);
-        curSim.organRisks.forEach((item) => {
+        (curSim.organRisks || []).forEach((item) => {
           const pct = Math.round(item.p * 100);
           const color = riskColor(pct);
+          const stdTxt = item.pStd != null ? ` (±${Math.round(item.pStd * 100)}%)` : '';
           organRows.append(h('div', { class: 'expr-row' },
             h('span', { class: 'ex-name', text: organKo(item.organ) }),
             h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${Math.max(4, pct)}%;background:${color}` })),
-            h('span', { class: 'ex-val', style: `color:${color}`, text: `${riskLevel(pct)} ${pct}%` })));
+            h('span', { class: 'ex-val', style: `color:${color}`, text: `${riskLevel(pct)} ${pct}%${stdTxt}` })));
         });
       }
 
@@ -2268,16 +4721,19 @@
         clear(rBox);
         const bestC = curSpace.best;
         const activeRat = buildAutoOptimizeRationales(bestC);
+        const curFcFmt = S.studio.fcFormat || (S.studio.fc ? 'igg1_lalapg' : 'igg1_wt');
+        const bestFcFmt = bestC.spec.fcFormat || (bestC.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
         const isOpt = (
           S.studio.target === bestC.spec.target &&
           S.studio.linker === bestC.spec.linker &&
           S.studio.payload === bestC.spec.payload &&
           Number(S.studio.dar) === Number(bestC.spec.dar) &&
-          Boolean(S.studio.fc) === Boolean(bestC.spec.fc)
+          curFcFmt === bestFcFmt
         );
+        const bestPayName = bestC.spec.customPayloadLabel || plainName(bestC.spec.payload);
         rBox.append(
           h('div', { class: 'srb-title' },
-            h('span', { class: 'srb-main-text', text: isOpt ? t('optimalLocked') : `${t('optimalCand')} ${plainName(bestC.spec.target)} + ${plainName(bestC.spec.payload)}, DAR ${bestC.spec.dar}` }),
+            h('span', { class: 'srb-main-text', text: isOpt ? t('optimalLocked') : `${t('optimalCand')} ${plainName(bestC.spec.target)} + ${bestPayName}, DAR ${bestC.spec.dar}` }),
             h('button', {
               type: 'button', class: 'btn-compare-pop',
               text: t('viewCompareBtn'),
@@ -2299,6 +4755,7 @@
         const wMean = Math.max(0, 1 - w.wPeak);
         const wOff = Math.max(0, 1 - w.wExpr);
         const utilVal = (wSafeEff * sNow.safetyRaw + wEffComp * sNow.efficacyRaw).toFixed(1);
+        const totalCombTxt = (spNow.totalCombinations || 368640).toLocaleString();
 
         const activePresetObj = SIM_WEIGHT_PRESETS.find((p) => p.id === S.simPreset);
         const presetLabel = activePresetObj ? (isKo ? activePresetObj.ko : activePresetObj.en) : (isKo ? '사용자 정의 계수' : 'Custom Weights');
@@ -2356,16 +4813,16 @@
         const cards = isKo
           ? [
               {
-                tag: '1. 치료지수 목적함수 — 최적 설계 조합 결정',
+                tag: '1. 치료지수 목적함수 — 초대규모 최적 설계 결정',
                 sym: '최종 최적점 결정',
                 lines: eq1Lines,
-                desc: `아래 2번(가로축 장기 안전도 X)과 3번(세로축 항암 효능 Y) 점수를 결합해 2,592개 후보 중 최적점(${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar})을 결정합니다.`,
+                desc: `아래 2번(가로축 장기 안전도 X)과 3번(세로축 항암 효능 Y) 점수를 결합해 ${totalCombTxt}개 후보 중 최적점(${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar})을 결정합니다.`,
               },
               {
                 tag: '2. 경로 분해 장기 안전도 — 가로축(X) 좌표 산출',
                 sym: 'X축 안전도 산출',
                 lines: eq2Lines,
-                desc: '하단 독성 경로 슬라이더(ω_peak, α_on, β_leak, γ_agg, φ_Fc)가 전신 누출, 소수성 응집, FcγR 흡수, 정상조직 발현 위험에 반영되어 X축 안전도 점수를 산출합니다.',
+                desc: '하단 독성 경로 슬라이더(ω_peak, α_on, β_leak, γ_agg, φ_Fc)가 전신 누출, 소수성 응집, Fc감마 흡수, 정상조직 발현 위험에 반영되어 X축 안전도 점수를 산출합니다.',
               },
               {
                 tag: '3. 멀티모달 신경망 항암 효능 — 세로축(Y) 좌표 산출',
@@ -2376,10 +4833,10 @@
             ]
           : [
               {
-                tag: '1. Therapeutic Index Objective — Optimal Construct Selection',
+                tag: '1. Therapeutic Index Objective — Construct Selection',
                 sym: 'Optimal Point',
                 lines: eq1Lines,
-                desc: `Combines X-axis organ safety (Eq. 2) and Y-axis antitumor efficacy (Eq. 3) across 2,592 candidates to select the optimal construct (${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar}).`,
+                desc: `Combines X-axis organ safety (Eq. 2) and Y-axis antitumor efficacy (Eq. 3) across ${totalCombTxt} candidates to select the optimal construct (${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar}).`,
               },
               {
                 tag: '2. Pathway-Decomposed Organ Safety — X-Axis Coordinate',
@@ -2423,8 +4880,8 @@
           ko: '소수성 고DAR 응집 페널티', en: 'Hydrophobic DAR Penalty',
           subKo: '고밀도 접합 시 간 쿠퍼세포 포획 및 약동학 청소 손실', subEn: 'Hepatic Kupffer-cell uptake and PK clearance at high DAR' },
         { key: 'fcProtect', sym: 'φ_Fc', col: 'right', min: 0.05, max: 0.65, step: 0.02,
-          ko: 'Fc 침묵화(LALA-PG) 보호율', en: 'Fc-Silencing Protection',
-          subKo: '폐포 대식세포, 간, 골수의 FcγR 비특이 흡수 차단율', subEn: 'Attenuation of FcγR macrophage uptake in lung, liver, and marrow' },
+          ko: 'Fc 엔지니어링 보호율', en: 'Fc-Engineering Protection',
+          subKo: '폐포 대식세포, 간, 골수의 Fc감마 비특이 흡수 차단율', subEn: 'Attenuation of FcgammaR macrophage uptake in lung, liver, and marrow' },
         { key: 'wSelect', sym: 'w_sel', col: 'right', min: 0.10, max: 0.70, step: 0.02,
           ko: '항원 종양선택도 효능 비중', en: 'Target Selectivity Weight',
           subKo: 'TCGA 종양 과발현 배수(log2FC)의 항암 효능 기여도', subEn: 'Contribution of tumor-to-normal log2FC margin to efficacy' },
@@ -2445,26 +4902,44 @@
       }
 
       function refreshLiveFormulaState() {
-        let newSpace = evaluateAllStudioCandidates();
-        if (S.studioDesignMode === 'auto' && hasPatientProfile()) {
-          const b = newSpace.best;
-          S.studio.target = b.spec.target;
-          S.studio.linker = b.spec.linker;
-          S.studio.payload = b.spec.payload;
-          S.studio.dar = b.spec.dar;
-          S.studio.fc = b.spec.fc;
-          renderControls();
-        }
-        const newSim = computeStudioSimulation();
-        updateFormulaLines(newSim, newSpace);
-        updateOrganRowsDom(newSim);
-        updateRationaleDom(newSim, newSpace);
-        if (S.studioDesignMode !== 'idle' && hasPatientProfile()) {
-          simStatusEl.textContent = isKo
-            ? `안전도 ${newSim.safetyScore}점 / 항암 효능 ${newSim.efficacyScore}점`
-            : `Safety ${newSim.safetyScore} / Efficacy ${newSim.efficacyScore}`;
-        }
-        initDesignChart(cvs, newSim, newSpace, false);
+        clearTimeout(sliderDebounceTimer);
+        sliderDebounceTimer = setTimeout(async () => {
+          const seq = ++evalReqSeq;
+          let nextSpace = null;
+          if (API.studioEvaluate) {
+            try {
+              const res = await API.studioEvaluate(buildEvalRequestBody());
+              if (seq !== evalReqSeq || !box.isConnected) return;
+              nextSpace = adaptServerSpace(res);
+            } catch (e) {
+              nextSpace = evaluateLocalFallbackSpace();
+            }
+          } else {
+            nextSpace = evaluateLocalFallbackSpace();
+          }
+          serverSpace = nextSpace;
+          if (S.studioDesignMode === 'auto' && hasPatientProfile()) {
+            const b = nextSpace.best;
+            S.studio.target = b.spec.target;
+            S.studio.linker = b.spec.linker;
+            S.studio.payload = b.spec.payload;
+            S.studio.dar = b.spec.dar;
+            S.studio.fcFormat = b.spec.fcFormat || (b.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
+            S.studio.fc = S.studio.fcFormat !== 'igg1_wt';
+            save();
+            renderControls();
+          }
+          const newSim = (S.studioDesignMode === 'auto' && hasPatientProfile()) ? nextSpace.best : (nextSpace.current || computeStudioSimulation());
+          updateFormulaLines(newSim, nextSpace);
+          updateOrganRowsDom(newSim);
+          updateRationaleDom(newSim, nextSpace);
+          if (S.studioDesignMode !== 'idle' && hasPatientProfile()) {
+            simStatusEl.textContent = isKo
+              ? `안전도 ${newSim.safetyScore}점 / 항암 효능 ${newSim.efficacyScore}점`
+              : `Safety ${newSim.safetyScore} / Efficacy ${newSim.efficacyScore}`;
+          }
+          initDesignChart(cvs, newSim, nextSpace, false);
+        }, 40);
       }
 
       PARAM_DEFS.forEach((pd) => {
@@ -2581,9 +5056,10 @@
       explainToolbar,
       eqGrid,
       paramColumns);
-      simWrap.append(simHead, chartWrap, explain);
+      simWrap.append(simHead, chartWrap);
+      if (deepStrip) simWrap.append(deepStrip);
+      simWrap.append(explain);
 
-      // Recommended design and why
       updateRationaleDom(sim, evalSpace);
       if (designMode !== 'idle') simWrap.append(rBox);
 
@@ -2614,7 +5090,7 @@
       updateOrganRowsDom(sim);
 
       const gtexRows = h('div', { class: 'expr-list' });
-      tgt.tissues.forEach((tis) => {
+      (tgt.tissues || []).forEach((tis) => {
         const val = tis.tpm;
         const color = val > 50 ? 'var(--red)' : val >= 25 ? 'var(--amber)' : 'var(--emerald)';
         const level = val > 50 ? (isKo ? '높음' : 'High') : val >= 25 ? (isKo ? '보통' : 'Moderate') : (isKo ? '낮음' : 'Low');
@@ -2639,30 +5115,39 @@
       canvas.append(simWrap, hero, grid2);
 
       setTimeout(() => initDesignChart(cvs, sim, evalSpace, animateScan,
-        (f, shown) => {
-          simStatusEl.textContent = isKo
-            ? `설계 조합 ${shown.toLocaleString()} / ${total.toLocaleString()}개 계산 중`
-            : `Scoring ${shown.toLocaleString()} / ${total.toLocaleString()} combinations`;
+        (f, shownTotal) => {
+          simStatusEl.textContent = isDeepResult
+            ? (isKo
+                ? `ADCSurrogateNet v2 (${evalSpace.deepResearch.device_label}) ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 정밀 평가`
+                : `ADCSurrogateNet v2 (${evalSpace.deepResearch.device_label}) ${shownTotal.toLocaleString()} / ${total.toLocaleString()}`)
+            : (isKo
+                ? `설계 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 계산 중`
+                : `Scoring ${shownTotal.toLocaleString()} / ${total.toLocaleString()} combinations`);
           if (optBtn) optBtn.style.setProperty('--p', (f * 100).toFixed(1) + '%');
         },
-        () => {
+        async () => {
           if (!animateScan) return;
           if (optBtn) optBtn.style.setProperty('--p', '100%');
-          setTimeout(() => {
+          setTimeout(async () => {
             isOptimizing = false;
             const best = evalSpace.best;
             S.studio.target = best.spec.target;
             S.studio.linker = best.spec.linker;
             S.studio.payload = best.spec.payload;
             S.studio.dar = best.spec.dar;
-            S.studio.fc = best.spec.fc;
-            autoRationale = buildAutoOptimizeRationales(best);
+            S.studio.fcFormat = best.spec.fcFormat || (best.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
+            S.studio.fc = S.studio.fcFormat !== 'igg1_wt';
+            if (evalSpace.isServer) {
+              evalSpace.current = best;
+              if (evalSpace.refBest) evalSpace.refCurrent = evalSpace.refBest;
+            }
             save();
-            if (S.mode !== 2) return;
+            if (S.mode !== 2 || !box.isConnected) return;
             renderControls();
             renderStudioCanvas(false);
-            setTimeout(() => { if (S.mode === 2) openStudioCompareDrawer(best, evalSpace); }, 600);
-          }, 700);
+            pollGpuStatus(true);
+            setTimeout(() => { if (S.mode === 2 && box.isConnected) openStudioCompareDrawer(best, evalSpace); }, 450);
+          }, 500);
         }), 0);
     }
 
@@ -2676,35 +5161,41 @@
         studioChartRO = null;
       }
 
-      const cands = evalSpace.cands;
+      const isServer = Boolean(evalSpace.isServer);
+      const totalCombos = evalSpace.totalCombinations || (evalSpace.cands ? evalSpace.cands.length : 368640);
       const best = evalSpace.best;
 
-      // Fixed 0-100 clinical coordinate frame so parameter adjustments visibly translate and separate candidate clusters
-      const minX = 0;
-      const maxX = 100;
-      const minY = 0;
-      const maxY = 100;
-      const spanX = 100;
-      const spanY = 100;
+      const rawCloud = isServer
+        ? evalSpace.cloud
+        : (evalSpace.cands || []).map((c) => ({
+            safetyRaw: c.safetyRaw,
+            efficacyRaw: c.efficacyRaw,
+            isCompat: c.isCompat,
+            isBestTarget: c.spec.target === best.spec.target,
+          }));
 
-      // fixed pseudo-random order, so the dots appear scattered rather than sweeping across
-      const shuffled = cands.slice().map((c, i) => ({
+      const minX = 0, maxX = 100, minY = 0, maxY = 100, spanX = 100, spanY = 100;
+
+      const shuffled = rawCloud.slice().map((c, i) => ({
         c,
         sortKey: Math.sin(i * 12345.67) * 10000 - Math.floor(Math.sin(i * 12345.67) * 10000),
       })).sort((a, b) => a.sortKey - b.sortKey).map((item) => item.c);
 
       const startTime = performance.now();
-      const duration = (animate && !still()) ? 4200 : 0;
+      const duration = (animate && !still()) ? (evalSpace.mode === 'deep_research_v2' ? 2400 : 3200) : 0;
       let completed = false;
 
-      // Compute Pareto frontier points (non-dominated compatible candidates)
-      const compatCands = cands.filter((c) => c.isCompat).slice().sort((a, b) => (b.safetyRaw - a.safetyRaw) || (b.efficacyRaw - a.efficacyRaw));
-      const paretoFront = [];
-      let maxEffSeen = -1;
-      for (const c of compatCands) {
-        if (c.efficacyRaw > maxEffSeen + 0.2) {
-          paretoFront.push(c);
-          maxEffSeen = c.efficacyRaw;
+      let paretoFront = [];
+      if (isServer && Array.isArray(evalSpace.paretoFront) && evalSpace.paretoFront.length) {
+        paretoFront = evalSpace.paretoFront;
+      } else {
+        const compatCands = rawCloud.filter((c) => c.isCompat).slice().sort((a, b) => (b.safetyRaw - a.safetyRaw) || (b.efficacyRaw - a.efficacyRaw));
+        let maxEffSeen = -1;
+        for (const c of compatCands) {
+          if (c.efficacyRaw > maxEffSeen + 0.2) {
+            paretoFront.push(c);
+            maxEffSeen = c.efficacyRaw;
+          }
         }
       }
 
@@ -2722,28 +5213,28 @@
         if (ty - 11 * dpr < offsetY + 4 * dpr) ty = dotY + 16 * dpr;
         if (ty > offsetY + plotH - 6 * dpr) ty = dotY - 9 * dpr;
 
-        const box = { x: tx - 4 * dpr, y: ty - 11 * dpr, w: textW + 8 * dpr, h: boxH };
+        const lBox = { x: tx - 4 * dpr, y: ty - 11 * dpr, w: textW + 8 * dpr, h: boxH };
         if (avoidBox) {
-          const overlapsX = box.x < avoidBox.x + avoidBox.w + 4 * dpr && box.x + box.w + 4 * dpr > avoidBox.x;
-          const overlapsY = box.y < avoidBox.y + avoidBox.h + 2 * dpr && box.y + box.h + 2 * dpr > avoidBox.y;
+          const overlapsX = lBox.x < avoidBox.x + avoidBox.w + 4 * dpr && lBox.x + lBox.w + 4 * dpr > avoidBox.x;
+          const overlapsY = lBox.y < avoidBox.y + avoidBox.h + 2 * dpr && lBox.y + lBox.h + 2 * dpr > avoidBox.y;
           if (overlapsX && overlapsY) {
             const downY = avoidBox.y + avoidBox.h + 14 * dpr;
             const upY = avoidBox.y - 6 * dpr;
             if (downY <= offsetY + plotH - 5 * dpr) ty = downY;
             else if (upY - 11 * dpr >= offsetY + 4 * dpr) ty = upY;
-            box.y = ty - 11 * dpr;
+            lBox.y = ty - 11 * dpr;
           }
         }
 
         ctx.textAlign = 'left';
         ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
-        ctx.fillRect(box.x, box.y, box.w, box.h);
+        ctx.fillRect(lBox.x, lBox.y, lBox.w, lBox.h);
         ctx.strokeStyle = 'rgba(203, 213, 225, 0.85)';
         ctx.lineWidth = 1 * dpr;
-        ctx.strokeRect(box.x, box.y, box.w, box.h);
+        ctx.strokeRect(lBox.x, lBox.y, lBox.w, lBox.h);
         ctx.fillStyle = color;
         ctx.fillText(text, tx, ty);
-        return box;
+        return lBox;
       }
 
       function renderFrame(now) {
@@ -2751,10 +5242,10 @@
         const rect = cvs.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
         const w = Math.max(260 * dpr, Math.round((rect.width || 600) * dpr));
-        const h = Math.max(240 * dpr, Math.round((rect.height || 380) * dpr));
-        if (cvs.width !== w || cvs.height !== h) {
+        const hPx = Math.max(240 * dpr, Math.round((rect.height || 380) * dpr));
+        if (cvs.width !== w || cvs.height !== hPx) {
           cvs.width = w;
-          cvs.height = h;
+          cvs.height = hPx;
         }
 
         const isKo = S.lang === 'ko';
@@ -2768,7 +5259,7 @@
                 ['rgba(100, 116, 139, 0.55)', 3.2, isKo ? '동일 표적 후보군' : 'Same-Target Pool'],
               ]
             : [
-                ['rgba(100, 116, 139, 0.75)', 3, `${t('legendCand')} ${cands.length.toLocaleString()}`],
+                ['rgba(100, 116, 139, 0.75)', 3, `${t('legendCand')} ${totalCombos.toLocaleString()}`],
                 ['rgba(239, 68, 68, 0.6)', 3, t('legendBad')],
                 ['#0D9488', 4.5, t('legendBest')],
                 ['#2563EB', 4.5, t('legendCur')],
@@ -2776,9 +5267,8 @@
         ctx.font = `600 ${10 * dpr}px sans-serif`;
         const padL = 52 * dpr, padR = 24 * dpr, padB = 42 * dpr, padT = 44 * dpr;
         const maxPlotW = Math.max(140 * dpr, w - padL - padR);
-        const maxPlotH = Math.max(140 * dpr, h - padT - padB);
+        const maxPlotH = Math.max(140 * dpr, hPx - padT - padB);
 
-        // square plot box so the two axes are never stretched differently
         const plotSize = Math.max(140 * dpr, Math.min(maxPlotW, maxPlotH));
         const plotW = plotSize;
         const plotH = plotSize;
@@ -2790,11 +5280,12 @@
 
         const tfrac = duration > 0 ? Math.min(1, (now - startTime) / duration) : 1;
         const f = duration > 0 ? pace(tfrac) : 1;
-        const shown = Math.floor(cands.length * f);
-        if (animate && onProgress && !completed) onProgress(f, shown);
+        const shownDots = Math.floor(shuffled.length * f);
+        const shownTotal = Math.floor(totalCombos * f);
+        if (animate && onProgress && !completed) onProgress(f, shownTotal);
 
         ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 0, w, h);
+        ctx.fillRect(0, 0, w, hPx);
 
         ctx.strokeStyle = '#CBD5E1';
         ctx.lineWidth = 1 * dpr;
@@ -2805,27 +5296,17 @@
         ctx.font = `600 ${10 * dpr}px sans-serif`;
         ctx.fillStyle = '#64748B';
 
-        const stepX = spanX <= 40 ? 10 : 20;
-        const stepY = spanY <= 40 ? 10 : 20;
-        const xTicks = [];
-        for (let v = minX; v <= maxX; v += stepX) xTicks.push(v);
-        if (xTicks[xTicks.length - 1] !== maxX) xTicks.push(maxX);
-        const yTicks = [];
-        for (let v = minY; v <= maxY; v += stepY) yTicks.push(v);
-        if (yTicks[yTicks.length - 1] !== maxY) yTicks.push(maxY);
-
-        xTicks.forEach((v) => {
+        for (let v = 0; v <= 100; v += 20) {
           const gx = toX(v);
           ctx.beginPath(); ctx.moveTo(gx, offsetY); ctx.lineTo(gx, offsetY + plotH); ctx.stroke();
           ctx.textAlign = 'center';
           ctx.fillText(String(v), gx, offsetY + plotH + 14 * dpr);
-        });
-        yTicks.forEach((v) => {
+
           const gy = toY(v);
           ctx.beginPath(); ctx.moveTo(offsetX, gy); ctx.lineTo(offsetX + plotW, gy); ctx.stroke();
           ctx.textAlign = 'right';
           ctx.fillText(String(v), offsetX - 7 * dpr, gy + 3 * dpr);
-        });
+        }
 
         ctx.font = `bold ${11 * dpr}px sans-serif`;
         ctx.fillStyle = '#1E293B';
@@ -2837,7 +5318,6 @@
         ctx.fillText(t('axisEfficacy'), 0, 0);
         ctx.restore();
 
-        // Single-row compact legend above the plot
         if (legend.length) {
           ctx.textAlign = 'left';
           ctx.font = `600 ${9.5 * dpr}px sans-serif`;
@@ -2871,24 +5351,21 @@
         }
 
         if (modeNow === 'auto') {
-          // dots appear at their true continuous positions
-          for (let k = 0; k < shown; k++) {
+          for (let k = 0; k < shownDots; k++) {
             const c = shuffled[k];
-            const isSameTgt = c.spec.target === best.spec.target;
             ctx.fillStyle = !c.isCompat
               ? 'rgba(239, 68, 68, 0.25)'
-              : isSameTgt
+              : c.isBestTarget
                 ? 'rgba(13, 148, 136, 0.55)'
                 : 'rgba(100, 116, 139, 0.36)';
             ctx.beginPath();
-            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), (isSameTgt && c.isCompat ? 2.7 : 2.2) * dpr, 0, Math.PI * 2);
+            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), (c.isBestTarget && c.isCompat ? 2.7 : 2.1) * dpr, 0, Math.PI * 2);
             ctx.fill();
           }
 
-          // Draw Pareto Frontier curve once scan completes
           if ((f >= 0.97 || !animate) && paretoFront.length >= 2) {
             ctx.save();
-            ctx.strokeStyle = 'rgba(13, 148, 136, 0.55)';
+            ctx.strokeStyle = 'rgba(13, 148, 136, 0.62)';
             ctx.lineWidth = 1.8 * dpr;
             ctx.setLineDash([4 * dpr, 3 * dpr]);
             ctx.beginPath();
@@ -2901,9 +5378,9 @@
             ctx.restore();
           }
         } else if (modeNow === 'manual') {
-          // In manual mode: show the active target's compatible sub-cloud lightly so the user sees the local landscape,
-          // plus the Reference Approved ADC for this target, plus previous manual attempts!
-          const sameTargetCands = cands.filter((c) => c.spec.target === currentSim.spec.target && c.isCompat);
+          const sameTargetCands = isServer
+            ? (evalSpace.sameTargetCloud || [])
+            : (evalSpace.cands || []).filter((c) => c.spec.target === currentSim.spec.target && c.isCompat);
           sameTargetCands.forEach((c) => {
             ctx.fillStyle = 'rgba(148, 163, 184, 0.35)';
             ctx.beginPath();
@@ -2911,15 +5388,14 @@
             ctx.fill();
           });
 
-          // Reference Approved ADC for the selected target
-          const refBase = REF_STUDIO[currentSim.spec.target];
+          const refSim = (isServer && evalSpace.refCurrent)
+            ? evalSpace.refCurrent
+            : computeStudioSimulation(Object.assign({ target: currentSim.spec.target }, getRefStudioForTarget(currentSim.spec.target)));
           let refBox = null;
-          if (refBase) {
-            const refSim = computeStudioSimulation(Object.assign({ target: currentSim.spec.target }, refBase));
+          if (refSim) {
             const rx = toX(refSim.safetyRaw), ry = toY(refSim.efficacyRaw);
             const sxNow = toX(currentSim.safetyRaw), syNow = toY(currentSim.efficacyRaw);
 
-            // Dashed comparison vector from Approved Ref ADC to Current Manual Design
             if (Math.hypot(rx - sxNow, ry - syNow) > 6 * dpr) {
               ctx.save();
               ctx.strokeStyle = 'rgba(217, 119, 6, 0.65)';
@@ -2947,7 +5423,6 @@
             }
           }
 
-          // Previous manual history trail
           const hist = Array.isArray(S.studioHistory) ? S.studioHistory : [];
           if (hist.length >= 2) {
             ctx.save();
@@ -2988,7 +5463,6 @@
         const sy = toY(currentSim.efficacyRaw);
         const sameSpot = Math.hypot(bx - sx, by - sy) < 8 * dpr;
 
-        // recommended design, once every combination has been scored in auto mode
         if (f >= 0.97 || !animate) {
           ctx.fillStyle = 'rgba(13, 148, 136, 0.22)';
           ctx.beginPath(); ctx.arc(bx, by, 10.5 * dpr, 0, Math.PI * 2); ctx.fill();
@@ -2998,7 +5472,6 @@
           ctx.beginPath(); ctx.arc(bx, by, 5.2 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
         }
 
-        // current selection
         if (!sameSpot || (f < 0.97 && animate)) {
           ctx.fillStyle = 'rgba(37, 99, 235, 0.2)';
           ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
@@ -3008,12 +5481,13 @@
           ctx.beginPath(); ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
         }
 
+        const bestPayLbl = best.spec.customPayloadLabel || plainName(best.spec.payload);
         if (f >= 0.97 || !animate) {
           if (sameSpot) {
-            const unifiedLabel = `${t('legendBest')} / ${t('legendCur')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar} (${best.safetyScore}, ${best.efficacyScore})`;
+            const unifiedLabel = `${t('legendBest')} / ${t('legendCur')}: ${plainName(best.spec.target)} + ${bestPayLbl}, DAR ${best.spec.dar} (${best.safetyScore}, ${best.efficacyScore})`;
             drawCalloutLabel(unifiedLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#065F46', null);
           } else {
-            const bestLabel = `${t('legendBest')}: ${plainName(best.spec.target)} + ${plainName(best.spec.payload)}, DAR ${best.spec.dar}`;
+            const bestLabel = `${t('legendBest')}: ${plainName(best.spec.target)} + ${bestPayLbl}, DAR ${best.spec.dar}`;
             const bestBox = drawCalloutLabel(bestLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#065F46', null);
             const curLabel = `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
             drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#1E40AF', bestBox);
@@ -3047,36 +5521,70 @@
     }
 
     renderControls();
-    renderStudioCanvas();
+    renderStudioCanvas(false);
+    triggerServerEvaluate(false);
     clear(barKeys);
     return box;
   }
 
-  // ------------------------------------------------------------------ Mode 2: Patient & Labs (Collapsible Biomarker Flowsheet)
+  // ------------------------------------------------------------------ Mode 2: Patient & Labs (Required Basic Info + Collapsible Biomarker Flowsheet)
   function buildPatientLabsMode() {
     const box = h('div', { class: 's2' });
-    box.append(buildWorkspaceBar(() => {
-      refreshBackendData().then(() => renderFlowsheet());
-    }));
+    const wbMount = h('div');
     const content = h('div');
-    box.append(content);
+    box.append(wbMount, content);
 
-    const LAB_SECTIONS = [
+    function renderWb() {
+      if (wbMount.contains(document.activeElement)) return;
+      clear(wbMount);
+      wbMount.append(buildWorkspaceBar(() => renderActiveMode(false)));
+    }
+    renderWb();
+
+    let pointerDownInFlow = false;
+    let pendingRender = false;
+    content.addEventListener('pointerdown', () => {
+      pointerDownInFlow = true;
+      const release = () => {
+        pointerDownInFlow = false;
+        if (pendingRender) {
+          pendingRender = false;
+          setTimeout(() => { if (box.isConnected) renderFlowsheet(); }, 0);
+        }
+      };
+      window.addEventListener('pointerup', release, { once: true });
+      window.addEventListener('pointercancel', release, { once: true });
+    });
+
+    function safeRenderFlowsheet() {
+      if (pointerDownInFlow) {
+        pendingRender = true;
+        return;
+      }
+      renderFlowsheet();
+    }
+
+    const BASIC_KEYS = new Set([
+      'age', 'sex', 'weight',
+      'creatinine', 'esrd',
+      'bilirubin', 'ast', 'alt',
+      'platelet', 'anc', 'hb',
+    ]);
+
+    const REQ_LAB_SECTIONS = [
       {
-        id: 'renal',
-        ko: '신장 기능',
-        en: 'Renal Function',
+        id: 'renal_req',
+        ko: '신장 기능 선별',
+        en: 'Renal Baseline',
+        showDerivedCrcl: true,
         numeric: [
-          { key: 'crcl', name: 'CLcr (Creatinine Clearance)', unit: 'mL/min', refLow: 60, refHigh: 120, scaleMin: 0, scaleMax: 150, highOk: true },
-          { key: 'egfr', name: 'eGFR', unit: 'mL/min/1.73m²', refLow: 60, refHigh: 120, scaleMin: 0, scaleMax: 150, highOk: true },
           { key: 'creatinine', name: 'Serum Creatinine', unit: 'mg/dL', refLow: 0.6, refHigh: 1.2, scaleMin: 0, scaleMax: 3.5 },
         ],
-        cgHelper: true,
         discrete: [
           {
             key: 'esrd',
             name: 'Dialysis / ESRD',
-            subKo: '만성 신부전 또는 CLcr < 15 환자에서 투석 여부 확인',
+            subKo: '투석 또는 말기 신부전 여부',
             subEn: 'Dialysis or end-stage renal disease status',
             options: [
               { val: '', ko: '미선택', en: 'Unset' },
@@ -3087,19 +5595,43 @@
         ],
       },
       {
-        id: 'hepatic',
-        ko: '간 기능',
-        en: 'Hepatic Function',
+        id: 'hepatic_req',
+        ko: '간 기능 선별',
+        en: 'Hepatic Baseline',
         numeric: [
           { key: 'bilirubin', name: 'Total Bilirubin', unit: 'mg/dL', refLow: 0.2, refHigh: 1.2, scaleMin: 0, scaleMax: 3.0 },
           { key: 'ast', name: 'AST (Aminotransferase)', unit: 'U/L', refLow: 10, refHigh: 40, scaleMin: 0, scaleMax: 120 },
           { key: 'alt', name: 'ALT (Aminotransferase)', unit: 'U/L', refLow: 7, refHigh: 56, scaleMin: 0, scaleMax: 160 },
         ],
+        discrete: [],
+      },
+      {
+        id: 'blood_req',
+        ko: '혈액 및 골수 선별',
+        en: 'Hematology (CBC)',
+        numeric: [
+          { key: 'platelet', name: 'Platelets', unit: 'x10³/µL', refLow: 150, refHigh: 450, scaleMin: 0, scaleMax: 600 },
+          { key: 'anc', name: 'ANC (Neutrophils)', unit: 'x10³/µL', refLow: 1.5, refHigh: 8.0, scaleMin: 0, scaleMax: 12.0 },
+          { key: 'hb', name: 'Hemoglobin (Hb)', unit: 'g/dL', refLow: 12.0, refHigh: 17.5, scaleMin: 6.0, scaleMax: 21.0 },
+        ],
+        discrete: [],
+      },
+    ];
+
+    const OPT_LAB_SECTIONS = [
+      {
+        id: 'renal_hep_opt',
+        ko: '정밀 신장 지표 및 간 등급',
+        en: 'Direct Clearance & Hepatic Grade',
+        numeric: [
+          { key: 'crcl', name: 'CLcr (Creatinine Clearance)', unit: 'mL/min', refLow: 60, refHigh: 120, scaleMin: 0, scaleMax: 150, highOk: true },
+          { key: 'egfr', name: 'eGFR', unit: 'mL/min/1.73m²', refLow: 60, refHigh: 120, scaleMin: 0, scaleMax: 150, highOk: true },
+        ],
         discrete: [
           {
             key: 'child_pugh',
             name: 'Child-Pugh Class',
-            subKo: '간경변 또는 간기능 저하 시 임상 등급 선택',
+            subKo: '간경변 또는 간기능 저하 임상 등급',
             subEn: 'Hepatic impairment clinical grade',
             options: [
               { val: '', ko: '미선택', en: 'Unset' },
@@ -3109,17 +5641,6 @@
             ],
           },
         ],
-      },
-      {
-        id: 'blood',
-        ko: '혈액 및 골수',
-        en: 'Hematology',
-        numeric: [
-          { key: 'platelet', name: 'Platelets', unit: 'x10³/µL', refLow: 150, refHigh: 450, scaleMin: 0, scaleMax: 600 },
-          { key: 'anc', name: 'ANC (Neutrophils)', unit: 'x10³/µL', refLow: 1.5, refHigh: 8.0, scaleMin: 0, scaleMax: 12.0 },
-          { key: 'hb', name: 'Hemoglobin (Hb)', unit: 'g/dL', refLow: 12.0, refHigh: 17.5, scaleMin: 6.0, scaleMax: 21.0 },
-        ],
-        discrete: [],
       },
       {
         id: 'cardiac_meta',
@@ -3133,7 +5654,7 @@
           {
             key: 'ugt1a1',
             name: 'UGT1A1*28 Homozygous',
-            subKo: 'SN-38 계열(트로델비 등) 대사 관련 유전형',
+            subKo: 'SN-38 계열(트로델비 등) 대사 유전형',
             subEn: 'Homozygous *28/*28 genotype for SN-38 metabolism',
             options: [
               { val: '', ko: '미선택', en: 'Unset' },
@@ -3187,16 +5708,254 @@
       return String(rawVal).trim();
     }
 
+    function renderLabSectionCards(sections, isKo) {
+      const secGrid = h('div', { class: 'lab-sections-grid' });
+      sections.forEach((sec) => {
+        const derivedCrcl = sec.showDerivedCrcl && S.labs && S.labs.derived && S.labs.derived.crcl != null && !String(S.raw.crcl || '').trim()
+          ? S.labs.derived
+          : null;
+        const derivedPill = derivedCrcl
+          ? h('span', {
+              class: 'cg-derived-pill',
+              text: isKo
+                ? `산출 CLcr ${(derivedCrcl.shown && derivedCrcl.shown.crcl) || Number(derivedCrcl.crcl).toFixed(1)} mL/min`
+                : `Derived CLcr ${(derivedCrcl.shown && derivedCrcl.shown.crcl) || Number(derivedCrcl.crcl).toFixed(1)} mL/min`,
+            })
+          : null;
+
+        const cardEl = h('div', { class: 'lab-section-card' },
+          h('div', { class: 'lab-sec-head' },
+            h('h3', { class: 'lab-sec-title', text: isKo ? sec.ko : sec.en }),
+            derivedPill));
+
+        const groupEl = h('div', { class: 'lab-card-group' });
+
+        sec.numeric.forEach((bf) => {
+          const valStr = S.raw[bf.key];
+          const m = computeBioRowMetrics(bf, valStr);
+
+          const trackEl = h('div', { class: 'bio-spectrum-track' },
+            h('i', {
+              class: 'bio-spectrum-normal',
+              style: `left:${m.normalLeft.toFixed(1)}%;width:${m.normalWidth.toFixed(1)}%`,
+              title: `${t('refRange')}: ${bf.refLow} - ${bf.refHigh} ${bf.unit}`,
+            }));
+          const needleEl = h('i', {
+            class: `bio-spectrum-needle ${m.statusClass}`,
+            style: `left:${m.needlePos.toFixed(1)}%;display:${m.hasVal ? 'block' : 'none'}`,
+          });
+          trackEl.append(needleEl);
+
+          const ticksEl = h('div', { class: 'bio-spectrum-ticks' },
+            h('span', { class: 'bio-tick', style: `left:${m.normalLeft.toFixed(1)}%`, text: String(bf.refLow) }),
+            h('span', { class: 'bio-tick', style: `left:${m.normalRight.toFixed(1)}%`, text: String(bf.refHigh) }));
+
+          const statusBadgeEl = h('span', { class: `bio-status-badge ${m.statusClass}`, text: m.statusText });
+
+          const input = h('input', {
+            'data-lab-key': bf.key,
+            type: 'text', inputmode: 'decimal', placeholder: '—', value: valStr ?? '',
+            class: m.statusClass !== 'normal' && m.statusClass !== 'empty' ? 'flagged' : '',
+            oninput: (e) => {
+              S.raw[bf.key] = e.target.value;
+              S.presetId = null;
+              if (String(e.target.value).trim()) S.studioNeedInputWarn = false;
+              else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
+              save();
+              const live = computeBioRowMetrics(bf, e.target.value);
+              input.className = live.statusClass !== 'normal' && live.statusClass !== 'empty' ? 'flagged' : '';
+              needleEl.className = `bio-spectrum-needle ${live.statusClass}`;
+              needleEl.style.left = `${live.needlePos.toFixed(1)}%`;
+              needleEl.style.display = live.hasVal ? 'block' : 'none';
+              statusBadgeEl.className = `bio-status-badge ${live.statusClass}`;
+              statusBadgeEl.textContent = live.statusText;
+            },
+            onblur: async () => {
+              await refreshBackendData();
+              renderWb();
+              safeRenderFlowsheet();
+            },
+          });
+
+          const labName = isKo ? (LAB_KO[bf.key] || bf.name) : bf.name;
+
+          groupEl.append(h('div', { class: 'bio-row' },
+            h('div', { class: 'bio-info' },
+              h('span', { class: 'bio-name', text: labName }),
+              h('span', { class: 'bio-ref', text: `${t('refRange')}: ${bf.refLow} - ${bf.refHigh} ${bf.unit}` })),
+            h('div', { class: 'bio-input-wrap' }, input),
+            h('div', { class: 'bio-spectrum-wrap' }, trackEl, ticksEl),
+            statusBadgeEl));
+        });
+
+        sec.discrete.forEach((df) => {
+          const curVal = normalizeDiscreteVal(S.raw[df.key]);
+          const segGroup = h('div', { class: 'bio-seg-group', role: 'group', 'aria-label': isKo ? (LAB_KO[df.key] || df.name) : df.name });
+          df.options.forEach((opt) => {
+            const active = curVal.toUpperCase() === opt.val.toUpperCase();
+            segGroup.append(h('button', {
+              type: 'button',
+              class: 'bio-seg-btn' + (active ? ' is-selected' : '') + (active && opt.flag ? ' is-flagged' : ''),
+              'aria-pressed': active ? 'true' : 'false',
+              text: isKo ? opt.ko : opt.en,
+              onclick: async () => {
+                if (opt.val === '') delete S.raw[df.key];
+                else S.raw[df.key] = opt.val;
+                S.presetId = null;
+                if (opt.val !== '') S.studioNeedInputWarn = false;
+                else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
+                save();
+                await refreshBackendData();
+                renderWb();
+                renderFlowsheet();
+              },
+            }));
+          });
+
+          groupEl.append(h('div', { class: 'bio-discrete-row' },
+            h('div', { class: 'bio-info' },
+              h('span', { class: 'bio-name', text: isKo ? (LAB_KO[df.key] || df.name) : df.name }),
+              h('span', { class: 'bio-ref', text: isKo ? df.subKo : df.subEn })),
+            segGroup));
+        });
+
+        cardEl.append(groupEl);
+        secGrid.append(cardEl);
+      });
+      return secGrid;
+    }
+
+    function buildRequiredLabsPanel(isKo, reqEnteredCount) {
+      const isReqOpen = Boolean(S.basicLabsOpen);
+      const labErrors = (S.labs && S.labs.errors) || {};
+      const derivedObj = S.labs && S.labs.derived && S.labs.derived.crcl != null && !String(S.raw.crcl || '').trim() && S.labs.derived.crcl_source === 'Cockcroft-Gault'
+        ? S.labs.derived
+        : null;
+      const basicDerivedPill = derivedObj
+        ? h('span', {
+            class: 'cg-derived-pill',
+            text: isKo
+              ? `산출 CLcr ${(derivedObj.shown && derivedObj.shown.crcl) || Number(derivedObj.crcl).toFixed(1)} mL/min`
+              : `Derived CLcr ${(derivedObj.shown && derivedObj.shown.crcl) || Number(derivedObj.crcl).toFixed(1)} mL/min`,
+          })
+        : null;
+      const reqCountBadge = reqEnteredCount > 0
+        ? h('span', { class: 'flowsheet-count-badge', text: isKo ? `${reqEnteredCount}개 항목 입력됨` : `${reqEnteredCount} entered` })
+        : null;
+
+      const reqPanel = h('section', { class: 'flowsheet-collapsible panel req-flowsheet', 'aria-label': t('basicTitle') });
+      const reqToggleBtn = h('button', {
+        type: 'button',
+        class: 'flowsheet-toggle-bar',
+        'aria-expanded': isReqOpen ? 'true' : 'false',
+        onclick: () => {
+          S.basicLabsOpen = !S.basicLabsOpen;
+          save();
+          renderFlowsheet();
+        },
+      },
+      h('div', { class: 'flowsheet-toggle-left' },
+        h('div', { class: 'flowsheet-title-row' },
+          h('h2', { class: 'flowsheet-title', text: t('basicTitle') }),
+          h('span', { class: 'flowsheet-req-badge', text: t('basicReqTag') }),
+          reqCountBadge,
+          basicDerivedPill)),
+      h('span', { class: 'flowsheet-toggle-action', text: isReqOpen ? t('basicCollapse') : t('basicExpand') }));
+
+      reqPanel.append(reqToggleBtn);
+
+      if (isReqOpen) {
+        const makeBasicNumField = (key, labelTxt, unitTxt, ph) => {
+          const hasErr = Boolean(labErrors[key]);
+          const inp = h('input', {
+            id: 'bf-' + key,
+            'data-lab-key': key,
+            type: 'text',
+            inputmode: 'decimal',
+            placeholder: ph,
+            value: S.raw[key] ?? '',
+            class: hasErr ? 'flagged' : '',
+            title: labErrors[key] || '',
+            oninput: (e) => {
+              S.raw[key] = e.target.value;
+              S.presetId = null;
+              if (String(e.target.value).trim()) S.studioNeedInputWarn = false;
+              else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
+              save();
+            },
+            onblur: async () => {
+              await refreshBackendData();
+              renderWb();
+              safeRenderFlowsheet();
+            },
+          });
+          return h('div', { class: 'basic-field-item' + (hasErr ? ' has-error' : '') },
+            h('label', { class: 'basic-field-label', for: 'bf-' + key, text: labelTxt }),
+            h('div', { class: 'basic-input-unit' },
+              inp,
+              h('span', { class: 'basic-unit', text: unitTxt })));
+        };
+
+        const curSex = String(S.raw.sex || '').trim().toUpperCase();
+        const sexSeg = h('div', { class: 'bio-seg-group', role: 'group', 'aria-label': isKo ? '성별' : 'Sex' });
+        [
+          { val: 'M', ko: '남성 (M)', en: 'Male (M)' },
+          { val: 'F', ko: '여성 (F)', en: 'Female (F)' },
+        ].forEach((opt) => {
+          const active = curSex === opt.val;
+          sexSeg.append(h('button', {
+            type: 'button',
+            class: 'bio-seg-btn' + (active ? ' is-selected' : ''),
+            'aria-pressed': active ? 'true' : 'false',
+            title: active ? (isKo ? '클릭 시 선택 해제' : 'Click to clear') : '',
+            text: isKo ? opt.ko : opt.en,
+            onclick: async () => {
+              if (active) delete S.raw.sex;
+              else S.raw.sex = opt.val;
+              S.presetId = null;
+              if (S.raw.sex) S.studioNeedInputWarn = false;
+              else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
+              save();
+              await refreshBackendData();
+              renderWb();
+              renderFlowsheet();
+            },
+          }));
+        });
+        const sexField = h('div', { class: 'basic-field-item' },
+          h('span', { class: 'basic-field-label', text: isKo ? '성별' : 'Sex' }),
+          sexSeg);
+
+        const reqBody = h('div', { class: 'flowsheet-body' },
+          h('div', { class: 'basic-fields-grid req-basic-grid' },
+            makeBasicNumField('age', isKo ? '나이' : 'Age', isKo ? '세' : 'yr', '65'),
+            sexField,
+            makeBasicNumField('weight', isKo ? '체중' : 'Weight', 'kg', '60')),
+          renderLabSectionCards(REQ_LAB_SECTIONS, isKo));
+        reqPanel.append(reqBody);
+      }
+
+      return reqPanel;
+    }
+
     function renderFlowsheet() {
+      const activeEl = document.activeElement;
+      const activeKey = activeEl && content.contains(activeEl) && activeEl.dataset ? activeEl.dataset.labKey : null;
+      const selStart = activeKey ? activeEl.selectionStart : null;
+      const selEnd = activeKey ? activeEl.selectionEnd : null;
+
       clear(content);
       const isKo = S.lang === 'ko';
       const enteredKeys = Object.keys(rawValues());
-      const enteredCount = enteredKeys.length;
+      const reqEnteredCount = enteredKeys.filter((k) => BASIC_KEYS.has(k)).length;
+      const optEnteredCount = enteredKeys.filter((k) => !BASIC_KEYS.has(k)).length;
       const isOpen = Boolean(S.labsOpen);
 
+      const basicPanel = buildRequiredLabsPanel(isKo, reqEnteredCount);
+
       const panelWrap = h('section', { class: 'flowsheet-collapsible panel' });
-      const countBadge = enteredCount > 0
-        ? h('span', { class: 'flowsheet-count-badge', text: isKo ? `${enteredCount}개 항목 입력됨` : `${enteredCount} entered` })
+      const countBadge = optEnteredCount > 0
+        ? h('span', { class: 'flowsheet-count-badge', text: isKo ? `${optEnteredCount}개 항목 입력됨` : `${optEnteredCount} entered` })
         : null;
 
       const toggleBtn = h('button', {
@@ -3220,167 +5979,21 @@
       panelWrap.append(toggleBtn);
 
       if (isOpen) {
-        const bodyEl = h('div', { class: 'flowsheet-body' });
-        const secGrid = h('div', { class: 'lab-sections-grid' });
-
-        LAB_SECTIONS.forEach((sec) => {
-          const derivedCrcl = sec.id === 'renal' && S.labs && S.labs.derived && S.labs.derived.crcl != null && !String(S.raw.crcl || '').trim()
-            ? S.labs.derived
-            : null;
-          const derivedPill = derivedCrcl
-            ? h('span', {
-                class: 'cg-derived-pill',
-                text: isKo
-                  ? `산출 CLcr ${(derivedCrcl.shown && derivedCrcl.shown.crcl) || Number(derivedCrcl.crcl).toFixed(1)} mL/min`
-                  : `Derived CLcr ${(derivedCrcl.shown && derivedCrcl.shown.crcl) || Number(derivedCrcl.crcl).toFixed(1)} mL/min`,
-              })
-            : null;
-
-          const cardEl = h('div', { class: 'lab-section-card' },
-            h('div', { class: 'lab-sec-head' },
-              h('h3', { class: 'lab-sec-title', text: isKo ? sec.ko : sec.en }),
-              derivedPill));
-
-          const groupEl = h('div', { class: 'lab-card-group' });
-
-          sec.numeric.forEach((bf) => {
-            const valStr = S.raw[bf.key];
-            const m = computeBioRowMetrics(bf, valStr);
-
-            const trackEl = h('div', { class: 'bio-spectrum-track' },
-              h('i', {
-                class: 'bio-spectrum-normal',
-                style: `left:${m.normalLeft.toFixed(1)}%;width:${m.normalWidth.toFixed(1)}%`,
-                title: `${t('refRange')}: ${bf.refLow} - ${bf.refHigh} ${bf.unit}`,
-              }));
-            const needleEl = h('i', {
-              class: `bio-spectrum-needle ${m.statusClass}`,
-              style: `left:${m.needlePos.toFixed(1)}%;display:${m.hasVal ? 'block' : 'none'}`,
-            });
-            trackEl.append(needleEl);
-
-            const ticksEl = h('div', { class: 'bio-spectrum-ticks' },
-              h('span', { class: 'bio-tick', style: `left:${m.normalLeft.toFixed(1)}%`, text: String(bf.refLow) }),
-              h('span', { class: 'bio-tick', style: `left:${m.normalRight.toFixed(1)}%`, text: String(bf.refHigh) }));
-
-            const statusBadgeEl = h('span', { class: `bio-status-badge ${m.statusClass}`, text: m.statusText });
-
-            const input = h('input', {
-              type: 'text', inputmode: 'decimal', placeholder: '—', value: valStr ?? '',
-              class: m.statusClass !== 'normal' && m.statusClass !== 'empty' ? 'flagged' : '',
-              oninput: (e) => {
-                S.raw[bf.key] = e.target.value;
-                S.presetId = null;
-                if (String(e.target.value).trim()) S.studioNeedInputWarn = false;
-                else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
-                save();
-                const live = computeBioRowMetrics(bf, e.target.value);
-                input.className = live.statusClass !== 'normal' && live.statusClass !== 'empty' ? 'flagged' : '';
-                needleEl.className = `bio-spectrum-needle ${live.statusClass}`;
-                needleEl.style.left = `${live.needlePos.toFixed(1)}%`;
-                needleEl.style.display = live.hasVal ? 'block' : 'none';
-                statusBadgeEl.className = `bio-status-badge ${live.statusClass}`;
-                statusBadgeEl.textContent = live.statusText;
-              },
-              onblur: async () => {
-                await refreshBackendData();
-                renderFlowsheet();
-              },
-            });
-
-            const labName = isKo ? (LAB_KO[bf.key] || bf.name) : bf.name;
-
-            groupEl.append(h('div', { class: 'bio-row' },
-              h('div', { class: 'bio-info' },
-                h('span', { class: 'bio-name', text: labName }),
-                h('span', { class: 'bio-ref', text: `${t('refRange')}: ${bf.refLow} - ${bf.refHigh} ${bf.unit}` })),
-              h('div', { class: 'bio-input-wrap' }, input),
-              h('div', { class: 'bio-spectrum-wrap' }, trackEl, ticksEl),
-              statusBadgeEl));
-          });
-
-          if (sec.cgHelper) {
-            const makeMiniInput = (key, labelTxt, ph) => {
-              const inp = h('input', {
-                type: 'text', inputmode: 'decimal', placeholder: ph, value: S.raw[key] ?? '',
-                oninput: (e) => {
-                  S.raw[key] = e.target.value;
-                  S.presetId = null;
-                  save();
-                },
-                onblur: async () => {
-                  await refreshBackendData();
-                  renderFlowsheet();
-                },
-              });
-              return h('div', { class: 'cg-mini-field' }, h('label', { text: labelTxt }), inp);
-            };
-            const curSex = String(S.raw.sex || '').toUpperCase();
-            const sexSel = h('select', {
-              onchange: async (e) => {
-                S.raw.sex = e.target.value;
-                S.presetId = null;
-                save();
-                await refreshBackendData();
-                renderFlowsheet();
-              },
-            },
-            h('option', { value: '', selected: !curSex ? '' : null, text: isKo ? '미선택' : 'Unset' }),
-            h('option', { value: 'M', selected: curSex === 'M' ? '' : null, text: isKo ? '남성 (M)' : 'Male (M)' }),
-            h('option', { value: 'F', selected: curSex === 'F' ? '' : null, text: isKo ? '여성 (F)' : 'Female (F)' }));
-
-            groupEl.append(h('div', { class: 'cg-inline-box' },
-              h('span', {
-                class: 'cg-inline-caption',
-                text: isKo
-                  ? 'CLcr 수치가 없을 때: 혈청 크레아티닌과 아래 나이, 성별, 체중을 입력하면 Cockcroft-Gault CLcr이 자동 산출됩니다.'
-                  : 'No direct CLcr? Enter Serum Creatinine plus Age, Sex, and Weight below to auto-compute Cockcroft-Gault CLcr.',
-              }),
-              h('div', { class: 'cg-inline-inputs' },
-                makeMiniInput('age', isKo ? '나이 (세)' : 'Age (yr)', '65'),
-                h('div', { class: 'cg-mini-field' }, h('label', { text: isKo ? '성별' : 'Sex' }), sexSel),
-                makeMiniInput('weight', isKo ? '체중 (kg)' : 'Weight (kg)', '60'))));
-          }
-
-          sec.discrete.forEach((df) => {
-            const curVal = normalizeDiscreteVal(S.raw[df.key]);
-            const segGroup = h('div', { class: 'bio-seg-group', role: 'group', 'aria-label': isKo ? (LAB_KO[df.key] || df.name) : df.name });
-            df.options.forEach((opt) => {
-              const active = curVal.toUpperCase() === opt.val.toUpperCase();
-              segGroup.append(h('button', {
-                type: 'button',
-                class: 'bio-seg-btn' + (active ? ' is-selected' : '') + (active && opt.flag ? ' is-flagged' : ''),
-                'aria-pressed': active ? 'true' : 'false',
-                text: isKo ? opt.ko : opt.en,
-                onclick: async () => {
-                  if (opt.val === '') delete S.raw[df.key];
-                  else S.raw[df.key] = opt.val;
-                  S.presetId = null;
-                  if (opt.val !== '') S.studioNeedInputWarn = false;
-                  else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
-                  save();
-                  await refreshBackendData();
-                  renderFlowsheet();
-                },
-              }));
-            });
-
-            groupEl.append(h('div', { class: 'bio-discrete-row' },
-              h('div', { class: 'bio-info' },
-                h('span', { class: 'bio-name', text: isKo ? (LAB_KO[df.key] || df.name) : df.name }),
-                h('span', { class: 'bio-ref', text: isKo ? df.subKo : df.subEn })),
-              segGroup));
-          });
-
-          cardEl.append(groupEl);
-          secGrid.append(cardEl);
-        });
-
-        bodyEl.append(secGrid);
+        const bodyEl = h('div', { class: 'flowsheet-body' }, renderLabSectionCards(OPT_LAB_SECTIONS, isKo));
         panelWrap.append(bodyEl);
       }
 
-      content.append(panelWrap);
+      content.append(basicPanel, panelWrap);
+
+      if (activeKey) {
+        const restored = content.querySelector(`input[data-lab-key="${activeKey}"]`);
+        if (restored) {
+          restored.focus({ preventScroll: true });
+          try {
+            if (selStart !== null) restored.setSelectionRange(selStart, selEnd);
+          } catch (e) { /* ignore */ }
+        }
+      }
     }
 
     renderFlowsheet();
@@ -3881,12 +6494,49 @@
     ],
   };
 
+  function fcFormatLabel(fcFormat, fcSilenced, isKo) {
+    const id = fcFormat || (fcSilenced ? 'igg1_lalapg' : 'igg1_wt');
+    const item = STUDIO_FC_ITEMS.find((x) => x.id === id);
+    if (item) return isKo ? item.ko : item.en;
+    return fcSilenced ? (isKo ? 'Fc 침묵화 (LALA-PG)' : 'Fc-Silenced (LALA-PG)') : (isKo ? '야생형 IgG1' : 'Wild-type IgG1');
+  }
+
+  function getDeriskDefs(tgt, refBrand, isKo) {
+    if (DERISK[tgt.id]) return DERISK[tgt.id];
+    const topTis = (tgt.tissues && tgt.tissues[0]) || { organ: 'haematologic', tpm: 30 };
+    const orgLabelKo = ORGAN_KO[topTis.organ] || topTis.organ;
+    const orgLabelEn = SHORT[topTis.organ] || topTis.organ;
+    return [
+      {
+        ko: [
+          `${orgLabelKo} 표적 및 전신 독성 완화`,
+          `${refBrand} 등 동일 계열 약물에서는 ${orgLabelKo} 및 조혈계 독성이 용량 제한 요인으로 작용합니다.`,
+          `${plainName(tgt.id)}의 정상 조직 발현(${topTis.tpm} nTPM)과 혈중 유리 페이로드 누출, 대식세포 Fc감마 수용체 흡수가 복합적으로 작용해 조직 손상을 유발합니다.`,
+        ],
+        en: [
+          `${orgLabelEn} & systemic toxicity mitigation`,
+          `Reference regimens such as ${refBrand} are limited by ${orgLabelEn.toLowerCase()} and marrow toxicities.`,
+          `Baseline ${plainName(tgt.id)} expression (${topTis.tpm} nTPM), premature plasma payload release, and macrophage FcgammaR uptake combine to injure healthy tissue.`,
+        ],
+        kinds: ['fc', 'linker', `pay:${topTis.organ}`, 'dar'],
+      },
+    ];
+  }
+
   // one sentence per kind: tone better / same / worse than the approved drug, for the parts the user chose
   function deriskAnswer(kind, sim, refSim, isKo) {
     const L = (ko, en) => (isKo ? ko : en);
+    const simFcFmt = (sim.spec && sim.spec.fcFormat) || (sim.fcSilenced ? 'igg1_lalapg' : 'igg1_wt');
+    const refFcFmt = (refSim.spec && refSim.spec.fcFormat) || (refSim.fcSilenced ? 'igg1_lalapg' : 'igg1_wt');
     if (kind === 'fc') {
-      if (sim.fcSilenced) return { tone: 'better', text: L('Fc 침묵화(LALA-PG)로 대식세포의 FcγR 결합이 거의 사라져 비특이 흡수 경로가 막혀 있습니다.', 'Fc silencing (LALA-PG) removes most FcγR binding on macrophages, so the non-specific uptake route is blocked.') };
-      return { tone: 'same', text: L('Fc가 야생형이라 대식세포를 통한 비특이 흡수 경로가 기존 약물처럼 남아 있습니다.', 'The Fc is wild-type, so the macrophage uptake route remains, as in the approved drug.') };
+      if (simFcFmt === 'igg1_lalapg') return { tone: 'better', text: L('Fc 침묵화(LALA-PG)로 대식세포의 Fc감마 수용체 결합이 차단되어 비특이 흡수 경로가 억제됩니다.', 'Fc silencing (LALA-PG) blocks FcgammaR binding on macrophages, suppressing non-specific uptake.') };
+      if (simFcFmt === 'igg4_s228p' || simFcFmt === 'igg2_lowfc') {
+        const lbl = fcFormatLabel(simFcFmt, true, isKo);
+        return refFcFmt === 'igg1_wt'
+          ? { tone: 'better', text: L(`${lbl} 골격을 채택해 야생형 IgG1 대비 대식세포 비특이 흡수를 낮췄습니다.`, `${lbl} backbone lowers macrophage non-specific uptake compared with wild-type IgG1.`) }
+          : { tone: 'same', text: L(`${lbl} 골격으로 기존 약물과 유사한 저효능기 특성을 유지합니다.`, `${lbl} maintains low effector uptake similar to the reference drug.`) };
+      }
+      return { tone: 'same', text: L('야생형 IgG1 골격이라 대식세포 비특이 흡수 경로가 기존 약물과 동일합니다.', 'Wild-type IgG1 retains the same macrophage uptake route as the reference drug.') };
     }
     if (kind === 'dar') {
       if (sim.dar < refSim.dar) return { tone: 'better', text: L(`DAR이 ${refSim.dar}에서 ${sim.dar}로 낮아 약물 부하와 응집 위험이 줄었습니다.`, `DAR is lower, ${refSim.dar} to ${sim.dar}, so drug load and clumping risk are reduced.`) };
@@ -3907,8 +6557,10 @@
     }
     if (kind.startsWith('pay:')) {
       const organ = kind.slice(4);
-      const mine = (sim.organRiskMap && sim.organRiskMap[organ] != null) ? sim.organRiskMap[organ] : (sim.pld.organs[organ] != null ? sim.pld.organs[organ] : 22);
-      const ref = (refSim.organRiskMap && refSim.organRiskMap[organ] != null) ? refSim.organRiskMap[organ] : (refSim.pld.organs[organ] != null ? refSim.pld.organs[organ] : 22);
+      const pldOrgs = (sim.pld && sim.pld.organs) || {};
+      const refPldOrgs = (refSim.pld && refSim.pld.organs) || {};
+      const mine = (sim.organRiskMap && sim.organRiskMap[organ] != null) ? sim.organRiskMap[organ] : (pldOrgs[organ] != null ? pldOrgs[organ] : 22);
+      const ref = (refSim.organRiskMap && refSim.organRiskMap[organ] != null) ? refSim.organRiskMap[organ] : (refPldOrgs[organ] != null ? refPldOrgs[organ] : 22);
       const name = organKo(organ);
       if (sim.pld.id === refSim.pld.id && Math.abs(mine - ref) <= 2) return { tone: 'same', text: L(`같은 페이로드라서 ${name}에 대한 독성도 같습니다.`, `Same payload, so its toxicity on ${name} is the same.`) };
       if (mine < ref - 4) return { tone: 'better', text: L(`${plainName(sim.pld.id)} 조합은 ${name}에 대한 신경망 독성 위험(${mine}%)이 ${plainName(refSim.pld.id)}(${ref}%)보다 낮습니다.`, `${plainName(sim.pld.id)} has lower predicted ${name} risk (${mine}%) than ${plainName(refSim.pld.id)} (${ref}%).`) };
@@ -3918,7 +6570,7 @@
     return { tone: 'same', text: '' };
   }
 
-  function fillStudioCompareDrawer(simInput) {
+  function fillStudioCompareDrawer(simInput, spaceInput) {
     const sim = simInput || computeStudioSimulation();
     const isKo = S.lang === 'ko';
     const L = (ko, en) => (isKo ? ko : en);
@@ -3928,6 +6580,8 @@
     const pld = sim.pld || STUDIO_PAYLOADS[0];
     const dar = Number(sim.dar || (sim.spec && sim.spec.dar) || 4);
     const fcSilenced = Boolean(sim.fcSilenced !== undefined ? sim.fcSilenced : (sim.spec && sim.spec.fc));
+    const fcFormat = (sim.spec && sim.spec.fcFormat) || (fcSilenced ? 'igg1_lalapg' : 'igg1_wt');
+    const mineFcLabel = fcFormatLabel(fcFormat, fcSilenced, isKo);
 
     const refAdcId = (tgt && tgt.refAdc) || 'trastuzumab-deruxtecan';
     const refSpec = ADC_SPECS[refAdcId] || {};
@@ -3935,14 +6589,26 @@
     const refRow = (S.result && S.result.data && S.result.data.rows && S.result.data.rows.find((r) => r.adc === refAdcId)) || null;
     const refBrand = (refRow && refRow.brand) || refSpec.brand || refMech.brand || refAdcId;
     const refName = (refRow && refRow.name) || (refSpec.brand ? `${refSpec.brand} (${refAdcId})` : refAdcId);
-    // the approved drug scored by the same formula on the same patient
-    const refSim = computeStudioSimulation(Object.assign({ target: tgt.id }, REF_STUDIO[tgt.id] || { linker: lnk.id, payload: pld.id, dar: 4, fc: false }), sim.organRisks ? sim.organRisks.map((r) => ({ organ: r.organ, score: 0.8 })) : null);
+
+    let refSim = null;
+    if (spaceInput && spaceInput.refBest && spaceInput.best && spaceInput.best.spec && spaceInput.best.spec.target === tgt.id) {
+      refSim = spaceInput.refBest;
+    } else if (spaceInput && spaceInput.refCurrent && spaceInput.current && spaceInput.current.spec && spaceInput.current.spec.target === tgt.id) {
+      refSim = spaceInput.refCurrent;
+    } else {
+      const fallbackRefArch = getRefStudioForTarget(tgt.id) || { linker: lnk.id, payload: pld.id, dar: 4, fc: false, fcFormat: 'igg1_wt' };
+      refSim = computeStudioSimulation(Object.assign({ target: tgt.id }, fallbackRefArch), sim.organRisks ? sim.organRisks.map((r) => ({ organ: r.organ, score: 0.8 })) : null);
+    }
+    const refFcFmt = (refSim.spec && refSim.spec.fcFormat) || (refSim.fcSilenced ? 'igg1_lalapg' : 'igg1_wt');
+    const refFcLabel = fcFormatLabel(refFcFmt, refSim.fcSilenced, isKo);
 
     const tgtName = plainName(tgt.id);
-    const designName = `${tgtName}-${plainName(pld.id)}`;
-    const designSub = `${lnk.id}, DAR ${dar}, ${fcSilenced ? L('Fc 침묵화', 'Fc silenced') : L('야생형 IgG1', 'wild-type IgG1')}`;
+    const customLabel = sim.spec && sim.spec.customPayloadLabel;
+    const payLabel = customLabel || plainName(pld.id);
+    const designName = `${tgtName}-${payLabel}`;
+    const doseTag = sim.optimalDoseMgKg ? `, ${sim.optimalDoseMgKg} mg/kg` : '';
+    const designSub = `${lnk.id}, DAR ${dar}, ${mineFcLabel}${doseTag}`;
 
-    // no title: the two cards below already say what is being compared
     drawerTitle.textContent = '';
     clear(drawerBody);
     drawerBody.scrollTop = 0;
@@ -3957,14 +6623,15 @@
       h('div', { class: 'compare-hero-col' },
         h('span', { class: 'ch-badge', text: L('기존 승인 약물', 'Approved drug') }),
         h('span', { class: 'ch-name', text: refBrand || refName }),
-        h('span', { class: 'ch-sub', text: `${refSpec.linker || refSim.lnk.id}, DAR ${refSim.dar}, ${L('야생형 IgG1', 'wild-type IgG1')}` }),
+        h('span', { class: 'ch-sub', text: `${refSpec.linker || refSim.lnk.id}, DAR ${refSim.dar}, ${refFcLabel}` }),
         h('span', { class: 'ch-score', style: 'color:var(--dim)', text: L(`안전도 ${refSim.safetyScore}점 / 효능 ${refSim.efficacyScore}점`, `Safety ${refSim.safetyScore} / Efficacy ${refSim.efficacyScore}`) })));
 
     // 2. Part by part, with what it means clinically
     const burden = (sObj) => sim.organRisks.reduce((acc, r) => {
+      const pldOrgs = (sObj.pld && sObj.pld.organs) || {};
       const v = (sObj.organRiskMap && sObj.organRiskMap[r.organ] != null)
         ? sObj.organRiskMap[r.organ]
-        : (sObj.pld && sObj.pld.organs[r.organ] != null ? sObj.pld.organs[r.organ] : 22);
+        : (pldOrgs[r.organ] != null ? pldOrgs[r.organ] : 22);
       return acc + v;
     }, 0) / Math.max(1, sim.organRisks.length);
     const dSafety = sim.safetyScore - refSim.safetyScore;
@@ -3973,11 +6640,9 @@
 
     const linkerGain = deriskAnswer('linker', sim, refSim, isKo);
     const darGain = deriskAnswer('dar', sim, refSim, isKo);
-    const fcGain = sim.fcSilenced
-      ? { tone: 'better', text: L('Fc 침묵화로 대식세포 FcγR을 통한 비특이 흡수가 줄어, 폐, 간, 안구 독성 위험이 낮아집니다.', 'Fc silencing lowers non-specific uptake through macrophage FcγR, reducing lung, liver and eye toxicity risk.') }
-      : { tone: 'same', text: L('기존 약물과 같은 야생형 IgG1이라 차이가 없습니다.', 'Same wild-type IgG1 as the approved drug, so no difference.') };
+    const fcGain = deriskAnswer('fc', sim, refSim, isKo);
     let payGain;
-    if (pld.id === refSim.pld.id) payGain = { tone: 'same', text: L('같은 페이로드를 사용하므로 고유 약리 기전이 같습니다.', 'The same payload is used, so intrinsic pharmacology is the same.') };
+    if (!customLabel && pld.id === refSim.pld.id) payGain = { tone: 'same', text: L('같은 페이로드를 사용하므로 고유 약리 기전이 같습니다.', 'The same payload is used, so intrinsic pharmacology is the same.') };
     else {
       const a = burden(refSim);
       const b = burden(sim);
@@ -3996,9 +6661,9 @@
       [t('compTarget'), tgtName, plainName(refSim.tgt.id),
         { tone: 'same', text: L(`같은 ${tgtName} 표적이라 종양 선택도(+${tgt.selectivity.toFixed(1)} log2FC)는 같습니다. 차이는 아래 항목에서 생깁니다.`, `Same ${tgtName} target, so tumor selectivity (+${tgt.selectivity.toFixed(1)} log2FC) is the same. The differences come from the parts below.`) }],
       [t('compLinker'), `${lnk.id}, ${lnk.cleavable ? L('절단형', 'cleavable') : L('비절단형', 'non-cleavable')}`, refSpec.linker || refSim.lnk.id, linkerGain],
-      [t('compPayload'), plainName(pld.id), plainName(refSim.pld.id), payGain],
+      [t('compPayload'), payLabel, plainName(refSim.pld.id), payGain],
       [t('compDar'), `DAR ${dar}`, `DAR ${refSim.dar}`, darGain],
-      [t('compFc'), fcSilenced ? L('Fc 침묵화 (LALA-PG)', 'Fc silenced (LALA-PG)') : L('야생형 IgG1', 'Wild-type IgG1'), L('야생형 IgG1', 'Wild-type IgG1'), fcGain],
+      [t('compFc'), mineFcLabel, refFcLabel, fcGain],
       [t('compSafety'), L(`${sim.safetyScore}점`, `${sim.safetyScore}`), L(`${refSim.safetyScore}점`, `${refSim.safetyScore}`),
         { tone: toneOf(dSafety), text: dSafety >= 3 ? L(`같은 환자 기준으로 기존 약물보다 ${dSafety}점 높아, 취약 장기 독성 위험이 낮습니다.`, `${dSafety} points higher than the approved drug for this patient, so risk to vulnerable organs is lower.`)
           : dSafety <= -3 ? L(`기존 약물보다 ${-dSafety}점 낮습니다. 효능을 위해 안전도를 일부 양보한 조합입니다.`, `${-dSafety} points lower than the approved drug; some safety is traded for efficacy.`) : L('기존 약물과 비슷한 수준입니다.', 'Similar to the approved drug.') }],
@@ -4020,7 +6685,7 @@
     const secCompareTable = section(L('설계 비교와 임상 개선 이점', 'Comparison and clinical advantage'), cmpList);
 
     // 3. Why the approved drug's side effects are lower with this design
-    const deriskDefs = DERISK[tgt.id] || [];
+    const deriskDefs = getDeriskDefs(tgt, refBrand, isKo);
     const deRiskEl = h('div', { class: 'derisk-list' }, deriskDefs.map((def) => {
       const [title, problem, cause] = def[isKo ? 'ko' : 'en'];
       const answers = def.kinds.map((k) => deriskAnswer(k, sim, refSim, isKo)).filter((a) => a.text);
@@ -4041,7 +6706,7 @@
       name: designName,
       brand: '',
       target: tgt.gene || tgt.id,
-      payload: plainName(pld.id),
+      payload: payLabel,
       linker: lnk.id,
       dar: dar,
       darCount: Math.max(1, Math.min(8, Math.round(dar))),
@@ -4092,8 +6757,8 @@
         [L('표적 항원', 'Target'), tgtName],
         [L('접합비 DAR', 'DAR'), `DAR ${dar}`],
         [L('화학 링커', 'Linker'), `${lnk.id}, ${lnk.cleavable ? L('절단형', 'cleavable') : L('비절단형', 'non-cleavable')}`],
-        [L('세포독성 페이로드', 'Payload'), `${plainName(pld.id)}, ${pld.cls}`],
-        [L('Fc', 'Fc'), fcSilenced ? L('LALA-PG로 침묵화해 대식세포 흡수를 줄임', 'Silenced with LALA-PG to cut macrophage uptake') : L('야생형 IgG1', 'Wild-type IgG1')],
+        [L('세포독성 페이로드', 'Payload'), `${payLabel}, ${pld.cls}`],
+        [L('항체 골격 / Fc', 'Antibody / Fc'), mineFcLabel],
       ].map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])));
 
     // 5. Clinical trial cases of the approved drug
@@ -4132,9 +6797,9 @@
   }
 
 
-  function openStudioCompareDrawer(simInput) {
+  function openStudioCompareDrawer(simInput, spaceInput) {
     const sim = simInput || computeStudioSimulation();
-    fillStudioCompareDrawer(sim);
+    fillStudioCompareDrawer(sim, spaceInput);
     showDrawer();
   }
 
@@ -4212,7 +6877,30 @@
         if (id) MECH[id] = m;
       }
     });
-    verEl.textContent = 'v' + (APP.version || '0.8.1');
+    verEl.textContent = 'v' + (APP.version || '0.8.3');
+
+    if (API.studioCatalog) {
+      try {
+        const cat = await API.studioCatalog();
+        if (cat && Array.isArray(cat.targets) && cat.targets.length) STUDIO_TARGETS = cat.targets;
+        if (cat && Array.isArray(cat.linkers) && cat.linkers.length) STUDIO_LINKERS = cat.linkers;
+        if (cat && Array.isArray(cat.payloads) && cat.payloads.length) STUDIO_PAYLOADS = cat.payloads;
+        if (cat && Array.isArray(cat.dars) && cat.dars.length) STUDIO_DAR_ITEMS = cat.dars;
+        if (cat && Array.isArray(cat.fc_formats) && cat.fc_formats.length) {
+          STUDIO_FC_ITEMS = cat.fc_formats.map((f) => ({
+            id: f.id,
+            ko: f.ko,
+            en: f.en,
+            isotype: f.isotype,
+            isSilenced: Boolean(f.fc_silenced),
+            fcActivity: f.fc_activity,
+            adcc: f.adcc,
+            popover: f.popover,
+            popover_ko: f.popover_ko,
+          }));
+        }
+      } catch (e) { /* embedded catalog already loaded */ }
+    }
 
     restore();
     renderHeaderControls();

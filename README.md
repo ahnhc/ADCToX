@@ -1,14 +1,14 @@
-# ADCTOX v0.8.1
+# ADCTOX v0.8.3
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
-[![App Version](https://img.shields.io/badge/version-v0.8.1-10B981)](#)
+[![App Version](https://img.shields.io/badge/version-v0.8.3-10B981)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live%20Platform-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
 **Patient-Specific Antibody-Drug Conjugate (ADC) Safety Evaluation & Multimodal Neural Surrogate De Novo Design Workspace.**  
-ADCTOX links a patient's malignancies, comorbidities, and quantitative laboratory biomarkers to 13 physiological organ axes using an on-device 110M-parameter medical language model (`x2te`), evaluates all 15 FDA-approved ADCs against DailyMed label restrictions and ClinicalTrials.gov pivotal trial outcomes, and designs bespoke conjugates using a 5-fold multimodal neural surrogate ensemble (`ADC-SurrogateNet-v2`) combining AlphaFold 3D biophysics, ESM-2 650M representations, ChemBERTa-2 molecular embeddings, and single-cell/bulk organ expression profiles.
+ADCTOX links a patient's malignancies, comorbidities, and quantitative laboratory biomarkers to 13 physiological organ axes using an on-device 110M-parameter medical language model (`x2te`), evaluates all 15 FDA-approved ADCs against DailyMed label restrictions and ClinicalTrials.gov pivotal trial outcomes, and designs bespoke conjugates across **`368,640` architectures** (`36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc Formats`) using a vectorized server matrix engine (`Mode 2`) and real-time 5-fold `ADC-SurrogateNet-v2` inference (`Mode 3 Deep Research`).
 
 ---
 
@@ -16,12 +16,12 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
 
 ---
 
-## Key Capabilities in v0.8.1
+## Key Capabilities in v0.8.3
 
 1. **Streamlined 3-Stage Clinical Workflow (`1. Patient Info` -> `2. ADC Matrix` -> `3. De Novo ADC Design`):**
-   - **Stage 1 (`Patient Info`):** Bilingual (`EN / KO`) free-text condition and malignancy entry with real-time AI organ vulnerability mapping, active organ burden indicators, and an 8-biomarker laboratory flowsheet (`Bilirubin`, `Creatinine`, `AST`, `ALT`, `Platelets`, `ANC`, `Hb`, `LVEF`) with physiological reference ranges.
+   - **Stage 1 (`Patient Info`):** Bilingual (`EN / KO`) free-text condition and malignancy entry with real-time AI organ vulnerability mapping, active organ burden indicators, a collapsible 11-item required baseline flowsheet (`Age`, `Sex`, `Weight`, `Creatinine`, `Dialysis/ESRD`, `Bilirubin`, `AST`, `ALT`, `Platelets`, `ANC`, `Hb`), and a collapsible optional biomarker panel (`CLcr`, `eGFR`, `Child-Pugh`, `LVEF`, `HbA1c`, `UGT1A1*28`).
    - **Stage 2 (`ADC Matrix`):** Evaluates all 15 FDA-approved ADCs against patient-specific organ vulnerabilities, DailyMed SPL Boxed Warnings, Section 5 Warnings, Cockcroft–Gault `CLcr` / `×ULN` hepatic thresholds, and 32 ClinicalTrials.gov pivotal trial comparator arms.
-   - **Stage 3 (`De Novo ADC Design`):** Explores `2,592` candidate architectures (`6 Targets × 6 Linkers × 6 Payloads × 6 DARs × 2 Fc Variants`) evaluated by the multimodal neural surrogate conditioned on the patient's active organ vulnerability vector and priority organ selection.
+   - **Stage 3 (`De Novo ADC Design`):** Explores `368,640` candidate architectures (`36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc Formats`) via categorized/searchable controls, running ultra-fast vectorized 5-fold Python matrix search by default (`Mode 2`) or live 5-fold `ADC-SurrogateNet-v2` forward execution via the split-button `Deep Research (GPU)` toggle (`Mode 3`, with ordered 4-GPU slot allocation `0 -> 1 -> 2 -> 3` and CPU server fallback).
 
 2. **Multimodal Neural Surrogate Engine (`ADC-SurrogateNet-v2`):**
    - **Ensemble Architecture:** 5-fold leak-free ensemble combining ESM-2 650M protein language models, AlphaFold pLDDT/solvent accessibility, ChemBERTa-2 LoRA molecular representations, Boltzmann 3D conformer ensembles, and enzymatic cleavage reaction SMARTS.
@@ -53,11 +53,11 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
                │
                ▼
 [ Stage 3: De Novo Multimodal Conjugate Design ]
-  ├─ Search Space: 2,592 Architectures (6 Targets × 6 Linkers × 6 Payloads × 6 DARs × 2 Fc)
+  ├─ Search Space: 368,640 Architectures (36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc)
   ├─ Antibody / Target: ESM-2 650M + AlphaFold 3D Solvent Accessibility & pLDDT
   ├─ Linker / Payload: ChemBERTa-2 LoRA + 3D Conformer Ensembles + Reaction SMARTS
-  ├─ Organ Hazards: 5-Fold ADC-SurrogateNet-v2 (Off-Target H_leak/H_agg/H_Fc + GTEx H_on)
-  └─ Antitumor Efficacy: Target Selectivity × Conjugation Compatibility × Bystander Diffusion
+  ├─ Mode 2 Default: Vectorized Python 368,640 Matrix Engine (CPU, no GPU required)
+  └─ Mode 3 Deep Research: Live 5-Fold ADC-SurrogateNet-v2 (4-GPU Queue 0->3 or CPU Fallback)
 ```
 
 ---
@@ -107,7 +107,7 @@ The installer configures an isolated Python environment, downloads the `0.8` fro
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.8.1 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.8.3 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the Terminal TUI
 ```
 

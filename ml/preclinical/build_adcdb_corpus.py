@@ -141,12 +141,17 @@ CANONICAL_PAYLOAD_SMILES = {
     "AS269": "CCC(C)C(C(CC(=O)N1CCCC1C(C(C)C(=O)NC(Cc2ccc(OCC(=O)N)cc2)C(=O)O)OC)OC)N(C)C(=O)C(C(C)C)NC(=O)C(C(C)C)NC",
     "Eribulin": "NCC1CC2CCC3C(=C)CC(O3)CCC45CC6C(O4)C7C(O6)C(O5)CC8(O7)CCC9C(C8)CC(CC9=C)OC(=O)CC1O2",
     "STING_Agonist": "Nc1nc2c(ncn2[C@@H]2O[C@H]3COP(=O)(O)O[C@H]4[C@H](O)[C@@H](O[C@@H]4COP(=O)(O)O[C@H]3[C@H]2O)n2cnc3c(O)nc(N)nc32)c(=O)[nH]1",
+    "Belotecan_KL610023": "CC(C)NCCc1c2nc3ccc(OC)cc3c1Cn1c-2cc2c(c1=O)COC(=O)C2(O)CC",
+    "Rezetecan_SHR9265": "CCC1(O)C(=O)OCc2c1cc3n(c2=O)Cc4c-3nc5ccc(F)c(C)c5c4NC(=O)C1(O)CC1",
 }
 
 CANONICAL_LINKER_SMILES = {
     "vc-PABC": "CC(C)C(NC(=O)CCCCC1C(=O)NCC1=O)C(=O)NC(CCCNC(N)=O)C(=O)Nc1ccc(CO)cc1",
     "va-PABC": "CC(C)C(NC(=O)CCCCC1C(=O)NCC1=O)C(=O)NC(C)C(=O)Nc1ccc(CO)cc1",
     "GGFG": "O=C(CCCCC1C(=O)NCC1=O)NCC(=O)NCC(=O)NC(Cc1ccccc1)C(=O)NCC(=O)NCOCC(=O)O",
+    "GGFG-Cyclopropyl": "O=C(CCCCC1C(=O)NCC1=O)NCC(=O)NCC(=O)NC(Cc1ccccc1)C(=O)NCC(=O)NCOCC1(CC1)C(=O)O",
+    "Pyrimidine-TMT": "CS(=O)(=O)c1nc(C(=O)NCCOCCOCCOCCOCCOCCOCCOCCNC(=O)C(CCCCN)NC(=O)c2ccc(COC(=O)O)cc2)ncn1",
+    "Oxime": "O=C(CCC(=NO)c1ccc(CC(N)C(=O)O)cc1)NCCOCCO",
     "CL2A": "O=C(OCC1=CC=C(NC(=O)C(CCCCN)NC(=O)OCCOCCOCCOCCOCCOCCOCCOCCN2C=C(CN3C(=O)C=CC3=O)N=N2)C=C1)O",
     "Hydrazone": "CC(=NNCCC(=O)OCC1CCC(CN2C(=O)C=CC2=O)CC1)c1ccc(O)cc1",
     "SPDB": "O=C(O)CC(C)(C)SSc1ccccn1",
@@ -216,6 +221,11 @@ TARGET_ALIAS_MAP: Dict[str, Tuple[str, str]] = {
     "CD70": ("CD70", "P32970"),
     "IL2RA": ("IL2RA", "P01589"),
     "CD25": ("IL2RA", "P01589"),
+    "AXL": ("AXL", "P30530"),
+    "FGFR2": ("FGFR2", "P21802"),
+    "CDH3": ("CDH3", "P22223"),
+    "P-CADHERIN": ("CDH3", "P22223"),
+    "PTK7": ("PTK7", "Q13308"),
 }
 
 # Supplemental HPA / GTEx v8 median organ TPMs for clinical targets beyond the 14 approved-ADC genes in target_expression.json
@@ -238,6 +248,10 @@ SUPPLEMENTAL_GTEX_TPM: Dict[str, Dict[str, float]] = {
     "ENPP3": {"renal": 44.0, "gastrointestinal": 32.0, "hepatic": 18.0},
     "CD70": {"infectious_immune": 28.0, "haematologic": 22.0},
     "IL2RA": {"infectious_immune": 48.0, "haematologic": 35.0},
+    "AXL": {"pulmonary": 34.0, "cardiovascular": 26.0, "musculoskeletal": 22.0, "hepatic": 14.0, "dermatologic": 16.0},
+    "FGFR2": {"dermatologic": 58.0, "ocular": 46.0, "gastrointestinal": 36.0, "pulmonary": 28.0, "renal": 24.0},
+    "CDH3": {"dermatologic": 64.0, "gastrointestinal": 34.0, "ocular": 22.0, "pulmonary": 18.0},
+    "PTK7": {"gastrointestinal": 32.0, "pulmonary": 24.0, "dermatologic": 22.0, "cardiovascular": 14.0},
 }
 
 # Verified clinical dosing regimens (mg/kg equivalent per 21-day cycle) for major clinical ADCs
@@ -340,6 +354,9 @@ PATT_CARBONATE = Chem.MolFromSmarts("[#6]-O-C(=O)-O-[#6]")
 PATT_HYDRAZONE = Chem.MolFromSmarts("[#6]=[#7]-[#7]-[#6](=O)")
 PATT_PEG = Chem.MolFromSmarts("OCCOCCO")
 PATT_GLUCURONIDE = Chem.MolFromSmarts("OC1OC(C(=O)O)C(O)C(O)C1O")
+PATT_CYCLOPROPYL_SPACER = Chem.MolFromSmarts("NCOCC1(CC1)")
+PATT_PYRIMIDINE_TMT = Chem.MolFromSmarts("S(=O)(=O)c1ncncn1")
+PATT_OXIME = Chem.MolFromSmarts("C(=NO)c1ccc")
 
 PATT_BASIC_AMINE = Chem.MolFromSmarts("[NX3;H2,H1,H0;!$(NC=O);!$(NS=O);!$(Nc)]")
 PATT_CARBOXYL = Chem.MolFromSmarts("[CX3](=O)[OX2H1,OX1-]")
@@ -439,8 +456,19 @@ def analyze_linker_cleavage_reaction(linker_smi: str, payload_smi: str) -> Dict[
     )
     has_peg = bool(l_mol and PATT_PEG and l_mol.HasSubstructMatch(PATT_PEG))
     has_gluc = bool(l_mol and PATT_GLUCURONIDE and l_mol.HasSubstructMatch(PATT_GLUCURONIDE))
+    has_cpr = bool(l_mol and PATT_CYCLOPROPYL_SPACER and l_mol.HasSubstructMatch(PATT_CYCLOPROPYL_SPACER))
+    has_tmt = bool(l_mol and PATT_PYRIMIDINE_TMT and l_mol.HasSubstructMatch(PATT_PYRIMIDINE_TMT))
+    has_oxime = bool(l_mol and PATT_OXIME and l_mol.HasSubstructMatch(PATT_OXIME))
 
-    if has_gluc:
+    if has_oxime:
+        mech = "oxime_site_specific_proteolytic"
+        is_cleavable = 0.0
+        self_immolative_16 = 0.0
+        hemiaminal_elim = 0.0
+        plasma_half_life_d = 24.0
+        lysosomal_k_rel = 0.68
+        metabolite_smi = payload_smi
+    elif has_gluc:
         mech = "beta_glucuronidase_hydrophilic_shielded"
         is_cleavable = 1.0
         self_immolative_16 = 1.0
@@ -448,13 +476,21 @@ def analyze_linker_cleavage_reaction(linker_smi: str, payload_smi: str) -> Dict[
         plasma_half_life_d = 12.5
         lysosomal_k_rel = 0.88
         metabolite_smi = payload_smi
+    elif has_tmt:
+        mech = "pyrimidine_tmt_cleavable_peg8"
+        is_cleavable = 1.0
+        self_immolative_16 = 1.0
+        hemiaminal_elim = 0.0
+        plasma_half_life_d = 9.2
+        lysosomal_k_rel = 0.91
+        metabolite_smi = payload_smi
     elif has_ggfg or has_aminal:
         mech = "cathepsin_ggfg_hemiaminal"
         is_cleavable = 1.0
         self_immolative_16 = 0.0
         hemiaminal_elim = 1.0
-        plasma_half_life_d = 14.5
-        lysosomal_k_rel = 0.90
+        plasma_half_life_d = 19.5 if has_cpr else 14.5
+        lysosomal_k_rel = 0.91 if has_cpr else 0.90
         metabolite_smi = payload_smi
     elif has_pabc or has_vc or has_va:
         mech = "cathepsin_dipeptide_pabc_16_elim"
@@ -942,7 +978,7 @@ def parse_dose_mgkg_from_text(title: str, slug: str) -> Tuple[float, float]:
 
 
 def main():
-    repo_root = Path("/home/hyeongchanahn/CONI/adctox")
+    repo_root = Path(__file__).resolve().parents[2]
     out_dir = repo_root / "ml" / "data"
     out_dir.mkdir(parents=True, exist_ok=True)
 

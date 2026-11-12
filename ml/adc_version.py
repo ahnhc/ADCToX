@@ -1,5 +1,5 @@
 """Application and model-runtime compatibility versions (Ubuntu and Windows share them)."""
-APP_VERSION = "0.8.1"
+APP_VERSION = "0.8.3"
 RUNTIME_API = 1
 REPOSITORY = "ahnhc/ADCToX"
 # stable4.json: the organ judge and a name index only (model 0.8+, no BioLORD or SapBERT), read by app 0.6.11+.

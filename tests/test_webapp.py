@@ -629,3 +629,67 @@ def test_direct_crcl_and_esrd_resolve_missing_renal_inputs(server):
     renal_missing = [m for r in after["rows"] for m in r["detail"]["missing"] if "CLcr" in m or "Dialysis" in m]
     assert renal_missing == []
 
+
+def test_studio_368k_endpoints_and_ordered_4gpu_slot_allocator(server):
+    status, cat = call(server, "GET", "/api/studio/catalog")
+    assert status == 200 and cat["total_combinations"] == 368640 and len(cat["targets"]) == 36
+
+    eval_body = {
+        "spec": {
+            "target": "DLL3",
+            "linker": "Tetrapeptide GGFG",
+            "payload": "DXd ( Topo I )",
+            "dar": 4,
+            "fc": True,
+            "fcFormat": "igg1_lalapg",
+        },
+        "organs": [{"organ": "pulmonary", "score": 0.85}, {"organ": "haematologic", "score": 0.70}],
+        "prioOrgan": "pulmonary",
+        "cancerText": "small cell lung cancer",
+    }
+    status, ev = call(server, "POST", "/api/studio/evaluate", eval_body)
+    assert status == 200 and ev["mode"] == "matrix_368k" and ev["total_combinations"] == 368640
+    assert ev["best"]["safetyScore"] >= 2 and ev["current"]["spec"]["target"] == "DLL3"
+
+    status, gs0 = call(server, "GET", "/api/studio/gpu-status")
+    assert status == 200 and gs0["max_slots"] == 4 and gs0["available"] is True and gs0["next_slot"] == 0
+
+    # Launch 4 staggered concurrent Deep Research requests (slots 0 -> 1 -> 2 -> 3)
+    results = [None] * 4
+    def worker(idx):
+        time.sleep(idx * 0.04)
+        body = dict(eval_body, _testHoldMs=420)
+        results[idx] = call(server, "POST", "/api/studio/deep-research", body)
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(4)]
+    for th in threads:
+        th.start()
+
+    # Wait until all 4 slots are concurrently busy
+    busy_snapshot = None
+    for _ in range(60):
+        _, st = call(server, "GET", "/api/studio/gpu-status")
+        if st["active_count"] == 4:
+            busy_snapshot = st
+            break
+        time.sleep(0.02)
+
+    assert busy_snapshot is not None
+    assert busy_snapshot["available"] is False and busy_snapshot["free_count"] == 0 and busy_snapshot["next_slot"] is None
+
+    # 5th concurrent user request must receive HTTP 429 all_gpu_slots_busy
+    st5, res5 = call(server, "POST", "/api/studio/deep-research", eval_body)
+    assert st5 == 429 and res5["code"] == "all_gpu_slots_busy" and res5["gpu_status"]["available"] is False
+
+    for th in threads:
+        th.join(timeout=15)
+
+    assigned_slots = [r[1]["deep_research"]["slot"] for r in results]
+    assert all(r[0] == 200 and r[1]["mode"] == "deep_research_v2" for r in results)
+    assert assigned_slots == [0, 1, 2, 3]
+
+    # Once finished, slots immediately reopen
+    _, gs_after = call(server, "GET", "/api/studio/gpu-status")
+    assert gs_after["available"] is True and gs_after["active_count"] == 0 and gs_after["next_slot"] == 0
+
+

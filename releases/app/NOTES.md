@@ -1,3 +1,17 @@
+# ADCTOX 0.8.3 Release Notes
+
+- **Expanded 36-Target De Novo Design Space (368,640 Combinations)**:
+  - Upgraded 3. De Novo ADC Design from 2,592 combinations to all 36 trained target antigens, 16 chemical linkers, 20 cytotoxic payloads, 8 DAR values (1, 2, 3.5, 4, 5, 6, 7.6, 8), and 4 antibody/Fc formats (IgG1 Wild-Type, IgG1 LALA-PG, IgG4 S228P, IgG2 Low-Fc), with inline target/gene search and clinical category filter tabs.
+- **Mode 2 Vectorized Python Server Matrix Search (Default Auto-design ADC)**:
+  - Added ml/studio_matrix.py (POST /api/studio/evaluate) using rank-24 FP16 SVD factors of the 5-fold ADC-SurrogateNet-v2 ensemble (ml/data/studio_368k_svd.npz) to evaluate all 368,640 architectures in milliseconds on CPU without requiring a GPU.
+- **Split Action Button & Mode 3 Deep Research (GPU) Live 5-Fold Inference**:
+  - Split ADC 자동 설계 (Auto-design ADC) with a compact downward caret (▾) opening the Deep Research (GPU) dropdown toggle (ml/deep_research.py, POST /api/studio/deep-research, GET /api/studio/gpu-status).
+  - Runs live 5-fold ADCSurrogateNetV2 forward inference with concentration-response curves (1–1000 nM), ensemble uncertainty, optimal clinical dose (mg/kg), and optional custom payload SMILES scoring.
+- **Ordered 4-GPU Slot Allocator (0 -> 1 -> 2 -> 3) & CPU Server Fallback**:
+  - Allocates GPUs strictly in ascending slot order across concurrent requests, automatically falling back to CPU server execution when no GPU is installed, with 429 queue busy handling and auto-recovery.
+- **Collapsible 11-Item Required Baseline Labs (1. Patient Info)**:
+  - Promoted the 11 standard pre-ADC baseline items (Age, Sex, Weight, Creatinine, Dialysis/ESRD, Bilirubin, AST, ALT, Platelets, ANC, Hb) into a collapsible Required flowsheet toggle, keeping specialized/override items in the collapsible Optional flowsheet.
+
 # ADCTOX 0.8.1 Release Notes
 
 - **Streamlined Patient Info & Complete Lab/Clinical Input Coverage (`1. Patient Info`)**:
