@@ -152,14 +152,21 @@ def _checkpoint_path() -> Optional[Path]:
     env_p = os.environ.get("ADCTOX_SURROGATE_PT", "").strip()
     if env_p and Path(env_p).is_file():
         return Path(env_p)
-    repo_root = Path(__file__).resolve().parents[1]
+    candidates = []
+    if "__file__" in globals():
+        try:
+            here = Path(__file__).resolve()
+            candidates.append(here.parent / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
+            if len(here.parents) > 1:
+                candidates.append(here.parents[1] / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
+        except Exception:
+            pass
     home = Path.home()
-    candidates = [
-        repo_root / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt",
-        Path(os.environ.get("ADC_MODEL_DIR", "")) / "surrogate_c" / "surrogate_v2_merged_fp16.pt" if os.environ.get("ADC_MODEL_DIR") else None,
-        home / ".local" / "share" / "adctox" / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt",
-        Path(os.environ.get("LOCALAPPDATA", "")) / "adctox" / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt" if os.environ.get("LOCALAPPDATA") else None,
-    ]
+    if os.environ.get("ADC_MODEL_DIR"):
+        candidates.append(Path(os.environ.get("ADC_MODEL_DIR", "")) / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
+    candidates.append(home / ".local" / "share" / "adctox" / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
+    if os.environ.get("LOCALAPPDATA"):
+        candidates.append(Path(os.environ.get("LOCALAPPDATA", "")) / "adctox" / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
     for c in candidates:
         if c is not None and c.is_file():
             return c
@@ -464,7 +471,8 @@ def _load_cache_npz() -> Dict[str, np.ndarray]:
         except ImportError:
             pass
         if npz_bytes is None:
-            p = Path(__file__).resolve().parent / "data" / "deep_research_cache.npz"
+            here = Path(__file__).resolve().parent if "__file__" in globals() else Path(".")
+            p = here / "data" / "deep_research_cache.npz"
             npz_bytes = p.read_bytes()
         with np.load(io.BytesIO(npz_bytes)) as zf:
             _CACHE_NPZ = {k: zf[k] for k in zf.files}
@@ -659,7 +667,8 @@ def _compute_custom_smiles_features(custom_smi: str) -> Optional[Tuple[np.ndarra
     st = SM._load_engine()
     try:
         import sys
-        prec_dir = str(Path(__file__).resolve().parent / "preclinical")
+        here = Path(__file__).resolve().parent if "__file__" in globals() else Path(".")
+        prec_dir = str(here / "preclinical")
         if prec_dir not in sys.path:
             sys.path.insert(0, prec_dir)
         from build_adcdb_corpus import (

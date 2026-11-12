@@ -250,6 +250,7 @@ class _Here(importlib.abc.MetaPathFinder, importlib.abc.Loader):
         return importlib.util.spec_from_loader(name, self) if name in _SRC else None
     def create_module(self, spec): return None
     def exec_module(self, module):
+        module.__file__ = os.path.abspath(__file__) if "__file__" in globals() else os.path.abspath(sys.argv[0])
         exec(compile(_SRC[module.__name__], f"<adc_recommender:{{module.__name__}}>", "exec"), module.__dict__)
 
 

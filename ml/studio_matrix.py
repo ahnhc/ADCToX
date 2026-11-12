@@ -101,13 +101,15 @@ def _load_engine() -> Dict[str, Any]:
         except ImportError:
             pass
 
-        data_dir = Path(__file__).resolve().parent / "data"
-        if cat is None:
-            cat_path = data_dir / "studio_catalog_368k.json"
-            cat = json.loads(cat_path.read_text(encoding="utf-8"))
-        if npz_bytes is None:
-            svd_path = data_dir / "studio_368k_svd.npz"
-            npz_bytes = svd_path.read_bytes()
+        if cat is None or npz_bytes is None:
+            here = Path(__file__).resolve().parent if "__file__" in globals() else Path(".")
+            data_dir = here / "data"
+            if cat is None:
+                cat_path = data_dir / "studio_catalog_368k.json"
+                cat = json.loads(cat_path.read_text(encoding="utf-8"))
+            if npz_bytes is None:
+                svd_path = data_dir / "studio_368k_svd.npz"
+                npz_bytes = svd_path.read_bytes()
 
         with np.load(io.BytesIO(npz_bytes)) as zf:
             U = zf["U"].astype(np.float32)                     # (61, 144, 24)

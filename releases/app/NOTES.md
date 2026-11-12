@@ -1,3 +1,10 @@
+# ADCTOX 0.8.4 Release Notes
+
+- **Fix Standalone Bundle `__file__` Execution Context**:
+  - Injected module `__file__` metadata into `_Here.exec_module` within the single-file distribution bundle (`adc_recommender_full.py`), preventing runtime `NameError: name '__file__' is not defined`.
+  - Added robust in-memory data fallback in `ml/studio_matrix.py` and `ml/deep_research.py`, preventing unhandled file system lookups when running from portable archive distributions.
+  - Verified end-to-end operation of `GET /api/studio/catalog` (368,640 design architectures), `GET /api/studio/gpu-status`, `POST /api/studio/evaluate`, and `POST /api/studio/deep-research`.
+
 # ADCTOX 0.8.3 Release Notes
 
 - **Expanded 36-Target De Novo Design Space (368,640 Combinations)**:

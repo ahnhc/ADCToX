@@ -91,7 +91,7 @@ def _screen(monkeypatch, keys, size=(24, 80)):
 
 def test_lab_error_names_the_field_and_moves_there(monkeypatch):
     import form
-    keys = ["KEY_DOWN"] * 14 + list("80") + ["KEY_DOWN"] * 5 + ["KEY_NPAGE"]          # Hb 80 (1-25), then try to go on
+    keys = ["KEY_DOWN"] * 16 + list("80") + ["KEY_DOWN"] * 5 + ["KEY_NPAGE"]          # Hb 80 (1-25), then try to go on
     screen, frames = _screen(monkeypatch, keys + ["KEY_NPAGE"])
     F = form.Form(screen, RC); F.step = 1
     with pytest.raises(AssertionError): F.labs({})
