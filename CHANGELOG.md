@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.9.3: Patient flow, comparison and design clarity
+
+- Bring new-patient entry into the demo panel and give tied candidates equal emphasis.
+- Keep the current construct beside the run action, allow restoring the pre-search construct, and identify previous results after input changes.
+- Label organ results as model scores and distinguish trial observations from FDA label warnings.
+
+## 0.9.2: Enclosed clinician workflow navigation, header polish, and typography verification
+
+- **Clinician Navigation Enclosure:** Highlighted clinician workflow tabs (1. Patient Profile and 2. Compare ADCs) with a unified rectangular frame (`.crumb-clinician-group`) to visually group patient evaluation and drug comparison as a single clinician unit, separated from 3. ADC Design.
+- **Header Poland & Brand Logo:** Removed the numeric version badge next to the brand logo in the top navigation header for a clean title display; version remains accessible in the guide modal and metadata.
+- **Typography & Font Cascade Verification:** Verified comprehensive webfont loading for `Manrope` and `Pretendard Variable`; updated `@font-face` with robust format fallbacks and ensured all form controls (`button`, `input`, `select`, `textarea`, `optgroup`) inherit standard font properties.
+
+## 0.9.1: Responsive layout, overlay drawers, demo flow and studio run controls
+
+- **Mobile Layout (R01, R07, R15):** Removed horizontal overflow at 320–390px across all three modes; 16px page gutter; 44px touch targets on mobile (40 / 32 / 44 on desktop); construct groups become accordions with the run button below them, and the result summary sits above the design plot with auto-scroll after a run.
+- **Drawer & Dialog Geometry (R02, R21, R27):** The detail drawer docks only when the page keeps at least 760px beside it; otherwise it opens as an overlay with a scrim, focus trap, focus return, scroll lock and `aria-modal`. On mobile it is an inset bottom sheet aligned to the page gutter. The guide has a single close button, a sticky header and a mobile sheet layout.
+- **Comparison Table (R03, R16–R19):** Container-query layout (trial column hidden under 900px, card layout under 640px) with a dedicated Evidence column; tie labels for shared ranks; the default filter shows drugs approved for the entered cancer, with other-cancer drugs grouped under a divider; organ scores are labelled Association (0–100) with a definition.
+- **Demo Patient & Input Flow (R04–R06, R13, R14, R22, R23, R25):** Every launch opens a labelled virtual demo patient (only the language persists); New Patient clears to an empty profile with a 7-second undo toast; stale async results are dropped; typed search text survives re-renders; lab summary reads as text with an Edit lab values button; optional labs start collapsed; lab inputs carry labels and descriptions.
+- **ADC Design Run Controls (R08–R12, R20):** Segmented Manual / Auto search control with one run button; Deep Research moves to an advanced switch and the slot grid leaves the main UI; explicit Not run / Calculating / Latest / Previous · updating states; model organ risks appear only after a run; duplicate studio and compare buttons removed; compare drawer wording aligned.
+- **Cleanup (R26):** Removed the fixed footer bar and unused split-button, popover and slot-grid styles.
+
 ## 0.9.0: Calm research software UI redesign and P0/P1 clinical & studio consistency fixes
 
 - **Research Software Design System (EN / KO):** Redesigned Patient Profile, Compare ADCs, ADC Design, detail/comparison drawers, and guide modal around neutral white surfaces, 1px crisp borders, high-contrast typography, #111111 primary CTAs, restrained #0F766E selection accents, and source/provenance badges (FDA SPL, Observed Cohort %, Model 0-100).

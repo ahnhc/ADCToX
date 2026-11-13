@@ -124,14 +124,16 @@
       const st = ctx.studio;
       lines.push(
         '',
-        ko ? '신규 ADC 설계 요약 (ADC DESIGN - Model: 5-fold ADCSurrogateNet v2)' : 'ADC DESIGN (Model: 5-fold ADCSurrogateNet v2)',
+        ko ? '신규 ADC 설계 요약 (모델 추정)' : 'ADC DESIGN (Model estimates)',
         `${ko ? '실행 방식' : 'Execution mode'}: ${st.modeLabel || st.mode || 'Manual'}`,
-        `${ko ? '탐색 조합 수' : 'Search space'}: ${st.totalCombinations || '368,640'} (${ko ? '호환 가능' : 'viable'}: ${st.compatibleCombinations || '-'})`,
+        st.searchExecuted
+          ? `${ko ? '탐색 조합 수' : 'Search space'}: ${st.totalCombinations} (${ko ? '호환 가능' : 'viable'}: ${st.compatibleCombinations || '-'})`
+          : (ko ? '자동 탐색: 실행 전' : 'Auto search: not run'),
         `${ko ? '가중치 설정' : 'Scoring weights'}: ${st.presetLabel || 'Balanced'} (w_safe=${st.wSafe}, w_eff=${st.wEff}, gamma=${st.gamma}, beta=${st.beta})`
       );
       if (st.customSmiles) lines.push(`Custom Payload SMILES: ${st.customSmiles}`);
       lines.push(...formatConstructLine(ko ? '현재 선택/편집 설계 (Current Design)' : 'Current Edited Design', st.current));
-      if (st.optimal) {
+      if (st.searchExecuted && st.optimal) {
         lines.push(...formatConstructLine(ko ? '탐색 선정 최적 설계 (Search Optimal Design)' : 'Search Optimal Design', st.optimal));
       }
       if (st.reference) {

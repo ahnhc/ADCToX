@@ -192,8 +192,8 @@ def main():
              '_ALIASES = _portable_data()["registry_aliases"]', "recommend")
     if not FULL:
         rc = sub(rc, 'HAS_LEARNED = True ', 'HAS_LEARNED = False', "recommend")
-        i = rc.index("def _free_info("); j = rc.index("\ndef ", i + 10)
-        rc = rc[:i] + PORTABLE_FREE.strip() + "\n\n" + rc[j:]
+        i = rc.index("def _free_info("); j = rc.index("\nTIE, CONFIRM", i) + 1
+        rc = rc[:i] + PORTABLE_FREE.strip() + "\n\n\n" + rc[j:]
     rc = sub(rc, '    import yaml\n    out = []\n', '    out = []\n', "recommend")
     rc = sub(rc, 'for c in yaml.safe_load(open(R + "conf/patient_checks.yaml", encoding="utf-8"))["checks"]:', 'for c in _portable_data()["checks"]:', "recommend")
     if not FULL:

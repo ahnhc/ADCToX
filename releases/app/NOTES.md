@@ -1,3 +1,34 @@
+# ADCToX 0.9.3 Release Notes
+
+- Clarify demo and new-patient entry, tied candidates, and the context of trial observations.
+- Show the selected ADC construct by the run action, allow restoring the previous construct after search, and identify results for previous inputs.
+- Present organ results as model scores and improve mobile input and evidence-panel use.
+
+# ADCToX 0.9.2 Release Notes
+
+- **Clinician Navigation Enclosure**:
+  - Enclosed `1. Patient Profile` and `2. Compare ADCs` inside a distinct rectangular container frame to visually represent the unified clinician workflow, separated from `3. ADC Design`.
+- **Header Poland & Brand Logo**:
+  - Removed the numeric version tag next to the logo for a clean visual identity.
+- **Typography & Font Reliability**:
+  - Verified and ensured font cascade across Latin and Hangul text via `Manrope` and `Pretendard Variable`.
+  - Added format fallbacks to font definitions and ensured all form controls inherit font styling without browser-default font overrides.
+
+# ADCToX 0.9.1 Release Notes
+
+- **Responsive Layout & Overlays**:
+  - No horizontal overflow at 320–390px; 44px touch targets and a 16px gutter on mobile.
+  - The detail drawer docks only when there is room, otherwise opens as an overlay (scrim, focus trap, scroll lock); on mobile it is an inset bottom sheet. The guide uses one close button and a sticky header.
+- **Comparison Table**:
+  - Adapts to its own width: the trial column hides under 900px and rows become cards under 640px; a dedicated Evidence button per row.
+  - Tie labels for shared ranks; drugs approved for the entered cancer shown first by default, with other-cancer drugs under a divider; organ scores labelled Association (0–100).
+- **Demo Patient & Inputs**:
+  - Each launch opens a labelled virtual demo patient; New Patient clears the profile with a 7-second undo; stale results are discarded and typed search text is kept.
+  - Lab summary with an Edit lab values button, optional labs collapsed by default, labelled lab inputs.
+- **ADC Design**:
+  - Manual / Auto search segmented control with one run button; Deep Research as an advanced switch.
+  - Explicit Not run / Calculating / Latest / Previous · updating states; model organ risks shown only after a run; mobile accordions for construct groups.
+
 # ADCToX 0.9.0 Release Notes
 
 - **Calm Research Software UI Redesign (EN / KO)**:
