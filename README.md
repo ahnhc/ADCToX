@@ -1,9 +1,9 @@
-# ADCTOX v0.9.8
+# ADCTOX v0.9.9
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
-[![App Version](https://img.shields.io/badge/version-v0.9.8-10B981)](#)
+[![App Version](https://img.shields.io/badge/version-v0.9.9-10B981)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live%20Platform-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
@@ -20,7 +20,7 @@ For a complete mathematical and engineering breakdown of both recommendation and
 
 ---
 
-## Key Capabilities in v0.9.8
+## Key Capabilities in v0.9.9
 
 1. **Safety-First Approved ADC Recommendation & Pediatric Section 8.4 Labeling (`Patient Profile` -> `Recommend ADCs`):**
    - **Stage 1 (`Patient Profile`):** Automatically preloads a clinical baseline scenario while retaining one-click `New Patient` reset, bilingual (`EN / KO`) condition mapping to 13 vulnerable organ axes, a `Basic Information` (`Age`, `Sex`, `Weight` with `age >= 0` pediatric support) panel, and unified `Optional Clinical Panels` with gliding segmented controls and uniform numeric inputs.

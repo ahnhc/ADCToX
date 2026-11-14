@@ -340,7 +340,7 @@
           ['ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto design to search optimal constructs and compare against an approved ADC.'],
         ];
     const xBtn = h('button', { type: 'button', class: 'x-btn', 'aria-label': isKo ? '닫기' : 'Close', onclick: closeGuide }, svgClose());
-    const verStr = String((APP && APP.version) || '0.9.8').replace(/^v/i, '');
+    const verStr = String((APP && APP.version) || '0.9.9').replace(/^v/i, '');
     const dialog = h('div', { class: 'guide overlay-panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
       h('div', { class: 'g-head' },
         h('h2', { id: 'g-title', text: isKo ? 'ADCToX 사용 안내' : 'ADCToX Guide' }),

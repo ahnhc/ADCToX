@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.9: Guide Modal Spacing Polish
+
+- **ADCToX Guide Modal Vertical Spacing:** Restored balanced top body padding (`20px` desktop, `16px` mobile) and symmetric header padding (`14px` top/bottom desktop, `12px` mobile) in `ml/web/app.css` for `ADCToX 사용 안내` (`ADCToX Guide`) after removing the legacy subheading margin.
+
 ## 0.9.8: Safety-First ADC Ranking, Pediatric Section 8.4 Rules, Live Auto-Design Streaming, and Sliding Segmented UI
 
 - **Safety-First Approved ADC Recommendation Ranking & Filter Priority:** Ranked FDA-approved ADCs globally by organ safety tier, settled restrictions, boxed warnings, and Warnings & Precautions on patient vulnerable organs first, using disease match as a tie-breaker; defaulted Tab 2 (`ADC 추천` / `Recommend ADCs`) to `전체 승인 ADC 목록` (`All Approved ADC List`) first and `질병 일치` (`Disease Match`) second without an artificial disease divider row.

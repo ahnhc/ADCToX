@@ -3862,7 +3862,7 @@ body.scroll-locked {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  padding: 16px 18px 12px 26px;
+  padding: 14px 16px 14px 26px;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
 }
@@ -3871,7 +3871,7 @@ body.scroll-locked {
   min-height: 0;
   overflow: auto;
   overscroll-behavior: contain;
-  padding: 4px 26px 22px;
+  padding: 20px 26px 20px;
 }
 .g-version {
   margin: 18px 0 0;
@@ -4145,8 +4145,8 @@ button.ok:hover { background: var(--cta-hover); }
     padding: 16px var(--page-right) calc(16px + env(safe-area-inset-bottom, 0px)) var(--page-left);
   }
   .guide { max-height: min(86dvh, calc(100dvh - 32px)); border-radius: 16px; }
-  .guide .g-head { padding: 10px 8px 10px 16px; }
-  .guide .g-body { padding: 4px 16px 18px; }
+  .guide .g-head { padding: 12px 10px 12px 16px; }
+  .guide .g-body { padding: 16px 16px 18px; }
   .g-keys { grid-template-columns: 1fr; gap: 4px 0; }
   .g-keys .g-key-desc { margin-bottom: 8px; }
 }

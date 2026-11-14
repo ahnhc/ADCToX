@@ -1,3 +1,8 @@
+# ADCToX 0.9.9 Release Notes
+
+- **ADCToX Guide Modal Spacing Polish (`ml/web/app.css`):**
+  - Updated `.guide .g-body` top padding (`4px` -> `20px` desktop, `16px` mobile) and symmetrized `.guide .g-head` vertical padding (`14px` desktop, `12px` mobile) so the first card below the sticky header sits cleanly separated on both desktop and mobile viewports.
+
 # ADCToX 0.9.8 Release Notes
 
 - **Safety-First Approved ADC Recommendation Ranking & FDA Section 8.4 Pediatric Rules**:
