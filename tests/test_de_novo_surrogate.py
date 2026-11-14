@@ -260,10 +260,10 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
     from pathlib import Path
     from ml.adc_version import APP_VERSION
 
-    assert APP_VERSION == "0.9.9"
+    assert APP_VERSION == "0.9.10"
     root = Path(__file__).resolve().parent.parent
     sw_text = (root / "ml" / "web" / "sw.js").read_text(encoding="utf-8")
-    assert "adctox-pwa-v0.9.9" in sw_text
+    assert "adctox-pwa-v0.9.10" in sw_text
 
     app_js = (root / "ml" / "web" / "app.js").read_text(encoding="utf-8")
     review_js = (root / "ml" / "web" / "review.js").read_text(encoding="utf-8")

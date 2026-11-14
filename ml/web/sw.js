@@ -1,5 +1,5 @@
-/* ADCTOX v0.9.9 Service Worker for Android / Mobile WebApp (PWA) */
-const CACHE_NAME = 'adctox-pwa-v0.9.9';
+/* ADCTOX v0.9.10 Service Worker for Android / Mobile WebApp (PWA) */
+const CACHE_NAME = 'adctox-pwa-v0.9.10';
 const STATIC_ASSETS = [
   '/',
   '/static/app.css',
@@ -8,6 +8,8 @@ const STATIC_ASSETS = [
   '/static/app.js',
   '/static/ManropeVariable.woff2',
   '/static/ManropeVariable-Ext.woff2',
+  '/static/favicon.png',
+  '/static/apple-touch-icon.png',
   '/static/icon.svg',
   '/static/manifest.webmanifest'
 ];

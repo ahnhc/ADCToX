@@ -1,3 +1,10 @@
+# ADCToX 0.9.10 Release Notes
+
+- **Full-Width `ADC 추천` Side Drawer Tabs (`ml/web/app.css`, `ml/web/app.js`):**
+  - Stretched `.evidence-tabs` (`주의사항 / 임상 근거 / 분자 구조` and English equivalents) to fill 100% of the drawer body width with balanced equal-width flex buttons and smooth WAAPI sliding transitions across docked desktop, overlay, and mobile viewports.
+- **Custom Browser Tab Favicon & App Icons (`ml/web/`, `ml/webapp.py`, `ml/build_portable.py`):**
+  - Updated browser tab favicon (`index.html`, `/favicon.ico`, `/static/favicon.png`), Apple touch icon, PWA `manifest.webmanifest`, and `icon.svg` with crisp Lanczos-sampled assets and enabled binary `.png`/`.ico` serving inside both dev and portable builds.
+
 # ADCToX 0.9.9 Release Notes
 
 - **ADCToX Guide Modal Spacing Polish (`ml/web/app.css`):**

@@ -174,7 +174,7 @@ def main():
                 deep_research_cache_b64=base64.b64encode((R / "ml/data/deep_research_cache.npz").read_bytes()).decode(),
                 web=__import__("webapp").web_files(R / "ml/web"))
     assert {"index.html", "app.js", "app.css"} <= set(data["web"]), f"adctox --web needs its page in ml/web/: found {sorted(data['web'])}"
-    print("page: " + ", ".join(f"{name} {(len(base64.b64decode(text)) if name.endswith(('.woff2', '.ttf', '.otf')) else len(text.encode())) / 1024:.1f} KB" for name, text in data["web"].items()))
+    print("page: " + ", ".join(f"{name} {(len(base64.b64decode(text)) if name.endswith(('.woff2', '.ttf', '.otf', '.png', '.ico')) else len(text.encode())) / 1024:.1f} KB" for name, text in data["web"].items()))
     blob = base64.b64encode(zlib.compress(json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode(), 9)).decode()
     src = {m: (R / "ml" / f"{m}.py").read_text(encoding="utf-8") for m in ("recommend", "restrictions", "labs", "form", "tui", "term", "suggest", "subtypes", "scratch_runtime", "adc_version", "adc_runtime", "adc_updates", "motion", "studio_matrix", "deep_research", "webapp")}
     local = {q.stem for q in (R / "ml").glob("*.py")}                      # the screen modules import only embedded modules (0.4.0: motion)

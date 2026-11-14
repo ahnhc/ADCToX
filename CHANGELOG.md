@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.10: Full-Width Side Drawer Tabs & Custom Browser Tab Favicon
+
+- **Full-Width Responsive Drawer Tabs (`ml/web/app.css`, `ml/web/app.js`):** Stretched `.evidence-tabs` (`주의사항 / 임상 근거 / 분자 구조` / `Cautions / Clinical Evidence / Structure`) across 100% of the side drawer width with equal `flex: 1` sizing and smooth `captureSegRect` sliding indicator transitions across desktop, tablet, and `360px` mobile viewports.
+- **Custom Favicon & PWA Icon Assets (`ml/web/`, `ml/webapp.py`, `ml/build_portable.py`):** Added multi-resolution `.ico`/`.png` binary static asset serving and bundled the custom circular logo across `<link rel="icon">`, `/favicon.ico`, `/static/favicon.png`, `/static/apple-touch-icon.png`, `/static/icon.svg`, and `manifest.webmanifest`.
+
 ## 0.9.9: Guide Modal Spacing Polish
 
 - **ADCToX Guide Modal Vertical Spacing:** Restored balanced top body padding (`20px` desktop, `16px` mobile) and symmetric header padding (`14px` top/bottom desktop, `12px` mobile) in `ml/web/app.css` for `ADCToX 사용 안내` (`ADCToX Guide`) after removing the legacy subheading margin.

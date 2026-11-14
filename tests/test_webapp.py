@@ -368,8 +368,8 @@ def test_page_files_are_served_to_this_computer_only(server, monkeypatch, tmp_pa
     assert status == 403 and d["error"]
     assert call(server, "GET", "/api/app", host=f"localhost:{server.server_port}")[0] == 200
     (tmp_path / "index.html").write_text("<p>한</p>", encoding="utf-8"); (tmp_path / "app.css").write_text("a{}"); (tmp_path / "mock.js").write_text("fixtures")
-    (tmp_path / "logo.png").write_bytes(b"\x89PNG"); (tmp_path / "sub").mkdir(); (tmp_path / ".app.js.swp").write_text("x")
-    assert webapp.web_files(tmp_path) == {"app.css": "a{}", "index.html": "<p>한</p>"}
+    (tmp_path / "logo.png").write_bytes(b"\x89PNG"); (tmp_path / "ignore.bin").write_bytes(b"\x00\x01"); (tmp_path / "sub").mkdir(); (tmp_path / ".app.js.swp").write_text("x")
+    assert webapp.web_files(tmp_path) == {"app.css": "a{}", "index.html": "<p>한</p>", "logo.png": "iVBORw=="}
     assert webapp.web_files(tmp_path / "missing") == {}
 
 
