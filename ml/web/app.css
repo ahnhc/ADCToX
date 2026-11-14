@@ -222,21 +222,29 @@ kbd {
   transition: border-color 160ms var(--ease), background-color 160ms var(--ease), box-shadow 160ms var(--ease);
 }
 .crumb-profile-group {
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
   background: transparent;
 }
+.crumb-profile-group .cb {
+  color: var(--ink-hi);
+  font-weight: 700;
+}
 .crumb-action-group {
-  border: 1.5px solid #111111;
-  background: rgba(255, 255, 255, 0.72);
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  background: #EEF0F4;
 }
 .crumb-action-group.is-action-active {
-  border-color: #111111;
-  background: #FFFFFF;
-  box-shadow: 0 1px 2px rgba(13, 13, 13, 0.06);
+  border: 0;
+  background: #E8EBF0;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 .crumb {
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 .crumb .cb {
   display: inline-flex;
@@ -3659,6 +3667,7 @@ body.scroll-locked {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+  margin-top: 16px;
   margin-bottom: 14px;
 }
 .compare-hero-col {
@@ -4551,6 +4560,77 @@ body.sheet-open { overflow: hidden; }
   white-space: nowrap;
 }
 
+/* Gliding indicator for segmented controls and tabs */
+.has-seg-glide {
+  position: relative;
+  isolation: isolate;
+}
+.has-seg-glide > button,
+.has-seg-glide > .crumb {
+  position: relative;
+  z-index: 1;
+}
+.seg-glide-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 6px;
+  will-change: transform, width, height;
+}
+.seg-glide-pill.tone-light {
+  background: var(--panel);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+.seg-glide-pill.tone-soft {
+  background: var(--panel-2);
+  border: 1px solid var(--line-2);
+}
+.seg-glide-pill.tone-dark {
+  background: var(--ink-hi);
+  border: 1px solid var(--ink-hi);
+  box-shadow: var(--shadow-sm);
+}
+.crumb-action-group.has-seg-glide.seg-ready .crumb.now .cb,
+.seg-control.has-seg-glide.seg-ready .seg-btn.is-selected,
+.bio-seg-group.has-seg-glide.seg-ready .bio-seg-btn.is-selected,
+.review-filters.has-seg-glide.seg-ready .filter-tab[aria-pressed="true"],
+.evidence-tabs.has-seg-glide.seg-ready button[aria-pressed="true"],
+.sim-preset-group.has-seg-glide.seg-ready .sim-preset-btn.is-active,
+.studio-cat-tabs.has-seg-glide.seg-ready .studio-cat-tab.is-active,
+.studio-pills.is-seg-grid.has-seg-glide.seg-ready .st-pill[aria-pressed="true"] {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.studio-pills.is-seg-grid {
+  padding: 3px;
+  gap: 3px;
+  border-radius: 8px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+}
+.studio-pills.is-seg-grid .st-pill {
+  border-color: transparent;
+  background: transparent;
+  border-radius: 6px;
+  transition: color 200ms var(--ease);
+}
+.studio-pills.is-seg-grid .st-pill:hover:not([aria-pressed="true"]) {
+  border-color: transparent;
+  color: var(--ink-hi);
+}
+.seg-control .seg-btn,
+.bio-seg-group .bio-seg-btn,
+.review-filters .filter-tab,
+.sim-preset-group .sim-preset-btn,
+.studio-cat-tabs .studio-cat-tab,
+.evidence-tabs button {
+  transition: color 200ms var(--ease);
+}
+
 @media (max-width: 640px) {
   .spb-edit-btn { min-height: 40px; height: 40px; }
   .spb-organ-pill { min-height: 38px; height: 38px; padding: 0 11px; }
@@ -4564,4 +4644,7 @@ body.sheet-open { overflow: hidden; }
   }
   .sim-param-row .sim-param-range { grid-column: 1 / -1; }
   .sim-info-btn { width: 24px; height: 24px; }
+  .review-filters { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .review-filters::-webkit-scrollbar { display: none; }
+  .crumb-action-group.has-seg-glide .crumb .cb { min-width: 0; }
 }

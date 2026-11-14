@@ -23,7 +23,7 @@ FIELDS = [("age", "Age", "years", "Basic"), ("sex", "Sex", "M/F", "Basic"), ("we
           ("amylase", "Amylase", "U/L", "Pancreas"), ("lipase", "Lipase", "U/L", "Pancreas"),
           ("tsh", "TSH", "µIU/mL", "Thyroid"),
           ("lvef", "LVEF", "%", "Cardio"), ("ugt1a1", "UGT1A1*28 homozygous", "y/n", "Genotype")]
-RANGE = {"age": (1, 120), "weight": (1, 400), "crcl": (1, 250), "creatinine": (0.05, 30), "egfr": (1, 200), "bilirubin": (0.01, 50), "ast": (1, 10000),
+RANGE = {"age": (0, 120), "weight": (1, 400), "crcl": (1, 250), "creatinine": (0.05, 30), "egfr": (1, 200), "bilirubin": (0.01, 50), "ast": (1, 10000),
          "alt": (1, 10000), "albumin": (0.5, 7), "ggt": (1, 10000), "hb": (1, 25), "platelet": (1, 2000), "anc": (0.01, 100),
          "hba1c": (2, 25), "glucose": (10, 2000), "amylase": (1, 10000), "lipase": (1, 10000), "tsh": (0.001, 500), "lvef": (5, 90),
          "uln_bilirubin": (0.1, 10), "uln_ast": (1, 500), "uln_alt": (1, 500)}
@@ -116,6 +116,8 @@ def derive(raw):
         if raw.get(k) is not None: lab[dst] = float(_xuln(raw[k], u[k]))     # not rounded (3.601 / 1.2 is above 3 x ULN)
     for k, dst in (("platelet", "platelets"), ("anc", "anc"), ("hba1c", "hba1c"), ("lvef", "lvef"), ("child_pugh", "child_pugh"), ("ugt1a1", "ugt1a1_28_homozygous"), ("esrd", "esrd")):
         if raw.get(k) is not None: lab[dst] = raw[k]
+    if raw.get("age") is not None:
+        lab["age"] = float(raw["age"])
     for k, test, organ, why in FLAGS:
         if raw.get(k) is not None and test(raw[k], u.get(k)): flags.append((organ, why))
     if any(raw.get(k) is not None for k in ULN): notes.append("ULN used: " + ", ".join(f"{k} {u[k]:g} ({'default' if raw.get('uln_' + k) is None else 'entered'})" for k in ULN if raw.get(k) is not None))

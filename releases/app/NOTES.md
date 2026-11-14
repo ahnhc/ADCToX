@@ -1,3 +1,15 @@
+# ADCToX 0.9.8 Release Notes
+
+- **Safety-First Approved ADC Recommendation Ranking & FDA Section 8.4 Pediatric Rules**:
+  - Updated `ml/recommend.py` so permissible ADCs on vulnerable organs always outrank ADCs with boxed warnings or restrictions, breaking ties by disease match; put `전체 승인 ADC 목록` (`All Approved ADC List`) first as default ahead of `질병 일치` (`Disease Match`).
+  - Added patient `age` (`0–120` yr) propagation through `ml/labs.py`, `ml/restrictions.py`, and 18 verbatim-verified FDA DailyMed Section `8.4 Pediatric Use` rules in `conf/label_restrictions.yaml` across all 15 ADCs, plus Korean/English localization (`소아 연령` / `Pediatric`).
+- **Real-Time Auto-Design Point Streaming & Chart Placement**:
+  - Streamed evaluated candidate batches live via NDJSON (`ml/deep_research.py`, `ml/webapp.py`) so points visibly plot frame-by-frame during `Auto design` instead of appearing only after completion.
+  - Positioned the `New Design` graph callout slightly bottom-left of its plotted point with collision avoidance against the 5-dose titration trajectory and approved reference callout.
+- **Gliding Segmented Controls, Top Navigation Hierarchy & Workspace Refinement**:
+  - Added smooth WAAPI gliding indicators across segmented controls (`Manual/Auto`, `Sex`, `Yes/No`, `Child-Pugh A/B/C`, `All/Match`, `Recommend ADCs/ADC Design`, category tabs, presets, drawer tabs, and DAR/Fc selectors).
+  - Removed the black frame around `Recommend ADCs / ADC Design`, kept `Patient Profile` visually anchored in bold dark typography, added top spacing to `.compare-hero` inside the compare drawer, removed guide step numbers and `Data Sources and Metrics`, simplified optional lab tracks, updated trial column titles (`Condition-Related Trial Cases`), renamed construct undo to `Reset` (`초기화`), and added [ADCToX_Algorithm_Specification.pdf](docs/ADCToX_Algorithm_Specification.pdf).
+
 # ADCToX 0.9.7 Release Notes
 
 - **Unified Real-Time Auto Design Engine (`5-Fold ADCSurrogateNet v2` + `Q3W PK/PD ODE`)**:

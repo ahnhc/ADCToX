@@ -27,7 +27,7 @@
     if (item.optimalDose) lines.push(`  Modeled Optimal Dose: ${item.optimalDose}`);
     if (item.uncertainty) lines.push(`  5-Fold Ensemble Uncertainty: ${item.uncertainty}`);
     if (item.organRisks && item.organRisks.length) {
-      lines.push(`  Modeled Organ Risks (ADCSurrogateNet v2): ${item.organRisks.join(', ')}`);
+      lines.push(`  Modeled Organ Risks: ${item.organRisks.join(', ')}`);
     }
     return lines;
   }
@@ -39,7 +39,7 @@
     const hasCancer = !!(patient.cancers || []).length;
     const lines = [
       ko ? 'ADCToX 분석 요약 보고서' : 'ADCToX Evidence & Design Summary',
-      `App ${app && app.version ? app.version : 'unknown'} | Models ${app && app.models ? app.models : '5-fold ADCSurrogateNet v2'}`,
+      `App ${app && app.version ? app.version : 'unknown'} | Models ${app && app.models ? app.models : 'integrated'}`,
       `${ko ? '생성 시각' : 'Created'}: ${new Date().toISOString()}`,
     ];
 

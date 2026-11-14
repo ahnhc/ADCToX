@@ -260,10 +260,10 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
     from pathlib import Path
     from ml.adc_version import APP_VERSION
 
-    assert APP_VERSION == "0.9.7"
+    assert APP_VERSION == "0.9.8"
     root = Path(__file__).resolve().parent.parent
     sw_text = (root / "ml" / "web" / "sw.js").read_text(encoding="utf-8")
-    assert "adctox-pwa-v0.9.7" in sw_text
+    assert "adctox-pwa-v0.9.8" in sw_text
 
     app_js = (root / "ml" / "web" / "app.js").read_text(encoding="utf-8")
     review_js = (root / "ml" / "web" / "review.js").read_text(encoding="utf-8")
@@ -308,10 +308,17 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
         "고유 승인 구성",
         "모델 점수 0-100",
         "368,640",
+        "ADCSurrogateNet v2",
+        "데이터 출처 및 지표 기준",
+        "Data Sources and Metrics",
+        "이전 구성으로 되돌리기",
+        "Restore previous construct",
     )
     for fname, content in [("app.js", app_js), ("review.js", review_js)]:
         for tok in prohibited_tokens:
             assert tok not in content, f"prohibited token {tok!r} in {fname}"
+
+    assert app_js.count("임상시험 사례") == app_js.count("환자 질환 관련 임상시험 사례")
 
     for required in (
         "drawer-export-tab",
@@ -336,8 +343,13 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
         "전체 승인 ADC 목록",
         "질병 일치",
         "fold-chevron",
+        "환자 질환 관련 임상시험 사례",
+        "Condition-Related Trial Cases",
+        "초기화",
+        "seg-glide-pill",
+        "studioDeepResearchStream",
     ):
-        assert required in app_js, f"missing expected v0.9.7 feature/label {required!r} in app.js"
+        assert required in app_js, f"missing expected v0.9.8 feature/label {required!r} in app.js"
 
     # Unboxed warnings in Compare ADCs drawer must stay removed while keeping boxed rule cards
     assert "warnsListEl" not in app_js
@@ -423,6 +435,59 @@ def test_v097_progressive_ode_compute_floor():
     assert dr_meta["mc_patient_draws"] == 64
     assert dr_meta["elapsed_ms"] >= 1150.0
     assert len(res["deep_points"]) >= 120
+
+
+def test_v098_deep_research_ndjson_streaming(monkeypatch):
+    import http.client
+    import json
+    import threading
+    from ml import recommend as RC
+    from ml import suggest as SG
+    from ml import webapp
+
+    monkeypatch.setenv("ADCTOX_NO_BROWSER", "1")
+    monkeypatch.setattr(SG.Index, "load_mondo", lambda self: None)
+    box, up = [], threading.Event()
+    t = threading.Thread(
+        target=webapp.serve,
+        args=(RC,),
+        kwargs={"ready": lambda s: (box.append(s), up.set())},
+        daemon=True,
+    )
+    t.start()
+    try:
+        assert up.wait(10)
+        srv = box[0]
+        conn = http.client.HTTPConnection("127.0.0.1", srv.server_port, timeout=60)
+        payload = json.dumps(
+            {
+                "stream": True,
+                "cancerText": "HER2-positive breast cancer",
+                "organs": [{"organ": "pulmonary", "score": 0.90}, {"organ": "cardiac", "score": 0.70}],
+                "prioOrgan": "pulmonary",
+                "minComputeMs": 5500,
+            }
+        )
+        conn.request("POST", "/api/studio/deep-research", body=payload, headers={"Content-Type": "application/json"})
+        resp = conn.getresponse()
+        assert resp.status == 200
+        assert (resp.getheader("Content-Type") or "").startswith("application/x-ndjson")
+        events = []
+        for raw_line in resp.read().decode("utf-8").splitlines():
+            if raw_line.strip():
+                events.append(json.loads(raw_line))
+        conn.close()
+        chunks = [e for e in events if e.get("type") == "chunk"]
+        dones = [e for e in events if e.get("type") == "done"]
+        assert len(chunks) >= 2
+        assert all(isinstance(c.get("points"), list) and len(c["points"]) > 0 for c in chunks)
+        assert len(dones) == 1
+        assert dones[0]["result"]["deep_research"]["evaluated_constructs"] >= 90
+    finally:
+        if box:
+            box[0].shutdown()
+        t.join(10)
+
 
 
 

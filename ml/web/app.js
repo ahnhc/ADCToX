@@ -52,6 +52,72 @@
     studioGpuStatus: () => call('GET', '/api/studio/gpu-status'),
     studioEvaluate: (body) => call('POST', '/api/studio/evaluate', body),
     studioDeepResearch: (body) => call('POST', '/api/studio/deep-research', body),
+    studioDeepResearchStream: async (body, onChunk) => {
+      let res;
+      try {
+        res = await fetch('/api/studio/deep-research', {
+          method: 'POST',
+          cache: 'no-store',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+      } catch (e) {
+        const err = new Error('ADCTOX server connection closed. Start adctox again to reconnect.');
+        err.status = 0;
+        throw err;
+      }
+      if (!res.ok) {
+        let data = null;
+        try { data = await res.json(); } catch (e) { /* not JSON */ }
+        const err = new Error((data && data.error) || `HTTP ${res.status}`);
+        err.status = res.status;
+        err.data = data;
+        throw err;
+      }
+      const ct = String(res.headers.get('content-type') || '').toLowerCase();
+      if (!ct.includes('ndjson') || !res.body || !res.body.getReader) {
+        return await res.json();
+      }
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = '';
+      let finalResult = null;
+      const processLine = (ln) => {
+        const trimmed = ln.trim();
+        if (!trimmed) return;
+        let msg = null;
+        try { msg = JSON.parse(trimmed); } catch (e) { return; }
+        if (!msg) return;
+        if (msg.type === 'chunk') {
+          if (onChunk) onChunk(msg);
+        } else if (msg.type === 'done') {
+          finalResult = msg.result;
+        } else if (msg.type === 'error') {
+          const err = new Error(msg.error || 'Auto design error');
+          err.status = 500;
+          err.data = msg;
+          throw err;
+        }
+      };
+      while (true) {
+        const { value, done } = await reader.read();
+        if (value) {
+          buf += decoder.decode(value, { stream: !done });
+          let nl;
+          while ((nl = buf.indexOf('\n')) >= 0) {
+            const line = buf.slice(0, nl);
+            buf = buf.slice(nl + 1);
+            processLine(line);
+          }
+        }
+        if (done) {
+          if (buf.trim()) processLine(buf);
+          break;
+        }
+      }
+      if (!finalResult) throw new Error('Stream ended without final result');
+      return finalResult;
+    },
   };
 
   // ------------------------------------------------------------------ DOM Helpers
@@ -96,6 +162,73 @@
       sv('path', { d: 'M10.5 10.5L14 14' }));
   }
   const clear = (el) => { while (el && el.firstChild) el.firstChild.remove(); return el; };
+  const segRectMemory = new Map();
+  const segROMap = new WeakMap();
+  function captureSegRect(container, segKey, activeSelector) {
+    if (!container || !segKey) return;
+    const target = container.querySelector(activeSelector);
+    if (!target || target.offsetWidth <= 0) return;
+    const cr = container.getBoundingClientRect();
+    const tr = target.getBoundingClientRect();
+    segRectMemory.set(segKey, {
+      x: tr.left - cr.left - (container.clientLeft || 0) + (container.scrollLeft || 0),
+      y: tr.top - cr.top - (container.clientTop || 0) + (container.scrollTop || 0),
+      w: tr.width,
+      h: tr.height,
+    });
+  }
+  function syncSlidingSeg(container, segKey, activeSelector, tone) {
+    if (!container || !segKey) return;
+    container.classList.add('has-seg-glide');
+    let pill = container.querySelector(':scope > .seg-glide-pill');
+    if (!pill) {
+      pill = document.createElement('span');
+      pill.className = 'seg-glide-pill ' + (tone || 'tone-light');
+      pill.setAttribute('aria-hidden', 'true');
+      container.prepend(pill);
+    }
+    const positionPill = (animate) => {
+      if (!container.isConnected) return;
+      const target = container.querySelector(activeSelector);
+      if (!target || target.offsetWidth <= 0 || target.offsetHeight <= 0) {
+        pill.style.opacity = '0';
+        container.classList.remove('seg-ready');
+        if (!target) segRectMemory.delete(segKey);
+        return;
+      }
+      const cr = container.getBoundingClientRect();
+      const tr = target.getBoundingClientRect();
+      const x = tr.left - cr.left - (container.clientLeft || 0) + (container.scrollLeft || 0);
+      const y = tr.top - cr.top - (container.clientTop || 0) + (container.scrollTop || 0);
+      const w = tr.width;
+      const hPx = tr.height;
+      const prev = segRectMemory.get(segKey);
+      pill.style.opacity = '1';
+      container.classList.add('seg-ready');
+      if (animate && prev && !still() && pill.animate &&
+          (Math.abs(prev.x - x) > 0.5 || Math.abs(prev.y - y) > 0.5 || Math.abs(prev.w - w) > 0.5 || Math.abs(prev.h - hPx) > 0.5)) {
+        try {
+          pill.getAnimations().forEach((a) => a.cancel());
+          pill.animate([
+            { transform: `translate(${prev.x}px, ${prev.y}px)`, width: `${prev.w}px`, height: `${prev.h}px` },
+            { transform: `translate(${x}px, ${y}px)`, width: `${w}px`, height: `${hPx}px` },
+          ], { duration: 360, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+        } catch (e) { /* ignore WAAPI */ }
+      }
+      pill.style.transform = `translate(${x}px, ${y}px)`;
+      pill.style.width = `${w}px`;
+      pill.style.height = `${hPx}px`;
+      const br = window.getComputedStyle(target).borderRadius;
+      if (br) pill.style.borderRadius = br;
+      segRectMemory.set(segKey, { x, y, w, h: hPx });
+    };
+    requestAnimationFrame(() => positionPill(true));
+    if (typeof ResizeObserver !== 'undefined' && !segROMap.has(container)) {
+      const ro = new ResizeObserver(() => positionPill(false));
+      ro.observe(container);
+      segROMap.set(container, ro);
+    }
+  }
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const kbd = (k, label) => h('span', null, h('kbd', { text: k }), ({
     add: 'Add', choose: 'Choose', remove: 'Remove', move: 'Move',
@@ -114,7 +247,7 @@
       ['Amber bar', 'Caution on this organ'],
       ['Crimson bar', 'Major warning on this organ'],
     ]],
-    'Clinical Trial Cases': ['Adverse event incidence in registration clinical trials.', [
+    'Condition-Related Trial Cases': ['Adverse event incidence in clinical trials matched to patient condition.', [
       ['Tx', 'Treatment group incidence (%)'],
       ['Ctrl', 'Control group incidence (%)'],
     ]],
@@ -197,41 +330,27 @@
     const isKo = S.lang === 'ko';
     const stepItems = isKo
       ? [
-          ['1. 환자 프로필', '접속 시 가상 환자 예시가 자동 입력됩니다. 상단의 새 환자 입력으로 빈 상태에서 시작할 수 있으며, 환자 질환과 기본 정보 및 선택 검진 수치를 입력합니다.'],
-          ['2. ADC 추천', '승인된 ADC 15종을 약물 적합도, 취약 장기 주의사항, 임상시험 이상사례 발생률로 비교합니다. 취약 장기군에서 장기를 선택하면 강조 표시되며, 약물 행을 누르면 상세 근거와 분석 결과 내보내기를 이용할 수 있습니다.'],
-          ['3. ADC 설계', '표적, 링커, 페이로드, DAR, 항체 및 Fc 구성을 직접 조합해 수동 평가하거나, 자동 설계로 5-Fold ADCSurrogateNet v2 예측을 실행해 신규 설계와 기존 ADC를 비교합니다.'],
+          ['환자 프로필', '접속 시 가상 환자 예시가 자동 입력됩니다. 상단의 새 환자 입력으로 빈 상태에서 시작할 수 있으며, 환자 질환과 기본 정보 및 선택 검진 수치를 입력합니다.'],
+          ['ADC 추천', '승인된 ADC 15종을 약물 적합도, 취약 장기 주의사항, 임상시험 이상사례 발생률로 비교합니다. 취약 장기군에서 장기를 선택하면 강조 표시되며, 약물 행을 누르면 상세 근거와 분석 결과 내보내기를 이용할 수 있습니다.'],
+          ['ADC 설계', '표적, 링커, 페이로드, DAR, 항체 및 Fc 구성을 직접 조합해 수동 평가하거나, 자동 설계로 최적 후보를 탐색해 신규 설계와 기존 ADC를 비교합니다.'],
         ]
       : [
-          ['1. Patient Profile', 'Opens with a preloaded demo patient. Use New Patient in the top bar to start blank, enter patient conditions, and adjust basic information and optional clinical panels.'],
-          ['2. Recommend ADCs', 'Compares 15 FDA-approved ADCs across dosing fit, vulnerable-organ cautions, and clinical trial adverse-event rates. Click any drug row to open detailed evidence and export results.'],
-          ['3. ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto design (5-Fold ADCSurrogateNet v2) to compare your new design against an approved ADC.'],
+          ['Patient Profile', 'Opens with a preloaded demo patient. Use New Patient in the top bar to start blank, enter patient conditions, and adjust basic information and optional clinical panels.'],
+          ['Recommend ADCs', 'Compares 15 FDA-approved ADCs across dosing fit, vulnerable-organ cautions, and clinical trial adverse-event rates. Click any drug row to open detailed evidence and export results.'],
+          ['ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto design to search optimal constructs and compare against an approved ADC.'],
         ];
     const xBtn = h('button', { type: 'button', class: 'x-btn', 'aria-label': isKo ? '닫기' : 'Close', onclick: closeGuide }, svgClose());
-    const verStr = String((APP && APP.version) || '0.9.7').replace(/^v/i, '');
+    const verStr = String((APP && APP.version) || '0.9.8').replace(/^v/i, '');
     const dialog = h('div', { class: 'guide overlay-panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
       h('div', { class: 'g-head' },
         h('h2', { id: 'g-title', text: isKo ? 'ADCToX 사용 안내' : 'ADCToX Guide' }),
         xBtn),
       h('div', { class: 'g-body' },
         h('div', { class: 'g-steps-list' },
-          stepItems.map(([title, desc], idx) => h('div', { class: 'g-step-item' },
+          stepItems.map(([title, desc]) => h('div', { class: 'g-step-item' },
             h('div', { class: 'g-step-body' },
               h('b', { text: title }),
               h('span', { text: desc }))))),
-        h('h3', { text: isKo ? '데이터 출처 및 지표 기준' : 'Data Sources and Metrics' }),
-        h('div', { class: 'g-keys' },
-          h('span', { class: 'g-key-label', text: isKo ? '처방 기준 및 주의사항' : 'Labeling Rules' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '미국 FDA DailyMed 공식 허가사항의 신장, 간, 폐 등 장기별 용량 조절 및 금기 기준' : 'FDA DailyMed prescribing information rules across renal, hepatic, pulmonary, and hematologic thresholds' }),
-          h('span', { class: 'g-key-label', text: isKo ? '임상시험 이상사례' : 'Trial Adverse Events' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '주요 임상시험의 치료군 대 대조군 이상사례 발생률(%). 치료군이 대조군보다 높으면 붉은 막대로 표시됩니다.' : 'Treatment vs. control adverse-event rates (%) in pivotal trials; crimson bars indicate higher incidence in treatment.' }),
-          h('span', { class: 'g-key-label', text: isKo ? '설계 모델 점수' : 'Design Model Scores' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '장기 안전도(X)와 항암 효능(Y) 예측 점수(0~100). 자동 설계는 5-Fold ADCSurrogateNet v2를 실시간 실행합니다.' : 'Predicted organ safety (X) and antitumor efficacy (Y) scores (0-100). Auto design runs 5-Fold ADCSurrogateNet v2.' }),
-          h('span', { class: 'sp-status-badge clear', text: isKo ? '표준 용량 투여' : 'Standard dosing' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '입력된 환자 수치 기준 라벨상 용량 제한 없음' : 'No label dosing restriction triggered for entered profile' }),
-          h('span', { class: 'sp-status-badge monitor', text: isKo ? '모니터링 / 용량 조절' : 'Monitor / Adjust' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '밀접 경과 관찰 또는 감량 투여 고려' : 'Close monitoring or dose reduction advised' }),
-          h('span', { class: 'sp-status-badge avoid', text: isKo ? '투여 주의 / 금기' : 'Avoid / Contraindicated' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '투여 회피 또는 금기 기준에 해당' : 'Advised against use or contraindicated' })),
         h('div', { class: 'g-foot' },
           h('span', { class: 'g-version', text: `ADCToX v${verStr}` }),
           h('div', { class: 'g-foot-links' },
@@ -2230,10 +2349,13 @@
     musculoskeletal: '근골격',
     infectious_immune: '감염/면역',
     otologic: '이비인후',
+    pediatric: '소아 연령',
   };
 
   // an organ shown in the page's language: ORGAN_KO is keyed by organ id, the label rows carry the short English name
   const organKo = (x) => {
+    const low = String(x || '').toLowerCase();
+    if (low === 'pediatric') return S.lang === 'ko' ? '소아 연령' : 'Pediatric';
     if (S.lang !== 'ko') return SHORT[x] || x;
     if (ORGAN_KO[x]) return ORGAN_KO[x];
     const key = Object.keys(SHORT).find((k) => SHORT[k] === x);
@@ -2276,6 +2398,7 @@
     'ANC': '호중구 절대수치 (ANC)',
     'HbA1c': '당화혈색소 (HbA1c)',
     'UGT1A1*28': 'UGT1A1*28 동형접합 변이',
+    'Age': '나이',
   };
 
   const TXT = {
@@ -2293,7 +2416,7 @@
       secConstruct: 'ADC 약물',
       secFit: '약물 적합도',
       secOrgans: '환자 취약 장기',
-      secTrial: '임상시험 사례',
+      secTrial: '환자 질환 관련 임상시험 사례',
       matrixHead: 'FDA 승인 ADC 추천',
       matrixSub: 'FDA 공식 라벨 규칙, 취약 장기 주의사항, 임상시험 이상사례 발생률을 종합합니다.',
       rankBest: '1위 최적 적합',
@@ -2428,7 +2551,7 @@
       secConstruct: 'ADC',
       secFit: 'Drug Fit',
       secOrgans: 'Vulnerable Organs',
-      secTrial: 'Clinical Trial Cases',
+      secTrial: 'Condition-Related Trial Cases',
       matrixHead: 'FDA-Approved ADC Recommendations',
       matrixSub: 'Synthesizes official FDA prescribing rules, vulnerable-organ warnings, and pivotal trial rates.',
       rankBest: '#1 Leading Fit',
@@ -2657,7 +2780,7 @@
       meanings: {},
       first: null,
       prioOrgan: null,
-      matrixFilter: 'relevant',
+      matrixFilter: 'all',
       entry: 'demo',
       studioRunMode: 'manual',
       studioAccOpen: 'tgt',
@@ -2720,7 +2843,7 @@
     S.meanings = {};
     S.first = null;
     S.prioOrgan = null;
-    S.matrixFilter = 'relevant';
+    S.matrixFilter = 'all';
     S.studioNeedInputWarn = false;
     S.studioDesignMode = 'idle';
     S.studioHistory = [];
@@ -3116,6 +3239,7 @@
     });
     crumbRefs.profileGroup.classList.toggle('is-profile-active', S.mode === 0);
     crumbRefs.actionGroup.classList.toggle('is-action-active', S.mode === 1 || S.mode === 2);
+    syncSlidingSeg(crumbRefs.actionGroup, 'top-action', '.crumb.now .cb', 'tone-light');
 
     if (!resetPatientBtn) {
       resetPatientBtn = h('button', {
@@ -3145,7 +3269,7 @@
     S.meanings = {};
     S.first = null;
     S.prioOrgan = null;
-    S.matrixFilter = 'relevant';
+    S.matrixFilter = 'all';
     S.studioDesignMode = 'idle';
     S.studioNeedInputWarn = false;
     S.studioHistory = [];
@@ -3705,8 +3829,7 @@
       h('span', { class: 'db-track' }, h('i', { class: 'db-fill-cmp', style: `width:${Math.min(100, (cmpPct / scaleMax) * 100).toFixed(1)}%` })),
       h('span', { class: 'db-pct cmp', text: `${cmpPct.toFixed(1)}%` })) : null,
     h('div', { class: 'dual-bar-title' },
-      h('span', { text: ev.term || '' }),
-      h('span', { class: 'dim', text: trial.trial || '' })));
+      h('span', { text: ev.term || '' })));
   }
 
   let currentMatrixRows = null;
@@ -3759,6 +3882,17 @@
       const cardEls = new Map();
       let spotlightSet = new Set();
 
+      const relevant = (row) => (hasCancer ? row.indicated === true : true);
+      const matchCount = rows.filter(relevant).length;
+      const showMatchFilter = hasCancer && matchCount > 0;
+      const filters = showMatchFilter
+        ? [
+            ['all', t('filterAll'), rows.length, () => true],
+            ['relevant', t('filterMatch'), matchCount, relevant],
+          ]
+        : [['all', t('filterAll'), rows.length, () => true]];
+      let filter = (showMatchFilter && S.matrixFilter === 'relevant') ? 'relevant' : 'all';
+
       if (!profileReady) {
         content.append(h('section', { class: 'empty-matrix-card', 'aria-label': isKo ? '환자 정보 입력 안내' : 'Patient input prompt' },
           h('div', { class: 'emc-copy' },
@@ -3771,21 +3905,23 @@
               onclick: () => switchMode(0),
             }))));
       } else {
-        const topCandidates = rows.filter((r) => (hasCancer ? r.indicated === true : true) && r.status !== 'Avoid');
-        const leadRow = (topCandidates.length ? topCandidates : rows)[0];
+        const activePool = filter === 'relevant' ? rows.filter(relevant) : rows;
+        const topCandidates = activePool.filter((r) => r.status !== 'Avoid');
+        const leadRow = (topCandidates.length ? topCandidates : activePool)[0];
         if (leadRow) {
-          spotlightSet = new Set(rows.filter((r) => r.rank === leadRow.rank).map((r) => r.adc));
+          spotlightSet = new Set(activePool.filter((r) => r.rank === leadRow.rank).map((r) => r.adc));
           const leadIdx = rows.indexOf(leadRow);
           const leadSt = statusInfo(leadRow);
           const leadPills = getArchPills(leadRow.adc, leadRow);
-          const tiedCount = rows.filter((r) => r.rank === leadRow.rank).length;
+          const tiedCount = activePool.filter((r) => r.rank === leadRow.rank).length;
           const prioSummary = S.prioOrgan
             ? (isKo ? `우선 평가: ${organKo(S.prioOrgan)}` : `Prioritizing ${organKo(S.prioOrgan)}`)
             : (hasCancer && leadRow.indicated ? (isKo ? '질병 일치' : 'Disease match') : leadSt.full);
           const leadMetaTxt = [prioSummary].concat(leadPills).filter(Boolean).join('  /  ');
+          const scopeCount = activePool.length;
           const kicker = tiedCount > 1
-            ? (isKo ? `전체 ${rows.length}개 중 공동 ${leadRow.rank}위 (${tiedCount}개 후보 중 대표)` : `Tied #${leadRow.rank} of ${rows.length} overall (1 of ${tiedCount} candidates)`)
-            : (isKo ? `대표 후보 (전체 ${rows.length}개 중 ${leadRow.rank}위)` : `Leading candidate (#${leadRow.rank} of ${rows.length} overall)`);
+            ? (isKo ? `${scopeCount}개 중 공동 ${leadRow.rank}위 (${tiedCount}개 후보 중 대표)` : `Tied #${leadRow.rank} of ${scopeCount} (1 of ${tiedCount} candidates)`)
+            : (isKo ? `대표 후보 (${scopeCount}개 중 ${leadRow.rank}위)` : `Leading candidate (#${leadRow.rank} of ${scopeCount})`);
           const openLead = (el) => { selectRow(leadIdx, false); openDrawer(el); };
           const leadCard = h('section', {
             class: 'leading-strip is-clickable',
@@ -3806,17 +3942,6 @@
         }
       }
 
-      const relevant = (row) => (hasCancer ? row.indicated === true : true);
-      const matchCount = rows.filter(relevant).length;
-      const showMatchFilter = hasCancer && matchCount > 0;
-      const filters = showMatchFilter
-        ? [
-            ['relevant', t('filterMatch'), matchCount, relevant],
-            ['all', t('filterAll'), rows.length, () => true],
-          ]
-        : [['all', t('filterAll'), rows.length, () => true]];
-      let filter = (showMatchFilter && S.matrixFilter !== 'all') ? 'relevant' : 'all';
-
       const tabs = h('div', { class: 'review-filters', role: 'group', 'aria-label': isKo ? 'ADC 목록 필터' : 'Filter ADCs' });
       const toolbar = h('div', { class: 'review-toolbar' },
         h('div', { class: 'review-toolbar-left' }, tabs));
@@ -3836,15 +3961,8 @@
 
       const trs = [];
       let visible = rows.map((_, i) => i);
-      let dividerEl = null;
-      const firstOtherIdx = hasCancer ? rows.findIndex((r) => r.indicated !== true) : -1;
 
       rows.forEach((row, i) => {
-        if (i === firstOtherIdx && firstOtherIdx > 0) {
-          dividerEl = h('div', { class: 'review-group-divider', role: 'row' },
-            h('span', { role: 'cell', text: isKo ? '타 질환 승인 약물' : 'Approved for other diseases' }));
-          grid.append(dividerEl);
-        }
         const isTop = profileReady && spotlightSet.has(row.adc);
         const st = statusInfo(row);
         const pills = getArchPills(row.adc, row);
@@ -3898,24 +4016,22 @@
         const fn = entry[3];
         visible = rows.map((r, idx) => (fn(r) ? idx : -1)).filter((idx) => idx >= 0);
         trs.forEach((tr, idx) => { tr.hidden = !visible.includes(idx); });
-        if (dividerEl) dividerEl.hidden = id !== 'all';
       }
 
       const filterBtns = filters.map(([id, label, count]) => {
         const b = h('button', { type: 'button', class: 'filter-tab', 'aria-pressed': id === filter ? 'true' : 'false', text: `${label} (${count})` });
         b.addEventListener('click', () => {
+          if (S.matrixFilter === id) return;
+          captureSegRect(tabs, 'matrix-filter', '[aria-pressed="true"]');
           S.matrixFilter = id;
           save();
-          filterBtns.forEach((btn, k) => btn.setAttribute('aria-pressed', filters[k][0] === id ? 'true' : 'false'));
-          applyFilter(id);
-          if (visible.length && !visible.includes(S.sel)) {
-            selectRow(visible[0], false);
-          }
+          renderMatrixContent();
         });
         tabs.append(b);
         return b;
       });
       applyFilter(filter);
+      syncSlidingSeg(tabs, 'matrix-filter', '[aria-pressed="true"]', 'tone-light');
 
       content.append(h('div', { class: 'review-grid-wrap' }, grid));
 
@@ -4648,11 +4764,19 @@
         'aria-pressed': runMode === id ? 'true' : 'false',
         disabled: isOptimizing ? true : null,
         text: isKo ? ko : en,
-        onclick: () => { if (S.studioRunMode === id) return; S.studioRunMode = id; if (id === 'auto') pollGpuStatus(false); save(); renderControls(); },
+        onclick: () => {
+          if (S.studioRunMode === id) return;
+          captureSegRect(segGroup, 'design-mode', '.seg-btn.is-selected');
+          S.studioRunMode = id;
+          if (id === 'auto') pollGpuStatus(false);
+          save();
+          renderControls();
+        },
       });
       const segGroup = h('div', { class: 'seg-control', role: 'group', 'aria-label': isKo ? '설계 모드' : 'Design mode' },
         segBtn('manual', '수동 설계', 'Manual'),
         segBtn('auto', '자동 설계', 'Auto design'));
+      syncSlidingSeg(segGroup, 'design-mode', '.seg-btn.is-selected', 'tone-light');
 
       const runLabel = isOptimizing
         ? (isKo ? '분석 중…' : 'Analyzing…')
@@ -4689,7 +4813,7 @@
           h('span', { text: label }), h('strong', { text: value }))));
       const undo = S.studioUndo ? h('button', {
         type: 'button', class: 'btn-secondary studio-undo',
-        text: isKo ? '이전 구성으로 되돌리기' : 'Restore previous construct',
+        text: isKo ? '초기화' : 'Reset',
         onclick: () => {
           const previous = S.studioUndo;
           S.studio = previous.studio;
@@ -4711,7 +4835,7 @@
         invalidateCurrentEvaluation();
       };
 
-      const makeCatTabs = (tabs, activeId, onTab, onRebuild) => {
+      const makeCatTabs = (tabs, activeId, onTab, onRebuild, catKey) => {
         const bar = h('div', { class: 'studio-cat-tabs', role: 'group', 'aria-label': isKo ? '분류' : 'Category' });
         let dragState = null;
         let movedDuringDrag = false;
@@ -4752,6 +4876,7 @@
             'aria-pressed': activeId === id ? 'true' : 'false',
             onclick: () => {
               if (movedDuringDrag) return;
+              if (catKey) captureSegRect(bar, catKey, '.studio-cat-tab.is-active');
               onTab(id);
               save();
               if (onRebuild) onRebuild();
@@ -4760,12 +4885,13 @@
             text: isKo ? koLbl : enLbl,
           }));
         });
+        if (catKey) syncSlidingSeg(bar, catKey, '.studio-cat-tab.is-active', 'tone-light');
         return bar;
       };
 
       const makePillsList = (items, currentVal, onPick, opts) => {
         const o = opts || {};
-        const cls = 'studio-pills' + (o.grid4 ? ' grid-4' : '') + (o.scrollable ? ' is-scrollable' : '');
+        const cls = 'studio-pills' + (o.grid4 ? ' grid-4' : '') + (o.scrollable ? ' is-scrollable' : '') + (o.segKey ? ' is-seg-grid' : '');
         const pills = h('div', { class: cls });
         items.forEach((it) => {
           const val = typeof it === 'string' ? it : it.id;
@@ -4779,10 +4905,14 @@
             text: labelTxt,
             onmouseenter: () => { if (popoverText) showMicroPopover(b, popoverText); },
             onmouseleave: () => hideMicroPopover(),
-            onclick: () => onPick(val, it),
+            onclick: () => {
+              if (o.segKey) captureSegRect(pills, o.segKey, '.st-pill[aria-pressed="true"]');
+              onPick(val, it);
+            },
           });
           pills.append(b);
         });
+        if (o.segKey) syncSlidingSeg(pills, o.segKey, '.st-pill[aria-pressed="true"]', 'tone-dark');
         return pills;
       };
 
@@ -4871,7 +5001,7 @@
             else if (isLnk) { S.lnkCat = id; }
             else { S.pldCat = id; }
             if (activePartDraft) activePartDraft.q = sheetQ;
-          }, renderSheetCatsAndList));
+          }, renderSheetCatsAndList, `sheet-cat-${kind}`));
 
           const items = currentItems();
           items.forEach((it) => {
@@ -4967,7 +5097,7 @@
       reopenPartSheetHandler = (kind, snap) => openStudioPartSheet(kind, snap);
 
       // 1. Target Antigen (36) with category tabs
-      const tgtCatBar = makeCatTabs(TGT_TABS, S.tgtCat || 'all', (id) => { S.tgtCat = id; S.tgtQuery = ''; });
+      const tgtCatBar = makeCatTabs(TGT_TABS, S.tgtCat || 'all', (id) => { S.tgtCat = id; S.tgtQuery = ''; }, null, 'cat-tgt');
 
       const isMobile = mobileMQ.matches;
       const sheetTrigger = (id, title, valueTxt) => h('div', { class: 'studio-group studio-acc' },
@@ -5014,7 +5144,7 @@
         }));
 
       // 2. Chemical Linker (16)
-      const lnkCatBar = makeCatTabs(LNK_TABS, S.lnkCat || 'all', (id) => { S.lnkCat = id; });
+      const lnkCatBar = makeCatTabs(LNK_TABS, S.lnkCat || 'all', (id) => { S.lnkCat = id; }, null, 'cat-lnk');
 
       const lnkGroup = accGroup('lnk', t('lnkTitle'), S.studio.linker,
         lnkCatBar,
@@ -5024,7 +5154,7 @@
         }));
 
       // 3. Cytotoxic Payload (20)
-      const pldCatBar = makeCatTabs(PLD_TABS, S.pldCat || 'all', (id) => { S.pldCat = id; });
+      const pldCatBar = makeCatTabs(PLD_TABS, S.pldCat || 'all', (id) => { S.pldCat = id; }, null, 'cat-pld');
 
       const pldGroup = accGroup('pld', t('pldTitle'), plainName(S.studio.payload),
         pldCatBar,
@@ -5037,6 +5167,7 @@
       const darGroup = accGroup('dar', t('darTitle'), `DAR ${S.studio.dar}`,
         makePillsList(STUDIO_DAR_ITEMS, String(S.studio.dar), (v) => onPartPicked(() => { S.studio.dar = parseFloat(v); }), {
           grid4: true,
+          segKey: 'pills-dar',
         }));
 
       // 5. Antibody & Fc Format (4)
@@ -5046,6 +5177,7 @@
           S.studio.fc = v !== 'igg1_wt';
         }), {
           labelFn: (it) => (isKo ? it.ko : it.en),
+          segKey: 'pills-fc',
         }));
 
       controls.append(tgtGroup, lnkGroup, pldGroup, darGroup, fcGroup, runRow);
@@ -5130,22 +5262,216 @@
         window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches
       );
-      if (API.studioDeepResearch) {
-        // Auto Design always runs 5-fold ADCSurrogateNet v2 + 3-cycle Q3W PK/PD ODE (>= 5s compute floor)
+      const streamApi = API.studioDeepResearchStream || API.studioDeepResearch;
+      if (streamApi) {
         setTimeout(() => pollGpuStatus(false), 75);
-        const t0 = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+        cancelAnimationFrame(simAnimId);
+        if (studioChartRO) {
+          studioChartRO.disconnect();
+          studioChartRO = null;
+        }
+
+        // Mount live scatter canvas immediately so streamed candidate dots appear in real time
+        clear(canvas);
+        const liveWrap = h('section', { class: 'sim-canvas-panel panel' });
+        const liveHead = h('div', { class: 'sim-canvas-head' },
+          h('span', { class: 'sim-canvas-title', text: t('designTitle') }));
+        const liveLegend = h('div', { class: 'sim-chart-legend', role: 'list', 'aria-label': isKo ? '그래프 범례' : 'Chart legend' },
+          [
+            ['#0F766E', t('legendBest')],
+            ['#B45309', t('legendCur')],
+            ['#6B7280', t('legendCand')],
+            ['#DC2626', t('legendBad')],
+          ].map(([col, lbl]) => h('span', { class: 'sim-legend-item', role: 'listitem' },
+            h('i', { class: 'sim-legend-dot', style: `background:${col}` }),
+            h('span', { text: lbl }))));
+        const liveChartWrap = h('div', { class: 'sim-chart-wrap' });
+        const liveCvs = h('canvas', { class: 'sim-canvas', 'data-plotted-count': '0' });
+        liveChartWrap.append(liveLegend, liveCvs);
+        liveWrap.append(liveHead, liveChartWrap);
+        canvas.append(liveWrap);
+
+        const baseSim = computeStudioSimulation();
+        const baseRef = resolveRefBundle(baseSim, null);
+        const liveQueue = [];
+        const livePlotted = [];
+        let streamDone = false;
+        let streamFailed = false;
+        let finalSpace = null;
+        let resolveLiveDone = null;
+        const liveDrainPromise = new Promise((resolve) => { resolveLiveDone = resolve; });
+        const liveT0 = performance.now();
+
+        const drawLivePlot = (now) => {
+          if (streamFailed || !box.isConnected || !liveCvs.isConnected || seq !== evalReqSeq || signature !== studioInputSignature()) {
+            if (resolveLiveDone) resolveLiveDone();
+            return;
+          }
+          if (liveQueue.length > 0) {
+            let take;
+            if (prefersReducedMotion || still()) {
+              take = liveQueue.length;
+            } else if (streamDone) {
+              take = Math.max(12, Math.ceil(liveQueue.length / 8));
+            } else {
+              take = liveQueue.length > 180
+                ? Math.ceil(liveQueue.length / 8)
+                : Math.min(liveQueue.length, Math.max(4, Math.ceil(liveQueue.length / 6)));
+            }
+            for (let k = 0; k < take && liveQueue.length > 0; k++) {
+              livePlotted.push(liveQueue.shift());
+            }
+          }
+          liveCvs.dataset.plottedCount = String(livePlotted.length);
+
+          if (optBtn) {
+            const elapsedFrac = Math.min(0.95, (now - liveT0) / 5000);
+            const frac = streamDone ? (liveQueue.length ? 0.94 : 1.0) : Math.max(0.06, elapsedFrac);
+            optBtn.style.setProperty('--p', (frac * 100).toFixed(1) + '%');
+            optBtn.textContent = frac < 0.34
+              ? (isKo ? '후보군 선별 (1/3)' : 'Screening (1/3)')
+              : frac < 0.72
+                ? (isKo ? '5-Fold 앙상블 (2/3)' : '5-Fold Ensemble (2/3)')
+                : (isKo ? '용량 최적화 (3/3)' : 'Dose Titration (3/3)');
+          }
+
+          const ctx = liveCvs.getContext('2d');
+          if (ctx) {
+            const rect = liveCvs.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            const w = Math.max(280 * dpr, Math.round((rect.width || 680) * dpr));
+            const hPx = Math.max(260 * dpr, Math.round((rect.height || 470) * dpr));
+            if (liveCvs.width !== w || liveCvs.height !== hPx) {
+              liveCvs.width = w;
+              liveCvs.height = hPx;
+            }
+            const padL = 54 * dpr, padR = 24 * dpr, padB = 44 * dpr, padT = 20 * dpr;
+            const plotW = Math.max(160 * dpr, w - padL - padR);
+            const plotH = Math.max(160 * dpr, hPx - padT - padB);
+            const toX = (val) => padL + (Math.max(0, Math.min(100, val)) / 100) * plotW;
+            const toY = (val) => padT + (1 - Math.max(0, Math.min(100, val)) / 100) * plotH;
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, w, hPx);
+            ctx.strokeStyle = '#D1D5DB';
+            ctx.lineWidth = 1 * dpr;
+            ctx.strokeRect(padL, padT, plotW, plotH);
+
+            ctx.strokeStyle = '#F3F4F6';
+            ctx.font = `600 ${10.5 * dpr}px "Manrope", "Pretendard Variable", sans-serif`;
+            ctx.fillStyle = '#6B7280';
+            for (let v = 0; v <= 100; v += 20) {
+              const gx = toX(v), gy = toY(v);
+              if (v > 0 && v < 100) {
+                ctx.beginPath(); ctx.moveTo(gx, padT); ctx.lineTo(gx, padT + plotH); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(padL + plotW, gy); ctx.stroke();
+              }
+              ctx.textAlign = 'center';
+              ctx.fillText(String(v), gx, padT + plotH + 16 * dpr);
+              ctx.textAlign = 'right';
+              ctx.fillText(String(v), padL - 8 * dpr, gy + 3.5 * dpr);
+            }
+
+            ctx.font = `700 ${11.5 * dpr}px "Manrope", "Pretendard Variable", sans-serif`;
+            ctx.fillStyle = '#111111';
+            ctx.textAlign = 'center';
+            ctx.fillText(t('axisSafety'), padL + plotW / 2, padT + plotH + 34 * dpr);
+            ctx.save();
+            ctx.translate(padL - 37 * dpr, padT + plotH / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText(t('axisEfficacy'), 0, 0);
+            ctx.restore();
+
+            const dotR = 3.2 * dpr;
+            for (let i = 0; i < livePlotted.length; i++) {
+              const pt = livePlotted[i];
+              ctx.fillStyle = !pt.isCompat ? 'rgba(220, 38, 38, 0.36)' : 'rgba(107, 114, 128, 0.42)';
+              ctx.beginPath();
+              ctx.arc(toX(pt.safetyRaw), toY(pt.efficacyRaw), dotR, 0, Math.PI * 2);
+              ctx.fill();
+            }
+
+            if (baseRef && baseRef.refSim) {
+              const rx = toX(baseRef.refSim.safetyRaw), ry = toY(baseRef.refSim.efficacyRaw);
+              ctx.fillStyle = 'rgba(180, 83, 9, 0.18)';
+              ctx.beginPath(); ctx.arc(rx, ry, 9.5 * dpr, 0, Math.PI * 2); ctx.fill();
+              ctx.fillStyle = '#B45309';
+              ctx.strokeStyle = '#FFFFFF';
+              ctx.lineWidth = 1.8 * dpr;
+              ctx.beginPath(); ctx.arc(rx, ry, 5.0 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+            }
+          }
+
+          if (!streamDone || liveQueue.length > 0) {
+            simAnimId = requestAnimationFrame(drawLivePlot);
+          } else if (resolveLiveDone) {
+            resolveLiveDone();
+          }
+        };
+
+        simAnimId = requestAnimationFrame(drawLivePlot);
+
         try {
-          const res = await API.studioDeepResearch(Object.assign(buildEvalRequestBody(), { minComputeMs: 5000 }));
-          if (seq !== evalReqSeq || signature !== studioInputSignature() || !box.isConnected) return;
-          const nowMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
-          const serverMs = Math.max(0, nowMs - t0);
-          lastScanAnimMs = prefersReducedMotion ? 0 : Math.max(450, Math.round(5000 - serverMs));
+          const onChunk = (msg) => {
+            if (seq !== evalReqSeq || signature !== studioInputSignature() || !box.isConnected) return;
+            const pts = Array.isArray(msg.points) ? msg.points : [];
+            pts.forEach((row) => {
+              if (Array.isArray(row) && row.length >= 2) {
+                const flags = Number(row[2] || 1);
+                liveQueue.push({
+                  safetyRaw: Number(row[0]),
+                  efficacyRaw: Number(row[1]),
+                  isCompat: (flags & 1) !== 0,
+                  isBestTarget: (flags & 2) !== 0,
+                  isCurTarget: (flags & 4) !== 0,
+                });
+              }
+            });
+          };
+          const reqBody = Object.assign(buildEvalRequestBody(), { minComputeMs: 5000, stream: true });
+          const res = API.studioDeepResearchStream
+            ? await API.studioDeepResearchStream(reqBody, onChunk)
+            : await API.studioDeepResearch(Object.assign(buildEvalRequestBody(), { minComputeMs: 5000 }));
+          if (seq !== evalReqSeq || signature !== studioInputSignature() || !box.isConnected) {
+            streamDone = true;
+            cancelAnimationFrame(simAnimId);
+            return;
+          }
           if (res.gpu_status) gpuStatus = res.gpu_status;
-          serverSpace = adaptServerSpace(res);
+          finalSpace = adaptServerSpace(res);
+          serverSpace = finalSpace;
           S.lastRunMode = 'deep_research_v2';
-          if (!box.isConnected) { isOptimizing = false; return; }
-          renderStudioCanvas(true);
+          if (livePlotted.length === 0 && liveQueue.length === 0 && Array.isArray(finalSpace.cloud)) {
+            finalSpace.cloud.forEach((pt) => liveQueue.push(pt));
+          }
+          streamDone = true;
+          await liveDrainPromise;
+          if (seq !== evalReqSeq || signature !== studioInputSignature() || !box.isConnected) return;
+          isOptimizing = false;
+          const best = finalSpace.best;
+          if (best && best.spec) {
+            S.studioUndo = { studio: Object.assign({}, S.studio), ref: S.studioRefAdcOverride };
+            S.studio.target = best.spec.target;
+            S.studio.linker = best.spec.linker;
+            S.studio.payload = best.spec.payload;
+            S.studio.dar = best.spec.dar;
+            S.studio.fcFormat = best.spec.fcFormat || (best.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
+            S.studio.fc = S.studio.fcFormat !== 'igg1_wt';
+            S.studioRefAdcOverride = null;
+            finalSpace.current = best;
+            if (finalSpace.refBest) finalSpace.refCurrent = finalSpace.refBest;
+          }
+          S.studioEvaluatedSignature = studioInputSignature();
+          save();
+          if (S.mode !== 2 || !box.isConnected) return;
+          renderControls();
+          renderStudioCanvas(false);
+          pollGpuStatus(true);
+          revealResults();
         } catch (err) {
+          streamFailed = true;
+          streamDone = true;
+          cancelAnimationFrame(simAnimId);
           if (seq !== evalReqSeq || signature !== studioInputSignature() || !box.isConnected) return;
           isOptimizing = false;
           invalidateStudioEvaluation();
@@ -5571,6 +5897,7 @@
             S.simPreset = pr.id;
             S.simWeights = Object.assign({}, DEFAULT_SIM_WEIGHTS, pr.weights);
             presetBtns.forEach((b) => b.classList.toggle('is-active', b === pb));
+            syncSlidingSeg(presetGroup, 'sim-preset', '.sim-preset-btn.is-active', 'tone-dark');
             Object.keys(inputRefs).forEach((k) => {
               const ref = inputRefs[k];
               const v = S.simWeights[k];
@@ -5585,6 +5912,7 @@
         presetBtns.push(pb);
         presetGroup.append(pb);
       });
+      syncSlidingSeg(presetGroup, 'sim-preset', '.sim-preset-btn.is-active', 'tone-dark');
 
       const explainToolbar = h('div', { class: 'sim-param-toolbar' },
         h('div', { class: 'sim-preset-wrap' }, presetGroup),
@@ -5596,6 +5924,7 @@
             S.simPreset = 'balanced';
             S.simWeights = Object.assign({}, DEFAULT_SIM_WEIGHTS);
             presetBtns.forEach((b, idx) => b.classList.toggle('is-active', idx === 0));
+            syncSlidingSeg(presetGroup, 'sim-preset', '.sim-preset-btn.is-active', 'tone-dark');
             Object.keys(inputRefs).forEach((k) => {
               const ref = inputRefs[k];
               const v = S.simWeights[k];
@@ -5792,43 +6121,84 @@
         }
       }
 
-      function drawCalloutLabel(text, dotX, dotY, preferAbove, offsetX, offsetY, plotW, plotH, dpr, color, avoidBoxes) {
+      function drawCalloutLabel(text, dotX, dotY, preferMode, offsetX, offsetY, plotW, plotH, dpr, color, avoidBoxes) {
         ctx.font = `600 ${11 * dpr}px "Manrope", "Pretendard Variable", sans-serif`;
         const textW = ctx.measureText(text).width;
+        const boxW = textW + 10 * dpr;
         const boxH = 18 * dpr;
         const gap = 10 * dpr;
-        let tx = dotX + gap;
-        if (tx + textW > offsetX + plotW - 8 * dpr) {
-          tx = dotX - gap - textW;
-        }
-        tx = Math.max(offsetX + 8 * dpr, Math.min(offsetX + plotW - textW - 8 * dpr, tx));
-        let ty = preferAbove ? (dotY - 10 * dpr) : (dotY + 18 * dpr);
-        if (ty - 13 * dpr < offsetY + 5 * dpr) ty = dotY + 18 * dpr;
-        if (ty > offsetY + plotH - 7 * dpr) ty = dotY - 10 * dpr;
-
-        const lBox = { x: tx - 5 * dpr, y: ty - 13 * dpr, w: textW + 10 * dpr, h: boxH };
         const blockers = Array.isArray(avoidBoxes) ? avoidBoxes.filter(Boolean) : (avoidBoxes ? [avoidBoxes] : []);
-        for (const ab of blockers) {
-          const overlapsX = lBox.x < ab.x + ab.w + 4 * dpr && lBox.x + lBox.w + 4 * dpr > ab.x;
-          const overlapsY = lBox.y < ab.y + ab.h + 3 * dpr && lBox.y + lBox.h + 3 * dpr > ab.y;
-          if (overlapsX && overlapsY) {
-            const downY = ab.y + ab.h + 15 * dpr;
-            const upY = ab.y - 6 * dpr;
-            if (downY <= offsetY + plotH - 6 * dpr) ty = downY;
-            else if (upY - 13 * dpr >= offsetY + 5 * dpr) ty = upY;
-            lBox.y = ty - 13 * dpr;
+        const clampX = (x) => Math.max(offsetX + 6 * dpr, Math.min(offsetX + plotW - boxW - 6 * dpr, x));
+        const clampY = (y) => Math.max(offsetY + 5 * dpr, Math.min(offsetY + plotH - boxH - 5 * dpr, y));
+        const modeStr = preferMode === true ? 'top-right' : (preferMode === false ? 'bottom-right' : String(preferMode || 'bottom-right'));
+
+        const boxFor = (dir, dx, dy) => {
+          let bx = (dir === 'bottom-left' || dir === 'top-left') ? (dotX - gap - boxW) : (dotX + gap);
+          if (bx < offsetX + 6 * dpr && (dir === 'bottom-left' || dir === 'top-left')) {
+            bx = clampX(bx);
+          } else if (bx + boxW > offsetX + plotW - 6 * dpr) {
+            bx = clampX((dir === 'bottom-right' || dir === 'top-right') ? (dotX - gap - boxW) : bx);
+          }
+          let by = (dir === 'top-left' || dir === 'top-right') ? (dotY - gap - boxH) : (dotY + gap);
+          by = clampY(by + (dy || 0));
+          bx = clampX(bx + (dx || 0));
+          return { x: bx, y: by, w: boxW, h: boxH };
+        };
+
+        const overlapArea = (a, b) => {
+          const ox = Math.max(0, Math.min(a.x + a.w + 3 * dpr, b.x + b.w + 3 * dpr) - Math.max(a.x, b.x));
+          const oy = Math.max(0, Math.min(a.y + a.h + 2 * dpr, b.y + b.h + 2 * dpr) - Math.max(a.y, b.y));
+          return ox * oy;
+        };
+
+        const candidates = modeStr === 'bottom-left'
+          ? [
+              boxFor('bottom-left', 0, 0),
+              boxFor('bottom-left', 0, 14 * dpr),
+              boxFor('bottom-left', -12 * dpr, 20 * dpr),
+              boxFor('bottom-left', 0, -24 * dpr),
+              boxFor('top-left', 0, 0),
+              boxFor('bottom-right', 0, 0),
+              boxFor('top-right', 0, 0),
+            ]
+          : [
+              boxFor(modeStr, 0, 0),
+              boxFor('bottom-left', 0, 0),
+              boxFor('top-left', 0, 0),
+              boxFor('bottom-right', 0, 0),
+              boxFor('top-right', 0, 0),
+            ];
+
+        let chosen = candidates[0];
+        let bestScore = Infinity;
+        for (let i = 0; i < candidates.length; i++) {
+          const cand = candidates[i];
+          let ov = 0;
+          for (let j = 0; j < blockers.length; j++) {
+            ov += overlapArea(cand, blockers[j]);
+          }
+          const score = ov + i * 0.01;
+          if (ov === 0) {
+            chosen = cand;
+            break;
+          }
+          if (score < bestScore) {
+            bestScore = score;
+            chosen = cand;
           }
         }
 
+        const tx = chosen.x + 5 * dpr;
+        const ty = chosen.y + 13 * dpr;
         ctx.textAlign = 'left';
         ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-        ctx.fillRect(lBox.x, lBox.y, lBox.w, lBox.h);
+        ctx.fillRect(chosen.x, chosen.y, chosen.w, chosen.h);
         ctx.strokeStyle = 'rgba(209, 213, 219, 0.95)';
         ctx.lineWidth = 1 * dpr;
-        ctx.strokeRect(lBox.x, lBox.y, lBox.w, lBox.h);
+        ctx.strokeRect(chosen.x, chosen.y, chosen.w, chosen.h);
         ctx.fillStyle = color;
         ctx.fillText(text, tx, ty);
-        return lBox;
+        return chosen;
       }
 
       function renderFrame(now) {
@@ -5858,6 +6228,7 @@
         const tfrac = duration > 0 ? Math.min(1, (now - startTime) / duration) : 1;
         const f = duration > 0 ? pace(tfrac) : 1;
         const shownDots = Math.floor(shuffled.length * f);
+        cvs.dataset.plottedCount = String(modeNow === 'idle' ? 0 : shownDots);
         const shownTotal = Math.floor(totalCombos * f);
         if (animate && onProgress && !completed) onProgress(f, shownTotal);
 
@@ -5974,8 +6345,10 @@
         const py = toY(primaryPt.efficacyRaw);
 
         let refBox = null;
+        let rxDotBox = null;
         if ((modeNow === 'manual' || f >= 0.97 || !animate) && refSim) {
           const rx = toX(refSim.safetyRaw), ry = toY(refSim.efficacyRaw);
+          rxDotBox = { x: rx - 8 * dpr, y: ry - 8 * dpr, w: 16 * dpr, h: 16 * dpr };
           if (modeNow === 'manual' && Math.hypot(rx - px, ry - py) > 6 * dpr) {
             ctx.save();
             ctx.strokeStyle = 'rgba(180, 83, 9, 0.50)';
@@ -5995,10 +6368,12 @@
           ctx.beginPath(); ctx.arc(rx, ry, primaryCoreR, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
           if (Math.hypot(rx - px, ry - py) > 10 * dpr) {
-            refBox = drawCalloutLabel(`${refBrand} (${refSim.safetyScore}, ${refSim.efficacyScore})`, rx, ry, false, offsetX, offsetY, plotW, plotH, dpr, '#B45309', null);
+            const pxDotBox = { x: px - 9 * dpr, y: py - 9 * dpr, w: 18 * dpr, h: 18 * dpr };
+            refBox = drawCalloutLabel(`${refBrand} (${refSim.safetyScore}, ${refSim.efficacyScore})`, rx, ry, 'bottom-left', offsetX, offsetY, plotW, plotH, dpr, '#B45309', [pxDotBox]);
           }
         }
 
+        const doseAvoidBoxes = [];
         if (modeNow === 'auto' && isDeep && (f >= 0.72 || !animate)) {
           const dcList = Array.isArray(primaryPt.doseCurve) ? primaryPt.doseCurve.slice().sort((a, b) => a.doseMgKg - b.doseMgKg) : [];
           if (primaryPt.safetyStd != null && primaryPt.efficacyStd != null) {
@@ -6023,12 +6398,21 @@
             dcList.forEach((dc, idx) => {
               const dx = toX(dc.safetyRaw), dy = toY(dc.efficacyRaw);
               if (idx === 0) ctx.moveTo(dx, dy);
-              else ctx.lineTo(dx, dy);
+              else {
+                const prevDx = toX(dcList[idx - 1].safetyRaw), prevDy = toY(dcList[idx - 1].efficacyRaw);
+                for (let s = 1; s <= 3; s++) {
+                  const mx = prevDx + ((dx - prevDx) * s) / 4;
+                  const my = prevDy + ((dy - prevDy) * s) / 4;
+                  doseAvoidBoxes.push({ x: mx - 4 * dpr, y: my - 4 * dpr, w: 8 * dpr, h: 8 * dpr });
+                }
+                ctx.lineTo(dx, dy);
+              }
             });
             ctx.stroke();
             ctx.font = `600 ${9.5 * dpr}px "Manrope", "Pretendard Variable", sans-serif`;
             dcList.forEach((dc) => {
               const dx = toX(dc.safetyRaw), dy = toY(dc.efficacyRaw);
+              doseAvoidBoxes.push({ x: dx - 6 * dpr, y: dy - 6 * dpr, w: 12 * dpr, h: 12 * dpr });
               ctx.fillStyle = dc.isOptimalDose ? '#0F766E' : '#FFFFFF';
               ctx.strokeStyle = '#0F766E';
               ctx.lineWidth = 1.6 * dpr;
@@ -6040,6 +6424,8 @@
                 const tag = `${dc.doseMgKg}`;
                 const tx = Math.min(offsetX + plotW - 18 * dpr, dx + 6 * dpr);
                 const ty = Math.max(offsetY + 12 * dpr, dy - 4 * dpr);
+                const tagW = ctx.measureText(tag).width;
+                doseAvoidBoxes.push({ x: tx - 2 * dpr, y: ty - 10 * dpr, w: tagW + 4 * dpr, h: 12 * dpr });
                 ctx.fillStyle = '#0F766E';
                 ctx.textAlign = 'left';
                 ctx.fillText(tag, tx, ty);
@@ -6062,7 +6448,7 @@
             ? `, ${primaryPt.optimalDoseMgKg} mg/kg`
             : '';
           const primaryLabel = `${plainName(primaryPt.spec.target)} + ${payLbl}, DAR ${primaryPt.spec.dar}${doseTag} (${primaryPt.safetyScore}, ${primaryPt.efficacyScore})`;
-          drawCalloutLabel(primaryLabel, px, py, true, offsetX, offsetY, plotW, plotH, dpr, '#0F766E', [refBox]);
+          drawCalloutLabel(primaryLabel, px, py, 'bottom-left', offsetX, offsetY, plotW, plotH, dpr, '#0F766E', [refBox, rxDotBox].concat(doseAvoidBoxes));
         }
 
         if (tfrac < 1) {
@@ -6301,10 +6687,6 @@
           });
           trackEl.append(needleEl);
 
-          const ticksEl = h('div', { class: 'bio-spectrum-ticks' },
-            h('span', { class: 'bio-tick', style: `left:${m.normalLeft.toFixed(1)}%`, text: String(bf.refLow) }),
-            h('span', { class: 'bio-tick', style: `left:${m.normalRight.toFixed(1)}%`, text: String(bf.refHigh) }));
-
           const statusBadgeEl = h('span', { class: `bio-status-badge ${m.statusClass}`, text: m.statusText });
 
           const labNameA = isKo ? (LAB_KO[bf.key] || bf.name) : bf.name;
@@ -6346,12 +6728,13 @@
               h('label', { class: 'bio-name', for: `lab-${bf.key}`, text: labName }),
               h('span', { class: 'bio-ref', id: refId, text: `${t('refRange')}: ${bf.refLow} - ${bf.refHigh} ${bf.unit}` })),
             h('div', { class: 'bio-input-wrap' }, input, h('span', { class: 'bio-unit', 'aria-hidden': 'true', text: bf.unit })),
-            h('div', { class: 'bio-spectrum-wrap' }, trackEl, ticksEl),
+            h('div', { class: 'bio-spectrum-wrap' }, trackEl),
             statusBadgeEl));
         });
 
         sec.discrete.forEach((df) => {
           const curVal = normalizeDiscreteVal(S.raw[df.key]);
+          const segKey = `lab-${df.key}`;
           const segGroup = h('div', { class: 'bio-seg-group', role: 'group', 'aria-label': isKo ? (LAB_KO[df.key] || df.name) : df.name });
           df.options.forEach((opt) => {
             const active = curVal.toUpperCase() === opt.val.toUpperCase();
@@ -6361,7 +6744,15 @@
               class: 'bio-seg-btn' + (active ? ' is-selected' : '') + (active && opt.flag ? ' is-flagged' : ''),
               'aria-pressed': active ? 'true' : 'false',
               text: isKo ? opt.ko : opt.en,
-              onclick: async () => {
+              onclick: async (ev) => {
+                const clicked = ev.currentTarget;
+                [...segGroup.querySelectorAll('.bio-seg-btn')].forEach((b) => {
+                  const sel = b === clicked;
+                  b.classList.toggle('is-selected', sel);
+                  b.classList.toggle('is-flagged', sel && Boolean(opt.flag));
+                  b.setAttribute('aria-pressed', sel ? 'true' : 'false');
+                });
+                syncSlidingSeg(segGroup, segKey, '.bio-seg-btn.is-selected', 'tone-light');
                 if (opt.val === '') delete S.raw[df.key];
                 else S.raw[df.key] = opt.val;
                 markEdited();
@@ -6375,6 +6766,7 @@
               },
             }));
           });
+          syncSlidingSeg(segGroup, segKey, '.bio-seg-btn.is-selected', 'tone-light');
 
           groupEl.append(h('div', { class: 'bio-discrete-row' },
             h('div', { class: 'bio-info' },
@@ -6461,7 +6853,14 @@
             'aria-pressed': active ? 'true' : 'false',
             title: active ? (isKo ? '클릭 시 선택 해제' : 'Click to clear') : '',
             text: isKo ? opt.ko : opt.en,
-            onclick: async () => {
+            onclick: async (ev) => {
+              const clicked = ev.currentTarget;
+              [...sexSeg.querySelectorAll('.bio-seg-btn')].forEach((b) => {
+                const sel = !active && b === clicked;
+                b.classList.toggle('is-selected', sel);
+                b.setAttribute('aria-pressed', sel ? 'true' : 'false');
+              });
+              syncSlidingSeg(sexSeg, 'lab-sex', '.bio-seg-btn.is-selected', 'tone-light');
               if (active) delete S.raw.sex;
               else S.raw.sex = opt.val;
               markEdited();
@@ -6475,6 +6874,7 @@
             },
           }));
         });
+        syncSlidingSeg(sexSeg, 'lab-sex', '.bio-seg-btn.is-selected', 'tone-light');
         const sexField = h('div', { class: 'basic-field-item' },
           h('span', { class: 'basic-field-label', text: isKo ? '성별' : 'Sex' }),
           sexSeg);
@@ -6990,7 +7390,8 @@
         const active = td.id === id;
         td.secs.forEach((s) => { s.hidden = !active; });
       });
-      [...nav.children].forEach((b) => b.setAttribute('aria-pressed', b.dataset.tabId === id ? 'true' : 'false'));
+      [...nav.querySelectorAll('button')].forEach((b) => b.setAttribute('aria-pressed', b.dataset.tabId === id ? 'true' : 'false'));
+      syncSlidingSeg(nav, 'drawer-evidence', 'button[aria-pressed="true"]', 'tone-soft');
       if (id === 'Structure') {
         setTimeout(() => init3dAdcCanvas(cvs3d, row), 50);
       }
@@ -7003,6 +7404,7 @@
       }));
     });
 
+    segRectMemory.delete('drawer-evidence');
     drawerBody.append(nav, ...allSecs, makeDrawerExportTab());
     const initialTab = ['Patient', 'Study', 'Structure'].includes(S.drawerTab) ? S.drawerTab : 'Patient';
     switchTab(initialTab);
@@ -7305,6 +7707,7 @@
         active3dModel = designConstruct;
         btnToggleDesign.setAttribute('aria-pressed', 'true');
         btnToggleRef.setAttribute('aria-pressed', 'false');
+        syncSlidingSeg(switcher3d, 'pills-3d', '.st-pill[aria-pressed="true"]', 'tone-dark');
         updateLegend(active3dModel);
         init3dAdcCanvas(cvs3d, active3dModel);
       },
@@ -7317,12 +7720,15 @@
         active3dModel = refRow || { adc: refAdcId, name: refName, brand: refBrand };
         btnToggleDesign.setAttribute('aria-pressed', 'false');
         btnToggleRef.setAttribute('aria-pressed', 'true');
+        syncSlidingSeg(switcher3d, 'pills-3d', '.st-pill[aria-pressed="true"]', 'tone-dark');
         updateLegend(active3dModel);
         init3dAdcCanvas(cvs3d, active3dModel);
       },
     });
 
-    const switcher3d = h('div', { class: 'studio-pills', style: 'margin-bottom:12px' }, btnToggleDesign, btnToggleRef);
+    const switcher3d = h('div', { class: 'studio-pills is-seg-grid', style: 'margin-bottom:12px' }, btnToggleDesign, btnToggleRef);
+    segRectMemory.delete('pills-3d');
+    syncSlidingSeg(switcher3d, 'pills-3d', '.st-pill[aria-pressed="true"]', 'tone-dark');
 
     const sec3D = section(null,
       switcher3d,
@@ -7356,8 +7762,10 @@
         const active = td.id === id;
         td.secs.forEach((s) => { s.hidden = !active; });
       });
-      [...nav.children].forEach((b) => b.setAttribute('aria-pressed', b.dataset.tabId === id ? 'true' : 'false'));
+      [...nav.querySelectorAll('button')].forEach((b) => b.setAttribute('aria-pressed', b.dataset.tabId === id ? 'true' : 'false'));
+      syncSlidingSeg(nav, 'drawer-compare', 'button[aria-pressed="true"]', 'tone-soft');
       if (id === 'Structure') {
+        syncSlidingSeg(switcher3d, 'pills-3d', '.st-pill[aria-pressed="true"]', 'tone-dark');
         setTimeout(() => init3dAdcCanvas(cvs3d, active3dModel), 50);
       }
     }
@@ -7369,6 +7777,7 @@
       }));
     });
 
+    segRectMemory.delete('drawer-compare');
     drawerBody.append(nav, ...allSecs, makeDrawerExportTab());
     const initCmpTab = ['Compare', 'Structure', 'Study'].includes(S.compareTab) ? S.compareTab : 'Compare';
     switchCompareTab(initCmpTab);
@@ -7412,8 +7821,8 @@
     };
 
     const modeLabel = sp.mode === 'deep_research_v2'
-      ? (isKo ? '자동 설계 (5-fold ADCSurrogateNet v2)' : 'Auto Design (5-fold ADCSurrogateNet v2)')
-      : (S.studioDesignMode === 'auto' ? (isKo ? 'ADC 자동 설계' : 'Auto-design ADC') : (isKo ? 'ADC 수동 설계' : 'Manual ADC Design'));
+      ? (isKo ? 'ADC 자동 설계' : 'Auto ADC Design')
+      : (S.studioDesignMode === 'auto' ? (isKo ? 'ADC 자동 설계' : 'Auto ADC Design') : (isKo ? 'ADC 수동 설계' : 'Manual ADC Design'));
 
     return {
       modeLabel,

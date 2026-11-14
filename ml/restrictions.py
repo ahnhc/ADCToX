@@ -39,10 +39,10 @@ TABLE = {"no_adjustment": "Clear", "monitor": "Monitor", "reduce_dose": "Reduce 
 INPUT = {"crcl_lt": "CLcr (Creatinine + age, sex, weight, or eGFR)", "crcl_ge": "CLcr (Creatinine + age, sex, weight, or eGFR)",
          "bili_gt": "Bilirubin", "bili_le": "Bilirubin", "ast_gt": "AST", "ast_le": "AST", "alt_gt": "ALT", "alt_le": "ALT",
          "child_pugh": "Child-Pugh", "esrd": "Dialysis/ESRD", "lvef_lt": "LVEF", "lvef_ge": "LVEF", "platelets_lt": "Platelets",
-         "anc_lt": "ANC", "hba1c_ge": "HbA1c", "ugt1a1_28_homozygous": "UGT1A1*28"}
+         "anc_lt": "ANC", "hba1c_ge": "HbA1c", "ugt1a1_28_homozygous": "UGT1A1*28", "age_lt": "Age", "age_ge": "Age"}
 FIELD = {"crcl_lt": "crcl", "crcl_ge": "crcl", "bili_gt": "bili", "bili_le": "bili", "ast_gt": "ast", "ast_le": "ast", "alt_gt": "alt",
          "alt_le": "alt", "child_pugh": "child_pugh", "esrd": "esrd", "lvef_lt": "lvef", "lvef_ge": "lvef", "platelets_lt": "platelets",
-         "anc_lt": "anc", "hba1c_ge": "hba1c", "ugt1a1_28_homozygous": "ugt1a1_28_homozygous"}
+         "anc_lt": "anc", "hba1c_ge": "hba1c", "ugt1a1_28_homozygous": "ugt1a1_28_homozygous", "age_lt": "age", "age_ge": "age"}
 
 
 def load_rules():
@@ -71,6 +71,7 @@ class Patient:
     anc: float | None = None           # x10^3/uL
     hba1c: float | None = None         # %
     ugt1a1_28_homozygous: bool | None = None
+    age: float | None = None
 
     def __post_init__(self):
         if "dialysis" in self.conditions: self.esrd = True
@@ -87,6 +88,7 @@ def _domains(p, rules):
     if p.platelets is not None or p.anc is not None: on.add("blood")
     if p.hba1c is not None: on.add("metabolic")
     if p.ugt1a1_28_homozygous is not None: on.add("genotype")
+    if p.age is not None and p.age < 18: on.add("pediatric")
     for r in rules:
         if set(r["when"].get("condition", [])) & p.conditions: on.add(r["domain"])
     return on
@@ -119,6 +121,8 @@ def _grid(p, domain, rules):
         return [dict(hba1c=v) for v in ([p.hba1c] if p.hba1c is not None else _points(rules, "hba1c_ge"))]
     if domain == "cardiac":
         return [dict(lvef=v) for v in ([p.lvef] if p.lvef is not None else _points(rules, "lvef_lt", "lvef_ge"))]
+    if domain == "pediatric":
+        return [dict(age=v) for v in ([p.age] if p.age is not None else _points(rules, "age_lt", "age_ge"))]
     return [dict()]
 
 
@@ -135,13 +139,13 @@ def _holds(when, st, p):
             continue
         key = {"crcl_lt": "crcl", "crcl_ge": "crcl", "bili_gt": "bili", "bili_le": "bili", "ast_gt": "ast", "ast_le": "ast", "alt_gt": "alt", "alt_le": "alt",
                "lvef_lt": "lvef", "lvef_ge": "lvef", "child_pugh": "child_pugh", "esrd": "esrd",
-               "platelets_lt": "platelets", "anc_lt": "anc", "hba1c_ge": "hba1c"}[k]
+               "platelets_lt": "platelets", "anc_lt": "anc", "hba1c_ge": "hba1c", "age_lt": "age", "age_ge": "age"}[k]
         x = st.get(key)
         if x is None: return None
         ok = {"crcl_lt": lambda: x < v, "crcl_ge": lambda: x >= v, "bili_gt": lambda: x > v, "bili_le": lambda: x <= v,
               "ast_gt": lambda: x > v, "ast_le": lambda: x <= v, "alt_gt": lambda: x > v, "alt_le": lambda: x <= v, "lvef_lt": lambda: x < v, "lvef_ge": lambda: x >= v,
               "child_pugh": lambda: x in v, "esrd": lambda: x == v,
-              "platelets_lt": lambda: x < v, "anc_lt": lambda: x < v, "hba1c_ge": lambda: x >= v}[k]()
+              "platelets_lt": lambda: x < v, "anc_lt": lambda: x < v, "hba1c_ge": lambda: x >= v, "age_lt": lambda: x < v, "age_ge": lambda: x >= v}[k]()
         if not ok: return False
     return True
 

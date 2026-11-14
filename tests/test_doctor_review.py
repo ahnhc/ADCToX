@@ -146,15 +146,16 @@ def _linked(monkeypatch, mondo, name, axes):
 
 
 def test_a_cancer_among_the_diseases_puts_its_adcs_first(monkeypatch):
-    """DLBCL typed with the diseases: the patient's cancer, not an organ; the ADCs approved for it first, the others under a rule."""
+    """DLBCL typed with the diseases: safety rules still rank first; indicated ADCs win ties without a divider."""
     _linked(monkeypatch, "MONDO:0018905", "diffuse large B-cell lymphoma", ["haematologic"])
     rows, s, notes, _ = RC.recommend(["cirrhosis", "DLBCL"], {}, {})
     approved = {"polatuzumab-vedotin", "loncastuximab-tesirine", "brentuximab-vedotin"}
-    assert {r["adc"] for r in rows[:3]} == approved and not any(r["indicated"] for r in rows[3:])
+    assert {r["adc"] for r in rows if r["indicated"]} == approved
     assert "haematologic" not in s and RC.patient_cancers(notes) == {"DLBCL": ("diffuse large B-cell lymphoma", ["Large B-cell lymphoma (DLBCL)"])}
-    lines, at = RC._result_list(rows, 100)
-    rule = next(i for i, ln in enumerate(lines) if "Other cancers" in ln)
-    assert at[2] < rule < at[3]
+    key = [(r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"], not r["indicated"], r["name"]) for r in rows]
+    assert key == sorted(key)
+    lines, _ = RC._result_list(rows, 100)
+    assert not any("Other cancers" in ln for ln in lines)
     plain, _ = RC.recommend(["cirrhosis"], {}, {})[:2]
     assert all(r["indicated"] for r in plain) and not any("Other cancers" in ln for ln in RC._result_list(plain, 100)[0])
 
@@ -169,8 +170,8 @@ def test_two_cancers_take_the_adcs_of_both(monkeypatch):
 def test_a_cancer_no_adc_is_approved_for_puts_the_rule_on_top(monkeypatch):
     _linked(monkeypatch, "MONDO:0005062", "lymphoma", ["haematologic"])
     rows, *_ = RC.recommend(["lymphoma"], {}, {})
-    lines, at = RC._result_list(rows, 100)
-    assert not any(r["indicated"] for r in rows) and "Other cancers" in lines[at[0] - 1]
+    lines, _ = RC._result_list(rows, 100)
+    assert not any(r["indicated"] for r in rows) and not any("Other cancers" in ln for ln in lines)
 
 
 def test_a_solid_cancer_takes_the_tumour_agnostic_her2_approval():
@@ -243,3 +244,23 @@ def test_the_trial_of_the_patients_cancer_is_shown(monkeypatch):
     assert "  DESTINY-Breast02, T-DXd 5.4 mg/kg q3w, n=404; vs treatment of physician's choice" in text     # the largest HER2+ trial, not DESTINY-Breast06
     assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease)\n {12}[━─]{20} \d+\.\d%\n {12}[━─]{20} \d+\.\d%$", text, re.M)   # ADC bar, comparator bar
     assert re.search(r"^  Lung\s+(pneumonitis|interstitial lung disease) \d+/404 \(\d+\.\d%, vs \d+\.\d%\)", "\n".join(RC.trial_lines(tdxd)), re.M)   # counts: the report
+
+
+def test_pediatric_age_triggers_fda_section_84_rules(monkeypatch):
+    monkeypatch.setattr(RC, "FIRST", None)
+    monkeypatch.setattr(RC, "PRIORITY", {})
+
+    rows_1yo, *_ = RC.recommend([], {}, {"age": 1})
+    by_adc = {r["adc"]: r for r in rows_1yo}
+    assert by_adc["gemtuzumab-ozogamicin"]["verdict"].worst_known == RC.RS.TIER["monitor"]
+    assert by_adc["inotuzumab-ozogamicin"]["verdict"].worst_known == RC.RS.TIER["monitor"]
+    assert by_adc["brentuximab-vedotin"]["verdict"].worst_known == RC.RS.TIER["insufficient_data"]
+    assert any(rule.get("domain") == "pediatric" for _, rule in by_adc["trastuzumab-deruxtecan"]["verdict"].known)
+
+    rows_neonate, *_ = RC.recommend([], {}, {"age": 0.04})
+    assert {r["adc"]: r for r in rows_neonate}["gemtuzumab-ozogamicin"]["verdict"].worst_known == RC.RS.TIER["insufficient_data"]
+
+    rows_adult, *_ = RC.recommend([], {}, {"age": 65})
+    for r in rows_adult:
+        assert not any(rule.get("domain") == "pediatric" for _, rule in r["verdict"].known + r["verdict"].possible)
+

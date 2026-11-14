@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADCToX v0.9.8 알고리즘 기술 명세서</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #111827;
+      --ink-soft: #374151;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --line-strong: #cbd5e1;
+      --surf: #f8fafc;
+      --surf-2: #f1f5f9;
+      --accent: #0f766e;
+      --accent-soft: #f0fdfa;
+      --blue: #1d4ed8;
+      --blue-soft: #eff6ff;
+      --amber: #b45309;
+      --amber-soft: #fffbeb;
+      --red: #b91c1c;
+      --red-soft: #fef2f2;
+    }
+
+    @page {
+      size: A4;
+      margin: 13mm 14mm 14mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      font-size: 9.8pt;
+      line-height: 1.56;
+      letter-spacing: -0.012em;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .doc-shell {
+      max-width: 190mm;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    @media screen {
+      body {
+        background: #f3f4f6;
+        padding: 24px 16px 48px;
+      }
+      .doc-shell {
+        background: #ffffff;
+        padding: 32px 38px;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+      }
+    }
+
+    header.doc-header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .doc-kicker {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    h1.doc-title {
+      font-size: 19pt;
+      font-weight: 800;
+      line-height: 1.22;
+      margin: 0 0 6px 0;
+      color: var(--ink);
+      letter-spacing: -0.025em;
+    }
+
+    .doc-subtitle {
+      font-size: 10pt;
+      color: var(--ink-soft);
+      margin: 0 0 10px 0;
+    }
+
+    .meta-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .meta-card {
+      background: var(--surf);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 7px 10px;
+    }
+
+    .meta-label {
+      font-size: 7.5pt;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .meta-val {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    h2.part-title {
+      font-size: 13pt;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 18px 0 8px 0;
+      padding: 6px 10px;
+      background: var(--surf-2);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      break-after: avoid;
+    }
+
+    h2.part-title.blue {
+      border-left-color: var(--blue);
+    }
+
+    h3.sec-title {
+      font-size: 10.6pt;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 13px 0 5px 0;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 3px;
+      break-after: avoid;
+    }
+
+    p {
+      margin: 0 0 7px 0;
+      color: var(--ink-soft);
+      word-break: keep-all;
+    }
+
+    .callout {
+      background: var(--accent-soft);
+      border: 1px solid #99f6e4;
+      border-radius: 7px;
+      padding: 8px 12px;
+      margin: 8px 0 10px 0;
+      break-inside: avoid;
+    }
+
+    .callout.blue {
+      background: var(--blue-soft);
+      border-color: #bfdbfe;
+    }
+
+    .callout-title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .formula-box {
+      background: var(--surf);
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      padding: 8px 12px;
+      margin: 7px 0 9px 0;
+      break-inside: avoid;
+      text-align: center;
+    }
+
+    .formula-cap {
+      font-size: 8pt;
+      color: var(--muted);
+      text-align: left;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .diagram-box {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      margin: 8px 0 10px 0;
+      break-inside: avoid;
+    }
+
+    .diagram-box svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .diagram-cap {
+      font-size: 8.3pt;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6px 0 10px 0;
+      font-size: 8.5pt;
+      break-inside: avoid;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 5px 8px;
+      text-align: left;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    th {
+      background: var(--surf-2);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    td.num, th.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      break-inside: avoid;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 9px 11px;
+      background: #ffffff;
+      break-inside: avoid;
+    }
+
+    .card h4 {
+      margin: 0 0 5px 0;
+      font-size: 9.4pt;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 7.6pt;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--line-strong);
+      background: var(--surf);
+      color: var(--ink);
+    }
+    .tag.red { background: var(--red-soft); border-color: #fecaca; color: var(--red); }
+    .tag.amber { background: var(--amber-soft); border-color: #fde68a; color: var(--amber); }
+    .tag.teal { background: var(--accent-soft); border-color: #99f6e4; color: var(--accent); }
+    .tag.blue { background: var(--blue-soft); border-color: #bfdbfe; color: var(--blue); }
+
+    code {
+      font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+      font-size: 8.3pt;
+      background: var(--surf-2);
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: var(--ink);
+    }
+
+    .katex {
+      font-size: 0.96em;
+    }
+
+    .page-break {
+      break-before: page;
+    }
+  </style>
+</head>
+<body>
+  <div class="doc-shell">
+    <header class="doc-header">
+      <div class="doc-kicker">ADCToX v0.9.8 Technical Architecture Specification</div>
+      <h1 class="doc-title">ADCToX 알고리즘 및 수리 모델 기술 명세서</h1>
+      <p class="doc-subtitle">FDA 승인 ADC 15종 맞춤형 안전 추천 엔진과 368,640개 조합 기반 신규 ADC 다중스케일 자동 설계 알고리즘의 수학적 구조 및 구현 명세</p>
+      <div class="meta-strip">
+        <div class="meta-card">
+          <div class="meta-label">승인 약물 추천 코퍼스</div>
+          <div class="meta-val">15종 ADC / 120개 라벨 규칙</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">신규 ADC 조합 공간</div>
+          <div class="meta-val">368,640개 × 5 Q3W 용량</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">신경망 · 약동학 엔진</div>
+          <div class="meta-val">5-Fold + 252-Step Q3W ODE</div>
+        </div>
+        <div class="meta-card">
+          <div class="meta-label">가상 환자군 불확실성</div>
+          <div class="meta-val">64-Draw QMC (320회/조합)</div>
+        </div>
+      </div>
+    </header>
+
+    <p>
+      ADCToX 플랫폼은 항체-약물 접합체(Antibody-Drug Conjugate, ADC)의 환자 맞춤형 처방 의사결정과 신규 접합체 설계를 두 개의 독립적·상호보완적 계산 파이프라인으로 수행한다.
+      제1부는 FDA DailyMed SPL 라벨 원문과 ClinicalTrials.gov 임상시험 이상사례를 결합한 결정론적 안전 추천 엔진이며, 제2부는 108차원 생물물리 특징과 5-Fold 다중모달 신경망 앙상블, 3주기 Q3W 2-구획 약동학/약력학(PK/PD) 미분방정식을 실시간 결합한 신규 ADC 자동 설계 엔진이다.
+    </p>
+
+    <div class="diagram-box">
+      <svg viewBox="0 0 920 205" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ADCToX 전체 아키텍처">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#475569" />
+          </marker>
+        </defs>
+        <rect x="10" y="22" width="190" height="162" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.6" />
+        <text x="105" y="45" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">1. 환자 프로필 입력</text>
+        <text x="105" y="70" text-anchor="middle" font-size="12" fill="#334155">환자 질환 (종양 + 기저질환)</text>
+        <text x="105" y="92" text-anchor="middle" font-size="12" fill="#334155">기본 정보 (나이, 성별, 체중)</text>
+        <text x="105" y="114" text-anchor="middle" font-size="12" fill="#334155">선택 검진 수치 (간/신장/심장)</text>
+        <rect x="26" y="130" width="158" height="40" rx="6" fill="#eff6ff" stroke="#93c5fd" />
+        <text x="105" y="148" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e40af">13개 장기 취약도 s_o</text>
+        <text x="105" y="163" text-anchor="middle" font-size="11" fill="#1e3a8a">Cockcroft-Gault / ULN / Age</text>
+
+        <line x1="200" y1="70" x2="246" y2="70" stroke="#475569" stroke-width="2" marker-end="url(#arr)" />
+        <line x1="200" y1="142" x2="246" y2="142" stroke="#475569" stroke-width="2" marker-end="url(#arr)" />
+
+        <rect x="250" y="14" width="320" height="84" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.8" />
+        <text x="410" y="37" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f766e">제1부: 승인 ADC 맞춤형 추천</text>
+        <text x="410" y="58" text-anchor="middle" font-size="12" fill="#134e4a">120개 FDA SPL 규칙(간/신장/소아 8.4) 전수 대조</text>
+        <text x="410" y="77" text-anchor="middle" font-size="12" fill="#134e4a">안전성 최우선 사전식 순위 + 대조군 AE 매칭</text>
+
+        <rect x="250" y="108" width="320" height="86" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.8" />
+        <text x="410" y="131" text-anchor="middle" font-size="13.5" font-weight="800" fill="#1d4ed8">제2부: 신규 ADC 자동 설계</text>
+        <text x="410" y="152" text-anchor="middle" font-size="12" fill="#1e3a8a">1단계: 저계수 행렬 368,640 조합 &lt; 10ms 스크리닝</text>
+        <text x="410" y="171" text-anchor="middle" font-size="12" fill="#1e3a8a">2단계: 5-Fold 4경로 독성 + Q3W ODE + 64 QMC</text>
+
+        <line x1="570" y1="56" x2="616" y2="56" stroke="#475569" stroke-width="2" marker-end="url(#arr)" />
+        <line x1="570" y1="151" x2="616" y2="151" stroke="#475569" stroke-width="2" marker-end="url(#arr)" />
+
+        <rect x="620" y="14" width="288" height="84" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6" />
+        <text x="764" y="37" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">추천 결과 출력</text>
+        <text x="764" y="58" text-anchor="middle" font-size="12" fill="#334155">15종 승인 ADC 안전 순위표 및 질환 일치 필터</text>
+        <text x="764" y="77" text-anchor="middle" font-size="12" fill="#334155">환자 질환 관련 임상시험 이중 막대 근거</text>
+
+        <rect x="620" y="108" width="288" height="86" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.6" />
+        <text x="764" y="131" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">자동 설계 출력 (실시간 스트리밍)</text>
+        <text x="764" y="152" text-anchor="middle" font-size="12" fill="#334155">X: 장기 안전도 · Y: 항암 효능 산점도 및 용량 곡선</text>
+        <text x="764" y="171" text-anchor="middle" font-size="12" fill="#334155">최적 투여 용량(mg/kg) 및 파레토 최적 조합</text>
+      </svg>
+      <div class="diagram-cap">그림 1. ADCToX v0.9.8 환자 입력 기반 승인 ADC 추천 및 신규 ADC 자동 설계 이중 엔진 구조</div>
+    </div>
+
+    <h2 class="part-title">제1부. 승인 ADC 환자 맞춤형 추천 알고리즘</h2>
+
+    <h3 class="sec-title">1.1 환자 질환 해석 및 13개 장기 취약도 정량화</h3>
+    <p>
+      입력된 자유 텍스트 및 선택 질환은 한영 정규화(NFC), 기저질환 레지스트리(<code>conf/comorbidity_registry.csv</code>), 그리고 <code>MONDO/HPO</code> 기반 장기 판별 모델을 거쳐 해석된다.
+      모든 독성 평가는 13개 표준 장기 축(혈액/골수, 간, 심장/심혈관, 폐/호흡기, 신장, 위장관, 신경, 안구/각막, 피부/점막, 대사/내분비, 근골격, 면역/감염, 이비인후/청각) 위에서 정의되며, 각 장기의 환자 취약도 $s_o$는 해당 장기를 손상시키는 기저질환 중 최대 중증도(미등록 MONDO/HPO 장기는 고정 기본값 $0.80$)로 계산된다.
+    </p>
+    <p>
+      치료 대상 악성 종양(예: <code>HER2 양성 유방암</code>, <code>DLBCL</code>, <code>AML</code>)이 기저질환으로 오인되어 장기 취약도를 왜곡하지 않도록, 종양 개념은 별도 <code>patient_cancers</code> 집합으로 격리하여 <code>indicated</code> 일치 여부 판정에만 사용한다.
+      반대로 비정상 검진 수치(예: <code>LVEF &lt; 50%</code>, <code>Bilirubin &gt; ULN</code>)는 검진 파생 장기 플래그를 통해 해당 장기의 취약도를 능동적으로 보완한다.
+    </p>
+
+    <h3 class="sec-title">1.2 임상 검진 수치 파생 및 연령 환산 (<code>ml/labs.py</code>)</h3>
+    <p>
+      원시 검진 입력 <code>raw</code>는 허용 생리 범위 검증 후 다음의 임상 파생 지표를 계산한다. 신장 기능은 직접 입력된 <code>CLcr</code>, <code>eGFR</code> 또는 Cockcroft-Gault 공식을 사용하며, 간기능 수치는 기관별 정상상한치(미입력 시 빌리루빈 <code>1.2 mg/dL</code>, AST/ALT <code>40 U/L</code>) 대비 배수(<code>×ULN</code>)로 정규화된다.
+      연령 <code>age</code>는 <code>0~120년</code> 범위를 지원하며 소아 개월 연령도 실수 연수(예: 생후 1개월 $\approx 0.0834$년)로 연속 처리한다.
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-cap">Cockcroft-Gault 크레아티닌 청소율 (mL/min) 및 간기능 정상상한 배수 파생식</div>
+      $$\mathrm{CL}_{\mathrm{cr}} = \frac{(140 - \mathrm{Age}) \times \mathrm{Weight}_{\mathrm{kg}}}{72 \times \mathrm{SCr}_{\mathrm{mg/dL}}} \times \begin{cases} 0.85, &amp; \text{Sex} = \mathrm{F} \\ 1.00, &amp; \text{Sex} = \mathrm{M} \end{cases} \qquad r_{\mathrm{organ}} = \frac{x_{\mathrm{measured}}}{\mathrm{ULN}_{\mathrm{organ}}}$$
+    </div>
+
+    <h3 class="sec-title">1.3 DailyMed FDA SPL 120개 규칙 및 Section 8.4 소아 연령 엔진</h3>
+    <p>
+      규칙 엔진(<code>ml/restrictions.py</code>)은 미국 FDA 승인 ADC 15종에 대한 <code>120</code>개 원문 검증 규칙(<code>conf/label_restrictions.yaml</code>)을 평가한다.
+      각 규칙은 라벨 원문 인용과 함께 5단계 임상 제재 Tier로 분류되며, 환자가 미입력한 검진 항목에 대해서는 생리적으로 가능한 모든 상태 격자(Grid)를 전개하여 확정 규칙(<code>known</code>)과 조건부 잠재 규칙(<code>possible</code>)을 엄밀히 구분한다.
+    </p>
+
+    <div class="two-col">
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>규칙 영역</th>
+              <th class="num">규칙 수</th>
+              <th>주요 판정 변수</th>
+              <th>적용 방식</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>간기능 장애 (Hepatic)</td><td class="num">43</td><td>Bilirubin, AST, Child-Pugh</td><td>Covered 격자 전수 검사</td></tr>
+            <tr><td>신장기능 장애 (Renal)</td><td class="num">41</td><td>CLcr, ESRD, 투석 여부</td><td>Covered 격자 전수 검사</td></tr>
+            <tr><td>소아 연령 (Section 8.4)</td><td class="num">18</td><td>Age (년 / 개월 연속값)</td><td>만 18세 미만 시 활성</td></tr>
+            <tr><td>심장 · QT 연장</td><td class="num">7</td><td>LVEF (%), 심질환, QTc</td><td>조건 충족 시 활성</td></tr>
+            <tr><td>혈액 · 안구 · 대사 등</td><td class="num">11</td><td>ANC, Plt, 각막, 당뇨, 약물</td><td>조건 충족 시 활성</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>제재 등급 (Tier)</th>
+              <th class="num">점수</th>
+              <th>대표 조건 (Section 8.4 포함)</th>
+              <th>표시 상태</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Contraindicated</td><td class="num">4</td><td>라벨 금기 (투여 불가)</td><td><span class="tag red">금기</span></td></tr>
+            <tr><td>Avoid use</td><td class="num">3</td><td>중등도·중증 장애 / 회피 권고</td><td><span class="tag red">사용 회피</span></td></tr>
+            <tr><td>Insufficient / Unstated</td><td class="num">2</td><td>성인 전용 ADC(&lt;18세) / 영아 미확립</td><td><span class="tag amber">판단 자료 부족</span></td></tr>
+            <tr><td>Monitor / Reduce dose</td><td class="num">1</td><td>소아 적응(GO ≥1mo, IO ≥1y, BV ≥2y)</td><td><span class="tag blue">경과 관찰</span></td></tr>
+            <tr><td>No adjustment</td><td class="num">0</td><td>조절 불필요 / 해당 제약 없음</td><td><span class="tag teal">적합</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Section 8.4 소아 연령(Pediatric Use) 계층별 분기 규칙 (<code>domain: pediatric</code>, 18개 규칙)</div>
+      <p style="margin:0;">
+        환자 나이 <code>age &lt; 18</code>세 입력 시 소아 연령 도메인이 활성화된다. 성인 전용 12종 ADC는 모두 Tier 2(<code>insufficient_data</code>)로 전환되며, 소아 허가 또는 연령별 안전성 자료가 존재하는 3종은 라벨 임계 연령에 따라 세분화된다:
+        <strong>Brentuximab vedotin</strong>(<code>&lt;2세</code> 자료 부족 / <code>2~18세</code> 경과 관찰), <strong>Inotuzumab ozogamicin</strong>(<code>&lt;1세</code> 자료 부족 / <code>1~18세</code> 경과 관찰), <strong>Gemtuzumab ozogamicin</strong>(<code>&lt;0.0834년(약 1개월)</code> 신생아 자료 부족 / <code>≥1개월</code> 경과 관찰). 성인(<code>age ≥ 18</code>)에서는 소아 도메인이 비활성화된다.
+      </p>
+    </div>
+
+    <h3 class="sec-title">1.4 안전성 최우선 사전식 순위 결정 및 임상시험 이상사례 매칭</h3>
+    <p>
+      v0.9.8 추천 엔진은 환자의 종양 질환과 일치하더라도 환자의 취약 장기에 치명적 경고가 존재하는 약물이 1순위로 추천되는 역전을 방지하기 위해 <strong>안전성 최우선 사전식 정렬 키</strong>를 사용한다.
+      하위 지표가 상위 등급의 안전 제재를 결코 상쇄(Trade-off)할 수 없으며, 질환 일치 여부(<code>indicated</code>)는 동일한 안전 등급 및 장기 경고 수를 가진 약물 간 동률 해소(Tie-breaker) 단계에서 적용된다.
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-cap">승인 ADC 안전성 최우선 사전식 정렬 키 (<code>ml/recommend.py</code> 기본 모드)</div>
+      $$\mathrm{Key}(r) = \Big(\underbrace{\mathrm{tier}(r)}_{\text{잠재 포함 최악 등급}},\ \underbrace{\mathrm{worst\_known}(r)}_{\text{확정 제재 등급}},\ \underbrace{B_l(r)}_{\text{레벨별 블랙박스 경고}},\ \underbrace{W_l(r)}_{\text{레벨별 일반 경고}},\ \underbrace{\mathbb{I}[\neg \mathrm{indicated}(r)]}_{\text{질환 일치 동률 해소}},\ \mathrm{name}(r)\Big)$$
+    </div>
+
+    <p>
+      임상 근거 비교 열은 <code>ClinicalTrials.gov</code> 및 FDA SPL Section 6.1에서 추출한 등록 임상시험 데이터(치료군 대 대조군 이상사례 발생률)를 환자의 취약 장기 및 선택 질환에 매칭한다.
+      대조군 대비 치료군 이상사례 발생률이 높은 장기는 붉은 계열 이중 막대로 즉시 강조되어, 라벨 규칙과 정량 임상 발생률 간의 일관성을 시각적으로 제공한다.
+    </p>
+
+    <h2 class="part-title blue">제2부. 환자 맞춤형 신규 ADC 자동 설계 알고리즘</h2>
+
+    <h3 class="sec-title">2.1 조합 설계 공간 및 다중모달 5-Fold 신경망 표현</h3>
+    <p>
+      신규 ADC 설계 엔진은 치료 지수를 극대화하는 최적 접합체와 임상 투여 용량을 동시에 탐색한다.
+      설계 공간은 <code>36</code>개 표적 항원, <code>16</code>개 화학 링커, <code>20</code>개 세포독성 페이로드(또는 사용자 정의 <code>RDKit SMILES</code>), <code>8</code>단계 약물-항체 비율(<code>DAR = 1.0, 2.0, 3.5, 4.0, 5.0, 6.0, 7.6, 8.0</code>), <code>4</code>종 항체/Fc 골격(<code>IgG1 WT</code>, <code>LALA-PG</code>, <code>IgG4 S228P</code>, <code>IgG2</code>)으로 구성된 <strong>368,640개 고유 접합체</strong>와 <strong>5개 Q3W 임상 투여 용량</strong>(<code>1.8, 2.4, 3.6, 5.4, 6.0 mg/kg</code>)의 곱인 총 <strong>1,843,200개 투여 요법</strong>을 포괄한다.
+    </p>
+    <p>
+      5-Fold 앙상블 신경망(<code>MergedSurrogateHeads</code>)은 항체 중쇄·경쇄, 표적 항원, 링커, 페이로드 및 생물물리 벡터를 6-토큰 서열 <code>[t_heavy, t_light, t_antigen, t_linker, t_payload, t_biophys]</code>로 인코딩하며, 각 후보의 물성·조직 분포를 <code>108</code>차원 생물물리 특징 벡터로 결합한다.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>벡터 구간</th>
+          <th class="num">차원</th>
+          <th>인코딩 대상 생물물리·전사체 특징</th>
+          <th>신경망 활용 경로</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>biophys[0:16]</code></td><td class="num">16</td><td>페이로드 3D 형태·극성표면적·지질친화도(cLogP)·전하</td><td>세포독성 pIC50 및 막투과성</td></tr>
+        <tr><td><code>biophys[16:32]</code></td><td class="num">16</td><td>링커 3D 유연성·스페이서 길이·절단 부위 입체장애</td><td>혈장 안정성 및 리소좀 방출</td></tr>
+        <tr><td><code>biophys[32:57]</code></td><td class="num">25</td><td>절단성 여부, pH 7.4/5.5 양성자화, 리소좀 방출 속도, 주변세포 투과</td><td>조기 누출(h_base) 및 효능 보정</td></tr>
+        <tr><td><code>biophys[57:73]</code></td><td class="num">16</td><td>표적 항원 단백질 정적 서열 물성 및 AlphaFold 구조 신뢰도(pLDDT)</td><td>종양 선택도(S_sel) 및 친화 안정</td></tr>
+        <tr><td><code>biophys[73:82]</code></td><td class="num">9</td><td>정규화 DAR, 소수성 패치(dar_hydro_patch), HIC 응집도, 로그 용량</td><td>망상내피계 간 청소(h_agg)</td></tr>
+        <tr><td><code>biophys[82:95]</code></td><td class="num">13</td><td>13개 정상 장기 GTEx 발현량 프로파일</td><td>정상 조직 표적 독성(h_on)</td></tr>
+        <tr><td><code>biophys[95:108]</code></td><td class="num">13</td><td>13개 정상 장기 Tabula Sapiens 단일세포 발현량</td><td>미세세포 표적 외 위험도</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sec-title">2.2 1단계 초고속 저계수 행렬 스크리닝 (<code>ml/studio_matrix.py</code>)</h3>
+    <p>
+      실시간 탐색에 앞서, 1단계 엔진은 모든 <code>368,640</code>개 접합체를 항체/Fc 축(<code>144 TF</code>)과 링커/페이로드/DAR 축(<code>2,560 LPD</code>)으로 인수분해한 rank-24 결합 표현 <code>U_org_quad</code>(<code>144 × 24</code>)와 <code>V_org_cat</code>(<code>24 × 2,560</code>)을 활용하여 환자 활성 장기 행만 슬라이싱한 단일 행렬곱 <code>(k × 96) @ (96 × 2,560)</code>을 CPU에서 <code>10 ms</code> 이내에 완주한다.
+      이 전수 스캔은 2단계 정밀 시뮬레이션을 위한 핵심 기준군과 표적·링커·페이로드 다양성 후보 풀을 즉시 추출한다.
+    </p>
+
+    <h3 class="sec-title">2.3 2단계 장기 독성 4경로 분해 및 다주기 Q3W 2-구획 PK/PD ODE (<code>ml/deep_research.py</code>)</h3>
+    <p>
+      2단계 엔진은 추출된 후보 및 점진적 탐색 배치를 <code>5</code>개 용량으로 확장한 뒤, 각 Fold마다 <code>13</code>개 장기의 기저 위험을 4가지 생물물리 기전 경로(<code>h_base</code>: 혈장 내 링커 조기 절단 누출, <code>h_agg</code>: 고-DAR 소수성 응집 기반 간·망상내피계 청소, <code>h_fc</code>: FcγR 수용체 매개 대식세포 비특이 유입, <code>h_on</code>: 정상 조직 항원 발현 온타겟 독성)로 분해한다.
+    </p>
+
+    <div class="diagram-box">
+      <svg viewBox="0 0 920 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2단계 신경망 독성 4경로 및 Q3W PK/PD ODE 파이프라인">
+        <defs>
+          <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#1d4ed8" />
+          </marker>
+        </defs>
+        <rect x="10" y="18" width="210" height="178" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" />
+        <text x="115" y="42" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">5-Fold Transformer + 108D</text>
+        <text x="115" y="68" text-anchor="middle" font-size="12" fill="#334155">4개 농도(1~1000 nM) 사멸 곡선</text>
+        <text x="115" y="90" text-anchor="middle" font-size="12" fill="#334155">pIC50 (직접 / 주변세포 사멸)</text>
+        <text x="115" y="114" text-anchor="middle" font-size="12" font-weight="700" fill="#0f766e">13개 장기 4-경로 기저 위험</text>
+        <text x="115" y="135" text-anchor="middle" font-size="11.5" fill="#475569">h_base (혈장 누출)</text>
+        <text x="115" y="153" text-anchor="middle" font-size="11.5" fill="#475569">h_agg (소수성 응집/간 청소)</text>
+        <text x="115" y="171" text-anchor="middle" font-size="11.5" fill="#475569">h_fc (FcγR) + h_on (정상 발현)</text>
+
+        <line x1="220" y1="68" x2="262" y2="68" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr2)" />
+        <line x1="220" y1="148" x2="262" y2="148" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr2)" />
+
+        <rect x="266" y="18" width="265" height="86" rx="9" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6" />
+        <text x="398" y="40" text-anchor="middle" font-size="13" font-weight="800" fill="#1e40af">252-Step 3주기 Q3W PK/PD ODE</text>
+        <text x="398" y="61" text-anchor="middle" font-size="12" fill="#1e3a8a">t = 0..63일 (dt = 0.25일, 0·21·42일 투여)</text>
+        <text x="398" y="81" text-anchor="middle" font-size="12" fill="#1e3a8a">C_adc → C_free (AUC_free, C_peak) + C_tum</text>
+
+        <rect x="266" y="116" width="265" height="80" rx="9" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.6" />
+        <text x="398" y="138" text-anchor="middle" font-size="13" font-weight="800" fill="#0f766e">환자 가중 장기 위험 결합</text>
+        <text x="398" y="159" text-anchor="middle" font-size="12" fill="#134e4a">H_{f,o} = [4경로 가중합]·M_dose + h_sys(ODE)</text>
+        <text x="398" y="178" text-anchor="middle" font-size="12" fill="#134e4a">p_{f,o} = 1 - exp(-H_{f,o} · v_o)</text>
+
+        <line x1="531" y1="61" x2="574" y2="95" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr2)" />
+        <line x1="531" y1="156" x2="574" y2="120" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arr2)" />
+
+        <rect x="578" y="28" width="330" height="162" rx="9" fill="#ffffff" stroke="#334155" stroke-width="1.7" />
+        <text x="743" y="52" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0f172a">64-Draw QMC 가상 환자 집단 최적화</text>
+        <text x="743" y="77" text-anchor="middle" font-size="12" fill="#334155">5 Folds × 64 Sobol IIV (변동: k_el, k_dec, v_o)</text>
+        <text x="743" y="100" text-anchor="middle" font-size="12" fill="#334155">안전도 LCB = μ_safe - 0.65 σ_safe</text>
+        <text x="743" y="121" text-anchor="middle" font-size="12" fill="#334155">효능 LCB = μ_eff - 0.55 σ_eff</text>
+        <rect x="598" y="135" width="290" height="40" rx="6" fill="#fffbeb" stroke="#f59e0b" />
+        <text x="743" y="153" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">U = w_s·Safe_LCB + (1-w_s)·Eff_LCB - Tail90</text>
+        <text x="743" y="168" text-anchor="middle" font-size="11" fill="#b45309">NDJSON 청크 실시간 전송 + 파레토 최적 전선 추출</text>
+      </svg>
+      <div class="diagram-cap">그림 2. ADCToX 2단계 생물물리 위험 분해, 3주기 Q3W PK/PD ODE 및 64명 가상 환자군 최적화 흐름도</div>
+    </div>
+
+    <p>
+      약동학 모델은 기준 용량 대비 상대 투여량 $d_{\text{rel}} = d / 3.6$에서 63일간($\Delta t = 0.25$일, 총 $252$스텝) 3회 정맥 주사($t \in \{0, 21, 42\}$일)를 적분한다.
+      혈장 내 접합체의 간 청소($k_{\mathrm{el}} = 0.048\,\mathrm{CL}_{\mathrm{hep}}$), 혈장 내 비특이적 링커 해리($k_{\mathrm{dec}} = 0.036\,(1 - \mathrm{stab})$), 종양 내재화 및 리소좀 방출($k_{\mathrm{upt}}, k_{\mathrm{tum}}$)이 순환 페이로드 축적($\mathrm{AUC}_{\mathrm{free}}, C_{\mathrm{free,peak}}$)과 종양 내 노출($\mathrm{AUC}_{\mathrm{tum}}$)을 산출하여 전신 장기 독성과 용량-효능 반응을 동시 보정한다.
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-cap">3주기 Q3W 2-구획 PK/PD 차분 방정식 ($\Delta t = 0.25\text{ d}$, $k_{\mathrm{pld}} = 0.42\text{ d}^{-1}$, 투여 비율 $r_4 = \max(1,\mathrm{DAR})/4$)</div>
+      $$\begin{aligned}
+      C_{\mathrm{adc}}^{(n+1)} &amp;= \max\!\big(0,\ C_{\mathrm{adc}}^{(n)} - \Delta t\,(k_{\mathrm{dec}} + k_{\mathrm{el}} + 0.35 k_{\mathrm{upt}})\,C_{\mathrm{adc}}^{(n)}\big) + D_{\mathrm{inj}} \cdot \mathbb{I}[n \in \{0, 84, 168\}] \\
+      C_{\mathrm{free}}^{(n+1)} &amp;= \max\!\big(0,\ C_{\mathrm{free}}^{(n)} + \Delta t\,(k_{\mathrm{dec}} r_4 C_{\mathrm{adc}}^{(n)} - k_{\mathrm{pld}} C_{\mathrm{free}}^{(n)})\big), \quad
+      C_{\mathrm{tum}}^{(n+1)} = \max\!\big(0,\ C_{\mathrm{tum}}^{(n)} + \Delta t\,(k_{\mathrm{upt}} r_4 C_{\mathrm{adc}}^{(n)} - k_{\mathrm{tum}} C_{\mathrm{tum}}^{(n)})\big)
+      \end{aligned}$$
+    </div>
+
+    <h3 class="sec-title">2.4 장기 안전도(X), 항암 효능(Y), QMC 목적함수 및 실시간 스트리밍</h3>
+    <p>
+      개별 환자의 기저질환 취약도 가중치 $v_o$(우선 보호 장기 지정 시 $\times 1.45$ 가중, 표적 발현 정상 조직은 기준 가중 $0.62$)와 결합된 장기별 위험 확률 $p_{f,o} = 1 - \exp(-H_{f,o} \cdot v_o)$는 최악 장기 지배 가중 $w_{\text{peak}}$(기본 $0.58$)을 통해 가로축 <strong>장기 안전도 $X_{\text{safety}}$</strong>로 통합된다.
+      세로축 <strong>항암 효능 $Y_{\text{efficacy}}$</strong>는 종양-정상 발현 선택도 $S_{\text{sel}}$, 약동학·소수성 보정 역가 $S_{\text{pot}}$, 혈장-리소좀 전달 효율 $S_{\text{del}}$, 절단성 주변세포 사멸 $S_{\text{bys}}$의 정규화 가중합에 Hill 수용체 점유율 $\mathrm{Occ}(d)$, Fc ADCC 계수, 질환-항원 일치도 및 화학 결합 적합성을 곱해 산출한다.
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-cap">가로축 안전도(X), 세로축 효능(Y), 64-Draw QMC 가상 환자군 LCB + Q90 꼬리위험 목적함수</div>
+      $$X_{\mathrm{safety}} = 100\Big(1 - \big[w_{\mathrm{peak}}\max_o p_{f,o} + (1 - w_{\mathrm{peak}})\bar{p}_f\big]\Big), \qquad
+      Y_{\mathrm{efficacy}} = 100 \cdot \mathrm{clip}\!\Big(\big(\sum_{j \in \{\mathrm{sel,pot,del,bys}\}} \tilde{w}_j S_j\big)\cdot \mathrm{ADCC}\cdot \mathrm{Occ}(d)\cdot I_t\cdot K_{\mathrm{compat}}\Big)$$
+      $$U = w_{\mathrm{safety}}\big(\mu_{\mathrm{safe}} - 0.65\,\sigma_{\mathrm{safe}}\big) + \big(1 - w_{\mathrm{safety}}\big)\big(\mu_{\mathrm{eff}} - 0.55\,\sigma_{\mathrm{eff}}\big) - 0.14\max\!\big(0,\ Q_{90}(\max_o p_o \cdot 100) - 38\big)$$
+    </div>
+
+    <p>
+      v0.9.8부터 자동 설계 요청(<code>POST /api/studio/deep-research</code>, <code>stream: true</code>)은 계산이 끝날 때까지 대기하지 않고 <code>application/x-ndjson</code> 청크 스트리밍으로 평가가 완료된 후보 좌표 배치(<code>{type: "chunk", points}</code>)를 순차 송신한다.
+      프런트엔드 캔버스는 수신된 좌표를 실시간 점진 플로팅하며, 계산 완료 시 비지배 파레토 최적 전선(Pareto Frontier)과 최적 투여 용량의 5점 용량 궤적 곡선을 최종 렌더링한다.
+    </p>
+
+    <h3 class="sec-title">2.5 데이터 계보 및 아키텍처 구성 요약</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>모듈 / 구성 요소</th>
+          <th>데이터 출처 및 규격</th>
+          <th>핵심 역할</th>
+          <th>운영 환경</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>ml/recommend.py</code></td><td>DailyMed SPL + ClinicalTrials.gov</td><td>15종 승인 ADC 안전 최우선 순위 및 AE 매칭</td><td>CPU &lt; 15ms</td></tr>
+        <tr><td><code>ml/restrictions.py</code></td><td><code>conf/label_restrictions.yaml</code> (120규칙)</td><td>신/간/심/소아(8.4) 조건부 격자 추론</td><td>결정론적 규칙</td></tr>
+        <tr><td><code>ml/studio_matrix.py</code></td><td>GTEx · Tabula Sapiens · AlphaFold</td><td>368,640 접합체 저계수 행렬 1단계 스크리닝</td><td>CPU &lt; 10ms</td></tr>
+        <tr><td><code>ml/deep_research.py</code></td><td>5-Fold 앙상블 · 252-Step ODE · 64 QMC</td><td>4경로 독성, 다주기 약동학, NDJSON 스트리밍</td><td>GPU / CPU Fallback</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof renderMathInElement === "function") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ],
+          throwOnError: false
+        });
+      }
+      window.__MATH_READY__ = true;
+    });
+  </script>
+</body>
+</html>

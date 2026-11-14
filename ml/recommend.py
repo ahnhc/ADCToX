@@ -472,9 +472,9 @@ def recommend(conditions, labs=None, raw=None):
     for r in rows: r["indicated"] = not cancers or r["adc"] in approved
     first = next((set(o) for c, o, _ in pc if c == FIRST), None)
     hit = lambda r, k: sum(a in first for a in r[k]) if first else 0
-    # a cancer: the ADCs approved for it first. A picked condition: its organs' boxed warnings, then warnings, come before
-    # Monitor / Not studied; Avoid stays last
-    order = lambda r: ((not r["indicated"],) if cancers else ()) + ((r["tier"] >= RS.TIER["avoid"], hit(r, "boxed"), hit(r, "warn")) if first else ()) + (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"])
+    # Sort safety-first: permissible ADCs on vulnerable organs always outrank ADCs with restrictions/warnings;
+    # disease match breaks safety ties.
+    order = lambda r: ((r["tier"] >= RS.TIER["avoid"], hit(r, "boxed"), hit(r, "warn")) if first else ()) + (r["tier"], r["verdict"].worst_known, r["Bl"], r["Wl"]) + ((not r["indicated"],) if cancers else ())
     rows.sort(key=lambda r: (order(r), r["name"]))
     prev = None
     for r in rows:
@@ -562,12 +562,20 @@ RANGE_TXT = [("crcl_ge", "crcl_lt", "CLcr {} to <{}"), ("bili_gt", "bili_le", "b
              ("ast_gt", "ast_le", "AST >{} to {}×ULN"), ("alt_gt", "alt_le", "ALT >{} to {}×ULN")]
 
 
+def _fmt_age(v):
+    return "1 mo" if abs(float(v) - 0.0834) < 0.01 else f"{float(v):g} yr"
+
+
 def _when(w):
     parts = []; w = dict(w)
+    if "age_ge" in w and "age_lt" in w:
+        parts.append(f"age {_fmt_age(w.pop('age_ge'))} to <{_fmt_age(w.pop('age_lt'))}")
     for lo, hi, text in RANGE_TXT:                     # a band reads as the label writes it: 'bilirubin >1.5 to 3×ULN', 'CLcr 30 to <90'
         if lo in w and hi in w: parts.append(text.format(w.pop(lo), w.pop(hi)))
     for k, v in w.items():
         if k in WHEN_TXT: parts.append(WHEN_TXT[k].format(v))
+        elif k == "age_lt": parts.append(f"age < {_fmt_age(v)}")
+        elif k == "age_ge": parts.append(f"age ≥ {_fmt_age(v)}")
         elif k == "esrd": parts.append("ESRD/dialysis" if v else "not on dialysis")
         elif k == "child_pugh": parts.append("Child-Pugh " + "/".join(v))
         elif k == "condition": parts.append(" or ".join(_reg[c]["label"] if c in _reg else c for c in v))
@@ -666,8 +674,6 @@ def _result_list(rows, width):
     out.append("\033[90m" + "─" * width + "\033[0m")
     at = []; previous_rank = None
     for row in rows:
-        if not row.get("indicated", True) and (not at or rows[len(at) - 1].get("indicated", True)):    # the ADCs for other cancers (all of them: none is approved for the patient's)
-            out.append("\033[90m── Other cancers " + "─" * max(0, width - 17) + "\033[0m")
         at.append(len(out))
         rank_text = f"{row['rank']:>3}" if row["rank"] != previous_rank else "   "
         previous_rank = row["rank"]
@@ -976,14 +982,16 @@ def _result_details(row, checks_, width):
 
 VALUE_LABELS = {"crcl": ("CLcr", " mL/min"), "bili": ("Bilirubin", "×ULN"), "ast": ("AST", "×ULN"), "alt": ("ALT", "×ULN"),
                 "lvef": ("LVEF", "%"), "platelets": ("Platelets", " ×10³/µL"), "anc": ("ANC", " ×10³/µL"), "hba1c": ("HbA1c", "%"),
-                "child_pugh": ("Child-Pugh", ""), "esrd": ("Dialysis/ESRD", ""), "ugt1a1_28_homozygous": ("UGT1A1*28 hom.", "")}
+                "child_pugh": ("Child-Pugh", ""), "esrd": ("Dialysis/ESRD", ""), "ugt1a1_28_homozygous": ("UGT1A1*28 hom.", ""),
+                "age": ("Age", " yr")}
 DOMAIN_VALUES = {"renal": ("crcl", "esrd"), "hepatic": ("bili", "ast", "alt", "child_pugh"), "cardiac": ("lvef",),
-                 "blood": ("platelets", "anc"), "metabolic": ("hba1c",), "genotype": ("ugt1a1_28_homozygous",)}
+                 "blood": ("platelets", "anc"), "metabolic": ("hba1c",), "genotype": ("ugt1a1_28_homozygous",),
+                 "pediatric": ("age",)}
 
 
 # lab-report values already shown through a restriction input (CLcr, x ULN, ...), so not listed again
 _SHOWN_AS = {"bilirubin": "bili", "ast": "ast", "alt": "alt", "platelet": "platelets", "anc": "anc", "hba1c": "hba1c", "lvef": "lvef",
-             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "crcl": "crcl", "esrd": "esrd", "age": "crcl", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl",
+             "child_pugh": "child_pugh", "ugt1a1": "ugt1a1_28_homozygous", "crcl": "crcl", "esrd": "esrd", "age": "age", "sex": "crcl", "weight": "crcl", "creatinine": "crcl", "egfr": "crcl",
              "uln_bilirubin": "bili", "uln_ast": "ast", "uln_alt": "alt"}
 
 

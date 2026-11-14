@@ -268,3 +268,131 @@ rules:
      quote: "Conduct ophthalmic exams at baseline, before each dose, promptly for new or worsening symptoms, and as clinically indicated."}
   - {adc: belantamab-mafodotin, domain: blood, category: avoid, section: "2.3", when: {platelets_lt: 25},
      quote: "Withhold BLENREP until platelet count recovers to 25,000/mcL or higher."}
+
+# Section 8.4 Pediatric Use
+  - adc: belantamab-mafodotin
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "The safety and effectiveness of BLENREP in pediatric patients have not been established."
+
+  - adc: brentuximab-vedotin
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 2}
+    quote: "The safety and effectiveness of ADCETRIS have been established in pediatric patients age 2 years and older with previously untreated high risk classical Hodgkin lymphoma"
+
+  - adc: brentuximab-vedotin
+    domain: pediatric
+    category: monitor
+    section: "8.4"
+    when: {age_ge: 2, age_lt: 18}
+    quote: "The safety and effectiveness of ADCETRIS have not been established for all other indications"
+
+  - adc: datopotamab-deruxtecan
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of DATROWAY have not been established in pediatric patients."
+
+  - adc: enfortumab-vedotin
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of PADCEV in pediatric patients have not been established."
+
+  - adc: gemtuzumab-ozogamicin
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 0.0834}
+    quote: "The safety and effectiveness of MYLOTARG with standard chemotherapy in pediatric patients less than 1 month of age with newly-diagnosed de novo AML have not been established."
+
+  - adc: gemtuzumab-ozogamicin
+    domain: pediatric
+    category: monitor
+    section: "8.4"
+    when: {age_ge: 0.0834, age_lt: 18}
+    quote: "The safety and effectiveness of MYLOTARG in combination with standard chemotherapy have been established in pediatric patients 1 month and older with newly-diagnosed de novo AML."
+
+  - adc: inotuzumab-ozogamicin
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 1}
+    quote: "The safety and effectiveness of BESPONSA in patients < 1 year of age with relapsed or refractory CD22-positive B-cell precursor ALL have not been established."
+
+  - adc: inotuzumab-ozogamicin
+    domain: pediatric
+    category: monitor
+    section: "8.4"
+    when: {age_ge: 1, age_lt: 18}
+    quote: "Compared to adults, pediatric patients had a higher incidence of liver test abnormalities; with grade 3-4 increases in AST, ALT, and total bilirubin in 21%, 21%, and 9%, respectively, in pediatric patients treated with BESPONSA compared to 4%, 4%, and 5% in adults."
+
+  - adc: loncastuximab-tesirine
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of ZYNLONTA in pediatric patients have not been established."
+
+  - adc: mirvetuximab-soravtansine
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of ELAHERE have not been established in pediatric patients."
+
+  - adc: pivekimab-sunirine
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "The safety and effectiveness of DECNUPAZ have not been established in pediatric patients."
+
+  - adc: polatuzumab-vedotin
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of POLIVY have not been established in pediatric patients."
+
+  - adc: sacituzumab-govitecan
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of TRODELVY have not been established in pediatric patients."
+
+  - adc: telisotuzumab-vedotin
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of EMRELIS have not been established in pediatric patients."
+
+  - adc: tisotumab-vedotin
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of TIVDAK in pediatric patients have not been established."
+
+  - adc: trastuzumab-deruxtecan
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of ENHERTU have not been established in pediatric patients."
+
+  - adc: trastuzumab-emtansine
+    domain: pediatric
+    category: insufficient_data
+    section: "8.4"
+    when: {age_lt: 18}
+    quote: "Safety and effectiveness of KADCYLA have not been established in pediatric patients."
+

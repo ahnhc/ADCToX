@@ -33,7 +33,7 @@ import urllib.error
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import numpy as np
 
@@ -1043,7 +1043,37 @@ def _evaluate_chunk_5fold_ode(
     }
 
 
-def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+def _chunk_points(
+    specs_chunk: List[Tuple[int, int, int, int, int, float]],
+    ch_res: Dict[str, Any],
+    st: Dict[str, Any],
+    cur_ti: int,
+    cur_best_ti: int,
+    max_pts: int = 260,
+) -> Tuple[List[List[float]], List[List[float]]]:
+    m_safe = ch_res["mean_safe"]
+    m_eff = ch_res["mean_eff"]
+    n = len(specs_chunk)
+    step = max(1, n // max_pts) if n > max_pts else 1
+    pts: List[List[float]] = []
+    st_pts: List[List[float]] = []
+    compat_lp = st["compat_mask_lp"]
+    for k_i in range(0, n, step):
+        k_ti, k_li, k_pi, _, _, _ = specs_chunk[k_i]
+        is_c = True if k_pi < 0 else bool(compat_lp[k_li, k_pi])
+        flags = (1 if is_c else 0) | (2 if k_ti == cur_best_ti else 0) | (4 if k_ti == cur_ti else 0)
+        pt_s = round(float(m_safe[k_i]), 1)
+        pt_e = round(float(m_eff[k_i]), 1)
+        pts.append([pt_s, pt_e, flags])
+        if is_c and k_ti == cur_ti:
+            st_pts.append([pt_s, pt_e])
+    return pts, st_pts
+
+
+def run_deep_research(
+    body: Optional[Dict[str, Any]] = None,
+    on_chunk: Optional[Callable[[Dict[str, Any]], None]] = None,
+) -> Dict[str, Any]:
     """
     Executes 5-Fold `MergedADCSurrogateNetV2` + vectorized 3-cycle Q3W PK/PD ODE + 64-draw Monte Carlo IIV
     on an ordered GPU slot (`0 -> 1 -> 2 -> 3`) or CPU fallback.
@@ -1326,6 +1356,20 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         best_arch_idx_in_batch = best_b
         best_dose_curve_arrs = (core_res["mean_safe"], core_res["std_safe"], core_res["mean_eff"], core_res["std_eff"], core_res["util_all"])
 
+        if on_chunk is not None:
+            c_pts, c_st = _chunk_points(core_specs, core_res, st, cur_ti, batch_specs[best_b][0], max_pts=300)
+            on_chunk(
+                {
+                    "type": "chunk",
+                    "points": c_pts,
+                    "same_target": c_st,
+                    "evaluated_regimens": len(batch_specs),
+                    "elapsed_ms": round((time.perf_counter() - t0) * 1000.0, 2),
+                    "slot": slot_id,
+                    "device_label": dev_label,
+                }
+            )
+
         # Progressive hardware-adaptive candidate chunks until minComputeMs budget is spent
         prog_cursor = core_arch_count
         chunk_arch_size = 180 if is_cuda_dev else 24
@@ -1358,6 +1402,20 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                 best_conc4 = ch_res["mean_conc4"][ch_best].copy()
                 best_arch_idx_in_batch = ch_best
                 best_dose_curve_arrs = (ch_res["mean_safe"], ch_res["std_safe"], ch_res["mean_eff"], ch_res["std_eff"], ch_res["util_all"])
+
+            if on_chunk is not None:
+                c_pts, c_st = _chunk_points(nxt_specs, ch_res, st, cur_ti, batch_specs[best_b][0], max_pts=240)
+                on_chunk(
+                    {
+                        "type": "chunk",
+                        "points": c_pts,
+                        "same_target": c_st,
+                        "evaluated_regimens": len(batch_specs),
+                        "elapsed_ms": round((time.perf_counter() - t0) * 1000.0, 2),
+                        "slot": slot_id,
+                        "device_label": dev_label,
+                    }
+                )
 
         mean_safe = np.concatenate(all_mean_safe, axis=0)
         std_safe = np.concatenate(all_std_safe, axis=0)

@@ -465,10 +465,10 @@ class App:
         import studio_matrix as SM
         return SM.evaluate_studio_matrix(body)
 
-    def studio_deep_research(self, body):
+    def studio_deep_research(self, body, on_chunk=None):
         import deep_research as DR
         try:
-            res = DR.run_deep_research(body)
+            res = DR.run_deep_research(body, on_chunk=on_chunk)
             res["gpu_status"] = DR.get_gpu_status()
             return res
         except DR.AllGPUSlotsBusyError as e:
@@ -549,12 +549,53 @@ def _handler(app):
             if not isinstance(body, dict): raise _Error(400, "a JSON object is expected")
             return body
 
+        def stream_deep_research(self, body):
+            started = False
+            lock = threading.Lock()
+            def write_line(obj):
+                nonlocal started
+                line = (json.dumps(obj, ensure_ascii=False, default=_plain) + "\n").encode("utf-8")
+                with lock:
+                    if not started:
+                        started = True
+                        self.close_connection = True
+                        self.send_response(200)
+                        self.send_header("Content-Type", "application/x-ndjson; charset=utf-8")
+                        self.send_header("Cache-Control", "no-store")
+                        self.send_header("X-Content-Type-Options", "nosniff")
+                        self.send_header("X-Accel-Buffering", "no")
+                        self.end_headers()
+                    self.wfile.write(line)
+                    self.wfile.flush()
+            try:
+                res = app.studio_deep_research(body, on_chunk=write_line)
+                write_line({"type": "done", "result": res})
+            except _Error as e:
+                if not started:
+                    self.send(e.status, json.dumps(dict(error=str(e), **e.extra), ensure_ascii=False))
+                else:
+                    try: write_line({"type": "error", "error": str(e), **e.extra})
+                    except GONE: self.close_connection = True
+            except GONE:
+                self.close_connection = True
+            except Exception as e:
+                _log(e)
+                if not started:
+                    self.send(500, json.dumps(dict(error=_one_line(e)), ensure_ascii=False))
+                else:
+                    try: write_line({"type": "error", "error": _one_line(e)})
+                    except GONE: self.close_connection = True
+
         def route(self):
             url = urlsplit(self.path)
             try:
                 self.gate(url.path)
                 if self.command == "GET": out = app.get(url.path, parse_qs(url.query))
-                elif self.command == "POST": out = app.post(url.path, self.body())
+                elif self.command == "POST":
+                    body = self.body()
+                    if url.path == "/api/studio/deep-research" and body.get("stream"):
+                        return self.stream_deep_research(body)
+                    out = app.post(url.path, body)
                 else: raise _Error(405, "method not allowed")
             except _Error as e:
                 return self.send(e.status, json.dumps(dict(error=str(e), **e.extra), ensure_ascii=False), headers=[("Allow", "GET, POST")] if e.status == 405 else ())

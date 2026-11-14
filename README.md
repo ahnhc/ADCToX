@@ -1,14 +1,16 @@
-# ADCTOX v0.9.7
+# ADCTOX v0.9.8
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
-[![App Version](https://img.shields.io/badge/version-v0.9.7-10B981)](#)
+[![App Version](https://img.shields.io/badge/version-v0.9.8-10B981)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live%20Platform-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
 **Patient-Specific Antibody-Drug Conjugate (ADC) Safety Evaluation & Multimodal Neural Surrogate De Novo Design Workspace.**  
-ADCTOX links a patient's malignancies, comorbidities, and quantitative laboratory biomarkers to 13 physiological organ axes using an on-device 110M-parameter medical language model (`x2te`), evaluates all 15 FDA-approved ADCs against DailyMed label restrictions and ClinicalTrials.gov pivotal trial outcomes, and designs bespoke conjugates across **`368,640` architectures** (`36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc Formats`) using real-time 5-fold `ADC-SurrogateNet-v2` neural inference coupled with a 252-step 3-cycle Q3W two-compartment PK/PD ODE and quasi-Monte Carlo virtual-patient solver (`Auto Design`).
+ADCTOX links a patient's malignancies, comorbidities, age, and quantitative laboratory biomarkers to 13 physiological organ axes using an on-device 110M-parameter medical language model (`x2te`), evaluates all 15 FDA-approved ADCs safety-first against 120 verbatim DailyMed label restrictions (including Section 8.4 Pediatric Use thresholds) and ClinicalTrials.gov pivotal trial outcomes, and designs bespoke conjugates across **`368,640` architectures** (`36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc Formats`) using real-time streaming 5-fold `ADC-SurrogateNet-v2` neural inference coupled with a 252-step 3-cycle Q3W two-compartment PK/PD ODE and quasi-Monte Carlo virtual-patient solver (`Auto Design`).
+
+For a complete mathematical and engineering breakdown of both recommendation and de novo optimization algorithms, see [`docs/ADCToX_Algorithm_Specification.pdf`](docs/ADCToX_Algorithm_Specification.pdf).
 
 ---
 
@@ -18,12 +20,12 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
 
 ---
 
-## Key Capabilities in v0.9.7
+## Key Capabilities in v0.9.8
 
-1. **Streamlined 3-Stage Clinical Workflow (`Patient Profile` -> `Recommend ADCs` -> `ADC Design`):**
-   - **Stage 1 (`Patient Profile`):** Automatically preloads a clinical baseline scenario on entry while retaining one-click `New Patient` reset, bilingual (`EN / KO`) condition mapping to 13 vulnerable organ axes, a compact `Basic Information` (`Age`, `Sex`, `Weight`) panel, and a unified `Optional Clinical Panels` accordion with standardized numeric inputs (`88px`) and reference intervals.
-   - **Stage 2 (`Recommend ADCs`):** Unified `Vulnerable Organs` workspace bar preserving clicked organ order in place, clean 5-column comparison grid across all 15 FDA-approved ADCs, clickable row inspection drawer combining FDA dosing precautions under `Vulnerable organ precautions`, crimson highlight bars where treatment trial incidence exceeds comparator, and a bottom `Export summary ↗` drawer tab.
-   - **Stage 3 (`ADC Design`):** Black-framed action group (`Recommend ADCs` + `ADC Design`) matching `Patient Profile`, horizontal mouse-wheel/drag target category strip, unified `Auto design` engine running 5-fold `ADC-SurrogateNet-v2` + 252-step 3-cycle Q3W PK/PD ODE + QMC patient IIV (`minComputeMs: 5000`), uniform-dot HTML chart legend, stacked 2-card comparison (`New Design` vs `Existing ADC`), clean folds (`Construct Properties`, `Organ Toxicity Prediction`, `Advanced Settings` with `Balanced`, `Organ Protection`, `Antitumor Efficacy` presets), and updated guide modal with direct GitHub link.
+1. **Safety-First Approved ADC Recommendation & Pediatric Section 8.4 Labeling (`Patient Profile` -> `Recommend ADCs`):**
+   - **Stage 1 (`Patient Profile`):** Automatically preloads a clinical baseline scenario while retaining one-click `New Patient` reset, bilingual (`EN / KO`) condition mapping to 13 vulnerable organ axes, a `Basic Information` (`Age`, `Sex`, `Weight` with `age >= 0` pediatric support) panel, and unified `Optional Clinical Panels` with gliding segmented controls and uniform numeric inputs.
+   - **Stage 2 (`Recommend ADCs`):** Evaluates 15 FDA-approved ADCs safety-first (permissible organ verdicts and lower vulnerable-organ burden before disease-match tie-breaking) against 120 DailyMed rules including Section 8.4 Pediatric Use thresholds, defaults to `All Approved ADC List` ahead of `Disease Match`, displays `Condition-Related Trial Cases`, and offers clickable evidence drawers with crimson elevated-incidence bars and `Export summary ↗`.
+   - **Stage 3 (`ADC Design`):** Borderless grouped `Recommend ADCs / ADC Design` top action pill anchored beside bold `Patient Profile`, gliding segmented controls UI-wide, live NDJSON streaming dot plotting during `Auto Design`, bottom-left `New Design` callout placement clearing the 5-dose curve, and stacked comparison drawer (`Compare / Structure / Study`).
 
 2. **Multimodal Neural Surrogate Engine (`ADC-SurrogateNet-v2`):**
    - **Ensemble Architecture:** 5-fold leak-free ensemble combining ESM-2 650M protein language models, AlphaFold pLDDT/solvent accessibility, ChemBERTa-2 LoRA molecular representations, Boltzmann 3D conformer ensembles, and enzymatic cleavage reaction SMARTS.
