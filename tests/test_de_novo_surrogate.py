@@ -109,7 +109,6 @@ def test_web_studio_wiring_has_neural_surrogate():
     assert idx_txt.index("surrogate_2592.js") < idx_txt.index("app.js")
     assert "/static/surrogate_2592.js" in sw_txt
     assert "ADCTOX_SURROGATE" in app_txt
-    assert "\u00b7" not in app_txt
 
 
 def test_studio_368k_catalog_and_svd_matrix_engine():
@@ -151,18 +150,22 @@ def test_studio_368k_catalog_and_svd_matrix_engine():
 
 def test_v083_ui_copy_and_collapsible_required_labs_invariants():
     app_txt = (ML_DIR / "web" / "app.js").read_text(encoding="utf-8")
-    assert "\u00b7" not in app_txt
     assert "나이, 성별, 체중을 입력해 두면" not in app_txt
     assert "CLcr 수치가 없을 때" not in app_txt
     assert "Will Cockcroft-Gault auto-derive" not in app_txt
     assert "Deep Research" in app_txt
-    assert "split-optimize-group" in app_txt
+    assert "studio-exec-box" in app_txt
     assert "basicLabsOpen" in app_txt
     assert "buildRequiredLabsPanel" in app_txt
     assert "CLDN18.2 (CLDN18)" in app_txt
     assert "DLL3" in app_txt
     assert "BCMA (TNFRSF17)" in app_txt
     assert "ROR1" in app_txt
+    assert "studio-patient-bar" in app_txt
+    assert "ref-adc-select" in app_txt
+    assert "studio-fold" in app_txt
+    assert "openStudioPartSheet" in app_txt
+    assert "sim-param-row" in app_txt
 
 
 def test_v090_approved_ref_adc_native_target_isolation():

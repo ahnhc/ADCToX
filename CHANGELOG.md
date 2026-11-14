@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.4: Decluttered ADC Design workspace, bilingual parity, and mobile part sheets
+
+- **Decluttered `3. ADC Design` & Tabs 1–2:** Replaced duplicated condition/lab search bars on Tab 3 with a compact patient summary bar showing active disease chips, lab badges, an `Edit` action, and clickable dynamic priority-organ pills; removed redundant subtitles, rationale prose cards, preview notes, and discrete lab helper sentences across Tabs 1–3.
+- **Single-Open Construct Accordions & Mobile Bottom Sheets:** Organized Target, Linker, Payload, DAR, and Antibody & Fc controls into single-open accordions on desktop (`studio-acc`) and native mobile bottom-sheet selectors (`<= 640px`) with search, category tabs, compatibility badges, focus trap, and `Confirm` actions.
+- **Live Approved Reference Switcher & Collapsible Result Sections:** Added a `<select class="ref-adc-select">` dropdown in the Approved Reference card to switch across all 15 FDA-approved ADCs live (updating triad scores, open compare drawer, and `.txt` export); moved construct properties, organ toxicity, and normal-organ GTEx expression into collapsible `<details>` panels with tooltips on metric labels and 1-line weight sliders under `Advanced`.
+- **Full `EN / KO` Bilingual Parity:** Preserved both Korean and English labels when adding condition chips so chips translate dynamically upon language toggle, localized search suggestions and selection summaries, dismissed floating tooltips/popovers on toggle, and re-rendered open guide or bottom-sheet dialogs in place.
+
 ## 0.9.3: Patient flow, comparison and design clarity
 
 - Bring new-patient entry into the demo panel and give tied candidates equal emphasis.

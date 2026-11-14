@@ -1,4 +1,4 @@
-/* ADCTOX v0.8.3 Architectural Daylight WebApp
+/* ADCTOX v0.9.4 Architectural Daylight WebApp
    Active-Organ Matrix + 368,640-Construct Studio + Deep Research (GPU/CPU) + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -143,20 +143,53 @@
     const t = e.target && e.target.closest ? e.target.closest('.tipped') : null;
     if (t) showTip(t); else if (!tipBox.hidden) hideTip();
   });
+  document.addEventListener('focusin', (e) => {
+    const t = e.target && e.target.closest ? e.target.closest('.tipped') : null;
+    if (t) showTip(t); else if (!tipBox.hidden) hideTip();
+  });
+  document.addEventListener('click', (e) => {
+    const t = e.target && e.target.closest ? e.target.closest('.tipped') : null;
+    if (t) { showTip(t); } else if (!tipBox.hidden) { hideTip(); }
+  });
   window.addEventListener('scroll', hideTip, true);
 
+  let popoverEl = null;
+  function hideMicroPopover() {
+    if (popoverEl) { popoverEl.remove(); popoverEl = null; }
+  }
+
+  let studioPartSheet = null;
+  let studioPartSheetOpener = null;
+  let activePartDraft = null;
+  let reopenPartSheetHandler = null;
+  function closeStudioPartSheet(restoreFocus = true) {
+    if (!studioPartSheet) return;
+    const lastKind = (activePartDraft && activePartDraft.kind) || '';
+    studioPartSheet.remove();
+    studioPartSheet = null;
+    activePartDraft = null;
+    document.body.classList.remove('sheet-open');
+    const opener = studioPartSheetOpener;
+    studioPartSheetOpener = null;
+    const targetOpener = (opener && opener.isConnected)
+      ? opener
+      : (lastKind ? document.querySelector(`.studio-sheet-trigger[data-sheet-kind="${lastKind}"]`) : null);
+    if (restoreFocus && targetOpener && targetOpener.isConnected) targetOpener.focus({ preventScroll: true });
+  }
+
   let guide = null, guideOpener = null;
-  function closeGuide() {
+  function closeGuide(restoreFocus = true) {
     if (!guide) return;
     guide.remove(); guide = null;
     document.body.classList.remove('guide-open');
     const opener = guideOpener || document.querySelector('.help');
     guideOpener = null;
-    if (opener && opener.isConnected) opener.focus();
+    if (restoreFocus && opener && opener.isConnected) opener.focus();
   }
   function openGuide() {
-    if (guide) closeGuide();
-    guideOpener = document.activeElement;
+    const prevOpener = guide ? guideOpener : document.activeElement;
+    if (guide) closeGuide(false);
+    guideOpener = prevOpener;
     const isKo = S.lang === 'ko';
     const stepItems = isKo
       ? [
@@ -2264,11 +2297,11 @@
       autoOpt: 'ADC 자동 설계',
       scanning: '최적화 탐색 중...',
       scanSpace: '설계 조합 탐색 중...',
-      tgtTitle: '1. 표적 항원 (36)',
-      lnkTitle: '2. 화학 링커 (16)',
-      pldTitle: '3. 세포독성 페이로드 (20)',
-      darTitle: '4. 약물-항체 접합비 DAR (8)',
-      fcTitle: '5. 항체 골격 및 Fc 엔지니어링 (4)',
+      tgtTitle: '표적 (36)',
+      lnkTitle: '링커 (16)',
+      pldTitle: '페이로드 (20)',
+      darTitle: 'DAR (8)',
+      fcTitle: '항체 · Fc (4)',
       wtFc: '야생형 IgG1',
       silFc: 'Fc 침묵화 (LALA-PG)',
       deepTitle: 'Deep Research',
@@ -2286,7 +2319,7 @@
       optimalCand: '탐색에서 선정된 최적 설계:',
       bestDesign: '환자 맞춤 최적 설계',
       clickAutoOpt: 'ADC 자동 설계를 누르면 이 환자에게 맞는 조합을 찾습니다',
-      explainTitle: '고급 설정: 모델 수식, 가중치 및 Custom SMILES',
+      explainTitle: '고급: 모델 가중치, 수식 및 Custom SMILES',
       explainBody: [
         '안전도 (X, 0~100) = 100 - (최대 취약장기 위험 가중합 + 평균 취약장기 위험 가중합) * 100',
         '장기 위험도 p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (ADCNet + ChEMBL v34 + 임상 13장기 AE + GTEx v8 / Tabula Sapiens 5-Fold 앙상블)',
@@ -2404,11 +2437,11 @@
       autoOpt: 'Auto-design ADC',
       scanning: 'Optimizing...',
       scanSpace: 'Scanning candidate space...',
-      tgtTitle: '1. Target Antigen (36)',
-      lnkTitle: '2. Chemical Linker (16)',
-      pldTitle: '3. Cytotoxic Payload (20)',
-      darTitle: '4. Drug-to-Antibody Ratio (8)',
-      fcTitle: '5. Antibody & Fc Format (4)',
+      tgtTitle: 'Target (36)',
+      lnkTitle: 'Linker (16)',
+      pldTitle: 'Payload (20)',
+      darTitle: 'DAR (8)',
+      fcTitle: 'Antibody & Fc (4)',
       wtFc: 'Wild-type IgG1',
       silFc: 'Fc-Silenced (LALA-PG)',
       deepTitle: 'Deep Research',
@@ -2636,6 +2669,9 @@
       simWeights: Object.assign({}, DEFAULT_SIM_WEIGHTS),
       simPreset: 'balanced',
       formulaOpen: false,
+      foldProps: true,
+      foldOrgan: true,
+      foldGtex: false,
       analysis: null,
       result: null,
       sel: 0,
@@ -2704,7 +2740,7 @@
   // Called by every patient-field edit: the demo becomes "demo being edited", and the original sample name stops
   // being shown as if it still described the patient.
   function studioInputSignature() {
-    return JSON.stringify([condList(), rawValues(), allChoice(), S.first, S.prioOrgan, S.studio, S.studioRefAdcOverride, S.simWeights, S.customPayloadSmiles, S.deepResearchOn]);
+    return JSON.stringify([condList(), rawValues(), allChoice(), S.first, S.prioOrgan, S.studio, S.simWeights, S.customPayloadSmiles, S.deepResearchOn]);
   }
 
   function invalidateStudioEvaluation() {
@@ -3019,10 +3055,17 @@
   }
 
   function toggleLanguage() {
+    hideTip();
+    hideMicroPopover();
+    const sheetSnapshot = activePartDraft ? Object.assign({}, activePartDraft) : null;
     S.lang = S.lang === 'ko' ? 'en' : 'ko';
     let relabeled = false;
     if (Array.isArray(S.conds)) {
       S.conds.forEach((c) => {
+        if (c && !c.en && c.kind === 'reg' && REG[c.value]) {
+          c.en = REG[c.value].name || c.label;
+          c.ko = REG[c.value].ko || c.en;
+        }
         if (c && c.ko && c.en) {
           c.label = S.lang === 'ko' ? c.ko : c.en;
           relabeled = true;
@@ -3031,15 +3074,18 @@
     }
     save();
     renderHeaderControls();
-    if (relabeled) {
-      refreshBackendData().then(() => {
-        renderActiveMode(false);
-        refreshOpenDrawerOnLangChange();
-      });
-      return;
-    }
     renderActiveMode(false);
     refreshOpenDrawerOnLangChange();
+    if (guide) openGuide();
+    if (sheetSnapshot && reopenPartSheetHandler) reopenPartSheetHandler(sheetSnapshot.kind, sheetSnapshot);
+    if (relabeled) {
+      refreshBackendData().then(() => {
+        const liveSnap = activePartDraft ? Object.assign({}, activePartDraft) : null;
+        renderActiveMode(false);
+        refreshOpenDrawerOnLangChange();
+        if (liveSnap && reopenPartSheetHandler) reopenPartSheetHandler(liveSnap.kind, liveSnap);
+      });
+    }
   }
 
   function renderHeaderControls() {
@@ -3319,7 +3365,7 @@
     const input = h('input', {
       id: 'wb-cond-input',
       type: 'text', role: 'combobox', 'aria-expanded': 'false', 'aria-controls': 'wb-sugg',
-      'aria-autocomplete': 'list', 'aria-describedby': 'wb-cond-help',
+      'aria-autocomplete': 'list',
       'data-keep': 'cond-search',
       placeholder: t('addCondPh'), autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
       value: pendingCondQuery || '',
@@ -3329,9 +3375,14 @@
 
     function chipOf(s) {
       const p = s.pick || {};
-      if (s.id) return { kind: 'reg', value: s.id, label: s.text, mondo: s.mondo || null };
-      if (p.choice) return { kind: 'mondo', value: p.choice, label: p.condition || s.text, mondo: p.choice };
-      return { kind: 'text', value: p.condition || s.text, label: p.condition || s.text };
+      const isKoNow = S.lang === 'ko';
+      const regEntry = s.id ? REG[s.id] : null;
+      const enName = p.choice ? (p.condition || s.text) : ((regEntry && regEntry.name) || s.text || p.condition);
+      const koName = s.ko || (regEntry && regEntry.ko) || enName;
+      const lbl = isKoNow ? koName : enName;
+      if (s.id) return { kind: 'reg', value: s.id, label: lbl, en: enName, ko: koName, mondo: s.mondo || (regEntry && regEntry.mondo) || null };
+      if (p.choice) return { kind: 'mondo', value: p.choice, label: lbl, en: enName, ko: koName, mondo: p.choice };
+      return { kind: 'text', value: p.condition || s.text, label: lbl, en: enName, ko: koName };
     }
 
     async function addConditionChip(c) {
@@ -3371,7 +3422,7 @@
       const cancerConds = new Set((P.cancers || []).map((c) => c.condition));
 
       S.conds.forEach((c, idx) => {
-        const isCancer = cancerConds.has(c.label) || cancerConds.has(c.value) || /carcinoma|cancer|lymphoma|myeloma|leukemia|tumor|암|종양|백혈병|림프종|골수종|육종|흑색종/i.test(c.label);
+        const isCancer = cancerConds.has(c.label) || cancerConds.has(c.value) || /carcinoma|cancer|lymphoma|myeloma|leukemia|tumor|암|종양|백혈병|림프종|골수종|육종|흑색종/i.test(`${c.label || ''} ${c.en || ''}`);
         const rm = h('button', {
           type: 'button', class: 'x-btn chip-remove', 'aria-label': (S.lang === 'ko' ? '삭제: ' : 'Remove ') + c.label,
           onclick: () => removeConditionChip(idx),
@@ -3428,6 +3479,15 @@
       const isKo = S.lang === 'ko';
       st.items.slice(0, 7).forEach((it, i) => {
         const isActive = i === st.cur;
+        const mainText = it.kind === 'raw'
+          ? (isKo ? `+ "${it.text}" 직접 추가 (AI 모델 분석)` : `+ Add "${it.text}" (AI Model)`)
+          : (isKo ? (it.s.ko || it.s.text) : it.s.text);
+        const subParts = [];
+        if (it.s) {
+          if (isKo && it.s.ko && it.s.text && it.s.ko !== it.s.text) subParts.push(it.s.text);
+          if (it.s.sub) subParts.push(it.s.sub);
+        }
+        const subText = subParts.join(' · ');
         const li = h('li', {
           class: 'opt' + (isActive ? ' is-active' : ''),
           role: 'option',
@@ -3435,8 +3495,8 @@
         },
         h('span', { class: 'nm' },
           h('span', { class: 'opt-dot', 'aria-hidden': 'true' }),
-          h('span', { class: 'main', text: it.kind === 'raw' ? (isKo ? `+ "${it.text}" 직접 추가 (AI 모델 분석)` : `+ Add "${it.text}" (AI Model)`) : it.s.text }),
-          it.s && it.s.sub ? h('span', { class: 'sub', text: it.s.sub }) : null),
+          h('span', { class: 'main', text: mainText }),
+          subText ? h('span', { class: 'sub', text: subText }) : null),
         h('span', { class: 'opt-pick-pill', text: isKo ? '선택 ↵' : 'Select ↵' }));
         li.addEventListener('mouseenter', () => {
           st.cur = i;
@@ -3560,10 +3620,12 @@
       horizonLabelEl.textContent = `${t('activeOrgans')} (${curOrgans.length})`;
       if (prioOrg) {
         const pLabel = S.lang === 'ko' ? (ORGAN_KO[prioOrg] || SHORT[prioOrg] || prioOrg) : (SHORT[prioOrg] || prioOrg);
-        horizonSubEl.textContent = S.lang === 'ko' ? `우선 평가: ${pLabel} · 다시 누르면 해제` : `Prioritizing: ${pLabel} · press again to clear`;
+        horizonSubEl.textContent = S.lang === 'ko' ? `우선 평가: ${pLabel}` : `Prioritizing: ${pLabel}`;
+        horizonSubEl.hidden = false;
         horizonSubEl.classList.add('prio-sub-active');
       } else {
-        horizonSubEl.textContent = S.lang === 'ko' ? '장기를 누르면 우선 평가합니다' : 'Select an organ to prioritize it';
+        horizonSubEl.textContent = '';
+        horizonSubEl.hidden = true;
         horizonSubEl.classList.remove('prio-sub-active');
       }
     }
@@ -3622,16 +3684,12 @@
             svgSearch(),
             input),
           sugg),
-        h('span', { class: 'wb-field-help', id: 'wb-cond-help', text: isKoBar ? '한글 또는 영문으로 입력' : 'Type in English or Korean' }),
         chipsWrap),
       h('div', { class: 'wb-right', id: 'workspace-profile-organs' },
         h('div', { class: 'horizon-head' },
-          horizonLabelEl,
+          tipped(horizonLabelEl, isKoBar ? '장기 버튼을 누르면 해당 장기를 우선 기준으로 정렬합니다' : 'Select an organ pill to prioritize it'),
           horizonSubEl),
-        organsGrid,
-        h('p', { class: 'om-legend', text: isKoBar
-          ? '연관도: 입력한 질환·검진 수치와 각 장기의 연결 강도 (0–100)'
-          : 'Association: how strongly the entered conditions and labs link to each organ (0–100)' })));
+        organsGrid));
     if (collapsible) workspaceBar.append(h('div', { class: 'workspace-inline-labs', id: 'workspace-profile-labs' }, S.workspaceProfileOpen ? buildPatientLabsMode(true) : null));
     return workspaceBar;
   }
@@ -3730,10 +3788,9 @@
   function buildAdcMatrixMode() {
     const box = h('div', { class: 's5' });
     const introH1 = h('h1', { class: 'mode-h1', text: S.lang === 'ko' ? 'ADC 비교' : 'Compare ADCs' });
-    const introSub = h('p', { class: 'mode-sub', text: t('matrixSub') });
     box.append(
       h('header', { class: 'mode-intro' },
-        h('div', { class: 'mode-intro-copy' }, introH1, introSub)),
+        h('div', { class: 'mode-intro-copy' }, introH1)),
       buildWorkspaceBar(() => renderMatrixContent())
     );
     const content = h('div');
@@ -3743,7 +3800,6 @@
       clear(content);
       const isKo = S.lang === 'ko';
       introH1.textContent = isKo ? 'ADC 비교' : 'Compare ADCs';
-      introSub.textContent = t('matrixSub');
       const res = S.result && S.result.data;
       if (!res || !Array.isArray(res.rows)) {
         content.append(h('div', { class: 'panel', style: 'padding:24px' }, h('span', { class: 'dim', text: isKo ? 'ADC 비교 목록 불러오는 중...' : 'Loading ADC candidates...' })));
@@ -4049,11 +4105,38 @@
   };
 
   function resolveRefAdcId(targetId) {
-    if (S.studioRefAdcOverride && REF_ADC_ARCH[S.studioRefAdcOverride] && REF_ADC_ARCH[S.studioRefAdcOverride].target === targetId) {
+    if (S.studioRefAdcOverride && REF_ADC_ARCH[S.studioRefAdcOverride]) {
       return S.studioRefAdcOverride;
     }
     const tgt = STUDIO_TARGETS.find((x) => x.id === targetId);
     return (tgt && tgt.refAdc) || 'trastuzumab-deruxtecan';
+  }
+
+  function resolveRefBundle(curSim, curSpace) {
+    const tgtId = curSim && curSim.tgt ? curSim.tgt.id : S.studio.target;
+    const refAdcId = resolveRefAdcId(tgtId);
+    const targetRef = REF_ADC_ARCH[refAdcId] || REF_ADC_ARCH['trastuzumab-deruxtecan'];
+    const refSpec = ADC_SPECS[refAdcId] || {};
+    const refMech = MECH[refAdcId] || {};
+    const refRow = (S.result && S.result.data && S.result.data.rows && S.result.data.rows.find((r) => r.adc === refAdcId)) || null;
+    const refBrand = (refRow && refRow.brand) || refSpec.brand || refMech.brand || refAdcId;
+    const refName = (refRow && refRow.name) || (refSpec.brand ? `${refSpec.brand} (${refAdcId})` : refAdcId);
+    const matchesArch = (sp) => Boolean(
+      sp && targetRef &&
+      sp.target === targetRef.target &&
+      sp.linker === targetRef.linker &&
+      sp.payload === targetRef.payload &&
+      Number(sp.dar) === Number(targetRef.dar)
+    );
+    let refSimObj = null;
+    if (curSpace && curSpace.refBest && curSpace.best && curSpace.best.spec && curSpace.best.spec.target === tgtId && matchesArch(curSpace.refBest.spec)) {
+      refSimObj = curSpace.refBest;
+    } else if (curSpace && curSpace.refCurrent && curSpace.current && curSpace.current.spec && curSpace.current.spec.target === tgtId && matchesArch(curSpace.refCurrent.spec)) {
+      refSimObj = curSpace.refCurrent;
+    } else {
+      refSimObj = computeStudioSimulation(Object.assign({}, targetRef));
+    }
+    return { refAdcId, refBrand, refName, refSpec, refMech, refRow, refSim: refSimObj };
   }
 
   function getRefStudioForTarget(targetId) {
@@ -4419,20 +4502,122 @@
     return svg;
   }
 
+  function buildStudioPatientBar(onChanged) {
+    const isKo = S.lang === 'ko';
+    const barEl = h('section', { class: 'studio-patient-bar panel', 'aria-label': isKo ? '환자 요약 및 취약 장기' : 'Patient summary and vulnerable organs' });
+    const rowTop = h('div', { class: 'spb-top' });
+    const chipsBox = h('div', { class: 'spb-chips' });
+    const rowOrgans = h('div', { class: 'spb-organs' });
+
+    function renderPatientBarContent() {
+      clear(chipsBox);
+      clear(rowOrgans);
+      const P = (S.result && S.result.data && S.result.data.patient) || {};
+      const cancerConds = new Set((P.cancers || []).map((c) => c.condition));
+
+      if (S.conds.length) {
+        S.conds.forEach((c, idx) => {
+          const isCancer = cancerConds.has(c.label) || cancerConds.has(c.value) || /carcinoma|cancer|lymphoma|myeloma|leukemia|tumor|암|종양|백혈병|림프종|골수종|육종|흑색종/i.test(`${c.label || ''} ${c.en || ''}`);
+          const rm = h('button', {
+            type: 'button',
+            class: 'x-btn chip-remove',
+            'aria-label': (isKo ? '삭제: ' : 'Remove ') + c.label,
+            onclick: async () => {
+              const removed = S.conds.splice(idx, 1)[0];
+              if (removed) {
+                delete S.meanings[removed.label];
+                if (S.first === removed.label || S.first === removed.value) S.first = null;
+              }
+              markEdited();
+              if (!hasPatientProfile()) S.studioDesignMode = 'idle';
+              save();
+              await refreshBackendData();
+              renderPatientBarContent();
+              if (onChanged) onChanged();
+            },
+          }, svgClose());
+          chipsBox.append(h('span', { class: 'p-chip' + (isCancer ? ' cancer-chip' : '') },
+            h('span', { text: c.label }), rm));
+        });
+      }
+
+      const L = S.labs || {};
+      const sh = (L.derived && L.derived.shown) || {};
+      const labBadges = [];
+      if (S.raw.crcl) labBadges.push(`CLcr ${S.raw.crcl}`);
+      else if (sh.crcl) labBadges.push(`CLcr ${sh.crcl}`);
+      else if (S.raw.creatinine) labBadges.push(`Cr ${S.raw.creatinine}`);
+      if (S.raw.esrd === 'y' || S.raw.esrd === true) labBadges.push('Dialysis/ESRD');
+      if (S.raw.bilirubin) labBadges.push(`Bili ${S.raw.bilirubin}`);
+      if (S.raw.child_pugh) labBadges.push(`CP-${S.raw.child_pugh}`);
+      if (S.raw.platelet) labBadges.push(`Plt ${S.raw.platelet}`);
+      if (S.raw.anc) labBadges.push(`ANC ${S.raw.anc}`);
+      if (S.raw.lvef) labBadges.push(`LVEF ${S.raw.lvef}%`);
+      if (S.raw.hba1c) labBadges.push(`HbA1c ${S.raw.hba1c}%`);
+      if (S.raw.ugt1a1 === 'y' || S.raw.ugt1a1 === true) labBadges.push('UGT1A1*28');
+      if (labBadges.length) {
+        chipsBox.append(h('span', { class: 'spb-labs', text: labBadges.join(' · ') }));
+      }
+      if (!S.conds.length && !labBadges.length) {
+        chipsBox.append(h('span', { class: 'dim spb-empty', text: isKo ? '입력된 환자 정보 없음' : 'No patient profile entered' }));
+      }
+
+      const curOrgans = orderedActiveOrgans();
+      rowOrgans.append(h('span', { class: 'spb-organ-label', text: isKo ? '우선 장기' : 'Priority organ' }));
+      if (curOrgans.length) {
+        const pillsRow = h('div', { class: 'spb-organ-pills' });
+        curOrgans.forEach((item) => {
+          const pct = Math.round(Math.max(15, Math.min(100, item.score * 100)));
+          const isPrio = (S.prioOrgan === item.organ) || (!S.prioOrgan && item.condKey && S.first === item.condKey);
+          const orgLabel = isKo ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ);
+          pillsRow.append(h('button', {
+            type: 'button',
+            class: 'spb-organ-pill' + (isPrio ? ' is-prio' : ''),
+            'aria-pressed': isPrio ? 'true' : 'false',
+            title: isKo ? `${orgLabel} · 연관도 ${pct} · 눌러서 우선 평가` : `${orgLabel} · association ${pct} · press to prioritize`,
+            onclick: async () => {
+              const turningOff = isPrio;
+              S.prioOrgan = turningOff ? null : item.organ;
+              if (item.condKey && condList().length >= 2) {
+                S.first = turningOff ? null : item.condKey;
+              } else {
+                S.first = null;
+              }
+              save();
+              renderPatientBarContent();
+              await refreshBackendData();
+              if (onChanged) onChanged();
+            },
+          },
+          h('span', { class: 'spb-org-name', text: orgLabel }),
+          h('span', { class: 'spb-org-pct', text: String(pct) })));
+        });
+        rowOrgans.append(pillsRow);
+      } else {
+        rowOrgans.append(h('span', { class: 'dim spb-empty', text: t('noActiveOrgans') }));
+      }
+    }
+
+    const editBtn = h('button', {
+      type: 'button',
+      class: 'btn-secondary spb-edit-btn',
+      text: isKo ? '수정' : 'Edit',
+      onclick: () => switchMode(0),
+    });
+    rowTop.append(chipsBox, editBtn);
+    barEl.append(rowTop, rowOrgans);
+    renderPatientBarContent();
+    return barEl;
+  }
+
   function buildStructureStudioMode() {
     if (['manual', 'auto'].includes(S.studioDesignMode) && S.studioEvaluatedSignature !== studioInputSignature()) invalidateStudioEvaluation();
     const box = h('div', { class: 's-studio' });
     const introH1 = h('h1', { class: 'mode-h1', text: S.lang === 'ko' ? 'ADC 설계' : 'ADC Design' });
-    const introSub = h('p', {
-      class: 'mode-sub',
-      text: S.lang === 'ko'
-        ? '368,640개 접합체 조합에서 실행 방식을 선택하고 구성 설정, 탐색 그래프, 기준 승인 약물을 비교합니다.'
-        : 'Select an execution mode across 368,640 constructs, configure components, inspect the design space, and compare against native approved ADCs.',
-    });
     box.append(
       h('header', { class: 'mode-intro' },
-        h('div', { class: 'mode-intro-copy' }, introH1, introSub)),
-      buildWorkspaceBar(() => invalidateCurrentEvaluation())
+        h('div', { class: 'mode-intro-copy' }, introH1)),
+      buildStudioPatientBar(() => invalidateCurrentEvaluation())
     );
     const wrap = h('div', { class: 'studio-wrap' });
     const controls = h('aside', { class: 'studio-controls panel', 'aria-label': 'Conjugate Architecture Controls' });
@@ -4459,11 +4644,18 @@
     let sliderDebounceTimer = 0;
     let runClickY = null;
     const compactMQ = window.matchMedia('(max-width: 960px)');
+    const mobileMQ = window.matchMedia('(max-width: 640px)');
     const onCompactChange = () => {
-      if (!box.isConnected) { compactMQ.removeEventListener('change', onCompactChange); return; }
+      if (!box.isConnected) {
+        compactMQ.removeEventListener('change', onCompactChange);
+        mobileMQ.removeEventListener('change', onCompactChange);
+        return;
+      }
+      if (!mobileMQ.matches && studioPartSheet) closeStudioPartSheet(false);
       renderControls();
     };
     compactMQ.addEventListener('change', onCompactChange);
+    mobileMQ.addEventListener('change', onCompactChange);
     // After a run on a narrow screen, bring the result into view unless the user has scrolled since pressing run.
     function revealResults() {
       if (runClickY === null || !compactMQ.matches) { runClickY = null; return; }
@@ -4671,9 +4863,6 @@
       clear(controls);
       const isKo = S.lang === 'ko';
       introH1.textContent = isKo ? 'ADC 설계' : 'ADC Design';
-      introSub.textContent = isKo
-        ? '368,640개 접합체 조합에서 실행 방식을 선택하고 구성 설정, 탐색 그래프, 기준 승인 약물을 비교합니다.'
-        : 'Select an execution mode across 368,640 constructs, configure components, inspect the design space, and compare against native approved ADCs.';
       const totalCombos = STUDIO_TARGETS.length * STUDIO_LINKERS.length * STUDIO_PAYLOADS.length * STUDIO_DAR_ITEMS.length * STUDIO_FC_ITEMS.length;
 
       const curLnkObj = STUDIO_LINKERS.find((x) => x.id === S.studio.linker) || STUDIO_LINKERS[0];
@@ -4722,10 +4911,6 @@
         },
       });
 
-      const runHint = runMode === 'manual'
-        ? (isKo ? '선택한 표적·링커·페이로드·DAR·Fc 구성을 이 환자 기준으로 평가합니다.' : 'Scores the selected target, linker, payload, DAR and Fc for this patient.')
-        : (isKo ? `${totalCombos.toLocaleString()}개 조합에서 이 환자에게 가장 균형 잡힌 구성을 찾습니다.` : `Searches ${totalCombos.toLocaleString()} constructs for the best balance for this patient.`);
-
       let deepOpt = null;
       if (runMode === 'auto') {
         const deepState = isOptimizing && deepOn
@@ -4737,12 +4922,12 @@
             role: 'switch',
             'aria-checked': S.deepResearchOn ? 'true' : 'false',
             class: 'deep-switch' + (S.deepResearchOn ? ' is-on' : ''),
+            title: isKo ? '5-Fold ADCSurrogateNet v2 실시간 추론과 용량-반응 곡선' : 'Live 5-fold ADCSurrogateNet v2 inference & dose-response',
             disabled: isOptimizing ? true : null,
             onclick: () => { S.deepResearchOn = !S.deepResearchOn; if (S.deepResearchOn) pollGpuStatus(false); invalidateCurrentEvaluation(); },
           },
           h('span', { class: 'deep-switch-copy' },
-            h('span', { class: 'deep-switch-title', text: isKo ? '고급: Deep Research' : 'Advanced: Deep Research' }),
-            h('span', { class: 'deep-switch-sub', text: isKo ? '5-Fold 신경망 실시간 추론과 용량-반응 곡선' : 'Live 5-fold network inference with dose-response' })),
+            h('span', { class: 'deep-switch-title', text: 'Deep Research' })),
           h('span', { class: 'drp-switch-pill', 'aria-hidden': 'true' }, h('i', { class: 'drp-switch-knob' }))),
           S.deepResearchOn ? h('span', { class: 'deep-state' + (slotsBusy ? ' is-wait' : ''), text: deepState }) : null);
       }
@@ -4761,13 +4946,14 @@
         h('div', { class: 'studio-exec-head' },
           h('span', { class: 'studio-exec-title', text: isKo ? '실행 방식' : 'Run method' }),
           h('span', { class: 'studio-combo-badge', text: execModeTag })),
-        segGroup,
-        h('p', { class: 'studio-run-hint', text: runHint }));
+        segGroup);
       controls.append(execBox);
 
       const selectedParts = [
-        ['Target', plainName(S.studio.target)], ['Linker', S.studio.linker],
-        ['Payload', plainName(S.studio.payload)], ['DAR', String(S.studio.dar)],
+        [isKo ? '표적' : 'Target', plainName(S.studio.target)],
+        [isKo ? '링커' : 'Linker', S.studio.linker],
+        [isKo ? '페이로드' : 'Payload', plainName(S.studio.payload)],
+        ['DAR', String(S.studio.dar)],
         ['Fc', fcFormatLabel(curFcFormat, S.studio.fc, isKo)],
       ];
       const summary = h('div', { class: 'studio-selection', 'aria-label': isKo ? '현재 구성' : 'Current construct' },
@@ -4801,14 +4987,14 @@
         invalidateCurrentEvaluation();
       };
 
-      const makeCatTabs = (tabs, activeId, onTab) => {
+      const makeCatTabs = (tabs, activeId, onTab, onRebuild) => {
         const bar = h('div', { class: 'studio-cat-tabs', role: 'group', 'aria-label': isKo ? '분류' : 'Category' });
         tabs.forEach(([id, koLbl, enLbl]) => {
           bar.append(h('button', {
             type: 'button',
             class: 'studio-cat-tab' + (activeId === id ? ' is-active' : ''),
             'aria-pressed': activeId === id ? 'true' : 'false',
-            onclick: () => { onTab(id); save(); renderControls(); },
+            onclick: () => { onTab(id); save(); if (onRebuild) onRebuild(); else renderControls(); },
             text: isKo ? koLbl : enLbl,
           }));
         });
@@ -4838,6 +5024,186 @@
         return pills;
       };
 
+      const TGT_TABS = [
+        ['all', '전체 36', 'All 36'],
+        ['rec', '주요/일치', 'Key/Match'],
+        ['breast_gyn', '유방/부인', 'Breast/Gyn'],
+        ['lung_gi', '폐/소화기', 'Lung/GI'],
+        ['gu_solid', '비뇨/고형', 'GU/Solid'],
+        ['heme', '혈액암', 'Heme'],
+      ];
+      const LNK_TABS = [
+        ['all', '전체 16', 'All 16'],
+        ['protease', '펩타이드', 'Protease'],
+        ['hydrophilic', '친수성', 'Hydrophilic'],
+        ['ph_redox', 'pH/환원', 'pH/Redox'],
+        ['non_cleavable', '비절단', 'Non-cleav'],
+      ];
+      const PLD_TABS = [
+        ['all', '전체 20', 'All 20'],
+        ['topo1', 'Topo I', 'Topo I'],
+        ['tubulin', '미세소관', 'Tubulin'],
+        ['dna', 'DNA', 'DNA'],
+        ['targeted', '표적/면역', 'Targeted'],
+      ];
+
+      function openStudioPartSheet(kind, snapshot) {
+        const ko = S.lang === 'ko';
+        const prevOpener = studioPartSheet ? studioPartSheetOpener : document.activeElement;
+        if (studioPartSheet) closeStudioPartSheet(false);
+        studioPartSheetOpener = prevOpener;
+
+        const isTgt = kind === 'tgt';
+        const isLnk = kind === 'lnk';
+        let draftVal = snapshot ? snapshot.val : (isTgt ? S.studio.target : (isLnk ? S.studio.linker : S.studio.payload));
+        let sheetQ = snapshot && snapshot.q != null ? snapshot.q : (isTgt ? (S.tgtQuery || '') : '');
+        activePartDraft = { kind, val: draftVal, q: sheetQ };
+
+        const titleTxt = isTgt
+          ? (ko ? '표적 선택' : 'Select Target')
+          : isLnk
+            ? (ko ? '링커 선택' : 'Select Linker')
+            : (ko ? '페이로드 선택' : 'Select Payload');
+        const searchPh = isTgt
+          ? (ko ? '표적 또는 유전자 검색...' : 'Search target or gene...')
+          : isLnk
+            ? (ko ? '링커 이름 검색...' : 'Search linker...')
+            : (ko ? '페이로드 이름 검색...' : 'Search payload...');
+
+        const xBtn = h('button', { type: 'button', class: 'x-btn', 'aria-label': ko ? '닫기' : 'Close', onclick: () => closeStudioPartSheet(true) }, svgClose());
+        const searchInp = h('input', {
+          type: 'search',
+          class: 'studio-search-input ps-search',
+          placeholder: searchPh,
+          value: sheetQ,
+        });
+        const catsWrap = h('div', { class: 'ps-cats' });
+        const listEl = h('div', { class: 'ps-list', role: 'radiogroup', 'aria-label': titleTxt });
+        const applyBtn = h('button', { type: 'button', class: 'btn-run ps-apply' });
+
+        function syncApplyLabel() {
+          const shortVal = plainName(draftVal);
+          applyBtn.textContent = ko ? `${shortVal} 선택` : `Select (${shortVal})`;
+          if (activePartDraft) activePartDraft.val = draftVal;
+        }
+
+        function currentItems() {
+          const q = sheetQ.trim().toLowerCase();
+          if (isTgt) {
+            S.tgtQuery = sheetQ;
+            return filteredTargets();
+          }
+          const base = isLnk ? filteredLinkers() : filteredPayloads();
+          if (!q) return base;
+          const hits = base.filter((it) => it.id.toLowerCase().includes(q) || String(it.popover || '').toLowerCase().includes(q));
+          return hits.length ? hits : base;
+        }
+
+        function renderSheetCatsAndList() {
+          clear(catsWrap);
+          clear(listEl);
+          const curCat = isTgt ? (sheetQ ? '' : (S.tgtCat || 'all')) : (isLnk ? (S.lnkCat || 'all') : (S.pldCat || 'all'));
+          const tabs = isTgt ? TGT_TABS : (isLnk ? LNK_TABS : PLD_TABS);
+          catsWrap.append(makeCatTabs(tabs, curCat, (id) => {
+            if (isTgt) { S.tgtCat = id; S.tgtQuery = ''; sheetQ = ''; searchInp.value = ''; }
+            else if (isLnk) { S.lnkCat = id; }
+            else { S.pldCat = id; }
+            if (activePartDraft) activePartDraft.q = sheetQ;
+          }, renderSheetCatsAndList));
+
+          const items = currentItems();
+          items.forEach((it) => {
+            const val = it.id;
+            const isSel = val === draftVal;
+            let badgeEl = null;
+            if (isTgt && patientCancerMatchesTarget(it) === true) {
+              badgeEl = h('span', { class: 'ps-badge is-match', text: ko ? '일치' : 'Match' });
+            } else if (isLnk && !isPairCompatible(it, curPldObj)) {
+              badgeEl = h('span', { class: 'ps-badge is-warn', text: ko ? '스페이서' : 'Spacer' });
+            } else if (!isTgt && !isLnk && !isPairCompatible(curLnkObj, it)) {
+              badgeEl = h('span', { class: 'ps-badge is-warn', text: ko ? '스페이서' : 'Spacer' });
+            }
+            const row = h('button', {
+              type: 'button',
+              role: 'radio',
+              'aria-checked': isSel ? 'true' : 'false',
+              class: 'ps-opt' + (isSel ? ' is-selected' : ''),
+              onclick: () => {
+                draftVal = val;
+                syncApplyLabel();
+                [...listEl.children].forEach((child, idx) => {
+                  const selNow = items[idx] && items[idx].id === draftVal;
+                  child.classList.toggle('is-selected', selNow);
+                  child.setAttribute('aria-checked', selNow ? 'true' : 'false');
+                });
+              },
+            },
+            h('span', { class: 'ps-opt-main' },
+              h('span', { class: 'ps-opt-name', text: val }),
+              badgeEl),
+            h('span', { class: 'ps-radio', 'aria-hidden': 'true' }));
+            listEl.append(row);
+          });
+          syncApplyLabel();
+        }
+
+        searchInp.oninput = (e) => {
+          sheetQ = e.target.value;
+          if (activePartDraft) activePartDraft.q = sheetQ;
+          renderSheetCatsAndList();
+        };
+
+        applyBtn.onclick = () => {
+          const chosen = draftVal;
+          closeStudioPartSheet(true);
+          onPartPicked(() => {
+            if (isTgt) {
+              if (S.studio.target !== chosen) S.studioRefAdcOverride = null;
+              S.studio.target = chosen;
+            } else if (isLnk) {
+              S.studio.linker = chosen;
+            } else {
+              S.studio.payload = chosen;
+            }
+          });
+        };
+
+        const dialog = h('div', {
+          class: 'part-sheet overlay-panel',
+          role: 'dialog',
+          'aria-modal': 'true',
+          'aria-labelledby': 'ps-title',
+        },
+        h('div', { class: 'ps-grab', 'aria-hidden': 'true' }),
+        h('div', { class: 'ps-head' },
+          h('h2', { id: 'ps-title', text: titleTxt }),
+          xBtn),
+        h('div', { class: 'ps-body' },
+          searchInp,
+          catsWrap,
+          listEl),
+        h('div', { class: 'ps-foot' }, applyBtn));
+
+        dialog.addEventListener('keydown', (e) => {
+          if (e.key !== 'Tab') return;
+          const items = [...dialog.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])')];
+          if (!items.length) return;
+          const first = items[0], last = items[items.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        });
+
+        studioPartSheet = h('div', {
+          class: 'part-sheet-scrim',
+          onclick: (e) => { if (e.target === studioPartSheet) closeStudioPartSheet(true); },
+        }, dialog);
+        renderSheetCatsAndList();
+        document.body.append(studioPartSheet);
+        document.body.classList.add('sheet-open');
+        xBtn.focus({ preventScroll: true });
+      }
+      reopenPartSheetHandler = (kind, snap) => openStudioPartSheet(kind, snap);
+
       // 1. Target Antigen (36) with category tabs + inline search
       const tgtSearch = h('input', {
         type: 'search',
@@ -4850,22 +5216,25 @@
           renderControls();
         },
       });
-      const tgtCatBar = makeCatTabs([
-        ['all', '전체 36', 'All 36'],
-        ['rec', '주요/일치', 'Key/Match'],
-        ['breast_gyn', '유방/부인', 'Breast/Gyn'],
-        ['lung_gi', '폐/소화기', 'Lung/GI'],
-        ['gu_solid', '비뇨/고형', 'GU/Solid'],
-        ['heme', '혈액암', 'Heme'],
-      ], S.tgtQuery ? '' : (S.tgtCat || 'all'), (id) => { S.tgtCat = id; S.tgtQuery = ''; });
+      const tgtCatBar = makeCatTabs(TGT_TABS, S.tgtQuery ? '' : (S.tgtCat || 'all'), (id) => { S.tgtCat = id; S.tgtQuery = ''; });
 
-      // On narrow screens each part is an accordion whose header shows the chosen value; on wide screens all are open.
-      const compact = window.matchMedia('(max-width: 960px)').matches;
+      const isMobile = mobileMQ.matches;
+      const sheetTrigger = (id, title, valueTxt) => h('div', { class: 'studio-group studio-acc' },
+        h('button', {
+          type: 'button',
+          class: 'studio-acc-head studio-sheet-trigger',
+          'data-sheet-kind': id,
+          onclick: () => openStudioPartSheet(id),
+        },
+        h('span', { class: 'studio-acc-titles' },
+          h('span', { class: 'studio-label', text: title }),
+          h('span', { class: 'studio-acc-val', text: valueTxt })),
+        svgChevronDown()));
+
+      // Desktop uses single-open accordions across all 5 construct groups; mobile opens Target/Linker/Payload in a bottom sheet.
       const accGroup = (id, title, valueTxt, ...body) => {
-        if (!compact) {
-          return h('div', { class: 'studio-group' },
-            h('span', { class: 'studio-label', text: title }),
-            ...body);
+        if (isMobile && (id === 'tgt' || id === 'lnk' || id === 'pld')) {
+          return sheetTrigger(id, title, valueTxt);
         }
         const open = S.studioAccOpen === id;
         const bodyId = `studio-acc-${id}`;
@@ -4895,13 +5264,7 @@
         }));
 
       // 2. Chemical Linker (16)
-      const lnkCatBar = makeCatTabs([
-        ['all', '전체 16', 'All 16'],
-        ['protease', '펩타이드', 'Protease'],
-        ['hydrophilic', '친수성', 'Hydrophilic'],
-        ['ph_redox', 'pH/환원', 'pH/Redox'],
-        ['non_cleavable', '비절단', 'Non-cleav'],
-      ], S.lnkCat || 'all', (id) => { S.lnkCat = id; });
+      const lnkCatBar = makeCatTabs(LNK_TABS, S.lnkCat || 'all', (id) => { S.lnkCat = id; });
 
       const lnkGroup = accGroup('lnk', t('lnkTitle'), S.studio.linker,
         lnkCatBar,
@@ -4911,13 +5274,7 @@
         }));
 
       // 3. Cytotoxic Payload (20)
-      const pldCatBar = makeCatTabs([
-        ['all', '전체 20', 'All 20'],
-        ['topo1', 'Topo I', 'Topo I'],
-        ['tubulin', '미세소관', 'Tubulin'],
-        ['dna', 'DNA', 'DNA'],
-        ['targeted', '표적/면역', 'Targeted'],
-      ], S.pldCat || 'all', (id) => { S.pldCat = id; });
+      const pldCatBar = makeCatTabs(PLD_TABS, S.pldCat || 'all', (id) => { S.pldCat = id; });
 
       const pldGroup = accGroup('pld', t('pldTitle'), plainName(S.studio.payload),
         pldCatBar,
@@ -4951,7 +5308,6 @@
       }
     }
 
-    let popoverEl = null;
     function showMicroPopover(targetBtn, text) {
       hideMicroPopover();
       popoverEl = h('div', { class: 'micro-popover', text });
@@ -4966,9 +5322,6 @@
       if (top < margin) top = r.bottom + 8;
       popoverEl.style.left = Math.round(left) + 'px';
       popoverEl.style.top = Math.round(top) + 'px';
-    }
-    function hideMicroPopover() {
-      if (popoverEl) { popoverEl.remove(); popoverEl = null; }
     }
 
     function pushManualHistory() {
@@ -4990,7 +5343,7 @@
       save();
       renderControls();
       renderStudioCanvas(false);
-      const searchInput = box.querySelector('.wb-input-wrap input');
+      const searchInput = box.querySelector('.wb-input-wrap input') || box.querySelector('.spb-edit-btn');
       if (searchInput) searchInput.focus();
       return false;
     }
@@ -5086,20 +5439,7 @@
     const riskColor = (pct) => (pct >= 60 ? 'var(--red)' : pct >= 35 ? 'var(--amber)' : 'var(--emerald)');
 
     function resolveRefForSim(curSim, curSpace) {
-      const refAdcId = resolveRefAdcId(curSim.tgt.id);
-      const refSpec = ADC_SPECS[refAdcId] || {};
-      const refMech = MECH[refAdcId] || {};
-      const refRow = (S.result && S.result.data && S.result.data.rows && S.result.data.rows.find((r) => r.adc === refAdcId)) || null;
-      const refBrand = (refRow && refRow.brand) || refSpec.brand || refMech.brand || refAdcId;
-      let refSimObj = null;
-      if (curSpace && curSpace.refCurrent && curSpace.current && curSpace.current.spec && curSpace.current.spec.target === curSim.tgt.id) {
-        refSimObj = curSpace.refCurrent;
-      } else if (curSpace && curSpace.refBest && curSpace.best && curSpace.best.spec && curSpace.best.spec.target === curSim.tgt.id) {
-        refSimObj = curSpace.refBest;
-      } else {
-        refSimObj = computeStudioSimulation(getRefStudioForTarget(curSim.tgt.id));
-      }
-      return { refAdcId, refBrand, refSpec, refSim: refSimObj };
+      return resolveRefBundle(curSim, curSpace);
     }
 
     function renderStudioCanvas(animateScan) {
@@ -5202,7 +5542,6 @@
       const eqGrid = h('div', { class: 'sim-eq-grid' });
       const summaryMeta = h('span', { class: 'sim-summary-meta' });
       const triadBox = h('div', { class: 'design-triad-grid' });
-      const rBox = h('div', { class: 'sim-rationale-box' });
       const organRows = h('div', { class: 'expr-list' });
 
       function updateOrganRowsDom(curSim) {
@@ -5233,7 +5572,6 @@
         );
         const curPayLbl = curSim.spec.customPayloadLabel || plainName(curSim.spec.payload);
         const bestPayLbl = bestC.spec.customPayloadLabel || plainName(bestC.spec.payload);
-        const { refBrand, refSim } = resolveRefForSim(curSim, curSpace);
 
         const curCard = h('div', { class: 'triad-card is-current' },
           h('div', { class: 'triad-top' },
@@ -5278,12 +5616,32 @@
               },
             }) : null));
 
+        const { refAdcId, refSim } = resolveRefForSim(curSim, curSpace);
+        const refSelect = h('select', {
+          class: 'ref-adc-select',
+          'aria-label': isKo ? '기준 승인 약물 선택' : 'Select approved reference ADC',
+          onchange: (e) => {
+            S.studioRefAdcOverride = e.target.value;
+            save();
+            renderStudioCanvas(false);
+            if (drawer && drawer.classList.contains('open') && S.mode === 2 && drawerTitle.textContent === t('compareTitle')) fillStudioCompareDrawer(curSim, curSpace);
+          },
+        }, ...Object.keys(REF_ADC_ARCH).map((id) => {
+          const sp = ADC_SPECS[id] || {};
+          const mc = MECH[id] || {};
+          const rHit = (S.result && S.result.data && S.result.data.rows && S.result.data.rows.find((r) => r.adc === id)) || null;
+          const br = (rHit && rHit.brand) || sp.brand || mc.brand || id;
+          const arch = REF_ADC_ARCH[id];
+          return h('option', { value: id, selected: id === refAdcId ? '' : null, text: `${br} · ${plainName(arch.target)}` });
+        }));
+        refSelect.value = refAdcId;
+
         const refCard = h('div', { class: 'triad-card is-reference' },
           h('div', { class: 'triad-top' },
             h('div', { class: 'triad-head-row' },
               h('span', { class: 'triad-role', text: isKo ? '기준 승인 약물' : 'Approved Reference' }),
               h('span', { class: 'prov-tag prov-label', text: isKo ? '고유 승인 구성' : 'Native Construct' })),
-            h('div', { class: 'triad-name', text: refBrand }),
+            refSelect,
             h('div', {
               class: 'triad-arch',
               text: `${plainName(refSim.tgt.id)}  /  ${refSim.lnk.id}  /  ${plainName(refSim.pld.id)}  /  DAR ${refSim.dar}`,
@@ -5297,7 +5655,7 @@
               type: 'button',
               class: 'btn-compare-pop',
               text: t('viewCompareBtn'),
-              onclick: (e) => { openStudioCompareDrawer(curSim, curSpace); },
+              onclick: () => { openStudioCompareDrawer(curSim, curSpace); },
             })));
 
         triadBox.append(curCard);
@@ -5306,38 +5664,6 @@
           h('span', { class: 'triad-role', text: isKo ? '자동 탐색 · 실행 전' : 'Auto search · not run' }),
           h('p', { class: 'dim', text: isKo ? '수동 평가는 현재 구성만 평가합니다. 탐색 선정 설계는 자동 탐색을 실행하면 표시됩니다.' : 'Manual evaluation scores the current construct. Run auto search to select a design.' })));
         triadBox.append(refCard);
-      }
-
-      function updateRationaleDom(curSim, curSpace) {
-        clear(rBox);
-        const bestC = curSpace.best || curSim;
-        const activeRat = buildAutoOptimizeRationales(curSim);
-        const curFcFmt = curSim.spec.fcFormat || (curSim.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
-        const bestFcFmt = bestC.spec.fcFormat || (bestC.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
-        const isOpt = (
-          curSim.spec.target === bestC.spec.target &&
-          curSim.spec.linker === bestC.spec.linker &&
-          curSim.spec.payload === bestC.spec.payload &&
-          Number(curSim.spec.dar) === Number(bestC.spec.dar) &&
-          curFcFmt === bestFcFmt
-        );
-        const curPayName = curSim.spec.customPayloadLabel || plainName(curSim.spec.payload);
-        const bestPayName = bestC.spec.customPayloadLabel || plainName(bestC.spec.payload);
-        const headTxt = designMode !== 'auto'
-          ? (isKo ? '현재 구성의 모델 평가 해설' : 'Model evaluation of the current construct')
-          : isOpt
-          ? t('optimalLocked')
-          : (isKo
-              ? `현재 설계 (${plainName(curSim.spec.target)} + ${curPayName}, DAR ${curSim.spec.dar}) 구성 해설 — 탐색 최적점: ${plainName(bestC.spec.target)} + ${bestPayName}, DAR ${bestC.spec.dar}`
-              : `Current design (${plainName(curSim.spec.target)} + ${curPayName}, DAR ${curSim.spec.dar}) breakdown — Search optimal: ${plainName(bestC.spec.target)} + ${bestPayName}, DAR ${bestC.spec.dar}`);
-        rBox.append(
-          h('div', { class: 'srb-title' },
-            h('span', { class: 'srb-main-text', text: headTxt })),
-          h('div', { class: 'srb-steps' },
-            activeRat.map(([title, choice, desc]) => h('div', { class: 'srb-step' },
-              h('b', { text: `${title}: ${choice}` }),
-              h('span', { text: desc }))))
-        );
       }
 
       function updateFormulaLines(curSim, curSpace) {
@@ -5455,8 +5781,7 @@
             h('div', { class: 'sim-eq-card-head' },
               h('span', { class: 'sim-eq-tag', text: c.tag }),
               h('span', { class: 'sim-eq-sym', text: c.sym })),
-            h('div', { class: 'sim-eq-math' }, c.lines),
-            h('div', { class: 'sim-eq-desc', text: c.desc })));
+            h('div', { class: 'sim-eq-math' }, c.lines)));
         });
       }
       updateFormulaLines(sim, evalSpace);
@@ -5499,15 +5824,15 @@
         rangeEl.style.setProperty('--pct', `${pct.toFixed(1)}%`);
       }
 
+      let organFold = null;
       function refreshLiveFormulaState() {
         invalidateCurrentEvaluation(false);
         simStatusEl.textContent = isKo ? '구성 변경됨 · 다시 평가 필요' : 'Configuration changed · evaluate again';
         summaryMeta.textContent = simStatusEl.textContent;
         triadBox.hidden = true;
-        rBox.hidden = true;
         eqGrid.hidden = true;
         if (deepStrip) deepStrip.hidden = true;
-        if (organRows.parentElement) organRows.parentElement.hidden = true;
+        if (organFold) organFold.hidden = true;
         initDesignChart(cvs, sim, evalSpace, false);
       }
 
@@ -5550,17 +5875,23 @@
         rangeInput.addEventListener('change', () => renderStudioCanvas(false));
         numInput.addEventListener('change', (e) => applyWeight(e.target.value));
 
-        const card = h('div', { class: 'sim-param-card' },
-          h('div', { class: 'sim-param-top' },
-            h('div', { class: 'sim-param-title-wrap' },
-              h('code', { class: 'sim-param-sym', text: pd.sym }),
-              h('span', { class: 'sim-param-label', text: isKo ? pd.ko : pd.en })),
-            numInput),
-          h('div', { class: 'sim-param-sub', text: isKo ? pd.subKo : pd.subEn }),
-          rangeInput);
+        const infoBtn = tipped(h('button', {
+          type: 'button',
+          class: 'sim-info-btn',
+          text: 'i',
+          'aria-label': `${isKo ? pd.ko : pd.en}: ${isKo ? pd.subKo : pd.subEn}`,
+        }), isKo ? pd.subKo : pd.subEn);
 
-        if (pd.col === 'left') colLeft.append(card);
-        else colRight.append(card);
+        const row = h('div', { class: 'sim-param-row' },
+          h('div', { class: 'sim-param-meta' },
+            h('code', { class: 'sim-param-sym', text: pd.sym }),
+            h('span', { class: 'sim-param-label', text: isKo ? pd.ko : pd.en }),
+            infoBtn),
+          rangeInput,
+          numInput);
+
+        if (pd.col === 'left') colLeft.append(row);
+        else colRight.append(row);
       });
 
       const presetBtns = [];
@@ -5652,7 +5983,6 @@
       paramColumns);
 
       updateTriadDom(sim, evalSpace);
-      updateRationaleDom(sim, evalSpace);
       if (designMode !== 'idle' && !isEvalPending) lastStudioEval = { sim, space: evalSpace, mode: evalSpace.mode, refAdcId: resolveRefAdcId(sim.tgt.id) };
 
       const previousSim = S.studioDesignMode === 'stale' && lastStudioEval && lastStudioEval.sim;
@@ -5666,31 +5996,38 @@
       simWrap.append(chartWrap);
       if (deepStrip) simWrap.append(deepStrip);
       if (designMode !== 'idle' && hasPatientProfile()) {
-        simWrap.append(triadBox, rBox);
+        simWrap.append(triadBox);
       }
 
       // 2. Metrics strip
-      const hero = h('div', { class: 'studio-hero panel' },
+      const hero = h('div', { class: 'studio-hero' },
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: t('shCompat') }),
+          tipped(h('span', { class: 'sh-kicker', text: t('shCompat') }), t('shCompatDesc')),
           h('span', { class: 'sh-val ' + (handleMatch ? 't-green' : 't-amber'), text: handleMatch ? t('shCompatDirect') : t('shCompatSpacer') }),
-          h('div', { class: 'sh-bar' }, h('i', { style: `width:${handleMatch ? 100 : 50}%;background:${handleMatch ? 'var(--emerald)' : 'var(--amber)'}` })),
-          h('span', { class: 'sh-desc', text: t('shCompatDesc') })),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${handleMatch ? 100 : 50}%;background:${handleMatch ? 'var(--emerald)' : 'var(--amber)'}` }))),
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: t('shSelect') }),
+          tipped(h('span', { class: 'sh-kicker', text: t('shSelect') }), t('shSelectDesc')),
           h('span', { class: 'sh-val', text: `+${tgt.selectivity.toFixed(1)} log2FC` }),
-          h('div', { class: 'sh-bar' }, h('i', { style: `width:${Math.min(100, tgt.selectivity * 16)}%;background:var(--accent)` })),
-          h('span', { class: 'sh-desc', text: t('shSelectDesc') })),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${Math.min(100, tgt.selectivity * 16)}%;background:var(--accent)` }))),
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: t('shBystander') }),
+          tipped(h('span', { class: 'sh-kicker', text: t('shBystander') }), t('shBystanderDesc')),
           h('span', { class: 'sh-val', text: bystander ? t('shBystanderActive') : t('shBystanderAuto') }),
-          h('div', { class: 'sh-bar' }, h('i', { style: `width:${bystander ? 92 : 30}%;background:${bystander ? 'var(--accent)' : 'var(--dim)'}` })),
-          h('span', { class: 'sh-desc', text: t('shBystanderDesc') })),
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${bystander ? 92 : 30}%;background:${bystander ? 'var(--accent)' : 'var(--dim)'}` }))),
         h('div', { class: 'sh-metric' },
-          h('span', { class: 'sh-kicker', text: t('shStability') }),
+          tipped(h('span', { class: 'sh-kicker', text: t('shStability') }), t('shStabilityDesc')),
           h('span', { class: 'sh-val', text: `${stabilityScore}% ${t('shStabilityIntact')}` }),
-          h('div', { class: 'sh-bar' }, h('i', { style: `width:${stabilityScore}%;background:var(--emerald)` })),
-          h('span', { class: 'sh-desc', text: t('shStabilityDesc') })));
+          h('div', { class: 'sh-bar' }, h('i', { style: `width:${stabilityScore}%;background:var(--emerald)` }))));
+
+      const propsFold = h('details', {
+        class: 'studio-fold panel',
+        open: S.foldProps ? '' : null,
+        ontoggle: (e) => { S.foldProps = e.currentTarget.open; save(); },
+      },
+      h('summary', null,
+        h('span', { class: 'studio-fold-title', text: isKo ? '구성 특성' : 'Construct properties' }),
+        h('div', { class: 'studio-fold-side' },
+          h('span', { class: 'studio-fold-meta', text: `${handleMatch ? t('shCompatDirect') : t('shCompatSpacer')} · +${tgt.selectivity.toFixed(1)} log2FC · ${stabilityScore}%` }))),
+      h('div', { class: 'studio-fold-body' }, hero));
 
       // 3. Organ risk and normal-tissue expression
       updateOrganRowsDom(sim);
@@ -5707,26 +6044,32 @@
       });
 
       const showModelResult = designMode !== 'idle' && hasPatientProfile();
-      const grid2 = h('div', { class: 'studio-grid-2' + (showModelResult ? '' : ' is-single') },
-        showModelResult ? h('section', { class: 'studio-card panel' },
-          h('div', { class: 'studio-card-head' },
-            h('h3', { text: t('simOrganTitle') }),
-            h('span', { class: 'prov-tag prov-model', text: isKo ? '모델 추정' : 'Model estimate' })),
-          organRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0', text: isKo
-            ? `장기별 모델 점수입니다. ${fcSilenced ? t('fcLalaNote') : t('fcWtNote')}`
-            : `Model scores by organ. ${fcSilenced ? t('fcLalaNote') : t('fcWtNote')}` })) : null,
-        h('section', { class: 'studio-card panel' },
-          h('div', { class: 'studio-card-head' },
-            h('h3', { text: t('gtexTitle') }),
-            h('span', { class: 'prov-tag prov-label', text: 'GTEx nTPM' })),
-          gtexRows,
-          h('p', { class: 'dim', style: 'margin:12px 0 0', text: `${tgt.gene} ${t('gtexNote')}` })));
+      const topRisk = (sim.organRisks || []).reduce((best, r) => (!best || r.p > best.p ? r : best), null);
+      organFold = showModelResult ? h('details', {
+        class: 'studio-fold panel',
+        open: S.foldOrgan ? '' : null,
+        ontoggle: (e) => { S.foldOrgan = e.currentTarget.open; save(); },
+      },
+      h('summary', null,
+        h('span', { class: 'studio-fold-title', text: t('simOrganTitle') }),
+        h('div', { class: 'studio-fold-side' },
+          topRisk ? h('span', { class: 'studio-fold-meta', text: `${organKo(topRisk.organ)} ${Math.round(topRisk.p * 100)}%` }) : null,
+          h('span', { class: 'prov-tag prov-model', text: isKo ? '모델 추정' : 'Model estimate' }))),
+      h('div', { class: 'studio-fold-body' }, organRows)) : null;
 
-      const previewNote = showModelResult ? null : h('p', { class: 'studio-preview-note', text: isKo
-        ? '실행 전 미리보기: 현재 구성의 재료 특성입니다. 환자 기준 모델 평가는 실행 후 표시됩니다.'
-        : 'Preview before running: properties of the current construct. The patient-specific model evaluation appears after a run.' });
-      add(canvas, [simWrap, previewNote, hero, grid2, explain]);
+      const gtexFold = h('details', {
+        class: 'studio-fold panel',
+        open: S.foldGtex ? '' : null,
+        ontoggle: (e) => { S.foldGtex = e.currentTarget.open; save(); },
+      },
+      h('summary', null,
+        h('span', { class: 'studio-fold-title', text: t('gtexTitle') }),
+        h('div', { class: 'studio-fold-side' },
+          h('span', { class: 'studio-fold-meta', text: `${tgt.gene} · ${(tgt.tissues || []).length} ${isKo ? '조직' : 'tissues'}` }),
+          h('span', { class: 'prov-tag prov-label', text: 'GTEx nTPM' }))),
+      h('div', { class: 'studio-fold-body' }, gtexRows));
+
+      add(canvas, [simWrap, propsFold, organFold, gtexFold, explain].filter(Boolean));
 
       setTimeout(() => initDesignChart(cvs, sim, evalSpace, animateScan,
         (f, shownTotal) => {
@@ -6176,11 +6519,9 @@
       const isKo = S.lang === 'ko';
       const entry = S.entry || 'demo';
       const title = entry === 'new' ? (isKo ? '새 환자 입력' : 'New patient') : (isKo ? '환자 프로필' : 'Patient Profile');
-      const sub = isKo ? '질환과 검사 수치를 입력하세요.' : 'Enter conditions and lab values.';
       const intro = h('header', { class: 'mode-intro' },
         h('div', { class: 'mode-intro-copy' },
-          h('h1', { class: 'mode-h1', text: title }),
-          h('p', { class: 'mode-sub', text: sub })));
+          h('h1', { class: 'mode-h1', text: title })));
       introMount.append(intro);
 
       if (entry === 'demo' || entry === 'demo_edited') {
@@ -6497,8 +6838,7 @@
 
           groupEl.append(h('div', { class: 'bio-discrete-row' },
             h('div', { class: 'bio-info' },
-              h('span', { class: 'bio-name', text: isKo ? (LAB_KO[df.key] || df.name) : df.name }),
-              h('span', { class: 'bio-ref', text: isKo ? df.subKo : df.subEn })),
+              h('span', { class: 'bio-name', text: isKo ? (LAB_KO[df.key] || df.name) : df.name })),
             segGroup));
         });
 
@@ -7647,24 +7987,7 @@
     const fcFormat = (sim.spec && sim.spec.fcFormat) || (fcSilenced ? 'igg1_lalapg' : 'igg1_wt');
     const mineFcLabel = fcFormatLabel(fcFormat, fcSilenced, isKo);
 
-    const refAdcId = resolveRefAdcId(tgt.id);
-    const refSpec = ADC_SPECS[refAdcId] || {};
-    const refMech = MECH[refAdcId] || {};
-    const refRow = (S.result && S.result.data && S.result.data.rows && S.result.data.rows.find((r) => r.adc === refAdcId)) || null;
-    const refBrand = (refRow && refRow.brand) || refSpec.brand || refMech.brand || refAdcId;
-    const refName = (refRow && refRow.name) || (refSpec.brand ? `${refSpec.brand} (${refAdcId})` : refAdcId);
-
-    let refSim = null;
-    if (spaceInput && spaceInput.refBest && spaceInput.best && spaceInput.best.spec && spaceInput.best.spec.target === tgt.id) {
-      refSim = spaceInput.refBest;
-    } else if (spaceInput && spaceInput.refCurrent && spaceInput.current && spaceInput.current.spec && spaceInput.current.spec.target === tgt.id) {
-      refSim = spaceInput.refCurrent;
-    } else {
-      refSim = computeStudioSimulation(
-        getRefStudioForTarget(tgt.id),
-        sim.organRisks ? sim.organRisks.map((r) => ({ organ: r.organ, score: 0.8 })) : null
-      );
-    }
+    const { refAdcId, refBrand, refName, refSpec, refRow, refSim } = resolveRefBundle(sim, spaceInput);
     const refFcFmt = (refSim.spec && refSim.spec.fcFormat) || (refSim.fcSilenced ? 'igg1_lalapg' : 'igg1_wt');
     const refFcLabel = fcFormatLabel(refFcFmt, refSim.fcSilenced, isKo);
 
@@ -7735,10 +8058,10 @@
       [t('compDar'), `DAR ${dar}`, `DAR ${refSim.dar}`, darGain],
       [t('compFc'), mineFcLabel, refFcLabel, fcGain],
       [t('compSafety'), L(`${sim.safetyScore}점`, `${sim.safetyScore}`), L(`${refSim.safetyScore}점`, `${refSim.safetyScore}`),
-        { tone: toneOf(dSafety), text: dSafety >= 3 ? L(`모델 안전도 점수가 기준 약물보다 ${dSafety}점 높습니다. 실제 환자의 독성 감소를 확인한 결과는 아닙니다.`, `The model safety score is ${dSafety} points above the reference. This does not establish reduced toxicity in patients.`)
+        { tone: toneOf(dSafety), text: dSafety >= 3 ? L(`모델 안전도 점수가 기준 약물보다 ${dSafety}점 높습니다.`, `The model safety score is ${dSafety} points above the reference.`)
           : dSafety <= -3 ? L(`모델 안전도 점수가 기준 약물보다 ${-dSafety}점 낮습니다.`, `The model safety score is ${-dSafety} points below the reference.`) : L('모델 안전도 점수가 기준 약물과 비슷합니다.', 'The model safety score is similar to the reference.') }],
       [t('compEfficacy'), L(`${sim.efficacyScore}점`, `${sim.efficacyScore}`), L(`${refSim.efficacyScore}점`, `${refSim.efficacyScore}`),
-        { tone: toneOf(dEff), text: dEff >= 3 ? L(`모델 효능 점수가 기준 약물보다 ${dEff}점 높습니다. 임상 효과의 우월성을 입증한 결과는 아닙니다.`, `The model efficacy score is ${dEff} points above the reference. This does not establish superior clinical efficacy.`)
+        { tone: toneOf(dEff), text: dEff >= 3 ? L(`모델 효능 점수가 기준 약물보다 ${dEff}점 높습니다.`, `The model efficacy score is ${dEff} points above the reference.`)
           : dEff <= -3 ? L(`모델 효능 점수가 기준 약물보다 ${-dEff}점 낮습니다.`, `The model efficacy score is ${-dEff} points below the reference.`) : L('모델 효능 점수가 기준 약물과 비슷합니다.', 'The model efficacy score is similar to the reference.') }],
     ];
 
@@ -7752,8 +8075,7 @@
         h('span', { class: 'cmp-chip ' + gain.tone, text: chipText[gain.tone] }),
         h('span', { class: 'cmp-gain-text', text: gain.text })))));
 
-    const secCompareTable = section(t('clinicalDiff'),
-      h('p', { class: 'dim', text: L('아래 점수와 구성 변경에 따른 영향은 모델 추정입니다. 승인 약물의 관찰된 임상시험 결과는 임상 근거 탭에서 별도로 확인하세요.', 'The scores and effects of construct changes below are model estimates. Observed trial outcomes for the approved drug are shown separately in Clinical evidence.') }), cmpList);
+    const secCompareTable = section(t('clinicalDiff'), cmpList);
 
     // 3. Why the approved drug's side effects are lower with this design
     const deriskDefs = getDeriskDefs(refSim.tgt, refBrand, isKo);
@@ -7883,13 +8205,7 @@
     const curSim = lastStudioEval.sim;
     const sp = lastStudioEval.space || {};
     const bestSim = sp.best || curSim;
-    const refAdcId = lastStudioEval.refAdcId || resolveRefAdcId(curSim.tgt.id);
-    const refSpec = ADC_SPECS[refAdcId] || {};
-    const refMech = MECH[refAdcId] || {};
-    const refBrand = refSpec.brand || refMech.brand || refAdcId;
-    const refSim = (sp.refCurrent && curSim.tgt && sp.current && sp.current.spec && sp.current.spec.target === curSim.tgt.id)
-      ? sp.refCurrent
-      : computeStudioSimulation(getRefStudioForTarget(curSim.tgt.id));
+    const { refBrand, refSim } = resolveRefBundle(curSim, sp);
     const w = Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {});
     const wSafe = sp.wSafety != null ? Number(sp.wSafety) : Number(w.wSafety);
     const wEff = Math.max(0, 1 - wSafe);
@@ -7958,6 +8274,9 @@
   // ------------------------------------------------------------------ Mode Switching & Keyboard Controls
   function switchMode(m, keepDrawer) {
     if (!keepDrawer) closeDrawer(true);
+    closeStudioPartSheet(false);
+    hideTip();
+    hideMicroPopover();
     S.mode = m;
     save();
     renderHeaderControls();
@@ -7999,6 +8318,10 @@
 
   document.addEventListener('keydown', (e) => {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (studioPartSheet) {
+      if (e.key === 'Escape') { e.preventDefault(); closeStudioPartSheet(true); }
+      return;
+    }
     if (guide) {
       if (e.key === 'Escape') { e.preventDefault(); closeGuide(); }
       return;
@@ -8041,7 +8364,7 @@
         if (id) MECH[id] = m;
       }
     });
-    const cleanVer = String(APP.version || '0.9.2').replace(/^v/i, '');
+    const cleanVer = String(APP.version || '0.9.4').replace(/^v/i, '');
     if (verEl) verEl.textContent = cleanVer;
     if (barVer) barVer.textContent = cleanVer;
 

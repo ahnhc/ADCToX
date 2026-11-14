@@ -1,3 +1,10 @@
+# ADCToX 0.9.4 Release Notes
+
+- **Decluttered Workspace & Compact Patient Summary Bar**: Replaced duplicate condition search panels in `3. ADC Design` with a single summary bar displaying patient disease chips, lab badges, dynamic priority-organ pills, and an `Edit` shortcut back to `1. Patient Profile`, while trimming redundant subtitles and helper blocks across Tabs 1–3.
+- **Single-Open Construct Accordions & Mobile Bottom Sheets**: Grouped the 5 ADC construct selectors into single-open accordions on desktop and added mobile (`<= 640px`) bottom-sheet drawers for Target, Linker, and Payload with search, category tabs, and Match/Spacer compatibility badges.
+- **Live Reference Switcher & Collapsible Telemetry Sections**: Enabled switching the comparison reference across all 15 approved ADCs directly from the evaluation triad, and organized construct properties, organ toxicity scores, GTEx normal-tissue expression, and 1-line parameter sliders into clean collapsible panels.
+- **Synchronized `EN / KO` Toggling**: Condition chips store bilingual labels so switching between English and Korean updates active chips, open guide/sheet dialogs, suggestions, and selection summaries seamlessly.
+
 # ADCToX 0.9.3 Release Notes
 
 - Clarify demo and new-patient entry, tied candidates, and the context of trial observations.
