@@ -767,20 +767,44 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
 
         # Collect unique candidate architectures `(ti, li, pi, di, fi)` to evaluate across 5 clinical doses x 5 folds
         cand_archs: List[Tuple[int, int, int, int, int]] = []
-        seen_arch = set()
+        arch_idx_map: Dict[Tuple[int, int, int, int, int], int] = {}
 
-        def _add_arch(tup: Tuple[int, int, int, int, int]) -> None:
-            if tup not in seen_arch:
-                seen_arch.add(tup)
+        def _add_arch(tup: Tuple[int, int, int, int, int]) -> int:
+            if tup not in arch_idx_map:
+                arch_idx_map[tup] = len(cand_archs)
                 cand_archs.append(tup)
+            return arch_idx_map[tup]
 
-        _add_arch((cur_ti, cur_li, cur_pi, cur_di, cur_fi))
+        cur_arch_i = _add_arch((cur_ti, cur_li, cur_pi, cur_di, cur_fi))
         for idx_f in top_flat:
             tf_i, lpd_i = divmod(idx_f, st["n_lpd"])
             ti_i, fi_i = divmod(tf_i, st["n_f"])
             lp_i, di_i = divmod(lpd_i, st["n_d"])
             li_i, pi_i = divmod(lp_i, st["n_p"])
             _add_arch((ti_i, li_i, pi_i, di_i, fi_i))
+
+        ref_arch_i: Optional[int] = None
+        ref_cur_spec = (mat_res.get("ref_current") or {}).get("spec")
+        if isinstance(ref_cur_spec, dict):
+            r_ti, r_li, r_pi, r_di, r_fi = SM.resolve_spec_indices(ref_cur_spec, st)
+            ref_arch_i = _add_arch((r_ti, r_li, r_pi, r_di, r_fi))
+
+        # Diverse same-target compatible architectures (up to 16) for real live scatter evaluation
+        st_lpd_compat = np.flatnonzero(st["compat_lpd"])
+        if st_lpd_compat.size > 0:
+            st_stride = max(1, st_lpd_compat.size // 16)
+            for s_k, lpd_i in enumerate(st_lpd_compat[::st_stride][:16]):
+                lp_i, di_i = divmod(int(lpd_i), st["n_d"])
+                li_i, pi_i = divmod(lp_i, st["n_p"])
+                fi_i = (cur_fi + s_k) % st["n_f"]
+                _add_arch((cur_ti, li_i, pi_i, di_i, fi_i))
+
+        # Incompatible linker-payload architectures (up to 12) evaluated by the live ensemble
+        incompat_lp = np.argwhere(~st["compat_mask_lp"])
+        if len(incompat_lp) > 0:
+            inc_stride = max(1, len(incompat_lp) // 12)
+            for li_i, pi_i in incompat_lp[::inc_stride][:12]:
+                _add_arch((cur_ti, int(li_i), int(pi_i), cur_di, cur_fi))
 
         custom_smi = str(body.get("customPayloadSmiles") or "").strip()
         custom_feat = _compute_custom_smiles_features(custom_smi) if custom_smi else None
@@ -1030,7 +1054,12 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         std_org13 = fold_org13_prob.std(axis=0)
 
         util_all = w_safety * mean_safe + (1.0 - w_safety) * mean_eff
-        best_b = int(np.argmax(util_all))
+        compat_b_arr = np.array(
+            [True if p_raw < 0 else bool(st["compat_mask_lp"][l_i, p_raw]) for (_, l_i, p_raw, _, _, _) in batch_specs],
+            dtype=bool,
+        )
+        util_masked = np.where(compat_b_arr, util_all, -1e9)
+        best_b = int(np.argmax(util_masked))
         b_ti, b_li, b_pi, b_di, b_fi, b_dose = batch_specs[best_b]
 
         # Build dose-window profile across `[1.8, 2.4, 3.6, 5.4, 6.0]` mg/kg for the winning construct!
@@ -1138,8 +1167,8 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         }
         best_live["rationales"] = SM.build_rationales(best_live, st, real_organs)
 
-        # Also enrich `current` construct at standard 3.6 mg/kg (index 2 of first arch) with live 5-fold uncertainty & kill curve!
-        cur_b_idx = 2  # 3.6 mg/kg on `cand_archs[0]` (`cur_ti, cur_li, cur_pi, cur_di, cur_fi`)
+        # Also enrich `current` construct at standard 3.6 mg/kg (index 2 of cur_arch_i) with live 5-fold uncertainty & kill curve!
+        cur_b_idx = cur_arch_i * len(DOSE_GRID_MGKG) + 2  # 3.6 mg/kg on `cand_archs[cur_arch_i]`
         cur_detail = dict(mat_res["current"])
         cur_detail["safetyRaw"] = round(float(mean_safe[cur_b_idx]), 2)
         cur_detail["safetyScore"] = int(round(float(mean_safe[cur_b_idx])))
@@ -1154,15 +1183,72 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             for c_i, c_nm in enumerate((1, 10, 100, 1000))
         ]
 
+        if ref_arch_i is not None and isinstance(mat_res.get("ref_current"), dict):
+            ref_b_idx = ref_arch_i * len(DOSE_GRID_MGKG) + 2
+            ref_cur_live = dict(mat_res["ref_current"])
+            ref_cur_live["safetyRaw"] = round(float(mean_safe[ref_b_idx]), 2)
+            ref_cur_live["safetyScore"] = int(round(float(mean_safe[ref_b_idx])))
+            ref_cur_live["safetyStd"] = round(float(std_safe[ref_b_idx]), 2)
+            ref_cur_live["efficacyRaw"] = round(float(mean_eff[ref_b_idx]), 2)
+            ref_cur_live["efficacyScore"] = int(round(float(mean_eff[ref_b_idx])))
+            ref_cur_live["efficacyStd"] = round(float(std_eff[ref_b_idx]), 2)
+            mat_res["ref_current"] = ref_cur_live
+
         if b_ti != mat_res["best"]["indices"][0]:
             ref_probe = SM.evaluate_studio_matrix({**body, "spec": best_live["spec"]})
             mat_res["ref_best"] = ref_probe["ref_current"]
+
+        # Real-time 5-fold evaluated points for Deep Research scatter plot (no 368k cloud synthetic filler)
+        deep_points: List[List[float]] = []
+        deep_same_target_cloud: List[List[float]] = []
+        for k_i, (k_ti, k_li, k_pi, _, _, _) in enumerate(batch_specs):
+            is_c = True if k_pi < 0 else bool(st["compat_mask_lp"][k_li, k_pi])
+            flags = (1 if is_c else 0) | (2 if k_ti == b_ti else 0) | (4 if k_ti == cur_ti else 0)
+            pt_s = round(float(mean_safe[k_i]), 1)
+            pt_e = round(float(mean_eff[k_i]), 1)
+            deep_points.append([pt_s, pt_e, flags])
+            if is_c and k_ti == cur_ti:
+                deep_same_target_cloud.append([pt_s, pt_e])
+
+        compat_b_indices = np.flatnonzero(compat_b_arr)
+        sorted_b = sorted(
+            compat_b_indices.tolist(),
+            key=lambda i: (-round(float(mean_safe[i]), 2), -round(float(mean_eff[i]), 2)),
+        )
+        deep_pareto: List[Dict[str, Any]] = []
+        run_max_e = -1e9
+        for k_i in sorted_b:
+            s_v = round(float(mean_safe[k_i]), 2)
+            e_v = round(float(mean_eff[k_i]), 2)
+            if e_v > run_max_e + 0.05:
+                run_max_e = e_v
+                p_ti, p_li, p_pi, p_di, p_fi, p_dose = batch_specs[k_i]
+                deep_pareto.append(
+                    {
+                        "safetyRaw": s_v,
+                        "efficacyRaw": e_v,
+                        "utilScore": round(float(util_all[k_i]), 2),
+                        "doseMgKg": float(p_dose),
+                        "spec": {
+                            "target": st["targets"][p_ti]["id"],
+                            "linker": st["linkers"][p_li]["id"],
+                            "payload": st["payloads"][cur_pi if p_pi < 0 else p_pi]["id"],
+                            "dar": float(st["dars"][p_di]["val"]),
+                            "fc": st["fc_formats"][p_fi]["id"] != "igg1_wt",
+                            "fcFormat": st["fc_formats"][p_fi]["id"],
+                        },
+                    }
+                )
 
         elapsed_ms = round((time.perf_counter() - t0) * 1000.0, 2)
         mat_res["schema"] = "ADCToX-DeepResearch-v083"
         mat_res["mode"] = "deep_research_v2"
         mat_res["current"] = cur_detail
         mat_res["best"] = best_live
+        mat_res["deep_points"] = deep_points
+        mat_res["cloud"] = deep_points
+        mat_res["same_target_cloud"] = deep_same_target_cloud
+        mat_res["pareto_front"] = deep_pareto
         mat_res["deep_research"] = {
             "slot": slot_id,
             "device": dev_str,

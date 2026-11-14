@@ -1,3 +1,14 @@
+# ADCToX 0.9.5 Release Notes
+
+- **Unified Navigation, Typography & Mobile Layout**:
+  - Matched framing and active accent borders across steps `1`, `2`, and `3` in the top navigation bar, kept step badges visible across narrow mobile screens (`<= 480px`) without header clipping, unified typography exclusively around `Manrope` and `Pretendard Variable`, and removed middle-dot punctuation and redundant status pills across Tabs 1–3.
+- **Streamlined `1. Patient Profile`**:
+  - Preloaded a baseline clinical case automatically without a separate demo banner while retaining `New Patient` in the top bar, scoped `Demographics` strictly to `Age`, `Sex`, and `Weight`, moved clinical lab panels into clickable chevron `Optional Clinical Panels`, and standardized all numeric input boxes to uniform widths.
+- **Focused `2. Compare ADCs` & Comparison Drawer**:
+  - Preserved clicked organ selection order in the shared `Vulnerable Organs` workspace bar, streamlined the 5-column comparison grid and drawer sections, consolidated FDA dosing rules into `Vulnerable organ precautions`, highlighted elevated treatment trial adverse-event bars in crimson, and placed `Export summary ↗` at the bottom of the drawer.
+- **Live Deep Research Scatter & Decluttered `3. ADC Design`**:
+  - Switched `Deep Research` mode to render real-time evaluated `ADC-SurrogateNet-v2` points on the safety-efficacy plot, enabled mouse-wheel and drag horizontal scrolling for target categories, added a uniform-dot HTML legend, displayed 2 clean multi-line cards (`New Design` and `Existing ADC`), renamed folds (`Construct Properties`, `Organ Toxicity Prediction`, `Advanced Settings` with `Balanced`, `Organ Protection`, `Antitumor Efficacy`), and added direct GitHub repository links to the `?` guide modal.
+
 # ADCToX 0.9.4 Release Notes
 
 - **Decluttered Workspace & Compact Patient Summary Bar**: Replaced duplicate condition search panels in `3. ADC Design` with a single summary bar displaying patient disease chips, lab badges, dynamic priority-organ pills, and an `Edit` shortcut back to `1. Patient Profile`, while trimming redundant subtitles and helper blocks across Tabs 1–3.

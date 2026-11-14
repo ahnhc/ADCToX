@@ -12,9 +12,9 @@
   }
 
   function indicationText(indicated, hasCancer, ko) {
-    if (!hasCancer) return ko ? '암종 미입력' : 'Cancer not entered';
-    if (indicated === true) return ko ? '적응증 일치' : 'Cancer match';
-    if (indicated === false) return ko ? '적응증 외 암종' : 'No cancer match';
+    if (!hasCancer) return ko ? '진단 미입력' : 'Diagnosis not entered';
+    if (indicated === true) return ko ? '적응증 일치' : 'Indication match';
+    if (indicated === false) return ko ? '적응증 불일치' : 'Outside indication';
     return ko ? '미평가' : 'Not assessed';
   }
 
@@ -45,11 +45,11 @@
 
     if (ctx) {
       const caseType = ctx.sampleCase
-        ? (ko ? `가상 샘플 사례 (${ctx.sampleCase})` : `Virtual sample case (${ctx.sampleCase})`)
+        ? (ko ? `기본 사례 (${ctx.sampleCase})` : `Preset case (${ctx.sampleCase})`)
         : (ko ? '직접 입력 사례' : 'User-entered profile');
       lines.push(`${ko ? '사례 구분' : 'Case type'}: ${caseType}`);
-      lines.push(`${ko ? '우선 보호 장기' : 'Priority organ'}: ${ctx.prioOrgan || (ko ? '자동 (없음)' : 'Automatic (none)')}`);
-      lines.push(`${ko ? '비교 필터' : 'Comparison filter'}: ${ctx.matrixFilter === 'relevant' ? (ko ? '적응증 일치만 보기' : 'Cancer match only') : (ko ? '전체 15개 승인 ADC' : 'All 15 approved ADCs')}`);
+      lines.push(`${ko ? '취약 장기군' : 'Vulnerable organs'}: ${ctx.prioOrgan || (ko ? '자동 (없음)' : 'Automatic (none)')}`);
+      lines.push(`${ko ? '비교 필터' : 'Comparison filter'}: ${ctx.matrixFilter === 'relevant' ? (ko ? '적응증 일치' : 'Indication match') : (ko ? '전체 15개 승인 ADC' : 'All 15 approved ADCs')}`);
     }
 
     lines.push('', ko ? '입력 질환 및 상태 (INPUTS)' : 'INPUTS');
@@ -124,20 +124,19 @@
       const st = ctx.studio;
       lines.push(
         '',
-        ko ? '신규 ADC 설계 요약 (모델 추정)' : 'ADC DESIGN (Model estimates)',
-        `${ko ? '실행 방식' : 'Execution mode'}: ${st.modeLabel || st.mode || 'Manual'}`,
-        st.searchExecuted
-          ? `${ko ? '탐색 조합 수' : 'Search space'}: ${st.totalCombinations} (${ko ? '호환 가능' : 'viable'}: ${st.compatibleCombinations || '-'})`
-          : (ko ? '자동 탐색: 실행 전' : 'Auto search: not run'),
-        `${ko ? '가중치 설정' : 'Scoring weights'}: ${st.presetLabel || 'Balanced'} (w_safe=${st.wSafe}, w_eff=${st.wEff}, gamma=${st.gamma}, beta=${st.beta})`
+        ko ? '신규 ADC 설계 요약' : 'ADC DESIGN',
+        `${ko ? '가중치 설정' : 'Scoring weights'}: ${st.presetLabel || (ko ? '균형' : 'Balanced')} (w_safe=${st.wSafe}, w_eff=${st.wEff}, gamma=${st.gamma}, beta=${st.beta})`
       );
+      if (st.searchExecuted && st.totalCombinations) {
+        lines.push(`${ko ? '평가 조합 수' : 'Evaluated constructs'}: ${st.totalCombinations} (${ko ? '호환 가능' : 'viable'}: ${st.compatibleCombinations || '-'})`);
+      }
       if (st.customSmiles) lines.push(`Custom Payload SMILES: ${st.customSmiles}`);
-      lines.push(...formatConstructLine(ko ? '현재 선택/편집 설계 (Current Design)' : 'Current Edited Design', st.current));
-      if (st.searchExecuted && st.optimal) {
-        lines.push(...formatConstructLine(ko ? '탐색 선정 최적 설계 (Search Optimal Design)' : 'Search Optimal Design', st.optimal));
+      lines.push(...formatConstructLine(ko ? '신규 설계' : 'New Design', st.current));
+      if (st.searchExecuted && st.optimal && (!st.current || st.optimal.arch !== st.current.arch)) {
+        lines.push(...formatConstructLine(ko ? '탐색 결과 설계' : 'Search Design', st.optimal));
       }
       if (st.reference) {
-        lines.push(...formatConstructLine(ko ? `승인 기준 약물 (${st.reference.name})` : `Approved Reference ADC (${st.reference.name})`, st.reference));
+        lines.push(...formatConstructLine(ko ? `기존 ADC (${st.reference.name})` : `Existing ADC (${st.reference.name})`, st.reference));
       }
     }
 

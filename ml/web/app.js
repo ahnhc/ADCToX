@@ -1,5 +1,5 @@
-/* ADCTOX v0.9.4 Architectural Daylight WebApp
-   Active-Organ Matrix + 368,640-Construct Studio + Deep Research (GPU/CPU) + Biomarker Flowsheet
+/* ADCTOX v0.9.5 Architectural Daylight WebApp
+   Active-Organ Matrix + Construct Design Studio + Deep Research (GPU/CPU) + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
   'use strict';
@@ -85,6 +85,10 @@
   function svgClose() {
     return sv('svg', { width: '14', height: '14', viewBox: '0 0 14 14', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round' },
       sv('path', { d: 'M2 2L12 12M12 2L2 12' }));
+  }
+  function svgArrowUpRight(size = 14) {
+    return sv('svg', { width: String(size), height: String(size), viewBox: '0 0 16 16', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.9', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true' },
+      sv('path', { d: 'M4.5 11.5L11.5 4.5M5.5 4.5H11.5V10.5' }));
   }
   function svgSearch() {
     return sv('svg', { width: '13', height: '13', viewBox: '0 0 16 16', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.8', 'stroke-linecap': 'round', style: 'color:var(--dim);flex-shrink:0' },
@@ -193,44 +197,60 @@
     const isKo = S.lang === 'ko';
     const stepItems = isKo
       ? [
-          ['1. 환자 프로필', '처음에는 가상 환자 데모가 입력되어 있습니다. 내 환자는 상단 새 환자 입력으로 빈 상태에서 시작하고, 암종·기저질환과 기본 검진 수치를 입력합니다. 새로고침하면 데모로 돌아갑니다.'],
-          ['2. ADC 비교', 'FDA 승인 ADC 15종을 라벨 규칙, 취약 장기 주의사항, 임상시험 이상사례 발생률로 비교합니다. 기본 목록은 입력 암종과 적응증이 일치하는 약물입니다. 취약 장기를 누르면 그 장기를 우선 기준으로 정렬합니다.'],
-          ['3. ADC 설계', '표적 36종, 링커 16종, 페이로드 20종, DAR 8단계, 항체 골격 4종(368,640개 조합)에서 수동 설계로 현재 구성을 평가하거나 자동 탐색으로 최적 조합을 찾고, 기준 승인 약물과 비교합니다.'],
+          ['1. 환자 프로필', '접속 시 가상 환자 예시가 자동 입력됩니다. 상단의 새 환자 입력으로 빈 상태에서 시작할 수 있으며, 진단명과 기저질환을 입력하고 인구학적 정보와 선택 검진 수치를 입력합니다.'],
+          ['2. ADC 비교', '승인된 ADC 15종을 약물 적합도, 취약 장기 주의사항, 임상시험 이상사례 발생률로 비교합니다. 취약 장기군에서 장기를 선택하면 강조 표시되며, 약물 행을 누르면 상세 근거와 분석 결과 내보내기를 이용할 수 있습니다.'],
+          ['3. ADC 설계', '표적, 링커, 페이로드, DAR, 항체 및 Fc 구성을 직접 조합해 수동 평가하거나, 자동 설계 및 Deep Research로 5-Fold ADCSurrogateNet v2 예측을 실행해 신규 설계와 기존 ADC를 비교합니다.'],
         ]
       : [
-          ['1. Patient Profile', 'The app opens with a demo patient. Use New Patient in the header to start empty, then enter the cancer, comorbidities and baseline labs. Reloading returns to the demo.'],
-          ['2. Compare ADCs', 'Compares 15 FDA-approved ADCs by label rules, vulnerable-organ warnings and pivotal-trial adverse event rates. The default list shows drugs approved for the entered cancer. Select an organ to rank by it first.'],
-          ['3. ADC Design', 'Evaluate the current construct (manual) or search all 368,640 constructs (36 targets, 16 linkers, 20 payloads, 8 DARs, 4 Fc formats) for the best fit, then compare with the approved reference drug.'],
+          ['1. Patient Profile', 'Opens with a preloaded demo patient. Use New Patient in the top bar to start blank, enter diagnoses or comorbidities, and adjust demographics and optional clinical panels.'],
+          ['2. Compare ADCs', 'Compares 15 FDA-approved ADCs across dosing fit, vulnerable-organ cautions, and clinical trial adverse-event rates. Click any drug row to open detailed evidence and export results.'],
+          ['3. ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto-design and Deep Research (5-Fold ADCSurrogateNet v2) to compare your new design against an approved ADC.'],
         ];
     const xBtn = h('button', { type: 'button', class: 'x-btn', 'aria-label': isKo ? '닫기' : 'Close', onclick: closeGuide }, svgClose());
+    const verStr = String((APP && APP.version) || '0.9.5').replace(/^v/i, '');
     const dialog = h('div', { class: 'guide overlay-panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
-        h('div', { class: 'g-head' },
-          h('h2', { id: 'g-title', text: isKo ? 'ADCToX 사용 안내' : 'ADCToX guide' }),
-          xBtn),
-        h('div', { class: 'g-body' },
+      h('div', { class: 'g-head' },
+        h('h2', { id: 'g-title', text: isKo ? 'ADCToX 사용 안내' : 'ADCToX Guide' }),
+        xBtn),
+      h('div', { class: 'g-body' },
         h('div', { class: 'g-steps-list' },
           stepItems.map(([title, desc], idx) => h('div', { class: 'g-step-item' },
             h('span', { class: 'g-step-num', text: String(idx + 1) }),
             h('div', { class: 'g-step-body' },
               h('b', { text: title }),
               h('span', { text: desc }))))),
-        h('h3', { text: isKo ? '데이터 출처 및 지표 정의' : 'Data sources and metric definitions' }),
+        h('h3', { text: isKo ? '데이터 출처 및 지표 기준' : 'Data Sources and Metrics' }),
         h('div', { class: 'g-keys' },
-          h('span', { class: 'prov-tag prov-label', text: 'FDA SPL' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '미국 FDA DailyMed 공식 처방 라벨의 용량 조절, 금기, 경고 규칙' : 'Official US FDA DailyMed prescribing label dosing, warning, and contraindication rules' }),
-          h('span', { class: 'prov-tag prov-trial', text: isKo ? '시험별 관찰 %' : 'Observed % per trial' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '각 등록 임상시험의 치료군과 대조군에서 관찰된 이상사례 발생률. 시험마다 대상과 조건이 다릅니다.' : 'Adverse-event incidence observed in each pivotal trial’s treatment and control arms. Populations differ between trials.' }),
-          h('span', { class: 'prov-tag prov-model', text: isKo ? '모델 점수 0-100' : 'Model score 0-100' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '설계 모델의 장기 안전도(X)와 항암 효능(Y) 점수. Deep Research는 5-fold ADCSurrogateNet v2를 사용합니다.' : 'Design model scores for organ safety (X) and antitumor efficacy (Y). Deep Research uses 5-fold ADCSurrogateNet v2.' }),
-          h('span', { class: 'prov-tag', text: isKo ? '연관도 0-100' : 'Association 0-100' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '입력한 질환·검진 수치와 각 장기의 연결 강도. 질환-장기 판정 모델 확률과 라벨 규칙으로 계산합니다.' : 'How strongly the entered conditions and labs link to each organ, from the condition-organ model probability and label rules.' }),
-          h('span', { class: 'sp-status-badge clear', text: isKo ? '표준 용량 투여' : 'Standard' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '입력된 환자 프로필 기준 라벨상 용량 제한 없음' : 'No FDA label dosing restriction triggered for entered profile' }),
+          h('span', { class: 'g-key-label', text: isKo ? '처방 기준 및 주의사항' : 'Labeling Rules' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '미국 FDA DailyMed 공식 허가사항의 신장, 간, 폐 등 장기별 용량 조절 및 금기 기준' : 'FDA DailyMed prescribing information rules across renal, hepatic, pulmonary, and hematologic thresholds' }),
+          h('span', { class: 'g-key-label', text: isKo ? '임상시험 이상사례' : 'Trial Adverse Events' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '주요 임상시험의 치료군 대 대조군 이상사례 발생률(%). 치료군이 대조군보다 높으면 붉은 막대로 표시됩니다.' : 'Treatment vs. control adverse-event rates (%) in pivotal trials; crimson bars indicate higher incidence in treatment.' }),
+          h('span', { class: 'g-key-label', text: isKo ? '설계 모델 점수' : 'Design Model Scores' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '장기 안전도(X)와 항암 효능(Y) 예측 점수(0~100). Deep Research는 5-Fold ADCSurrogateNet v2를 실시간 실행합니다.' : 'Predicted organ safety (X) and antitumor efficacy (Y) scores (0-100). Deep Research runs 5-Fold ADCSurrogateNet v2.' }),
+          h('span', { class: 'sp-status-badge clear', text: isKo ? '표준 용량 투여' : 'Standard dosing' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '입력된 환자 수치 기준 라벨상 용량 제한 없음' : 'No label dosing restriction triggered for entered profile' }),
           h('span', { class: 'sp-status-badge monitor', text: isKo ? '모니터링 / 용량 조절' : 'Monitor / Adjust' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '라벨 기준 밀접 경과 관찰 또는 감량 투여 권고' : 'FDA label advises close monitoring or dose reduction' }),
-          h('span', { class: 'sp-status-badge avoid', text: isKo ? '투여 주의 / 금기' : 'Avoid' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '라벨 기준 투여 회피 또는 금기 조건 해당' : 'FDA label advises against use or contraindicated' })),
-        h('p', { class: 'g-version', text: `ADCToX ${(APP && APP.version) ? String(APP.version).replace(/^v/i, '') : ''}` })));
+          h('span', { class: 'g-key-desc', text: isKo ? '밀접 경과 관찰 또는 감량 투여 고려' : 'Close monitoring or dose reduction advised' }),
+          h('span', { class: 'sp-status-badge avoid', text: isKo ? '투여 주의 / 금기' : 'Avoid / Contraindicated' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '투여 회피 또는 금기 기준에 해당' : 'Advised against use or contraindicated' })),
+        h('div', { class: 'g-foot' },
+          h('span', { class: 'g-version', text: `ADCToX v${verStr}` }),
+          h('div', { class: 'g-foot-links' },
+            h('a', {
+              class: 'g-github-link',
+              href: 'https://github.com/ahnhc/ADCToX',
+              target: '_blank',
+              rel: 'noopener noreferrer',
+              text: 'https://github.com/ahnhc/ADCToX',
+            }),
+            h('a', {
+              class: 'g-github-btn',
+              href: 'https://github.com/ahnhc/ADCToX',
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+              h('span', { text: isKo ? 'GitHub 바로가기' : 'Open GitHub' }),
+              svgArrowUpRight(13))))));
     guide = h('div', { class: 'guide-scrim', onclick: (e) => { if (e.target === guide) closeGuide(); } }, dialog);
     dialog.addEventListener('keydown', (e) => {
       if (e.key !== 'Tab') return;
@@ -811,7 +831,7 @@
         }
       ],
       "popover": "Pan-epithelial cell adhesion molecule with very high copy density across GI and breast carcinomas; basolateral expression in normal gut and biliary epithelium requires stable linkers.",
-      "popover_ko": "위장관암, 유방암 등 상피성 암종에서 매우 높은 밀도로 발현되나 정상 장 점막 및 담관 상피에도 발현되어 고안정성 링커 조합이 요구됩니다."
+      "popover_ko": "위장관암, 유방암 등 상피성 암에서 매우 높은 밀도로 발현되나 정상 장 점막 및 담관 상피에도 발현되어 고안정성 링커 조합이 요구됩니다."
     },
     {
       "id": "FGFR2",
@@ -2265,10 +2285,10 @@
       brandTag: 'ADCToX',
       newPatient: '새 환자 입력',
       newPatientTitle: '데모 값을 지우고 빈 환자 프로필에서 시작합니다',
-      addCondPh: '암종 또는 기저질환 입력 (예: 유방암, 간질성 폐질환, 간경변, 당뇨병)...',
-      condHelp: '질환명, 증상, 암종을 한글 또는 영문으로 자유롭게 입력하세요.',
-      activeOrgans: '활성 취약 장기',
-      noActiveOrgans: '활성 취약 장기 없음',
+      addCondPh: '진단 질환 또는 기저질환 입력 (예: 유방암, 간질성 폐질환, 간경변, 당뇨병)...',
+      condHelp: '질환명, 증상, 진단명을 한글 또는 영문으로 자유롭게 입력하세요.',
+      activeOrgans: '취약 장기군',
+      noActiveOrgans: '취약 장기 없음',
       footerText: 'ADCToX',
       keys: { modes: '1-3 모드 전환', nav: '상/하 행 이동', enter: '엔터 상세 근거', help: '? 안내' },
       secConstruct: 'ADC 약물',
@@ -2282,15 +2302,15 @@
       fitStd: '표준 용량 투여',
       fitAdj: '모니터링 / 용량 조절',
       fitAvoid: '투여 주의 / 금기',
-      tuneStudio: '이 구성으로 설계',
+      tuneStudio: '',
       allGrade: '전체',
       grade3: '3등급 이상',
       primaryRec: '최우선 후보 요약',
       primaryHint: '',
       filterAll: '전체 승인 ADC',
-      filterMatch: '암종 일치',
+      filterMatch: '적응증 일치',
       filterRestricted: '약물 사용 제한',
-      exportSummary: '요약 내보내기',
+      exportSummary: '분석 결과 내보내기',
       match: '일치',
       archTitle: '접합체 구성 설정',
       manualOpt: 'ADC 수동 설계',
@@ -2301,28 +2321,28 @@
       lnkTitle: '링커 (16)',
       pldTitle: '페이로드 (20)',
       darTitle: 'DAR (8)',
-      fcTitle: '항체 · Fc (4)',
+      fcTitle: '항체 및 Fc (4)',
       wtFc: '야생형 IgG1',
       silFc: 'Fc 침묵화 (LALA-PG)',
       deepTitle: 'Deep Research',
       deepSub: 'ADCSurrogateNet v2 5-Fold 실시간 구동',
       deepRunBtn: 'Deep Research 설계',
       deepBusyBtn: 'GPU 대기 중 (4/4)',
-      designTitle: '환자 맞춤형 ADC 설계 공간',
-      axisSafety: '모델 장기 안전도 (0-100, 높을수록 안전)',
-      axisEfficacy: '모델 항암 효능 (0-100, 높을수록 강력)',
-      legendCand: '설계 가능 조합',
+      designTitle: '환자 맞춤형 ADC 설계',
+      axisSafety: '장기 안전도 예측 (높을수록 안전)',
+      axisEfficacy: '항암 효능 예측 (높을수록 강력)',
+      legendCand: '동일 표적 후보군',
       legendBad: '접합 불가 조합',
-      legendCur: '현재 설계',
-      legendBest: '탐색 최적 설계',
-      optimalLocked: '현재 설계가 이 환자에게 가장 균형 잡힌 조합입니다',
-      optimalCand: '탐색에서 선정된 최적 설계:',
-      bestDesign: '환자 맞춤 최적 설계',
+      legendCur: '기존 ADC',
+      legendBest: '신규 설계',
+      optimalLocked: '현재 설계가 선택된 최적 조건에 해당합니다',
+      optimalCand: '신규 설계:',
+      bestDesign: '신규 설계',
       clickAutoOpt: 'ADC 자동 설계를 누르면 이 환자에게 맞는 조합을 찾습니다',
-      explainTitle: '고급: 모델 가중치, 수식 및 Custom SMILES',
+      explainTitle: '고급 설정',
       explainBody: [
         '안전도 (X, 0~100) = 100 - (최대 취약장기 위험 가중합 + 평균 취약장기 위험 가중합) * 100',
-        '장기 위험도 p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (ADCNet + ChEMBL v34 + 임상 13장기 AE + GTEx v8 / Tabula Sapiens 5-Fold 앙상블)',
+        '장기 위험도 p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (ADCNet + ChEMBL v34 + 임상 13장기 AE + 정상 조직 발현 아틀라스 5-Fold 앙상블)',
         '항암 효능 (Y, 0~100) = 100 * 적응증일치도 * 화학접합호환도 * (w_sel*S_sel + w_pot*S_pot + w_deliv*S_deliv + w_bys*S_bys) (ESM-2 650M + ChemBERTa-2 LoRA + 3D Boltzmann Conformer)',
       ],
       shCompat: '접합 반응성 호환도',
@@ -2338,21 +2358,19 @@
       shStability: '혈장 내 링커 안정도',
       shStabilityIntact: '유지',
       shStabilityDesc: '혈액 순환 중 페이로드가 조기 유리되지 않고 종양까지 온전하게 전달되는 비율입니다.',
-      simOrganTitle: '장기별 모델 독성 점수 (0–100)',
-      gtexTitle: '정상 장기의 표적 발현량 (GTEx)',
-      gtexNote: '단백질이 정상 장기에서 많이 발현될수록 암세포가 아닌 정상 조직도 함께 손상될 위험이 커집니다. 숫자는 발현량(nTPM)이며 낮을수록 안전합니다.',
+      simOrganTitle: '장기별 독성 예측',
       fcLalaNote: 'Fc 침묵화(LALA-PG)로 대식세포의 FcγR 결합이 줄어 폐, 간, 안구 등으로의 비특이 흡수가 감소했습니다.',
       fcWtNote: '야생형 IgG1은 대식세포의 FcγR에 결합하므로 폐, 간, 안구로의 비특이 흡수가 일어날 수 있습니다.',
-      basicTitle: '기본 및 필수 검진 수치',
-      basicReqTag: '필수 입력',
-      basicExpand: '필수 항목 펼치기 ▾',
-      basicCollapse: '필수 항목 접기 ▴',
+      basicTitle: '인구학적 정보',
+      basicReqTag: '',
+      basicExpand: '인구학적 정보 펼치기',
+      basicCollapse: '인구학적 정보 접기',
       flowTitle: '선택 검진 수치',
-      flowOptTag: '선택 입력',
-      flowSub: '직접 측정한 신장 청소율, 간 기능 등급, 심장 구혈률 및 약물유전형 지표',
-      flowExpand: '선택 항목 펼치기 ▾',
-      flowCollapse: '선택 항목 접기 ▴',
-      refRange: '참고치',
+      flowOptTag: '',
+      flowSub: '일반 혈액, 생화학, 신장, 간, 심장 및 약물유전형 지표',
+      flowExpand: '선택 항목 펼치기',
+      flowCollapse: '선택 항목 접기',
+      refRange: '기준치',
       notEntered: '미입력',
       elevated: '수치 상승',
       lowVal: '수치 저하',
@@ -2364,12 +2382,12 @@
       triggeredLab: '검사 수치 이상에 의해 활성화',
       noActiveTriggers: '활성화된 장기 독성 요인 없음',
       drTitle: '임상 근거 및 구조 상세',
-      tabPatient: '판단 요약',
+      tabPatient: '주의사항',
       tabStudy: '임상 근거',
       tabStructure: '분자 구조',
-      rankRationaleTitle: '판단 요약',
+      rankRationaleTitle: '',
       noRankDiff: '환자 정보가 아직 입력되지 않아 순위를 산정하지 않았습니다.',
-      labelRestriction: '적용된 FDA 라벨 규칙',
+      labelRestriction: '',
       noLabelRestriction: '입력된 환자의 수치를 고려하였을 때, 약물 사용에 제한 사항은 없습니다.',
       patientWarnTitle: '취약 장기 주의사항',
       noPatientWarn: '환자의 취약 장기를 고려하였을 때, 약물 사용에 제한 사항은 없습니다.',
@@ -2378,26 +2396,26 @@
       enterLabBtn: '검사 수치 입력하기',
       treatmentArm: '치료군',
       controlArm: '대조군',
-      trialContext: '등록 임상시험 이상사례 발생률 (관찰값)',
+      trialContext: '',
       struct3dTitle: '분자 구조',
       appliesToAll: '모든 환자에게 적용',
       singleArmTrial: '단일군 임상시험 (대조군 없음)',
-      compareTitle: '신규 설계 vs. 기준 승인 약물 비교',
+      compareTitle: '신규 설계 vs 기존 ADC',
       tabCompare: '설계 비교',
       tabStruct3d: '분자 구조',
       tabRefStudy: '임상 근거',
-      deNovoCol: '현재 선택 설계',
-      refCol: '기준 승인 약물',
+      deNovoCol: '신규 설계',
+      refCol: '기존 ADC',
       clinicalDiff: '구성 차이와 모델 평가',
-      deRiskTitle: '기준 승인 약물 부작용 대비 기전 비교',
-      viewCompareBtn: '기준 약물과 비교',
+      deRiskTitle: '기존 ADC 대비 기전 비교',
+      viewCompareBtn: '기존 ADC와 비교',
       compTarget: '표적 항원',
       compLinker: '화학 링커',
       compPayload: '세포독성 페이로드',
       compDar: '약물-항체 접합비 DAR',
       compFc: '항체 골격 / Fc',
-      compSafety: '모델 장기 안전도 (0-100)',
-      compEfficacy: '모델 항암 효능 (0-100)',
+      compSafety: '장기 안전도 예측',
+      compEfficacy: '항암 효능 예측',
       sourcesTitle: '공식 출처',
     },
     en: {
@@ -2405,10 +2423,10 @@
       brandTag: 'Clinical ADC Evaluation & De Novo Design',
       newPatient: 'New Patient',
       newPatientTitle: 'Clear the demo values and start from an empty patient profile',
-      addCondPh: 'Enter cancer or comorbidity (e.g., breast cancer, ILD, cirrhosis)...',
-      condHelp: 'Type disease, symptom, or cancer in English or Korean.',
-      activeOrgans: 'Active Vulnerable Organs',
-      noActiveOrgans: 'No Active Vulnerable Organs',
+      addCondPh: 'Enter diagnosis or comorbidity (e.g., breast cancer, ILD, cirrhosis)...',
+      condHelp: 'Type diagnosis, symptom, or comorbidity in English or Korean.',
+      activeOrgans: 'Vulnerable Organs',
+      noActiveOrgans: 'No Vulnerable Organs',
       footerText: 'ADCToX',
       keys: { modes: '1-3 Mode', nav: 'Up/Down Navigate', enter: 'Enter Evidence', help: '? Guide' },
       secConstruct: 'ADC',
@@ -2428,9 +2446,9 @@
       primaryRec: 'Leading Candidate Summary',
       primaryHint: '',
       filterAll: 'All Approved ADCs',
-      filterMatch: 'Cancer Match',
+      filterMatch: 'Indication Match',
       filterRestricted: 'Use Restrictions',
-      exportSummary: 'Export Summary',
+      exportSummary: 'Export Analysis Results',
       match: 'Match',
       archTitle: 'Construct Configuration',
       manualOpt: 'Manual ADC Design',
@@ -2448,21 +2466,21 @@
       deepSub: 'Live 5-Fold ADCSurrogateNet v2',
       deepRunBtn: 'Deep Research',
       deepBusyBtn: 'GPUs Busy (4/4)',
-      designTitle: 'Patient-Tailored ADC Design Space',
-      axisSafety: 'Model Organ Safety (0-100, higher is safer)',
-      axisEfficacy: 'Model Antitumor Efficacy (0-100, higher is stronger)',
-      legendCand: 'Viable constructs',
-      legendBad: 'Incompatible pair',
-      legendCur: 'Current design',
-      legendBest: 'Selected optimal design',
+      designTitle: 'Patient-Tailored ADC Design',
+      axisSafety: 'Predicted Organ Safety (higher is safer)',
+      axisEfficacy: 'Predicted Antitumor Efficacy (higher is stronger)',
+      legendCand: 'Same-Target Pool',
+      legendBad: 'Incompatible Pair',
+      legendCur: 'Approved ADC',
+      legendBest: 'New Design',
       optimalLocked: 'Current design matches the selected optimal construct for this patient',
-      optimalCand: 'Selected optimal design from search:',
-      bestDesign: 'Selected optimal design',
+      optimalCand: 'New design:',
+      bestDesign: 'New design',
       clickAutoOpt: 'Run Auto-design ADC to identify the top construct for this patient',
-      explainTitle: 'Advanced: Model Equations, Weights & Custom SMILES',
+      explainTitle: 'Advanced Settings',
       explainBody: [
         'Safety (X, 0-100) = 100 - (w_peak * Peak Organ Risk + (1 - w_peak) * Mean Organ Risk) * 100',
-        'Organ Risk p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (5-Fold Ensemble trained on ADCNet, ChEMBL v34, Clinical 13-Organ AE & FDA SPL, GTEx v8 / Tabula Sapiens)',
+        'Organ Risk p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (5-Fold Ensemble trained on ADCNet, ChEMBL v34, Clinical 13-Organ AE & FDA SPL, Normal-Tissue Atlas)',
         'Efficacy (Y, 0-100) = 100 * Indication * Compatibility * (w_sel*S_sel + w_pot*S_pot + w_deliv*S_deliv + w_bys*S_bys) (ESM-2 650M + ChemBERTa-2 LoRA + 3D Boltzmann Conformer)',
       ],
       shCompat: 'Conjugation Compatibility',
@@ -2478,20 +2496,18 @@
       shStability: 'Plasma Linker Stability',
       shStabilityIntact: 'Intact',
       shStabilityDesc: 'Resistance to premature systemic payload deconjugation in circulation.',
-      simOrganTitle: 'Model organ toxicity score (0–100)',
-      gtexTitle: 'Normal-Organ Target Expression (GTEx)',
-      gtexNote: 'The more this protein is expressed in normal organs, the more healthy tissue can be hit together with the tumor. Numbers are expression levels (nTPM); lower is safer.',
+      simOrganTitle: 'Organ Toxicity Prediction',
       fcLalaNote: 'Fc silencing (LALA-PG) reduces FcγR binding on macrophages, lowering non-specific uptake in lung, liver and eye.',
       fcWtNote: 'Wild-type IgG1 binds FcγR on macrophages, so non-specific uptake in lung, liver and eye can occur.',
-      basicTitle: 'Demographics & Required Labs',
-      basicReqTag: 'Required',
-      basicExpand: 'Expand Required Labs ▾',
-      basicCollapse: 'Collapse Required Labs ▴',
-      flowTitle: 'Optional Labs & Biomarkers',
-      flowOptTag: 'Optional',
-      flowSub: 'Direct clearance, Child-Pugh grade, cardiac LVEF, and pharmacogenomic markers',
-      flowExpand: 'Expand Optional Labs ▾',
-      flowCollapse: 'Collapse Optional Labs ▴',
+      basicTitle: 'Demographics',
+      basicReqTag: '',
+      basicExpand: 'Expand Demographics',
+      basicCollapse: 'Collapse Demographics',
+      flowTitle: 'Optional Clinical Panels',
+      flowOptTag: '',
+      flowSub: 'CBC, chemistry, renal clearance, Child-Pugh grade, cardiac LVEF, and pharmacogenomic markers',
+      flowExpand: 'Expand Optional Panels',
+      flowCollapse: 'Collapse Optional Panels',
       refRange: 'Ref',
       notEntered: 'Not entered',
       elevated: 'Elevated',
@@ -2504,7 +2520,7 @@
       triggeredLab: 'Triggered by laboratory biomarker elevation',
       noActiveTriggers: 'No active organ toxicity triggers detected.',
       drTitle: 'Clinical Evidence and Structure',
-      tabPatient: 'Summary',
+      tabPatient: 'Cautions',
       tabStudy: 'Clinical Evidence',
       tabStructure: 'Structure',
       rankRationaleTitle: 'Judgment summary',
@@ -2518,26 +2534,26 @@
       enterLabBtn: 'Enter lab values',
       treatmentArm: 'Treatment Arm',
       controlArm: 'Comparator Arm',
-      trialContext: 'Pivotal trial adverse events (observed cohort)',
+      trialContext: '',
       struct3dTitle: 'Molecular Structure',
       appliesToAll: 'Applies to all patients',
       singleArmTrial: 'Single-arm trial',
-      compareTitle: 'Selected Design vs. Approved Reference ADC',
+      compareTitle: 'New Design vs Approved ADC',
       tabCompare: 'Compare',
       tabStruct3d: 'Structure',
       tabRefStudy: 'Evidence',
-      deNovoCol: 'Selected Design',
-      refCol: 'Approved Reference ADC',
+      deNovoCol: 'New Design',
+      refCol: 'Approved ADC',
       clinicalDiff: 'Construct differences and model evaluation',
-      deRiskTitle: 'Mechanism comparison vs. approved drug toxicities',
-      viewCompareBtn: 'Compare with reference drug',
+      deRiskTitle: 'Mechanism comparison vs. approved ADC',
+      viewCompareBtn: 'Compare with approved ADC',
       compTarget: 'Target Antigen',
       compLinker: 'Chemical Linker',
       compPayload: 'Cytotoxic Payload',
       compDar: 'DAR',
       compFc: 'Antibody / Fc Format',
-      compSafety: 'Model Organ Safety (0-100)',
-      compEfficacy: 'Model Antitumor Efficacy (0-100)',
+      compSafety: 'Predicted Organ Safety',
+      compEfficacy: 'Predicted Antitumor Efficacy',
       sourcesTitle: 'Official sources',
     },
   };
@@ -2579,13 +2595,13 @@
     {
       id: 'organ_sparing',
       ko: '장기 보호 우선',
-      en: 'Organ Protection Priority',
+      en: 'Organ Protection',
       weights: { wSafety: 0.78, wPeak: 0.80, wExpr: 0.52, leakSens: 1.45, hydroSens: 1.55, fcProtect: 0.52, wSelect: 0.38, wBystander: 0.14 },
     },
     {
       id: 'efficacy_first',
-      ko: '항암 효과 우선',
-      en: 'Antitumor Efficacy Priority',
+      ko: '항암 효과',
+      en: 'Antitumor Efficacy',
       weights: { wSafety: 0.36, wPeak: 0.42, wExpr: 0.28, leakSens: 0.75, hydroSens: 0.80, fcProtect: 0.28, wSelect: 0.36, wBystander: 0.52 },
     },
   ];
@@ -2740,7 +2756,11 @@
   // Called by every patient-field edit: the demo becomes "demo being edited", and the original sample name stops
   // being shown as if it still described the patient.
   function studioInputSignature() {
-    return JSON.stringify([condList(), rawValues(), allChoice(), S.first, S.prioOrgan, S.studio, S.simWeights, S.customPayloadSmiles, S.deepResearchOn]);
+    const condKeys = (S.conds || [])
+      .map((c) => `${c.kind}:${c.value || c.mondo || c.en || c.ko || c.label}`)
+      .sort();
+    const meanings = Object.entries(S.meanings || {}).sort((a, b) => a[0].localeCompare(b[0]));
+    return JSON.stringify([condKeys, rawValues(), meanings, S.first, S.prioOrgan, S.studio, S.simWeights, S.customPayloadSmiles, S.deepResearchOn]);
   }
 
   function invalidateStudioEvaluation() {
@@ -2771,11 +2791,11 @@
       return {
         state: 'partial',
         label: !hasCancer
-          ? (isKo ? '부분 입력 (암종 미선택)' : 'Partial Input (no cancer)')
+          ? (isKo ? '부분 입력 (진단 질환 미선택)' : 'Partial Input (no diagnosis)')
           : (isKo ? '부분 입력 (검진 수치 미입력)' : 'Partial Input (no labs)'),
       };
     }
-    return { state: 'ready', label: isKo ? '평가 완료' : 'Evaluated' };
+    return { state: 'ready', label: isKo ? '입력 완료' : 'Entered' };
   }
 
   const regName = (id) => (REG[id] ? REG[id].label.replace(/\s*\([^)]*\)/g, '') : id);
@@ -2914,14 +2934,7 @@
   }
 
   function orderedActiveOrgans() {
-    const base = activeOrgansWithScores();
-    if (!S.prioOrgan) return base;
-    const hitIdx = base.findIndex((x) => x.organ === S.prioOrgan);
-    if (hitIdx <= 0) return base;
-    const copy = base.slice();
-    const [picked] = copy.splice(hitIdx, 1);
-    copy.unshift(picked);
-    return copy;
+    return activeOrgansWithScores();
   }
 
   // ------------------------------------------------------------------ Page Shell & Navigation
@@ -3122,6 +3135,7 @@
       else it.btn.removeAttribute('aria-current');
     });
     crumbRefs.clinicianGroup.classList.toggle('is-clinician-active', S.mode === 0 || S.mode === 1);
+    crumbRefs.researchGroup.classList.toggle('is-research-active', S.mode === 2);
 
     if (!resetPatientBtn) {
       resetPatientBtn = h('button', {
@@ -3345,22 +3359,8 @@
   // ------------------------------------------------------------------ Unified Patient Context Bar
   function buildWorkspaceBar(onChanged) {
     const isKoBar = S.lang === 'ko';
-    const collapsible = S.mode !== 0;
+    const collapsible = false;
     let workspaceBar;
-    const summaryConditions = h('p', { class: 'workspace-summary-conditions' });
-    const summaryPriority = h('span', { class: 'workspace-summary-priority' });
-    const editProfile = h('button', {
-      type: 'button', class: 'btn-tertiary',
-      'aria-expanded': S.workspaceProfileOpen ? 'true' : 'false',
-      'aria-controls': 'workspace-profile-fields workspace-profile-organs workspace-profile-labs',
-      text: S.workspaceProfileOpen ? (isKoBar ? '환자 정보 접기' : 'Collapse patient info') : (isKoBar ? '환자 정보 수정' : 'Edit patient info'),
-      onclick: () => {
-        S.workspaceProfileOpen = !S.workspaceProfileOpen;
-        save();
-        renderActiveMode(false);
-        requestAnimationFrame(() => stageBox.querySelector('.workspace-summary button')?.focus({ preventScroll: true }));
-      },
-    });
     const st = { q: pendingCondQuery || '', items: [], cur: -1, timer: 0, seq: 0 };
     const input = h('input', {
       id: 'wb-cond-input',
@@ -3447,26 +3447,8 @@
       if (S.raw.ugt1a1 === 'y' || S.raw.ugt1a1 === true) labBadges.push('UGT1A1*28');
 
       if (labBadges.length && S.mode !== 0) {
-        const isKo = S.lang === 'ko';
         chipsWrap.append(h('div', { class: 'lab-summary-row' },
-          h('span', { class: 'lab-summary-text', text: labBadges.join('  /  ') }),
-          h('button', {
-            type: 'button', class: 'btn-tertiary lab-edit-btn',
-            text: isKo ? '검진 수치 수정' : 'Edit lab values',
-            onclick: () => {
-              S.basicLabsOpen = true;
-              save();
-              switchMode(0);
-              requestAnimationFrame(() => {
-                const sec = stageBox.querySelector('.req-flowsheet');
-                if (!sec) return;
-                const topH = (top && top.offsetHeight) || 0;
-                window.scrollTo({ top: sec.getBoundingClientRect().top + window.scrollY - topH - 12, behavior: still() ? 'auto' : 'smooth' });
-                const first = sec.querySelector('input');
-                if (first) first.focus({ preventScroll: true });
-              });
-            },
-          })));
+          h('span', { class: 'lab-summary-text', text: labBadges.join('  /  ') })));
       }
     }
 
@@ -3487,7 +3469,7 @@
           if (isKo && it.s.ko && it.s.text && it.s.ko !== it.s.text) subParts.push(it.s.text);
           if (it.s.sub) subParts.push(it.s.sub);
         }
-        const subText = subParts.join(' · ');
+        const subText = subParts.join(', ');
         const li = h('li', {
           class: 'opt' + (isActive ? ' is-active' : ''),
           role: 'option',
@@ -3603,21 +3585,10 @@
     const organsGrid = h('div', { class: 'active-organs-grid' });
     const horizonSubEl = h('span', { class: 'horizon-sub' });
     const horizonLabelEl = h('span', { class: 'horizon-label' });
-    const statusRowEl = h('div', { class: 'wb-status-row' });
-
-    function renderStatusRow() {
-      clear(statusRowEl);
-      const stInfo = getProfileStatus();
-      statusRowEl.append(h('span', { class: `state-pill wb-live-state-pill ${stInfo.state}` },
-        h('span', { class: 'state-pill-txt', text: stInfo.label })));
-    }
 
     function updateHorizonSub(curOrgans) {
       const prioOrg = S.prioOrgan || (S.first && curOrgans.find((x) => x.condKey === S.first)?.organ) || null;
-      summaryConditions.textContent = S.conds.length ? S.conds.map((c) => c.label).join(' · ') : (isKoBar ? '입력된 질환 없음' : 'No conditions entered');
-      const priorityName = prioOrg ? (isKoBar ? ORGAN_KO[prioOrg] : SHORT[prioOrg]) || prioOrg : (isKoBar ? '선택 안 함' : 'Not selected');
-      summaryPriority.textContent = (isKoBar ? '우선 장기: ' : 'Priority organ: ') + priorityName;
-      horizonLabelEl.textContent = `${t('activeOrgans')} (${curOrgans.length})`;
+      horizonLabelEl.textContent = t('activeOrgans');
       if (prioOrg) {
         const pLabel = S.lang === 'ko' ? (ORGAN_KO[prioOrg] || SHORT[prioOrg] || prioOrg) : (SHORT[prioOrg] || prioOrg);
         horizonSubEl.textContent = S.lang === 'ko' ? `우선 평가: ${pLabel}` : `Prioritizing: ${pLabel}`;
@@ -3634,7 +3605,6 @@
       clear(organsGrid);
       const curOrgans = orderedActiveOrgans();
       updateHorizonSub(curOrgans);
-      renderStatusRow();
       if (curOrgans.length) {
         curOrgans.forEach((item) => {
           const pct = Math.round(Math.max(15, Math.min(100, item.score * 100)));
@@ -3644,7 +3614,7 @@
             type: 'button',
             class: 'organ-meter-btn' + (isPrio ? ' prio-active' : ''),
             'aria-pressed': isPrio ? 'true' : 'false',
-            title: S.lang === 'ko' ? `${orgLabel} · 연관도 ${pct} · 눌러서 우선 평가` : `${orgLabel} · association ${pct} · press to prioritize`,
+            title: S.lang === 'ko' ? `${orgLabel}, 연관도 ${pct} (눌러서 우선 평가)` : `${orgLabel}, association ${pct} (press to prioritize)`,
             'aria-label': S.lang === 'ko' ? `${orgLabel}, 연관도 ${pct}` : `${orgLabel}, association ${pct}`,
             onclick: async () => {
               const turningOff = isPrio;
@@ -3673,12 +3643,10 @@
     }
     renderOrgansGrid();
 
-    workspaceBar = h('section', { class: 'workspace-bar' + (collapsible ? ' is-collapsible' + (S.workspaceProfileOpen ? ' is-expanded' : '') : ''), 'aria-label': isKoBar ? '환자 정보와 취약 장기' : 'Patient and active organ profile' },
-      collapsible ? h('div', { class: 'workspace-summary' }, summaryConditions, summaryPriority, editProfile) : null,
+    workspaceBar = h('section', { class: 'workspace-bar', 'aria-label': isKoBar ? '환자 정보와 취약 장기' : 'Patient and active organ profile' },
       h('div', { class: 'wb-left', id: 'workspace-profile-fields' },
-        statusRowEl,
         buildProgressBar(),
-        h('label', { class: 'wb-field-label', for: 'wb-cond-input', text: isKoBar ? '암종 및 기저질환' : 'Cancer and comorbidities' }),
+        h('label', { class: 'wb-field-label', for: 'wb-cond-input', text: isKoBar ? '진단 질환 및 기저질환' : 'Diagnosis and comorbidities' }),
         h('div', { class: 'wb-search-row' },
           h('div', { class: 'wb-input-wrap' },
             svgSearch(),
@@ -3690,7 +3658,6 @@
           tipped(horizonLabelEl, isKoBar ? '장기 버튼을 누르면 해당 장기를 우선 기준으로 정렬합니다' : 'Select an organ pill to prioritize it'),
           horizonSubEl),
         organsGrid));
-    if (collapsible) workspaceBar.append(h('div', { class: 'workspace-inline-labs', id: 'workspace-profile-labs' }, S.workspaceProfileOpen ? buildPatientLabsMode(true) : null));
     return workspaceBar;
   }
 
@@ -3771,7 +3738,7 @@
     },
     h('div', { class: 'dual-bar-row' },
       h('span', { class: 'db-tag', text: txLabel }),
-      h('span', { class: 'db-track' }, h('i', { class: 'db-fill-adc', style: `width:${Math.min(100, (adcPct / scaleMax) * 100).toFixed(1)}%` })),
+      h('span', { class: 'db-track' }, h('i', { class: 'db-fill-adc' + (cmpPct !== null && adcPct > cmpPct ? ' is-higher' : ''), style: `width:${Math.min(100, (adcPct / scaleMax) * 100).toFixed(1)}%` })),
       h('span', { class: 'db-pct', text: `${adcPct.toFixed(1)}%` })),
     cmpPct !== null ? h('div', { class: 'dual-bar-row' },
       h('span', { class: 'db-tag', text: ctrlLabel }),
@@ -3839,8 +3806,8 @@
           h('div', { class: 'emc-copy' },
             h('p', { class: 'emc-title', text: isKo ? '환자 정보가 아직 입력되지 않았습니다' : 'No patient profile entered yet' }),
             h('p', { class: 'emc-desc', text: isKo
-              ? '암종, 기저질환 또는 검진 수치를 입력하면 FDA 라벨 규칙과 취약 장기를 반영해 순위를 산출합니다. 아래 목록은 순위 없는 승인 약물 목록입니다.'
-              : 'Enter a cancer diagnosis, comorbidity, or lab value to rank drugs by FDA label rules and vulnerable organs. The list below is unranked.' })),
+              ? '진단 질환, 기저질환 또는 검진 수치를 입력하면 FDA 라벨 규칙과 취약 장기를 반영해 순위를 산출합니다. 아래 목록은 순위 없는 승인 약물 목록입니다.'
+              : 'Enter a diagnosis, comorbidity, or lab value to rank drugs by FDA label rules and vulnerable organs. The list below is unranked.' })),
           h('div', { class: 'emc-actions' },
             h('button', {
               type: 'button',
@@ -3859,14 +3826,19 @@
           const tiedCount = rows.filter((r) => r.rank === leadRow.rank).length;
           const prioSummary = S.prioOrgan
             ? (isKo ? `우선 평가: ${organKo(S.prioOrgan)}` : `Prioritizing ${organKo(S.prioOrgan)}`)
-            : (hasCancer && leadRow.indicated ? (isKo ? '입력 암종 적응증 일치' : 'Approved for entered cancer') : leadSt.full);
+            : (hasCancer && leadRow.indicated ? (isKo ? '적응증 일치' : 'Approved for entered indication') : leadSt.full);
           const leadMetaTxt = [prioSummary].concat(leadPills).filter(Boolean).join('  /  ');
           const kicker = tiedCount > 1
-            ? (isKo ? `전체 ${rows.length}개 중 공동 ${leadRow.rank}위 · ${tiedCount}개 후보 중 대표` : `Tied #${leadRow.rank} of ${rows.length} overall · 1 of ${tiedCount} candidates`)
-            : (isKo ? `대표 후보 · 전체 ${rows.length}개 중 ${leadRow.rank}위` : `Leading candidate · #${leadRow.rank} of ${rows.length} overall`);
+            ? (isKo ? `전체 ${rows.length}개 중 공동 ${leadRow.rank}위 (${tiedCount}개 후보 중 대표)` : `Tied #${leadRow.rank} of ${rows.length} overall (1 of ${tiedCount} candidates)`)
+            : (isKo ? `대표 후보 (전체 ${rows.length}개 중 ${leadRow.rank}위)` : `Leading candidate (#${leadRow.rank} of ${rows.length} overall)`);
+          const openLead = (el) => { selectRow(leadIdx, false); openDrawer(el); };
           const leadCard = h('section', {
-            class: 'leading-strip',
-            'aria-label': t('primaryRec'),
+            class: 'leading-strip is-clickable',
+            tabindex: '0',
+            role: 'button',
+            'aria-label': isKo ? `${leadRow.name} 상세 근거 보기` : `Inspect evidence for ${leadRow.name}`,
+            onclick: (e) => openLead(e.currentTarget),
+            onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLead(e.currentTarget); } },
           },
           h('div', { class: 'ls-left' },
             h('div', { class: 'ls-top-row' },
@@ -3874,15 +3846,7 @@
               h('h3', { class: 'ls-name', text: leadRow.name })),
             h('p', { class: 'ls-reason', text: leadMetaTxt })),
           h('div', { class: 'ls-right' },
-            h('span', { class: 'sp-status-badge ' + leadSt.tone, text: leadSt.full }),
-            h('span', { class: 'prov-tag prov-label', text: 'FDA SPL' }),
-            h('button', {
-              type: 'button',
-              class: 'btn-secondary',
-              text: isKo ? '상세 근거' : 'Evidence',
-              'aria-label': isKo ? `${leadRow.name} 상세 근거` : `Evidence for ${leadRow.name}`,
-              onclick: (e) => { e.stopPropagation(); selectRow(leadIdx, false); openDrawer(e.currentTarget); },
-            })));
+            h('span', { class: 'sp-status-badge ' + leadSt.tone, text: leadSt.full })));
           if (tiedCount === 1) content.append(leadCard);
         }
       }
@@ -3900,27 +3864,20 @@
 
       const tabs = h('div', { class: 'review-filters', role: 'group', 'aria-label': isKo ? 'ADC 목록 필터' : 'Filter ADCs' });
       const toolbar = h('div', { class: 'review-toolbar' },
-        h('div', { class: 'review-toolbar-left' }, tabs),
-        h('div', { class: 'review-toolbar-right' },
-          h('button', { type: 'button', class: 'export-button', text: t('exportSummary'), onclick: () => saveReview(res) })));
-      content.append(toolbar, h('p', { class: 'trial-context', text: isKo ? '임상시험 관찰값: 시험마다 대상과 조건이 다릅니다.' : 'Trial observations: populations and conditions differ by study.' }));
+        h('div', { class: 'review-toolbar-left' }, tabs));
+      content.append(toolbar);
 
       const grid = h('div', { class: 'review-grid', role: 'table', 'aria-label': isKo ? 'FDA 승인 ADC 비교' : 'Approved ADC comparison' },
         h('div', { class: 'review-grid-head', role: 'row' },
           h('span', { class: 'col-rank', role: 'columnheader', text: isKo ? '전체 순위' : 'Overall rank' }),
           h('div', { class: 'col-head-stack col-drug', role: 'columnheader' },
-            h('span', { text: t('secConstruct') }),
-            h('span', { class: 'col-head-prov', text: isKo ? '구성 요약' : 'Construct summary' })),
+            h('span', { text: t('secConstruct') })),
           tipped(h('div', { class: 'col-head-stack col-fit', role: 'columnheader' },
-            h('span', { text: t('secFit') }),
-            h('span', { class: 'col-head-prov', text: 'FDA SPL' }))),
+            h('span', { text: t('secFit') }))),
           tipped(h('div', { class: 'col-head-stack col-organs', role: 'columnheader' },
-            h('span', { text: profileReady ? t('secOrgans') : (isKo ? '일반 라벨 주의사항' : 'General label warnings') }),
-            h('span', { class: 'col-head-prov', text: isKo ? '라벨 경고 기준' : 'FDA label warnings' }))),
+            h('span', { text: profileReady ? t('secOrgans') : (isKo ? '일반 라벨 주의사항' : 'General label warnings') }))),
           tipped(h('div', { class: 'col-head-stack col-trial', role: 'columnheader' },
-            h('span', { text: t('secTrial') }),
-            h('span', { class: 'col-head-prov', text: isKo ? '시험별 관찰 발생률 %' : 'Observed % per trial' }))),
-          h('span', { class: 'col-detail', role: 'columnheader' }, h('span', { class: 'sr-only', text: isKo ? '상세 근거' : 'Evidence' }))));
+            h('span', { text: t('secTrial') })))));
 
       const trs = [];
       let visible = rows.map((_, i) => i);
@@ -3930,7 +3887,7 @@
       rows.forEach((row, i) => {
         if (i === firstOtherIdx && firstOtherIdx > 0) {
           dividerEl = h('div', { class: 'review-group-divider', role: 'row' },
-            h('span', { role: 'cell', text: isKo ? '다른 암종에서 승인된 약물' : 'Approved for other cancers' }));
+            h('span', { role: 'cell', text: isKo ? '타 적응증 승인 약물' : 'Approved for other indications' }));
           grid.append(dividerEl);
         }
         const isTop = profileReady && spotlightSet.has(row.adc);
@@ -3950,13 +3907,6 @@
             h('span', { class: 'mo-tag', text: os.tag })));
         });
 
-        const detailBtn = h('button', {
-          type: 'button', class: 'btn-row-detail',
-          text: isKo ? '근거' : 'Evidence',
-          'aria-label': isKo ? `${row.name} 상세 근거` : `Evidence for ${row.name}`,
-          onclick: (e) => { e.stopPropagation(); selectRow(i, false); openDrawer(e.currentTarget); },
-        });
-
         const tr = h('div', {
           class: 'review-row ' + (isTop ? 'tier-top' : 'tier-muted') + (otherCancer ? ' is-other-cancer' : ''),
           role: 'row', tabindex: i === S.sel ? '0' : '-1',
@@ -3973,7 +3923,7 @@
             h('span', { class: 'drug-name', text: row.name }),
             profileReady && row.tie ? h('span', { class: 'tie-tag', text: isKo ? '공동' : 'Tied' }) : null,
             hasCancer && row.indicated ? h('span', { class: 'sp-match-tag', text: t('match') }) : null,
-            otherCancer ? h('span', { class: 'other-cancer-tag', text: isKo ? '다른 암종 승인' : 'Other cancer' }) : null),
+            otherCancer ? h('span', { class: 'other-cancer-tag', text: isKo ? '타 적응증' : 'Other indication' }) : null),
           h('span', { class: 'drug-meta', text: [profileReady ? (isKo ? `전체 ${rows.length}개 중 ${row.tie ? '공동 ' : ''}${row.rank}위` : `${row.tie ? 'Tied ' : ''}#${row.rank} of ${rows.length} overall`) : '', pills.join('  /  ') || (row.cancers || []).join(', ')].filter(Boolean).join('  /  ') })),
         h('div', { class: 'status-cell', role: 'cell' },
           h('span', { class: 'cell-label', text: t('secFit') }),
@@ -3982,8 +3932,7 @@
         miniOrgans,
         h('div', { class: 'trial-cell', role: 'cell' },
           h('span', { class: 'cell-label', text: t('secTrial') }),
-          buildDualBar(trialHit)),
-        h('div', { class: 'detail-cell', role: 'cell' }, detailBtn));
+          buildDualBar(trialHit)));
 
         tr.addEventListener('click', () => { selectRow(i, true); openDrawer(tr); });
         trs.push(tr);
@@ -4000,8 +3949,7 @@
       }
 
       const filterBtns = filters.map(([id, label, count]) => {
-        const b = h('button', { type: 'button', class: 'filter-tab', 'aria-pressed': id === filter ? 'true' : 'false' },
-          label, h('span', { class: 'filter-count', text: count }));
+        const b = h('button', { type: 'button', class: 'filter-tab', 'aria-pressed': id === filter ? 'true' : 'false', text: `${label} (${count})` });
         b.addEventListener('click', () => {
           S.matrixFilter = id;
           save();
@@ -4453,35 +4401,9 @@
       topCandidates: res.top_candidates || [],
       cloud,
       sameTargetCloud,
+      deepPoints: Array.isArray(res.deep_points) ? res.deep_points.length : null,
       deepResearch: res.deep_research || null,
     };
-  }
-
-  function buildAutoOptimizeRationales(bestSim) {
-    const s = bestSim.spec;
-    const isKo = S.lang === 'ko';
-    const activeOrgs = activeOrgansWithScores().map((o) => (isKo && ORGAN_KO[o.organ] ? ORGAN_KO[o.organ] : SHORT[o.organ] || o.organ));
-    const tgtName = plainName(s.target);
-    const plName = s.customPayloadLabel || plainName(s.payload);
-    const stabVal = bestSim.plasmaStabPct != null ? bestSim.plasmaStabPct : bestSim.lnk.stability;
-    const picVal = bestSim.pIC50Pos != null ? bestSim.pIC50Pos.toFixed(2) : null;
-    const fcLbl = fcFormatLabel(s.fcFormat, s.fc, isKo);
-    const doseNoteKo = bestSim.optimalDoseMgKg ? ` (${bestSim.optimalDoseMgKg} mg/kg)` : '';
-    const doseNoteEn = bestSim.optimalDoseMgKg ? ` (${bestSim.optimalDoseMgKg} mg/kg)` : '';
-    if (isKo) {
-      return [
-        ['1. 표적 항원', `${tgtName}, 선택도 +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, '모델은 종양과 정상 조직의 표적 발현 차이를 선택도 및 정상 장기 위험 추정에 반영합니다.'],
-        ['2. 화학 링커', `${s.linker}, 모델 혈장 보존율 ${stabVal}%`, `${activeOrgs.join(', ') || '주요 장기'}의 모델 위험 점수에 링커의 혈중 안정도와 페이로드 방출 특성을 반영합니다.`],
-        ['3. 세포독성 페이로드', `${plName}, ${bestSim.pld.cls}${picVal ? ` (모델 pIC50 ${picVal})` : ''}`, '페이로드 특성과 예측 세포독성 효력을 모델의 장기 위험 및 효능 점수에 반영합니다.'],
-        ['4. 접합비와 항체 골격', `DAR ${s.dar}, ${fcLbl}${doseNoteKo}`, `현재 구성의 모델 점수는 장기 안전도 ${bestSim.safetyScore}점, 항암 효능 ${bestSim.efficacyScore}점입니다. 실제 임상 결과를 뜻하지 않습니다.`],
-      ];
-    }
-    return [
-      ['1. Target antigen', `${tgtName}, selectivity +${bestSim.tgt.selectivity.toFixed(1)} log2FC`, 'The model uses tumor-to-normal target expression differences to estimate selectivity and normal-organ risk.'],
-      ['2. Chemical linker', `${s.linker}, model plasma retention ${stabVal}%`, `The model incorporates linker stability and payload release into risk estimates for ${activeOrgs.join(', ') || 'major organs'}.`],
-      ['3. Cytotoxic payload', `${plName}, ${bestSim.pld.cls}${picVal ? ` (model pIC50 ${picVal})` : ''}`, 'Payload properties and predicted cytotoxic potency contribute to model risk and efficacy scores.'],
-      ['4. DAR and Fc format', `DAR ${s.dar}, ${fcLbl}${doseNoteEn}`, `Current construct model scores are ${bestSim.safetyScore} for organ safety and ${bestSim.efficacyScore} for efficacy. These are not clinical outcomes.`],
-    ];
   }
 
   function svgChevronDown() {
@@ -4502,122 +4424,16 @@
     return svg;
   }
 
-  function buildStudioPatientBar(onChanged) {
-    const isKo = S.lang === 'ko';
-    const barEl = h('section', { class: 'studio-patient-bar panel', 'aria-label': isKo ? '환자 요약 및 취약 장기' : 'Patient summary and vulnerable organs' });
-    const rowTop = h('div', { class: 'spb-top' });
-    const chipsBox = h('div', { class: 'spb-chips' });
-    const rowOrgans = h('div', { class: 'spb-organs' });
-
-    function renderPatientBarContent() {
-      clear(chipsBox);
-      clear(rowOrgans);
-      const P = (S.result && S.result.data && S.result.data.patient) || {};
-      const cancerConds = new Set((P.cancers || []).map((c) => c.condition));
-
-      if (S.conds.length) {
-        S.conds.forEach((c, idx) => {
-          const isCancer = cancerConds.has(c.label) || cancerConds.has(c.value) || /carcinoma|cancer|lymphoma|myeloma|leukemia|tumor|암|종양|백혈병|림프종|골수종|육종|흑색종/i.test(`${c.label || ''} ${c.en || ''}`);
-          const rm = h('button', {
-            type: 'button',
-            class: 'x-btn chip-remove',
-            'aria-label': (isKo ? '삭제: ' : 'Remove ') + c.label,
-            onclick: async () => {
-              const removed = S.conds.splice(idx, 1)[0];
-              if (removed) {
-                delete S.meanings[removed.label];
-                if (S.first === removed.label || S.first === removed.value) S.first = null;
-              }
-              markEdited();
-              if (!hasPatientProfile()) S.studioDesignMode = 'idle';
-              save();
-              await refreshBackendData();
-              renderPatientBarContent();
-              if (onChanged) onChanged();
-            },
-          }, svgClose());
-          chipsBox.append(h('span', { class: 'p-chip' + (isCancer ? ' cancer-chip' : '') },
-            h('span', { text: c.label }), rm));
-        });
-      }
-
-      const L = S.labs || {};
-      const sh = (L.derived && L.derived.shown) || {};
-      const labBadges = [];
-      if (S.raw.crcl) labBadges.push(`CLcr ${S.raw.crcl}`);
-      else if (sh.crcl) labBadges.push(`CLcr ${sh.crcl}`);
-      else if (S.raw.creatinine) labBadges.push(`Cr ${S.raw.creatinine}`);
-      if (S.raw.esrd === 'y' || S.raw.esrd === true) labBadges.push('Dialysis/ESRD');
-      if (S.raw.bilirubin) labBadges.push(`Bili ${S.raw.bilirubin}`);
-      if (S.raw.child_pugh) labBadges.push(`CP-${S.raw.child_pugh}`);
-      if (S.raw.platelet) labBadges.push(`Plt ${S.raw.platelet}`);
-      if (S.raw.anc) labBadges.push(`ANC ${S.raw.anc}`);
-      if (S.raw.lvef) labBadges.push(`LVEF ${S.raw.lvef}%`);
-      if (S.raw.hba1c) labBadges.push(`HbA1c ${S.raw.hba1c}%`);
-      if (S.raw.ugt1a1 === 'y' || S.raw.ugt1a1 === true) labBadges.push('UGT1A1*28');
-      if (labBadges.length) {
-        chipsBox.append(h('span', { class: 'spb-labs', text: labBadges.join(' · ') }));
-      }
-      if (!S.conds.length && !labBadges.length) {
-        chipsBox.append(h('span', { class: 'dim spb-empty', text: isKo ? '입력된 환자 정보 없음' : 'No patient profile entered' }));
-      }
-
-      const curOrgans = orderedActiveOrgans();
-      rowOrgans.append(h('span', { class: 'spb-organ-label', text: isKo ? '우선 장기' : 'Priority organ' }));
-      if (curOrgans.length) {
-        const pillsRow = h('div', { class: 'spb-organ-pills' });
-        curOrgans.forEach((item) => {
-          const pct = Math.round(Math.max(15, Math.min(100, item.score * 100)));
-          const isPrio = (S.prioOrgan === item.organ) || (!S.prioOrgan && item.condKey && S.first === item.condKey);
-          const orgLabel = isKo ? (ORGAN_KO[item.organ] || SHORT[item.organ] || item.organ) : (SHORT[item.organ] || item.organ);
-          pillsRow.append(h('button', {
-            type: 'button',
-            class: 'spb-organ-pill' + (isPrio ? ' is-prio' : ''),
-            'aria-pressed': isPrio ? 'true' : 'false',
-            title: isKo ? `${orgLabel} · 연관도 ${pct} · 눌러서 우선 평가` : `${orgLabel} · association ${pct} · press to prioritize`,
-            onclick: async () => {
-              const turningOff = isPrio;
-              S.prioOrgan = turningOff ? null : item.organ;
-              if (item.condKey && condList().length >= 2) {
-                S.first = turningOff ? null : item.condKey;
-              } else {
-                S.first = null;
-              }
-              save();
-              renderPatientBarContent();
-              await refreshBackendData();
-              if (onChanged) onChanged();
-            },
-          },
-          h('span', { class: 'spb-org-name', text: orgLabel }),
-          h('span', { class: 'spb-org-pct', text: String(pct) })));
-        });
-        rowOrgans.append(pillsRow);
-      } else {
-        rowOrgans.append(h('span', { class: 'dim spb-empty', text: t('noActiveOrgans') }));
-      }
-    }
-
-    const editBtn = h('button', {
-      type: 'button',
-      class: 'btn-secondary spb-edit-btn',
-      text: isKo ? '수정' : 'Edit',
-      onclick: () => switchMode(0),
-    });
-    rowTop.append(chipsBox, editBtn);
-    barEl.append(rowTop, rowOrgans);
-    renderPatientBarContent();
-    return barEl;
-  }
-
   function buildStructureStudioMode() {
     if (['manual', 'auto'].includes(S.studioDesignMode) && S.studioEvaluatedSignature !== studioInputSignature()) invalidateStudioEvaluation();
     const box = h('div', { class: 's-studio' });
     const introH1 = h('h1', { class: 'mode-h1', text: S.lang === 'ko' ? 'ADC 설계' : 'ADC Design' });
+    const studioWorkspaceBar = buildWorkspaceBar(() => invalidateCurrentEvaluation());
+    studioWorkspaceBar.classList.add('studio-patient-bar');
     box.append(
       h('header', { class: 'mode-intro' },
         h('div', { class: 'mode-intro-copy' }, introH1)),
-      buildStudioPatientBar(() => invalidateCurrentEvaluation())
+      studioWorkspaceBar
     );
     const wrap = h('div', { class: 'studio-wrap' });
     const controls = h('aside', { class: 'studio-controls panel', 'aria-label': 'Conjugate Architecture Controls' });
@@ -4883,7 +4699,7 @@
         text: isKo ? ko : en,
         onclick: () => { if (S.studioRunMode === id) return; S.studioRunMode = id; save(); renderControls(); },
       });
-      const segGroup = h('div', { class: 'seg-control', role: 'group', 'aria-label': isKo ? '실행 방식' : 'Run method' },
+      const segGroup = h('div', { class: 'seg-control', role: 'group', 'aria-label': isKo ? '설계 모드' : 'Design mode' },
         segBtn('manual', '수동 설계', 'Manual'),
         segBtn('auto', '자동 탐색', 'Auto search'));
 
@@ -4913,9 +4729,6 @@
 
       let deepOpt = null;
       if (runMode === 'auto') {
-        const deepState = isOptimizing && deepOn
-          ? (isKo ? '분석 중' : 'Analyzing')
-          : slotsBusy ? (isKo ? '대기 중' : 'Waiting') : (isKo ? '사용 가능' : 'Ready');
         deepOpt = h('div', { class: 'deep-opt' },
           h('button', {
             type: 'button',
@@ -4928,25 +4741,10 @@
           },
           h('span', { class: 'deep-switch-copy' },
             h('span', { class: 'deep-switch-title', text: 'Deep Research' })),
-          h('span', { class: 'drp-switch-pill', 'aria-hidden': 'true' }, h('i', { class: 'drp-switch-knob' }))),
-          S.deepResearchOn ? h('span', { class: 'deep-state' + (slotsBusy ? ' is-wait' : ''), text: deepState }) : null);
+          h('span', { class: 'drp-switch-pill', 'aria-hidden': 'true' }, h('i', { class: 'drp-switch-knob' }))));
       }
 
-      const execModeTag = isOptimizing || isEvalPending
-        ? (isKo ? '분석 중' : 'Analyzing')
-        : S.studioDesignMode === 'stale'
-          ? (isKo ? '구성 변경됨 · 다시 평가 필요' : 'Configuration changed · evaluate again')
-        : S.studioDesignMode === 'auto'
-          ? (S.lastRunMode === 'deep_research_v2' ? (isKo ? 'Deep Research 결과 적용됨' : 'Deep Research result applied') : (isKo ? '탐색 결과 적용됨' : 'Search result applied'))
-          : S.studioDesignMode === 'manual'
-            ? (isKo ? '최신 결과 · 수동 평가' : 'Latest · Manual')
-            : (isKo ? '실행 전' : 'Not run');
-
-      const execBox = h('div', { class: 'studio-exec-box' },
-        h('div', { class: 'studio-exec-head' },
-          h('span', { class: 'studio-exec-title', text: isKo ? '실행 방식' : 'Run method' }),
-          h('span', { class: 'studio-combo-badge', text: execModeTag })),
-        segGroup);
+      const execBox = h('div', { class: 'studio-exec-box' }, segGroup);
       controls.append(execBox);
 
       const selectedParts = [
@@ -4974,11 +4772,7 @@
       if (gpuStatusMsg) runRow.append(h('div', { class: 'gpu-busy-notice', role: 'status', text: gpuStatusMsg }));
 
       const headAction = h('div', { class: 'studio-head-action' },
-        h('span', { class: 'sec-kicker', text: t('archTitle') }),
-        h('span', {
-          class: 'studio-combo-badge',
-          text: isKo ? `${totalCombos.toLocaleString()}개 조합` : `${totalCombos.toLocaleString()} Combos`,
-        }));
+        h('span', { class: 'sec-kicker', text: t('archTitle') }));
       controls.append(headAction);
 
       const onPartPicked = (mutator) => {
@@ -4989,12 +4783,50 @@
 
       const makeCatTabs = (tabs, activeId, onTab, onRebuild) => {
         const bar = h('div', { class: 'studio-cat-tabs', role: 'group', 'aria-label': isKo ? '분류' : 'Category' });
+        let dragState = null;
+        let movedDuringDrag = false;
+        bar.addEventListener('wheel', (e) => {
+          if (bar.scrollWidth <= bar.clientWidth) return;
+          const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+          if (!delta) return;
+          e.preventDefault();
+          bar.scrollLeft += delta;
+        }, { passive: false });
+        bar.addEventListener('pointerdown', (e) => {
+          if (e.button !== 0 || bar.scrollWidth <= bar.clientWidth) return;
+          dragState = { x: e.clientX, left: bar.scrollLeft };
+          movedDuringDrag = false;
+        });
+        bar.addEventListener('pointermove', (e) => {
+          if (!dragState) return;
+          const dx = e.clientX - dragState.x;
+          if (!movedDuringDrag && Math.abs(dx) > 4) {
+            movedDuringDrag = true;
+            bar.classList.add('is-dragging');
+          }
+          if (movedDuringDrag) bar.scrollLeft = dragState.left - dx;
+        });
+        const endDrag = () => {
+          if (!dragState) return;
+          dragState = null;
+          bar.classList.remove('is-dragging');
+          setTimeout(() => { movedDuringDrag = false; }, 0);
+        };
+        bar.addEventListener('pointerup', endDrag);
+        bar.addEventListener('pointercancel', endDrag);
+        bar.addEventListener('pointerleave', endDrag);
         tabs.forEach(([id, koLbl, enLbl]) => {
           bar.append(h('button', {
             type: 'button',
             class: 'studio-cat-tab' + (activeId === id ? ' is-active' : ''),
             'aria-pressed': activeId === id ? 'true' : 'false',
-            onclick: () => { onTab(id); save(); if (onRebuild) onRebuild(); else renderControls(); },
+            onclick: () => {
+              if (movedDuringDrag) return;
+              onTab(id);
+              save();
+              if (onRebuild) onRebuild();
+              else renderControls();
+            },
             text: isKo ? koLbl : enLbl,
           }));
         });
@@ -5179,7 +5011,7 @@
           h('h2', { id: 'ps-title', text: titleTxt }),
           xBtn),
         h('div', { class: 'ps-body' },
-          searchInp,
+          !isTgt ? searchInp : null,
           catsWrap,
           listEl),
         h('div', { class: 'ps-foot' }, applyBtn));
@@ -5204,19 +5036,8 @@
       }
       reopenPartSheetHandler = (kind, snap) => openStudioPartSheet(kind, snap);
 
-      // 1. Target Antigen (36) with category tabs + inline search
-      const tgtSearch = h('input', {
-        type: 'search',
-        class: 'studio-search-input',
-        placeholder: isKo ? '표적 또는 유전자 검색 (예: CLDN18.2, DLL3, HER3)...' : 'Search target or gene (e.g., CLDN18.2, DLL3, HER3)...',
-        value: S.tgtQuery || '',
-        oninput: (e) => {
-          S.tgtQuery = e.target.value;
-          save();
-          renderControls();
-        },
-      });
-      const tgtCatBar = makeCatTabs(TGT_TABS, S.tgtQuery ? '' : (S.tgtCat || 'all'), (id) => { S.tgtCat = id; S.tgtQuery = ''; });
+      // 1. Target Antigen (36) with category tabs
+      const tgtCatBar = makeCatTabs(TGT_TABS, S.tgtCat || 'all', (id) => { S.tgtCat = id; S.tgtQuery = ''; });
 
       const isMobile = mobileMQ.matches;
       const sheetTrigger = (id, title, valueTxt) => h('div', { class: 'studio-group studio-acc' },
@@ -5254,7 +5075,6 @@
 
       const tgtGroup = accGroup('tgt', t('tgtTitle'), plainName(S.studio.target),
         tgtCatBar,
-        tgtSearch,
         makePillsList(filteredTargets(), S.studio.target, (v) => onPartPicked(() => {
           if (S.studio.target !== v) S.studioRefAdcOverride = null;
           S.studio.target = v;
@@ -5377,12 +5197,6 @@
       const isKo = S.lang === 'ko';
       if (useDeepResearch && API.studioDeepResearch) {
         // Mode 3: Real-time 5-fold ADCSurrogateNet v2 on GPU 0..3 (or CPU server fallback)
-        const statusBanner = canvas.querySelector('.sim-canvas-status');
-        if (statusBanner) {
-          statusBanner.textContent = isKo
-            ? 'Deep Research 연산 중...'
-            : 'Running Deep Research...';
-        }
         setTimeout(() => pollGpuStatus(false), 75);
         try {
           const res = await API.studioDeepResearch(buildEvalRequestBody());
@@ -5414,7 +5228,7 @@
         return;
       }
 
-      // Mode 2 (Default): Python Server 368,640 Matrix Search
+      // Mode 2 (Default): Python Server Matrix Search
       S.lastRunMode = 'matrix_368k';
       try {
         if (API.studioEvaluate) {
@@ -5447,61 +5261,53 @@
       const isKo = S.lang === 'ko';
       const evalSpace = serverSpace || evaluateLocalFallbackSpace();
       const sim = (evalSpace && evalSpace.current) ? evalSpace.current : computeStudioSimulation();
-      const tgt = sim.tgt;
-      const lnk = sim.lnk;
-      const dar = sim.dar;
-      const fcSilenced = sim.fcSilenced;
-      const handleMatch = sim.isCompat;
-      const bystander = sim.bystander;
-      const stabilityScore = sim.plasmaStabPct != null
-        ? sim.plasmaStabPct
-        : Math.max(25, Math.min(98, Math.round(lnk.stability - (dar > 4 ? (dar - 4) * 2.5 : 0))));
 
       if (!hasPatientProfile() && S.studioDesignMode !== 'idle') {
         S.studioDesignMode = 'idle';
       }
       const simWrap = h('section', { class: 'sim-canvas-panel panel' });
-      const total = evalSpace.totalCombinations || 368640;
       const designMode = S.studioDesignMode === 'stale' ? 'idle' : (S.studioDesignMode || 'idle');
+      const activeSim = (designMode === 'auto' && evalSpace && evalSpace.best) ? evalSpace.best : sim;
+      const tgt = activeSim.tgt;
+      const lnk = activeSim.lnk;
+      const dar = activeSim.dar;
+      const handleMatch = activeSim.isCompat;
+      const bystander = activeSim.bystander;
+      const stabilityScore = activeSim.plasmaStabPct != null
+        ? activeSim.plasmaStabPct
+        : Math.max(25, Math.min(98, Math.round(lnk.stability - (dar > 4 ? (dar - 4) * 2.5 : 0))));
       const isDeepResult = evalSpace.mode === 'deep_research_v2' && evalSpace.deepResearch;
-      const initialStatus = animateScan
-        ? (isDeepResult
-            ? (isKo ? `ADCSurrogateNet v2 (${evalSpace.deepResearch.device_label}) 검증 중...` : `Verifying on ${evalSpace.deepResearch.device_label}...`)
-            : (isKo ? `설계 가능 조합 0 / ${total.toLocaleString()}개 행렬 연산 중` : `Scoring 0 / ${total.toLocaleString()} combinations`))
-        : !hasPatientProfile()
-          ? (isKo ? '환자 정보 미입력 · 질환 또는 검진 수치를 먼저 입력하세요' : 'Patient info required · enter conditions or lab values first')
-          : S.studioDesignMode === 'stale'
-            ? (isKo ? '구성 변경됨 · 다시 평가 필요' : 'Configuration changed · evaluate again')
-          : designMode === 'idle'
-            ? (isKo ? '실행 전 · 실행 방식을 고른 뒤 실행하세요' : 'Not run yet · choose a method and run it')
-            : isEvalPending
-              ? (isKo ? '계산 중…' : 'Calculating…')
-              : (isKo
-                  ? `최신 결과 · 안전도 ${sim.safetyScore} / 효능 ${sim.efficacyScore}`
-                  : `Latest result · Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`);
 
-      const simStatusEl = h('span', {
-        class: 'sim-canvas-status' + (S.studioNeedInputWarn && !hasPatientProfile() ? ' is-warn' : ''),
-        text: initialStatus,
-      });
       const simHead = h('div', { class: 'sim-canvas-head' },
-        h('span', { class: 'sim-canvas-title', text: t('designTitle') }),
-        simStatusEl);
+        h('span', { class: 'sim-canvas-title', text: t('designTitle') }));
+
+      const chartLegendEl = (designMode !== 'idle' && hasPatientProfile())
+        ? h('div', { class: 'sim-chart-legend', role: 'list', 'aria-label': isKo ? '그래프 범례' : 'Chart legend' },
+            [
+              ['#0F766E', t('legendBest')],
+              ['#B45309', t('legendCur')],
+              ['#6B7280', t('legendCand')],
+              ['#DC2626', t('legendBad')],
+            ].map(([col, lbl]) => h('span', { class: 'sim-legend-item', role: 'listitem' },
+              h('i', { class: 'sim-legend-dot', style: `background:${col}` }),
+              h('span', { text: lbl }))))
+        : null;
 
       const chartWrap = h('div', { class: 'sim-chart-wrap' });
       const cvs = h('canvas', { class: 'sim-canvas' });
       staleBadgeEl = h('span', {
         class: 'sim-stale-badge',
         hidden: !(isEvalPending && designMode !== 'idle' && hasPatientProfile()),
-        text: isKo ? '이전 결과 · 갱신 중' : 'Previous result · updating',
+        text: isKo ? '갱신 중…' : 'Updating…',
       });
+      if (chartLegendEl) chartWrap.append(chartLegendEl);
       chartWrap.append(cvs, staleBadgeEl);
       if (S.studioNeedInputWarn && !hasPatientProfile()) {
         chartWrap.append(h('div', { class: 'sim-need-patient-banner' },
           h('span', null,
             isKo ? '환자 맞춤형 설계를 실행하려면 먼저' : 'To run patient-tailored ADC design,',
             h('br'),
-            isKo ? '암종, 기저질환 또는 검진 수치를 입력해야 합니다.' : 'enter conditions or lab values first.'),
+            isKo ? '진단 질환, 기저질환 또는 검진 수치를 입력해야 합니다.' : 'enter diagnosis, comorbidities, or lab values first.'),
           h('button', {
             type: 'button',
             class: 'btn-goto-patient',
@@ -5514,7 +5320,7 @@
       let deepStrip = null;
       if (designMode !== 'idle' && isDeepResult && !animateScan) {
         const dr = evalSpace.deepResearch;
-        const bSim = evalSpace.best || sim;
+        const bSim = evalSpace.best || activeSim;
         const concItems = (bSim.concResponse || []).map((cr) => h('div', { class: 'dts-conc-item' },
           h('span', { class: 'dts-conc-nm', text: `${cr.concNm} nM` }),
           h('span', { class: 'dts-conc-bar' }, h('i', { style: `width:${Math.min(100, Math.max(4, cr.killPct))}%` })),
@@ -5523,13 +5329,12 @@
         deepStrip = h('div', { class: 'deep-telemetry-strip' },
           h('div', { class: 'dts-head' },
             h('div', { class: 'dts-sigma-group' },
-              h('span', { class: 'dts-tag', text: 'Deep Research' }),
-              h('span', { class: 'prov-tag prov-model', text: '5-Fold ADCSurrogateNet v2' })),
+              h('span', { class: 'dts-tag', text: 'Deep Research' })),
             h('span', {
               class: 'dts-meta',
               text: isKo
-                ? `모델 최적 용량 ${dr.optimal_dose_mgkg} mg/kg`
-                : `Model Optimal Dose ${dr.optimal_dose_mgkg} mg/kg`,
+                ? `최적 용량 ${dr.optimal_dose_mgkg} mg/kg`
+                : `Optimal Dose ${dr.optimal_dose_mgkg} mg/kg`,
             })),
           h('div', { class: 'dts-body' },
             h('div', { class: 'dts-sigma-group' },
@@ -5540,7 +5345,6 @@
       }
 
       const eqGrid = h('div', { class: 'sim-eq-grid' });
-      const summaryMeta = h('span', { class: 'sim-summary-meta' });
       const triadBox = h('div', { class: 'design-triad-grid' });
       const organRows = h('div', { class: 'expr-list' });
 
@@ -5560,71 +5364,37 @@
       function updateTriadDom(curSim, curSpace) {
         clear(triadBox);
         if (designMode === 'idle' || !hasPatientProfile()) return;
-        const bestC = curSpace.best || curSim;
-        const curFcFmt = curSim.spec.fcFormat || (curSim.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
-        const bestFcFmt = bestC.spec.fcFormat || (bestC.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
-        const isOpt = (
-          curSim.spec.target === bestC.spec.target &&
-          curSim.spec.linker === bestC.spec.linker &&
-          curSim.spec.payload === bestC.spec.payload &&
-          Number(curSim.spec.dar) === Number(bestC.spec.dar) &&
-          curFcFmt === bestFcFmt
-        );
-        const curPayLbl = curSim.spec.customPayloadLabel || plainName(curSim.spec.payload);
-        const bestPayLbl = bestC.spec.customPayloadLabel || plainName(bestC.spec.payload);
+        const dispSim = (designMode === 'auto' && curSpace && curSpace.best) ? curSpace.best : curSim;
+        const dispFcFmt = dispSim.spec.fcFormat || (dispSim.spec.fc ? 'igg1_lalapg' : 'igg1_wt');
+        const dispPayLbl = dispSim.spec.customPayloadLabel || plainName(dispSim.spec.payload);
+        const optDoseVal = designMode === 'auto'
+          ? (dispSim.optimalDoseMgKg || (curSpace && curSpace.deepResearch && curSpace.deepResearch.optimal_dose_mgkg) || null)
+          : null;
 
-        const curCard = h('div', { class: 'triad-card is-current' },
+        const newCard = h('div', { class: 'triad-card is-current' },
           h('div', { class: 'triad-top' },
             h('div', { class: 'triad-head-row' },
-              h('span', { class: 'triad-role', text: isKo ? '현재 설계' : 'Current Design' }),
-              h('span', { class: 'prov-tag prov-model', text: isKo ? '모델 점수 0-100' : 'Model 0-100' })),
-            h('div', { class: 'triad-name', text: `${plainName(curSim.spec.target)} + ${curPayLbl}` }),
-            h('div', { class: 'triad-arch', text: `${curSim.spec.linker}  /  DAR ${curSim.spec.dar}  /  ${fcFormatLabel(curFcFmt, curSim.fcSilenced, isKo)}` })),
+              h('span', { class: 'triad-role', text: t('legendBest') })),
+            h('div', { class: 'triad-name', text: `${plainName(dispSim.spec.target)} + ${dispPayLbl}` }),
+            h('div', { class: 'triad-arch-lines' },
+              h('div', { text: dispSim.spec.linker }),
+              h('div', { text: `DAR ${dispSim.spec.dar}` }),
+              h('div', { text: fcFormatLabel(dispFcFmt, dispSim.fcSilenced, isKo) }),
+              optDoseVal ? h('div', { text: `${optDoseVal} mg/kg` }) : null)),
           h('div', { class: 'triad-metrics' },
-            h('div', { class: 'triad-scores' },
-              h('span', { text: isKo ? `안전도 ${curSim.safetyScore}` : `Safety ${curSim.safetyScore}` }),
-              h('span', { class: 'dim', text: '/' }),
-              h('span', { text: isKo ? `효능 ${curSim.efficacyScore}` : `Efficacy ${curSim.efficacyScore}` }))));
+            h('div', { class: 'triad-scores-stack' },
+              h('span', { text: isKo ? `안전도 ${dispSim.safetyScore}` : `Safety ${dispSim.safetyScore}` }),
+              h('span', { text: isKo ? `효능 ${dispSim.efficacyScore}` : `Efficacy ${dispSim.efficacyScore}` }))));
 
-        const optDoseVal = bestC.optimalDoseMgKg || (curSpace.deepResearch && curSpace.deepResearch.optimal_dose_mgkg) || null;
-        const optCard = h('div', { class: 'triad-card is-optimal' },
-          h('div', { class: 'triad-top' },
-            h('div', { class: 'triad-head-row' },
-              h('span', { class: 'triad-role', text: isKo ? '탐색 선정 설계' : 'Selected Optimal' }),
-              h('span', { class: 'prov-tag prov-model', text: optDoseVal ? (isKo ? 'Deep Research · 모델 + 용량' : 'Deep Research · Model + Dose') : (curSpace.isServer ? (isKo ? `${curSpace.totalCombinations.toLocaleString()}개 탐색` : `${curSpace.totalCombinations.toLocaleString()} searched`) : (isKo ? `로컬 ${curSpace.cands.length.toLocaleString()}개 탐색` : `Local search · ${curSpace.cands.length.toLocaleString()}`)) })),
-            h('div', { class: 'triad-name', text: `${plainName(bestC.spec.target)} + ${bestPayLbl}` }),
-            h('div', { class: 'triad-arch', text: `${bestC.spec.linker}  /  DAR ${bestC.spec.dar}  /  ${fcFormatLabel(bestFcFmt, bestC.fcSilenced, isKo)}${optDoseVal ? `  /  ${optDoseVal} mg/kg` : ''}` })),
-          h('div', { class: 'triad-metrics' },
-            h('div', { class: 'triad-scores' },
-              h('span', { text: isKo ? `안전도 ${bestC.safetyScore}` : `Safety ${bestC.safetyScore}` }),
-              h('span', { class: 'dim', text: '/' }),
-              h('span', { text: isKo ? `효능 ${bestC.efficacyScore}` : `Efficacy ${bestC.efficacyScore}` })),
-            !isOpt ? h('button', {
-              type: 'button',
-              class: 'btn-apply-optimal',
-              text: isKo ? '현재로 적용' : 'Apply',
-              onclick: () => {
-                S.studioUndo = { studio: Object.assign({}, S.studio), ref: S.studioRefAdcOverride };
-                S.studio.target = bestC.spec.target;
-                S.studio.linker = bestC.spec.linker;
-                S.studio.payload = bestC.spec.payload;
-                S.studio.dar = bestC.spec.dar;
-                S.studio.fcFormat = bestFcFmt;
-                S.studio.fc = bestFcFmt !== 'igg1_wt';
-                S.studioRefAdcOverride = null;
-                invalidateCurrentEvaluation();
-              },
-            }) : null));
-
-        const { refAdcId, refSim } = resolveRefForSim(curSim, curSpace);
+        const { refAdcId, refSim } = resolveRefForSim(dispSim, curSpace);
         const refSelect = h('select', {
           class: 'ref-adc-select',
-          'aria-label': isKo ? '기준 승인 약물 선택' : 'Select approved reference ADC',
+          'aria-label': isKo ? '기존 ADC 선택' : 'Select approved ADC',
           onchange: (e) => {
             S.studioRefAdcOverride = e.target.value;
             save();
             renderStudioCanvas(false);
-            if (drawer && drawer.classList.contains('open') && S.mode === 2 && drawerTitle.textContent === t('compareTitle')) fillStudioCompareDrawer(curSim, curSpace);
+            if (drawer && drawer.classList.contains('open') && S.mode === 2 && drawerTitle.textContent === t('compareTitle')) fillStudioCompareDrawer(dispSim, curSpace);
           },
         }, ...Object.keys(REF_ADC_ARCH).map((id) => {
           const sp = ADC_SPECS[id] || {};
@@ -5632,56 +5402,43 @@
           const rHit = (S.result && S.result.data && S.result.data.rows && S.result.data.rows.find((r) => r.adc === id)) || null;
           const br = (rHit && rHit.brand) || sp.brand || mc.brand || id;
           const arch = REF_ADC_ARCH[id];
-          return h('option', { value: id, selected: id === refAdcId ? '' : null, text: `${br} · ${plainName(arch.target)}` });
+          return h('option', { value: id, selected: id === refAdcId ? '' : null, text: `${br} (${plainName(arch.target)})` });
         }));
         refSelect.value = refAdcId;
 
         const refCard = h('div', { class: 'triad-card is-reference' },
           h('div', { class: 'triad-top' },
             h('div', { class: 'triad-head-row' },
-              h('span', { class: 'triad-role', text: isKo ? '기준 승인 약물' : 'Approved Reference' }),
-              h('span', { class: 'prov-tag prov-label', text: isKo ? '고유 승인 구성' : 'Native Construct' })),
+              h('span', { class: 'triad-role', text: t('legendCur') })),
             refSelect,
-            h('div', {
-              class: 'triad-arch',
-              text: `${plainName(refSim.tgt.id)}  /  ${refSim.lnk.id}  /  ${plainName(refSim.pld.id)}  /  DAR ${refSim.dar}`,
-            })),
+            h('div', { class: 'triad-arch-lines' },
+              h('div', { text: plainName(refSim.tgt.id) }),
+              h('div', { text: refSim.lnk.id }),
+              h('div', { text: plainName(refSim.pld.id) }),
+              h('div', { text: `DAR ${refSim.dar}` }))),
           h('div', { class: 'triad-metrics' },
-            h('div', { class: 'triad-scores' },
+            h('div', { class: 'triad-scores-stack' },
               h('span', { text: isKo ? `안전도 ${refSim.safetyScore}` : `Safety ${refSim.safetyScore}` }),
-              h('span', { class: 'dim', text: '/' }),
               h('span', { text: isKo ? `효능 ${refSim.efficacyScore}` : `Efficacy ${refSim.efficacyScore}` })),
             h('button', {
               type: 'button',
               class: 'btn-compare-pop',
               text: t('viewCompareBtn'),
-              onclick: () => { openStudioCompareDrawer(curSim, curSpace); },
+              onclick: () => { openStudioCompareDrawer(dispSim, curSpace); },
             })));
 
-        triadBox.append(curCard);
-        if (designMode === 'auto') triadBox.append(optCard);
-        else triadBox.append(h('div', { class: 'triad-card' },
-          h('span', { class: 'triad-role', text: isKo ? '자동 탐색 · 실행 전' : 'Auto search · not run' }),
-          h('p', { class: 'dim', text: isKo ? '수동 평가는 현재 구성만 평가합니다. 탐색 선정 설계는 자동 탐색을 실행하면 표시됩니다.' : 'Manual evaluation scores the current construct. Run auto search to select a design.' })));
-        triadBox.append(refCard);
+        triadBox.append(newCard, refCard);
       }
 
       function updateFormulaLines(curSim, curSpace) {
         const w = Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {});
-        const sNow = curSim || sim;
+        const sNow = curSim || activeSim;
         const spNow = curSpace || evalSpace;
         const wSafeEff = spNow.wSafety != null ? spNow.wSafety : w.wSafety;
         const wEffComp = Math.max(0, 1 - wSafeEff);
         const wMean = Math.max(0, 1 - w.wPeak);
         const wOff = Math.max(0, 1 - w.wExpr);
-        const utilVal = (wSafeEff * sNow.safetyRaw + wEffComp * sNow.efficacyRaw).toFixed(1);
         const totalCombTxt = (spNow.totalCombinations || 368640).toLocaleString();
-
-        const activePresetObj = SIM_WEIGHT_PRESETS.find((p) => p.id === S.simPreset);
-        const presetLabel = activePresetObj ? (isKo ? activePresetObj.ko : activePresetObj.en) : (isKo ? '사용자 정의 계수' : 'Custom Weights');
-        summaryMeta.textContent = designMode === 'idle'
-          ? `${presetLabel} | ${isKo ? '모델 평가 전' : 'Not evaluated'}`
-          : (isKo ? `${presetLabel} | 모델 치료지수 U = ${utilVal}` : `${presetLabel} | Model utility U = ${utilVal}`);
 
         clear(eqGrid);
         const picTxt = sNow.pIC50Pos != null ? sNow.pIC50Pos.toFixed(2) : '8.00';
@@ -5719,7 +5476,7 @@
         const eq3Lines = [
           h('div', { class: 'sim-eq-line' },
             mVar('Y', 'eff'), mOp('='), mTxt('100'), mOp('×'),
-            mVar('I', isKo ? '암종' : 'ind'), mOp('×'), mVar('C', isKo ? '접합' : 'pair'), mOp('×'), mTxt('('),
+            mVar('I', isKo ? '적응증' : 'ind'), mOp('×'), mVar('C', isKo ? '접합' : 'pair'), mOp('×'), mTxt('('),
             mNum((sNow.nwSel || 0.25).toFixed(2)), mOp('×'), mVar('S', 'sel'),
             mOp('+'),
             mNum((sNow.nwPot || 0.30).toFixed(2)), mOp('×'), mVar('S', 'pot'),
@@ -5784,7 +5541,7 @@
             h('div', { class: 'sim-eq-math' }, c.lines)));
         });
       }
-      updateFormulaLines(sim, evalSpace);
+      updateFormulaLines(activeSim, evalSpace);
 
       const PARAM_DEFS = [
         { key: 'wSafety', sym: 'λ_safe', col: 'left', min: 0.15, max: 0.85, step: 0.02,
@@ -5794,8 +5551,8 @@
           ko: '최대 위험장기 집중도', en: 'Worst-Organ Dominance',
           subKo: '단일 치명적 취약장기(Peak) 대 다장기 평균 위험 비중', subEn: 'Peak vulnerable organ hazard vs. multi-organ mean risk' },
         { key: 'wExpr', sym: 'α_on', col: 'left', min: 0.10, max: 0.85, step: 0.05,
-          ko: '온타깃 정상조직 발현 비중', en: 'On-Target GTEx Weight',
-          subKo: '정상 상피 항원 발현(GTEx) 대 비표적 페이로드 독성 비율', subEn: 'Antigen-mediated normal tissue toxicity vs. off-target payload risk' },
+          ko: '온타깃 정상조직 발현 비중', en: 'On-Target Normal Tissue Weight',
+          subKo: '정상 상피 항원 발현 대 비표적 페이로드 독성 비율', subEn: 'Antigen-mediated normal tissue toxicity vs. off-target payload risk' },
         { key: 'leakSens', sym: 'β_leak', col: 'left', min: 0.20, max: 2.20, step: 0.05,
           ko: '링커 조기절단 민감도', en: 'Linker Instability Penalty',
           subKo: '혈중 비특이 가수분해 및 유리 페이로드 전신 누출 페널티', subEn: 'Systemic free-payload leakage from plasma linker deconjugation' },
@@ -5827,13 +5584,12 @@
       let organFold = null;
       function refreshLiveFormulaState() {
         invalidateCurrentEvaluation(false);
-        simStatusEl.textContent = isKo ? '구성 변경됨 · 다시 평가 필요' : 'Configuration changed · evaluate again';
-        summaryMeta.textContent = simStatusEl.textContent;
         triadBox.hidden = true;
         eqGrid.hidden = true;
+        if (chartLegendEl) chartLegendEl.hidden = true;
         if (deepStrip) deepStrip.hidden = true;
         if (organFold) organFold.hidden = true;
-        initDesignChart(cvs, sim, evalSpace, false);
+        initDesignChart(cvs, activeSim, evalSpace, false);
       }
 
       PARAM_DEFS.forEach((pd) => {
@@ -5921,9 +5677,7 @@
       });
 
       const explainToolbar = h('div', { class: 'sim-param-toolbar' },
-        h('div', { class: 'sim-preset-wrap' },
-          h('span', { class: 'sim-param-hint', text: isKo ? '임상 시나리오 프리셋' : 'Clinical Scenario Presets' }),
-          presetGroup),
+        h('div', { class: 'sim-preset-wrap' }, presetGroup),
         h('button', {
           type: 'button',
           class: 'sim-param-reset',
@@ -5975,21 +5729,20 @@
         ontoggle: (e) => { S.formulaOpen = e.currentTarget.open; save(); },
       },
       h('summary', null,
-        h('span', { class: 'sim-summary-title', text: t('explainTitle') }),
-        summaryMeta),
+        h('span', { class: 'sim-summary-title', text: t('explainTitle') })),
       advSmilesBox,
       explainToolbar,
       eqGrid,
       paramColumns);
 
-      updateTriadDom(sim, evalSpace);
-      if (designMode !== 'idle' && !isEvalPending) lastStudioEval = { sim, space: evalSpace, mode: evalSpace.mode, refAdcId: resolveRefAdcId(sim.tgt.id) };
+      updateTriadDom(activeSim, evalSpace);
+      if (designMode !== 'idle' && !isEvalPending) lastStudioEval = { sim: activeSim, space: evalSpace, mode: evalSpace.mode, refAdcId: resolveRefAdcId(activeSim.tgt.id) };
 
       const previousSim = S.studioDesignMode === 'stale' && lastStudioEval && lastStudioEval.sim;
       const previousResult = previousSim ? h('div', { class: 'studio-previous', role: 'status' },
         h('strong', { text: isKo ? '이전 입력의 모델 결과' : 'Model result for previous inputs' }),
-        h('span', { text: `${plainName(previousSim.spec.target)} / ${plainName(previousSim.spec.payload)} / DAR ${previousSim.spec.dar}` }),
-        h('span', { text: isKo ? `안전도 ${previousSim.safetyScore} / 효능 ${previousSim.efficacyScore}` : `Safety ${previousSim.safetyScore} / Efficacy ${previousSim.efficacyScore}` }),
+        h('span', { text: `${plainName(previousSim.spec.target)} + ${plainName(previousSim.spec.payload)}, DAR ${previousSim.spec.dar}` }),
+        h('span', { text: isKo ? `안전도 ${previousSim.safetyScore}, 효능 ${previousSim.efficacyScore}` : `Safety ${previousSim.safetyScore}, Efficacy ${previousSim.efficacyScore}` }),
         h('span', { text: isKo ? '현재 입력으로 다시 평가하세요.' : 'Evaluate again for the current inputs.' })) : null;
       simWrap.append(simHead);
       if (previousResult) simWrap.append(previousResult);
@@ -6024,62 +5777,26 @@
         ontoggle: (e) => { S.foldProps = e.currentTarget.open; save(); },
       },
       h('summary', null,
-        h('span', { class: 'studio-fold-title', text: isKo ? '구성 특성' : 'Construct properties' }),
-        h('div', { class: 'studio-fold-side' },
-          h('span', { class: 'studio-fold-meta', text: `${handleMatch ? t('shCompatDirect') : t('shCompatSpacer')} · +${tgt.selectivity.toFixed(1)} log2FC · ${stabilityScore}%` }))),
+        h('span', { class: 'studio-fold-title', text: isKo ? '구성 특성' : 'Construct properties' })),
       h('div', { class: 'studio-fold-body' }, hero));
 
-      // 3. Organ risk and normal-tissue expression
-      updateOrganRowsDom(sim);
-
-      const gtexRows = h('div', { class: 'expr-list' });
-      (tgt.tissues || []).forEach((tis) => {
-        const val = tis.tpm;
-        const color = val > 50 ? 'var(--red)' : val >= 25 ? 'var(--amber)' : 'var(--emerald)';
-        const level = val > 50 ? (isKo ? '높음' : 'High') : val >= 25 ? (isKo ? '보통' : 'Moderate') : (isKo ? '낮음' : 'Low');
-        gtexRows.append(h('div', { class: 'expr-row' },
-          h('span', { class: 'ex-name', text: organKo(tis.organ) }),
-          h('span', { class: 'ex-track' }, h('i', { class: 'ex-fill', style: `width:${Math.min(100, val * 1.5)}%;background:${color}` })),
-          h('span', { class: 'ex-val', style: `color:${color}`, text: `${level} ${val}` })));
-      });
+      // 3. Organ risk prediction
+      updateOrganRowsDom(activeSim);
 
       const showModelResult = designMode !== 'idle' && hasPatientProfile();
-      const topRisk = (sim.organRisks || []).reduce((best, r) => (!best || r.p > best.p ? r : best), null);
       organFold = showModelResult ? h('details', {
         class: 'studio-fold panel',
         open: S.foldOrgan ? '' : null,
         ontoggle: (e) => { S.foldOrgan = e.currentTarget.open; save(); },
       },
       h('summary', null,
-        h('span', { class: 'studio-fold-title', text: t('simOrganTitle') }),
-        h('div', { class: 'studio-fold-side' },
-          topRisk ? h('span', { class: 'studio-fold-meta', text: `${organKo(topRisk.organ)} ${Math.round(topRisk.p * 100)}%` }) : null,
-          h('span', { class: 'prov-tag prov-model', text: isKo ? '모델 추정' : 'Model estimate' }))),
+        h('span', { class: 'studio-fold-title', text: t('simOrganTitle') })),
       h('div', { class: 'studio-fold-body' }, organRows)) : null;
 
-      const gtexFold = h('details', {
-        class: 'studio-fold panel',
-        open: S.foldGtex ? '' : null,
-        ontoggle: (e) => { S.foldGtex = e.currentTarget.open; save(); },
-      },
-      h('summary', null,
-        h('span', { class: 'studio-fold-title', text: t('gtexTitle') }),
-        h('div', { class: 'studio-fold-side' },
-          h('span', { class: 'studio-fold-meta', text: `${tgt.gene} · ${(tgt.tissues || []).length} ${isKo ? '조직' : 'tissues'}` }),
-          h('span', { class: 'prov-tag prov-label', text: 'GTEx nTPM' }))),
-      h('div', { class: 'studio-fold-body' }, gtexRows));
+      add(canvas, [simWrap, propsFold, organFold, explain].filter(Boolean));
 
-      add(canvas, [simWrap, propsFold, organFold, gtexFold, explain].filter(Boolean));
-
-      setTimeout(() => initDesignChart(cvs, sim, evalSpace, animateScan,
-        (f, shownTotal) => {
-          simStatusEl.textContent = isDeepResult
-            ? (isKo
-                ? `설계 가능 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 정밀 평가 중`
-                : `Evaluating ${shownTotal.toLocaleString()} / ${total.toLocaleString()} combinations`)
-            : (isKo
-                ? `설계 가능 조합 ${shownTotal.toLocaleString()} / ${total.toLocaleString()}개 계산 중`
-                : `Scoring ${shownTotal.toLocaleString()} / ${total.toLocaleString()} combinations`);
+      setTimeout(() => initDesignChart(cvs, activeSim, evalSpace, animateScan,
+        (f) => {
           if (optBtn) optBtn.style.setProperty('--p', (f * 100).toFixed(1) + '%');
         },
         async () => {
@@ -6210,23 +5927,9 @@
 
         const isKo = S.lang === 'ko';
         const modeNow = animate ? 'auto' : (S.studioDesignMode === 'stale' ? 'idle' : (S.studioDesignMode || 'idle'));
-        const legend = modeNow === 'idle'
-          ? []
-          : modeNow === 'manual'
-            ? [
-                ['#111111', 4.5, t('legendCur')],
-                ['#B45309', 4.2, isKo ? '기준 승인 약물' : 'Approved Ref ADC'],
-                ['rgba(107, 114, 128, 0.5)', 3.0, isKo ? '동일 표적 후보군' : 'Same-Target Pool'],
-              ]
-            : [
-                ['rgba(107, 114, 128, 0.65)', 3.0, `${t('legendCand')} ${totalCombos.toLocaleString()}`],
-                ['rgba(220, 38, 38, 0.45)', 3.0, t('legendBad')],
-                ['#0F766E', 4.5, t('legendBest')],
-                ['#111111', 4.5, t('legendCur')],
-                ['#B45309', 4.0, isKo ? '기준 승인 약물' : 'Approved Ref ADC'],
-              ];
+        const isDeep = evalSpace.mode === 'deep_research_v2' || Boolean(evalSpace.deepPoints);
 
-        const padL = 56 * dpr, padR = 26 * dpr, padB = 46 * dpr, padT = 46 * dpr;
+        const padL = 54 * dpr, padR = 24 * dpr, padB = 44 * dpr, padT = 20 * dpr;
         const plotW = Math.max(160 * dpr, w - padL - padR);
         const plotH = Math.max(160 * dpr, hPx - padT - padB);
         const offsetX = padL;
@@ -6272,28 +5975,12 @@
         ctx.font = `700 ${11.5 * dpr}px "Manrope", "Pretendard Variable", sans-serif`;
         ctx.fillStyle = '#111111';
         ctx.textAlign = 'center';
-        ctx.fillText(t('axisSafety'), offsetX + plotW / 2, offsetY + plotH + 35 * dpr);
+        ctx.fillText(t('axisSafety'), offsetX + plotW / 2, offsetY + plotH + 34 * dpr);
         ctx.save();
         ctx.translate(offsetX - 37 * dpr, offsetY + plotH / 2);
         ctx.rotate(-Math.PI / 2);
         ctx.fillText(t('axisEfficacy'), 0, 0);
         ctx.restore();
-
-        if (legend.length) {
-          ctx.textAlign = 'left';
-          ctx.font = `600 ${10.5 * dpr}px "Manrope", "Pretendard Variable", sans-serif`;
-          let lx = offsetX;
-          const ly = offsetY - 16 * dpr;
-          legend.forEach(([col, rad, label]) => {
-            const need = (rad * 2 + 5) * dpr + ctx.measureText(label).width + 14 * dpr;
-            if (lx + need > offsetX + plotW + 16 * dpr) return;
-            ctx.fillStyle = col;
-            ctx.beginPath(); ctx.arc(lx + rad * dpr, ly, rad * dpr, 0, Math.PI * 2); ctx.fill();
-            ctx.fillStyle = '#4B5563';
-            ctx.fillText(label, lx + (rad * 2 + 5) * dpr, ly + 3.5 * dpr);
-            lx += need;
-          });
-        }
 
         if (modeNow === 'idle') {
           ctx.fillStyle = 'rgba(249, 250, 251, 0.78)';
@@ -6303,11 +5990,11 @@
           ctx.textAlign = 'center';
           const lines = !hasPatientProfile()
             ? (isKo
-                ? ['암종, 기저질환 또는 검진 수치를 먼저 입력한 뒤', '수동 설계 또는 자동 설계를 실행하세요']
+                ? ['진단 질환, 기저질환 또는 검진 수치를 먼저 입력한 뒤', '수동 설계 또는 자동 설계를 실행하세요']
                 : ['Enter patient conditions or lab values first,', 'then run Manual or Auto ADC Design'])
             : (isKo
-                ? ['좌측 상단에서 [ADC 수동 설계] 또는 [ADC 자동 설계]를 선택해', '탐색 그래프를 실행하세요']
-                : ['Select [Manual ADC Design] or [Auto-design ADC]', 'in Execution Mode to plot candidates']);
+                ? ['좌측에서 [ADC 수동 설계] 또는 [ADC 자동 설계]를 선택해', '설계 결과를 확인하세요']
+                : ['Select [Manual ADC Design] or [Auto-design ADC]', 'to view construct predictions']);
           const lineH = 18 * dpr;
           const startY = offsetY + plotH / 2 - ((lines.length - 1) * lineH) / 2;
           lines.forEach((l, idx) => {
@@ -6317,24 +6004,25 @@
         }
 
         const { refBrand, refSim } = resolveRefForSim(currentSim, evalSpace);
+        const dotR = (isDeep ? 3.2 : 2.3) * dpr;
+        const primaryHaloR = 9.5 * dpr;
+        const primaryCoreR = 5.0 * dpr;
 
         if (modeNow === 'auto') {
           for (let k = 0; k < shownDots; k++) {
             const c = shuffled[k];
             ctx.fillStyle = !c.isCompat
-              ? 'rgba(220, 38, 38, 0.20)'
-              : c.isBestTarget
-                ? 'rgba(15, 118, 110, 0.50)'
-                : 'rgba(107, 114, 128, 0.30)';
+              ? 'rgba(220, 38, 38, 0.36)'
+              : 'rgba(107, 114, 128, 0.42)';
             ctx.beginPath();
-            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), (c.isBestTarget && c.isCompat ? 2.6 : 2.0) * dpr, 0, Math.PI * 2);
+            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), dotR, 0, Math.PI * 2);
             ctx.fill();
           }
 
           if ((f >= 0.97 || !animate) && paretoFront.length >= 2) {
             ctx.save();
-            ctx.strokeStyle = 'rgba(15, 118, 110, 0.65)';
-            ctx.lineWidth = 1.8 * dpr;
+            ctx.strokeStyle = 'rgba(15, 118, 110, 0.55)';
+            ctx.lineWidth = 1.6 * dpr;
             ctx.setLineDash([4 * dpr, 3 * dpr]);
             ctx.beginPath();
             paretoFront.forEach((p, idx) => {
@@ -6350,129 +6038,61 @@
             ? (evalSpace.sameTargetCloud || [])
             : (evalSpace.cands || []).filter((c) => c.spec.target === currentSim.spec.target && c.isCompat);
           sameTargetCands.forEach((c) => {
-            ctx.fillStyle = 'rgba(156, 163, 175, 0.38)';
+            ctx.fillStyle = 'rgba(107, 114, 128, 0.42)';
             ctx.beginPath();
-            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), 2.3 * dpr, 0, Math.PI * 2);
+            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), dotR, 0, Math.PI * 2);
             ctx.fill();
           });
-
-          let refBox = null;
-          if (refSim) {
-            const rx = toX(refSim.safetyRaw), ry = toY(refSim.efficacyRaw);
-            const sxNow = toX(currentSim.safetyRaw), syNow = toY(currentSim.efficacyRaw);
-
-            if (Math.hypot(rx - sxNow, ry - syNow) > 6 * dpr) {
-              ctx.save();
-              ctx.strokeStyle = 'rgba(180, 83, 9, 0.55)';
-              ctx.lineWidth = 1.5 * dpr;
-              ctx.setLineDash([4 * dpr, 3 * dpr]);
-              ctx.beginPath();
-              ctx.moveTo(rx, ry);
-              ctx.lineTo(sxNow, syNow);
-              ctx.stroke();
-              ctx.restore();
-            }
-
-            ctx.fillStyle = 'rgba(180, 83, 9, 0.16)';
-            ctx.beginPath(); ctx.arc(rx, ry, 8.5 * dpr, 0, Math.PI * 2); ctx.fill();
-            ctx.fillStyle = '#B45309';
-            ctx.strokeStyle = '#FFFFFF';
-            ctx.lineWidth = 1.8 * dpr;
-            ctx.beginPath(); ctx.arc(rx, ry, 4.6 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-            if (Math.hypot(rx - sxNow, ry - syNow) > 8 * dpr) {
-              const refLbl = `${refBrand} (${refSim.safetyScore}, ${refSim.efficacyScore})`;
-              refBox = drawCalloutLabel(refLbl, rx, ry, true, offsetX, offsetY, plotW, plotH, dpr, '#B45309', null);
-            }
-          }
-
-          const hist = Array.isArray(S.studioHistory) ? S.studioHistory : [];
-          if (hist.length >= 2) {
-            ctx.save();
-            ctx.strokeStyle = 'rgba(17, 17, 17, 0.28)';
-            ctx.lineWidth = 1.4 * dpr;
+          const incompatSubset = rawCloud.filter((c) => !c.isCompat).slice(0, 60);
+          incompatSubset.forEach((c) => {
+            ctx.fillStyle = 'rgba(220, 38, 38, 0.34)';
             ctx.beginPath();
-            hist.forEach((hSpec, idx) => {
-              const hSim = computeStudioSimulation(hSpec);
-              const hx = toX(hSim.safetyRaw), hy = toY(hSim.efficacyRaw);
-              if (idx === 0) ctx.moveTo(hx, hy);
-              else ctx.lineTo(hx, hy);
-              if (idx < hist.length - 1) {
-                ctx.fillStyle = 'rgba(17, 17, 17, 0.35)';
-                ctx.beginPath(); ctx.arc(hx, hy, 3.0 * dpr, 0, Math.PI * 2); ctx.fill();
-              }
-            });
+            ctx.arc(toX(c.safetyRaw), toY(c.efficacyRaw), dotR, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        }
+
+        const primaryPt = (modeNow === 'auto' && best) ? best : currentSim;
+        const px = toX(primaryPt.safetyRaw);
+        const py = toY(primaryPt.efficacyRaw);
+
+        let refBox = null;
+        if ((modeNow === 'manual' || f >= 0.97 || !animate) && refSim) {
+          const rx = toX(refSim.safetyRaw), ry = toY(refSim.efficacyRaw);
+          if (modeNow === 'manual' && Math.hypot(rx - px, ry - py) > 6 * dpr) {
+            ctx.save();
+            ctx.strokeStyle = 'rgba(180, 83, 9, 0.50)';
+            ctx.lineWidth = 1.5 * dpr;
+            ctx.setLineDash([4 * dpr, 3 * dpr]);
+            ctx.beginPath();
+            ctx.moveTo(rx, ry);
+            ctx.lineTo(px, py);
             ctx.stroke();
             ctx.restore();
           }
-
-          const sx = toX(currentSim.safetyRaw);
-          const sy = toY(currentSim.efficacyRaw);
-          ctx.fillStyle = 'rgba(17, 17, 17, 0.14)';
-          ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#111111';
-          ctx.strokeStyle = '#FFFFFF';
-          ctx.lineWidth = 2 * dpr;
-          ctx.beginPath(); ctx.arc(sx, sy, 5.2 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-
-          const curLabel = `${plainName(currentSim.spec.target)} + ${plainName(currentSim.spec.payload)}, DAR ${currentSim.spec.dar} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
-          drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#111111', refBox);
-          return;
-        }
-
-        const bx = toX(best.safetyRaw);
-        const by = toY(best.efficacyRaw);
-        const sx = toX(currentSim.safetyRaw);
-        const sy = toY(currentSim.efficacyRaw);
-        const sameSpot = Math.hypot(bx - sx, by - sy) < 8 * dpr;
-
-        let refBoxAuto = null;
-        if ((f >= 0.97 || !animate) && refSim) {
-          const rx = toX(refSim.safetyRaw);
-          const ry = toY(refSim.efficacyRaw);
-          ctx.fillStyle = 'rgba(180, 83, 9, 0.16)';
-          ctx.beginPath(); ctx.arc(rx, ry, 8.5 * dpr, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = 'rgba(180, 83, 9, 0.18)';
+          ctx.beginPath(); ctx.arc(rx, ry, primaryHaloR, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#B45309';
           ctx.strokeStyle = '#FFFFFF';
           ctx.lineWidth = 1.8 * dpr;
-          ctx.beginPath(); ctx.arc(rx, ry, 4.5 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-          if (Math.hypot(rx - bx, ry - by) > 10 * dpr && Math.hypot(rx - sx, ry - sy) > 10 * dpr) {
-            refBoxAuto = drawCalloutLabel(`${refBrand} (${refSim.safetyScore}, ${refSim.efficacyScore})`, rx, ry, false, offsetX, offsetY, plotW, plotH, dpr, '#B45309', null);
+          ctx.beginPath(); ctx.arc(rx, ry, primaryCoreR, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+          if (Math.hypot(rx - px, ry - py) > 10 * dpr) {
+            refBox = drawCalloutLabel(`${refBrand} (${refSim.safetyScore}, ${refSim.efficacyScore})`, rx, ry, false, offsetX, offsetY, plotW, plotH, dpr, '#B45309', null);
           }
         }
 
-        if (f >= 0.97 || !animate) {
+        if (modeNow === 'manual' || f >= 0.97 || !animate) {
           ctx.fillStyle = 'rgba(15, 118, 110, 0.20)';
-          ctx.beginPath(); ctx.arc(bx, by, 10.5 * dpr, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(px, py, primaryHaloR, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = '#0F766E';
           ctx.strokeStyle = '#FFFFFF';
-          ctx.lineWidth = 2 * dpr;
-          ctx.beginPath(); ctx.arc(bx, by, 5.4 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-        }
+          ctx.lineWidth = 1.8 * dpr;
+          ctx.beginPath(); ctx.arc(px, py, primaryCoreR, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
-        if (!sameSpot || (f < 0.97 && animate)) {
-          ctx.fillStyle = 'rgba(17, 17, 17, 0.14)';
-          ctx.beginPath(); ctx.arc(sx, sy, 10 * dpr, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = '#111111';
-          ctx.strokeStyle = '#FFFFFF';
-          ctx.lineWidth = 2 * dpr;
-          ctx.beginPath(); ctx.arc(sx, sy, 5.0 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-        }
-
-        const bestPayLbl = best.spec.customPayloadLabel || plainName(best.spec.payload);
-        if (f >= 0.97 || !animate) {
-          if (sameSpot) {
-            const unifiedLabel = `${t('legendBest')}: ${plainName(best.spec.target)} + ${bestPayLbl}, DAR ${best.spec.dar} (${best.safetyScore}, ${best.efficacyScore})`;
-            drawCalloutLabel(unifiedLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#0F766E', [refBoxAuto]);
-          } else {
-            const bestLabel = `${t('legendBest')}: ${plainName(best.spec.target)} + ${bestPayLbl}, DAR ${best.spec.dar} (${best.safetyScore}, ${best.efficacyScore})`;
-            const bestBox = drawCalloutLabel(bestLabel, bx, by, true, offsetX, offsetY, plotW, plotH, dpr, '#0F766E', [refBoxAuto]);
-            const curLabel = `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
-            drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#111111', [refBoxAuto, bestBox]);
-          }
-        } else {
-          const curLabel = `${t('legendCur')} (${currentSim.safetyScore}, ${currentSim.efficacyScore})`;
-          drawCalloutLabel(curLabel, sx, sy, false, offsetX, offsetY, plotW, plotH, dpr, '#111111', null);
+          const payLbl = primaryPt.spec.customPayloadLabel || plainName(primaryPt.spec.payload);
+          const primaryLabel = `${plainName(primaryPt.spec.target)} + ${payLbl}, DAR ${primaryPt.spec.dar} (${primaryPt.safetyScore}, ${primaryPt.efficacyScore})`;
+          drawCalloutLabel(primaryLabel, px, py, true, offsetX, offsetY, plotW, plotH, dpr, '#0F766E', [refBox]);
         }
 
         if (tfrac < 1) {
@@ -6504,7 +6124,7 @@
     return box;
   }
 
-  // ------------------------------------------------------------------ Mode 0: Patient Profile (Purpose -> Sample Cases -> Condition Search -> Required Labs -> Optional Labs -> Compare CTA)
+  // ------------------------------------------------------------------ Mode 0: Patient Profile (Condition Search -> Demographics -> Optional Clinical Panels -> Compare CTA)
   function buildPatientLabsMode(embedded = false) {
     const box = h('div', { class: 's2' });
     const introMount = h('div');
@@ -6523,25 +6143,6 @@
         h('div', { class: 'mode-intro-copy' },
           h('h1', { class: 'mode-h1', text: title })));
       introMount.append(intro);
-
-      if (entry === 'demo' || entry === 'demo_edited') {
-        const sc = SAMPLE_CASES.find((x) => x.id === S.sampleCaseId);
-        const demoSelect = h('select', {
-          class: 'demo-select',
-          'aria-label': isKo ? '데모 사례 변경' : 'Change demo case',
-          onchange: (e) => { if (e.target.value) loadSampleCase(e.target.value); },
-        },
-        h('option', { value: '', text: isKo ? '데모 변경' : 'Change demo' }),
-        ...SAMPLE_CASES.map((x) => h('option', { value: x.id, text: isKo ? x.shortKo : x.shortEn })));
-        const banner = h('div', { class: 'demo-banner' + (entry === 'demo_edited' ? ' is-edited' : '') },
-          h('span', { class: 'demo-badge', text: entry === 'demo'
-            ? (isKo ? '가상 환자 데모' : 'Demo patient')
-            : (isKo ? '데모 수정 중' : 'Editing demo') }),
-          h('span', { class: 'demo-text', text: sc ? (isKo ? sc.shortKo : sc.shortEn) : (isKo ? '예시 데이터' : 'Example data') }),
-          demoSelect,
-          h('button', { type: 'button', class: 'btn-secondary', text: t('newPatient'), onclick: resetPatient }));
-        introMount.append(banner);
-      }
     }
     renderIntroAndSamples();
 
@@ -6579,19 +6180,15 @@
       renderFlowsheet();
     }
 
-    const BASIC_KEYS = new Set([
-      'age', 'sex', 'weight',
-      'creatinine', 'esrd',
-      'bilirubin', 'ast', 'alt',
-      'platelet', 'anc', 'hb',
-    ]);
+    const BASIC_KEYS = new Set(['age', 'sex', 'weight']);
 
-    const REQ_LAB_SECTIONS = [
+    const REQ_LAB_SECTIONS = [];
+
+    const OPT_LAB_SECTIONS = [
       {
         id: 'renal_req',
         ko: '신장',
         en: 'Renal',
-        showDerivedCrcl: true,
         numeric: [
           { key: 'creatinine', name: 'Serum Creatinine', unit: 'mg/dL', refLow: 0.6, refHigh: 1.2, scaleMin: 0, scaleMax: 3.5 },
         ],
@@ -6631,9 +6228,6 @@
         ],
         discrete: [],
       },
-    ];
-
-    const OPT_LAB_SECTIONS = [
       {
         id: 'renal_hep_opt',
         ko: '정밀 신장 지표 및 간 등급',
@@ -6726,22 +6320,9 @@
     function renderLabSectionCards(sections, isKo) {
       const secGrid = h('div', { class: 'lab-sections-grid' });
       sections.forEach((sec) => {
-        const derivedCrcl = sec.showDerivedCrcl && S.labs && S.labs.derived && S.labs.derived.crcl != null && !String(S.raw.crcl || '').trim()
-          ? S.labs.derived
-          : null;
-        const derivedPill = derivedCrcl
-          ? h('span', {
-              class: 'cg-derived-pill',
-              text: isKo
-                ? `산출 CLcr ${(derivedCrcl.shown && derivedCrcl.shown.crcl) || Number(derivedCrcl.crcl).toFixed(1)} mL/min`
-                : `Derived CLcr ${(derivedCrcl.shown && derivedCrcl.shown.crcl) || Number(derivedCrcl.crcl).toFixed(1)} mL/min`,
-            })
-          : null;
-
         const cardEl = h('div', { class: 'lab-section-card' },
           h('div', { class: 'lab-sec-head' },
-            h('h3', { class: 'lab-sec-title', text: isKo ? sec.ko : sec.en }),
-            derivedPill));
+            h('h3', { class: 'lab-sec-title', text: isKo ? sec.ko : sec.en })));
 
         const groupEl = h('div', { class: 'lab-card-group' });
 
@@ -6848,23 +6429,9 @@
       return secGrid;
     }
 
-    function buildRequiredLabsPanel(isKo, reqEnteredCount) {
+    function buildRequiredLabsPanel(isKo) {
       const isReqOpen = Boolean(S.basicLabsOpen);
       const labErrors = (S.labs && S.labs.errors) || {};
-      const derivedObj = S.labs && S.labs.derived && S.labs.derived.crcl != null && !String(S.raw.crcl || '').trim() && S.labs.derived.crcl_source === 'Cockcroft-Gault'
-        ? S.labs.derived
-        : null;
-      const basicDerivedPill = derivedObj
-        ? h('span', {
-            class: 'cg-derived-pill',
-            text: isKo
-              ? `산출 CLcr ${(derivedObj.shown && derivedObj.shown.crcl) || Number(derivedObj.crcl).toFixed(1)} mL/min`
-              : `Derived CLcr ${(derivedObj.shown && derivedObj.shown.crcl) || Number(derivedObj.crcl).toFixed(1)} mL/min`,
-          })
-        : null;
-      const reqCountBadge = reqEnteredCount > 0
-        ? h('span', { class: 'flowsheet-count-badge', text: isKo ? `${reqEnteredCount}개 항목 입력됨` : `${reqEnteredCount} entered` })
-        : null;
 
       const reqPanel = h('section', { class: 'flowsheet-collapsible panel req-flowsheet', 'aria-label': t('basicTitle') });
       const reqToggleBtn = h('button', {
@@ -6879,11 +6446,8 @@
       },
       h('div', { class: 'flowsheet-toggle-left' },
         h('div', { class: 'flowsheet-title-row' },
-          h('h2', { class: 'flowsheet-title', text: t('basicTitle') }),
-          h('span', { class: 'flowsheet-req-badge', text: t('basicReqTag') }),
-          reqCountBadge,
-          basicDerivedPill)),
-      h('span', { class: 'flowsheet-toggle-action', text: isReqOpen ? t('basicCollapse') : t('basicExpand') }));
+          h('h2', { class: 'flowsheet-title', text: t('basicTitle') }))),
+      h('span', { class: 'flowsheet-chevron', 'aria-hidden': 'true' }, svgChevronDown()));
 
       reqPanel.append(reqToggleBtn);
 
@@ -6961,7 +6525,7 @@
             makeBasicNumField('age', isKo ? '나이' : 'Age', isKo ? '세' : 'yr', isKo ? '예: 65' : 'e.g. 65'),
             sexField,
             makeBasicNumField('weight', isKo ? '체중' : 'Weight', 'kg', isKo ? '예: 60' : 'e.g. 60')),
-          renderLabSectionCards(REQ_LAB_SECTIONS, isKo));
+          REQ_LAB_SECTIONS.length ? renderLabSectionCards(REQ_LAB_SECTIONS, isKo) : null);
         reqPanel.append(reqBody);
       }
 
@@ -6976,18 +6540,11 @@
 
       clear(content);
       const isKo = S.lang === 'ko';
-      const enteredKeys = Object.keys(rawValues());
-      const reqEnteredCount = enteredKeys.filter((k) => BASIC_KEYS.has(k)).length;
-      const optEnteredCount = enteredKeys.filter((k) => !BASIC_KEYS.has(k)).length;
       const isOpen = Boolean(S.labsOpen);
 
-      const basicPanel = buildRequiredLabsPanel(isKo, reqEnteredCount);
+      const basicPanel = buildRequiredLabsPanel(isKo);
 
       const panelWrap = h('section', { class: 'flowsheet-collapsible panel' });
-      const countBadge = optEnteredCount > 0
-        ? h('span', { class: 'flowsheet-count-badge', text: isKo ? `${optEnteredCount}개 항목 입력됨` : `${optEnteredCount} entered` })
-        : null;
-
       const toggleBtn = h('button', {
         type: 'button',
         class: 'flowsheet-toggle-bar',
@@ -7000,10 +6557,8 @@
       },
       h('div', { class: 'flowsheet-toggle-left' },
         h('div', { class: 'flowsheet-title-row' },
-          h('h2', { class: 'flowsheet-title', text: t('flowTitle') }),
-          h('span', { class: 'flowsheet-opt-badge', text: t('flowOptTag') }),
-          countBadge)),
-      h('span', { class: 'flowsheet-toggle-action', text: isOpen ? t('flowCollapse') : t('flowExpand') }));
+          h('h2', { class: 'flowsheet-title', text: t('flowTitle') }))),
+      h('span', { class: 'flowsheet-chevron', 'aria-hidden': 'true' }, svgChevronDown()));
 
       panelWrap.append(toggleBtn);
 
@@ -7012,20 +6567,7 @@
         panelWrap.append(bodyEl);
       }
 
-      const stNow = getProfileStatus();
-      const totalEntered = reqEnteredCount + optEnteredCount;
-      const condCount = condList().length;
-      const ctaSummary = hasPatientProfile()
-        ? h('span', { class: 'profile-cta-summary' },
-            h('span', { class: 'cta-status', 'data-live-status': '', text: stNow.label }),
-            h('span', { text: isKo
-              ? ` · 질환 ${condCount}건, 검진 수치 ${totalEntered}개`
-              : ` · ${condCount} condition(s), ${totalEntered} lab value(s)` }))
-        : h('span', { class: 'profile-cta-summary', text: isKo
-            ? '질환이나 검진 수치를 입력하면 승인 ADC를 비교할 수 있습니다.'
-            : 'Add a condition or a lab value to compare approved ADCs.' });
       const ctaBar = h('div', { class: 'profile-cta-bar' },
-        ctaSummary,
         h('div', { class: 'profile-cta-actions' },
           h('button', {
             type: 'button',
@@ -7326,9 +6868,19 @@
     return h('section', { class: 'dsec' }, title ? tipped(h('h3', { class: 'h2', text: title })) : null, kids);
   }
 
+  function makeDrawerExportTab() {
+    return h('button', {
+      type: 'button',
+      class: 'drawer-export-tab',
+      onclick: () => saveReview(S.result && S.result.data),
+    },
+    h('span', { text: t('exportSummary') }),
+    svgArrowUpRight(15));
+  }
+
   // ------------------------------------------------------------------ Clinical trial cases
-  // Per adverse event: the treatment group beside the control group, and how much lower or higher the treatment group was.
-  // Raw counts are not shown; the point is how this drug did against the earlier regimen.
+  // Per adverse event: the treatment group beside the control group.
+  // Treatment bars higher than control use crimson styling.
   function trialCaseBlock(tr, fallbackText, heading) {
     const isKo = S.lang === 'ko';
     if (!tr) return h('p', { class: 'dim', text: fallbackText });
@@ -7348,24 +6900,6 @@
       ((x.c === null ? 1e9 : x.a - x.c) - (y.c === null ? 1e9 : y.a - y.c))
     );
 
-    const cmp = events.filter((e) => e.c !== null);
-    const lower = cmp.filter((e) => e.a < e.c - 0.5).length;
-    const higher = cmp.filter((e) => e.a > e.c + 0.5).length;
-    let verdict;
-    let tone = 'good';
-    if (!cmp.length) {
-      tone = 'neutral';
-      verdict = isKo ? '대조군이 없는 시험이라 비교 결과는 없습니다. 치료군에서 나타난 이상사례 발생률만 보여 드립니다.' : 'This trial had no control group, so there is no comparison. Only the rates in the treatment group are shown.';
-    } else {
-      const head = isKo ? `대조군과 비교할 수 있는 이상사례 ${cmp.length}개 중 ` : `Of ${cmp.length} adverse events that can be compared with the control group, `;
-      if (lower === cmp.length) verdict = head + (isKo ? '모두 치료군에서 더 적게 나타났습니다.' : 'all were less frequent in the treatment group.');
-      else if (higher === cmp.length) { tone = 'bad'; verdict = head + (isKo ? '모두 치료군에서 더 많이 나타났습니다.' : 'all were more frequent in the treatment group.'); }
-      else {
-        if (higher > lower) tone = 'bad';
-        verdict = head + (isKo ? `${lower}개는 더 적게, ${higher}개는 더 많이, 나머지는 비슷하게 나타났습니다.` : `${lower} were less frequent, ${higher} more frequent, and the rest similar.`);
-      }
-    }
-
     const info = [
       [isKo ? '대상 환자' : 'Patients', tr.population || ''],
       [isKo ? '치료군' : 'Treatment group', tr.regimen || ''],
@@ -7377,14 +6911,6 @@
       h('div', { class: 'kv3 tc-info' }, info.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])),
       /^NCT\d{8}$/.test(tr.nct || '') ? h('a', { class: 'review-link', href: 'https://clinicaltrials.gov/study/' + tr.nct, target: '_blank', rel: 'noopener noreferrer', text: `ClinicalTrials.gov ${tr.nct} ↗` }) : null);
 
-    const diffChip = (e) => {
-      if (e.c === null) return h('span', { class: 'tc-diff neutral', text: isKo ? '대조군 없음' : 'No control' });
-      const d = e.a - e.c;
-      if (Math.abs(d) <= 0.5) return h('span', { class: 'tc-diff neutral', text: isKo ? '대조군과 비슷' : 'Similar to control' });
-      return d < 0
-        ? h('span', { class: 'tc-diff good', text: isKo ? `대조군보다 ${(-d).toFixed(1)}%p 낮음` : `${(-d).toFixed(1)} pts lower than control` })
-        : h('span', { class: 'tc-diff bad', text: isKo ? `대조군보다 ${d.toFixed(1)}%p 높음` : `${d.toFixed(1)} pts higher than control` });
-    };
     const barRow = (label, pct, scale, cls) => h('div', { class: 'tc-row' },
       h('span', { class: 'tc-label', text: label }),
       h('span', { class: 'tc-track' }, h('i', { class: cls, style: `width:${Math.max(2, Math.min(100, (pct / scale) * 100)).toFixed(1)}%` })),
@@ -7392,16 +6918,16 @@
 
     const list = events.slice(0, 10).map((e) => {
       const scale = Math.max(10, e.a, e.c || 0);
+      const txHigher = e.c !== null && e.a > e.c;
       return h('div', { class: 'tc-event' },
         h('div', { class: 'tc-head' },
           h('span', { class: 'tc-term', text: e.term }),
-          e.mine ? h('span', { class: 'tc-mine', text: organKo(e.organ) }) : null,
-          diffChip(e)),
-        barRow(isKo ? '치료군' : 'Treatment', e.a, scale, 'tc-fill-tx'),
+          e.organ ? h('span', { class: 'tc-organ-label', text: organKo(e.organ) }) : null),
+        barRow(isKo ? '치료군' : 'Treatment', e.a, scale, txHigher ? 'tc-fill-tx is-higher' : 'tc-fill-tx'),
         e.c !== null ? barRow(isKo ? '대조군' : 'Control', e.c, scale, 'tc-fill-cmp') : null);
     });
 
-    return h('div', { class: 'tc-wrap' }, card, h('p', { class: 'tc-verdict ' + tone, text: verdict }), list);
+    return h('div', { class: 'tc-wrap' }, card, list);
   }
 
   const KV_KO = {
@@ -7410,297 +6936,7 @@
     'Bystander effect': '주변 암세포 사멸', Target: '표적',
   };
 
-  function buildRankingRationale(row, allRows, hasCancer) {
-    const isKo = S.lang === 'ko';
-    const resData = (S.result && S.result.data) || {};
-    const list = Array.isArray(allRows) && allRows.length ? allRows : (Array.isArray(resData.rows) ? resData.rows : [row]);
-    const cancerActive = typeof hasCancer === 'boolean' ? hasCancer : !!((resData.patient && resData.patient.cancers) || []).length;
-
-    if (!hasPatientProfile() || (list.length > 1 && list.every((r) => r.rank === 1))) {
-      return h('p', { class: 'dim', text: t('noRankDiff') });
-    }
-
-    const CODE_KO = {
-      contraindicated: '사용 금지',
-      avoid: '사용 주의',
-      reduce_dose: '용량 감량',
-      monitor: '경과 관찰',
-      insufficient_data: '판단 자료 부족',
-      no_statement: '라벨 언급 없음',
-    };
-    const fmtPatientSide = (txt) => {
-      const s = String(txt || '').trim();
-      if (!s) return '';
-      return isKo ? s.replace(/\bnot entered\b/gi, '미입력') : s;
-    };
-    const describeRule = (reason, fallbackRow) => {
-      if (!reason) return statusInfo(fallbackRow).full;
-      const org = organKo(reason.organ);
-      const st = isKo
-        ? (CODE_KO[reason.code] || reason.status)
-        : (reason.code === 'no_statement' ? 'No label guidance' : reason.status);
-      const rawBasis = String(reason.basis || '').replace(/^if\s+/i, '').trim();
-      const hasBasis = rawBasis && rawBasis !== '-' && !/^label says nothing/i.test(rawBasis);
-      const pat = fmtPatientSide(reason.patient);
-      if (!hasBasis) return `${org} ${st}`;
-      return isKo
-        ? `${org} ${st}(기준: ${rawBasis}${pat ? `, 환자: ${pat}` : ''})`
-        : `${org} ${st} (${rawBasis}${pat ? `; patient ${pat}` : ''})`;
-    };
-    const topRestrictionDesc = (r) => {
-      const reasons = ((r.detail && r.detail.reasons) || []).filter((x) => x.code !== 'no_adjustment');
-      return describeRule(reasons[0] || null, r);
-    };
-    const confirmedRestrictionDesc = (r) => {
-      const sureReasons = ((r.detail && r.detail.reasons) || []).filter((x) => x.code !== 'no_adjustment' && x.sure);
-      if (!sureReasons.length) return isKo ? '확정 제한 없음(표준 용량)' : 'no confirmed restriction (standard dosing)';
-      return describeRule(sureReasons[0], r);
-    };
-    const orgNames = (axes) => (axes || []).map((a) => organKo(a)).join(', ');
-    const refKo = (r) => (r.adc === row.adc ? '이 약물' : `#${r.rank} 약물`);
-    const refEn = (r, cap) => (r.adc === row.adc ? (cap ? 'This drug' : 'this drug') : `#${r.rank}`);
-    const refPossEn = (r) => (r.adc === row.adc ? "this drug's" : `#${r.rank}'s`);
-
-    function explainPairDiff(better, worse) {
-      if (S.prioOrgan) {
-        const pk = S.prioOrgan;
-        const osB = organStatusForRow(better, pk);
-        const osW = organStatusForRow(worse, pk);
-        const penB = osB.cls === 'boxed' ? 2 : (osB.cls === 'warn' ? 1 : 0);
-        const penW = osW.cls === 'boxed' ? 2 : (osW.cls === 'warn' ? 1 : 0);
-        if (penB < penW) {
-          const org = organKo(pk);
-          return {
-            key: `prio:${pk}`,
-            factor: isKo ? '우선 보호 장기' : 'Priority organ',
-            text: isKo
-              ? `선택한 우선 보호 장기(${org})에서 ${refKo(better)}은 '${osB.tag}'인 반면, ${refKo(worse)}은 '${osW.tag}'에 해당합니다.`
-              : `On prioritized organ ${org}, ${refEn(better, false)} is ${osB.tag} whereas ${refEn(worse, false)} carries ${osW.tag}.`,
-          };
-        }
-      }
-      if (cancerActive && Boolean(better.indicated) && !Boolean(worse.indicated)) {
-        return {
-          key: 'indication',
-          factor: isKo ? '암종 적응증' : 'Cancer indication',
-          text: isKo
-            ? `${refKo(better)}은 입력된 암종에 FDA 승인 적응증이 일치하는 반면, ${refKo(worse)}은 타 암종 승인 약물입니다.`
-            : `${refEn(better, true)} holds FDA approval matching the entered cancer, whereas ${refEn(worse, false)} is approved for other malignancies.`,
-        };
-      }
-      const tB = Math.max(0, Number(better.tier ?? 0));
-      const tW = Math.max(0, Number(worse.tier ?? 0));
-      const warnSumB = ((better.boxed || []).length + (better.warn || []).length);
-      const warnSumW = ((worse.boxed || []).length + (worse.warn || []).length);
-      if (tB < tW) {
-        const descW = topRestrictionDesc(worse);
-        const body = tB === 0
-          ? (isKo
-            ? `${refKo(better)}은 입력된 환자 수치에서 사용 제한이 없는 표준 용량 투여 대상인 반면, ${refKo(worse)}은 ${descW}에 해당합니다.`
-            : `${refEn(better, true)} qualifies for standard dosing with no label restriction, whereas ${refEn(worse, false)} triggers ${descW}.`)
-          : (isKo
-            ? `${refKo(better)}은 ${topRestrictionDesc(better)} 단계로, ${refKo(worse)}의 ${descW}보다 라벨 사용 제한 수준이 낮습니다.`
-            : `${refEn(better, true)} requires ${topRestrictionDesc(better)}, a less restrictive FDA label tier than ${refPossEn(worse)} ${descW}.`);
-        return {
-          key: `tier:${tB}:${tW}`,
-          factor: isKo ? '라벨 용량/사용 제한' : 'Label use restriction',
-          text: body,
-          needsLabelPrioNote: warnSumB > warnSumW,
-        };
-      }
-      const kB = Math.max(0, Number(better.known ?? 0));
-      const kW = Math.max(0, Number(worse.known ?? 0));
-      if (tB === tW && tB > 0 && kB < kW) {
-        const confB = confirmedRestrictionDesc(better);
-        const confW = confirmedRestrictionDesc(worse);
-        return {
-          key: `known:${tB}:${kB}:${kW}`,
-          factor: isKo ? '제한 확정 여부' : 'Confirmed vs conditional',
-          text: isKo
-            ? `최대 가능 제한 단계(${statusInfo(better).full})는 동일하나, 입력된 수치 기준 ${refKo(better)}은 '${confB}'인 반면 ${refKo(worse)}은 '${confW}'에 해당합니다.`
-            : `Both share the same potential label tier (${statusInfo(better).full}), but on entered values ${refEn(better, false)} has ${confB} versus ${confW} for ${refEn(worse, false)}.`,
-        };
-      }
-      const bBox = better.boxed || [];
-      const wBox = worse.boxed || [];
-      const onlyWBox = wBox.filter((o) => !bBox.includes(o));
-      const onlyBBox = bBox.filter((o) => !wBox.includes(o));
-      if (bBox.length !== wBox.length || onlyWBox.length > 0 || onlyBBox.length > 0) {
-        if (bBox.length < wBox.length) {
-          const diffOrgs = orgNames(onlyWBox.length ? onlyWBox : wBox);
-          return {
-            key: `boxed:${bBox.length}:${wBox.length}`,
-            factor: isKo ? '취약 장기 경고' : 'Vulnerable-organ warning',
-            text: bBox.length === 0
-              ? (isKo
-                ? `적응증과 사용 제한 단계가 동일하며, ${refKo(better)}은 환자 취약 장기에 경고가 없는 반면 ${refKo(worse)}은 ${diffOrgs} 경고가 있습니다.`
-                : `With matching indication and restriction tier, ${refEn(better, false)} has no major warning on vulnerable organs whereas ${refEn(worse, false)} carries a major warning on ${diffOrgs}.`)
-              : (isKo
-                ? `적응증과 사용 제한 단계가 동일하며, 환자 취약 장기 경고가 ${bBox.length}건(${orgNames(bBox)})으로 ${refKo(worse)}의 ${wBox.length}건(${orgNames(wBox)})보다 적습니다.`
-                : `With matching indication and restriction tier, ${refEn(better, false)} has fewer major warnings on vulnerable organs (${bBox.length}: ${orgNames(bBox)}) than ${refEn(worse, false)} (${wBox.length}: ${orgNames(wBox)}).`),
-          };
-        }
-        if (onlyWBox.length > 0) {
-          return {
-            key: `boxed-prio:${onlyWBox.join(',')}`,
-            factor: isKo ? '고위험 장기 보호' : 'Higher-priority organ',
-            text: isKo
-              ? `${refKo(better)}은 우선순위가 더 높은 취약 장기(${orgNames(onlyWBox)})의 경고를 피하는 반면, ${refKo(worse)}은 해당 장기에 경고가 있습니다.`
-              : `${refEn(better, true)} avoids major warnings on higher-priority vulnerable organ(s) (${orgNames(onlyWBox)}) affected by ${refEn(worse, false)}.`,
-          };
-        }
-      }
-      const bWarn = better.warn || [];
-      const wWarn = worse.warn || [];
-      const onlyWWarn = wWarn.filter((o) => !bWarn.includes(o));
-      const onlyBWarn = bWarn.filter((o) => !wWarn.includes(o));
-      if (bWarn.length !== wWarn.length || onlyWWarn.length > 0 || onlyBWarn.length > 0) {
-        if (bWarn.length < wWarn.length) {
-          const diffOrgs = orgNames(onlyWWarn.length ? onlyWWarn : wWarn);
-          return {
-            key: `warn:${bWarn.length}:${wWarn.length}`,
-            factor: isKo ? '취약 장기 주의' : 'Vulnerable-organ caution',
-            text: bWarn.length === 0
-              ? (isKo
-                ? `적응증, 사용 제한, 경고 수준이 동일하며, ${refKo(better)}은 환자 취약 장기에 주의사항이 없는 반면 ${refKo(worse)}은 ${diffOrgs} 주의사항이 있습니다.`
-                : `With identical restriction tier and major warnings, ${refEn(better, false)} is clear on vulnerable organs whereas ${refEn(worse, false)} carries caution(s) on ${diffOrgs}.`)
-              : (isKo
-                ? `적응증, 사용 제한, 경고 수준이 동일하며, 환자 취약 장기 주의사항이 ${bWarn.length}건(${orgNames(bWarn)})으로 ${refKo(worse)}의 ${wWarn.length}건(${orgNames(wWarn)})보다 적습니다.`
-                : `With identical restriction tier and major warnings, ${refEn(better, false)} carries fewer cautions on vulnerable organs (${bWarn.length}: ${orgNames(bWarn)}) than ${refEn(worse, false)} (${wWarn.length}: ${orgNames(wWarn)}).`),
-          };
-        }
-        if (onlyWWarn.length > 0) {
-          return {
-            key: `warn-prio:${onlyWWarn.join(',')}`,
-            factor: isKo ? '고위험 장기 보호' : 'Higher-priority organ',
-            text: isKo
-              ? `${refKo(better)}은 우선순위가 더 높은 취약 장기(${orgNames(onlyWWarn)})의 주의사항을 피하는 반면, ${refKo(worse)}은 해당 장기에 주의사항이 있습니다.`
-              : `${refEn(better, true)} avoids cautions on higher-priority vulnerable organ(s) (${orgNames(onlyWWarn)}) affected by ${refEn(worse, false)}.`,
-          };
-        }
-      }
-      return {
-        key: 'overall',
-        factor: isKo ? '종합 적합도' : 'Overall label fit',
-        text: isKo
-          ? `${refKo(better)}은 적응증, 라벨 사용 제한, 취약 장기 경고 기준에서 ${refKo(worse)}보다 우선 순위로 산정되었습니다.`
-          : `${refEn(better, true)} ranks ahead of ${refEn(worse, false)} across cancer indication, FDA label restrictions, and vulnerable-organ warnings.`,
-      };
-    }
-
-    // Current standing summary
-    const tiedPeers = list.filter((r) => r.adc !== row.adc && r.rank === row.rank);
-    const isTied = tiedPeers.length > 0 || Boolean(row.tie);
-    const rankLabel = isTied
-      ? (isKo ? `전체 ${list.length}개 중 공동 ${row.rank}위` : `Tied #${row.rank} of ${list.length} overall`)
-      : (isKo ? `전체 ${list.length}개 중 ${row.rank}위` : `#${row.rank} of ${list.length} overall`);
-
-    const standingParts = [];
-    if (cancerActive) {
-      standingParts.push(row.indicated ? (isKo ? '암종 일치' : 'Cancer match') : (isKo ? '타 암종 적응증' : 'Other cancer indication'));
-    }
-    standingParts.push(statusInfo(row).full);
-
-    const hasRecOrgans = list.some((r) => (r.boxed && r.boxed.length) || (r.warn && r.warn.length))
-      || !!(resData.patient && Object.keys(resData.patient.organs || {}).length);
-    const nBox = (row.boxed || []).length;
-    const nWarn = (row.warn || []).length;
-    if (nBox > 0 && nWarn > 0) {
-      standingParts.push(isKo
-        ? `취약 장기 경고 ${nBox}건, 주의 ${nWarn}건`
-        : `${nBox} ${nBox === 1 ? 'warning' : 'warnings'}, ${nWarn} ${nWarn === 1 ? 'caution' : 'cautions'} on vulnerable organs`);
-    } else if (nBox > 0) {
-      standingParts.push(isKo
-        ? `취약 장기 경고 ${nBox}건`
-        : `${nBox} ${nBox === 1 ? 'warning' : 'warnings'} on vulnerable organs`);
-    } else if (nWarn > 0) {
-      standingParts.push(isKo
-        ? `취약 장기 주의 ${nWarn}건`
-        : `${nWarn} ${nWarn === 1 ? 'caution' : 'cautions'} on vulnerable organs`);
-    } else if (hasRecOrgans) {
-      standingParts.push(isKo ? '취약 장기 경고/주의 없음' : 'Clear on vulnerable organs');
-    }
-
-    let tieNoteEl = null;
-    if (tiedPeers.length > 0) {
-      const peersText = tiedPeers.length <= 2
-        ? tiedPeers.map((p) => p.name).join(', ')
-        : (isKo ? `${tiedPeers[0].name} 외 ${tiedPeers.length - 1}종` : `${tiedPeers[0].name} + ${tiedPeers.length - 1} more`);
-      tieNoteEl = h('p', {
-        class: 'rr-tie-note',
-        text: isKo
-          ? `동순위: ${peersText} (적응증, 사용 제한, 취약 장기 경고 수준 동일)`
-          : `Tied at #${row.rank}: ${peersText} (matching indication, label tier, and organ profile)`,
-      });
-    }
-
-    // Select up to 2 head-to-head comparison targets
-    const higher = list.filter((r) => r.rank < row.rank);
-    const lower = list.filter((r) => r.rank > row.rank);
-    const rawPairs = [];
-    if (row.rank === 1) {
-      if (lower.length) {
-        const firstLow = lower[0];
-        rawPairs.push({ other: firstLow, focusIsBetter: true });
-        const secondLow = lower.find((r) => r.rank > firstLow.rank) || null;
-        if (secondLow) rawPairs.push({ other: secondLow, focusIsBetter: true });
-      }
-    } else if (higher.length === 1 || row.rank === 2) {
-      if (higher.length) rawPairs.push({ other: higher[0], focusIsBetter: false });
-      if (lower.length) rawPairs.push({ other: lower[0], focusIsBetter: true });
-    } else if (higher.length) {
-      const top1 = higher[0];
-      rawPairs.push({ other: top1, focusIsBetter: false });
-      const prevRankRow = higher[higher.length - 1];
-      if (prevRankRow && prevRankRow.rank !== top1.rank) {
-        rawPairs.push({ other: prevRankRow, focusIsBetter: false });
-      } else {
-        const altHigh = higher.slice(1).find((r) => r.rank !== top1.rank);
-        if (altHigh) rawPairs.push({ other: altHigh, focusIsBetter: false });
-      }
-    }
-
-    let items = rawPairs.map((p) => {
-      const better = p.focusIsBetter ? row : p.other;
-      const worse = p.focusIsBetter ? p.other : row;
-      return { other: p.other, focusIsBetter: p.focusIsBetter, diff: explainPairDiff(better, worse) };
-    });
-    if (items.length > 1 && items[0].diff.key === 'indication' && items[1].diff.key === 'indication') {
-      items = [items[0]];
-    }
-
-    let prioNoteShown = false;
-    const cmpCards = items.map((it) => {
-      let bodyText = it.diff.text;
-      if (it.diff.needsLabelPrioNote && !prioNoteShown) {
-        prioNoteShown = true;
-        bodyText += isKo
-          ? ' 라벨의 용량/사용 제한 단계가 일반 장기 주의사항보다 우선 반영됩니다.'
-          : ' FDA label dosing restrictions take priority over general organ cautions.';
-      }
-      return h('div', { class: 'rr-cmp' },
-        h('div', { class: 'rr-cmp-head' },
-          h('div', { class: 'rr-cmp-left' },
-            h('span', {
-              class: 'rr-dir ' + (it.focusIsBetter ? 'ahead' : 'behind'),
-              text: it.focusIsBetter
-                ? (isKo ? '우위 요인' : 'Ranks ahead')
-                : (isKo ? '선순위 비교' : 'Ranked behind'),
-            }),
-            h('span', { class: 'rr-vs', text: `vs #${it.other.rank} ${it.other.name}` })),
-          h('span', { class: 'rr-factor', text: it.diff.factor })),
-        h('p', { class: 'rr-cmp-body', text: bodyText }));
-    });
-
-    return h('div', { class: 'rr-box' },
-      h('div', { class: 'rr-summary' },
-        h('span', { class: 'rr-rank-pill' + (row.rank === 1 ? ' is-top' : ''), text: rankLabel }),
-        h('span', { class: 'rr-standing', text: standingParts.join(' | ') })),
-      tieNoteEl,
-      cmpCards.length ? h('div', { class: 'rr-cmp-list' }, cmpCards) : null);
-  }
-
-  function fillDrawer(row, allRows, hasCancer) {
+  function fillDrawer(row) {
     if (!row) return;
     const isKo = S.lang === 'ko';
     const d = row.detail || {};
@@ -7708,45 +6944,43 @@
     clear(drawerBody);
     drawerBody.scrollTop = 0;
 
-    // 0. Comparative ranking rationale
-    const secRankRationale = section(t('rankRationaleTitle'), buildRankingRationale(row, allRows, hasCancer));
-
-    // 1. Can the drug be used for this patient
+    // 1. Triggered label dosing rules + vulnerable-organ warnings folded into one section
     const CODE_KO = { contraindicated: '사용 금지', avoid: '사용 주의', reduce_dose: '용량 감량', monitor: '경과 관찰', insufficient_data: '판단 자료 부족' };
     const rs = (d.reasons || []).filter((r) => r.code !== 'no_adjustment' && r.code !== 'no_statement');
     const ruleText = (r) => {
       const b = String(r.basis || '').replace(/^if /, '');
       return b === '-' ? t('appliesToAll') : b;
     };
-    const secRestriction = section(t('labelRestriction'), rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
+    const ws = (d.warnings || []).slice().sort((a, b) =>
+      Number(Boolean(S.prioOrgan && b.organ === S.prioOrgan)) - Number(Boolean(S.prioOrgan && a.organ === S.prioOrgan))
+    );
+    const rulesListEl = rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
       h('div', { class: 'rh' },
         h('span', { class: 'k', text: organKo(r.organ) }),
         h('span', { class: `s t-${TONE[r.code] || 'dim'}`, text: isKo ? (CODE_KO[r.code] || r.status) : r.status })),
       h('div', { class: 'pl' },
         r.patient ? [h('span', { class: 'pk', text: isKo ? '환자 수치' : 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
-        h('span', { class: 'pk', text: isKo ? '적용 기준' : 'Criterion' }), h('span', { class: 'lv2', text: ruleText(r) })))))
-      : h('p', { class: 'dim', text: t('noLabelRestriction') }));
-
-    // 2. Effects on the patient's vulnerable organs
-    const ws = (d.warnings || []).slice().sort((a, b) =>
-      Number(Boolean(S.prioOrgan && b.organ === S.prioOrgan)) - Number(Boolean(S.prioOrgan && a.organ === S.prioOrgan))
-    );
-    const secPatientWarn = section(t('patientWarnTitle'), ws.length ? h('div', { class: 'wl' }, ws.map((w) => {
+        h('span', { class: 'pk', text: isKo ? '적용 기준' : 'Criterion' }), h('span', { class: 'lv2', text: ruleText(r) }))))) : null;
+    const warnsListEl = ws.length ? h('div', { class: 'wl' }, ws.map((w) => {
       const strong = (w.mark || '').trim() === '!!';
       return h('div', { class: 'wr' },
         h('div', { class: 'wh' },
           h('span', { class: 'k', text: organKo(w.organ) }),
           h('span', { class: 'm ' + (strong ? 't-red' : 't-amber'), text: strong ? (isKo ? '경고' : 'Warning') : (isKo ? '주의' : 'Caution') })),
         h('div', { class: 'wt', text: (w.text || '').replace(/;\s*/g, ', ') }));
-    })) : h('p', { class: 'dim', text: t('noPatientWarn') }));
+    })) : null;
+    const secPatientWarn = section(
+      t('patientWarnTitle'),
+      rulesListEl || warnsListEl ? h('div', { class: 'warn-stack' }, rulesListEl, warnsListEl) : h('p', { class: 'dim', text: t('noPatientWarn') })
+    );
 
     const secChecks = (d.checks || []).length ? section(t('preCheckTitle'), h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))) : null;
     const secMissing = (d.missing || []).length ? section(t('missingInputTitle'),
       h('ul', { class: 'dash' }, d.missing.map((m) => h('li', { text: isKo ? (MISSING_KO[m] || m) : m })))) : null;
 
-    // 3. Clinical trial cases
+    // 2. Clinical trial cases
     const tr = d.trial && d.trial.trial && !d.trial.no_results ? d.trial : null;
-    const secStudy = section(t('trialContext'), trialCaseBlock(tr, (d.trial && d.trial.no_results) || t('singleArmTrial')));
+    const secStudy = section(null, trialCaseBlock(tr, (d.trial && d.trial.no_results) || t('singleArmTrial')));
 
     const makeSourcesSection = () => {
       const dailyMedUrl = `https://dailymed.nlm.nih.gov/dailymed/search.cfm?labeltype=all&query=${encodeURIComponent(String(row.adc || '').replace(/-/g, ' '))}`;
@@ -7773,7 +7007,7 @@
       return section(t('sourcesTitle'), h('div', { class: 'source-links-list' }, links));
     };
 
-    // 4. Molecular structure
+    // 3. Molecular structure
     const m = MECH[row.adc];
     const kvRows = (m ? [
       ['Target Antigen', m.target],
@@ -7792,20 +7026,8 @@
       build3dLegend(row),
       kvRows.length ? h('div', { class: 'kv3' }, kvRows.map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])) : null);
 
-    const st = statusInfo(row);
-    const subbar = h('div', { class: 'dr-subbar' },
-      h('div', { class: 'dr-subbar-badges' },
-        h('span', { class: 'sp-status-badge ' + st.tone, text: st.full }),
-        h('span', { class: 'prov-tag prov-label', text: 'FDA SPL' })),
-      h('button', {
-        type: 'button',
-        class: 'btn-load-studio',
-        text: t('tuneStudio'),
-        onclick: () => loadApprovedAdcIntoStudio(row.adc),
-      }));
-
     const tabDefs = [
-      { id: 'Patient', label: t('tabPatient'), secs: [secRankRationale, secRestriction, secPatientWarn, secChecks, secMissing, makeSourcesSection()].filter(Boolean) },
+      { id: 'Patient', label: t('tabPatient'), secs: [secPatientWarn, secChecks, secMissing, makeSourcesSection()].filter(Boolean) },
       { id: 'Study', label: t('tabStudy'), secs: [secStudy, makeSourcesSection()].filter(Boolean) },
       { id: 'Structure', label: t('tabStructure'), secs: [secStructure3d].filter(Boolean) },
     ];
@@ -7833,7 +7055,7 @@
       }));
     });
 
-    drawerBody.append(subbar, nav, ...allSecs);
+    drawerBody.append(nav, ...allSecs, makeDrawerExportTab());
     const initialTab = ['Patient', 'Study', 'Structure'].includes(S.drawerTab) ? S.drawerTab : 'Patient';
     switchTab(initialTab);
   }
@@ -7994,9 +7216,8 @@
     const tgtName = plainName(tgt.id);
     const customLabel = sim.spec && sim.spec.customPayloadLabel;
     const payLabel = customLabel || plainName(pld.id);
-    const designName = `${tgtName}-${payLabel}`;
-    const doseTag = sim.optimalDoseMgKg ? `, ${sim.optimalDoseMgKg} mg/kg` : '';
-    const designSub = `${lnk.id}, DAR ${dar}, ${mineFcLabel}${doseTag}`;
+    const designName = `${tgtName} + ${payLabel}`;
+    const doseTag = sim.optimalDoseMgKg ? `${sim.optimalDoseMgKg} mg/kg` : null;
 
     drawerTitle.textContent = t('compareTitle');
     clear(drawerBody);
@@ -8005,15 +7226,28 @@
     // 1. The two designs side by side
     const secCompareHero = h('div', { class: 'compare-hero' },
       h('div', { class: 'compare-hero-col denovo' },
-        h('span', { class: 'ch-badge', text: L('이 환자 맞춤 설계', 'Tailored to this patient') }),
+        h('span', { class: 'ch-badge', text: L('신규 설계', 'New Design') }),
         h('span', { class: 'ch-name', text: designName }),
-        h('span', { class: 'ch-sub', text: designSub }),
-        h('span', { class: 'ch-score', text: L(`안전도 ${sim.safetyScore}점 / 효능 ${sim.efficacyScore}점`, `Safety ${sim.safetyScore} / Efficacy ${sim.efficacyScore}`) })),
+        h('div', { class: 'ch-sub-lines' },
+          h('div', { text: lnk.id }),
+          h('div', { text: `DAR ${dar}` }),
+          h('div', { text: mineFcLabel }),
+          doseTag ? h('div', { text: doseTag }) : null),
+        h('div', { class: 'ch-score-stack' },
+          h('span', { text: L(`안전도 ${sim.safetyScore}`, `Safety ${sim.safetyScore}`) }),
+          h('span', { text: L(`효능 ${sim.efficacyScore}`, `Efficacy ${sim.efficacyScore}`) }))),
       h('div', { class: 'compare-hero-col' },
-        h('span', { class: 'ch-badge', text: L('기준 승인 약물', 'Approved reference drug') }),
+        h('span', { class: 'ch-badge', text: L('기존 ADC', 'Approved ADC') }),
         h('span', { class: 'ch-name', text: refBrand || refName }),
-        h('span', { class: 'ch-sub', text: `${plainName(refSim.tgt.id)}, ${refSpec.linker || refSim.lnk.id}, DAR ${refSim.dar}, ${refFcLabel}` }),
-        h('span', { class: 'ch-score', style: 'color:var(--dim)', text: L(`안전도 ${refSim.safetyScore}점 / 효능 ${refSim.efficacyScore}점`, `Safety ${refSim.safetyScore} / Efficacy ${refSim.efficacyScore}`) })));
+        h('div', { class: 'ch-sub-lines' },
+          h('div', { text: plainName(refSim.tgt.id) }),
+          h('div', { text: refSpec.linker || refSim.lnk.id }),
+          h('div', { text: plainName(refSim.pld.id) }),
+          h('div', { text: `DAR ${refSim.dar}` }),
+          h('div', { text: refFcLabel })),
+        h('div', { class: 'ch-score-stack', style: 'color:var(--dim)' },
+          h('span', { text: L(`안전도 ${refSim.safetyScore}`, `Safety ${refSim.safetyScore}`) }),
+          h('span', { text: L(`효능 ${refSim.efficacyScore}`, `Efficacy ${refSim.efficacyScore}`) }))));
 
     // 2. Part by part, with what it means clinically
     const burden = (sObj) => sim.organRisks.reduce((acc, r) => {
@@ -8049,7 +7283,7 @@
     const sameTgt = tgt.id === refSim.tgt.id;
     const tgtRowGain = sameTgt
       ? { tone: 'same', text: L(`같은 ${tgtName} 표적이라 종양 선택도(+${tgt.selectivity.toFixed(1)} log2FC)는 같습니다. 차이는 아래 항목에서 생깁니다.`, `Same ${tgtName} target, so tumor selectivity (+${tgt.selectivity.toFixed(1)} log2FC) is the same. The differences come from the parts below.`) }
-      : { tone: 'same', text: L(`${refBrand}의 고유 승인 표적은 ${plainName(refSim.tgt.id)}이며, 현재 신규 설계는 ${tgtName}(종양 선택도 +${tgt.selectivity.toFixed(1)} log2FC)을 표적합니다.`, `${refBrand} natively targets ${plainName(refSim.tgt.id)}, whereas this de novo construct targets ${tgtName} (selectivity +${tgt.selectivity.toFixed(1)} log2FC).`) };
+      : { tone: 'same', text: L(`${refBrand}의 표적은 ${plainName(refSim.tgt.id)}이며, 신규 설계는 ${tgtName}(종양 선택도 +${tgt.selectivity.toFixed(1)} log2FC)을 표적합니다.`, `${refBrand} targets ${plainName(refSim.tgt.id)}, whereas this new design targets ${tgtName} (selectivity +${tgt.selectivity.toFixed(1)} log2FC).`) };
 
     const rows = [
       [t('compTarget'), tgtName, plainName(refSim.tgt.id), tgtRowGain],
@@ -8057,19 +7291,19 @@
       [t('compPayload'), payLabel, plainName(refSim.pld.id), payGain],
       [t('compDar'), `DAR ${dar}`, `DAR ${refSim.dar}`, darGain],
       [t('compFc'), mineFcLabel, refFcLabel, fcGain],
-      [t('compSafety'), L(`${sim.safetyScore}점`, `${sim.safetyScore}`), L(`${refSim.safetyScore}점`, `${refSim.safetyScore}`),
-        { tone: toneOf(dSafety), text: dSafety >= 3 ? L(`모델 안전도 점수가 기준 약물보다 ${dSafety}점 높습니다.`, `The model safety score is ${dSafety} points above the reference.`)
-          : dSafety <= -3 ? L(`모델 안전도 점수가 기준 약물보다 ${-dSafety}점 낮습니다.`, `The model safety score is ${-dSafety} points below the reference.`) : L('모델 안전도 점수가 기준 약물과 비슷합니다.', 'The model safety score is similar to the reference.') }],
-      [t('compEfficacy'), L(`${sim.efficacyScore}점`, `${sim.efficacyScore}`), L(`${refSim.efficacyScore}점`, `${refSim.efficacyScore}`),
-        { tone: toneOf(dEff), text: dEff >= 3 ? L(`모델 효능 점수가 기준 약물보다 ${dEff}점 높습니다.`, `The model efficacy score is ${dEff} points above the reference.`)
-          : dEff <= -3 ? L(`모델 효능 점수가 기준 약물보다 ${-dEff}점 낮습니다.`, `The model efficacy score is ${-dEff} points below the reference.`) : L('모델 효능 점수가 기준 약물과 비슷합니다.', 'The model efficacy score is similar to the reference.') }],
+      [t('compSafety'), L(`${sim.safetyScore}`, `${sim.safetyScore}`), L(`${refSim.safetyScore}`, `${refSim.safetyScore}`),
+        { tone: toneOf(dSafety), text: dSafety >= 3 ? L(`안전도 예측치가 기존 ADC보다 ${dSafety} 높습니다.`, `Predicted safety is ${dSafety} points above the approved ADC.`)
+          : dSafety <= -3 ? L(`안전도 예측치가 기존 ADC보다 ${-dSafety} 낮습니다.`, `Predicted safety is ${-dSafety} points below the approved ADC.`) : L('안전도 예측치가 기존 ADC와 비슷합니다.', 'Predicted safety is similar to the approved ADC.') }],
+      [t('compEfficacy'), L(`${sim.efficacyScore}`, `${sim.efficacyScore}`), L(`${refSim.efficacyScore}`, `${refSim.efficacyScore}`),
+        { tone: toneOf(dEff), text: dEff >= 3 ? L(`효능 예측치가 기존 ADC보다 ${dEff} 높습니다.`, `Predicted efficacy is ${dEff} points above the approved ADC.`)
+          : dEff <= -3 ? L(`효능 예측치가 기존 ADC보다 ${-dEff} 낮습니다.`, `Predicted efficacy is ${-dEff} points below the approved ADC.`) : L('효능 예측치가 기존 ADC와 비슷합니다.', 'Predicted efficacy is similar to the approved ADC.') }],
     ];
 
     const chipText = { better: L('모델 우세', 'Model favors'), same: L('동일', 'Same'), worse: L('모델 열세', 'Model trade-off') };
     const cmpList = h('div', { class: 'cmp-list' }, rows.map(([param, mine, ref, gain]) => h('div', { class: 'cmp-item' },
       h('div', { class: 'cmp-param', text: param }),
       h('div', { class: 'cmp-pair' },
-        h('div', { class: 'cmp-side mine' }, h('span', { class: 'cmp-tag', text: L('맞춤 설계', 'Tailored') }), h('span', { class: 'cmp-val', text: mine })),
+        h('div', { class: 'cmp-side mine' }, h('span', { class: 'cmp-tag', text: L('신규 설계', 'New Design') }), h('span', { class: 'cmp-val', text: mine })),
         h('div', { class: 'cmp-side' }, h('span', { class: 'cmp-tag', text: refBrand }), h('span', { class: 'cmp-val', text: ref }))),
       h('div', { class: 'cmp-gain ' + gain.tone },
         h('span', { class: 'cmp-chip ' + gain.tone, text: chipText[gain.tone] }),
@@ -8118,7 +7352,7 @@
 
     const btnToggleDesign = h('button', {
       type: 'button', class: 'st-pill', 'aria-pressed': 'true',
-      text: L('맞춤 설계 구조', 'Tailored design'),
+      text: L('신규 설계 구조', 'New design'),
       onclick: () => {
         active3dModel = designConstruct;
         btnToggleDesign.setAttribute('aria-pressed', 'true');
@@ -8147,11 +7381,11 @@
       wrap3d,
       legend3dBox,
       h('div', { class: 'kv3', style: 'margin-top:12px' }, [
-        [L('표적 항원', 'Target'), tgtName],
-        [L('접합비 DAR', 'DAR'), `DAR ${dar}`],
-        [L('화학 링커', 'Linker'), `${lnk.id}, ${lnk.cleavable ? L('절단형', 'cleavable') : L('비절단형', 'non-cleavable')}`],
-        [L('세포독성 페이로드', 'Payload'), `${payLabel}, ${pld.cls}`],
-        [L('항체 골격 / Fc', 'Antibody / Fc'), mineFcLabel],
+        [t('compTarget'), tgtName],
+        [t('compDar'), `DAR ${dar}`],
+        [t('compLinker'), `${lnk.id}, ${lnk.cleavable ? L('절단형', 'cleavable') : L('비절단형', 'non-cleavable')}`],
+        [t('compPayload'), `${payLabel}, ${pld.cls}`],
+        [t('compFc'), mineFcLabel],
       ].map(([k, v]) => [h('span', { class: 'k', text: k }), h('span', { text: v })])));
 
     // 5. Clinical trial cases of the approved drug
@@ -8187,7 +7421,7 @@
       }));
     });
 
-    drawerBody.append(nav, ...allSecs);
+    drawerBody.append(nav, ...allSecs, makeDrawerExportTab());
     const initCmpTab = ['Compare', 'Structure', 'Study'].includes(S.compareTab) ? S.compareTab : 'Compare';
     switchCompareTab(initCmpTab);
   }
@@ -8364,7 +7598,7 @@
         if (id) MECH[id] = m;
       }
     });
-    const cleanVer = String(APP.version || '0.9.4').replace(/^v/i, '');
+    const cleanVer = String(APP.version || '0.9.5').replace(/^v/i, '');
     if (verEl) verEl.textContent = cleanVer;
     if (barVer) barVer.textContent = cleanVer;
 

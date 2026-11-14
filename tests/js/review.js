@@ -3,7 +3,7 @@ const { labState, indicationText, reviewText } = require('../../ml/web/review.js
 
 assert.equal(labState('', null, false, false, false), 'Not entered');
 assert.equal(labState('', null, false, false, true), 'Default reference');
-assert.equal(indicationText(null, false, true), '암종 미입력');
+assert.equal(indicationText(null, false, true), '진단 미입력');
 
 const current = { arch: 'HER2 / GGFG / DXd / DAR 4', safetyScore: 80, efficacyScore: 70 };
 const optimal = { arch: 'TROP2 / GGFG / DXd / DAR 6', safetyScore: 85, efficacyScore: 75 };
@@ -19,7 +19,9 @@ for (const lang of ['ko', 'en']) {
   assert(manual.includes(current.arch));
   assert(!manual.includes(optimal.arch));
   assert(!manual.includes('368,640'));
-  assert(manual.includes(lang === 'ko' ? '자동 탐색: 실행 전' : 'Auto search: not run'));
+  assert(!manual.includes('실행 방식'));
+  assert(!manual.includes('실행 전'));
+  assert(manual.includes(lang === 'ko' ? '신규 설계' : 'New Design'));
   assert(manual.includes('Not entered'));
   assert(manual.includes('CrCl < 30'));
   const auto = render(lang, true);

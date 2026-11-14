@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.5: Clean clinical workflow UI, real-time Deep Research points, and unified typography
+
+- **Unified Header, Typography & Mobile Navigation:** Matched top navigation border and active framing across `1`, `2`, and `3`; preserved numbered step badges on narrow mobile screens (`<= 480px`) with clean two-row wrapping (`height: auto`); enforced `Manrope` / `Pretendard Variable` typography across all elements; and removed decorative middle dots and redundant status/provenance pills throughout Tabs 1–3.
+- **Streamlined `1. Patient Profile`:** Automatically preloaded baseline scenario without a separate demo banner (`New Patient` remains in header); separated `Demographics` (`Age`, `Sex`, `Weight`) from unified `Optional Clinical Panels`; made full header bars clickable chevron toggles; and standardized all numeric lab inputs to uniform widths with clean threshold labels (`기준치` / `Reference`).
+- **Focused `2. Compare ADCs` & Inspection Drawer:** Synchronized `Vulnerable Organs` top bar across Tabs 2–3 while keeping clicked organ selection highlighted in place; removed inline detail buttons and secondary badge clutter; folded FDA dosing rules into `Vulnerable organ precautions`; highlighted elevated treatment adverse-event bars in crimson; and added a bottom `Export summary ↗` action tab in the drawer.
+- **`3. ADC Design` & Real-Time Deep Research:** Evaluated real-time multi-candidate `ADC-SurrogateNet-v2` points (`deep_points`) in `Deep Research` mode; added horizontal wheel and drag scrolling to target category tabs; introduced an HTML 4-item uniform-dot legend (`New Design`, `Existing ADC`, `Same-Target Candidates`, `Incompatible Pairs`); simplified result cards to 2 stacked panels with multi-line formatting; renamed panels to `Construct Properties`, `Organ Toxicity Prediction`, and `Advanced Settings` (`Balanced`, `Organ Protection`, `Antitumor Efficacy`); and updated `?` guide modal with direct GitHub repository links.
+
 ## 0.9.4: Decluttered ADC Design workspace, bilingual parity, and mobile part sheets
 
 - **Decluttered `3. ADC Design` & Tabs 1–2:** Replaced duplicated condition/lab search bars on Tab 3 with a compact patient summary bar showing active disease chips, lab badges, an `Edit` action, and clickable dynamic priority-organ pills; removed redundant subtitles, rationale prose cards, preview notes, and discrete lab helper sentences across Tabs 1–3.

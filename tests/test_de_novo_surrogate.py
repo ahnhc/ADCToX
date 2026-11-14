@@ -254,3 +254,68 @@ def test_v090_approved_ref_adc_native_target_isolation():
     assert res_kadcyla["ref_current"]["spec"]["dar"] == 3.5
 
 
+def test_v095_clean_ui_fonts_and_terminology_invariants():
+    import re
+    from pathlib import Path
+    from ml.adc_version import APP_VERSION
+
+    assert APP_VERSION == "0.9.5"
+    root = Path(__file__).resolve().parent.parent
+    sw_text = (root / "ml" / "web" / "sw.js").read_text(encoding="utf-8")
+    assert "adctox-pwa-v0.9.5" in sw_text
+
+    app_js = (root / "ml" / "web" / "app.js").read_text(encoding="utf-8")
+    review_js = (root / "ml" / "web" / "review.js").read_text(encoding="utf-8")
+    app_css = (root / "ml" / "web" / "app.css").read_text(encoding="utf-8")
+    index_html = (root / "ml" / "web" / "index.html").read_text(encoding="utf-8")
+    icon_svg = (root / "ml" / "web" / "icon.svg").read_text(encoding="utf-8")
+
+    for fname, content in [
+        ("app.js", app_js),
+        ("review.js", review_js),
+        ("app.css", app_css),
+        ("index.html", index_html),
+    ]:
+        assert "\u00b7" not in content and "&middot;" not in content, f"middle dot found in {fname}"
+
+    for fname, content in [
+        ("app.css", app_css),
+        ("app.js", app_js),
+        ("icon.svg", icon_svg),
+    ]:
+        for bad_font in ("Georgia", "ui-monospace"):
+            assert bad_font not in content, f"prohibited font {bad_font} in {fname}"
+        assert not re.search(r"\bInter\b", content), f"prohibited font Inter in {fname}"
+
+    prohibited_tokens = (
+        "참고치",
+        "Required Labs",
+        "Optional Labs",
+        "암종",
+        "탄두",
+        "설계 축",
+        "gtexFold",
+        "탐색 최적 설계",
+        "고유 승인 구성",
+        "모델 점수 0-100",
+        "368,640",
+    )
+    for fname, content in [("app.js", app_js), ("review.js", review_js)]:
+        for tok in prohibited_tokens:
+            assert tok not in content, f"prohibited token {tok!r} in {fname}"
+
+    for required in (
+        "drawer-export-tab",
+        "sim-chart-legend",
+        "deep_points",
+        "github.com/ahnhc/ADCToX",
+        "인구학적 정보",
+        "선택 검진 수치",
+        "취약 장기군",
+        "장기별 독성 예측",
+        "고급 설정",
+    ):
+        assert required in app_js, f"missing expected v0.9.5 feature/label {required!r} in app.js"
+
+
+

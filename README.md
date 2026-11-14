@@ -1,9 +1,9 @@
-# ADCTOX v0.9.4
+# ADCTOX v0.9.5
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
-[![App Version](https://img.shields.io/badge/version-v0.9.4-10B981)](#)
+[![App Version](https://img.shields.io/badge/version-v0.9.5-10B981)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live%20Platform-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
@@ -18,12 +18,12 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
 
 ---
 
-## Key Capabilities in v0.9.4
+## Key Capabilities in v0.9.5
 
 1. **Streamlined 3-Stage Clinical Workflow (`1. Patient Profile` -> `2. Compare ADCs` -> `3. ADC Design`):**
-   - **Stage 1 (`Patient Profile`):** Bilingual (`EN / KO`) free-text condition and malignancy entry with real-time AI organ vulnerability mapping, active organ burden indicators, a collapsible 11-item required baseline flowsheet (`Age`, `Sex`, `Weight`, `Creatinine`, `Dialysis/ESRD`, `Bilirubin`, `AST`, `ALT`, `Platelets`, `ANC`, `Hb`), and a collapsible optional biomarker panel (`CLcr`, `eGFR`, `Child-Pugh`, `LVEF`, `HbA1c`, `UGT1A1*28`).
-   - **Stage 2 (`Compare ADCs`):** Evaluates all 15 FDA-approved ADCs against patient-specific organ vulnerabilities, DailyMed SPL Boxed Warnings, Section 5 Warnings, Cockcroft–Gault `CLcr` / `×ULN` hepatic thresholds, and 32 ClinicalTrials.gov pivotal trial comparator arms, with head-to-head ranking rationale in the `Patient & Label Fit` drawer.
-   - **Stage 3 (`ADC Design`):** Compact patient summary bar with clickable priority-organ pills and an `Edit` shortcut; single-open construct accordions on desktop and mobile (`<= 640px`) bottom-sheet selectors across `368,640` candidate architectures; live 15-drug approved reference selector (`ref-adc-select`) inside the comparison triad; collapsible construct property, organ toxicity, GTEx expression, and `Advanced` equation/weight panels with 1-line parameter sliders; and vectorized `Auto search` (`Mode 2`) or live 5-fold `ADC-SurrogateNet-v2` inference (`Deep Research`).
+   - **Stage 1 (`Patient Profile`):** Automatically preloads a clinical baseline scenario on entry while retaining one-click `New Patient` reset, bilingual (`EN / KO`) condition mapping to 13 vulnerable organ axes, a compact `Demographics` (`Age`, `Sex`, `Weight`) panel, and a unified `Optional Clinical Panels` accordion with standardized numeric inputs (`88px`) and reference intervals.
+   - **Stage 2 (`Compare ADCs`):** Unified `Vulnerable Organs` workspace bar preserving clicked organ order in place, clean 5-column comparison grid across all 15 FDA-approved ADCs, clickable row inspection drawer combining FDA dosing precautions under `Vulnerable organ precautions`, crimson highlight bars where treatment trial incidence exceeds comparator, and a bottom `Export summary ↗` drawer tab.
+   - **Stage 3 (`ADC Design`):** Identical top workspace framing (`1`, `2`, and `3` step badges across desktop and mobile), horizontal mouse-wheel/drag target category strip, real-time 5-fold `ADC-SurrogateNet-v2` candidate evaluation in `Deep Research`, uniform-dot HTML chart legend, stacked 2-card comparison (`New Design` vs `Existing ADC`), clean folds (`Construct Properties`, `Organ Toxicity Prediction`, `Advanced Settings` with `Balanced`, `Organ Protection`, `Antitumor Efficacy` presets), and updated guide modal with direct GitHub link.
 
 2. **Multimodal Neural Surrogate Engine (`ADC-SurrogateNet-v2`):**
    - **Ensemble Architecture:** 5-fold leak-free ensemble combining ESM-2 650M protein language models, AlphaFold pLDDT/solvent accessibility, ChemBERTa-2 LoRA molecular representations, Boltzmann 3D conformer ensembles, and enzymatic cleavage reaction SMARTS.
@@ -109,7 +109,7 @@ The installer configures an isolated Python environment, downloads the `0.8` fro
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.9.4 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.9.5 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the Terminal TUI
 ```
 
