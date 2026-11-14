@@ -153,7 +153,8 @@ def test_v083_ui_copy_and_collapsible_required_labs_invariants():
     assert "나이, 성별, 체중을 입력해 두면" not in app_txt
     assert "CLcr 수치가 없을 때" not in app_txt
     assert "Will Cockcroft-Gault auto-derive" not in app_txt
-    assert "Deep Research" in app_txt
+    assert "studioDeepResearch" in app_txt
+    assert "Deep Research" not in app_txt
     assert "studio-exec-box" in app_txt
     assert "basicLabsOpen" in app_txt
     assert "buildRequiredLabsPanel" in app_txt
@@ -259,10 +260,10 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
     from pathlib import Path
     from ml.adc_version import APP_VERSION
 
-    assert APP_VERSION == "0.9.6"
+    assert APP_VERSION == "0.9.7"
     root = Path(__file__).resolve().parent.parent
     sw_text = (root / "ml" / "web" / "sw.js").read_text(encoding="utf-8")
-    assert "adctox-pwa-v0.9.6" in sw_text
+    assert "adctox-pwa-v0.9.7" in sw_text
 
     app_js = (root / "ml" / "web" / "app.js").read_text(encoding="utf-8")
     review_js = (root / "ml" / "web" / "review.js").read_text(encoding="utf-8")
@@ -293,6 +294,13 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
         "Optional Labs",
         "인구학적 정보",
         "암종",
+        "적응증",
+        "ADC 비교",
+        "자동 탐색",
+        "현재 구성 평가",
+        "진단 질환 및 기저질환",
+        "전체 순위",
+        "Deep Research",
         "탄두",
         "설계 축",
         "gtexFold",
@@ -316,13 +324,20 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
         "취약 장기군",
         "장기별 독성 예측",
         "고급 설정",
-        "dts-dose-grid",
-        "12800 : 3200",
+        "ADC 추천",
+        "환자 질환",
+        "자동 설계",
+        "장기 안전도 예측",
+        "항암 효능 예측",
+        "신규 페이로드 SMILES",
+        "crumb-action-group",
+        "minComputeMs: 5000",
+        "lastScanAnimMs",
         "전체 승인 ADC 목록",
         "질병 일치",
         "fold-chevron",
     ):
-        assert required in app_js, f"missing expected v0.9.6 feature/label {required!r} in app.js"
+        assert required in app_js, f"missing expected v0.9.7 feature/label {required!r} in app.js"
 
     # Unboxed warnings in Compare ADCs drawer must stay removed while keeping boxed rule cards
     assert "warnsListEl" not in app_js
@@ -385,6 +400,30 @@ def test_deep_research_dose_curve_and_lcb_differentiation():
         or abs(best["safetyScore"] - res_auto["best"]["safetyScore"]) >= 1
     )
     assert differs
+
+
+def test_v097_progressive_ode_compute_floor():
+    import time
+    from ml import deep_research as DR
+
+    t0 = time.perf_counter()
+    res = DR.run_deep_research(
+        {
+            "cancerText": "HER2-positive breast cancer",
+            "organs": [{"organ": "pulmonary", "score": 0.90}, {"organ": "cardiac", "score": 0.70}],
+            "prioOrgan": "pulmonary",
+            "minComputeMs": 1200,
+        }
+    )
+    wall_ms = (time.perf_counter() - t0) * 1000.0
+    assert wall_ms >= 1150.0, f"expected >= 1.15s real progressive compute, got {wall_ms:.1f}ms"
+    dr_meta = res["deep_research"]
+    assert dr_meta["evaluated_constructs"] >= 90
+    assert dr_meta["ode_q3w_steps"] == 252
+    assert dr_meta["mc_patient_draws"] == 64
+    assert dr_meta["elapsed_ms"] >= 1150.0
+    assert len(res["deep_points"]) >= 120
+
 
 
 

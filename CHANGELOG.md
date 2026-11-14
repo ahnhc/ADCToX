@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.7: Unified Auto Design Engine (5-Fold PK/PD ODE) and Streamlined Workspace UI
+
+- **Real-Time Progressive Auto Design Engine:** Replaced the separate `Deep Research` toggle and static matrix path so `Auto design` (`자동 설계`) always runs 5-fold `ADCSurrogateNet v2` evaluation coupled with a vectorized 252-step 3-cycle Q3W two-compartment PK/PD solver and 5x64 QMC virtual-patient IIV simulation under a 5-second minimum compute floor (`minComputeMs: 5000`), paired with `ADC_MODEL_HOME` model checkpoint discovery.
+- **Streamlined Navigation and Workspace Framing:** Removed top-bar SVG logo marks and step numbers (`1`, `2`, `3`), enlarged the `ADCToX` wordmark (`20px`), grouped `Recommend ADCs` (`ADC 추천`) and `ADC Design` (`ADC 설계`) inside a black frame matching height with `Patient Profile` (`환자 프로필`), removed per-tab large `mode-h1` page headers while retaining `New Patient`, and stretched the vertical divider symmetrically inside `.workspace-bar`.
+- **Unified Terminology and Decluttered Cards:** Standardized terminology across Korean and English (`환자 질환` / `Patient Conditions`, `질환` instead of `적응증`, `ADC 추천` / `Recommend ADCs`, `#` rank column, unified `ADC 설계` / `Design ADC` run button), aligned dosing-fit pills to the right of drug names on narrow viewports, and removed inline tie/match/spacer badges, equation badge tags (`.sim-eq-sym`), and the secondary telemetry strip.
+
 ## 0.9.6: Unified Patient Summary Bar, Basic Information Naming, Cleaner Drawer, and Differentiated Deep Research
 
 - **Uniform Workspace Bar Across Tabs 1–3:** Removed compact `.lab-summary-row` lab badges below condition chips in `2. Compare ADCs` and `3. ADC Design` and eliminated `.studio-patient-bar` CSS layout overrides so `.workspace-bar` maintains identical framing and styling across all three steps.

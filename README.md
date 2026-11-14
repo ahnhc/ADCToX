@@ -1,29 +1,29 @@
-# ADCTOX v0.9.6
+# ADCTOX v0.9.7
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
-[![App Version](https://img.shields.io/badge/version-v0.9.6-10B981)](#)
+[![App Version](https://img.shields.io/badge/version-v0.9.7-10B981)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live%20Platform-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
 **Patient-Specific Antibody-Drug Conjugate (ADC) Safety Evaluation & Multimodal Neural Surrogate De Novo Design Workspace.**  
-ADCTOX links a patient's malignancies, comorbidities, and quantitative laboratory biomarkers to 13 physiological organ axes using an on-device 110M-parameter medical language model (`x2te`), evaluates all 15 FDA-approved ADCs against DailyMed label restrictions and ClinicalTrials.gov pivotal trial outcomes, and designs bespoke conjugates across **`368,640` architectures** (`36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc Formats`) using a vectorized server matrix engine (`Mode 2`) and real-time 5-fold `ADC-SurrogateNet-v2` inference (`Mode 3 Deep Research`).
+ADCTOX links a patient's malignancies, comorbidities, and quantitative laboratory biomarkers to 13 physiological organ axes using an on-device 110M-parameter medical language model (`x2te`), evaluates all 15 FDA-approved ADCs against DailyMed label restrictions and ClinicalTrials.gov pivotal trial outcomes, and designs bespoke conjugates across **`368,640` architectures** (`36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc Formats`) using real-time 5-fold `ADC-SurrogateNet-v2` neural inference coupled with a 252-step 3-cycle Q3W two-compartment PK/PD ODE and quasi-Monte Carlo virtual-patient solver (`Auto Design`).
 
 ---
 
 ![ADCTOX 3-Stage Workflow](docs/figures/fig1_adctox_workflow_3steps.png)
 
-![ADCTOX De Novo Studio & Deep Research Telemetry](docs/figures/fig2_de_novo_studio_deep_research.png)
+![ADCTOX De Novo Studio & Auto Design PK/PD Telemetry](docs/figures/fig2_de_novo_studio_deep_research.png)
 
 ---
 
-## Key Capabilities in v0.9.6
+## Key Capabilities in v0.9.7
 
-1. **Streamlined 3-Stage Clinical Workflow (`1. Patient Profile` -> `2. Compare ADCs` -> `3. ADC Design`):**
+1. **Streamlined 3-Stage Clinical Workflow (`Patient Profile` -> `Recommend ADCs` -> `ADC Design`):**
    - **Stage 1 (`Patient Profile`):** Automatically preloads a clinical baseline scenario on entry while retaining one-click `New Patient` reset, bilingual (`EN / KO`) condition mapping to 13 vulnerable organ axes, a compact `Basic Information` (`Age`, `Sex`, `Weight`) panel, and a unified `Optional Clinical Panels` accordion with standardized numeric inputs (`88px`) and reference intervals.
-   - **Stage 2 (`Compare ADCs`):** Unified `Vulnerable Organs` workspace bar preserving clicked organ order in place, clean 5-column comparison grid across all 15 FDA-approved ADCs, clickable row inspection drawer combining FDA dosing precautions under `Vulnerable organ precautions`, crimson highlight bars where treatment trial incidence exceeds comparator, and a bottom `Export summary ↗` drawer tab.
-   - **Stage 3 (`ADC Design`):** Identical top workspace framing (`1`, `2`, and `3` step badges across desktop and mobile), horizontal mouse-wheel/drag target category strip, real-time 5-fold `ADC-SurrogateNet-v2` candidate evaluation in `Deep Research`, uniform-dot HTML chart legend, stacked 2-card comparison (`New Design` vs `Existing ADC`), clean folds (`Construct Properties`, `Organ Toxicity Prediction`, `Advanced Settings` with `Balanced`, `Organ Protection`, `Antitumor Efficacy` presets), and updated guide modal with direct GitHub link.
+   - **Stage 2 (`Recommend ADCs`):** Unified `Vulnerable Organs` workspace bar preserving clicked organ order in place, clean 5-column comparison grid across all 15 FDA-approved ADCs, clickable row inspection drawer combining FDA dosing precautions under `Vulnerable organ precautions`, crimson highlight bars where treatment trial incidence exceeds comparator, and a bottom `Export summary ↗` drawer tab.
+   - **Stage 3 (`ADC Design`):** Black-framed action group (`Recommend ADCs` + `ADC Design`) matching `Patient Profile`, horizontal mouse-wheel/drag target category strip, unified `Auto design` engine running 5-fold `ADC-SurrogateNet-v2` + 252-step 3-cycle Q3W PK/PD ODE + QMC patient IIV (`minComputeMs: 5000`), uniform-dot HTML chart legend, stacked 2-card comparison (`New Design` vs `Existing ADC`), clean folds (`Construct Properties`, `Organ Toxicity Prediction`, `Advanced Settings` with `Balanced`, `Organ Protection`, `Antitumor Efficacy` presets), and updated guide modal with direct GitHub link.
 
 2. **Multimodal Neural Surrogate Engine (`ADC-SurrogateNet-v2`):**
    - **Ensemble Architecture:** 5-fold leak-free ensemble combining ESM-2 650M protein language models, AlphaFold pLDDT/solvent accessibility, ChemBERTa-2 LoRA molecular representations, Boltzmann 3D conformer ensembles, and enzymatic cleavage reaction SMARTS.
@@ -58,8 +58,8 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
   ├─ Search Space: 368,640 Architectures (36 Targets × 16 Linkers × 20 Payloads × 8 DARs × 4 Fc)
   ├─ Antibody / Target: ESM-2 650M + AlphaFold 3D Solvent Accessibility & pLDDT
   ├─ Linker / Payload: ChemBERTa-2 LoRA + 3D Conformer Ensembles + Reaction SMARTS
-  ├─ Mode 2 Default: Vectorized Python 368,640 Matrix Engine (CPU, no GPU required)
-  └─ Mode 3 Deep Research: Live 5-Fold ADC-SurrogateNet-v2 (4-GPU Queue 0->3 or CPU Fallback)
+  ├─ Manual Design: Instant construct scoring and 13-organ vulnerability projection
+  └─ Auto Design: Real-time 5-Fold ADC-SurrogateNet-v2 + 252-step Q3W PK/PD ODE & QMC IIV (4-GPU Queue 0->3 or CPU Fallback)
 ```
 
 ---
@@ -109,7 +109,7 @@ The installer configures an isolated Python environment, downloads the `0.8` fro
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.9.6 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.9.7 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the Terminal TUI
 ```
 

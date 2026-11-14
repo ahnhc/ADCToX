@@ -1,3 +1,13 @@
+# ADCToX 0.9.7 Release Notes
+
+- **Unified Real-Time Auto Design Engine (`5-Fold ADCSurrogateNet v2` + `Q3W PK/PD ODE`)**:
+  - Consolidated `Auto design` (`자동 설계`) into the single real-time neural + mechanistic execution path, removing the separate `Deep Research` toggle and legacy matrix execution branch.
+  - Added vectorized 252-step 3-cycle Q3W two-compartment PK/PD ODE integration and 5x64 quasi-Monte Carlo virtual-patient IIV scoring across candidate batches with a 5-second minimum wall-clock compute floor (`minComputeMs: 5000`), plus `ADC_MODEL_HOME` checkpoint lookup.
+- **Streamlined Header, Navigation & Workspace Framing**:
+  - Kept text-only `ADCToX` wordmark (`20px`) without logo icon, removed `1 / 2 / 3` step badges, grouped `Recommend ADCs` and `ADC Design` in a crisp black outline box, removed duplicate top `<h1>` tab banners, and stretched the `Vulnerable Organs` vertical divider symmetrically inside the patient workspace bar.
+- **Cleaner Clinical Recommendations & Design Controls**:
+  - Renamed `ADC 비교` to `ADC 추천` (`Recommend ADCs`), standardized `환자 질환` and `질환` terminology across labels/tables/equations/exports, changed the rank header to `#`, aligned dosing-fit badges beside drug titles in narrow layouts, removed `.tie-tag` / `.sp-match-tag` / `.other-cancer-tag` / `.ps-badge` / `.sim-eq-sym` badges and the telemetry strip, simplified equation card headings (`치료지수 목적함수`, `장기 안전도 예측`, `항암 효능 예측`), and unified the run CTA as `ADC 설계` (`Design ADC`).
+
 # ADCToX 0.9.6 Release Notes
 
 - **Consistent Patient Profile Bar Across All Tabs**:

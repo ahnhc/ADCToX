@@ -173,7 +173,7 @@ kbd {
   display: block;
 }
 .brand-wordmark {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.035em;
   color: var(--ink-hi);
@@ -211,22 +211,28 @@ kbd {
   border: 1px solid var(--line);
   border-radius: 10px;
 }
-.crumb-clinician-group,
-.crumb-research-group {
+.crumb-profile-group,
+.crumb-action-group {
   display: flex;
   align-items: center;
   gap: 2px;
   padding: 2px;
   border-radius: 8px;
-  border: 1px solid var(--line-2);
-  background: rgba(255, 255, 255, 0.6);
+  box-sizing: border-box;
   transition: border-color 160ms var(--ease), background-color 160ms var(--ease), box-shadow 160ms var(--ease);
 }
-.crumb-clinician-group.is-clinician-active,
-.crumb-research-group.is-research-active {
-  border-color: rgba(15, 118, 110, 0.45);
+.crumb-profile-group {
+  border: 1.5px solid transparent;
+  background: transparent;
+}
+.crumb-action-group {
+  border: 1.5px solid #111111;
+  background: rgba(255, 255, 255, 0.72);
+}
+.crumb-action-group.is-action-active {
+  border-color: #111111;
   background: #FFFFFF;
-  box-shadow: 0 1px 2px rgba(13, 13, 13, 0.05);
+  box-shadow: 0 1px 2px rgba(13, 13, 13, 0.06);
 }
 .crumb {
   display: flex;
@@ -256,21 +262,6 @@ kbd {
   color: var(--ink-hi);
   font-weight: 700;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
-}
-.step-number {
-  display: inline-grid;
-  place-items: center;
-  width: 17px;
-  height: 17px;
-  border-radius: 4px;
-  background: rgba(13, 13, 13, 0.06);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--dim);
-}
-.crumb.now .step-number {
-  background: var(--ink-hi);
-  color: #FFFFFF;
 }
 
 .top .right {
@@ -525,7 +516,7 @@ kbd {
   border: 1px solid var(--line);
   border-radius: 10px;
   margin-bottom: 22px;
-  align-items: start;
+  align-items: stretch;
 }
 .wb-left {
   display: flex;
@@ -605,6 +596,9 @@ kbd {
 }
 .model-progress.on {
   opacity: 1;
+}
+.model-progress:not(.on) {
+  display: none;
 }
 .mp-track {
   height: 3px;
@@ -837,9 +831,22 @@ kbd {
 
 /* Active Organ Priority Strip */
 .wb-right {
-  border-left: 1px solid var(--line);
+  position: relative;
+  border-left: 0;
   padding-left: 20px;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wb-right::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -6px;
+  bottom: -6px;
+  width: 1px;
+  background: var(--line);
 }
 .horizon-head {
   display: flex;
@@ -1834,19 +1841,19 @@ kbd {
 @container review (max-width: 640px) {
   .review-grid-head { display: none; }
   .review-row {
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-areas:
-      "rank drug"
-      "fit fit"
-      "organs organs"
-      "trial trial";
+      "rank drug fit"
+      "organs organs organs"
+      "trial trial trial";
     gap: 10px 10px;
     padding: 14px;
-    align-items: start;
+    align-items: center;
   }
-  .review-row .rank-cell { grid-area: rank; padding-top: 1px; }
-  .review-row .drug-cell { grid-area: drug; padding: 0; }
-  .review-row .status-cell { grid-area: fit; }
+  .review-row .rank-cell { grid-area: rank; padding-top: 0; align-self: center; }
+  .review-row .drug-cell { grid-area: drug; padding: 0; min-width: 0; }
+  .review-row .status-cell { grid-area: fit; justify-self: end; align-self: center; }
+  .review-row .status-cell .cell-label { display: none; }
   .review-row .active-organ-cell { grid-area: organs; padding: 0; }
   .review-row .trial-cell { grid-area: trial; display: block; padding: 0; }
   .cell-label { display: block; font-size: 11px; font-weight: 700; color: var(--dim); margin-bottom: 2px; }
@@ -3871,25 +3878,13 @@ body.guide-open { overflow: hidden; }
 .g-steps-list { display: flex; flex-direction: column; gap: 10px; }
 .g-step-item {
   display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr;
+  gap: 6px;
   align-items: start;
   padding: 11px 13px;
   border-radius: 8px;
   background: var(--panel-2);
   border: 1px solid var(--line);
-}
-.g-step-num {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--ink-hi);
-  color: #FFFFFF;
-  font-size: 11.5px;
-  font-weight: 700;
-  display: inline-grid;
-  place-items: center;
-  margin-top: 1px;
 }
 .g-step-body {
   display: flex;
@@ -3983,6 +3978,7 @@ button.ok:hover { background: var(--cta-hover); }
 @media (max-width: 1700px) {
   .docked .workspace-bar { grid-template-columns: 1fr; }
   .docked .wb-right { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 12px; }
+  .docked .wb-right::before { display: none; }
   .docked .studio-wrap { grid-template-columns: minmax(0, 1fr); }
   .docked .design-triad-grid { grid-template-columns: 1fr; }
   .docked .studio-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -4003,6 +3999,7 @@ button.ok:hover { background: var(--cta-hover); }
   .workspace-bar.is-collapsible:not(.is-expanded) > .wb-left,
   .workspace-bar.is-collapsible:not(.is-expanded) > .wb-right { display: none; }
   .wb-right { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 12px; }
+  .wb-right::before { display: none; }
   .basic-fields-grid { grid-template-columns: 1fr; gap: 8px; }
   .studio-wrap { grid-template-columns: minmax(0, 1fr); }
   .sim-param-columns { grid-template-columns: minmax(0, 1fr); }
@@ -4040,8 +4037,8 @@ button.ok:hover { background: var(--cta-hover); }
     gap: 6px;
     padding: 3px;
   }
-  .crumb-clinician-group { flex: 2 1 0; min-width: 0; }
-  .crumb-research-group { flex: 1 1 0; min-width: 0; }
+  .crumb-profile-group { flex: 1 1 0; min-width: 0; }
+  .crumb-action-group { flex: 2 1 0; min-width: 0; }
   .crumb { flex: 1 1 0; min-width: 0; }
   .crumb .cb {
     width: 100%;
@@ -4145,12 +4142,6 @@ button.ok:hover { background: var(--cta-hover); }
   .g-keys .g-key-desc { margin-bottom: 8px; }
 }
 @media (max-width: 480px) {
-  .crumb .step-number {
-    width: 16px;
-    height: 16px;
-    font-size: 10.5px;
-    flex-shrink: 0;
-  }
   .crumb .cb {
     padding: 5px 4px;
     gap: 4px;
@@ -4164,9 +4155,6 @@ button.ok:hover { background: var(--cta-hover); }
   .studio-hero { grid-template-columns: minmax(0, 1fr); }
   .dts-dose-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sim-chart-wrap { height: 340px; }
-}
-@media (max-width: 400px) {
-  .brand-wordmark { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

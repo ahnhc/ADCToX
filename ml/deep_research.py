@@ -164,6 +164,8 @@ def _checkpoint_path() -> Optional[Path]:
     home = Path.home()
     if os.environ.get("ADC_MODEL_DIR"):
         candidates.append(Path(os.environ.get("ADC_MODEL_DIR", "")) / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
+    if os.environ.get("ADC_MODEL_HOME"):
+        candidates.append(Path(os.environ.get("ADC_MODEL_HOME", "")) / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
     candidates.append(home / ".local" / "share" / "adctox" / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
     if os.environ.get("LOCALAPPDATA"):
         candidates.append(Path(os.environ.get("LOCALAPPDATA", "")) / "adctox" / "models" / "surrogate_c" / "surrogate_v2_merged_fp16.pt")
@@ -724,9 +726,329 @@ def _deep_indication_factors(cancer_text: str, targets: List[Dict[str, Any]]) ->
     return out
 
 
+# Deterministic 64-draw 3D quasi-Monte Carlo Gaussian variates (Van der Corput bases 2, 3, 5 -> Box-Muller)
+# for patient hepatic clearance (CL), premature deconjugation (k_dec), and tissue sensitivity (V_o) IIV.
+def _build_qmc_normals(n_draws: int = 64) -> np.ndarray:
+    def _van_der_corput(idx: int, base: int) -> float:
+        f, r, x = 1.0, 0.0, idx
+        while x > 0:
+            f /= base
+            r += f * (x % base)
+            x //= base
+        return min(0.9995, max(0.0005, r))
+
+    u1 = np.array([_van_der_corput(i + 1, 2) for i in range(n_draws)], dtype=np.float32)
+    u2 = np.array([_van_der_corput(i + 1, 3) for i in range(n_draws)], dtype=np.float32)
+    u3 = np.array([_van_der_corput(i + 1, 5) for i in range(n_draws)], dtype=np.float32)
+    u4 = np.array([_van_der_corput((i * 7 + 3) % 97 + 1, 7) for i in range(n_draws)], dtype=np.float32)
+    z0 = np.sqrt(-2.0 * np.log(u1)) * np.cos(2.0 * math.pi * u2)
+    z1 = np.sqrt(-2.0 * np.log(u1)) * np.sin(2.0 * math.pi * u2)
+    z2 = np.sqrt(-2.0 * np.log(u3)) * np.cos(2.0 * math.pi * u4)
+    return np.stack([np.clip(z0, -2.5, 2.5), np.clip(z1, -2.5, 2.5), np.clip(z2, -2.5, 2.5)], axis=1).astype(np.float32)
+
+
+_QMC_NORMALS_64 = _build_qmc_normals(64)
+
+
+def _evaluate_chunk_5fold_ode(
+    chunk_specs: List[Tuple[int, int, int, int, int, float]],
+    cache: Dict[str, np.ndarray],
+    custom_feat: Optional[Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]],
+    ens_loaded: Optional[Tuple[List[Dict[str, Any]], Dict[str, int]]],
+    dev_str: str,
+    custom_smi: str,
+    st: Dict[str, Any],
+    ctx: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    Runs Stage B (5-fold MergedADCSurrogateNetV2 neural forward passes or vectorized SVD fallback)
+    followed by Stage C (vectorized 252-step 3-cycle Q3W 2-compartment PK/PD ODE + 5x64 quasi-Monte Carlo
+    patient-IIV simulation) on a chunk of `(ti, li, pi_raw, di, fi, dose_mgkg)` regimens.
+    """
+    bsz = len(chunk_specs)
+    n_folds = 5
+    biophys_batch = _assemble_biophys_batch(cache, chunk_specs, custom_feat)
+
+    fold_conc4 = np.zeros((n_folds, bsz, 4), dtype=np.float32)
+    fold_pic = np.zeros((n_folds, bsz), dtype=np.float32)
+    fold_hb = np.zeros((n_folds, bsz, 13), dtype=np.float32)
+    fold_ha = np.zeros((n_folds, bsz, 13), dtype=np.float32)
+    fold_hf = np.zeros((n_folds, bsz, 13), dtype=np.float32)
+    fold_ho = np.zeros((n_folds, bsz, 13), dtype=np.float32)
+
+    ti_arr = np.array([s[0] for s in chunk_specs], dtype=np.int64)
+    li_arr = np.array([s[1] for s in chunk_specs], dtype=np.int64)
+    pi_raw_arr = np.array([s[2] for s in chunk_specs], dtype=np.int64)
+    di_arr = np.array([s[3] for s in chunk_specs], dtype=np.int64)
+    fi_arr = np.array([s[4] for s in chunk_specs], dtype=np.int64)
+    dose_arr = np.array([s[5] for s in chunk_specs], dtype=np.float32)
+    tf_arr = ti_arr * st["n_f"] + fi_arr
+    pi_safe = np.maximum(0, pi_raw_arr)
+    is_custom_arr = pi_raw_arr < 0
+
+    if ens_loaded is not None:
+        import torch
+
+        folds_list, vocab = ens_loaded
+        dev = torch.device(dev_str)
+        if dev.type == "cpu" and torch.get_num_threads() > 8:
+            torch.set_num_threads(8)
+        runtime_mode = "pytorch_cuda" if dev.type == "cuda" else "pytorch_cpu"
+
+        tf_t = torch.from_numpy(tf_arr).to(dev)
+        li_t = torch.from_numpy(li_arr).to(dev)
+        pi_t = torch.from_numpy(np.where(is_custom_arr, st["n_p"], pi_raw_arr)).to(dev)
+        raw_t = torch.from_numpy(biophys_batch).to(dev)
+
+        c_ids_t = c_msk_t = c_fp_t = None
+        if custom_feat is not None:
+            c_ids, c_msk = _tokenize_smiles_pure(custom_smi, vocab)
+            c_ids_t = torch.from_numpy(c_ids[None, :]).to(dev)
+            c_msk_t = torch.from_numpy(c_msk[None, :]).to(dev)
+            c_fp_t = torch.from_numpy(custom_feat[3][None, :]).to(dev)
+
+        with torch.no_grad():
+            for f_i, f_pkg in enumerate(folds_list):
+                heads = f_pkg["heads"]
+                norm_np = (biophys_batch - f_pkg["bio_mean"]) / f_pkg["bio_std"]
+                norm_t = torch.from_numpy(norm_np).to(dev)
+
+                h_tok = f_pkg["h_tok_144"][tf_t]
+                l_tok = f_pkg["l_tok_144"][tf_t]
+                a_tok = f_pkg["a_tok_144"][tf_t]
+                lnk_tok = f_pkg["lnk_tok_16"][li_t]
+
+                pld_table = f_pkg["pld_tok_20"]
+                pfp_table = f_pkg["p_fp_20"]
+                if c_ids_t is not None and c_msk_t is not None and c_fp_t is not None:
+                    c_chem = f_pkg["chem"](c_ids_t, c_msk_t)
+                    c_tok = heads.payload_chem_proj(torch.cat([c_chem, c_fp_t], dim=-1))
+                    pld_table = torch.cat([pld_table, c_tok], dim=0)
+                    pfp_table = torch.cat([pfp_table, c_fp_t], dim=0)
+
+                out = heads.forward_preencoded(
+                    t_heavy=h_tok,
+                    t_light=l_tok,
+                    t_antigen=a_tok,
+                    t_linker=lnk_tok,
+                    t_payload=pld_table[pi_t],
+                    payload_fp=pfp_table[pi_t],
+                    biophys_raw=raw_t,
+                    biophys_norm=norm_t,
+                )
+                cal_a, cal_b = f_pkg["cal_ab"]
+                nn_pic = out["pred_pic50"].float().cpu().numpy()
+                fold_pic[f_i] = cal_a * nn_pic + cal_b
+                fold_conc4[f_i] = out["prob_conc4"].float().cpu().numpy()
+                fold_hb[f_i] = out["h_base"].float().cpu().numpy()
+                fold_ha[f_i] = out["h_agg"].float().cpu().numpy()
+                fold_hf[f_i] = out["h_fc"].float().cpu().numpy()
+                fold_ho[f_i] = out["h_on"].float().cpu().numpy()
+    else:
+        # Vectorized portable fallback when `.pt` weights are not present on disk
+        runtime_mode = "svd_biophys_cpu_fallback"
+        rng = np.random.default_rng(42 + int(ti_arr[0] if bsz else 0))
+        lpd_arr = (li_arr * st["n_p"] + pi_safe) * st["n_d"] + di_arr
+        base_pic = st["m9"][0, tf_arr, lpd_arr].astype(np.float32) + 0.16 * np.log2(np.maximum(0.5, dose_arr / 3.6))
+        c_logits = np.array([-1.2, -0.2, 0.9, 2.0], dtype=np.float32)[None, :] + (base_pic[:, None] - 7.5) * 1.15
+        c_probs = 1.0 / (1.0 + np.exp(-c_logits))
+
+        fold_jitter = rng.normal(0.0, 0.14, size=(n_folds, bsz)).astype(np.float32)
+        fold_pic[:] = base_pic[None, :] + fold_jitter
+        fold_conc4[:] = np.clip(c_probs[None, :, :] + fold_jitter[:, :, None] * 0.05, 0.02, 0.995)
+        h_scale = np.maximum(0.70, 1.0 + rng.normal(0.0, 0.08, size=(n_folds, bsz, 1))).astype(np.float32)
+        for o_i in range(13):
+            u_hb, u_ha, u_hf, u_ho = st["U_org_quad"][o_i]
+            v_c = st["V_org_cat"][o_i][:, lpd_arr]
+            hb_b = np.maximum(1e-4, np.sum(u_hb[tf_arr] * v_c[0:24].T, axis=1))
+            ha_b = np.maximum(1e-4, np.sum(u_ha[tf_arr] * v_c[24:48].T, axis=1))
+            hf_b = np.maximum(1e-4, np.sum(u_hf[tf_arr] * v_c[48:72].T, axis=1))
+            ho_b = np.maximum(1e-4, np.sum(u_ho[tf_arr] * v_c[72:96].T, axis=1))
+            fold_hb[:, :, o_i] = hb_b[None, :] * h_scale[:, :, 0]
+            fold_ha[:, :, o_i] = ha_b[None, :] * h_scale[:, :, 0]
+            fold_hf[:, :, o_i] = hf_b[None, :] * h_scale[:, :, 0]
+            fold_ho[:, :, o_i] = ho_b[None, :] * h_scale[:, :, 0]
+
+    # Precomputed static & per-construct lookups (vectorized across all bsz)
+    is_cleavable = biophys_batch[:, 32]
+    plasma_stab_pct = np.clip(biophys_batch[:, 40] * 100.0, 20.0, 98.0)
+    lys_k_rel = biophys_batch[:, 41]
+    bystander_idx = biophys_batch[:, 44]
+    dar_val = biophys_batch[:, 73] * 8.0
+    dar_hydro_patch = biophys_batch[:, 75]
+    agg_propensity = biophys_batch[:, 76]
+    af_plddt = biophys_batch[:, 67]
+    expr_13 = biophys_batch[:, 82:95]
+    cell_13 = biophys_batch[:, 95:108]
+    hep_idx = st["org_idx"]["hepatic"]
+
+    compat_b_arr = np.where(is_custom_arr, True, st["compat_mask_lp"][li_arr, pi_safe]).astype(bool)
+    aff_arr = np.where(is_custom_arr, 0.88, st["pair_aff_lp"][li_arr, pi_safe]).astype(np.float32)
+    chem_pen_arr = 1.0 + (1.0 - aff_arr) * 0.38
+    fc_sc_arr = ctx["fc_scale_table"][fi_arr]
+    adcc_arr = ctx["adcc_table"][fi_arr]
+    tum_log2_arr = ctx["tgt_tum_log2"][ti_arr]
+    ind_t_arr = ctx["ind_t"][ti_arr]
+
+    # Fold-level neural potency, clearance & pharmacokinetics
+    conc_area_f = fold_conc4.mean(axis=2)  # (5, bsz)
+    nn_hep_agg_f = fold_ha[:, :, hep_idx]  # (5, bsz)
+    pk_ret_f = np.exp(-0.55 * agg_propensity[None, :] - 1.10 * nn_hep_agg_f)  # (5, bsz)
+    dar_gain_f = 0.62 * np.log2(1.0 + dar_val[None, :]) * pk_ret_f - 0.22 * np.maximum(0.0, dar_val[None, :] - 4.0) * dar_hydro_patch[None, :]
+    pic_pos_f = np.clip(0.68 * fold_pic + 1.95 * conc_area_f + dar_gain_f, 5.6, 9.9)
+    pic_bys_f = np.clip(pic_pos_f - (1.90 - 1.35 * bystander_idx[None, :]) - 0.85 * (1.0 - is_cleavable[None, :]), 4.6, 9.1)
+
+    hic_agg = np.clip(1.00 + 1.50 * dar_hydro_patch + 0.95 * agg_propensity, 1.00, 4.50)  # (bsz,)
+    cl_hep_f = np.clip(
+        1.00 + 1.80 * nn_hep_agg_f + 0.75 * (hic_agg[None, :] - 1.00) + 0.30 * (1.0 - plasma_stab_pct[None, :] / 100.0),
+        1.00,
+        3.80,
+    )  # (5, bsz)
+
+    # Vectorized 252-step 3-cycle Q3W (`t = 0..63d`, `dt = 0.25d`, doses at days 0, 21, 42) 2-compartment PK/PD ODE
+    d_rel = dose_arr / 3.6
+    pk_ret_m = pk_ret_f.mean(axis=0)
+    cl_hep_m = cl_hep_f.mean(axis=0)
+    k_el = 0.048 * cl_hep_m
+    k_dec = 0.036 * np.maximum(0.02, 1.0 - plasma_stab_pct / 100.0)
+    k_upt = 0.022 * np.clip(tum_log2_arr, 0.25, 1.80) * np.clip(lys_k_rel, 0.30, 1.60)
+    k_tum_clr = 0.14 * (1.0 - 0.35 * bystander_idx)
+    dar_over_4 = np.maximum(1.0, dar_val) / 4.0
+    dose_inj = d_rel * (0.90 + 0.10 * pk_ret_m)
+
+    dt = np.float32(0.25)
+    c_adc = np.zeros(bsz, dtype=np.float32)
+    c_free = np.zeros(bsz, dtype=np.float32)
+    c_tum = np.zeros(bsz, dtype=np.float32)
+    c_free_peak = np.zeros(bsz, dtype=np.float32)
+    auc_free = np.zeros(bsz, dtype=np.float32)
+    auc_tum = np.zeros(bsz, dtype=np.float32)
+    k_pld = np.float32(0.42)
+
+    for step in range(252):
+        if step == 0 or step == 84 or step == 168:
+            c_adc += dose_inj
+        r_dec = k_dec * c_adc
+        r_upt = k_upt * c_adc
+        r_el = k_el * c_adc
+        c_adc = np.maximum(0.0, c_adc - dt * (r_dec + r_el + np.float32(0.35) * r_upt))
+        c_free = np.maximum(0.0, c_free + dt * (r_dec * dar_over_4 - k_pld * c_free))
+        c_tum = np.maximum(0.0, c_tum + dt * (r_upt * dar_over_4 - k_tum_clr * c_tum))
+        c_free_peak = np.maximum(c_free_peak, c_free)
+        auc_free += dt * c_free
+        auc_tum += dt * c_tum
+
+    # Dimensionless Q3W multi-cycle PK/PD modifiers normalized cleanly around typical baseline
+    ode_sys_mod = np.clip(0.86 + 0.24 * (auc_free / np.maximum(0.10, d_rel * 1.4)) + 0.10 * (c_free_peak / np.maximum(0.10, d_rel * 0.25)), 0.85, 1.24)
+    ode_tum_mod = np.clip(0.90 + 0.14 * np.tanh(auc_tum / np.maximum(0.20, d_rel * 3.2)), 0.90, 1.06)
+
+    # Vectorized 13-organ hazard computation across all (5, bsz, 13)
+    dose_hz_mult = np.power(d_rel, 1.18)
+    stab_deficit = np.maximum(0.0, 1.0 - plasma_stab_pct / 100.0)
+    cmax_surcharge = np.maximum(0.0, d_rel - 1.0) * (0.28 + 1.10 * stab_deficit + 0.12 * (dar_val / 8.0))
+    sys_molar_hz = (
+        0.028 * np.power(d_rel, 1.45) * np.power(dar_over_4, 0.75) * (0.55 + 1.25 * stab_deficit) * ode_sys_mod
+        + 0.038 * np.power(np.maximum(0.0, d_rel - 1.05), 1.30)
+    )
+
+    hz_scale_f = (chem_pen_arr * (dose_hz_mult + cmax_surcharge))[None, :, None]
+    fc_sc_3d = fc_sc_arr[None, :, None]
+    hz_base_13 = (
+        ctx["off_scale"] * (ctx["leak_scale"] * fold_hb + ctx["agg_scale"] * fold_ha + fc_sc_3d * fold_hf)
+        + ctx["on_scale"] * fold_ho
+    ) * hz_scale_f + sys_molar_hz[None, :, None]
+    hz_base_13 = np.maximum(0.005, hz_base_13)
+    fold_org13_prob = 1.0 - np.exp(-hz_base_13)  # (5, bsz, 13)
+
+    # Patient-active organs + target baseline tissues vectorized per-target matrix (`n_t`, 13)
+    vw_mat = np.zeros((ctx["n_t"], 13), dtype=np.float32)
+    mask_mat = np.zeros((ctx["n_t"], 13), dtype=np.float32)
+    for ti_v in range(ctx["n_t"]):
+        for ax, vw_val in ctx["tgt_vw_map"][ti_v].items():
+            oi = st["org_idx"][ax]
+            vw_mat[ti_v, oi] = vw_val
+            mask_mat[ti_v, oi] = 1.0
+    vw_b = vw_mat[ti_arr]  # (bsz, 13)
+    msk_b = mask_mat[ti_arr]  # (bsz, 13)
+    denom_org = np.maximum(1.0, msk_b.sum(axis=1))  # (bsz,)
+
+    # Base per-fold patient-weighted organ risks: `p_pat = 1 - exp(-hz * vw)`
+    p_pat_f = np.where(msk_b[None, :, :] > 0.5, np.clip(1.0 - np.exp(-hz_base_13 * vw_b[None, :, :]), 0.01, 0.98), 0.0)
+    mean_r_f = p_pat_f.sum(axis=2) / denom_org[None, :]  # (5, bsz)
+    worst_r_f = p_pat_f.max(axis=2)  # (5, bsz)
+    raw_safe_f = np.clip(100.0 * (1.0 - (ctx["w_peak"] * worst_r_f + (1.0 - ctx["w_peak"]) * mean_r_f)), 2.0, 98.0)
+
+    # Fold-level efficacy components
+    norm_m = 0.55 * expr_13.mean(axis=1) + 0.45 * cell_13.max(axis=1) * 0.5  # (bsz,)
+    s_sel = np.clip(0.55 * (tum_log2_arr - 0.65 * norm_m) + 0.35 * af_plddt, 0.12, 0.98)  # (bsz,)
+    hydro_d = (ctx["w"]["hydroSens"] - ctx["w0"]["hydroSens"]) * np.maximum(0.0, hic_agg - 1.15) * 0.12
+    leak_d = (ctx["w"]["leakSens"] - ctx["w0"]["leakSens"]) * stab_deficit * 0.24
+    s_pot_f = np.clip(((pic_pos_f - 5.6) / 4.1) * np.power(pk_ret_f, 0.35) * np.exp(-hydro_d)[None, :], 0.08, 0.99)
+    s_del_f = np.clip(
+        (plasma_stab_pct[None, :] / 100.0) * (0.58 + 0.40 * lys_k_rel[None, :]) / np.sqrt(cl_hep_f) * np.exp(-leak_d)[None, :],
+        0.08,
+        0.98,
+    )
+    s_bys_f = np.clip(((pic_bys_f - 4.6) / 4.2) * (0.30 + 0.70 * bystander_idx[None, :]), 0.06, 0.98)
+    pot_shift = np.clip(1.0 + 0.10 * (8.0 - pic_pos_f), 0.75, 1.30)
+    k_half = 0.48 * pot_shift
+    d_rel_15 = np.power(d_rel, 1.5)[None, :]
+    kh_15 = np.power(k_half, 1.5)
+    hill_occ = (d_rel_15 / (kh_15 + d_rel_15)) * (kh_15 + 1.0)
+    dose_eff_mult = 0.62 + 0.38 * hill_occ * (0.95 + 0.06 * conc_area_f) * ode_tum_mod[None, :]
+
+    conv_e = (ctx["nw_sel"] * s_sel[None, :] + ctx["nw_pot"] * s_pot_f + ctx["nw_del"] * s_del_f + ctx["nw_bys"] * s_bys_f) * adcc_arr[None, :] * dose_eff_mult
+    compat_mult = np.where(compat_b_arr, 1.0, 0.48)
+    eff_v = conv_e * np.power(aff_arr, 0.34)[None, :] * ind_t_arr[None, :] * compat_mult[None, :]
+    raw_eff_f = np.clip(eff_v * 100.0, 2.0, 98.0)  # (5, bsz)
+
+    # 64-Draw Quasi-Monte Carlo Patient IIV across `(5, 64, bsz)` in vectorized slices
+    mc_cl = np.exp(0.11 * _QMC_NORMALS_64[:, 0])  # (64,)
+    mc_dec = np.exp(0.10 * _QMC_NORMALS_64[:, 1])  # (64,)
+    mc_vuln = np.exp(0.09 * _QMC_NORMALS_64[:, 2])  # (64,)
+
+    base_risk_rate = np.clip(1.0 - raw_safe_f / 100.0, 0.01, 0.98)  # (5, bsz)
+    # Patient hazard sensitivity amplifies systemic/organ burden cleanly while clearance alters delivery
+    mc_risk_mult = (0.55 * mc_vuln + 0.30 * mc_dec + 0.15 / mc_cl)[None, :, None]  # (1, 64, 1)
+    mc_safe = np.clip(100.0 * (1.0 - np.clip(base_risk_rate[:, None, :] * mc_risk_mult, 0.01, 0.98)), 2.0, 98.0)
+    mc_eff_mult = np.clip(1.0 / (0.65 + 0.20 * mc_cl + 0.15 * mc_dec), 0.78, 1.24)[None, :, None]
+    mc_eff = np.clip(raw_eff_f[:, None, :] * mc_eff_mult, 2.0, 98.0)
+
+    mean_safe = mc_safe.mean(axis=(0, 1)).astype(np.float32)
+    std_safe = np.maximum(mc_safe.std(axis=(0, 1)), 0.55).astype(np.float32)
+    mean_eff = mc_eff.mean(axis=(0, 1)).astype(np.float32)
+    std_eff = np.maximum(mc_eff.std(axis=(0, 1)), 0.50).astype(np.float32)
+
+    tail_worst_90 = np.percentile(worst_r_f[:, None, :] * mc_risk_mult, 90, axis=(0, 1)).astype(np.float32) * 100.0
+    safe_lcb = mean_safe - 0.65 * std_safe
+    eff_lcb = mean_eff - 0.55 * std_eff
+    tail_pen = 0.14 * np.maximum(0.0, tail_worst_90 - 38.0)
+    util_all = np.clip(ctx["w_safety"] * safe_lcb + (1.0 - ctx["w_safety"]) * eff_lcb - tail_pen, 0.0, 99.0).astype(np.float32)
+
+    return {
+        "runtime_mode": runtime_mode,
+        "biophys_batch": biophys_batch,
+        "plasma_stab_pct": plasma_stab_pct,
+        "compat_b_arr": compat_b_arr,
+        "mean_safe": mean_safe,
+        "std_safe": std_safe,
+        "mean_eff": mean_eff,
+        "std_eff": std_eff,
+        "mean_pic": pic_pos_f.mean(axis=0).astype(np.float32),
+        "std_pic": pic_pos_f.std(axis=0).astype(np.float32),
+        "mean_pic_bys": pic_bys_f.mean(axis=0).astype(np.float32),
+        "mean_conc4": fold_conc4.mean(axis=0).astype(np.float32),
+        "util_all": util_all,
+        "fold_org13_prob": fold_org13_prob,
+    }
+
+
 def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
-    Executes Mode 3 (`Deep Research`) on an ordered GPU slot (`0 -> 1 -> 2 -> 3`) or CPU fallback.
+    Executes 5-Fold `MergedADCSurrogateNetV2` + vectorized 3-cycle Q3W PK/PD ODE + 64-draw Monte Carlo IIV
+    on an ordered GPU slot (`0 -> 1 -> 2 -> 3`) or CPU fallback.
+    When `minComputeMs` > 0 is supplied, progressively evaluates additional ranked candidate chunks across
+    the 368,640 design space until the target compute budget completes (zero artificial sleep).
     Raises `AllGPUSlotsBusyError` when all 4 slots are concurrently occupied.
     """
     body = body or {}
@@ -754,7 +1076,6 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                     err_obj = {}
                 raise AllGPUSlotsBusyError(err_obj.get("gpu_status") or ALLOCATOR.status()) from None
         except Exception:
-            # Remote worker unreachable -> seamlessly fall back to local Server CPU / GPU execution!
             pass
 
     # 2. Acquire lowest free slot (`0 -> 1 -> 2 -> 3`)!
@@ -765,13 +1086,16 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     slot_id, dev_str, dev_label = acquired
     t0 = time.perf_counter()
     try:
-        # Optional hold for deterministic concurrency unit tests (`_testHoldMs`, capped at 1500 ms)
         hold_ms = int(min(1500, max(0, float(body.get("_testHoldMs", 0) or 0))))
         if hold_ms > 0:
             time.sleep(hold_ms / 1000.0)
 
-        # Stage A: Fast 368,640 matrix pre-screen to capture full landscape cloud, Pareto front, and top 48 candidates
-        mat_res = SM.evaluate_studio_matrix(body, return_top_indices=48)
+        min_compute_ms = max(0.0, min(15000.0, float(body.get("minComputeMs") or 0.0)))
+        progressive_mode = min_compute_ms > 0.0
+        target_s = (min_compute_ms / 1000.0) if progressive_mode else 0.0
+
+        # Stage A: 368,640 matrix pre-screen to capture full landscape & ranked candidates
+        mat_res = SM.evaluate_studio_matrix(body, return_top_indices=3600 if progressive_mode else 48)
         st = SM._load_engine()
         cache = _load_cache_npz()
         ind_t = _deep_indication_factors(str(body.get("cancerText") or ""), st["targets"])
@@ -779,7 +1103,7 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         cur_ti, cur_li, cur_pi, cur_di, cur_fi = SM.resolve_spec_indices(body.get("spec"), st)
         top_flat: List[int] = mat_res.pop("_top_flat_indices", [])
 
-        # Collect unique candidate architectures `(ti, li, pi, di, fi)` to evaluate across 5 clinical doses x 5 folds
+        # Collect unique candidate architectures `(ti, li, pi, di, fi)` — Core Tier first, then progressive pool
         cand_archs: List[Tuple[int, int, int, int, int]] = []
         arch_idx_map: Dict[Tuple[int, int, int, int, int], int] = {}
 
@@ -800,14 +1124,13 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         custom_smi = str(body.get("customPayloadSmiles") or "").strip()
         custom_feat = _compute_custom_smiles_features(custom_smi) if custom_smi else None
         if custom_feat is not None:
-            # Evaluate the user's custom payload SMILES paired with current target + top linkers/DARs/Fc
             for li_c in (cur_li, 0, 2, 6, 7):
                 for di_c in (cur_di, 3, 6):
                     for fi_c in (cur_fi, 1):
                         _add_arch((cur_ti, li_c, -1, di_c, fi_c))
 
         top_decoded: List[Tuple[int, int, int, int, int]] = []
-        for rank_i, idx_f in enumerate(top_flat):
+        for rank_i, idx_f in enumerate(top_flat[:48]):
             tf_i, lpd_i = divmod(idx_f, st["n_lpd"])
             ti_i, fi_i = divmod(tf_i, st["n_f"])
             lp_i, di_i = divmod(lpd_i, st["n_d"])
@@ -821,7 +1144,6 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                     if di_i > 0:
                         _add_arch((ti_i, li_i, pi_i, di_i - 1, 1))
 
-        # Expand across biomarker-matched targets so Deep Research explores disease-aligned targets thoroughly
         matched_targets = [ti_m for ti_m in range(len(st["targets"])) if float(ind_t[ti_m]) > 1.05]
         for ti_m in matched_targets:
             for _, li_i, pi_i, di_i, _ in top_decoded[:4]:
@@ -834,7 +1156,6 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             if len(cand_archs) >= 95:
                 break
 
-        # Diverse same-target compatible architectures (up to cap) for real live scatter evaluation
         st_lpd_compat = np.flatnonzero(st["compat_lpd"])
         if st_lpd_compat.size > 0 and len(cand_archs) < 100:
             st_stride = max(1, st_lpd_compat.size // 12)
@@ -846,7 +1167,6 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                 fi_i = (cur_fi + s_k) % st["n_f"]
                 _add_arch((cur_ti, li_i, pi_i, di_i, fi_i))
 
-        # Incompatible linker-payload architectures (up to cap) evaluated by the live ensemble
         incompat_lp = np.argwhere(~st["compat_mask_lp"])
         if len(incompat_lp) > 0 and len(cand_archs) < 105:
             inc_stride = max(1, len(incompat_lp) // 8)
@@ -855,14 +1175,35 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                     break
                 _add_arch((cur_ti, int(li_i), int(pi_i), cur_di, cur_fi))
 
-        # Expand across the 5 clinical Q3W doses (`1.8, 2.4, 3.6, 5.4, 6.0 mg/kg`)
-        batch_specs: List[Tuple[int, int, int, int, int, float]] = []
-        for arch in cand_archs:
-            for d_mgkg in DOSE_GRID_MGKG:
-                batch_specs.append((*arch, d_mgkg))
+        core_arch_count = len(cand_archs)
 
-        biophys_batch = _assemble_biophys_batch(cache, batch_specs, custom_feat)
-        ens_loaded = _get_ensemble_on_device(dev_str)
+        # Build prioritized progressive pool if `minComputeMs > 0`
+        if progressive_mode:
+            for idx_f in top_flat:
+                tf_i, lpd_i = divmod(idx_f, st["n_lpd"])
+                ti_i, fi_i = divmod(tf_i, st["n_f"])
+                lp_i, di_i = divmod(lpd_i, st["n_d"])
+                li_i, pi_i = divmod(lp_i, st["n_p"])
+                _add_arch((ti_i, li_i, pi_i, di_i, fi_i))
+            pool_cap = 45000 if str(dev_str).startswith("cuda") else 3800
+            if len(cand_archs) < pool_cap:
+                explore_targets = list(dict.fromkeys([cur_ti] + matched_targets + list(range(len(st["targets"])))))
+                for ti_e in explore_targets:
+                    if len(cand_archs) >= pool_cap:
+                        break
+                    for li_e in range(st["n_l"]):
+                        if len(cand_archs) >= pool_cap:
+                            break
+                        for pi_e in range(st["n_p"]):
+                            if len(cand_archs) >= pool_cap:
+                                break
+                            for di_e in range(st["n_d"]):
+                                if len(cand_archs) >= pool_cap:
+                                    break
+                                for fi_e in range(st["n_f"]):
+                                    _add_arch((ti_e, li_e, pi_e, di_e, fi_e))
+                                    if len(cand_archs) >= pool_cap:
+                                        break
 
         # Patient scoring context (matching studio_matrix)
         w0 = dict(SM.DEFAULT_SIM_WEIGHTS)
@@ -904,238 +1245,152 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         organ_shift = min(0.08, (len(real_organs) - 2) * 0.02) if len(real_organs) > 2 else 0.0
         w_safety = max(0.15, min(0.88, w["wSafety"] + organ_shift))
 
+        fc_scale_table = np.array(
+            [
+                1.0 + max(0.0, min(1.0, 1.0 - float(fc_obj.get("fc_activity", 0.0 if fc_obj.get("fc_silenced") else 1.0)))) * (fc_slider_ratio - 1.0)
+                for fc_obj in st["fc_formats"]
+            ],
+            dtype=np.float32,
+        )
+        adcc_table = np.array([SM.FC_ADCC_BOOST.get(fc_obj["id"], 1.0) for fc_obj in st["fc_formats"]], dtype=np.float32)
+        tgt_tum_log2 = np.array([math.log2(float(tgt["tumor_tpm"]) + 1.0) / 8.5 for tgt in st["targets"]], dtype=np.float32)
+
+        tgt_vw_map: List[Dict[str, float]] = []
+        for tgt in st["targets"]:
+            vw_d: Dict[str, float] = {}
+            for ao in active_orgs:
+                ax = ao["organ"]
+                pm = 1.45 if (prio_organ and prio_organ == ax) else 1.0
+                vw_d[ax] = (0.85 + 0.85 * min(1.0, ao["score"])) * pm
+            for tis in tgt.get("tissues") or []:
+                ax = tis["organ"]
+                if ax not in vw_d and ax in st["org_idx"]:
+                    pm = 1.45 if (prio_organ and prio_organ == ax) else 1.0
+                    vw_d[ax] = 0.62 * pm
+            tgt_vw_map.append(vw_d)
+
+        eval_ctx = {
+            "w": w,
+            "w0": w0,
+            "on_scale": on_scale,
+            "off_scale": off_scale,
+            "leak_scale": leak_scale,
+            "agg_scale": agg_scale,
+            "w_peak": w_peak,
+            "nw_sel": nw_sel,
+            "nw_pot": nw_pot,
+            "nw_del": nw_del,
+            "nw_bys": nw_bys,
+            "w_safety": w_safety,
+            "fc_scale_table": fc_scale_table,
+            "adcc_table": adcc_table,
+            "tgt_tum_log2": tgt_tum_log2,
+            "ind_t": ind_t,
+            "n_t": len(st["targets"]),
+            "tgt_vw_map": tgt_vw_map,
+        }
+
+        ens_loaded = _get_ensemble_on_device(dev_str)
+        is_cuda_dev = dev_str.startswith("cuda") and ens_loaded is not None
+
+        def _expand_doses(archs: List[Tuple[int, int, int, int, int]]) -> List[Tuple[int, int, int, int, int, float]]:
+            out_specs: List[Tuple[int, int, int, int, int, float]] = []
+            for a in archs:
+                for d_mgkg in DOSE_GRID_MGKG:
+                    out_specs.append((*a, d_mgkg))
+            return out_specs
+
+        # Execute Tier 0 core batch first
+        core_specs = _expand_doses(cand_archs[:core_arch_count])
+        batch_specs: List[Tuple[int, int, int, int, int, float]] = list(core_specs)
+        core_res = _evaluate_chunk_5fold_ode(core_specs, cache, custom_feat, ens_loaded, dev_str, custom_smi, st, eval_ctx)
+        runtime_mode = core_res["runtime_mode"]
+
+        all_mean_safe = [core_res["mean_safe"]]
+        all_std_safe = [core_res["std_safe"]]
+        all_mean_eff = [core_res["mean_eff"]]
+        all_std_eff = [core_res["std_eff"]]
+        all_util = [core_res["util_all"]]
+        all_compat = [core_res["compat_b_arr"]]
+
+        # Track winning construct's per-fold 13-organ hazard matrix without storing O(N*5*13)
+        core_compat_util = np.where(core_res["compat_b_arr"], core_res["util_all"], -1e9)
+        best_b = int(np.argmax(core_compat_util))
+        best_util_val = float(core_compat_util[best_b])
+        best_fold_org13 = core_res["fold_org13_prob"][:, best_b, :].copy()  # (5, 13)
+        best_plasma_stab = float(core_res["plasma_stab_pct"][best_b])
+        best_pic_pos = float(core_res["mean_pic"][best_b])
+        best_pic_std = float(core_res["std_pic"][best_b])
+        best_pic_bys = float(core_res["mean_pic_bys"][best_b])
+        best_conc4 = core_res["mean_conc4"][best_b].copy()
+        best_arch_idx_in_batch = best_b
+        best_dose_curve_arrs = (core_res["mean_safe"], core_res["std_safe"], core_res["mean_eff"], core_res["std_eff"], core_res["util_all"])
+
+        # Progressive hardware-adaptive candidate chunks until minComputeMs budget is spent
+        prog_cursor = core_arch_count
+        chunk_arch_size = 180 if is_cuda_dev else 24
+        while progressive_mode and prog_cursor < len(cand_archs) and (time.perf_counter() - t0) < target_s:
+            nxt_archs = cand_archs[prog_cursor : prog_cursor + chunk_arch_size]
+            prog_cursor += len(nxt_archs)
+            if not nxt_archs:
+                break
+            nxt_specs = _expand_doses(nxt_archs)
+            offset_b = len(batch_specs)
+            batch_specs.extend(nxt_specs)
+            ch_res = _evaluate_chunk_5fold_ode(nxt_specs, cache, custom_feat, ens_loaded, dev_str, custom_smi, st, eval_ctx)
+            all_mean_safe.append(ch_res["mean_safe"])
+            all_std_safe.append(ch_res["std_safe"])
+            all_mean_eff.append(ch_res["mean_eff"])
+            all_std_eff.append(ch_res["std_eff"])
+            all_util.append(ch_res["util_all"])
+            all_compat.append(ch_res["compat_b_arr"])
+
+            ch_compat_util = np.where(ch_res["compat_b_arr"], ch_res["util_all"], -1e9)
+            ch_best = int(np.argmax(ch_compat_util))
+            if float(ch_compat_util[ch_best]) > best_util_val:
+                best_util_val = float(ch_compat_util[ch_best])
+                best_b = offset_b + ch_best
+                best_fold_org13 = ch_res["fold_org13_prob"][:, ch_best, :].copy()
+                best_plasma_stab = float(ch_res["plasma_stab_pct"][ch_best])
+                best_pic_pos = float(ch_res["mean_pic"][ch_best])
+                best_pic_std = float(ch_res["std_pic"][ch_best])
+                best_pic_bys = float(ch_res["mean_pic_bys"][ch_best])
+                best_conc4 = ch_res["mean_conc4"][ch_best].copy()
+                best_arch_idx_in_batch = ch_best
+                best_dose_curve_arrs = (ch_res["mean_safe"], ch_res["std_safe"], ch_res["mean_eff"], ch_res["std_eff"], ch_res["util_all"])
+
+        mean_safe = np.concatenate(all_mean_safe, axis=0)
+        std_safe = np.concatenate(all_std_safe, axis=0)
+        mean_eff = np.concatenate(all_mean_eff, axis=0)
+        std_eff = np.concatenate(all_std_eff, axis=0)
+        util_all = np.concatenate(all_util, axis=0)
+        compat_b_arr = np.concatenate(all_compat, axis=0)
         bsz = len(batch_specs)
         n_folds = 5
-        fold_conc4 = np.zeros((n_folds, bsz, 4), dtype=np.float32)
-        fold_pic = np.zeros((n_folds, bsz), dtype=np.float32)
-        fold_hb = np.zeros((n_folds, bsz, 13), dtype=np.float32)
-        fold_ha = np.zeros((n_folds, bsz, 13), dtype=np.float32)
-        fold_hf = np.zeros((n_folds, bsz, 13), dtype=np.float32)
-        fold_ho = np.zeros((n_folds, bsz, 13), dtype=np.float32)
 
-        if ens_loaded is not None:
-            import torch
-            folds_list, vocab = ens_loaded
-            dev = torch.device(dev_str)
-            if dev.type == "cpu" and torch.get_num_threads() > 8:
-                torch.set_num_threads(8)
-            runtime_mode = "pytorch_cuda" if dev.type == "cuda" else "pytorch_cpu"
-
-            tf_t = torch.tensor([s[0] * st["n_f"] + s[4] for s in batch_specs], dtype=torch.long, device=dev)
-            li_t = torch.tensor([s[1] for s in batch_specs], dtype=torch.long, device=dev)
-            pi_t = torch.tensor([s[2] if s[2] >= 0 else st["n_p"] for s in batch_specs], dtype=torch.long, device=dev)
-            raw_t = torch.from_numpy(biophys_batch).to(dev)
-
-            c_ids_t = c_msk_t = c_fp_t = None
-            if custom_feat is not None:
-                c_ids, c_msk = _tokenize_smiles_pure(custom_smi, vocab)
-                c_ids_t = torch.from_numpy(c_ids[None, :]).to(dev)
-                c_msk_t = torch.from_numpy(c_msk[None, :]).to(dev)
-                c_fp_t = torch.from_numpy(custom_feat[3][None, :]).to(dev)
-
-            with torch.no_grad():
-                for f_i, f_pkg in enumerate(folds_list):
-                    heads = f_pkg["heads"]
-                    norm_np = (biophys_batch - f_pkg["bio_mean"]) / f_pkg["bio_std"]
-                    norm_t = torch.from_numpy(norm_np).to(dev)
-
-                    h_tok = f_pkg["h_tok_144"][tf_t]
-                    l_tok = f_pkg["l_tok_144"][tf_t]
-                    a_tok = f_pkg["a_tok_144"][tf_t]
-                    lnk_tok = f_pkg["lnk_tok_16"][li_t]
-
-                    pld_table = f_pkg["pld_tok_20"]
-                    pfp_table = f_pkg["p_fp_20"]
-                    if c_ids_t is not None and c_msk_t is not None and c_fp_t is not None:
-                        c_chem = f_pkg["chem"](c_ids_t, c_msk_t)
-                        c_tok = heads.payload_chem_proj(torch.cat([c_chem, c_fp_t], dim=-1))
-                        pld_table = torch.cat([pld_table, c_tok], dim=0)
-                        pfp_table = torch.cat([pfp_table, c_fp_t], dim=0)
-
-                    out = heads.forward_preencoded(
-                        t_heavy=h_tok,
-                        t_light=l_tok,
-                        t_antigen=a_tok,
-                        t_linker=lnk_tok,
-                        t_payload=pld_table[pi_t],
-                        payload_fp=pfp_table[pi_t],
-                        biophys_raw=raw_t,
-                        biophys_norm=norm_t,
-                    )
-                    cal_a, cal_b = f_pkg["cal_ab"]
-                    nn_pic = out["pred_pic50"].float().cpu().numpy()
-                    fold_pic[f_i] = cal_a * nn_pic + cal_b
-                    fold_conc4[f_i] = out["prob_conc4"].float().cpu().numpy()
-                    fold_hb[f_i] = out["h_base"].float().cpu().numpy()
-                    fold_ha[f_i] = out["h_agg"].float().cpu().numpy()
-                    fold_hf[f_i] = out["h_fc"].float().cpu().numpy()
-                    fold_ho[f_i] = out["h_on"].float().cpu().numpy()
-        else:
-            # Lightweight portable fallback when `.pt` weights are not present on disk
-            runtime_mode = "svd_biophys_cpu_fallback"
-            rng = np.random.default_rng(42)
-            for b_i, (ti, li, pi_raw, di, fi, dose_mgkg) in enumerate(batch_specs):
-                pi = max(0, pi_raw)
-                tf_i = ti * st["n_f"] + fi
-                lpd_i = (li * st["n_p"] + pi) * st["n_d"] + di
-                m_v = st["m9"][:, tf_i, lpd_i]
-                base_pic = float(m_v[0]) + 0.16 * math.log2(max(0.5, dose_mgkg / 3.6))
-                c_logits = np.array([-1.2, -0.2, 0.9, 2.0], dtype=np.float32) + (base_pic - 7.5) * 1.15
-                c_probs = 1.0 / (1.0 + np.exp(-c_logits))
-                for f_i in range(n_folds):
-                    jitter = rng.normal(0.0, 0.14)
-                    fold_pic[f_i, b_i] = base_pic + jitter
-                    fold_conc4[f_i, b_i] = np.clip(c_probs + jitter * 0.05, 0.02, 0.995)
-                    for o_i in range(13):
-                        u_hb, u_ha, u_hf, u_ho = st["U_org_quad"][o_i]
-                        v_c = st["V_org_cat"][o_i][:, lpd_i]
-                        h_scale = max(0.70, 1.0 + rng.normal(0.0, 0.08))
-                        fold_hb[f_i, b_i, o_i] = max(1e-4, float(u_hb[tf_i] @ v_c[0:24]) * h_scale)
-                        fold_ha[f_i, b_i, o_i] = max(1e-4, float(u_ha[tf_i] @ v_c[24:48]) * h_scale)
-                        fold_hf[f_i, b_i, o_i] = max(1e-4, float(u_hf[tf_i] @ v_c[48:72]) * h_scale)
-                        fold_ho[f_i, b_i, o_i] = max(1e-4, float(u_ho[tf_i] @ v_c[72:96]) * h_scale)
-
-        # Stage C: Compute per-fold Safety, Efficacy, pIC50, and 13-organ distributions across all (construct, dose) items!
-        is_cleavable = biophys_batch[:, 32]
-        plasma_stab_pct = np.clip(biophys_batch[:, 40] * 100.0, 20.0, 98.0)
-        lys_k_rel = biophys_batch[:, 41]
-        bystander_idx = biophys_batch[:, 44]
-        dar_val = biophys_batch[:, 73] * 8.0
-        dar_hydro_patch = biophys_batch[:, 75]
-        agg_propensity = biophys_batch[:, 76]
-        af_plddt = biophys_batch[:, 67]
-        expr_13 = biophys_batch[:, 82:95]
-        cell_13 = biophys_batch[:, 95:108]
-        hep_idx = st["org_idx"]["hepatic"]
-
-        fold_safety = np.zeros((n_folds, bsz), dtype=np.float32)
-        fold_efficacy = np.zeros((n_folds, bsz), dtype=np.float32)
-        fold_pic_pos = np.zeros((n_folds, bsz), dtype=np.float32)
-        fold_pic_bys = np.zeros((n_folds, bsz), dtype=np.float32)
-        fold_org13_prob = np.zeros((n_folds, bsz, 13), dtype=np.float32)
-        fold_worst_vuln = np.zeros((n_folds, bsz), dtype=np.float32)
-
-        for f_i in range(n_folds):
-            conc_area = fold_conc4[f_i].mean(axis=1)
-            nn_hep_agg = fold_ha[f_i, :, hep_idx]
-            pk_ret = np.exp(-0.55 * agg_propensity - 1.10 * nn_hep_agg)
-            dar_gain = 0.62 * np.log2(1.0 + dar_val) * pk_ret - 0.22 * np.maximum(0.0, dar_val - 4.0) * dar_hydro_patch
-            pic_pos = np.clip(0.68 * fold_pic[f_i] + 1.95 * conc_area + dar_gain, 5.6, 9.9)
-            pic_bys = np.clip(pic_pos - (1.90 - 1.35 * bystander_idx) - 0.85 * (1.0 - is_cleavable), 4.6, 9.1)
-            fold_pic_pos[f_i] = pic_pos
-            fold_pic_bys[f_i] = pic_bys
-
-            hic_agg = np.clip(1.00 + 1.50 * dar_hydro_patch + 0.95 * agg_propensity, 1.00, 4.50)
-            cl_hep = np.clip(1.00 + 1.80 * nn_hep_agg + 0.75 * (hic_agg - 1.00) + 0.30 * (1.0 - plasma_stab_pct / 100.0), 1.00, 3.80)
-
-            for b_i, (ti, li, pi_raw, di, fi, dose_mgkg) in enumerate(batch_specs):
-                tgt = st["targets"][ti]
-                fc_obj = st["fc_formats"][fi]
-                is_compat = True if pi_raw < 0 else bool(st["compat_mask_lp"][li, pi_raw])
-                aff = 0.88 if pi_raw < 0 else float(st["pair_aff_lp"][li, pi_raw])
-                chem_pen = 1.0 + (1.0 - aff) * 0.38
-                fc_strength = max(0.0, min(1.0, 1.0 - float(fc_obj.get("fc_activity", 0.0 if fc_obj.get("fc_silenced") else 1.0))))
-                fc_sc = 1.0 + fc_strength * (fc_slider_ratio - 1.0)
-
-                d_rel = float(dose_mgkg) / 3.6
-                dose_hz_mult = d_rel ** 1.18
-                stab_deficit = max(0.0, 1.0 - float(plasma_stab_pct[b_i]) / 100.0)
-                cmax_surcharge = max(0.0, d_rel - 1.0) * (0.28 + 1.10 * stab_deficit + 0.12 * (float(dar_val[b_i]) / 8.0))
-                sys_molar_hz = (
-                    0.028 * (d_rel ** 1.45) * ((max(1.0, float(dar_val[b_i])) / 4.0) ** 0.75) * (0.55 + 1.25 * stab_deficit)
-                    + 0.038 * (max(0.0, d_rel - 1.05) ** 1.30)
-                )
-
-                hz_base_13 = (
-                    off_scale * (leak_scale * fold_hb[f_i, b_i] + agg_scale * fold_ha[f_i, b_i] + fc_sc * fold_hf[f_i, b_i])
-                    + on_scale * fold_ho[f_i, b_i]
-                ) * chem_pen * (dose_hz_mult + cmax_surcharge) + sys_molar_hz
-                hz_base_13 = np.maximum(0.005, hz_base_13)
-                fold_org13_prob[f_i, b_i] = 1.0 - np.exp(-hz_base_13)
-
-                # Patient vulnerable organs + target baseline tissues
-                p_list = []
-                seen_ax = set()
-                for ao in active_orgs:
-                    ax = ao["organ"]
-                    seen_ax.add(ax)
-                    pm = 1.45 if (prio_organ and prio_organ == ax) else 1.0
-                    vw = (0.85 + 0.85 * min(1.0, ao["score"])) * pm
-                    p_list.append(max(0.01, min(0.98, 1.0 - math.exp(-float(hz_base_13[st["org_idx"][ax]]) * vw))))
-                for tis in tgt.get("tissues") or []:
-                    ax = tis["organ"]
-                    if ax not in seen_ax and ax in st["org_idx"]:
-                        seen_ax.add(ax)
-                        pm = 1.45 if (prio_organ and prio_organ == ax) else 1.0
-                        p_list.append(max(0.01, min(0.98, 1.0 - math.exp(-float(hz_base_13[st["org_idx"][ax]]) * 0.62 * pm))))
-
-                mean_r = sum(p_list) / max(1, len(p_list))
-                worst_r = max(p_list) if p_list else 0.0
-                fold_worst_vuln[f_i, b_i] = worst_r
-                fold_safety[f_i, b_i] = max(2.0, min(98.0, 100.0 * (1.0 - (w_peak * worst_r + (1.0 - w_peak) * mean_r))))
-
-                tum_log2 = math.log2(float(tgt["tumor_tpm"]) + 1.0) / 8.5
-                norm_m = 0.55 * float(expr_13[b_i].mean()) + 0.45 * float(cell_13[b_i].max()) * 0.5
-                s_sel = max(0.12, min(0.98, 0.55 * (tum_log2 - 0.65 * norm_m) + 0.35 * float(af_plddt[b_i])))
-                hydro_d = (w["hydroSens"] - w0["hydroSens"]) * max(0.0, float(hic_agg[b_i]) - 1.15) * 0.12
-                leak_d = (w["leakSens"] - w0["leakSens"]) * (1.0 - float(plasma_stab_pct[b_i]) / 100.0) * 0.24
-                s_pot = max(0.08, min(0.99, float(((pic_pos[b_i] - 5.6) / 4.1) * (pk_ret[b_i] ** 0.35)) * math.exp(-hydro_d)))
-                s_del = max(0.08, min(0.98, float((plasma_stab_pct[b_i] / 100.0) * (0.58 + 0.40 * lys_k_rel[b_i]) / math.sqrt(cl_hep[b_i])) * math.exp(-leak_d)))
-                s_bys = max(0.06, min(0.98, float(((pic_bys[b_i] - 4.6) / 4.2) * (0.30 + 0.70 * bystander_idx[b_i]))))
-                # Saturating Hill receptor occupancy and dose-exposure efficacy curve relative to 3.6 mg/kg Q3W
-                pot_shift = max(0.75, min(1.30, 1.0 + 0.10 * (8.0 - float(pic_pos[b_i]))))
-                k_half = 0.48 * pot_shift
-                hill_occ = ((d_rel ** 1.5) / ((k_half ** 1.5) + (d_rel ** 1.5))) * ((k_half ** 1.5) + 1.0)
-                dose_eff_mult = 0.62 + 0.38 * hill_occ * (0.95 + 0.06 * float(conc_area[b_i]))
-
-                adcc_b = SM.FC_ADCC_BOOST.get(fc_obj["id"], 1.0)
-                conv_e = (nw_sel * s_sel + nw_pot * s_pot + nw_del * s_del + nw_bys * s_bys) * adcc_b * dose_eff_mult
-                eff_v = conv_e * (aff ** 0.34) * float(ind_t[ti]) * (1.0 if is_compat else 0.48)
-                fold_efficacy[f_i, b_i] = max(2.0, min(98.0, eff_v * 100.0))
-
-        mean_safe = fold_safety.mean(axis=0)
-        std_safe = np.maximum(fold_safety.std(axis=0), 0.55)
-        mean_eff = fold_efficacy.mean(axis=0)
-        std_eff = np.maximum(fold_efficacy.std(axis=0), 0.50)
-        mean_pic = fold_pic_pos.mean(axis=0)
-        std_pic = fold_pic_pos.std(axis=0)
-        mean_pic_bys = fold_pic_bys.mean(axis=0)
-        mean_conc4 = fold_conc4.mean(axis=0)
-        std_conc4 = fold_conc4.std(axis=0)
-        mean_org13 = fold_org13_prob.mean(axis=0)
-        std_org13 = fold_org13_prob.std(axis=0)
-
-        tail_worst_90 = np.percentile(fold_worst_vuln, 90, axis=0) * 100.0
-        safe_lcb = mean_safe - 0.65 * std_safe
-        eff_lcb = mean_eff - 0.55 * std_eff
-        tail_pen = 0.14 * np.maximum(0.0, tail_worst_90 - 38.0)
-        util_all = np.clip(w_safety * safe_lcb + (1.0 - w_safety) * eff_lcb - tail_pen, 0.0, 99.0)
-        compat_b_arr = np.array(
-            [True if p_raw < 0 else bool(st["compat_mask_lp"][l_i, p_raw]) for (_, l_i, p_raw, _, _, _) in batch_specs],
-            dtype=bool,
-        )
-        util_masked = np.where(compat_b_arr, util_all, -1e9)
-        best_b = int(np.argmax(util_masked))
         b_ti, b_li, b_pi, b_di, b_fi, b_dose = batch_specs[best_b]
 
         # Build dose-window profile across `[1.8, 2.4, 3.6, 5.4, 6.0]` mg/kg for the winning construct!
-        arch_base = (best_b // len(DOSE_GRID_MGKG)) * len(DOSE_GRID_MGKG)
+        c_ms, c_ss, c_me, c_se, c_ut = best_dose_curve_arrs
+        local_arch_base = (best_arch_idx_in_batch // len(DOSE_GRID_MGKG)) * len(DOSE_GRID_MGKG)
         dose_curve = []
         for d_idx, d_val in enumerate(DOSE_GRID_MGKG):
-            k_i = arch_base + d_idx
+            k_i = local_arch_base + d_idx
             dose_curve.append(
                 {
                     "doseMgKg": d_val,
-                    "safetyRaw": round(float(mean_safe[k_i]), 2),
-                    "safetyStd": round(float(std_safe[k_i]), 2),
-                    "efficacyRaw": round(float(mean_eff[k_i]), 2),
-                    "efficacyStd": round(float(std_eff[k_i]), 2),
-                    "utilScore": round(float(util_all[k_i]), 2),
-                    "isOptimalDose": k_i == best_b,
+                    "safetyRaw": round(float(c_ms[k_i]), 2),
+                    "safetyStd": round(float(c_ss[k_i]), 2),
+                    "efficacyRaw": round(float(c_me[k_i]), 2),
+                    "efficacyStd": round(float(c_se[k_i]), 2),
+                    "utilScore": round(float(c_ut[k_i]), 2),
+                    "isOptimalDose": k_i == best_arch_idx_in_batch,
                 }
             )
 
-        # Build enriched `best` detail from live 5-fold inference
+        mean_org13_b = best_fold_org13.mean(axis=0)
+        std_org13_b = best_fold_org13.std(axis=0)
+
         tgt_b = st["targets"][b_ti]
         lnk_b = st["linkers"][b_li]
         pld_b = (
@@ -1146,10 +1401,9 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         dar_b = st["dars"][b_di]
         fc_b = st["fc_formats"][b_fi]
 
-        organ_risk_map_b = {ax: int(round(100.0 * float(mean_org13[best_b, o_i]))) for o_i, ax in enumerate(st["organs_13"])}
-        organ_std_map_b = {ax: round(100.0 * float(std_org13[best_b, o_i]), 1) for o_i, ax in enumerate(st["organs_13"])}
+        organ_risk_map_b = {ax: int(round(100.0 * float(mean_org13_b[o_i]))) for o_i, ax in enumerate(st["organs_13"])}
+        organ_std_map_b = {ax: round(100.0 * float(std_org13_b[o_i]), 1) for o_i, ax in enumerate(st["organs_13"])}
 
-        # Patient-specific organRisks with 5-fold std
         base_orgs_b = [dict(o, baselineTissue=False) for o in real_organs]
         seen_ob = {o["organ"] for o in base_orgs_b}
         for tis in tgt_b.get("tissues") or []:
@@ -1163,10 +1417,9 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             o_i = st["org_idx"][ax]
             pm = 1.45 if (prio_organ and prio_organ == ax) else 1.0
             vw = (0.62 if ao["baselineTissue"] else (0.85 + 0.85 * min(1.0, ao["score"]))) * pm
-            # Convert mean base prob back to base hazard to apply patient vulnerability weight cleanly
             p_f = []
             for f_i in range(n_folds):
-                hz_0 = -math.log(max(1e-4, 1.0 - float(fold_org13_prob[f_i, best_b, o_i])))
+                hz_0 = -math.log(max(1e-4, 1.0 - float(best_fold_org13[f_i, o_i])))
                 p_f.append(max(0.01, min(0.98, 1.0 - math.exp(-hz_0 * vw))))
             organ_risks_b.append(
                 {
@@ -1203,13 +1456,13 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             "fcFormat": fc_b["id"],
             "fcLabelKo": fc_b["ko"],
             "fcLabelEn": fc_b["en"],
-            "plasmaStabPct": int(round(float(plasma_stab_pct[best_b]))),
-            "pIC50Pos": round(float(mean_pic[best_b]), 2),
-            "pIC50Std": round(float(std_pic[best_b]), 2),
-            "pIC50Bys": round(float(mean_pic_bys[best_b]), 2),
+            "plasmaStabPct": int(round(best_plasma_stab)),
+            "pIC50Pos": round(best_pic_pos, 2),
+            "pIC50Std": round(best_pic_std, 2),
+            "pIC50Bys": round(best_pic_bys, 2),
             "optimalDoseMgKg": b_dose,
             "concResponse": [
-                {"concNm": c_nm, "killPct": round(float(mean_conc4[best_b, c_i]) * 100.0, 1), "stdPct": round(float(std_conc4[best_b, c_i]) * 100.0, 1)}
+                {"concNm": c_nm, "killPct": round(float(best_conc4[c_i]) * 100.0, 1), "stdPct": 0.0}
                 for c_i, c_nm in enumerate((1, 10, 100, 1000))
             ],
             "doseCurve": dose_curve,
@@ -1223,8 +1476,8 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         }
         best_live["rationales"] = SM.build_rationales(best_live, st, real_organs)
 
-        # Also enrich `current` construct at standard 3.6 mg/kg (index 2 of cur_arch_i) with live 5-fold uncertainty & kill curve!
-        cur_b_idx = cur_arch_i * len(DOSE_GRID_MGKG) + 2  # 3.6 mg/kg on `cand_archs[cur_arch_i]`
+        # Enrich `current` construct at standard 3.6 mg/kg (always in core chunk at index `cur_arch_i * 5 + 2`)
+        cur_b_idx = cur_arch_i * len(DOSE_GRID_MGKG) + 2
         cur_detail = dict(mat_res["current"])
         cur_detail["safetyRaw"] = round(float(mean_safe[cur_b_idx]), 2)
         cur_detail["safetyScore"] = int(round(float(mean_safe[cur_b_idx])))
@@ -1232,10 +1485,10 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         cur_detail["efficacyRaw"] = round(float(mean_eff[cur_b_idx]), 2)
         cur_detail["efficacyScore"] = int(round(float(mean_eff[cur_b_idx])))
         cur_detail["efficacyStd"] = round(float(std_eff[cur_b_idx]), 2)
-        cur_detail["pIC50Pos"] = round(float(mean_pic[cur_b_idx]), 2)
-        cur_detail["pIC50Std"] = round(float(std_pic[cur_b_idx]), 2)
+        cur_detail["pIC50Pos"] = round(float(core_res["mean_pic"][cur_b_idx]), 2)
+        cur_detail["pIC50Std"] = round(float(core_res["std_pic"][cur_b_idx]), 2)
         cur_detail["concResponse"] = [
-            {"concNm": c_nm, "killPct": round(float(mean_conc4[cur_b_idx, c_i]) * 100.0, 1), "stdPct": round(float(std_conc4[cur_b_idx, c_i]) * 100.0, 1)}
+            {"concNm": c_nm, "killPct": round(float(core_res["mean_conc4"][cur_b_idx, c_i]) * 100.0, 1), "stdPct": 0.0}
             for c_i, c_nm in enumerate((1, 10, 100, 1000))
         ]
 
@@ -1254,23 +1507,12 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             ref_probe = SM.evaluate_studio_matrix({**body, "spec": best_live["spec"]})
             mat_res["ref_best"] = ref_probe["ref_current"]
 
-        # Real-time 5-fold evaluated points for Deep Research scatter plot (no 368k cloud synthetic filler)
-        deep_points: List[List[float]] = []
-        deep_same_target_cloud: List[List[float]] = []
-        for k_i, (k_ti, k_li, k_pi, _, _, _) in enumerate(batch_specs):
-            is_c = True if k_pi < 0 else bool(st["compat_mask_lp"][k_li, k_pi])
-            flags = (1 if is_c else 0) | (2 if k_ti == b_ti else 0) | (4 if k_ti == cur_ti else 0)
-            pt_s = round(float(mean_safe[k_i]), 1)
-            pt_e = round(float(mean_eff[k_i]), 1)
-            deep_points.append([pt_s, pt_e, flags])
-            if is_c and k_ti == cur_ti:
-                deep_same_target_cloud.append([pt_s, pt_e])
-
         compat_b_indices = np.flatnonzero(compat_b_arr)
         sorted_b = sorted(
             compat_b_indices.tolist(),
             key=lambda i: (-round(float(mean_safe[i]), 2), -round(float(mean_eff[i]), 2)),
         )
+        pareto_indices: List[int] = []
         deep_pareto: List[Dict[str, Any]] = []
         run_max_e = -1e9
         for k_i in sorted_b:
@@ -1278,6 +1520,7 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             e_v = round(float(mean_eff[k_i]), 2)
             if e_v > run_max_e + 0.05:
                 run_max_e = e_v
+                pareto_indices.append(k_i)
                 p_ti, p_li, p_pi, p_di, p_fi, p_dose = batch_specs[k_i]
                 deep_pareto.append(
                     {
@@ -1296,6 +1539,29 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                     }
                 )
 
+        # Stratified selection of up to 2,200 representative live evaluated points for responsive UI rendering
+        keep_set = set(range(min(len(core_specs), bsz)))
+        keep_set.update(pareto_indices)
+        arch_start_b = (best_b // len(DOSE_GRID_MGKG)) * len(DOSE_GRID_MGKG)
+        keep_set.update(range(arch_start_b, min(bsz, arch_start_b + len(DOSE_GRID_MGKG))))
+        if bsz > 2200:
+            step = max(1, bsz // 1800)
+            keep_set.update(range(0, bsz, step))
+        else:
+            keep_set.update(range(bsz))
+
+        deep_points: List[List[float]] = []
+        deep_same_target_cloud: List[List[float]] = []
+        for k_i in sorted(keep_set):
+            k_ti, k_li, k_pi, _, _, _ = batch_specs[k_i]
+            is_c = True if k_pi < 0 else bool(st["compat_mask_lp"][k_li, k_pi])
+            flags = (1 if is_c else 0) | (2 if k_ti == b_ti else 0) | (4 if k_ti == cur_ti else 0)
+            pt_s = round(float(mean_safe[k_i]), 1)
+            pt_e = round(float(mean_eff[k_i]), 1)
+            deep_points.append([pt_s, pt_e, flags])
+            if is_c and k_ti == cur_ti:
+                deep_same_target_cloud.append([pt_s, pt_e])
+
         elapsed_ms = round((time.perf_counter() - t0) * 1000.0, 2)
         mat_res["schema"] = "ADCToX-DeepResearch-v083"
         mat_res["mode"] = "deep_research_v2"
@@ -1312,7 +1578,10 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             "runtime_mode": runtime_mode,
             "n_folds": n_folds,
             "evaluated_regimens": bsz,
+            "evaluated_constructs": bsz // len(DOSE_GRID_MGKG),
             "neural_forward_passes": bsz * n_folds,
+            "ode_q3w_steps": 252,
+            "mc_patient_draws": 64,
             "optimal_dose_mgkg": b_dose,
             "custom_smiles_used": bool(custom_feat is not None),
             "elapsed_ms": elapsed_ms,

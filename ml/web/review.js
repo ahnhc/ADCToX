@@ -13,8 +13,8 @@
 
   function indicationText(indicated, hasCancer, ko) {
     if (!hasCancer) return ko ? '진단 미입력' : 'Diagnosis not entered';
-    if (indicated === true) return ko ? '적응증 일치' : 'Indication match';
-    if (indicated === false) return ko ? '적응증 불일치' : 'Outside indication';
+    if (indicated === true) return ko ? '질환 일치' : 'Disease match';
+    if (indicated === false) return ko ? '질환 불일치' : 'Outside disease';
     return ko ? '미평가' : 'Not assessed';
   }
 
@@ -49,7 +49,7 @@
         : (ko ? '직접 입력 사례' : 'User-entered profile');
       lines.push(`${ko ? '사례 구분' : 'Case type'}: ${caseType}`);
       lines.push(`${ko ? '취약 장기군' : 'Vulnerable organs'}: ${ctx.prioOrgan || (ko ? '자동 (없음)' : 'Automatic (none)')}`);
-      lines.push(`${ko ? '비교 필터' : 'Comparison filter'}: ${ctx.matrixFilter === 'relevant' ? (ko ? '질병 일치' : 'Disease match') : (ko ? '전체 승인 ADC 목록' : 'All Approved ADC List')}`);
+      lines.push(`${ko ? '추천 필터' : 'Recommendation filter'}: ${ctx.matrixFilter === 'relevant' ? (ko ? '질병 일치' : 'Disease match') : (ko ? '전체 승인 ADC 목록' : 'All Approved ADC List')}`);
     }
 
     lines.push('', ko ? '입력 질환 및 상태 (INPUTS)' : 'INPUTS');
@@ -73,7 +73,7 @@
       for (const note of ctx.derivedNotes) lines.push(`- ${note}`);
     }
 
-    lines.push('', ko ? '승인 ADC 비교 (ADC REVIEW - Source: FDA Label & ClinicalTrials.gov)' : 'ADC REVIEW');
+    lines.push('', ko ? '승인 ADC 추천 (FDA Label & ClinicalTrials.gov)' : 'ADC RECOMMENDATIONS');
     const rows = (ctx && Array.isArray(ctx.rows)) ? ctx.rows : (res.rows || []);
     for (const row of rows) {
       const detail = row.detail || {};
@@ -133,7 +133,7 @@
       if (st.customSmiles) lines.push(`Custom Payload SMILES: ${st.customSmiles}`);
       lines.push(...formatConstructLine(ko ? '신규 설계' : 'New Design', st.current));
       if (st.searchExecuted && st.optimal && (!st.current || st.optimal.arch !== st.current.arch)) {
-        lines.push(...formatConstructLine(ko ? '탐색 결과 설계' : 'Search Design', st.optimal));
+        lines.push(...formatConstructLine(ko ? '자동 설계' : 'Auto Design', st.optimal));
       }
       if (st.reference) {
         lines.push(...formatConstructLine(ko ? `기존 ADC (${st.reference.name})` : `Existing ADC (${st.reference.name})`, st.reference));

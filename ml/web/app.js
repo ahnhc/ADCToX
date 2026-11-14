@@ -1,5 +1,5 @@
-/* ADCTOX v0.9.6 Architectural Daylight WebApp
-   Active-Organ Matrix + Construct Design Studio + Deep Research (GPU/CPU) + Biomarker Flowsheet
+/* ADCTOX v0.9.7 Architectural Daylight WebApp
+   Active-Organ Matrix + Construct Design Studio + Auto Design 5-Fold PK/PD + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
   'use strict';
@@ -197,17 +197,17 @@
     const isKo = S.lang === 'ko';
     const stepItems = isKo
       ? [
-          ['1. 환자 프로필', '접속 시 가상 환자 예시가 자동 입력됩니다. 상단의 새 환자 입력으로 빈 상태에서 시작할 수 있으며, 진단명과 기저질환을 입력하고 기본 정보와 선택 검진 수치를 입력합니다.'],
-          ['2. ADC 비교', '승인된 ADC 15종을 약물 적합도, 취약 장기 주의사항, 임상시험 이상사례 발생률로 비교합니다. 취약 장기군에서 장기를 선택하면 강조 표시되며, 약물 행을 누르면 상세 근거와 분석 결과 내보내기를 이용할 수 있습니다.'],
-          ['3. ADC 설계', '표적, 링커, 페이로드, DAR, 항체 및 Fc 구성을 직접 조합해 수동 평가하거나, 자동 설계 및 Deep Research로 5-Fold ADCSurrogateNet v2 예측을 실행해 신규 설계와 기존 ADC를 비교합니다.'],
+          ['1. 환자 프로필', '접속 시 가상 환자 예시가 자동 입력됩니다. 상단의 새 환자 입력으로 빈 상태에서 시작할 수 있으며, 환자 질환과 기본 정보 및 선택 검진 수치를 입력합니다.'],
+          ['2. ADC 추천', '승인된 ADC 15종을 약물 적합도, 취약 장기 주의사항, 임상시험 이상사례 발생률로 비교합니다. 취약 장기군에서 장기를 선택하면 강조 표시되며, 약물 행을 누르면 상세 근거와 분석 결과 내보내기를 이용할 수 있습니다.'],
+          ['3. ADC 설계', '표적, 링커, 페이로드, DAR, 항체 및 Fc 구성을 직접 조합해 수동 평가하거나, 자동 설계로 5-Fold ADCSurrogateNet v2 예측을 실행해 신규 설계와 기존 ADC를 비교합니다.'],
         ]
       : [
-          ['1. Patient Profile', 'Opens with a preloaded demo patient. Use New Patient in the top bar to start blank, enter diagnoses or comorbidities, and adjust basic information and optional clinical panels.'],
-          ['2. Compare ADCs', 'Compares 15 FDA-approved ADCs across dosing fit, vulnerable-organ cautions, and clinical trial adverse-event rates. Click any drug row to open detailed evidence and export results.'],
-          ['3. ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto-design and Deep Research (5-Fold ADCSurrogateNet v2) to compare your new design against an approved ADC.'],
+          ['1. Patient Profile', 'Opens with a preloaded demo patient. Use New Patient in the top bar to start blank, enter patient conditions, and adjust basic information and optional clinical panels.'],
+          ['2. Recommend ADCs', 'Compares 15 FDA-approved ADCs across dosing fit, vulnerable-organ cautions, and clinical trial adverse-event rates. Click any drug row to open detailed evidence and export results.'],
+          ['3. ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto design (5-Fold ADCSurrogateNet v2) to compare your new design against an approved ADC.'],
         ];
     const xBtn = h('button', { type: 'button', class: 'x-btn', 'aria-label': isKo ? '닫기' : 'Close', onclick: closeGuide }, svgClose());
-    const verStr = String((APP && APP.version) || '0.9.6').replace(/^v/i, '');
+    const verStr = String((APP && APP.version) || '0.9.7').replace(/^v/i, '');
     const dialog = h('div', { class: 'guide overlay-panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
       h('div', { class: 'g-head' },
         h('h2', { id: 'g-title', text: isKo ? 'ADCToX 사용 안내' : 'ADCToX Guide' }),
@@ -215,7 +215,6 @@
       h('div', { class: 'g-body' },
         h('div', { class: 'g-steps-list' },
           stepItems.map(([title, desc], idx) => h('div', { class: 'g-step-item' },
-            h('span', { class: 'g-step-num', text: String(idx + 1) }),
             h('div', { class: 'g-step-body' },
               h('b', { text: title }),
               h('span', { text: desc }))))),
@@ -226,7 +225,7 @@
           h('span', { class: 'g-key-label', text: isKo ? '임상시험 이상사례' : 'Trial Adverse Events' }),
           h('span', { class: 'g-key-desc', text: isKo ? '주요 임상시험의 치료군 대 대조군 이상사례 발생률(%). 치료군이 대조군보다 높으면 붉은 막대로 표시됩니다.' : 'Treatment vs. control adverse-event rates (%) in pivotal trials; crimson bars indicate higher incidence in treatment.' }),
           h('span', { class: 'g-key-label', text: isKo ? '설계 모델 점수' : 'Design Model Scores' }),
-          h('span', { class: 'g-key-desc', text: isKo ? '장기 안전도(X)와 항암 효능(Y) 예측 점수(0~100). Deep Research는 5-Fold ADCSurrogateNet v2를 실시간 실행합니다.' : 'Predicted organ safety (X) and antitumor efficacy (Y) scores (0-100). Deep Research runs 5-Fold ADCSurrogateNet v2.' }),
+          h('span', { class: 'g-key-desc', text: isKo ? '장기 안전도(X)와 항암 효능(Y) 예측 점수(0~100). 자동 설계는 5-Fold ADCSurrogateNet v2를 실시간 실행합니다.' : 'Predicted organ safety (X) and antitumor efficacy (Y) scores (0-100). Auto design runs 5-Fold ADCSurrogateNet v2.' }),
           h('span', { class: 'sp-status-badge clear', text: isKo ? '표준 용량 투여' : 'Standard dosing' }),
           h('span', { class: 'g-key-desc', text: isKo ? '입력된 환자 수치 기준 라벨상 용량 제한 없음' : 'No label dosing restriction triggered for entered profile' }),
           h('span', { class: 'sp-status-badge monitor', text: isKo ? '모니터링 / 용량 조절' : 'Monitor / Adjust' }),
@@ -268,7 +267,7 @@
   // ------------------------------------------------------------------ App Data
   let APP = null, AX = [], SHORT = {}, REG = {}, REG_I = {}, FIELDS = [], MECH = {};
   const TONE = { contraindicated: 'red', avoid: 'red', insufficient_data: 'ink', no_statement: 'ink', reduce_dose: 'amber', monitor: 'amber', no_adjustment: 'green' };
-  const MODES = ['Patient Profile', 'Compare ADCs', 'ADC Design'];
+  const MODES = ['Patient Profile', 'Recommend ADCs', 'ADC Design'];
 
   // ------------------------------------------------------------------ Structure Studio Knowledge Base
   let STUDIO_TARGETS = [
@@ -2281,11 +2280,11 @@
 
   const TXT = {
     ko: {
-      modes: ['환자 프로필', 'ADC 비교', 'ADC 설계'],
+      modes: ['환자 프로필', 'ADC 추천', 'ADC 설계'],
       brandTag: 'ADCToX',
       newPatient: '새 환자 입력',
       newPatientTitle: '데모 값을 지우고 빈 환자 프로필에서 시작합니다',
-      addCondPh: '진단 질환 또는 기저질환 입력 (예: 유방암, 간질성 폐질환, 간경변, 당뇨병)...',
+      addCondPh: '환자 질환 입력 (예: 유방암, 간질성 폐질환, 간경변, 당뇨병)',
       condHelp: '질환명, 증상, 진단명을 한글 또는 영문으로 자유롭게 입력하세요.',
       activeOrgans: '취약 장기군',
       noActiveOrgans: '취약 장기 없음',
@@ -2295,7 +2294,7 @@
       secFit: '약물 적합도',
       secOrgans: '환자 취약 장기',
       secTrial: '임상시험 사례',
-      matrixHead: 'FDA 승인 ADC 후보 비교',
+      matrixHead: 'FDA 승인 ADC 추천',
       matrixSub: 'FDA 공식 라벨 규칙, 취약 장기 주의사항, 임상시험 이상사례 발생률을 종합합니다.',
       rankBest: '1위 최적 적합',
       rankCand: '후보',
@@ -2324,10 +2323,7 @@
       fcTitle: '항체 및 Fc (4)',
       wtFc: '야생형 IgG1',
       silFc: 'Fc 침묵화 (LALA-PG)',
-      deepTitle: 'Deep Research',
-      deepSub: 'ADCSurrogateNet v2 5-Fold 실시간 구동',
-      deepRunBtn: 'Deep Research 설계',
-      deepBusyBtn: 'GPU 대기 중 (4/4)',
+      step3Title: 'ADC 설계',
       designTitle: '환자 맞춤형 ADC 설계',
       axisSafety: '장기 안전도 예측 (높을수록 안전)',
       axisEfficacy: '항암 효능 예측 (높을수록 강력)',
@@ -2338,12 +2334,12 @@
       optimalLocked: '현재 설계가 선택된 최적 조건에 해당합니다',
       optimalCand: '신규 설계:',
       bestDesign: '신규 설계',
-      clickAutoOpt: 'ADC 자동 설계를 누르면 이 환자에게 맞는 조합을 찾습니다',
+      clickAutoOpt: 'ADC 설계를 누르면 이 환자에게 맞는 조합을 찾습니다',
       explainTitle: '고급 설정',
       explainBody: [
         '안전도 (X, 0~100) = 100 - (최대 취약장기 위험 가중합 + 평균 취약장기 위험 가중합) * 100',
         '장기 위험도 p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (ADCNet + ChEMBL v34 + 임상 13장기 AE + 정상 조직 발현 아틀라스 5-Fold 앙상블)',
-        '항암 효능 (Y, 0~100) = 100 * 적응증일치도 * 화학접합호환도 * (w_sel*S_sel + w_pot*S_pot + w_deliv*S_deliv + w_bys*S_bys) (ESM-2 650M + ChemBERTa-2 LoRA + 3D Boltzmann Conformer)',
+        '항암 효능 (Y, 0~100) = 100 * 질환일치도 * 화학접합호환도 * (w_sel*S_sel + w_pot*S_pot + w_deliv*S_deliv + w_bys*S_bys) (ESM-2 650M + ChemBERTa-2 LoRA + 3D Boltzmann Conformer)',
       ],
       shCompat: '접합 반응성 호환도',
       shCompatDirect: '직접 결합 가능',
@@ -2419,11 +2415,11 @@
       sourcesTitle: '공식 출처',
     },
     en: {
-      modes: ['Patient Profile', 'Compare ADCs', 'ADC Design'],
+      modes: ['Patient Profile', 'Recommend ADCs', 'ADC Design'],
       brandTag: 'Clinical ADC Evaluation & De Novo Design',
       newPatient: 'New Patient',
       newPatientTitle: 'Clear the demo values and start from an empty patient profile',
-      addCondPh: 'Enter diagnosis or comorbidity (e.g., breast cancer, ILD, cirrhosis)...',
+      addCondPh: 'Enter patient conditions (e.g., breast cancer, ILD, cirrhosis, diabetes)',
       condHelp: 'Type diagnosis, symptom, or comorbidity in English or Korean.',
       activeOrgans: 'Vulnerable Organs',
       noActiveOrgans: 'No Vulnerable Organs',
@@ -2433,7 +2429,7 @@
       secFit: 'Drug Fit',
       secOrgans: 'Vulnerable Organs',
       secTrial: 'Clinical Trial Cases',
-      matrixHead: 'FDA-Approved ADC Candidate Comparison',
+      matrixHead: 'FDA-Approved ADC Recommendations',
       matrixSub: 'Synthesizes official FDA prescribing rules, vulnerable-organ warnings, and pivotal trial rates.',
       rankBest: '#1 Leading Fit',
       rankCand: 'Candidate',
@@ -2462,10 +2458,7 @@
       fcTitle: 'Antibody & Fc (4)',
       wtFc: 'Wild-type IgG1',
       silFc: 'Fc-Silenced (LALA-PG)',
-      deepTitle: 'Deep Research',
-      deepSub: 'Live 5-Fold ADCSurrogateNet v2',
-      deepRunBtn: 'Deep Research',
-      deepBusyBtn: 'GPUs Busy (4/4)',
+      step3Title: 'Step 3: ADC Design',
       designTitle: 'Patient-Tailored ADC Design',
       axisSafety: 'Predicted Organ Safety (higher is safer)',
       axisEfficacy: 'Predicted Antitumor Efficacy (higher is stronger)',
@@ -2476,12 +2469,12 @@
       optimalLocked: 'Current design matches the selected optimal construct for this patient',
       optimalCand: 'New design:',
       bestDesign: 'New design',
-      clickAutoOpt: 'Run Auto-design ADC to identify the top construct for this patient',
+      clickAutoOpt: 'Click Design ADC to identify the top construct for this patient',
       explainTitle: 'Advanced Settings',
       explainBody: [
         'Safety (X, 0-100) = 100 - (w_peak * Peak Organ Risk + (1 - w_peak) * Mean Organ Risk) * 100',
         'Organ Risk p(o) = 1 - exp(-V_o * [OffTarget(H_leak + H_agg + H_Fc) + OnTarget(H_on)]) (5-Fold Ensemble trained on ADCNet, ChEMBL v34, Clinical 13-Organ AE & FDA SPL, Normal-Tissue Atlas)',
-        'Efficacy (Y, 0-100) = 100 * Indication * Compatibility * (w_sel*S_sel + w_pot*S_pot + w_deliv*S_deliv + w_bys*S_bys) (ESM-2 650M + ChemBERTa-2 LoRA + 3D Boltzmann Conformer)',
+        'Efficacy (Y, 0-100) = 100 * Disease Match * Compatibility * (w_sel*S_sel + w_pot*S_pot + w_deliv*S_deliv + w_bys*S_bys) (ESM-2 650M + ChemBERTa-2 LoRA + 3D Boltzmann Conformer)',
       ],
       shCompat: 'Conjugation Compatibility',
       shCompatDirect: 'Direct Coupling',
@@ -2674,14 +2667,13 @@
       studioHistory: [],
       studioUndo: null,
       studioRefAdcOverride: null,
-      deepResearchOn: false,
+      lastRunMode: 'deep_research_v2',
       deepMenuOpen: false,
       customPayloadSmiles: '',
       tgtCat: 'all',
       tgtQuery: '',
       lnkCat: 'all',
       pldCat: 'all',
-      lastRunMode: 'matrix_368k',
       simWeights: Object.assign({}, DEFAULT_SIM_WEIGHTS),
       simPreset: 'balanced',
       formulaOpen: false,
@@ -2760,7 +2752,7 @@
       .map((c) => `${c.kind}:${c.value || c.mondo || c.en || c.ko || c.label}`)
       .sort();
     const meanings = Object.entries(S.meanings || {}).sort((a, b) => a[0].localeCompare(b[0]));
-    return JSON.stringify([condKeys, rawValues(), meanings, S.first, S.prioOrgan, S.studio, S.simWeights, S.customPayloadSmiles, S.deepResearchOn]);
+    return JSON.stringify([condKeys, rawValues(), meanings, S.first, S.prioOrgan, S.studio, S.simWeights, S.customPayloadSmiles]);
   }
 
   function invalidateStudioEvaluation() {
@@ -2791,7 +2783,7 @@
       return {
         state: 'partial',
         label: !hasCancer
-          ? (isKo ? '부분 입력 (진단 질환 미선택)' : 'Partial Input (no diagnosis)')
+          ? (isKo ? '부분 입력 (환자 질환 미입력)' : 'Partial Input (no conditions)')
           : (isKo ? '부분 입력 (검진 수치 미입력)' : 'Partial Input (no labs)'),
       };
     }
@@ -2956,17 +2948,6 @@
       onclick: () => toggleLanguage(),
     });
 
-    function svgBrandMark() {
-      const parser = new DOMParser();
-      const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="24" height="24" fill="none" aria-hidden="true">
-        <rect width="28" height="28" rx="6" fill="#111111"/>
-        <path d="M9.2 7.8L14 13.6L18.8 7.8" stroke="#FFFFFF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M14 13.6V20.5" stroke="#FFFFFF" stroke-width="2.1" stroke-linecap="round"/>
-        <circle cx="20.4" cy="18.8" r="2.3" fill="#0D9488"/>
-      </svg>`;
-      return parser.parseFromString(svgStr, 'image/svg+xml').documentElement;
-    }
-
     const brandWrap = h('div', { class: 'brand-wrap' },
       h('div', {
         class: 'brand',
@@ -2974,7 +2955,6 @@
         onclick: () => switchMode(0),
         style: 'cursor:pointer',
       },
-        h('span', { class: 'brand-mark' }, svgBrandMark()),
         h('span', { class: 'brand-wordmark' }, 'ADCTo', h('span', { class: 'x-accent', text: 'X' }))));
 
     top = h('header', { class: 'top' },
@@ -3118,14 +3098,14 @@
         const btn = h('button', {
           class: 'cb', type: 'button',
           onclick: () => switchMode(i),
-        }, h('span', { class: 'step-number', 'aria-hidden': 'true', text: String(i + 1) }), labelEl);
+        }, labelEl);
         const wrap = h('div', { class: 'crumb' }, btn);
         return { wrap, btn, labelEl };
       });
-      const clinicianGroup = h('li', { class: 'crumb-clinician-group' }, items[0].wrap, items[1].wrap);
-      const researchGroup = h('li', { class: 'crumb-research-group' }, items[2].wrap);
-      crumbsOl.append(clinicianGroup, researchGroup);
-      crumbRefs = { items, clinicianGroup, researchGroup };
+      const profileGroup = h('li', { class: 'crumb-profile-group' }, items[0].wrap);
+      const actionGroup = h('li', { class: 'crumb-action-group' }, items[1].wrap, items[2].wrap);
+      crumbsOl.append(profileGroup, actionGroup);
+      crumbRefs = { items, profileGroup, actionGroup };
     }
     crumbRefs.items.forEach((it, i) => {
       const now = i === S.mode;
@@ -3134,8 +3114,8 @@
       if (now) it.btn.setAttribute('aria-current', 'step');
       else it.btn.removeAttribute('aria-current');
     });
-    crumbRefs.clinicianGroup.classList.toggle('is-clinician-active', S.mode === 0 || S.mode === 1);
-    crumbRefs.researchGroup.classList.toggle('is-research-active', S.mode === 2);
+    crumbRefs.profileGroup.classList.toggle('is-profile-active', S.mode === 0);
+    crumbRefs.actionGroup.classList.toggle('is-action-active', S.mode === 1 || S.mode === 2);
 
     if (!resetPatientBtn) {
       resetPatientBtn = h('button', {
@@ -3626,7 +3606,7 @@
     workspaceBar = h('section', { class: 'workspace-bar', 'aria-label': isKoBar ? '환자 정보와 취약 장기' : 'Patient and active organ profile' },
       h('div', { class: 'wb-left', id: 'workspace-profile-fields' },
         buildProgressBar(),
-        h('label', { class: 'wb-field-label', for: 'wb-cond-input', text: isKoBar ? '진단 질환 및 기저질환' : 'Diagnosis and comorbidities' }),
+        h('label', { class: 'wb-field-label', for: 'wb-cond-input', text: isKoBar ? '환자 질환' : 'Patient Conditions' }),
         h('div', { class: 'wb-search-row' },
           h('div', { class: 'wb-input-wrap' },
             svgSearch(),
@@ -3731,13 +3711,11 @@
 
   let currentMatrixRows = null;
 
-  // ------------------------------------------------------------------ Mode 1: Compare ADCs
+  // ------------------------------------------------------------------ Mode 1: Recommend ADCs
   function buildAdcMatrixMode() {
     const box = h('div', { class: 's5' });
-    const introH1 = h('h1', { class: 'mode-h1', text: S.lang === 'ko' ? 'ADC 비교' : 'Compare ADCs' });
+    // Mode 1 top heading removed in v0.9.7
     box.append(
-      h('header', { class: 'mode-intro' },
-        h('div', { class: 'mode-intro-copy' }, introH1)),
       buildWorkspaceBar(() => renderMatrixContent())
     );
     const content = h('div');
@@ -3746,10 +3724,10 @@
     function renderMatrixContent() {
       clear(content);
       const isKo = S.lang === 'ko';
-      introH1.textContent = isKo ? 'ADC 비교' : 'Compare ADCs';
+      // Mode 1 heading omitted in v0.9.7
       const res = S.result && S.result.data;
       if (!res || !Array.isArray(res.rows)) {
-        content.append(h('div', { class: 'panel', style: 'padding:24px' }, h('span', { class: 'dim', text: isKo ? 'ADC 비교 목록 불러오는 중...' : 'Loading ADC candidates...' })));
+        content.append(h('div', { class: 'panel', style: 'padding:24px' }, h('span', { class: 'dim', text: isKo ? 'ADC 추천 목록 불러오는 중...' : 'Loading ADC recommendations...' })));
         return;
       }
       const P = res.patient || {};
@@ -3784,15 +3762,12 @@
       if (!profileReady) {
         content.append(h('section', { class: 'empty-matrix-card', 'aria-label': isKo ? '환자 정보 입력 안내' : 'Patient input prompt' },
           h('div', { class: 'emc-copy' },
-            h('p', { class: 'emc-title', text: isKo ? '환자 정보가 아직 입력되지 않았습니다' : 'No patient profile entered yet' }),
-            h('p', { class: 'emc-desc', text: isKo
-              ? '진단 질환, 기저질환 또는 검진 수치를 입력하면 FDA 라벨 규칙과 취약 장기를 반영해 순위를 산출합니다. 아래 목록은 순위 없는 승인 약물 목록입니다.'
-              : 'Enter a diagnosis, comorbidity, or lab value to rank drugs by FDA label rules and vulnerable organs. The list below is unranked.' })),
+            h('p', { class: 'emc-title', text: isKo ? '환자 맞춤형 ADC 추천을 위하여 환자 질환과 기본 정보를 입력해주세요.' : 'Please enter patient conditions and basic information for personalized ADC recommendations.' })),
           h('div', { class: 'emc-actions' },
             h('button', {
               type: 'button',
               class: 'btn-primary-cta',
-              text: isKo ? '환자 정보 입력' : 'Enter patient profile',
+              text: isKo ? '환자 프로필로 이동' : 'Go to Patient Profile',
               onclick: () => switchMode(0),
             }))));
       } else {
@@ -3847,9 +3822,9 @@
         h('div', { class: 'review-toolbar-left' }, tabs));
       content.append(toolbar);
 
-      const grid = h('div', { class: 'review-grid', role: 'table', 'aria-label': isKo ? 'FDA 승인 ADC 비교' : 'Approved ADC comparison' },
+      const grid = h('div', { class: 'review-grid', role: 'table', 'aria-label': isKo ? 'FDA 승인 ADC 추천' : 'Approved ADC recommendations' },
         h('div', { class: 'review-grid-head', role: 'row' },
-          h('span', { class: 'col-rank', role: 'columnheader', text: isKo ? '전체 순위' : 'Overall rank' }),
+          h('span', { class: 'col-rank', role: 'columnheader', text: '#' }),
           h('div', { class: 'col-head-stack col-drug', role: 'columnheader' },
             h('span', { text: t('secConstruct') })),
           tipped(h('div', { class: 'col-head-stack col-fit', role: 'columnheader' },
@@ -3867,7 +3842,7 @@
       rows.forEach((row, i) => {
         if (i === firstOtherIdx && firstOtherIdx > 0) {
           dividerEl = h('div', { class: 'review-group-divider', role: 'row' },
-            h('span', { role: 'cell', text: isKo ? '타 적응증 승인 약물' : 'Approved for other indications' }));
+            h('span', { role: 'cell', text: isKo ? '타 질환 승인 약물' : 'Approved for other diseases' }));
           grid.append(dividerEl);
         }
         const isTop = profileReady && spotlightSet.has(row.adc);
@@ -3901,9 +3876,7 @@
         h('div', { class: 'drug-cell', role: 'cell' },
           h('div', { class: 'drug-name-row' },
             h('span', { class: 'drug-name', text: row.name }),
-            profileReady && row.tie ? h('span', { class: 'tie-tag', text: isKo ? '공동' : 'Tied' }) : null,
-            hasCancer && row.indicated ? h('span', { class: 'sp-match-tag', text: t('match') }) : null,
-            otherCancer ? h('span', { class: 'other-cancer-tag', text: isKo ? '타 적응증' : 'Other indication' }) : null),
+            ),
           h('span', { class: 'drug-meta', text: [profileReady ? (isKo ? `전체 ${rows.length}개 중 ${row.tie ? '공동 ' : ''}${row.rank}위` : `${row.tie ? 'Tied ' : ''}#${row.rank} of ${rows.length} overall`) : '', pills.join('  /  ') || (row.cancers || []).join(', ')].filter(Boolean).join('  /  ') })),
         h('div', { class: 'status-cell', role: 'cell' },
           h('span', { class: 'cell-label', text: t('secFit') }),
@@ -4407,12 +4380,11 @@
   function buildStructureStudioMode() {
     if (['manual', 'auto'].includes(S.studioDesignMode) && S.studioEvaluatedSignature !== studioInputSignature()) invalidateStudioEvaluation();
     const box = h('div', { class: 's-studio' });
-    const introH1 = h('h1', { class: 'mode-h1', text: S.lang === 'ko' ? 'ADC 설계' : 'ADC Design' });
+    // Mode 2 top heading removed in v0.9.7
     const studioWorkspaceBar = buildWorkspaceBar(() => invalidateCurrentEvaluation());
+    let lastScanAnimMs = 1200;
     studioWorkspaceBar.classList.add('studio-patient-bar');
     box.append(
-      h('header', { class: 'mode-intro' },
-        h('div', { class: 'mode-intro-copy' }, introH1)),
       studioWorkspaceBar
     );
     const wrap = h('div', { class: 'studio-wrap' });
@@ -4550,7 +4522,7 @@
         prioOrgan: S.prioOrgan || null,
         cancerText: patientCancerText(),
         simWeights: Object.assign({}, DEFAULT_SIM_WEIGHTS, S.simWeights || {}),
-        customPayloadSmiles: S.deepResearchOn ? String(S.customPayloadSmiles || '').trim() : '',
+        customPayloadSmiles: String(S.customPayloadSmiles || '').trim(),
       };
     }
 
@@ -4658,7 +4630,7 @@
 
       clear(controls);
       const isKo = S.lang === 'ko';
-      introH1.textContent = isKo ? 'ADC 설계' : 'ADC Design';
+      // Mode 2 heading omitted in v0.9.7
       const totalCombos = STUDIO_TARGETS.length * STUDIO_LINKERS.length * STUDIO_PAYLOADS.length * STUDIO_DAR_ITEMS.length * STUDIO_FC_ITEMS.length;
 
       const curLnkObj = STUDIO_LINKERS.find((x) => x.id === S.studio.linker) || STUDIO_LINKERS[0];
@@ -4668,8 +4640,7 @@
       // Execution: choose the method (segmented control), then one run action for that method.
       const runMode = S.studioRunMode === 'auto' ? 'auto' : 'manual';
       const slotsBusy = Boolean(gpuStatus && gpuStatus.available === false);
-      const deepOn = runMode === 'auto' && Boolean(S.deepResearchOn);
-      const deepBlocked = Boolean(deepOn && slotsBusy && !isOptimizing);
+      const deepBlocked = Boolean(runMode === 'auto' && slotsBusy && !isOptimizing);
 
       const segBtn = (id, ko, en) => h('button', {
         type: 'button',
@@ -4677,21 +4648,17 @@
         'aria-pressed': runMode === id ? 'true' : 'false',
         disabled: isOptimizing ? true : null,
         text: isKo ? ko : en,
-        onclick: () => { if (S.studioRunMode === id) return; S.studioRunMode = id; save(); renderControls(); },
+        onclick: () => { if (S.studioRunMode === id) return; S.studioRunMode = id; if (id === 'auto') pollGpuStatus(false); save(); renderControls(); },
       });
       const segGroup = h('div', { class: 'seg-control', role: 'group', 'aria-label': isKo ? '설계 모드' : 'Design mode' },
         segBtn('manual', '수동 설계', 'Manual'),
-        segBtn('auto', '자동 탐색', 'Auto search'));
+        segBtn('auto', '자동 설계', 'Auto design'));
 
       const runLabel = isOptimizing
         ? (isKo ? '분석 중…' : 'Analyzing…')
         : deepBlocked
           ? (isKo ? '분석 대기 중 (모든 슬롯 사용 중)' : 'Waiting (all slots busy)')
-          : runMode === 'manual'
-            ? (isKo ? '현재 구성 평가' : 'Evaluate current construct')
-            : deepOn
-              ? (isKo ? 'Deep Research 시작' : 'Start Deep Research')
-              : (isKo ? '자동 탐색 시작' : 'Start auto search');
+          : (isKo ? 'ADC 설계' : 'Design ADC');
 
       optBtn = h('button', {
         type: 'button',
@@ -4703,26 +4670,9 @@
           if (deepBlocked || isOptimizing) return;
           runClickY = window.scrollY;
           if (runMode === 'manual') runManualSimulation();
-          else runOptimizationSimulation(deepOn);
+          else runOptimizationSimulation();
         },
       });
-
-      let deepOpt = null;
-      if (runMode === 'auto') {
-        deepOpt = h('div', { class: 'deep-opt' },
-          h('button', {
-            type: 'button',
-            role: 'switch',
-            'aria-checked': S.deepResearchOn ? 'true' : 'false',
-            class: 'deep-switch' + (S.deepResearchOn ? ' is-on' : ''),
-            title: isKo ? '5-Fold ADCSurrogateNet v2 실시간 추론과 용량-반응 곡선' : 'Live 5-fold ADCSurrogateNet v2 inference & dose-response',
-            disabled: isOptimizing ? true : null,
-            onclick: () => { S.deepResearchOn = !S.deepResearchOn; if (S.deepResearchOn) pollGpuStatus(false); invalidateCurrentEvaluation(); },
-          },
-          h('span', { class: 'deep-switch-copy' },
-            h('span', { class: 'deep-switch-title', text: 'Deep Research' })),
-          h('span', { class: 'drp-switch-pill', 'aria-hidden': 'true' }, h('i', { class: 'drp-switch-knob' }))));
-      }
 
       const execBox = h('div', { class: 'studio-exec-box' }, segGroup);
       controls.append(execBox);
@@ -4748,7 +4698,7 @@
           invalidateCurrentEvaluation();
         },
       }) : null;
-      const runRow = h('div', { class: 'studio-run-row' }, summary, deepOpt, optBtn, undo);
+      const runRow = h('div', { class: 'studio-run-row' }, summary, optBtn, undo);
       if (gpuStatusMsg) runRow.append(h('div', { class: 'gpu-busy-notice', role: 'status', text: gpuStatusMsg }));
 
       const headAction = h('div', { class: 'studio-head-action' },
@@ -4929,11 +4879,11 @@
             const isSel = val === draftVal;
             let badgeEl = null;
             if (isTgt && patientCancerMatchesTarget(it) === true) {
-              badgeEl = h('span', { class: 'ps-badge is-match', text: ko ? '일치' : 'Match' });
+              badgeEl = null;
             } else if (isLnk && !isPairCompatible(it, curPldObj)) {
-              badgeEl = h('span', { class: 'ps-badge is-warn', text: ko ? '스페이서' : 'Spacer' });
+              badgeEl = null;
             } else if (!isTgt && !isLnk && !isPairCompatible(curLnkObj, it)) {
-              badgeEl = h('span', { class: 'ps-badge is-warn', text: ko ? '스페이서' : 'Spacer' });
+              badgeEl = null;
             }
             const row = h('button', {
               type: 'button',
@@ -5157,7 +5107,7 @@
       revealResults();
     }
 
-    async function runOptimizationSimulation(useDeepResearch) {
+    async function runOptimizationSimulation() {
       if (isOptimizing) return;
       hideMicroPopover();
       S.deepMenuOpen = false;
@@ -5175,12 +5125,21 @@
       renderControls();
 
       const isKo = S.lang === 'ko';
-      if (useDeepResearch && API.studioDeepResearch) {
-        // Mode 3: Real-time 5-fold ADCSurrogateNet v2 on GPU 0..3 (or CPU server fallback)
+      const prefersReducedMotion = Boolean(
+        typeof window !== 'undefined' &&
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      );
+      if (API.studioDeepResearch) {
+        // Auto Design always runs 5-fold ADCSurrogateNet v2 + 3-cycle Q3W PK/PD ODE (>= 5s compute floor)
         setTimeout(() => pollGpuStatus(false), 75);
+        const t0 = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
         try {
-          const res = await API.studioDeepResearch(buildEvalRequestBody());
+          const res = await API.studioDeepResearch(Object.assign(buildEvalRequestBody(), { minComputeMs: 5000 }));
           if (seq !== evalReqSeq || signature !== studioInputSignature() || !box.isConnected) return;
+          const nowMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+          const serverMs = Math.max(0, nowMs - t0);
+          lastScanAnimMs = prefersReducedMotion ? 0 : Math.max(450, Math.round(5000 - serverMs));
           if (res.gpu_status) gpuStatus = res.gpu_status;
           serverSpace = adaptServerSpace(res);
           S.lastRunMode = 'deep_research_v2';
@@ -5199,7 +5158,7 @@
             renderControls();
             renderStudioCanvas(false);
           } else {
-            gpuStatusMsg = (err && err.message) || 'Deep Research error';
+            gpuStatusMsg = (err && err.message) || (isKo ? '자동 설계 오류' : 'Auto design error');
             renderControls();
             renderStudioCanvas(false);
           }
@@ -5208,20 +5167,9 @@
         return;
       }
 
-      // Mode 2 (Default): Python Server Matrix Search
-      S.lastRunMode = 'matrix_368k';
-      try {
-        if (API.studioEvaluate) {
-          const res = await API.studioEvaluate(buildEvalRequestBody());
-          if (seq !== evalReqSeq || signature !== studioInputSignature() || !box.isConnected) return;
-          serverSpace = adaptServerSpace(res);
-        } else {
-          serverSpace = evaluateLocalFallbackSpace();
-        }
-      } catch (e) {
-        if (seq !== evalReqSeq || signature !== studioInputSignature() || !box.isConnected) return;
-        serverSpace = evaluateLocalFallbackSpace();
-      }
+      lastScanAnimMs = prefersReducedMotion ? 0 : 1200;
+      serverSpace = evaluateLocalFallbackSpace();
+      S.lastRunMode = 'deep_research_v2';
       if (!box.isConnected) { isOptimizing = false; return; }
       renderStudioCanvas(true);
     }
@@ -5285,52 +5233,18 @@
       if (S.studioNeedInputWarn && !hasPatientProfile()) {
         chartWrap.append(h('div', { class: 'sim-need-patient-banner' },
           h('span', null,
-            isKo ? '환자 맞춤형 설계를 실행하려면 먼저' : 'To run patient-tailored ADC design,',
+            isKo ? '환자 맞춤형 ADC 설계를 위하여' : 'For personalized ADC design,',
             h('br'),
-            isKo ? '진단 질환, 기저질환 또는 검진 수치를 입력해야 합니다.' : 'enter diagnosis, comorbidities, or lab values first.'),
+            isKo ? '환자 질환과 기본 정보를 입력해주세요.' : 'please enter patient conditions and basic information.'),
           h('button', {
             type: 'button',
             class: 'btn-goto-patient',
-            text: isKo ? '1. 환자 프로필로 이동 →' : 'Go to 1. Patient Profile →',
+            text: isKo ? '환자 프로필로 이동 →' : 'Go to Patient Profile →',
             onclick: () => switchMode(0),
           })));
       }
 
-      // Live Deep Research Telemetry Strip (shown when Mode 3 Deep Research was executed)
-      let deepStrip = null;
-      if (designMode !== 'idle' && isDeepResult && !animateScan) {
-        const dr = evalSpace.deepResearch;
-        const bSim = evalSpace.best || activeSim;
-        const concItems = (bSim.concResponse || []).map((cr) => h('div', { class: 'dts-conc-item' },
-          h('span', { class: 'dts-conc-nm', text: `${cr.concNm} nM` }),
-          h('span', { class: 'dts-conc-bar' }, h('i', { style: `width:${Math.min(100, Math.max(4, cr.killPct))}%` })),
-          h('span', { class: 'dts-conc-val', text: `${cr.killPct.toFixed(0)}%` })));
-        const doseItems = (Array.isArray(bSim.doseCurve) ? bSim.doseCurve : []).map((dc) => h('div', {
-          class: 'dts-dose-card' + (dc.isOptimalDose ? ' is-optimal' : ''),
-        },
-          h('span', { class: 'dts-dose-mg', text: `${dc.doseMgKg} mg/kg` }),
-          h('span', { class: 'dts-dose-metrics' },
-            h('span', { text: isKo ? `안전 ${Math.round(dc.safetyRaw)}` : `Safe ${Math.round(dc.safetyRaw)}` }),
-            h('span', { text: isKo ? `효능 ${Math.round(dc.efficacyRaw)}` : `Eff ${Math.round(dc.efficacyRaw)}` }))));
-
-        deepStrip = h('div', { class: 'deep-telemetry-strip' },
-          h('div', { class: 'dts-head' },
-            h('div', { class: 'dts-sigma-group' },
-              h('span', { class: 'dts-tag', text: 'Deep Research' })),
-            h('span', {
-              class: 'dts-meta',
-              text: isKo
-                ? `최적 용량 ${dr.optimal_dose_mgkg} mg/kg`
-                : `Optimal Dose ${dr.optimal_dose_mgkg} mg/kg`,
-            })),
-          h('div', { class: 'dts-body' },
-            h('div', { class: 'dts-sigma-group' },
-              h('span', { class: 'dts-chip', text: isKo ? `안전도 ${bSim.safetyScore} ± ${(bSim.safetyStd || 0).toFixed(1)}` : `Safety ${bSim.safetyScore} ± ${(bSim.safetyStd || 0).toFixed(1)}` }),
-              h('span', { class: 'dts-chip', text: isKo ? `효능 ${bSim.efficacyScore} ± ${(bSim.efficacyStd || 0).toFixed(1)}` : `Efficacy ${bSim.efficacyScore} ± ${(bSim.efficacyStd || 0).toFixed(1)}` }),
-              h('span', { class: 'dts-chip', text: `pIC50 ${(bSim.pIC50Pos || 8).toFixed(2)} ± ${(bSim.pIC50Std || 0).toFixed(2)}` })),
-            concItems.length ? h('div', { class: 'dts-conc-grid' }, concItems) : null,
-            doseItems.length ? h('div', { class: 'dts-dose-grid' }, doseItems) : null));
-      }
+      // Auto Design telemetry strip removed in v0.9.7
 
       const eqGrid = h('div', { class: 'sim-eq-grid' });
       const triadBox = h('div', { class: 'design-triad-grid' });
@@ -5472,7 +5386,7 @@
         const eq3Lines = [
           h('div', { class: 'sim-eq-line' },
             mVar('Y', 'eff'), mOp('='), mTxt('100'), mOp('×'),
-            mVar('I', isKo ? '적응증' : 'ind'), mOp('×'), mVar('C', isKo ? '접합' : 'pair'), mOp('×'), mTxt('('),
+            mVar('I', isKo ? '질환' : 'dis'), mOp('×'), mVar('C', isKo ? '접합' : 'pair'), mOp('×'), mTxt('('),
             mNum((sNow.nwSel || 0.25).toFixed(2)), mOp('×'), mVar('S', 'sel'),
             mOp('+'),
             mNum((sNow.nwPot || 0.30).toFixed(2)), mOp('×'), mVar('S', 'pot'),
@@ -5486,29 +5400,29 @@
         const cards = isKo
           ? [
               {
-                tag: '1. 치료지수 목적함수',
-                sym: designMode === 'auto' ? '탐색 결과' : '현재 구성 평가식',
+                tag: '치료지수 목적함수',
+                sym: '',
                 lines: eq1Lines,
                 desc: designMode === 'auto'
                   ? `아래 2번(장기 안전도 X)과 3번(항암 효능 Y) 점수를 결합해 ${totalCombTxt}개 후보 중 모델 최적점(${plainName(spNow.best.spec.target)} + ${plainName(spNow.best.spec.payload)}, DAR ${spNow.best.spec.dar})을 선정했습니다.`
-                  : '장기 안전도 X와 항암 효능 Y의 가중합으로 현재 구성을 평가하는 수식입니다. 자동 탐색을 실행하면 후보 간 비교에 사용합니다.',
+                  : '장기 안전도 X와 항암 효능 Y의 가중합으로 현재 구성을 평가하는 수식입니다. 자동 설계를 실행하면 후보 간 비교에 사용합니다.',
               },
               {
-                tag: '2. 경로 분해 장기 안전도 — 가로축(X) 좌표 산출',
-                sym: 'X축 안전도 산출',
+                tag: '장기 안전도 예측',
+                sym: '',
                 lines: eq2Lines,
                 desc: '하단 독성 경로 슬라이더(ω_peak, α_on, β_leak, γ_agg, φ_Fc)가 전신 누출, 소수성 응집, Fc감마 흡수, 정상조직 발현 위험에 반영되어 X축 안전도 점수를 산출합니다.',
               },
               {
-                tag: '3. 멀티모달 신경망 항암 효능 — 세로축(Y) 좌표 산출',
-                sym: 'Y축 효능 산출',
+                tag: '항암 효능 예측',
+                sym: '',
                 lines: eq3Lines,
                 desc: `하단 효능 슬라이더(w_sel, w_bys)가 신경망 예측치(접합체 pIC50 = ${picTxt}, 혈장 보존율 = ${stabTxt})의 가중합을 조절해 Y축 항암 효능 점수를 산출합니다.`,
               },
             ]
           : [
               {
-                tag: '1. Therapeutic Index Objective',
+                tag: 'Therapeutic Index Objective',
                 sym: designMode === 'auto' ? 'Search result' : 'Current construct formula',
                 lines: eq1Lines,
                 desc: designMode === 'auto'
@@ -5516,14 +5430,14 @@
                   : 'A weighted sum of organ safety X and efficacy Y evaluates the current construct. Auto search uses this formula to compare candidates when executed.',
               },
               {
-                tag: '2. Pathway-Decomposed Organ Safety — X-Axis Coordinate',
-                sym: 'X-Axis Safety',
+                tag: 'Organ Safety Prediction',
+                sym: '',
                 lines: eq2Lines,
                 desc: 'Maps the toxicity pathway sliders below (ω_peak, α_on, β_leak, γ_agg, φ_Fc) onto 5-fold neural 13-organ hazard predictions to compute X_safe.',
               },
               {
-                tag: '3. Multimodal Neural Antitumor Efficacy — Y-Axis Coordinate',
-                sym: 'Y-Axis Efficacy',
+                tag: 'Antitumor Efficacy Prediction',
+                sym: '',
                 lines: eq3Lines,
                 desc: `Applies the efficacy sliders below (w_sel, w_bys) to neural potency and delivery predictions (conjugate pIC50 = ${picTxt}, plasma retention = ${stabTxt}) to compute Y_eff.`,
               },
@@ -5533,7 +5447,7 @@
           eqGrid.append(h('div', { class: 'sim-eq-card' },
             h('div', { class: 'sim-eq-card-head' },
               h('span', { class: 'sim-eq-tag', text: c.tag }),
-              h('span', { class: 'sim-eq-sym', text: c.sym })),
+              null),
             h('div', { class: 'sim-eq-math' }, c.lines)));
         });
       }
@@ -5583,7 +5497,7 @@
         triadBox.hidden = true;
         eqGrid.hidden = true;
         if (chartLegendEl) chartLegendEl.hidden = true;
-        if (deepStrip) deepStrip.hidden = true;
+        // deepStrip removed in v0.9.7
         if (organFold) organFold.hidden = true;
         initDesignChart(cvs, activeSim, evalSpace, false);
       }
@@ -5700,8 +5614,8 @@
         h('label', {
           class: 'drp-smiles-label',
           text: isKo
-            ? '신규 페이로드 SMILES (Deep Research 구동 시 반영)'
-            : 'Custom Payload SMILES (applied during Deep Research)',
+            ? '신규 페이로드 SMILES'
+            : 'Custom Payload SMILES',
         }),
         h('input', {
           type: 'text',
@@ -5710,10 +5624,6 @@
           value: S.customPayloadSmiles || '',
           oninput: (e) => {
             S.customPayloadSmiles = e.target.value;
-            if (String(e.target.value).trim() && !S.deepResearchOn) {
-              S.deepResearchOn = true;
-              renderControls();
-            }
             refreshLiveFormulaState();
           },
           onchange: () => renderStudioCanvas(false),
@@ -5744,7 +5654,7 @@
       simWrap.append(simHead);
       if (previousResult) simWrap.append(previousResult);
       simWrap.append(chartWrap);
-      if (deepStrip) simWrap.append(deepStrip);
+      // deepStrip omitted in v0.9.7
       if (designMode !== 'idle' && hasPatientProfile()) {
         simWrap.append(triadBox);
       }
@@ -5865,7 +5775,7 @@
       })).sort((a, b) => a.sortKey - b.sortKey).map((item) => item.c);
 
       const startTime = performance.now();
-      const duration = (animate && !still()) ? (evalSpace.mode === 'deep_research_v2' ? 12800 : 3200) : 0;
+      const duration = (animate && !still()) ? (evalSpace.mode === 'deep_research_v2' ? lastScanAnimMs : 2200) : 0;
       let completed = false;
 
       let paretoFront = [];
@@ -5997,11 +5907,11 @@
           ctx.textAlign = 'center';
           const lines = !hasPatientProfile()
             ? (isKo
-                ? ['진단 질환, 기저질환 또는 검진 수치를 먼저 입력한 뒤', '수동 설계 또는 자동 설계를 실행하세요']
-                : ['Enter patient conditions or lab values first,', 'then run Manual or Auto ADC Design'])
+                ? ['환자 맞춤형 ADC 설계를 위하여', '환자 질환과 기본 정보를 입력해주세요.']
+                : ['For personalized ADC design,', 'please enter patient conditions and basic information.'])
             : (isKo
-                ? ['좌측에서 [ADC 수동 설계] 또는 [ADC 자동 설계]를 선택해', '설계 결과를 확인하세요']
-                : ['Select [Manual ADC Design] or [Auto-design ADC]', 'to view construct predictions']);
+                ? ['좌측에서 [수동 설계] 또는 [자동 설계]를 선택하고', '[ADC 설계] 버튼을 눌러 예측 결과를 확인하세요']
+                : ['Select [Manual design] or [Auto design] on the left,', 'then click [Design ADC] to view construct predictions']);
           const lineH = 18 * dpr;
           const startY = offsetY + plotH / 2 - ((lines.length - 1) * lineH) / 2;
           lines.forEach((l, idx) => {
@@ -6187,23 +6097,12 @@
   // ------------------------------------------------------------------ Mode 0: Patient Profile (Condition Search -> Demographics -> Optional Clinical Panels -> Compare CTA)
   function buildPatientLabsMode(embedded = false) {
     const box = h('div', { class: 's2' });
-    const introMount = h('div');
     const wbMount = h('div');
     const content = h('div');
     if (embedded) box.append(content);
-    else box.append(introMount, wbMount, content);
+    else box.append(wbMount, content);
 
-    function renderIntroAndSamples() {
-      if (embedded) return;
-      clear(introMount);
-      const isKo = S.lang === 'ko';
-      const entry = S.entry || 'demo';
-      const title = entry === 'new' ? (isKo ? '새 환자 입력' : 'New patient') : (isKo ? '환자 프로필' : 'Patient Profile');
-      const intro = h('header', { class: 'mode-intro' },
-        h('div', { class: 'mode-intro-copy' },
-          h('h1', { class: 'mode-h1', text: title })));
-      introMount.append(intro);
-    }
+    function renderIntroAndSamples() {}
     renderIntroAndSamples();
 
     function renderWb() {
@@ -6632,7 +6531,7 @@
           h('button', {
             type: 'button',
             class: 'btn-primary-cta',
-            text: isKo ? 'ADC 비교하기' : 'Compare ADCs',
+            text: isKo ? 'ADC 추천' : 'Recommend ADCs',
             onclick: () => switchMode(1),
           })));
 
@@ -7513,7 +7412,7 @@
     };
 
     const modeLabel = sp.mode === 'deep_research_v2'
-      ? 'Deep Research (5-fold ADCSurrogateNet v2)'
+      ? (isKo ? '자동 설계 (5-fold ADCSurrogateNet v2)' : 'Auto Design (5-fold ADCSurrogateNet v2)')
       : (S.studioDesignMode === 'auto' ? (isKo ? 'ADC 자동 설계' : 'Auto-design ADC') : (isKo ? 'ADC 수동 설계' : 'Manual ADC Design'));
 
     return {
@@ -7646,7 +7545,7 @@
         if (id) MECH[id] = m;
       }
     });
-    const cleanVer = String(APP.version || '0.9.6').replace(/^v/i, '');
+    const cleanVer = String(APP.version || '0.9.7').replace(/^v/i, '');
     if (verEl) verEl.textContent = cleanVer;
     if (barVer) barVer.textContent = cleanVer;
 
