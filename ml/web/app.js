@@ -1,4 +1,4 @@
-/* ADCTOX v0.9.5 Architectural Daylight WebApp
+/* ADCTOX v0.9.6 Architectural Daylight WebApp
    Active-Organ Matrix + Construct Design Studio + Deep Research (GPU/CPU) + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -197,17 +197,17 @@
     const isKo = S.lang === 'ko';
     const stepItems = isKo
       ? [
-          ['1. 환자 프로필', '접속 시 가상 환자 예시가 자동 입력됩니다. 상단의 새 환자 입력으로 빈 상태에서 시작할 수 있으며, 진단명과 기저질환을 입력하고 인구학적 정보와 선택 검진 수치를 입력합니다.'],
+          ['1. 환자 프로필', '접속 시 가상 환자 예시가 자동 입력됩니다. 상단의 새 환자 입력으로 빈 상태에서 시작할 수 있으며, 진단명과 기저질환을 입력하고 기본 정보와 선택 검진 수치를 입력합니다.'],
           ['2. ADC 비교', '승인된 ADC 15종을 약물 적합도, 취약 장기 주의사항, 임상시험 이상사례 발생률로 비교합니다. 취약 장기군에서 장기를 선택하면 강조 표시되며, 약물 행을 누르면 상세 근거와 분석 결과 내보내기를 이용할 수 있습니다.'],
           ['3. ADC 설계', '표적, 링커, 페이로드, DAR, 항체 및 Fc 구성을 직접 조합해 수동 평가하거나, 자동 설계 및 Deep Research로 5-Fold ADCSurrogateNet v2 예측을 실행해 신규 설계와 기존 ADC를 비교합니다.'],
         ]
       : [
-          ['1. Patient Profile', 'Opens with a preloaded demo patient. Use New Patient in the top bar to start blank, enter diagnoses or comorbidities, and adjust demographics and optional clinical panels.'],
+          ['1. Patient Profile', 'Opens with a preloaded demo patient. Use New Patient in the top bar to start blank, enter diagnoses or comorbidities, and adjust basic information and optional clinical panels.'],
           ['2. Compare ADCs', 'Compares 15 FDA-approved ADCs across dosing fit, vulnerable-organ cautions, and clinical trial adverse-event rates. Click any drug row to open detailed evidence and export results.'],
           ['3. ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto-design and Deep Research (5-Fold ADCSurrogateNet v2) to compare your new design against an approved ADC.'],
         ];
     const xBtn = h('button', { type: 'button', class: 'x-btn', 'aria-label': isKo ? '닫기' : 'Close', onclick: closeGuide }, svgClose());
-    const verStr = String((APP && APP.version) || '0.9.5').replace(/^v/i, '');
+    const verStr = String((APP && APP.version) || '0.9.6').replace(/^v/i, '');
     const dialog = h('div', { class: 'guide overlay-panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
       h('div', { class: 'g-head' },
         h('h2', { id: 'g-title', text: isKo ? 'ADCToX 사용 안내' : 'ADCToX Guide' }),
@@ -2307,8 +2307,8 @@
       grade3: '3등급 이상',
       primaryRec: '최우선 후보 요약',
       primaryHint: '',
-      filterAll: '전체 승인 ADC',
-      filterMatch: '적응증 일치',
+      filterAll: '전체 승인 ADC 목록',
+      filterMatch: '질병 일치',
       filterRestricted: '약물 사용 제한',
       exportSummary: '분석 결과 내보내기',
       match: '일치',
@@ -2361,10 +2361,10 @@
       simOrganTitle: '장기별 독성 예측',
       fcLalaNote: 'Fc 침묵화(LALA-PG)로 대식세포의 FcγR 결합이 줄어 폐, 간, 안구 등으로의 비특이 흡수가 감소했습니다.',
       fcWtNote: '야생형 IgG1은 대식세포의 FcγR에 결합하므로 폐, 간, 안구로의 비특이 흡수가 일어날 수 있습니다.',
-      basicTitle: '인구학적 정보',
+      basicTitle: '기본 정보',
       basicReqTag: '',
-      basicExpand: '인구학적 정보 펼치기',
-      basicCollapse: '인구학적 정보 접기',
+      basicExpand: '기본 정보 펼치기',
+      basicCollapse: '기본 정보 접기',
       flowTitle: '선택 검진 수치',
       flowOptTag: '',
       flowSub: '일반 혈액, 생화학, 신장, 간, 심장 및 약물유전형 지표',
@@ -2445,8 +2445,8 @@
       grade3: 'Gr >=3',
       primaryRec: 'Leading Candidate Summary',
       primaryHint: '',
-      filterAll: 'All Approved ADCs',
-      filterMatch: 'Indication Match',
+      filterAll: 'All Approved ADC List',
+      filterMatch: 'Disease Match',
       filterRestricted: 'Use Restrictions',
       exportSummary: 'Export Analysis Results',
       match: 'Match',
@@ -2499,10 +2499,10 @@
       simOrganTitle: 'Organ Toxicity Prediction',
       fcLalaNote: 'Fc silencing (LALA-PG) reduces FcγR binding on macrophages, lowering non-specific uptake in lung, liver and eye.',
       fcWtNote: 'Wild-type IgG1 binds FcγR on macrophages, so non-specific uptake in lung, liver and eye can occur.',
-      basicTitle: 'Demographics',
+      basicTitle: 'Basic Information',
       basicReqTag: '',
-      basicExpand: 'Expand Demographics',
-      basicCollapse: 'Collapse Demographics',
+      basicExpand: 'Expand Basic Information',
+      basicCollapse: 'Collapse Basic Information',
       flowTitle: 'Optional Clinical Panels',
       flowOptTag: '',
       flowSub: 'CBC, chemistry, renal clearance, Child-Pugh grade, cardiac LVEF, and pharmacogenomic markers',
@@ -3430,26 +3430,6 @@
         chipsWrap.append(h('span', { class: 'p-chip' + (isCancer ? ' cancer-chip' : '') },
           h('span', { text: c.label }), rm));
       });
-
-      const L = S.labs || {};
-      const sh = (L.derived && L.derived.shown) || {};
-      const labBadges = [];
-      if (S.raw.crcl) labBadges.push(`CLcr ${S.raw.crcl} mL/min`);
-      else if (sh.crcl) labBadges.push(`CLcr ${sh.crcl} mL/min`);
-      else if (S.raw.creatinine) labBadges.push(`Cr ${S.raw.creatinine} mg/dL`);
-      if (S.raw.esrd === 'y' || S.raw.esrd === true) labBadges.push('Dialysis/ESRD');
-      if (S.raw.bilirubin) labBadges.push(`Bili ${S.raw.bilirubin} mg/dL`);
-      if (S.raw.child_pugh) labBadges.push(`Child-Pugh ${S.raw.child_pugh}`);
-      if (S.raw.platelet) labBadges.push(`Plt ${S.raw.platelet}`);
-      if (S.raw.anc) labBadges.push(`ANC ${S.raw.anc}`);
-      if (S.raw.lvef) labBadges.push(`LVEF ${S.raw.lvef}%`);
-      if (S.raw.hba1c) labBadges.push(`HbA1c ${S.raw.hba1c}%`);
-      if (S.raw.ugt1a1 === 'y' || S.raw.ugt1a1 === true) labBadges.push('UGT1A1*28');
-
-      if (labBadges.length && S.mode !== 0) {
-        chipsWrap.append(h('div', { class: 'lab-summary-row' },
-          h('span', { class: 'lab-summary-text', text: labBadges.join('  /  ') })));
-      }
     }
 
     function renderSugg() {
@@ -3826,7 +3806,7 @@
           const tiedCount = rows.filter((r) => r.rank === leadRow.rank).length;
           const prioSummary = S.prioOrgan
             ? (isKo ? `우선 평가: ${organKo(S.prioOrgan)}` : `Prioritizing ${organKo(S.prioOrgan)}`)
-            : (hasCancer && leadRow.indicated ? (isKo ? '적응증 일치' : 'Approved for entered indication') : leadSt.full);
+            : (hasCancer && leadRow.indicated ? (isKo ? '질병 일치' : 'Disease match') : leadSt.full);
           const leadMetaTxt = [prioSummary].concat(leadPills).filter(Boolean).join('  /  ');
           const kicker = tiedCount > 1
             ? (isKo ? `전체 ${rows.length}개 중 공동 ${leadRow.rank}위 (${tiedCount}개 후보 중 대표)` : `Tied #${leadRow.rank} of ${rows.length} overall (1 of ${tiedCount} candidates)`)
@@ -5325,6 +5305,13 @@
           h('span', { class: 'dts-conc-nm', text: `${cr.concNm} nM` }),
           h('span', { class: 'dts-conc-bar' }, h('i', { style: `width:${Math.min(100, Math.max(4, cr.killPct))}%` })),
           h('span', { class: 'dts-conc-val', text: `${cr.killPct.toFixed(0)}%` })));
+        const doseItems = (Array.isArray(bSim.doseCurve) ? bSim.doseCurve : []).map((dc) => h('div', {
+          class: 'dts-dose-card' + (dc.isOptimalDose ? ' is-optimal' : ''),
+        },
+          h('span', { class: 'dts-dose-mg', text: `${dc.doseMgKg} mg/kg` }),
+          h('span', { class: 'dts-dose-metrics' },
+            h('span', { text: isKo ? `안전 ${Math.round(dc.safetyRaw)}` : `Safe ${Math.round(dc.safetyRaw)}` }),
+            h('span', { text: isKo ? `효능 ${Math.round(dc.efficacyRaw)}` : `Eff ${Math.round(dc.efficacyRaw)}` }))));
 
         deepStrip = h('div', { class: 'deep-telemetry-strip' },
           h('div', { class: 'dts-head' },
@@ -5341,7 +5328,8 @@
               h('span', { class: 'dts-chip', text: isKo ? `안전도 ${bSim.safetyScore} ± ${(bSim.safetyStd || 0).toFixed(1)}` : `Safety ${bSim.safetyScore} ± ${(bSim.safetyStd || 0).toFixed(1)}` }),
               h('span', { class: 'dts-chip', text: isKo ? `효능 ${bSim.efficacyScore} ± ${(bSim.efficacyStd || 0).toFixed(1)}` : `Efficacy ${bSim.efficacyScore} ± ${(bSim.efficacyStd || 0).toFixed(1)}` }),
               h('span', { class: 'dts-chip', text: `pIC50 ${(bSim.pIC50Pos || 8).toFixed(2)} ± ${(bSim.pIC50Std || 0).toFixed(2)}` })),
-            concItems.length ? h('div', { class: 'dts-conc-grid' }, concItems) : null));
+            concItems.length ? h('div', { class: 'dts-conc-grid' }, concItems) : null,
+            doseItems.length ? h('div', { class: 'dts-dose-grid' }, doseItems) : null));
       }
 
       const eqGrid = h('div', { class: 'sim-eq-grid' });
@@ -5383,8 +5371,16 @@
               optDoseVal ? h('div', { text: `${optDoseVal} mg/kg` }) : null)),
           h('div', { class: 'triad-metrics' },
             h('div', { class: 'triad-scores-stack' },
-              h('span', { text: isKo ? `안전도 ${dispSim.safetyScore}` : `Safety ${dispSim.safetyScore}` }),
-              h('span', { text: isKo ? `효능 ${dispSim.efficacyScore}` : `Efficacy ${dispSim.efficacyScore}` }))));
+              h('span', {
+                text: (curSpace && curSpace.mode === 'deep_research_v2' && dispSim.safetyStd != null)
+                  ? (isKo ? `안전도 ${dispSim.safetyScore} ± ${Number(dispSim.safetyStd).toFixed(1)}` : `Safety ${dispSim.safetyScore} ± ${Number(dispSim.safetyStd).toFixed(1)}`)
+                  : (isKo ? `안전도 ${dispSim.safetyScore}` : `Safety ${dispSim.safetyScore}`),
+              }),
+              h('span', {
+                text: (curSpace && curSpace.mode === 'deep_research_v2' && dispSim.efficacyStd != null)
+                  ? (isKo ? `효능 ${dispSim.efficacyScore} ± ${Number(dispSim.efficacyStd).toFixed(1)}` : `Efficacy ${dispSim.efficacyScore} ± ${Number(dispSim.efficacyStd).toFixed(1)}`)
+                  : (isKo ? `효능 ${dispSim.efficacyScore}` : `Efficacy ${dispSim.efficacyScore}`),
+              }))));
 
         const { refAdcId, refSim } = resolveRefForSim(dispSim, curSpace);
         const refSelect = h('select', {
@@ -5729,7 +5725,8 @@
         ontoggle: (e) => { S.formulaOpen = e.currentTarget.open; save(); },
       },
       h('summary', null,
-        h('span', { class: 'sim-summary-title', text: t('explainTitle') })),
+        h('span', { class: 'sim-summary-title', text: t('explainTitle') }),
+        h('span', { class: 'fold-chevron', 'aria-hidden': 'true' }, svgChevronDown())),
       advSmilesBox,
       explainToolbar,
       eqGrid,
@@ -5777,7 +5774,8 @@
         ontoggle: (e) => { S.foldProps = e.currentTarget.open; save(); },
       },
       h('summary', null,
-        h('span', { class: 'studio-fold-title', text: isKo ? '구성 특성' : 'Construct properties' })),
+        h('span', { class: 'studio-fold-title', text: isKo ? '구성 특성' : 'Construct properties' }),
+        h('span', { class: 'fold-chevron', 'aria-hidden': 'true' }, svgChevronDown())),
       h('div', { class: 'studio-fold-body' }, hero));
 
       // 3. Organ risk prediction
@@ -5790,14 +5788,23 @@
         ontoggle: (e) => { S.foldOrgan = e.currentTarget.open; save(); },
       },
       h('summary', null,
-        h('span', { class: 'studio-fold-title', text: t('simOrganTitle') })),
+        h('span', { class: 'studio-fold-title', text: t('simOrganTitle') }),
+        h('span', { class: 'fold-chevron', 'aria-hidden': 'true' }, svgChevronDown())),
       h('div', { class: 'studio-fold-body' }, organRows)) : null;
 
       add(canvas, [simWrap, propsFold, organFold, explain].filter(Boolean));
 
       setTimeout(() => initDesignChart(cvs, activeSim, evalSpace, animateScan,
         (f) => {
-          if (optBtn) optBtn.style.setProperty('--p', (f * 100).toFixed(1) + '%');
+          if (!optBtn) return;
+          optBtn.style.setProperty('--p', (f * 100).toFixed(1) + '%');
+          if (evalSpace.mode === 'deep_research_v2') {
+            optBtn.textContent = f < 0.34
+              ? (isKo ? '후보군 선별 (1/3)' : 'Screening (1/3)')
+              : f < 0.72
+                ? (isKo ? '5-Fold 앙상블 (2/3)' : '5-Fold Ensemble (2/3)')
+                : (isKo ? '용량 최적화 (3/3)' : 'Dose Titration (3/3)');
+          }
         },
         async () => {
           if (!animateScan) return;
@@ -5858,7 +5865,7 @@
       })).sort((a, b) => a.sortKey - b.sortKey).map((item) => item.c);
 
       const startTime = performance.now();
-      const duration = (animate && !still()) ? (evalSpace.mode === 'deep_research_v2' ? 2400 : 3200) : 0;
+      const duration = (animate && !still()) ? (evalSpace.mode === 'deep_research_v2' ? 12800 : 3200) : 0;
       let completed = false;
 
       let paretoFront = [];
@@ -6082,6 +6089,56 @@
           }
         }
 
+        if (modeNow === 'auto' && isDeep && (f >= 0.72 || !animate)) {
+          const dcList = Array.isArray(primaryPt.doseCurve) ? primaryPt.doseCurve.slice().sort((a, b) => a.doseMgKg - b.doseMgKg) : [];
+          if (primaryPt.safetyStd != null && primaryPt.efficacyStd != null) {
+            const rxStd = Math.max(5 * dpr, ((Number(primaryPt.safetyStd) * 1.96) / spanX) * plotW);
+            const ryStd = Math.max(5 * dpr, ((Number(primaryPt.efficacyStd) * 1.96) / spanY) * plotH);
+            ctx.save();
+            ctx.fillStyle = 'rgba(15, 118, 110, 0.11)';
+            ctx.strokeStyle = 'rgba(15, 118, 110, 0.48)';
+            ctx.lineWidth = 1.2 * dpr;
+            ctx.setLineDash([3 * dpr, 2 * dpr]);
+            ctx.beginPath();
+            ctx.ellipse(px, py, rxStd, ryStd, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            ctx.restore();
+          }
+          if (dcList.length >= 2) {
+            ctx.save();
+            ctx.strokeStyle = '#0F766E';
+            ctx.lineWidth = 2.0 * dpr;
+            ctx.beginPath();
+            dcList.forEach((dc, idx) => {
+              const dx = toX(dc.safetyRaw), dy = toY(dc.efficacyRaw);
+              if (idx === 0) ctx.moveTo(dx, dy);
+              else ctx.lineTo(dx, dy);
+            });
+            ctx.stroke();
+            ctx.font = `600 ${9.5 * dpr}px "Manrope", "Pretendard Variable", sans-serif`;
+            dcList.forEach((dc) => {
+              const dx = toX(dc.safetyRaw), dy = toY(dc.efficacyRaw);
+              ctx.fillStyle = dc.isOptimalDose ? '#0F766E' : '#FFFFFF';
+              ctx.strokeStyle = '#0F766E';
+              ctx.lineWidth = 1.6 * dpr;
+              ctx.beginPath();
+              ctx.arc(dx, dy, (dc.isOptimalDose ? 4.2 : 3.2) * dpr, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.stroke();
+              if (!dc.isOptimalDose) {
+                const tag = `${dc.doseMgKg}`;
+                const tx = Math.min(offsetX + plotW - 18 * dpr, dx + 6 * dpr);
+                const ty = Math.max(offsetY + 12 * dpr, dy - 4 * dpr);
+                ctx.fillStyle = '#0F766E';
+                ctx.textAlign = 'left';
+                ctx.fillText(tag, tx, ty);
+              }
+            });
+            ctx.restore();
+          }
+        }
+
         if (modeNow === 'manual' || f >= 0.97 || !animate) {
           ctx.fillStyle = 'rgba(15, 118, 110, 0.20)';
           ctx.beginPath(); ctx.arc(px, py, primaryHaloR, 0, Math.PI * 2); ctx.fill();
@@ -6091,7 +6148,10 @@
           ctx.beginPath(); ctx.arc(px, py, primaryCoreR, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
           const payLbl = primaryPt.spec.customPayloadLabel || plainName(primaryPt.spec.payload);
-          const primaryLabel = `${plainName(primaryPt.spec.target)} + ${payLbl}, DAR ${primaryPt.spec.dar} (${primaryPt.safetyScore}, ${primaryPt.efficacyScore})`;
+          const doseTag = (isDeep && modeNow === 'auto' && primaryPt.optimalDoseMgKg)
+            ? `, ${primaryPt.optimalDoseMgKg} mg/kg`
+            : '';
+          const primaryLabel = `${plainName(primaryPt.spec.target)} + ${payLbl}, DAR ${primaryPt.spec.dar}${doseTag} (${primaryPt.safetyScore}, ${primaryPt.efficacyScore})`;
           drawCalloutLabel(primaryLabel, px, py, true, offsetX, offsetY, plotW, plotH, dpr, '#0F766E', [refBox]);
         }
 
@@ -6951,9 +7011,6 @@
       const b = String(r.basis || '').replace(/^if /, '');
       return b === '-' ? t('appliesToAll') : b;
     };
-    const ws = (d.warnings || []).slice().sort((a, b) =>
-      Number(Boolean(S.prioOrgan && b.organ === S.prioOrgan)) - Number(Boolean(S.prioOrgan && a.organ === S.prioOrgan))
-    );
     const rulesListEl = rs.length ? h('div', { class: 'rsl' }, rs.map((r) => h('div', { class: 'rr' },
       h('div', { class: 'rh' },
         h('span', { class: 'k', text: organKo(r.organ) }),
@@ -6961,17 +7018,9 @@
       h('div', { class: 'pl' },
         r.patient ? [h('span', { class: 'pk', text: isKo ? '환자 수치' : 'Patient' }), h('span', { class: 'pv', text: r.patient })] : null,
         h('span', { class: 'pk', text: isKo ? '적용 기준' : 'Criterion' }), h('span', { class: 'lv2', text: ruleText(r) }))))) : null;
-    const warnsListEl = ws.length ? h('div', { class: 'wl' }, ws.map((w) => {
-      const strong = (w.mark || '').trim() === '!!';
-      return h('div', { class: 'wr' },
-        h('div', { class: 'wh' },
-          h('span', { class: 'k', text: organKo(w.organ) }),
-          h('span', { class: 'm ' + (strong ? 't-red' : 't-amber'), text: strong ? (isKo ? '경고' : 'Warning') : (isKo ? '주의' : 'Caution') })),
-        h('div', { class: 'wt', text: (w.text || '').replace(/;\s*/g, ', ') }));
-    })) : null;
     const secPatientWarn = section(
       t('patientWarnTitle'),
-      rulesListEl || warnsListEl ? h('div', { class: 'warn-stack' }, rulesListEl, warnsListEl) : h('p', { class: 'dim', text: t('noPatientWarn') })
+      rulesListEl ? h('div', { class: 'warn-stack' }, rulesListEl) : h('p', { class: 'dim', text: t('noPatientWarn') })
     );
 
     const secChecks = (d.checks || []).length ? section(t('preCheckTitle'), h('ul', { class: 'dash' }, d.checks.map((c) => h('li', { text: c })))) : null;
@@ -7531,7 +7580,6 @@
         keep = { key, value: ae.value, s0, s1 };
       }
     }
-    document.body.classList.toggle('profile-demo', S.mode === 0 && (S.entry === 'demo' || S.entry === 'demo_edited'));
     clear(stageBox);
     stageBox.classList.remove('enter');
     const builder = [buildPatientLabsMode, buildAdcMatrixMode, buildStructureStudioMode][S.mode] || buildPatientLabsMode;
@@ -7598,7 +7646,7 @@
         if (id) MECH[id] = m;
       }
     });
-    const cleanVer = String(APP.version || '0.9.5').replace(/^v/i, '');
+    const cleanVer = String(APP.version || '0.9.6').replace(/^v/i, '');
     if (verEl) verEl.textContent = cleanVer;
     if (barVer) barVer.textContent = cleanVer;
 

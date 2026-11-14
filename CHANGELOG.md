@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.6: Unified Patient Summary Bar, Basic Information Naming, Cleaner Drawer, and Differentiated Deep Research
+
+- **Uniform Workspace Bar Across Tabs 1–3:** Removed compact `.lab-summary-row` lab badges below condition chips in `2. Compare ADCs` and `3. ADC Design` and eliminated `.studio-patient-bar` CSS layout overrides so `.workspace-bar` maintains identical framing and styling across all three steps.
+- **`Basic Information` Naming, Filter Labels & Unified Chevrons:** Renamed `인구학적 정보` / `Demographics` to `기본 정보` / `Basic Information`; updated Compare ADCs filter pills to `질병 일치` / `전체 승인 ADC 목록` (`Disease Match` / `All Approved ADC List`); kept `New Patient` (`새 환자 입력`) visible on the initial `1. Patient Profile` header; replaced all solid disclosure triangles and native select arrows with unified vector chevrons (`svgChevronDown`); and streamlined `Vulnerable organ precautions` in the `2. Compare ADCs` drawer to display only boxed clinical criterion cards without trailing unboxed entries.
+- **Differentiated 5-Fold `Deep Research` Optimization & `12.8s` Scan:** Preserved `Auto search` speed (`3200 ms`) while setting `Deep Research` scan pacing to `12800 ms` (4x) with `(1/3)`, `(2/3)`, `(3/3)` progress states; added real Q3W `dose_mgkg` PK/PD exposure coupling, saturating Hill tumor target occupancy, 5-fold Lower Confidence Bound (LCB) utility, and 90th-percentile worst-organ tail penalty; rendered the 5-dose titration curve and 5-fold 95% confidence ellipse on the canvas, added a 5-dose therapeutic window strip (`dts-dose-grid`), and displayed `± σ` bounds directly on the `New Design` summary card.
+
 ## 0.9.5: Clean clinical workflow UI, real-time Deep Research points, and unified typography
 
 - **Unified Header, Typography & Mobile Navigation:** Matched top navigation border and active framing across `1`, `2`, and `3`; preserved numbered step badges on narrow mobile screens (`<= 480px`) with clean two-row wrapping (`height: auto`); enforced `Manrope` / `Pretendard Variable` typography across all elements; and removed decorative middle dots and redundant status/provenance pills throughout Tabs 1–3.

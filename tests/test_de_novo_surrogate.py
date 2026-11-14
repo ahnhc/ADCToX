@@ -259,10 +259,10 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
     from pathlib import Path
     from ml.adc_version import APP_VERSION
 
-    assert APP_VERSION == "0.9.5"
+    assert APP_VERSION == "0.9.6"
     root = Path(__file__).resolve().parent.parent
     sw_text = (root / "ml" / "web" / "sw.js").read_text(encoding="utf-8")
-    assert "adctox-pwa-v0.9.5" in sw_text
+    assert "adctox-pwa-v0.9.6" in sw_text
 
     app_js = (root / "ml" / "web" / "app.js").read_text(encoding="utf-8")
     review_js = (root / "ml" / "web" / "review.js").read_text(encoding="utf-8")
@@ -291,6 +291,7 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
         "참고치",
         "Required Labs",
         "Optional Labs",
+        "인구학적 정보",
         "암종",
         "탄두",
         "설계 축",
@@ -309,13 +310,81 @@ def test_v095_clean_ui_fonts_and_terminology_invariants():
         "sim-chart-legend",
         "deep_points",
         "github.com/ahnhc/ADCToX",
-        "인구학적 정보",
+        "기본 정보",
+        "Basic Information",
         "선택 검진 수치",
         "취약 장기군",
         "장기별 독성 예측",
         "고급 설정",
+        "dts-dose-grid",
+        "12800 : 3200",
+        "전체 승인 ADC 목록",
+        "질병 일치",
+        "fold-chevron",
     ):
-        assert required in app_js, f"missing expected v0.9.5 feature/label {required!r} in app.js"
+        assert required in app_js, f"missing expected v0.9.6 feature/label {required!r} in app.js"
+
+    # Unboxed warnings in Compare ADCs drawer must stay removed while keeping boxed rule cards
+    assert "warnsListEl" not in app_js
+    assert "rulesListEl" in app_js
+    # Compare ADCs and ADC Design header bar should not inject .lab-summary-row or override .studio-patient-bar layout
+    assert "lab-summary-row" not in app_js
+    assert not re.search(r"^\.studio-patient-bar\s*\{", app_css, flags=re.M)
+    # No solid triangle disclosure markers and keep New Patient button visible on Patient Profile
+    assert "\u25b8" not in app_css and "\u25b8" not in app_js
+    assert ".profile-demo .scenario-dropdown" not in app_css
+
+
+def test_deep_research_dose_curve_and_lcb_differentiation():
+    from ml import deep_research as DR
+    from ml import studio_matrix as SM
+
+    body = {
+        "cancerText": "HER2-positive breast cancer",
+        "organs": [
+            {"organ": "pulmonary", "score": 0.92},
+            {"organ": "cardiac", "score": 0.85},
+            {"organ": "hepatic", "score": 0.60},
+        ],
+        "prioOrgan": "pulmonary",
+        "simWeights": {
+            "wSafety": 0.50,
+            "wPeak": 0.50,
+            "wExpr": 0.40,
+            "leakSens": 0.50,
+            "hydroSens": 0.50,
+            "fcProtect": 0.65,
+            "wSelect": 0.45,
+            "wBystander": 0.35,
+        },
+        "spec": {
+            "target": "HER2 (ERBB2)",
+            "linker": "GGFG Peptide (Enhertu-like)",
+            "payload": "DXd (Exatecan deriv, Topo I)",
+            "dar": 8,
+            "fcFormat": "igg1_wt",
+        },
+    }
+
+    res_auto = SM.evaluate_studio_matrix(body)
+    res_dr = DR.run_deep_research(body)
+
+    assert res_dr["mode"] == "deep_research_v2"
+    best = res_dr["best"]
+    dc = best["doseCurve"]
+    assert [d["doseMgKg"] for d in dc] == [1.8, 2.4, 3.6, 5.4, 6.0]
+    assert sum(1 for d in dc if d["isOptimalDose"]) == 1
+    assert dc[0]["safetyRaw"] - dc[-1]["safetyRaw"] >= 8.0
+    assert dc[-1]["efficacyRaw"] > dc[0]["efficacyRaw"] + 4.0
+    assert best["safetyStd"] >= 0.55
+    assert best["efficacyStd"] >= 0.50
+    # Deep Research evaluates 5 clinical Q3W doses + 5-fold LCB objective rather than repeating Auto Search unchanged
+    differs = (
+        best["spec"] != res_auto["best"]["spec"]
+        or res_dr["deep_research"]["optimal_dose_mgkg"] != 3.6
+        or abs(best["safetyScore"] - res_auto["best"]["safetyScore"]) >= 1
+    )
+    assert differs
 
 
 

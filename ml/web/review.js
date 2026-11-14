@@ -49,7 +49,7 @@
         : (ko ? '직접 입력 사례' : 'User-entered profile');
       lines.push(`${ko ? '사례 구분' : 'Case type'}: ${caseType}`);
       lines.push(`${ko ? '취약 장기군' : 'Vulnerable organs'}: ${ctx.prioOrgan || (ko ? '자동 (없음)' : 'Automatic (none)')}`);
-      lines.push(`${ko ? '비교 필터' : 'Comparison filter'}: ${ctx.matrixFilter === 'relevant' ? (ko ? '적응증 일치' : 'Indication match') : (ko ? '전체 15개 승인 ADC' : 'All 15 approved ADCs')}`);
+      lines.push(`${ko ? '비교 필터' : 'Comparison filter'}: ${ctx.matrixFilter === 'relevant' ? (ko ? '질병 일치' : 'Disease match') : (ko ? '전체 승인 ADC 목록' : 'All Approved ADC List')}`);
     }
 
     lines.push('', ko ? '입력 질환 및 상태 (INPUTS)' : 'INPUTS');

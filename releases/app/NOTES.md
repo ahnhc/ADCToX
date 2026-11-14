@@ -1,3 +1,13 @@
+# ADCToX 0.9.6 Release Notes
+
+- **Consistent Patient Profile Bar Across All Tabs**:
+  - Removed compact lab value badges beneath condition chips in `2. Compare ADCs` and `3. ADC Design` and unified `.workspace-bar` styling across Steps `1`, `2`, and `3`.
+- **Clear Terminology, Persistent Header Actions & Focused Precaution Drawer**:
+  - Renamed `Demographics` (`인구학적 정보`) to `Basic Information` (`기본 정보`) across Patient Profile and Guide copy, renamed Compare ADCs filters to `질병 일치` / `전체 승인 ADC 목록` (`Disease Match` / `All Approved ADC List`), kept `New Patient` (`새 환자 입력`) visible on `1. Patient Profile`, replaced all solid disclosure triangles and reference-select arrows with unified vector chevrons, and kept only boxed clinical criterion cards (`판단 자료 부족`, `경과 관찰`, `사용 주의`, `용량 감량`, `사용 금지`) under `Vulnerable organ precautions`.
+- **True Algorithmic & Visual Differentiation for `Deep Research`**:
+  - Kept `Auto search` at `3200 ms` and slowed `Deep Research` scan pacing to `12800 ms` (4x) with 3-step stage progress (`(1/3)`, `(2/3)`, `(3/3)`).
+  - Updated Stage C pharmacology and 5-fold LCB + tail-risk scoring in `ml/deep_research.py` (`1.8`–`6.0 mg/kg` Q3W PK/PD dose coupling, Hill occupancy, LCB uncertainty, and Fc/target expansion), added canvas dose trajectory + 95% confidence ellipse + optimal dose callout, added a 5-dose window strip below the telemetry summary, and added `± σ` uncertainty readouts on the `New Design` card.
+
 # ADCToX 0.9.5 Release Notes
 
 - **Unified Navigation, Typography & Mobile Layout**:

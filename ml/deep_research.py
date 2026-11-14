@@ -711,6 +711,19 @@ def _compute_custom_smiles_features(custom_smi: str) -> Optional[Tuple[np.ndarra
         return p3d, rxn_16, sh_16, pfp
 
 
+def _deep_indication_factors(cancer_text: str, targets: List[Dict[str, Any]]) -> np.ndarray:
+    txt = (cancer_text or "").strip().lower()
+    n_t = len(targets)
+    if not txt or not SM.TUMOR_KEYWORD_RE.search(txt):
+        return np.ones(n_t, dtype=np.float32)
+    out = np.full(n_t, 0.62, dtype=np.float32)
+    for i, t in enumerate(targets):
+        keys = t.get("tumorKeys") or []
+        if any(k.lower() in txt for k in keys):
+            out[i] = 1.12
+    return out
+
+
 def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
     Executes Mode 3 (`Deep Research`) on an ordered GPU slot (`0 -> 1 -> 2 -> 3`) or CPU fallback.
@@ -757,10 +770,11 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         if hold_ms > 0:
             time.sleep(hold_ms / 1000.0)
 
-        # Stage A: Fast 368,640 matrix pre-screen to capture full landscape cloud, Pareto front, and top 36 candidates
-        mat_res = SM.evaluate_studio_matrix(body, return_top_indices=36)
+        # Stage A: Fast 368,640 matrix pre-screen to capture full landscape cloud, Pareto front, and top 48 candidates
+        mat_res = SM.evaluate_studio_matrix(body, return_top_indices=48)
         st = SM._load_engine()
         cache = _load_cache_npz()
+        ind_t = _deep_indication_factors(str(body.get("cancerText") or ""), st["targets"])
 
         cur_ti, cur_li, cur_pi, cur_di, cur_fi = SM.resolve_spec_indices(body.get("spec"), st)
         top_flat: List[int] = mat_res.pop("_top_flat_indices", [])
@@ -776,12 +790,6 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             return arch_idx_map[tup]
 
         cur_arch_i = _add_arch((cur_ti, cur_li, cur_pi, cur_di, cur_fi))
-        for idx_f in top_flat:
-            tf_i, lpd_i = divmod(idx_f, st["n_lpd"])
-            ti_i, fi_i = divmod(tf_i, st["n_f"])
-            lp_i, di_i = divmod(lpd_i, st["n_d"])
-            li_i, pi_i = divmod(lp_i, st["n_p"])
-            _add_arch((ti_i, li_i, pi_i, di_i, fi_i))
 
         ref_arch_i: Optional[int] = None
         ref_cur_spec = (mat_res.get("ref_current") or {}).get("spec")
@@ -789,31 +797,63 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
             r_ti, r_li, r_pi, r_di, r_fi = SM.resolve_spec_indices(ref_cur_spec, st)
             ref_arch_i = _add_arch((r_ti, r_li, r_pi, r_di, r_fi))
 
-        # Diverse same-target compatible architectures (up to 16) for real live scatter evaluation
+        custom_smi = str(body.get("customPayloadSmiles") or "").strip()
+        custom_feat = _compute_custom_smiles_features(custom_smi) if custom_smi else None
+        if custom_feat is not None:
+            # Evaluate the user's custom payload SMILES paired with current target + top linkers/DARs/Fc
+            for li_c in (cur_li, 0, 2, 6, 7):
+                for di_c in (cur_di, 3, 6):
+                    for fi_c in (cur_fi, 1):
+                        _add_arch((cur_ti, li_c, -1, di_c, fi_c))
+
+        top_decoded: List[Tuple[int, int, int, int, int]] = []
+        for rank_i, idx_f in enumerate(top_flat):
+            tf_i, lpd_i = divmod(idx_f, st["n_lpd"])
+            ti_i, fi_i = divmod(tf_i, st["n_f"])
+            lp_i, di_i = divmod(lpd_i, st["n_d"])
+            li_i, pi_i = divmod(lp_i, st["n_p"])
+            top_decoded.append((ti_i, li_i, pi_i, di_i, fi_i))
+            if len(cand_archs) < 92 or rank_i < 24:
+                _add_arch((ti_i, li_i, pi_i, di_i, fi_i))
+                if rank_i < 16 and len(cand_archs) < 92:
+                    _add_arch((ti_i, li_i, pi_i, di_i, 0))
+                    _add_arch((ti_i, li_i, pi_i, di_i, 1))
+                    if di_i > 0:
+                        _add_arch((ti_i, li_i, pi_i, di_i - 1, 1))
+
+        # Expand across biomarker-matched targets so Deep Research explores disease-aligned targets thoroughly
+        matched_targets = [ti_m for ti_m in range(len(st["targets"])) if float(ind_t[ti_m]) > 1.05]
+        for ti_m in matched_targets:
+            for _, li_i, pi_i, di_i, _ in top_decoded[:4]:
+                for fi_m in (0, 1):
+                    if len(cand_archs) >= 95:
+                        break
+                    _add_arch((ti_m, li_i, pi_i, di_i, fi_m))
+                if len(cand_archs) >= 95:
+                    break
+            if len(cand_archs) >= 95:
+                break
+
+        # Diverse same-target compatible architectures (up to cap) for real live scatter evaluation
         st_lpd_compat = np.flatnonzero(st["compat_lpd"])
-        if st_lpd_compat.size > 0:
-            st_stride = max(1, st_lpd_compat.size // 16)
-            for s_k, lpd_i in enumerate(st_lpd_compat[::st_stride][:16]):
+        if st_lpd_compat.size > 0 and len(cand_archs) < 100:
+            st_stride = max(1, st_lpd_compat.size // 12)
+            for s_k, lpd_i in enumerate(st_lpd_compat[::st_stride][:12]):
+                if len(cand_archs) >= 100:
+                    break
                 lp_i, di_i = divmod(int(lpd_i), st["n_d"])
                 li_i, pi_i = divmod(lp_i, st["n_p"])
                 fi_i = (cur_fi + s_k) % st["n_f"]
                 _add_arch((cur_ti, li_i, pi_i, di_i, fi_i))
 
-        # Incompatible linker-payload architectures (up to 12) evaluated by the live ensemble
+        # Incompatible linker-payload architectures (up to cap) evaluated by the live ensemble
         incompat_lp = np.argwhere(~st["compat_mask_lp"])
-        if len(incompat_lp) > 0:
-            inc_stride = max(1, len(incompat_lp) // 12)
-            for li_i, pi_i in incompat_lp[::inc_stride][:12]:
+        if len(incompat_lp) > 0 and len(cand_archs) < 105:
+            inc_stride = max(1, len(incompat_lp) // 8)
+            for li_i, pi_i in incompat_lp[::inc_stride][:8]:
+                if len(cand_archs) >= 105:
+                    break
                 _add_arch((cur_ti, int(li_i), int(pi_i), cur_di, cur_fi))
-
-        custom_smi = str(body.get("customPayloadSmiles") or "").strip()
-        custom_feat = _compute_custom_smiles_features(custom_smi) if custom_smi else None
-        if custom_feat is not None:
-            # Also evaluate the user's custom warhead SMILES paired with current target + top linkers/DARs/Fc!
-            for li_c in (cur_li, 0, 2, 6, 7):
-                for di_c in (cur_di, 3, 6):
-                    for fi_c in (cur_fi, 1):
-                        _add_arch((cur_ti, li_c, -1, di_c, fi_c))
 
         # Expand across the 5 clinical Q3W doses (`1.8, 2.4, 3.6, 5.4, 6.0 mg/kg`)
         batch_specs: List[Tuple[int, int, int, int, int, float]] = []
@@ -844,7 +884,6 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         ]
         active_orgs = real_organs if real_organs else SM.FALLBACK_ORGANS
         prio_organ = body.get("prioOrgan") if isinstance(body.get("prioOrgan"), str) else None
-        ind_t = SM._indication_factors(str(body.get("cancerText") or ""), st["targets"])
 
         w_on = max(0.10, min(0.85, w["wExpr"]))
         w_on0 = max(0.10, min(0.85, w0["wExpr"]))
@@ -940,18 +979,17 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                 tf_i = ti * st["n_f"] + fi
                 lpd_i = (li * st["n_p"] + pi) * st["n_d"] + di
                 m_v = st["m9"][:, tf_i, lpd_i]
-                dose_ratio = (0.42 + 0.95 * (math.log1p(dose_mgkg) / 3.0)) / (0.42 + 0.95 * (math.log1p(3.6) / 3.0))
-                base_pic = float(m_v[0]) + 0.18 * math.log2(max(0.5, dose_mgkg / 3.6))
+                base_pic = float(m_v[0]) + 0.16 * math.log2(max(0.5, dose_mgkg / 3.6))
                 c_logits = np.array([-1.2, -0.2, 0.9, 2.0], dtype=np.float32) + (base_pic - 7.5) * 1.15
                 c_probs = 1.0 / (1.0 + np.exp(-c_logits))
                 for f_i in range(n_folds):
-                    jitter = rng.normal(0.0, 0.09)
+                    jitter = rng.normal(0.0, 0.14)
                     fold_pic[f_i, b_i] = base_pic + jitter
-                    fold_conc4[f_i, b_i] = np.clip(c_probs + jitter * 0.04, 0.02, 0.995)
+                    fold_conc4[f_i, b_i] = np.clip(c_probs + jitter * 0.05, 0.02, 0.995)
                     for o_i in range(13):
                         u_hb, u_ha, u_hf, u_ho = st["U_org_quad"][o_i]
                         v_c = st["V_org_cat"][o_i][:, lpd_i]
-                        h_scale = (1.0 + rng.normal(0.0, 0.05)) * dose_ratio
+                        h_scale = max(0.70, 1.0 + rng.normal(0.0, 0.08))
                         fold_hb[f_i, b_i, o_i] = max(1e-4, float(u_hb[tf_i] @ v_c[0:24]) * h_scale)
                         fold_ha[f_i, b_i, o_i] = max(1e-4, float(u_ha[tf_i] @ v_c[24:48]) * h_scale)
                         fold_hf[f_i, b_i, o_i] = max(1e-4, float(u_hf[tf_i] @ v_c[48:72]) * h_scale)
@@ -975,6 +1013,7 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         fold_pic_pos = np.zeros((n_folds, bsz), dtype=np.float32)
         fold_pic_bys = np.zeros((n_folds, bsz), dtype=np.float32)
         fold_org13_prob = np.zeros((n_folds, bsz, 13), dtype=np.float32)
+        fold_worst_vuln = np.zeros((n_folds, bsz), dtype=np.float32)
 
         for f_i in range(n_folds):
             conc_area = fold_conc4[f_i].mean(axis=1)
@@ -998,10 +1037,19 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                 fc_strength = max(0.0, min(1.0, 1.0 - float(fc_obj.get("fc_activity", 0.0 if fc_obj.get("fc_silenced") else 1.0))))
                 fc_sc = 1.0 + fc_strength * (fc_slider_ratio - 1.0)
 
+                d_rel = float(dose_mgkg) / 3.6
+                dose_hz_mult = d_rel ** 1.18
+                stab_deficit = max(0.0, 1.0 - float(plasma_stab_pct[b_i]) / 100.0)
+                cmax_surcharge = max(0.0, d_rel - 1.0) * (0.28 + 1.10 * stab_deficit + 0.12 * (float(dar_val[b_i]) / 8.0))
+                sys_molar_hz = (
+                    0.028 * (d_rel ** 1.45) * ((max(1.0, float(dar_val[b_i])) / 4.0) ** 0.75) * (0.55 + 1.25 * stab_deficit)
+                    + 0.038 * (max(0.0, d_rel - 1.05) ** 1.30)
+                )
+
                 hz_base_13 = (
                     off_scale * (leak_scale * fold_hb[f_i, b_i] + agg_scale * fold_ha[f_i, b_i] + fc_sc * fold_hf[f_i, b_i])
                     + on_scale * fold_ho[f_i, b_i]
-                ) * chem_pen
+                ) * chem_pen * (dose_hz_mult + cmax_surcharge) + sys_molar_hz
                 hz_base_13 = np.maximum(0.005, hz_base_13)
                 fold_org13_prob[f_i, b_i] = 1.0 - np.exp(-hz_base_13)
 
@@ -1023,6 +1071,7 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
 
                 mean_r = sum(p_list) / max(1, len(p_list))
                 worst_r = max(p_list) if p_list else 0.0
+                fold_worst_vuln[f_i, b_i] = worst_r
                 fold_safety[f_i, b_i] = max(2.0, min(98.0, 100.0 * (1.0 - (w_peak * worst_r + (1.0 - w_peak) * mean_r))))
 
                 tum_log2 = math.log2(float(tgt["tumor_tpm"]) + 1.0) / 8.5
@@ -1033,8 +1082,11 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                 s_pot = max(0.08, min(0.99, float(((pic_pos[b_i] - 5.6) / 4.1) * (pk_ret[b_i] ** 0.35)) * math.exp(-hydro_d)))
                 s_del = max(0.08, min(0.98, float((plasma_stab_pct[b_i] / 100.0) * (0.58 + 0.40 * lys_k_rel[b_i]) / math.sqrt(cl_hep[b_i])) * math.exp(-leak_d)))
                 s_bys = max(0.06, min(0.98, float(((pic_bys[b_i] - 4.6) / 4.2) * (0.30 + 0.70 * bystander_idx[b_i]))))
-                # Dose-response efficacy boost from monotonic tumor kill integral (`conc_area`)
-                dose_eff_mult = 0.94 + 0.10 * float(conc_area[b_i])
+                # Saturating Hill receptor occupancy and dose-exposure efficacy curve relative to 3.6 mg/kg Q3W
+                pot_shift = max(0.75, min(1.30, 1.0 + 0.10 * (8.0 - float(pic_pos[b_i]))))
+                k_half = 0.48 * pot_shift
+                hill_occ = ((d_rel ** 1.5) / ((k_half ** 1.5) + (d_rel ** 1.5))) * ((k_half ** 1.5) + 1.0)
+                dose_eff_mult = 0.62 + 0.38 * hill_occ * (0.95 + 0.06 * float(conc_area[b_i]))
 
                 adcc_b = SM.FC_ADCC_BOOST.get(fc_obj["id"], 1.0)
                 conv_e = (nw_sel * s_sel + nw_pot * s_pot + nw_del * s_del + nw_bys * s_bys) * adcc_b * dose_eff_mult
@@ -1042,9 +1094,9 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                 fold_efficacy[f_i, b_i] = max(2.0, min(98.0, eff_v * 100.0))
 
         mean_safe = fold_safety.mean(axis=0)
-        std_safe = fold_safety.std(axis=0)
+        std_safe = np.maximum(fold_safety.std(axis=0), 0.55)
         mean_eff = fold_efficacy.mean(axis=0)
-        std_eff = fold_efficacy.std(axis=0)
+        std_eff = np.maximum(fold_efficacy.std(axis=0), 0.50)
         mean_pic = fold_pic_pos.mean(axis=0)
         std_pic = fold_pic_pos.std(axis=0)
         mean_pic_bys = fold_pic_bys.mean(axis=0)
@@ -1053,7 +1105,11 @@ def run_deep_research(body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         mean_org13 = fold_org13_prob.mean(axis=0)
         std_org13 = fold_org13_prob.std(axis=0)
 
-        util_all = w_safety * mean_safe + (1.0 - w_safety) * mean_eff
+        tail_worst_90 = np.percentile(fold_worst_vuln, 90, axis=0) * 100.0
+        safe_lcb = mean_safe - 0.65 * std_safe
+        eff_lcb = mean_eff - 0.55 * std_eff
+        tail_pen = 0.14 * np.maximum(0.0, tail_worst_90 - 38.0)
+        util_all = np.clip(w_safety * safe_lcb + (1.0 - w_safety) * eff_lcb - tail_pen, 0.0, 99.0)
         compat_b_arr = np.array(
             [True if p_raw < 0 else bool(st["compat_mask_lp"][l_i, p_raw]) for (_, l_i, p_raw, _, _, _) in batch_specs],
             dtype=bool,

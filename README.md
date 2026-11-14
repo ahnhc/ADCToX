@@ -1,9 +1,9 @@
-# ADCTOX v0.9.5
+# ADCTOX v0.9.6
 
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#one-line-installation-ubuntu-macos-windows)
-[![App Version](https://img.shields.io/badge/version-v0.9.5-10B981)](#)
+[![App Version](https://img.shields.io/badge/version-v0.9.6-10B981)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live Demo](https://img.shields.io/badge/Live%20Platform-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
@@ -18,10 +18,10 @@ ADCTOX links a patient's malignancies, comorbidities, and quantitative laborator
 
 ---
 
-## Key Capabilities in v0.9.5
+## Key Capabilities in v0.9.6
 
 1. **Streamlined 3-Stage Clinical Workflow (`1. Patient Profile` -> `2. Compare ADCs` -> `3. ADC Design`):**
-   - **Stage 1 (`Patient Profile`):** Automatically preloads a clinical baseline scenario on entry while retaining one-click `New Patient` reset, bilingual (`EN / KO`) condition mapping to 13 vulnerable organ axes, a compact `Demographics` (`Age`, `Sex`, `Weight`) panel, and a unified `Optional Clinical Panels` accordion with standardized numeric inputs (`88px`) and reference intervals.
+   - **Stage 1 (`Patient Profile`):** Automatically preloads a clinical baseline scenario on entry while retaining one-click `New Patient` reset, bilingual (`EN / KO`) condition mapping to 13 vulnerable organ axes, a compact `Basic Information` (`Age`, `Sex`, `Weight`) panel, and a unified `Optional Clinical Panels` accordion with standardized numeric inputs (`88px`) and reference intervals.
    - **Stage 2 (`Compare ADCs`):** Unified `Vulnerable Organs` workspace bar preserving clicked organ order in place, clean 5-column comparison grid across all 15 FDA-approved ADCs, clickable row inspection drawer combining FDA dosing precautions under `Vulnerable organ precautions`, crimson highlight bars where treatment trial incidence exceeds comparator, and a bottom `Export summary ↗` drawer tab.
    - **Stage 3 (`ADC Design`):** Identical top workspace framing (`1`, `2`, and `3` step badges across desktop and mobile), horizontal mouse-wheel/drag target category strip, real-time 5-fold `ADC-SurrogateNet-v2` candidate evaluation in `Deep Research`, uniform-dot HTML chart legend, stacked 2-card comparison (`New Design` vs `Existing ADC`), clean folds (`Construct Properties`, `Organ Toxicity Prediction`, `Advanced Settings` with `Balanced`, `Organ Protection`, `Antitumor Efficacy` presets), and updated guide modal with direct GitHub link.
 
@@ -109,7 +109,7 @@ The installer configures an isolated Python environment, downloads the `0.8` fro
 ### Local Desktop Browser
 
 ```bash
-adctox               # Opens the v0.9.5 WebApp in your default browser (127.0.0.1)
+adctox               # Opens the v0.9.6 WebApp in your default browser (127.0.0.1)
 adctox-cli           # Opens the Terminal TUI
 ```
 
