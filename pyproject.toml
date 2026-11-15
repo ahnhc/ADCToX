@@ -1,7 +1,7 @@
 [project]
 name = "adctox"
-version = "0.9.10"
-description = "ADCTOX: compare approved ADCs against a patient's comorbidities and lab values using label evidence"
+version = "1.0.0"
+description = "Patient-specific ADC safety evaluation and de novo conjugate design"
 license = "Apache-2.0"
 requires-python = ">=3.12"
 dependencies = [

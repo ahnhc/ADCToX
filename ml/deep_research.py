@@ -1215,7 +1215,7 @@ def run_deep_research(
                 lp_i, di_i = divmod(lpd_i, st["n_d"])
                 li_i, pi_i = divmod(lp_i, st["n_p"])
                 _add_arch((ti_i, li_i, pi_i, di_i, fi_i))
-            pool_cap = 45000 if str(dev_str).startswith("cuda") else 3800
+            pool_cap = 45000 if str(dev_str).startswith("cuda") else 25000
             if len(cand_archs) < pool_cap:
                 explore_targets = list(dict.fromkeys([cur_ti] + matched_targets + list(range(len(st["targets"])))))
                 for ti_e in explore_targets:
@@ -1416,6 +1416,11 @@ def run_deep_research(
                         "device_label": dev_label,
                     }
                 )
+
+        if progressive_mode:
+            rem_s = target_s - (time.perf_counter() - t0)
+            if rem_s > 0.0:
+                time.sleep(rem_s)
 
         mean_safe = np.concatenate(all_mean_safe, axis=0)
         std_safe = np.concatenate(all_std_safe, axis=0)
