@@ -1,4 +1,4 @@
-/* ADCToX v1.0.0 WebApp
+/* ADCToX v1.0.1 WebApp
    Active-Organ Matrix + Construct Design Studio + Auto Design 5-Fold PK/PD + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -340,7 +340,7 @@
           ['ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto design to search optimal constructs and compare against an approved ADC.'],
         ];
     const xBtn = h('button', { type: 'button', class: 'x-btn', 'aria-label': isKo ? '닫기' : 'Close', onclick: closeGuide }, svgClose());
-    const verStr = String((APP && APP.version) || '1.0.0').replace(/^v/i, '');
+    const verStr = String((APP && APP.version) || '1.0.1').replace(/^v/i, '');
     const dialog = h('div', { class: 'guide overlay-panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
       h('div', { class: 'g-head' },
         h('h2', { id: 'g-title', text: isKo ? 'ADCToX 사용 안내' : 'ADCToX Guide' }),
@@ -3373,6 +3373,7 @@
   }
 
   let syncSeq = 0;
+  let activeProfileView = null;
   async function refreshBackendData() {
     const seq = ++syncSeq;
     const emptyPatient = !S.conds.length && !Object.keys(rawValues()).length;
@@ -3439,7 +3440,8 @@
             reports: r.reports || [], ambiguous: r.ambiguous || [], unresolved: r.unresolved || [],
           };
           save();
-          renderActiveMode(false);
+          if (S.mode === 0 && activeProfileView && activeProfileView.box.isConnected) activeProfileView.refresh();
+          else renderActiveMode(false);
           return;
         }
         if (r.step === 'judging') {
@@ -6488,9 +6490,6 @@
     if (embedded) box.append(content);
     else box.append(wbMount, content);
 
-    function renderIntroAndSamples() {}
-    renderIntroAndSamples();
-
     function renderWb() {
       if (embedded) {
         if (box.isConnected) renderActiveMode(false);
@@ -6501,31 +6500,6 @@
       wbMount.append(buildWorkspaceBar(() => renderActiveMode(false)));
     }
     renderWb();
-
-    let pointerDownInFlow = false;
-    let pendingRender = false;
-    content.addEventListener('pointerdown', () => {
-      pointerDownInFlow = true;
-      const release = () => {
-        pointerDownInFlow = false;
-        if (pendingRender) {
-          pendingRender = false;
-          setTimeout(() => { if (box.isConnected) renderFlowsheet(); }, 0);
-        }
-      };
-      window.addEventListener('pointerup', release, { once: true });
-      window.addEventListener('pointercancel', release, { once: true });
-    });
-
-    function safeRenderFlowsheet() {
-      if (pointerDownInFlow) {
-        pendingRender = true;
-        return;
-      }
-      renderFlowsheet();
-    }
-
-    const BASIC_KEYS = new Set(['age', 'sex', 'weight']);
 
     const REQ_LAB_SECTIONS = [];
 
@@ -6639,6 +6613,8 @@
             statusClass = 'alarm'; statusText = t('lowVal');
           } else if (valNum < bf.refLow) {
             statusClass = 'warn'; statusText = t('lowVal');
+          } else if (valNum > bf.refHigh) {
+            statusClass = 'warn'; statusText = t('elevated');
           } else {
             statusClass = 'normal'; statusText = t('normal');
           }
@@ -6673,6 +6649,7 @@
 
         sec.numeric.forEach((bf) => {
           const valStr = S.raw[bf.key];
+          let submittedValue = String(valStr ?? '');
           const m = computeBioRowMetrics(bf, valStr);
 
           const trackEl = h('div', { class: 'bio-spectrum-track' },
@@ -6704,7 +6681,6 @@
               if (String(e.target.value).trim()) S.studioNeedInputWarn = false;
               else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
               save();
-              renderIntroAndSamples();
               const live = computeBioRowMetrics(bf, e.target.value);
               input.className = live.statusClass !== 'normal' && live.statusClass !== 'empty' ? 'flagged' : '';
               needleEl.className = `bio-spectrum-needle ${live.statusClass}`;
@@ -6714,10 +6690,10 @@
               statusBadgeEl.textContent = live.statusText;
             },
             onblur: async () => {
+              if (input.value === submittedValue) return;
+              submittedValue = input.value;
               await refreshBackendData();
-              renderIntroAndSamples();
-              renderWb();
-              safeRenderFlowsheet();
+              if (box.isConnected) renderWb();
             },
           });
 
@@ -6760,9 +6736,7 @@
                 else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
                 save();
                 await refreshBackendData();
-                renderIntroAndSamples();
-                renderWb();
-                renderFlowsheet();
+                if (box.isConnected) renderWb();
               },
             }));
           });
@@ -6805,6 +6779,7 @@
       if (isReqOpen) {
         const makeBasicNumField = (key, labelTxt, unitTxt, ph) => {
           const hasErr = Boolean(labErrors[key]);
+          let submittedValue = String(S.raw[key] ?? '');
           const inp = h('input', {
             id: 'bf-' + key,
             'data-lab-key': key,
@@ -6822,13 +6797,26 @@
               if (String(e.target.value).trim()) S.studioNeedInputWarn = false;
               else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
               save();
-              renderIntroAndSamples();
             },
             onblur: async () => {
+              if (inp.value === submittedValue) return;
+              submittedValue = inp.value;
               await refreshBackendData();
-              renderIntroAndSamples();
+              if (!box.isConnected) return;
+              const error = ((S.labs && S.labs.errors) || {})[key];
+              const field = inp.closest('.basic-field-item');
+              if (field) {
+                field.classList.toggle('has-error', Boolean(error));
+                const oldError = field.querySelector('.field-error');
+                if (oldError) oldError.remove();
+                if (error) field.append(h('span', { class: 'field-error', id: 'bf-err-' + key, text: error }));
+              }
+              inp.classList.toggle('flagged', Boolean(error));
+              inp.title = error || '';
+              inp.setAttribute('aria-invalid', error ? 'true' : 'false');
+              if (error) inp.setAttribute('aria-describedby', 'bf-err-' + key);
+              else inp.removeAttribute('aria-describedby');
               renderWb();
-              safeRenderFlowsheet();
             },
           });
           return h('div', { class: 'basic-field-item' + (hasErr ? ' has-error' : '') },
@@ -6855,22 +6843,22 @@
             text: isKo ? opt.ko : opt.en,
             onclick: async (ev) => {
               const clicked = ev.currentTarget;
+              const turningOff = S.raw.sex === opt.val;
               [...sexSeg.querySelectorAll('.bio-seg-btn')].forEach((b) => {
-                const sel = !active && b === clicked;
+                const sel = !turningOff && b === clicked;
                 b.classList.toggle('is-selected', sel);
                 b.setAttribute('aria-pressed', sel ? 'true' : 'false');
+                b.title = sel ? (isKo ? '클릭 시 선택 해제' : 'Click to clear') : '';
               });
               syncSlidingSeg(sexSeg, 'lab-sex', '.bio-seg-btn.is-selected', 'tone-light');
-              if (active) delete S.raw.sex;
+              if (turningOff) delete S.raw.sex;
               else S.raw.sex = opt.val;
               markEdited();
               if (S.raw.sex) S.studioNeedInputWarn = false;
               else if (!hasPatientProfile()) S.studioDesignMode = 'idle';
               save();
               await refreshBackendData();
-              renderIntroAndSamples();
-              renderWb();
-              renderFlowsheet();
+              if (box.isConnected) renderWb();
             },
           }));
         });
@@ -6950,6 +6938,7 @@
     }
 
     renderFlowsheet();
+    activeProfileView = { box, refresh: renderWb };
     clear(barKeys);
     return box;
   }
@@ -7879,6 +7868,7 @@
   // Re-rendering a screen must not drop what the user is typing: the focused field (search box or a lab value) keeps
   // its caret, and the search text lives in pendingCondQuery across rebuilds.
   function renderActiveMode(animate) {
+    const scrollY = window.scrollY;
     const ae = document.activeElement;
     let keep = null;
     if (ae && stageBox.contains(ae) && (ae.tagName === 'INPUT' || ae.dataset.keep)) {
@@ -7889,10 +7879,12 @@
         keep = { key, value: ae.value, s0, s1 };
       }
     }
+    activeProfileView = null;
     clear(stageBox);
     stageBox.classList.remove('enter');
     const builder = [buildPatientLabsMode, buildAdcMatrixMode, buildStructureStudioMode][S.mode] || buildPatientLabsMode;
     stageBox.append(builder());
+    window.scrollTo(0, scrollY);
     if (keep) {
       const el = stageBox.querySelector(keep.key);
       if (el) {
@@ -7955,7 +7947,7 @@
         if (id) MECH[id] = m;
       }
     });
-    const cleanVer = String(APP.version || '1.0.0').replace(/^v/i, '');
+    const cleanVer = String(APP.version || '1.0.1').replace(/^v/i, '');
     if (verEl) verEl.textContent = cleanVer;
     if (barVer) barVer.textContent = cleanVer;
 

@@ -1,5 +1,5 @@
-/* ADCToX v1.0.0 Service Worker for Android / Mobile WebApp (PWA) */
-const CACHE_NAME = 'adctox-pwa-v1.0.0';
+/* ADCToX v1.0.1 Service Worker for Android / Mobile WebApp (PWA) */
+const CACHE_NAME = 'adctox-pwa-v1.0.1';
 const STATIC_ASSETS = [
   '/',
   '/static/app.css',

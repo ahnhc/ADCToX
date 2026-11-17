@@ -3,7 +3,7 @@
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#installation)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#installation)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#installation)
-[![Version](https://img.shields.io/badge/version-v1.0.0-10B981)](https://github.com/ahnhc/ADCToX/releases/latest)
+[![Version](https://img.shields.io/badge/version-v1.0.1-10B981)](https://github.com/ahnhc/ADCToX/releases/latest)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live WebApp](https://img.shields.io/badge/WebApp-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 

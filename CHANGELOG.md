@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+- Fixed repeated patient calculations when leaving an unchanged lab field.
+- Kept the Patient Profile scroll position and active input steady while analysis results update.
+- Marked CLcr, eGFR, and LVEF values above their displayed reference ranges as elevated.
+
 ## 1.0.0
 
 - **3-Stage Clinical & De Novo Workspace (`EN / KO`):** Unified `Patient Profile`, `Recommend ADCs`, and `ADC Design` across desktop and mobile web (`adctox`) and terminal (`adctox-cli`).

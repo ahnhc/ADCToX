@@ -64,8 +64,10 @@ window.ADCTOX_MOCK = (function () {
           {"key": "age", "label": "Age", "unit": "years", "group": "Basic", "kind": "number", "range": [1, 120], "uln": null},
           {"key": "sex", "label": "Sex", "unit": "M/F", "group": "Basic", "kind": "sex", "range": null, "uln": null},
           {"key": "weight", "label": "Weight", "unit": "kg", "group": "Basic", "kind": "number", "range": [1, 400], "uln": null},
+          {"key": "crcl", "label": "CLcr", "unit": "mL/min", "group": "Kidney", "kind": "number", "range": [1, 250], "uln": null},
           {"key": "creatinine", "label": "Creatinine", "unit": "mg/dL", "group": "Kidney", "kind": "number", "range": [0.05, 30], "uln": null},
           {"key": "egfr", "label": "eGFR", "unit": "mL/min/1.73m²", "group": "Kidney", "kind": "number", "range": [1, 200], "uln": null},
+          {"key": "esrd", "label": "Dialysis/ESRD", "unit": "y/n", "group": "Kidney", "kind": "yn", "range": null, "uln": null},
           {"key": "bilirubin", "label": "Bilirubin", "unit": "mg/dL", "group": "Liver", "kind": "number", "range": [0.01, 50], "uln": 1.2},
           {"key": "ast", "label": "AST", "unit": "U/L", "group": "Liver", "kind": "number", "range": [1, 10000], "uln": 40.0},
           {"key": "alt", "label": "ALT", "unit": "U/L", "group": "Liver", "kind": "number", "range": [1, 10000], "uln": 40.0},
@@ -280,7 +282,7 @@ window.ADCTOX_MOCK = (function () {
     if (!t) return null;
     if (key === 'sex') { const s = t.toUpperCase().slice(0, 1); if (s === 'M' || s === 'F') return s; if (s === '남') return 'M'; if (s === '여') return 'F'; throw new Error('M or F'); }
     if (key === 'child_pugh') { if (['A', 'B', 'C'].includes(t.toUpperCase())) return t.toUpperCase(); throw new Error('A, B or C'); }
-    if (key === 'ugt1a1') { const c = t.toLowerCase().slice(0, 1); if (c === 'y' || c === 'n') return c === 'y'; throw new Error('y or n'); }
+    if (key === 'ugt1a1' || key === 'esrd') { const c = t.toLowerCase().slice(0, 1); if (c === 'y' || c === 'n') return c === 'y'; throw new Error('y or n'); }
     const v = Number(/^\d{1,3}(,\d{3})+$/.test(t) ? t.replace(/,/g, '') : t);
     if (!Number.isFinite(v)) throw new Error('숫자를 입력하세요');
     const r = FIELD[key] && FIELD[key].range;
@@ -312,7 +314,10 @@ window.ADCTOX_MOCK = (function () {
     const flags = FLAG_WHY.filter((f) => typeof raw[f.key] === 'number' && TESTS[f.key] && TESTS[f.key](raw[f.key], uln)).map((f) => ({ key: f.key, organ: f.organ, why: f.why }));
     const short = (k) => (k === 'bilirubin' ? 'bili' : k);
     const derived = { crcl: null, crcl_source: null, shown: {} }, notes = [];
-    if (['age', 'weight', 'creatinine', 'sex'].every((k) => raw[k] !== undefined) && raw.creatinine > 0 && raw.age < 140) {
+    if (raw.crcl !== undefined) {
+      derived.crcl = raw.crcl; derived.crcl_source = 'entered';
+      notes.push(`CLcr ${shown('crcl', derived.crcl)} mL/min`);
+    } else if (['age', 'weight', 'creatinine', 'sex'].every((k) => raw[k] !== undefined) && raw.creatinine > 0 && raw.age < 140) {
       derived.crcl = ((140 - raw.age) * raw.weight) / (72 * raw.creatinine) * (raw.sex === 'F' ? 0.85 : 1);
       derived.crcl_source = 'Cockcroft-Gault';
       notes.push(`CLcr ${shown('crcl', derived.crcl)} mL/min (Cockcroft-Gault)`);
