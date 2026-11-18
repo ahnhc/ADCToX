@@ -1,4 +1,4 @@
-/* ADCToX v1.0.1 WebApp
+/* ADCToX v1.0.2 WebApp
    Active-Organ Matrix + Construct Design Studio + Auto Design 5-Fold PK/PD + Biomarker Flowsheet
    Zero framework, zero build step. Supports desktop & Android/iOS PWA. */
 (function () {
@@ -340,7 +340,7 @@
           ['ADC Design', 'Combine target, linker, payload, DAR, and antibody Fc for manual scoring, or run Auto design to search optimal constructs and compare against an approved ADC.'],
         ];
     const xBtn = h('button', { type: 'button', class: 'x-btn', 'aria-label': isKo ? '닫기' : 'Close', onclick: closeGuide }, svgClose());
-    const verStr = String((APP && APP.version) || '1.0.1').replace(/^v/i, '');
+    const verStr = String((APP && APP.version) || '1.0.2').replace(/^v/i, '');
     const dialog = h('div', { class: 'guide overlay-panel', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'g-title' },
       h('div', { class: 'g-head' },
         h('h2', { id: 'g-title', text: isKo ? 'ADCToX 사용 안내' : 'ADCToX Guide' }),
@@ -5951,6 +5951,7 @@
         h('input', {
           type: 'text',
           class: 'drp-smiles-input adv-smiles-input',
+          maxlength: 1024,
           placeholder: 'CCc1c2c(nc3ccc(O)cc13)-c1cc3c(c(=O)n1C2)COC(=O)C3(O)CC',
           value: S.customPayloadSmiles || '',
           oninput: (e) => {
@@ -7947,7 +7948,7 @@
         if (id) MECH[id] = m;
       }
     });
-    const cleanVer = String(APP.version || '1.0.1').replace(/^v/i, '');
+    const cleanVer = String(APP.version || '1.0.2').replace(/^v/i, '');
     if (verEl) verEl.textContent = cleanVer;
     if (barVer) barVer.textContent = cleanVer;
 

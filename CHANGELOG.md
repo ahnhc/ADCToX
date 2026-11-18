@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.2
+
+- Added authenticated HTTPS routing for Deep Research GPU workers and optional Cloudflare Access service credentials.
+- Kept local Auto Design available when the remote worker is unreachable and recorded the method used to compute custom payload features.
+- Bounded web analysis queues, GPU worker requests, XML table expansion, and update downloads.
+- Reduced Python package size and included the runtime data required by wheel installations.
+
 ## 1.0.1
 
 - Fixed repeated patient calculations when leaving an unchanged lab field.

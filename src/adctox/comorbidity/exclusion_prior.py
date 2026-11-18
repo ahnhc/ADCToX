@@ -20,9 +20,9 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
-ARTIFACT = (
-    Path(__file__).resolve().parents[3] / "artifacts" / "exclusion_enrichment_exclusion.json"
-)
+from .._paths import DATA_ROOT
+
+ARTIFACT = DATA_ROOT / "artifacts" / "exclusion_enrichment_exclusion.json"
 
 # Two filters, because magnitude alone was serving noise.
 #

@@ -308,6 +308,18 @@ def test_app_check_is_cached_and_a_repository_copy_is_not_self_updated(server, t
         updates.update_app(program=tmp_path / "adc_recommender_full.py", allow_local=True)
 
 
+def test_app_manifest_enforces_its_byte_limit(server, monkeypatch):
+    base, bodies, _ = server
+    raw = json.dumps(_app_release(server, "9.0")).encode()
+    bodies["/app/stable.json"] = raw
+    monkeypatch.setattr(updates, "MAX_MANIFEST_BYTES", len(raw))
+    url = base + "/app/stable.json"
+    assert updates.fetch_app_manifest(url, allow_local=True)["app_version"] == "9.0"
+    bodies["/app/stable.json"] += b" "
+    with pytest.raises(updates.UpdateError, match="too large"):
+        updates.fetch_app_manifest(url, allow_local=True)
+
+
 def test_app_update_failures_are_one_line_update_errors(server, tmp_path, monkeypatch, capsys):
     import http.client
     base, bodies, _ = server

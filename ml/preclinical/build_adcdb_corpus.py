@@ -587,17 +587,18 @@ def analyze_linker_cleavage_reaction(linker_smi: str, payload_smi: str) -> Dict[
 _CONFORMER_3D_CACHE: Dict[str, np.ndarray] = {}
 
 
-def compute_3d_conformer_physics(smi: str) -> np.ndarray:
+def compute_3d_conformer_physics(smi: str, *, cache: bool = True) -> np.ndarray:
     if not smi or not isinstance(smi, str):
         return np.zeros(16, dtype=np.float32)
     smi_key = smi.strip()
-    if smi_key in _CONFORMER_3D_CACHE:
+    if cache and smi_key in _CONFORMER_3D_CACHE:
         return _CONFORMER_3D_CACHE[smi_key]
 
     mol = safe_mol_from_smiles(smi_key)
     if mol is None:
         vec = np.zeros(16, dtype=np.float32)
-        _CONFORMER_3D_CACHE[smi_key] = vec
+        if cache:
+            _CONFORMER_3D_CACHE[smi_key] = vec
         return vec
 
     try:
@@ -687,7 +688,8 @@ def compute_3d_conformer_physics(smi: str) -> np.ndarray:
         dtype=np.float32,
     )
     vec = np.nan_to_num(vec, nan=0.0, posinf=1.0, neginf=-1.0)
-    _CONFORMER_3D_CACHE[smi_key] = vec
+    if cache:
+        _CONFORMER_3D_CACHE[smi_key] = vec
     return vec
 
 

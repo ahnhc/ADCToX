@@ -37,7 +37,9 @@ from pathlib import Path
 
 import yaml
 
-REGISTRY_YAML = Path(__file__).resolve().parents[3] / "conf" / "adc_registry.yaml"
+from .._paths import DATA_ROOT
+
+REGISTRY_YAML = DATA_ROOT / "conf" / "adc_registry.yaml"
 
 # Non-ADC agents whose names appear in arm titles. Used only to tell a legitimate
 # comparator arm apart from an unattributable one -- never for attribution itself.

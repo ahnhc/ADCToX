@@ -1,5 +1,5 @@
-# ADCToX v1.0.1
+# ADCToX v1.0.2
 
-- Fixed repeated patient calculations when leaving an unchanged lab field.
-- Kept the Patient Profile scroll position and active input steady while analysis results update.
-- Marked CLcr, eGFR, and LVEF values above their displayed reference ranges as elevated.
+- Auto Design can route through an authenticated GPU worker and falls back to local calculation when the worker is unreachable.
+- The result records whether custom payload features came from RDKit or the portable DXd-based approximation.
+- Added request and parsing limits and reduced the size of Python distributions.

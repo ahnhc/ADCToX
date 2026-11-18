@@ -19,7 +19,9 @@ from pathlib import Path
 
 import yaml
 
-CONF = Path(__file__).resolve().parents[3] / "conf" / "hard_flags.yaml"
+from .._paths import DATA_ROOT
+
+CONF = DATA_ROOT / "conf" / "hard_flags.yaml"
 
 
 @dataclass(frozen=True)

@@ -21,9 +21,9 @@ from pathlib import Path
 
 import yaml
 
-RULES_YAML = (
-    Path(__file__).resolve().parents[3] / "conf" / "ontology" / "organ_concern_rules.yaml"
-)
+from .._paths import DATA_ROOT
+
+RULES_YAML = DATA_ROOT / "conf" / "ontology" / "organ_concern_rules.yaml"
 
 
 @dataclass(frozen=True)

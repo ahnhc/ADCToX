@@ -10,11 +10,11 @@ from __future__ import annotations
 
 import uuid
 from dataclasses import dataclass
-from pathlib import Path
 
 import numpy as np
 import yaml
 
+from ._paths import DATA_ROOT
 from .comorbidity.exclusion_prior import driver as exclusion_driver
 from .comorbidity.hard_flags import applicable as applicable_flags
 from .comorbidity.target_expression import (
@@ -40,7 +40,7 @@ from .model.predict import (
 )
 from .taxonomy import default_taxonomy
 
-CONF = Path(__file__).resolve().parents[2] / "conf"
+CONF = DATA_ROOT / "conf"
 
 # Payload -> family, the level nested inside mechanism.
 #

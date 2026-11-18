@@ -231,7 +231,8 @@ def _row(RC, row, checks_, notes, values, raw, conds=()):
 class App:
     def __init__(self, RC):
         self.RC, self.lock, self.jobs, self.jobs_lock, self.hosts = RC, threading.Lock(), {}, threading.Lock(), set()
-        self.queue, self.worker, self.current, self.stopping = queue.SimpleQueue(), None, None, False
+        self.queue = queue.Queue(maxsize=JOBS + 1)  # one slot reserved for the stop signal
+        self.worker, self.current, self.stopping = None, None, False
 
     @contextmanager
     def state(self, choice):
@@ -328,13 +329,12 @@ class App:
         return out
 
     def _prune(self):
-        """under jobs_lock: finished jobs older than KEEP go, then the oldest beyond JOBS (a queued one dropped here never runs)"""
+        """Remove expired results and evict the oldest finished results beyond JOBS."""
         now = time.monotonic()
         for k, j in list(self.jobs.items()):
             if j["ended"] is not None and now - j["ended"] > KEEP: del self.jobs[k]
         while len(self.jobs) > JOBS:
-            j = self.jobs.pop(next(iter(self.jobs)))
-            if j["state"] == "queued": j.update(state="error", error="dropped", ended=now)
+            del self.jobs[next(k for k, j in self.jobs.items() if j["state"] in ("done", "error"))]
 
     def job(self, jid):
         """the job's state; a finished job is handed out once and then forgotten, with the patient's conditions and reports"""
@@ -367,16 +367,21 @@ class App:
         import form
         conds = self.conditions(body); choice = self.choice(body, conds)
         with self.jobs_lock:
+            pending = sum(j["state"] in ("queued", "running") for j in self.jobs.values())
+            if self.stopping or pending >= JOBS:
+                raise _Error(429, "Analysis queue is full. Try again shortly.")
             jid = secrets.token_hex(8)
             self.jobs[jid] = job = dict(state="queued", step="", step_text="", started=None, ended=None, elapsed=None, error=None, conditions=conds,
                                         reports=[], ambiguous=[], unresolved=[], usage=form._ProcessUsage())
             self._prune()
-            self.queue.put((job, conds, choice))
             if self.worker is None or not self.worker.is_alive():
                 try:
-                    self.worker = threading.Thread(target=self._work, daemon=True); self.worker.start()
-                except RuntimeError as error:                                   # no thread: the job ends here, not as 'queued' forever
+                    self.worker = threading.Thread(target=self._work, daemon=True)
+                    self.worker.start()
+                except RuntimeError as error:
                     job.update(state="error", error=_one_line(error), ended=time.monotonic(), elapsed=0.0)
+                    return dict(job=jid)
+            self.queue.put_nowait((job, conds, choice))
         return dict(job=jid)
 
     def _work(self):
@@ -388,7 +393,10 @@ class App:
     def stop(self, wait=120):
         """at exit: no further analysis starts; the one running finishes (its thread is inside the models, and a process that
         exits around it aborts)"""
-        self.stopping = True; self.queue.put(None)
+        with self.jobs_lock:
+            if not self.stopping:
+                self.stopping = True
+                self.queue.put_nowait(None)
         worker = self.worker
         if worker is None or not worker.is_alive(): return
         if self.current is not None: print("finishing the analysis", file=sys.stderr, flush=True)
@@ -474,6 +482,8 @@ class App:
             return res
         except DR.AllGPUSlotsBusyError as e:
             raise _Error(429, str(e), code="all_gpu_slots_busy", gpu_status=e.status_payload) from None
+        except DR.InvalidCustomPayloadError as e:
+            raise _Error(400, str(e), code="invalid_custom_payload") from None
 
     # ------------------------------------------------------------------ routes
     def get(self, path, query):
