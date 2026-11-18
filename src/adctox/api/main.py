@@ -10,19 +10,19 @@ from __future__ import annotations
 import json
 import uuid
 from functools import lru_cache
-from pathlib import Path
 
 import numpy as np
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse, PlainTextResponse
 
+from .._paths import DATA_ROOT
 from ..design.enumerate import DesignSpace
 from ..model.predict import Posterior
 from ..pipeline import propose, resolve_comorbidities
 from ..schemas import AssessRequest, Disclaimer, ProposeRequest, comorbidity_registry
 from ..taxonomy import default_taxonomy
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = DATA_ROOT
 CONF = ROOT / "conf"
 ARTIFACTS = ROOT / "artifacts"
 
@@ -313,7 +313,7 @@ def _posterior() -> Posterior:
 def _registry() -> dict:
     import yaml
 
-    path = ROOT / "conf" / "adc_registry.yaml"
+    path = CONF / "adc_registry.yaml"
     return yaml.safe_load(path.read_text(encoding="utf-8"))["agents"]
 
 

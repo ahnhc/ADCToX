@@ -37,7 +37,9 @@ from typing import Iterable
 
 import yaml
 
-CONF_DIR = Path(__file__).resolve().parents[2] / "conf" / "ontology"
+from ._paths import DATA_ROOT
+
+CONF_DIR = DATA_ROOT / "conf" / "ontology"
 AXES_YAML = CONF_DIR / "axes.yaml"
 INVESTIGATIONS_YAML = CONF_DIR / "investigations_rules.yaml"
 

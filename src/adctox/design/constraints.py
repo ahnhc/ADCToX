@@ -24,8 +24,10 @@ import yaml
 
 from .enumerate import Design
 
-REGISTRY_YAML = Path(__file__).resolve().parents[3] / "conf" / "adc_registry.yaml"
-DESIGN_YAML = Path(__file__).resolve().parents[3] / "conf" / "design_space.yaml"
+from .._paths import DATA_ROOT
+
+REGISTRY_YAML = DATA_ROOT / "conf" / "adc_registry.yaml"
+DESIGN_YAML = DATA_ROOT / "conf" / "design_space.yaml"
 
 
 @dataclass

@@ -23,24 +23,43 @@ Mode 3 (`Deep Research (GPU)`) engine for Tab 3 (`ADC 신규 설계`):
 
 from __future__ import annotations
 
+import hmac
 import io
 import json
 import math
 import os
+import re
 import threading
 import time
 import urllib.error
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, NamedTuple, Optional, Tuple
+from urllib.parse import urlsplit
 
 import numpy as np
 
 import studio_matrix as SM
 
 MAX_GPU_SLOTS = 4
+MAX_WORKER_RESPONSE = 8 << 20
+MAX_CUSTOM_SMILES = 1024
+WORKER_INPUTS = ("spec", "refAdcId", "organs", "prioOrgan", "cancerText", "simWeights",
+                 "customPayloadSmiles", "minComputeMs")
 DOSE_GRID_MGKG = [1.8, 2.4, 3.6, 5.4, 6.0]
+
+
+class InvalidCustomPayloadError(ValueError):
+    pass
+
+
+class CustomPayloadFeatures(NamedTuple):
+    structure: np.ndarray
+    reactions: np.ndarray
+    shielding: np.ndarray
+    fingerprint: np.ndarray
+    source: str
 
 
 class AllGPUSlotsBusyError(RuntimeError):
@@ -495,6 +514,7 @@ def _get_ensemble_on_device(device_str: str) -> Optional[Tuple[List[Dict[str, An
     except ImportError:
         return None
 
+    cache = _load_cache_npz()
     with _BUNDLE_LOCK:
         if _RAW_BUNDLE is None:
             _RAW_BUNDLE = torch.load(pt_path, map_location="cpu", weights_only=False)
@@ -503,7 +523,6 @@ def _get_ensemble_on_device(device_str: str) -> Optional[Tuple[List[Dict[str, An
 
         PureRobertaChemEncoder, MergedSurrogateHeads = _build_pure_torch_classes()
         dev = torch.device(device_str)
-        cache = _load_cache_npz()
         h_esm_all = torch.from_numpy(cache["heavy_esm_tf"].astype(np.float32)).to(dev)
         l_esm_all = torch.from_numpy(cache["light_esm_tf"].astype(np.float32)).to(dev)
         a_esm_all = torch.from_numpy(cache["antigen_esm_tf"].astype(np.float32)).to(dev)
@@ -584,13 +603,51 @@ def _tokenize_smiles_pure(smi: str, vocab: Dict[str, int], max_len: int = 128) -
 # ==============================================================================
 # 4. Live 5-Fold Deep Research Execution (CUDA GPU 0..3 or Server CPU)
 # ==============================================================================
+class _WorkerNoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def _worker_json(base_url: str, path: str, timeout: float, body: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    parsed = urlsplit(base_url)
+    loopback = parsed.hostname in ("localhost", "127.0.0.1", "::1")
+    token = os.environ.get("ADCTOX_GPU_WORKER_TOKEN")
+    if (not parsed.hostname or parsed.username is not None or parsed.password is not None
+            or parsed.query or parsed.fragment
+            or (parsed.scheme != "https" and not (loopback and parsed.scheme == "http"))
+            or (not loopback and not token)):
+        raise ValueError("A remote GPU worker requires HTTPS and a worker token")
+    url = base_url + path
+    if body is None:
+        request = urllib.request.Request(url)
+    else:
+        request = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
+                                         headers={"Content-Type": "application/json"})
+    if token:
+        request.add_unredirected_header("Authorization", f"Bearer {token}")
+    access_id = os.environ.get("ADCTOX_CF_ACCESS_CLIENT_ID")
+    access_secret = os.environ.get("ADCTOX_CF_ACCESS_CLIENT_SECRET")
+    if access_id or access_secret:
+        if parsed.scheme != "https" or not access_id or not access_secret:
+            raise ValueError("Cloudflare Access credentials require HTTPS and both token fields")
+        request.add_unredirected_header("CF-Access-Client-Id", access_id)
+        request.add_unredirected_header("CF-Access-Client-Secret", access_secret)
+    with urllib.request.build_opener(_WorkerNoRedirect()).open(request, timeout=timeout) as response:
+        content = response.read(MAX_WORKER_RESPONSE + 1)
+    if len(content) > MAX_WORKER_RESPONSE:
+        raise ValueError("GPU worker response is too large")
+    result = json.loads(content)
+    if not isinstance(result, dict):
+        raise ValueError("GPU worker response must be an object")
+    return result
+
+
 def get_gpu_status() -> Dict[str, Any]:
     worker_url = os.environ.get("ADCTOX_GPU_WORKER_URL", "").strip().rstrip("/")
     if worker_url:
         try:
-            req = urllib.request.Request(f"{worker_url}/gpu-status", method="GET")
-            with urllib.request.urlopen(req, timeout=2.5) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
+            data = _worker_json(worker_url, "/gpu-status", 2.5)
+            if isinstance(data.get("available"), bool):
                 data["proxied"] = True
                 return data
         except Exception:
@@ -601,7 +658,7 @@ def get_gpu_status() -> Dict[str, Any]:
 def _assemble_biophys_batch(
     cache: Dict[str, np.ndarray],
     specs_idx: List[Tuple[int, int, int, int, int, float]],
-    custom_payload_feat: Optional[Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]] = None,
+    custom_payload_feat: Optional[CustomPayloadFeatures] = None,
 ) -> np.ndarray:
     """
     Builds exact `(B, 108)` biophysical input vectors for arbitrary `(ti, li, pi, di, fi, dose_mgkg)` tuples.
@@ -623,10 +680,9 @@ def _assemble_biophys_batch(
         tf_idx = ti * st["n_f"] + fi
         dar_f = float(st["dar_vals"][di])
         if custom_payload_feat is not None and pi < 0:
-            cp_3d, cp_rxn_16, cp_shield_16, _ = custom_payload_feat
-            p3d = cp_3d
-            rxn = cp_rxn_16[li]
-            sh_flag = float(cp_shield_16[li])
+            p3d = custom_payload_feat.structure
+            rxn = custom_payload_feat.reactions[li]
+            sh_flag = float(custom_payload_feat.shielding[li])
         else:
             p3d = p_3d_arr[pi]
             rxn = rxn_mat[li, pi]
@@ -658,11 +714,8 @@ def _assemble_biophys_batch(
     return out
 
 
-def _compute_custom_smiles_features(custom_smi: str) -> Optional[Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]]:
-    """
-    Computes RDKit 3D Boltzmann conformer + Morgan-1024 + cleavage SMARTS across all 16 linkers if RDKit is available,
-    else derives smooth physicochemical descriptors from SMILES stoichiometry so custom SMILES works everywhere!
-    """
+def _compute_custom_smiles_features(custom_smi: str) -> Optional[CustomPayloadFeatures]:
+    """Compute molecular features with RDKit or use the cached DXd approximation."""
     smi = (custom_smi or "").strip()
     if not smi:
         return None
@@ -673,12 +726,16 @@ def _compute_custom_smiles_features(custom_smi: str) -> Optional[Tuple[np.ndarra
         prec_dir = str(here / "preclinical")
         if prec_dir not in sys.path:
             sys.path.insert(0, prec_dir)
+        from rdkit import Chem
         from build_adcdb_corpus import (
             analyze_linker_cleavage_reaction,
             compute_3d_conformer_physics,
             compute_morgan_fp1024,
         )
-        p3d = compute_3d_conformer_physics(smi).astype(np.float32)
+        molecule = Chem.MolFromSmiles(smi)
+        if molecule is None or molecule.GetNumHeavyAtoms() > 128:
+            raise InvalidCustomPayloadError("Enter a valid custom payload with up to 128 heavy atoms")
+        p3d = compute_3d_conformer_physics(smi, cache=False).astype(np.float32)
         pfp = compute_morgan_fp1024(smi).astype(np.float32)
         rxn_16 = np.zeros((len(st["linkers"]), 25), dtype=np.float32)
         sh_16 = np.zeros(len(st["linkers"]), dtype=np.float32)
@@ -699,9 +756,10 @@ def _compute_custom_smiles_features(custom_smi: str) -> Optional[Tuple[np.ndarra
                 ],
                 dtype=np.float32,
             )
-        return p3d, rxn_16, sh_16, pfp
+        return CustomPayloadFeatures(p3d, rxn_16, sh_16, pfp, "rdkit")
+    except InvalidCustomPayloadError:
+        raise
     except Exception:
-        # Lightweight fallback using canonical DXd template perturbed by SMILES character hash/composition
         cache = _load_cache_npz()
         p3d = cache["p_3d"][0].astype(np.float32).copy()
         rxn_16 = cache["rxn_mat"][:, 0, :].astype(np.float32).copy()
@@ -710,7 +768,7 @@ def _compute_custom_smiles_features(custom_smi: str) -> Optional[Tuple[np.ndarra
         n_c = smi.upper().count("C")
         n_pol = sum(smi.upper().count(x) for x in ("O", "N", "S"))
         p3d[1] = np.clip((n_c - 1.4 * n_pol) / 18.0, -0.2, 1.2)
-        return p3d, rxn_16, sh_16, pfp
+        return CustomPayloadFeatures(p3d, rxn_16, sh_16, pfp, "dxd_template")
 
 
 def _deep_indication_factors(cancer_text: str, targets: List[Dict[str, Any]]) -> np.ndarray:
@@ -753,7 +811,7 @@ _QMC_NORMALS_64 = _build_qmc_normals(64)
 def _evaluate_chunk_5fold_ode(
     chunk_specs: List[Tuple[int, int, int, int, int, float]],
     cache: Dict[str, np.ndarray],
-    custom_feat: Optional[Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]],
+    custom_feat: Optional[CustomPayloadFeatures],
     ens_loaded: Optional[Tuple[List[Dict[str, Any]], Dict[str, int]]],
     dev_str: str,
     custom_smi: str,
@@ -805,7 +863,7 @@ def _evaluate_chunk_5fold_ode(
             c_ids, c_msk = _tokenize_smiles_pure(custom_smi, vocab)
             c_ids_t = torch.from_numpy(c_ids[None, :]).to(dev)
             c_msk_t = torch.from_numpy(c_msk[None, :]).to(dev)
-            c_fp_t = torch.from_numpy(custom_feat[3][None, :]).to(dev)
+            c_fp_t = torch.from_numpy(custom_feat.fingerprint[None, :]).to(dev)
 
         with torch.no_grad():
             for f_i, f_pkg in enumerate(folds_list):
@@ -1073,6 +1131,8 @@ def _chunk_points(
 def run_deep_research(
     body: Optional[Dict[str, Any]] = None,
     on_chunk: Optional[Callable[[Dict[str, Any]], None]] = None,
+    *,
+    proxy: bool = True,
 ) -> Dict[str, Any]:
     """
     Executes 5-Fold `MergedADCSurrogateNetV2` + vectorized 3-cycle Q3W PK/PD ODE + 64-draw Monte Carlo IIV
@@ -1082,29 +1142,34 @@ def run_deep_research(
     Raises `AllGPUSlotsBusyError` when all 4 slots are concurrently occupied.
     """
     body = body or {}
+    custom_smi = body.get("customPayloadSmiles")
+    if custom_smi is None:
+        custom_smi = ""
+    if not isinstance(custom_smi, str) or len(custom_smi) > MAX_CUSTOM_SMILES:
+        raise InvalidCustomPayloadError(f"Enter custom payload SMILES up to {MAX_CUSTOM_SMILES} characters")
+    custom_smi = custom_smi.strip()
 
-    # 1. If a remote multi-GPU worker (`4090_4`) is configured via `ADCTOX_GPU_WORKER_URL`, proxy first!
     worker_url = os.environ.get("ADCTOX_GPU_WORKER_URL", "").strip().rstrip("/")
-    if worker_url:
+    if proxy and worker_url:
         try:
-            req_bytes = json.dumps(body).encode("utf-8")
-            req = urllib.request.Request(
-                f"{worker_url}/deep-research",
-                data=req_bytes,
-                headers={"Content-Type": "application/json"},
-                method="POST",
-            )
-            with urllib.request.urlopen(req, timeout=25.0) as resp:
-                out = json.loads(resp.read().decode("utf-8"))
+            worker_body = {key: body[key] for key in WORKER_INPUTS if key in body}
+            out = _worker_json(worker_url, "/deep-research", 25.0, worker_body)
+            if isinstance(out.get("deep_research"), dict) and isinstance(out.get("best"), dict):
                 out["proxied_worker"] = True
                 return out
         except urllib.error.HTTPError as he:
-            if he.code == 429:
+            details = {}
+            with he:
                 try:
-                    err_obj = json.loads(he.read().decode("utf-8"))
-                except Exception:
-                    err_obj = {}
-                raise AllGPUSlotsBusyError(err_obj.get("gpu_status") or ALLOCATOR.status()) from None
+                    if he.code in (400, 429):
+                        details = json.loads(he.read(4096))
+                except (OSError, ValueError, RecursionError):
+                    pass
+            if isinstance(details, dict):
+                if he.code == 400 and details.get("code") == "invalid_custom_payload":
+                    raise InvalidCustomPayloadError("Enter a valid custom payload with up to 128 heavy atoms") from None
+                if he.code == 429 and isinstance(details.get("gpu_status"), dict):
+                    raise AllGPUSlotsBusyError(details["gpu_status"]) from None
         except Exception:
             pass
 
@@ -1151,7 +1216,6 @@ def run_deep_research(
             r_ti, r_li, r_pi, r_di, r_fi = SM.resolve_spec_indices(ref_cur_spec, st)
             ref_arch_i = _add_arch((r_ti, r_li, r_pi, r_di, r_fi))
 
-        custom_smi = str(body.get("customPayloadSmiles") or "").strip()
         custom_feat = _compute_custom_smiles_features(custom_smi) if custom_smi else None
         if custom_feat is not None:
             for li_c in (cur_li, 0, 2, 6, 7):
@@ -1634,6 +1698,7 @@ def run_deep_research(
         mat_res["cloud"] = deep_points
         mat_res["same_target_cloud"] = deep_same_target_cloud
         mat_res["pareto_front"] = deep_pareto
+        mat_res["proxied_worker"] = False
         mat_res["deep_research"] = {
             "slot": slot_id,
             "device": dev_str,
@@ -1647,6 +1712,7 @@ def run_deep_research(
             "mc_patient_draws": 64,
             "optimal_dose_mgkg": b_dose,
             "custom_smiles_used": bool(custom_feat is not None),
+            "custom_smiles_features": custom_feat.source if custom_feat is not None else None,
             "elapsed_ms": elapsed_ms,
         }
         return mat_res
@@ -1658,8 +1724,14 @@ def run_deep_research(
 # ==============================================================================
 # 5. Standalone Multi-GPU Worker Server (`python ml/deep_research.py --serve-gpu-worker`)
 # ==============================================================================
-def serve_gpu_worker(host: str = "127.0.0.1", port: int = 8766) -> None:
+def make_gpu_worker(host: str, port: int) -> ThreadingHTTPServer:
+    token = os.environ.get("ADCTOX_GPU_WORKER_TOKEN")
+    if not token and host.lower() not in ("localhost", "127.0.0.1"):
+        raise ValueError("ADCTOX_GPU_WORKER_TOKEN is required for a non-loopback GPU worker")
+
     class WorkerHandler(BaseHTTPRequestHandler):
+        timeout = 30
+
         def log_message(self, *args):
             pass
 
@@ -1668,34 +1740,82 @@ def serve_gpu_worker(host: str = "127.0.0.1", port: int = 8766) -> None:
             self.send_response(code)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(raw)))
+            self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(raw)
 
+        def _authorized(self) -> bool:
+            if token:
+                authorization = self.headers.get("Authorization", "").encode("utf-8")
+                if hmac.compare_digest(authorization, f"Bearer {token}".encode("utf-8")):
+                    return True
+                self._send(401, {"error": "GPU worker authentication required"})
+                return False
+            host_header = self.headers.get("Host", "")
+            if (re.fullmatch(r"(?:localhost|127\.0\.0\.1)(?::[0-9]+)?", host_header, re.I)
+                    and self.headers.get("Origin") is None
+                    and self.headers.get("Sec-Fetch-Site") is None):
+                return True
+            self._send(403, {"error": "GPU worker accepts local service requests only"})
+            return False
+
         def do_GET(self) -> None:
-            if self.path.startswith("/gpu-status"):
+            if not self._authorized():
+                return
+            if self.path == "/gpu-status":
                 self._send(200, ALLOCATOR.status())
             else:
                 self._send(404, {"error": "not found"})
 
         def do_POST(self) -> None:
-            if self.path.startswith("/deep-research"):
-                n = int(self.headers.get("Content-Length") or 0)
-                body = json.loads(self.rfile.read(n) or b"{}")
-                try:
-                    res = run_deep_research(body)
-                    res["gpu_status"] = ALLOCATOR.status()
-                    self._send(200, res)
-                except AllGPUSlotsBusyError as busy_err:
-                    self._send(429, {"error": "all_gpu_slots_busy", "gpu_status": busy_err.status_payload})
-                except Exception as exc:
-                    self._send(500, {"error": f"{type(exc).__name__}: {exc}"})
-            else:
+            if not self._authorized():
+                return
+            if self.path != "/deep-research":
                 self._send(404, {"error": "not found"})
+                return
+            if self.headers.get_content_type() != "application/json":
+                self._send(415, {"error": "Content-Type: application/json is expected"})
+                return
+            lengths = self.headers.get_all("Content-Length", [])
+            length = lengths[0] if len(lengths) == 1 else ""
+            if (self.headers.get("Transfer-Encoding") is not None
+                    or not re.fullmatch(r"[0-9]{1,20}", length)):
+                self._send(400, {"error": "Invalid request length"})
+                return
+            size = int(length)
+            if size > 1 << 20:
+                self._send(413, {"error": "Request too large"})
+                return
+            try:
+                raw = self.rfile.read(size)
+                body = json.loads(raw)
+                if len(raw) != size or not isinstance(body, dict):
+                    raise ValueError
+            except TimeoutError:
+                self._send(408, {"error": "Request timed out"})
+                return
+            except (ValueError, RecursionError):
+                self._send(400, {"error": "A JSON object is expected"})
+                return
+            try:
+                res = run_deep_research(body, proxy=False)
+                res["gpu_status"] = ALLOCATOR.status()
+                self._send(200, res)
+            except AllGPUSlotsBusyError as busy_err:
+                self._send(429, {"error": "all_gpu_slots_busy", "gpu_status": busy_err.status_payload})
+            except InvalidCustomPayloadError as invalid:
+                self._send(400, {"code": "invalid_custom_payload", "error": str(invalid)})
+            except Exception:
+                self._send(500, {"error": "GPU worker inference failed"})
 
-    srv = ThreadingHTTPServer((host, port), WorkerHandler)
-    st_info = ALLOCATOR.status()
-    print(f"ADCTOX Deep Research GPU Worker listening on http://{host}:{port} ({st_info['backend']})", flush=True)
-    srv.serve_forever()
+    return ThreadingHTTPServer((host, port), WorkerHandler)
+
+
+def serve_gpu_worker(host: str = "127.0.0.1", port: int = 8766) -> None:
+    with make_gpu_worker(host, port) as server:
+        st_info = ALLOCATOR.status()
+        print(f"ADCTOX Deep Research GPU Worker listening on http://{host}:{server.server_port} ({st_info['backend']})", flush=True)
+        server.serve_forever()
 
 
 if __name__ == "__main__":

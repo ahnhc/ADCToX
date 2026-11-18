@@ -11,8 +11,10 @@ from __future__ import annotations
 
 import textwrap
 
+import pytest
 from lxml import etree
 
+from adctox.extract import jats_tables
 from adctox.extract.jats_tables import (
     ARITHMETIC_TOLERANCE_PP,
     parse_table_wrap,
@@ -21,6 +23,15 @@ from adctox.extract.jats_tables import (
 
 def _wrap(xml: str):
     return etree.fromstring(textwrap.dedent(xml).strip().encode("utf-8"))
+
+
+def test_table_respects_the_expanded_cell_limit(monkeypatch):
+    wrap = _wrap('<table-wrap><table><tr><td colspan="3">Label</td></tr></table></table-wrap>')
+    monkeypatch.setattr(jats_tables, "MAX_TABLE_CELLS", 3)
+    assert parse_table_wrap(wrap).n_cols == 3
+    monkeypatch.setattr(jats_tables, "MAX_TABLE_CELLS", 2)
+    with pytest.raises(ValueError, match="cell limit"):
+        parse_table_wrap(wrap)
 
 
 SPANNING_HEADER = """

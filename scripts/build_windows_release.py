@@ -160,9 +160,9 @@ if ((Get-FileHash get-pip.py -Algorithm SHA256).Hash.ToLower() -ne $GetPipSha) {
 if ($LASTEXITCODE -ne 0) {{ throw "pip setup failed" }}
 
 Write-Host "3/5 PyTorch $Torch (CPU) and the app's packages (several minutes)"
-& ADCTOX\python\python.exe -m pip install --no-warn-script-location --disable-pip-version-check "torch==$Torch" --index-url https://download.pytorch.org/whl/cpu
+& ADCTOX\python\python.exe -m pip install --no-compile --no-warn-script-location --disable-pip-version-check "torch==$Torch" --index-url https://download.pytorch.org/whl/cpu
 if ($LASTEXITCODE -ne 0) {{ throw "torch install failed" }}
-& ADCTOX\python\python.exe -m pip install --no-warn-script-location --disable-pip-version-check -r app\requirements-cpu.txt
+& ADCTOX\python\python.exe -m pip install --no-compile --no-warn-script-location --disable-pip-version-check -r app\requirements-cpu.txt
 if ($LASTEXITCODE -ne 0) {{ throw "package install failed" }}
 
 Write-Host "4/5 App files"
@@ -172,9 +172,9 @@ Set-Content ADCTOX\app.txt $Release -Encoding ascii
 Copy-Item launcher.py, ADCTOX.bat, ADCTOX-web.bat, ADCTOX-cli.bat, README.txt ADCTOX\
 
 Write-Host "5/5 Check and zip"
-& ADCTOX\python\python.exe -I ADCTOX\launcher.py --version
+& ADCTOX\python\python.exe -I -B ADCTOX\launcher.py --version
 if ($LASTEXITCODE -ne 0) {{ throw "the packaged app does not start" }}
-& ADCTOX\python\python.exe -c "import torch, transformers, sentence_transformers; print('torch', torch.__version__)"
+& ADCTOX\python\python.exe -B -c "import torch, transformers, sentence_transformers; print('torch', torch.__version__)"
 if ($LASTEXITCODE -ne 0) {{ throw "packages do not import (install the Microsoft Visual C++ Redistributable x64 and run again)" }}
 Remove-Item python-embed.zip, get-pip.py
 if (Test-Path ADCTOX-windows.zip) {{ Remove-Item ADCTOX-windows.zip }}
@@ -230,6 +230,7 @@ def main():
     # default, then the launcher points to the official installer when the PC lacks the runtime.
     ap.add_argument("--bundle-vc-runtime", action="store_true")
     ap.add_argument("--kit-only", action="store_true", help="only write the Windows build kit (build on a Windows PC)")
+    ap.add_argument("--write-manifest", action="store_true", help="also update releases/app/windows.json")
     a = ap.parse_args()
     manifest = json.loads((a.app / "app.json").read_text()); archive = a.app / "adctox-ubuntu.tar.gz"
     assert manifest["app_version"] == APP_VERSION and hashlib.sha256(archive.read_bytes()).hexdigest() == manifest["sha256"], "build the app first (scripts/build_ubuntu_release.py)"
@@ -260,7 +261,8 @@ def main():
             "size": out.stat().st_size, "sha256": hashlib.sha256(out.read_bytes()).hexdigest(), "python": "3.12.10 embeddable",
             "torch_version": manifest["torch_version"], "wheels": [w.name for w in found]}
     (a.out / "windows.json").write_text(json.dumps(info, indent=2) + "\n")
-    (ROOT / "releases/app/windows.json").write_text(json.dumps(info, indent=2) + "\n")       # read by install.ps1
+    if a.write_manifest:
+        (ROOT / "releases/app/windows.json").write_text(json.dumps(info, indent=2) + "\n")
     print(f"Windows {APP_VERSION}: {out.stat().st_size / 1024**2:.0f} MiB, {len(found)} wheels; models download on first start.")
 
 

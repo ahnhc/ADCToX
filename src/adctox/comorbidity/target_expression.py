@@ -34,7 +34,9 @@ from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 
-ARTIFACT = Path(__file__).resolve().parents[3] / "artifacts" / "target_expression.json"
+from .._paths import DATA_ROOT
+
+ARTIFACT = DATA_ROOT / "artifacts" / "target_expression.json"
 
 
 @dataclass(frozen=True)

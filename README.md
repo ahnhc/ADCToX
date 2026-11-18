@@ -3,7 +3,7 @@
 [![Linux](https://img.shields.io/badge/Linux-x86__64%20%7C%20arm64-2563EB?logo=linux&logoColor=white)](#installation)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20silicon-0F172A?logo=apple&logoColor=white)](#installation)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0D9488?logo=windows&logoColor=white)](#installation)
-[![Version](https://img.shields.io/badge/version-v1.0.1-10B981)](https://github.com/ahnhc/ADCToX/releases/latest)
+[![Version](https://img.shields.io/badge/version-v1.0.2-10B981)](https://github.com/ahnhc/ADCToX/releases/latest)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Live WebApp](https://img.shields.io/badge/WebApp-adctox.hyeongchan.dpdns.org-6366F1)](https://adctox.hyeongchan.dpdns.org)
 
@@ -53,6 +53,18 @@ adctox --update-models # Update model bundle
 ```bash
 ADCTOX_NO_BROWSER=1 ADCTOX_AUTO_RESTART=1 ADCTOX_HOST=0.0.0.0 ADCTOX_PORT=8765 ADCTOX_ALLOWED_HOSTS="*" adctox
 ```
+
+#### GPU worker behind Cloudflare Tunnel
+
+Run the worker from the repository with the GPU Python environment and RDKit.
+
+```bash
+python ml/deep_research.py --serve-gpu-worker --host 127.0.0.1 --port 8766
+```
+
+Publish a dedicated Cloudflare Tunnel hostname with `http://127.0.0.1:8766` as its origin. Set `ADCTOX_GPU_WORKER_URL` to the hostname's HTTPS URL on the web server. Set the same randomly generated `ADCTOX_GPU_WORKER_TOKEN` in the worker and web server's private service environments. For a Cloudflare Access application with a Service Auth policy, also set `ADCTOX_CF_ACCESS_CLIENT_ID` and `ADCTOX_CF_ACCESS_CLIENT_SECRET` on the web server.
+
+If the worker is unreachable, Auto Design runs on the web server. The portable app uses a DXd-based approximation for custom payload features. The result includes `proxied_worker`, `deep_research.runtime_mode`, and `deep_research.custom_smiles_features` so an operator can verify the execution path.
 
 ## Documentation & License
 

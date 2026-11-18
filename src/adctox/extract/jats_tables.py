@@ -57,6 +57,7 @@ HEADER_N = re.compile(
 # Agreement tolerance in percentage points. 0.6 absorbs the printing of a percentage to
 # one decimal or to the nearest integer without admitting a wrong numerator.
 ARITHMETIC_TOLERANCE_PP = 0.6
+MAX_TABLE_CELLS = 100_000
 
 AE_CAPTION = re.compile(
     r"adverse|toxicit|\bteae\b|\btrae\b|safety|treatment-emergent|side effect", re.I
@@ -186,6 +187,9 @@ def _grid(table) -> tuple[list[list[str]], int]:
     recoverable when a stub cell spans several adverse-event rows.
     """
     rows = table.findall(".//tr")
+    max_cols = MAX_TABLE_CELLS // max(1, len(rows))
+    if not max_cols:
+        raise ValueError("JATS table exceeds the cell limit")
     grid: list[list[str]] = []
     carry: dict[int, tuple[str, int]] = {}
     header_rows = 0
@@ -196,6 +200,8 @@ def _grid(table) -> tuple[list[list[str]], int]:
         if in_head:
             header_rows = max(header_rows, r_i + 1)
         for cellnode in tr.findall("./*"):
+            if not isinstance(cellnode.tag, str):
+                continue
             name = etree.QName(cellnode).localname
             if name not in ("td", "th"):
                 continue
@@ -211,6 +217,8 @@ def _grid(table) -> tuple[list[list[str]], int]:
                 rspan = max(1, int(cellnode.get("rowspan", 1)))
             except ValueError:
                 cspan = rspan = 1
+            if col + cspan > max_cols:
+                raise ValueError("JATS table exceeds the cell limit")
             for _ in range(cspan):
                 while col in carry:
                     t2, l2 = carry.pop(col)
@@ -228,6 +236,8 @@ def _grid(table) -> tuple[list[list[str]], int]:
             if left > 1:
                 carry[col] = (text, left - 1)
             col += 1
+        if col > max_cols:
+            raise ValueError("JATS table exceeds the cell limit")
         grid.append(row)
     width = max((len(r) for r in grid), default=0)
     for r in grid:
@@ -313,7 +323,8 @@ def parse_table_wrap(wrap) -> ParsedTable:
 
 
 def parse_article(path) -> tuple[dict, list[ParsedTable]]:
-    root = etree.parse(str(path)).getroot()
+    parser = etree.XMLParser(resolve_entities="internal", no_network=True)
+    root = etree.parse(str(path), parser).getroot()
     at = root.find(".//article-title")
     jt = root.find(".//journal-title")
     meta = {

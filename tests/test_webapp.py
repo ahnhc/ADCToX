@@ -213,6 +213,28 @@ def test_a_job_without_a_worker_ends_as_an_error(monkeypatch):
     assert (job["state"], job["error"]) == ("error", "RuntimeError: can't start new thread")
 
 
+def test_a_full_analysis_queue_preserves_the_accepted_jobs(server, monkeypatch):
+    gate = threading.Event()
+    monkeypatch.setattr(webapp, "JOBS", 2)
+
+    def slow_analysis(conditions, progress=None):
+        gate.wait(10)
+        return []
+
+    monkeypatch.setattr(RC, "analyze_conditions", slow_analysis)
+    try:
+        jobs = []
+        for condition in ("cirrhosis", "copd"):
+            status, body = call(server, "POST", "/api/analyze", {"conditions": [condition]})
+            assert status == 200
+            jobs.append(body["job"])
+        assert call(server, "POST", "/api/analyze", {"conditions": ["heart_failure"]})[0] == 429
+        assert all(call(server, "GET", f"/api/analyze/{job}")[0] == 200 for job in jobs)
+    finally:
+        gate.set()
+    assert all(finished(server, job)["state"] == "done" for job in jobs)
+
+
 def test_the_browser_opens_once_the_server_answers(monkeypatch):
     import urllib.request
     monkeypatch.delenv("ADCTOX_NO_BROWSER", raising=False); monkeypatch.setattr(suggest.Index, "load_mondo", lambda self: None)
@@ -425,6 +447,101 @@ def test_malformed_requests_get_a_one_line_answer(server, capsys):
     try: raise ValueError("bad value\nsecond line")
     except ValueError: server.handle_error(None, ("127.0.0.1", 1))
     assert capsys.readouterr().err == "adctox --web: ValueError: bad value\n"
+
+
+@pytest.mark.parametrize("token", [None, "test-worker-token"])
+def test_gpu_worker_checks_access_and_request_body(monkeypatch, token):
+    import deep_research as dr
+
+    monkeypatch.delenv("ADCTOX_GPU_WORKER_TOKEN", raising=False)
+    if token:
+        monkeypatch.setenv("ADCTOX_GPU_WORKER_TOKEN", token)
+    else:
+        with pytest.raises(ValueError, match="ADCTOX_GPU_WORKER_TOKEN"):
+            dr.make_gpu_worker("0.0.0.0", 0)
+    seen = []
+    monkeypatch.setattr(dr, "run_deep_research",
+                        lambda body, *, proxy: seen.append((body, proxy)) or {"completed": True})
+    with dr.make_gpu_worker("127.0.0.1", 0) as worker:
+        thread = threading.Thread(target=worker.serve_forever, daemon=True)
+        thread.start()
+        try:
+            headers = {"Authorization": f"Bearer {token}"} if token else {}
+            if token:
+                assert call(worker, "GET", "/gpu-status")[0] == 401
+            else:
+                assert call(worker, "POST", "/deep-research", {}, host="other.invalid")[0] == 403
+                assert call(worker, "POST", "/deep-research", {},
+                            headers={"Origin": "https://other.invalid"})[0] == 403
+            assert call(worker, "POST", "/deep-research", [], headers=headers)[0] == 400
+            status, reply = call(worker, "POST", "/deep-research", {}, headers=headers)
+            assert status == 200 and reply["completed"] and seen == [({}, False)]
+            monkeypatch.setenv("ADCTOX_GPU_WORKER_URL", f"http://127.0.0.1:{worker.server_port}")
+            assert dr.get_gpu_status()["proxied"]
+        finally:
+            worker.shutdown()
+            thread.join()
+
+
+@pytest.mark.parametrize("url, token", [
+    ("http://worker.invalid", "test-worker-token"),
+    ("https://worker.invalid", None),
+    ("https://user@worker.invalid", "test-worker-token"),
+])
+def test_remote_worker_requires_authenticated_https(monkeypatch, url, token):
+    import deep_research as dr
+
+    monkeypatch.delenv("ADCTOX_GPU_WORKER_TOKEN", raising=False)
+    if token:
+        monkeypatch.setenv("ADCTOX_GPU_WORKER_TOKEN", token)
+    with pytest.raises(ValueError, match="HTTPS and a worker token"):
+        dr._worker_json(url, "/gpu-status", 1)
+
+
+def test_gpu_worker_declines_redirects(monkeypatch):
+    import deep_research as dr
+    import urllib.error
+    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+    seen = []
+    class RedirectHandler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            seen.append(self.path)
+            self.send_response(302 if self.path == "/gpu-status" else 404)
+            if self.path == "/gpu-status":
+                self.send_header("Location", "/redirected")
+            self.end_headers()
+
+    monkeypatch.delenv("ADCTOX_CF_ACCESS_CLIENT_ID", raising=False)
+    monkeypatch.delenv("ADCTOX_CF_ACCESS_CLIENT_SECRET", raising=False)
+    with ThreadingHTTPServer(("127.0.0.1", 0), RedirectHandler) as worker:
+        thread = threading.Thread(target=worker.serve_forever, daemon=True)
+        thread.start()
+        try:
+            with pytest.raises(urllib.error.HTTPError) as caught:
+                dr._worker_json(f"http://127.0.0.1:{worker.server_port}", "/gpu-status", 2)
+            assert caught.value.code == 302 and seen == ["/gpu-status"]
+        finally:
+            worker.shutdown()
+            thread.join()
+
+
+def test_gpu_proxy_sends_only_design_inputs(monkeypatch):
+    import deep_research as dr
+
+    monkeypatch.setenv("ADCTOX_GPU_WORKER_URL", "https://worker.invalid")
+    seen = []
+    def worker_json(url, path, timeout, body=None):
+        seen.append(body)
+        return {"deep_research": {"runtime_mode": "pytorch_cuda"}, "best": {}}
+    monkeypatch.setattr(dr, "_worker_json", worker_json)
+    result = dr.run_deep_research({"customPayloadSmiles": "CCO", "irrelevant": "test"})
+    assert result["proxied_worker"] and seen == [{"customPayloadSmiles": "CCO"}]
+
+
+def test_overlong_custom_payload_is_rejected(server):
+    status, reply = call(server, "POST", "/api/studio/deep-research", {"customPayloadSmiles": "C" * 1025})
+    assert status == 400 and reply["code"] == "invalid_custom_payload"
 
 
 def test_ctrl_c_during_an_analysis_lets_it_finish_and_exits_cleanly(tmp_path):

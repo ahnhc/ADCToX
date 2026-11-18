@@ -36,8 +36,9 @@ import yaml
 
 from .predict import Posterior, predict_draws
 
-ROOT = Path(__file__).resolve().parents[3]
-REGISTRY = ROOT / "conf" / "adc_registry.yaml"
+from .._paths import DATA_ROOT
+
+REGISTRY = DATA_ROOT / "conf" / "adc_registry.yaml"
 
 
 def _registry_designs(path: Path = REGISTRY) -> tuple[list[dict], int]:

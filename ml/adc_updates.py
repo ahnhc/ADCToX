@@ -41,14 +41,13 @@ def _url(url, allow_local=False):
 
 
 def _open(url, allow_local=False):
+    class CheckedRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            _url(newurl, allow_local)
+            return super().redirect_request(req, fp, code, msg, headers, newurl)
+
     request = urllib.request.Request(_url(url, allow_local), headers={"User-Agent": "ADCTOX-updater/1", "Accept": "application/octet-stream"})
-    response = urllib.request.urlopen(request, timeout=30)
-    try:
-        _url(response.geturl(), allow_local)
-    except Exception:
-        response.close()
-        raise
-    return response
+    return urllib.request.build_opener(CheckedRedirect()).open(request, timeout=30)
 
 
 def validate_manifest(data, allow_local=False):
@@ -332,7 +331,10 @@ def app_manifest_url():
 def fetch_app_manifest(url=None, allow_local=False):
     try:
         with _open(url or app_manifest_url(), allow_local) as stream:
-            data = json.loads(stream.read(MAX_MANIFEST_BYTES + 1))
+            body = stream.read(MAX_MANIFEST_BYTES + 1)
+        if len(body) > MAX_MANIFEST_BYTES:
+            raise UpdateError("App manifest is too large.")
+        data = json.loads(body)
     except (OSError, ValueError, http.client.HTTPException) as error:
         raise UpdateError(f"Could not read the app release manifest: {error}") from error
     if not isinstance(data, dict) or data.get("schema_version") != 1 or not re.fullmatch(r"\d+\.\d+(?:\.\d+)?", str(data.get("app_version", ""))) \
@@ -394,7 +396,7 @@ def update_app(manifest=None, program=None, allow_local=False, torch_version=Non
     names = {"adc_recommender_full.py", "requirements-cpu.txt", "bundle-info.json"}
     with tarfile.open(fileobj=io.BytesIO(body)) as archive:
         members = archive.getmembers()
-        if {m.name for m in members} != names or not all(m.isfile() for m in members):
+        if len(members) != len(names) or {m.name for m in members} != names or not all(m.isfile() for m in members):
             raise UpdateError("Unexpected app archive contents; nothing was changed.")
         new_req = archive.extractfile("requirements-cpu.txt").read()
         try: old_req = (running / "requirements-cpu.txt").read_bytes()

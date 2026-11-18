@@ -1,6 +1,6 @@
 [project]
 name = "adctox"
-version = "1.0.1"
+version = "1.0.2"
 description = "Patient-specific ADC safety evaluation and de novo conjugate design"
 license = "Apache-2.0"
 requires-python = ">=3.12"
@@ -28,6 +28,34 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/adctox"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"conf" = "adctox/_data/conf"
+"artifacts/axis_composition.json" = "adctox/_data/artifacts/axis_composition.json"
+"artifacts/dose_mod_eval.json" = "adctox/_data/artifacts/dose_mod_eval.json"
+"artifacts/exclusion_enrichment_exclusion.json" = "adctox/_data/artifacts/exclusion_enrichment_exclusion.json"
+"artifacts/forward_other_metrics.json" = "adctox/_data/artifacts/forward_other_metrics.json"
+"artifacts/hard_flag_necessity.json" = "adctox/_data/artifacts/hard_flag_necessity.json"
+"artifacts/label_change_eval.json" = "adctox/_data/artifacts/label_change_eval.json"
+"artifacts/posterior_other.npz" = "adctox/_data/artifacts/posterior_other.npz"
+"artifacts/posterior_serious.npz" = "adctox/_data/artifacts/posterior_serious.npz"
+"artifacts/target_expression.json" = "adctox/_data/artifacts/target_expression.json"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src/adctox",
+    "/conf",
+    "/artifacts/axis_composition.json",
+    "/artifacts/dose_mod_eval.json",
+    "/artifacts/exclusion_enrichment_exclusion.json",
+    "/artifacts/forward_other_metrics.json",
+    "/artifacts/hard_flag_necessity.json",
+    "/artifacts/label_change_eval.json",
+    "/artifacts/posterior_other.npz",
+    "/artifacts/posterior_serious.npz",
+    "/artifacts/target_expression.json",
+    "/THIRD_PARTY_NOTICES.md",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

@@ -37,6 +37,7 @@ from dataclasses import dataclass, field
 
 import yaml
 
+from .._paths import DATA_ROOT
 from .denominator import InferredDenominator, fill as fill_denominators
 from .jats_tables import HEADER_N, Cell, ParsedTable
 from .row_labels import MappedRow, map_row
@@ -72,10 +73,7 @@ TYPOGRAPHIC = str.maketrans({
     "\u2010": "-", "\u2011": "-", "\u2012": "-", "\u2013": "-", "\u2014": "-",
     "\u00a0": " ", "\u2212": "-",
 })
-COMBINATION_CONF = (
-    pathlib.Path(__file__).resolve().parents[3] / "conf" / "ontology"
-    / "combination_partners.yaml"
-)
+COMBINATION_CONF = DATA_ROOT / "conf" / "ontology" / "combination_partners.yaml"
 
 
 @functools.lru_cache(maxsize=1)

@@ -126,7 +126,7 @@ def release_tag():
     return "v" + APP_VERSION + (".0" if APP_VERSION.count(".") == 1 else "")
 
 
-def app_assets(output):
+def app_assets(output, write_manifest=False):
     output.mkdir(parents=True, exist_ok=True)
     snapshot = ROOT / "ml/data/label_evidence.json"
     if not snapshot.exists():
@@ -150,7 +150,8 @@ def app_assets(output):
                 "url": f"https://github.com/{REPOSITORY}/releases/download/{release_tag()}/{archive.name}",
                 "size": archive.stat().st_size, "sha256": digest(archive), "torch_version": "2.11.0"}
     write(output / "app.json", manifest)
-    write(ROOT / "releases/app/stable.json", manifest)
+    if write_manifest:
+        write(ROOT / "releases/app/stable.json", manifest)
     print(f"App {APP_VERSION}: {archive.stat().st_size / 1024:.1f} KiB. No model weights in the app archive.")
 
 
@@ -160,6 +161,7 @@ def main():
     p.add_argument("--model-version", default="0.0")
     p.add_argument("--cache", type=Path, default=Path("/data/hyeongchanahn/adctox/ml_cache"))
     p.add_argument("--out", type=Path, default=ROOT / "dist/releases")
+    p.add_argument("--write-manifest", action="store_true", help="also update releases/app/stable.json")
     p.add_argument("--base-manifest", type=Path, help="with --models: reuse this published manifest's files (derived_models)")
     p.add_argument("--add", type=Path, action="append", default=[], help="with --base-manifest: a bundle folder to upload")
     p.add_argument("--drop", action="append", default=[], help="with --base-manifest: a bundle folder to leave out")
@@ -167,7 +169,7 @@ def main():
     args = p.parse_args()
     if args.models and args.base_manifest: derived_models(args.out / "models", args.model_version, args.base_manifest, args.add, set(args.drop), args.names_from)
     elif args.models: model_assets(args.out / "models", args.model_version, args.cache)
-    app_assets(args.out / "app")
+    app_assets(args.out / "app", write_manifest=args.write_manifest)
 
 
 if __name__ == "__main__": main()

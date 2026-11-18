@@ -18,12 +18,13 @@ from __future__ import annotations
 import csv
 from enum import Enum
 from functools import lru_cache
-from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-CONF = Path(__file__).resolve().parents[2] / "conf"
+from ._paths import DATA_ROOT
+
+CONF = DATA_ROOT / "conf"
 
 
 @lru_cache(maxsize=1)
