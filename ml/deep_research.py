@@ -41,6 +41,7 @@ from urllib.parse import urlsplit
 import numpy as np
 
 import studio_matrix as SM
+from adc_version import APP_VERSION
 
 MAX_GPU_SLOTS = 4
 MAX_WORKER_RESPONSE = 8 << 20
@@ -618,11 +619,13 @@ def _worker_json(base_url: str, path: str, timeout: float, body: Optional[Dict[s
             or (not loopback and not token)):
         raise ValueError("A remote GPU worker requires HTTPS and a worker token")
     url = base_url + path
+    headers = {"Accept": "application/json", "User-Agent": f"ADCToX-worker-client/{APP_VERSION}"}
     if body is None:
-        request = urllib.request.Request(url)
+        request = urllib.request.Request(url, headers=headers)
     else:
+        headers["Content-Type"] = "application/json"
         request = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"),
-                                         headers={"Content-Type": "application/json"})
+                                         headers=headers)
     if token:
         request.add_unredirected_header("Authorization", f"Bearer {token}")
     access_id = os.environ.get("ADCTOX_CF_ACCESS_CLIENT_ID")
